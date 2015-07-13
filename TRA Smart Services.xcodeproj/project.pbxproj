@@ -12,6 +12,7 @@
 		ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B61B5451E90086C6EE /* Assets.xcassets */; };
 		ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B91B5451E90086C6EE /* Main.storyboard */; };
 		ED7192C01B5452170086C6EE /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192BF1B5452170086C6EE /* AppHelper.m */; };
+		ED7192C51B5456EF0086C6EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED7192C71B5456EF0086C6EE /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,10 @@
 		ED7192BE1B5452170086C6EE /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		ED7192BF1B5452170086C6EE /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		ED7192C11B5452420086C6EE /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		ED7192C61B5456EF0086C6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED7192C81B5456FA0086C6EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED7192C91B54572E0086C6EE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED7192CB1B5457740086C6EE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 		ED7192AF1B5451E90086C6EE /* SupportingClasses */ = {
 			isa = PBXGroup;
 			children = (
+				ED7192CA1B5457690086C6EE /* Constants */,
 				ED7192B01B5451E90086C6EE /* AppDelegate */,
 				ED7192B31B5451E90086C6EE /* AppHelper */,
 				ED7192B41B5451E90086C6EE /* Resources */,
@@ -121,6 +127,7 @@
 		ED7192B41B5451E90086C6EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED7192C21B54566B0086C6EE /* Localization */,
 				ED7192B51B5451E90086C6EE /* Images */,
 			);
 			path = Resources;
@@ -140,6 +147,22 @@
 				ED7192B91B5451E90086C6EE /* Main.storyboard */,
 			);
 			path = Storyboars;
+			sourceTree = "<group>";
+		};
+		ED7192C21B54566B0086C6EE /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192C71B5456EF0086C6EE /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		ED7192CA1B5457690086C6EE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192CB1B5457740086C6EE /* Constants.h */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +206,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = ED7192731B5450D60086C6EE;
 			productRefGroup = ED71927D1B5450D60086C6EE /* Products */;
@@ -200,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */,
+				ED7192C51B5456EF0086C6EE /* Localizable.strings in Resources */,
 				ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +243,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED7192C71B5456EF0086C6EE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED7192C61B5456EF0086C6EE /* Base */,
+				ED7192C81B5456FA0086C6EE /* en */,
+				ED7192C91B54572E0086C6EE /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		ED7192911B5450D60086C6EE /* Debug */ = {
@@ -351,6 +389,7 @@
 				ED7192951B5450D60086C6EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
