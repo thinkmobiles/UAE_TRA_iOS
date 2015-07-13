@@ -1,5 +1,6 @@
 # README #
 
+![icon192.png](https://bitbucket.org/repo/RKKXMK/images/3917496335-icon192.png)
 TRA - Smart Service
 
 ### What is this repository for? ###
@@ -25,6 +26,5 @@ TRA - Smart Service
 ### Additional Information ###
 
 Source on cordova - http://share.enon.biz/owncloud/public.php?service=files&t=ba13cac56ea4d9dbc665364ef0b345f2
-For password - ask admin of repo
 
-![icon192.png](https://bitbucket.org/repo/RKKXMK/images/3917496335-icon192.png)
+For password - ask admin of repo
