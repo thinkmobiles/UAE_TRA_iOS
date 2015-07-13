@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
+		ED7192BA1B5451E90086C6EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192B21B5451E90086C6EE /* AppDelegate.m */; };
+		ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B61B5451E90086C6EE /* Assets.xcassets */; };
+		ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B91B5451E90086C6EE /* Main.storyboard */; };
+		ED7192C01B5452170086C6EE /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192BF1B5452170086C6EE /* AppHelper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED7192B11B5451E90086C6EE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ED7192B21B5451E90086C6EE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ED7192B61B5451E90086C6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED7192B91B5451E90086C6EE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ED7192BE1B5452170086C6EE /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		ED7192BF1B5452170086C6EE /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		ED7192C11B5452420086C6EE /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED7192791B5450D60086C6EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED7192731B5450D60086C6EE = {
+			isa = PBXGroup;
+			children = (
+				ED71927E1B5450D60086C6EE /* TRA Smart Services */,
+				ED71927D1B5450D60086C6EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED71927D1B5450D60086C6EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED71927C1B5450D60086C6EE /* TRA Smart Services.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED71927E1B5450D60086C6EE /* TRA Smart Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED71929E1B5451C80086C6EE /* Classes */,
+				ED7192AF1B5451E90086C6EE /* SupportingClasses */,
+				ED71927F1B5450D60086C6EE /* Supporting Files */,
+			);
+			path = "TRA Smart Services";
+			sourceTree = "<group>";
+		};
+		ED71927F1B5450D60086C6EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192901B5450D60086C6EE /* Info.plist */,
+				ED7192801B5450D60086C6EE /* main.m */,
+				ED7192C11B5452420086C6EE /* Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED71929E1B5451C80086C6EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ED71929F1B5451C80086C6EE /* ViewControllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ED7192AF1B5451E90086C6EE /* SupportingClasses */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192B01B5451E90086C6EE /* AppDelegate */,
+				ED7192B31B5451E90086C6EE /* AppHelper */,
+				ED7192B41B5451E90086C6EE /* Resources */,
+				ED7192B71B5451E90086C6EE /* Storyboars */,
+			);
+			path = SupportingClasses;
+			sourceTree = "<group>";
+		};
+		ED7192B01B5451E90086C6EE /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192B11B5451E90086C6EE /* AppDelegate.h */,
+				ED7192B21B5451E90086C6EE /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		ED7192B31B5451E90086C6EE /* AppHelper */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192BE1B5452170086C6EE /* AppHelper.h */,
+				ED7192BF1B5452170086C6EE /* AppHelper.m */,
+			);
+			path = AppHelper;
+			sourceTree = "<group>";
+		};
+		ED7192B41B5451E90086C6EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192B51B5451E90086C6EE /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED7192B51B5451E90086C6EE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192B61B5451E90086C6EE /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		ED7192B71B5451E90086C6EE /* Storyboars */ = {
+			isa = PBXGroup;
+			children = (
+				ED7192B91B5451E90086C6EE /* Main.storyboard */,
+			);
+			path = Storyboars;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED71927B1B5450D60086C6EE /* TRA Smart Services */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED7192931B5450D60086C6EE /* Build configuration list for PBXNativeTarget "TRA Smart Services" */;
+			buildPhases = (
+				ED7192781B5450D60086C6EE /* Sources */,
+				ED7192791B5450D60086C6EE /* Frameworks */,
+				ED71927A1B5450D60086C6EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TRA Smart Services";
+			productName = "TRA Smart Services";
+			productReference = ED71927C1B5450D60086C6EE /* TRA Smart Services.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED7192741B5450D60086C6EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Thinkmobiles;
+				TargetAttributes = {
+					ED71927B1B5450D60086C6EE = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED7192731B5450D60086C6EE;
+			productRefGroup = ED71927D1B5450D60086C6EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED71927B1B5450D60086C6EE /* TRA Smart Services */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED71927A1B5450D60086C6EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */,
+				ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED7192781B5450D60086C6EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7192811B5450D60086C6EE /* main.m in Sources */,
+				ED7192BA1B5451E90086C6EE /* AppDelegate.m in Sources */,
+				ED7192C01B5452170086C6EE /* AppHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ED7192911B5450D60086C6EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED7192921B5450D60086C6EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED7192941B5450D60086C6EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ED7192951B5450D60086C6EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7192911B5450D60086C6EE /* Debug */,
+				ED7192921B5450D60086C6EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED7192931B5450D60086C6EE /* Build configuration list for PBXNativeTarget "TRA Smart Services" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7192941B5450D60086C6EE /* Debug */,
+				ED7192951B5450D60086C6EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED7192741B5450D60086C6EE /* Project object */;
+}
