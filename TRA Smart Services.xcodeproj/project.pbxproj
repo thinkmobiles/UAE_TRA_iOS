@@ -8,28 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
-		ED7192BA1B5451E90086C6EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192B21B5451E90086C6EE /* AppDelegate.m */; };
-		ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B61B5451E90086C6EE /* Assets.xcassets */; };
-		ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7192B91B5451E90086C6EE /* Main.storyboard */; };
-		ED7192C01B5452170086C6EE /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192BF1B5452170086C6EE /* AppHelper.m */; };
-		ED7192C51B5456EF0086C6EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED7192C71B5456EF0086C6EE /* Localizable.strings */; };
+		ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F221B5D24DA00B6B644 /* AppDelegate.m */; };
+		ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F251B5D24DA00B6B644 /* AppHelper.m */; };
+		ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED982F2A1B5D24DA00B6B644 /* Assets.xcassets */; };
+		ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED982F2C1B5D24DA00B6B644 /* Localizable.strings */; };
+		ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED982F311B5D24DA00B6B644 /* Main.storyboard */; };
+		ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F3B1B5D25A900B6B644 /* MBProgressHUD.m */; };
+		ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F431B5D313600B6B644 /* UIColor+AppColor.m */; };
+		ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */; };
+		ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F4B1B5D346100B6B644 /* DynamicUIService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED7192B11B5451E90086C6EE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		ED7192B21B5451E90086C6EE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ED7192B61B5451E90086C6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED7192B91B5451E90086C6EE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		ED7192BE1B5452170086C6EE /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
-		ED7192BF1B5452170086C6EE /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		ED7192C11B5452420086C6EE /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		ED7192C61B5456EF0086C6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ED7192C81B5456FA0086C6EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ED7192C91B54572E0086C6EE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ED7192CB1B5457740086C6EE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		ED982F211B5D24DA00B6B644 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ED982F221B5D24DA00B6B644 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ED982F241B5D24DA00B6B644 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		ED982F251B5D24DA00B6B644 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		ED982F271B5D24DA00B6B644 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		ED982F2A1B5D24DA00B6B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED982F2D1B5D24DA00B6B644 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED982F2E1B5D24DA00B6B644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED982F2F1B5D24DA00B6B644 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED982F311B5D24DA00B6B644 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ED982F3A1B5D25A900B6B644 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		ED982F3B1B5D25A900B6B644 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		ED982F421B5D313600B6B644 /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
+		ED982F431B5D313600B6B644 /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
+		ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TabBarMenuList.plist; sourceTree = "<group>"; };
+		ED982F4A1B5D346100B6B644 /* DynamicUIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicUIService.h; sourceTree = "<group>"; };
+		ED982F4B1B5D346100B6B644 /* DynamicUIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicUIService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71929E1B5451C80086C6EE /* Classes */,
+				ED982F1F1B5D24DA00B6B644 /* Application */,
 				ED7192AF1B5451E90086C6EE /* SupportingClasses */,
 				ED71927F1B5450D60086C6EE /* Supporting Files */,
 			);
@@ -97,72 +109,142 @@
 		ED7192AF1B5451E90086C6EE /* SupportingClasses */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192CA1B5457690086C6EE /* Constants */,
-				ED7192B01B5451E90086C6EE /* AppDelegate */,
-				ED7192B31B5451E90086C6EE /* AppHelper */,
-				ED7192B41B5451E90086C6EE /* Resources */,
-				ED7192B71B5451E90086C6EE /* Storyboars */,
+				ED982F481B5D345A00B6B644 /* Managers */,
+				ED982F381B5D256500B6B644 /* CustomClasses */,
+				ED982F371B5D24F300B6B644 /* Categories */,
 			);
 			path = SupportingClasses;
 			sourceTree = "<group>";
 		};
-		ED7192B01B5451E90086C6EE /* AppDelegate */ = {
+		ED982F1F1B5D24DA00B6B644 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192B11B5451E90086C6EE /* AppDelegate.h */,
-				ED7192B21B5451E90086C6EE /* AppDelegate.m */,
+				ED982F201B5D24DA00B6B644 /* AppDelegate */,
+				ED982F231B5D24DA00B6B644 /* AppHelper */,
+				ED982F261B5D24DA00B6B644 /* Constants */,
+				ED982F281B5D24DA00B6B644 /* Resources */,
+				ED982F301B5D24DA00B6B644 /* Storyboars */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ED982F201B5D24DA00B6B644 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F211B5D24DA00B6B644 /* AppDelegate.h */,
+				ED982F221B5D24DA00B6B644 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		ED7192B31B5451E90086C6EE /* AppHelper */ = {
+		ED982F231B5D24DA00B6B644 /* AppHelper */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192BE1B5452170086C6EE /* AppHelper.h */,
-				ED7192BF1B5452170086C6EE /* AppHelper.m */,
+				ED982F241B5D24DA00B6B644 /* AppHelper.h */,
+				ED982F251B5D24DA00B6B644 /* AppHelper.m */,
 			);
 			path = AppHelper;
 			sourceTree = "<group>";
 		};
-		ED7192B41B5451E90086C6EE /* Resources */ = {
+		ED982F261B5D24DA00B6B644 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192C21B54566B0086C6EE /* Localization */,
-				ED7192B51B5451E90086C6EE /* Images */,
+				ED982F271B5D24DA00B6B644 /* Constants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		ED982F281B5D24DA00B6B644 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F451B5D337500B6B644 /* Plists */,
+				ED982F291B5D24DA00B6B644 /* Images */,
+				ED982F2B1B5D24DA00B6B644 /* Localization */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		ED7192B51B5451E90086C6EE /* Images */ = {
+		ED982F291B5D24DA00B6B644 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192B61B5451E90086C6EE /* Assets.xcassets */,
+				ED982F2A1B5D24DA00B6B644 /* Assets.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
 		};
-		ED7192B71B5451E90086C6EE /* Storyboars */ = {
+		ED982F2B1B5D24DA00B6B644 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192B91B5451E90086C6EE /* Main.storyboard */,
-			);
-			path = Storyboars;
-			sourceTree = "<group>";
-		};
-		ED7192C21B54566B0086C6EE /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				ED7192C71B5456EF0086C6EE /* Localizable.strings */,
+				ED982F2C1B5D24DA00B6B644 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		ED7192CA1B5457690086C6EE /* Constants */ = {
+		ED982F301B5D24DA00B6B644 /* Storyboars */ = {
 			isa = PBXGroup;
 			children = (
-				ED7192CB1B5457740086C6EE /* Constants.h */,
+				ED982F311B5D24DA00B6B644 /* Main.storyboard */,
 			);
-			path = Constants;
+			path = Storyboars;
+			sourceTree = "<group>";
+		};
+		ED982F371B5D24F300B6B644 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F411B5D312300B6B644 /* UIColor+AppColor */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		ED982F381B5D256500B6B644 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F391B5D25A900B6B644 /* MBProgressHUD */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		ED982F391B5D25A900B6B644 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F3A1B5D25A900B6B644 /* MBProgressHUD.h */,
+				ED982F3B1B5D25A900B6B644 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		ED982F411B5D312300B6B644 /* UIColor+AppColor */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F421B5D313600B6B644 /* UIColor+AppColor.h */,
+				ED982F431B5D313600B6B644 /* UIColor+AppColor.m */,
+			);
+			path = "UIColor+AppColor";
+			sourceTree = "<group>";
+		};
+		ED982F451B5D337500B6B644 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		ED982F481B5D345A00B6B644 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F491B5D346100B6B644 /* DynamicUIService */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		ED982F491B5D346100B6B644 /* DynamicUIService */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F4A1B5D346100B6B644 /* DynamicUIService.h */,
+				ED982F4B1B5D346100B6B644 /* DynamicUIService.m */,
+			);
+			path = DynamicUIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +305,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7192BB1B5451E90086C6EE /* Assets.xcassets in Resources */,
-				ED7192C51B5456EF0086C6EE /* Localizable.strings in Resources */,
-				ED7192BD1B5451E90086C6EE /* Main.storyboard in Resources */,
+				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
+				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
+				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
+				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,21 +319,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
+				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
+				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
-				ED7192BA1B5451E90086C6EE /* AppDelegate.m in Sources */,
-				ED7192C01B5452170086C6EE /* AppHelper.m in Sources */,
+				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
+				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ED7192C71B5456EF0086C6EE /* Localizable.strings */ = {
+		ED982F2C1B5D24DA00B6B644 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ED7192C61B5456EF0086C6EE /* Base */,
-				ED7192C81B5456FA0086C6EE /* en */,
-				ED7192C91B54572E0086C6EE /* ar */,
+				ED982F2D1B5D24DA00B6B644 /* ar */,
+				ED982F2E1B5D24DA00B6B644 /* Base */,
+				ED982F2F1B5D24DA00B6B644 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

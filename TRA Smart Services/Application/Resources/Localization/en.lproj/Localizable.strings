@@ -5,3 +5,10 @@
   Created by Kirill Gorbushko on 13.07.15.
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
+
+//TabBarMenuItems
+
+"tabBarMenu_item_1" = "Home";
+"tabBarMenu_item_2" = "Index";
+"tabBarMenu_item_3" = "CRM";
+"tabBarMenu_item_4" = "Settings";
