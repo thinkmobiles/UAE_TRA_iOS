@@ -14,7 +14,7 @@ TRA - Smart Service
 
 ### Contribution guidelines ###
 
-* Write code on new branch from develop
+* Write code on new branch from develop name like - _issue_ISSUE_NAME
 * Push new branch for review
 * Set issue on tracker to status OnHold
 * Wait review
