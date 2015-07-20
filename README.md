@@ -27,5 +27,6 @@ TRA - Smart Service
 ### Additional Information ###
 
 Source on cordova - http://share.enon.biz/owncloud/public.php?service=files&t=ba13cac56ea4d9dbc665364ef0b345f2
+Other data - https://drive.google.com/folderview?id=0B1GU18BxUf8hfnVQUmJvaVFpWmVpOGhJOXRPS3FuZnRNLURtTUNFVElnelB5ak1wUUcwWVk&usp=sharing
 
 For password - ask admin of repo
