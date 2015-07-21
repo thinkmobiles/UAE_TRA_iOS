@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F221B5D24DA00B6B644 /* AppDelegate.m */; };
 		ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F251B5D24DA00B6B644 /* AppHelper.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		ED2084BE1B5E6B0400779CBD /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				ED2084BD1B5E6B0400779CBD /* LocationManager.h */,
+				ED2084BE1B5E6B0400779CBD /* LocationManager.m */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 		ED7192731B5450D60086C6EE = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +289,7 @@
 		ED982F481B5D345A00B6B644 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				ED2084BC1B5E6B0400779CBD /* LocationManager */,
 				ED982F491B5D346100B6B644 /* DynamicUIService */,
 			);
 			path = Managers;
@@ -469,6 +482,7 @@
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				ED982F611B5D870E00B6B644 /* LoginViewController.m in Sources */,
+				ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
