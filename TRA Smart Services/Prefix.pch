@@ -17,5 +17,6 @@
 #import "Constants.h"
 #import "UIColor+AppColor.h"
 #import "DynamicUIService.h"
+#import <Foundation/Foundation.h>
 
 #endif /* Prefix_pch */

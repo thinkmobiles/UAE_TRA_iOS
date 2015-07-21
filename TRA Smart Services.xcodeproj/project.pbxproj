@@ -17,6 +17,14 @@
 		ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F431B5D313600B6B644 /* UIColor+AppColor.m */; };
 		ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */; };
 		ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F4B1B5D346100B6B644 /* DynamicUIService.m */; };
+		ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F521B5D82B900B6B644 /* UINavigationController+Transparent.m */; };
+		ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */; };
+		ED982F611B5D870E00B6B644 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F601B5D870E00B6B644 /* LoginViewController.m */; };
+		EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5891B5D8D7100405367 /* OffsetTextField.m */; };
+		EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E58C1B5D8D7100405367 /* TextFieldNavigator.m */; };
+		EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5911B5DA96300405367 /* BaseMembershipViewController.m */; };
+		EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */; };
+		EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5991B5DAC0900405367 /* Animation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +49,22 @@
 		ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TabBarMenuList.plist; sourceTree = "<group>"; };
 		ED982F4A1B5D346100B6B644 /* DynamicUIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicUIService.h; sourceTree = "<group>"; };
 		ED982F4B1B5D346100B6B644 /* DynamicUIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicUIService.m; sourceTree = "<group>"; };
+		ED982F511B5D82B900B6B644 /* UINavigationController+Transparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Transparent.h"; sourceTree = "<group>"; };
+		ED982F521B5D82B900B6B644 /* UINavigationController+Transparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Transparent.m"; sourceTree = "<group>"; };
+		ED982F561B5D82EC00B6B644 /* UINavigationController+TopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+TopButton.h"; sourceTree = "<group>"; };
+		ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+TopButton.m"; sourceTree = "<group>"; };
+		ED982F5F1B5D870E00B6B644 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		ED982F601B5D870E00B6B644 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EDD3E5881B5D8D7100405367 /* OffsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffsetTextField.h; sourceTree = "<group>"; };
+		EDD3E5891B5D8D7100405367 /* OffsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffsetTextField.m; sourceTree = "<group>"; };
+		EDD3E58B1B5D8D7100405367 /* TextFieldNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldNavigator.h; sourceTree = "<group>"; };
+		EDD3E58C1B5D8D7100405367 /* TextFieldNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldNavigator.m; sourceTree = "<group>"; };
+		EDD3E5901B5DA96300405367 /* BaseMembershipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMembershipViewController.h; sourceTree = "<group>"; };
+		EDD3E5911B5DA96300405367 /* BaseMembershipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMembershipViewController.m; sourceTree = "<group>"; };
+		EDD3E5941B5DAB9E00405367 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		EDD3E5981B5DAC0900405367 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		EDD3E5991B5DAC0900405367 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +126,9 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EDD3E5931B5DAB8F00405367 /* RegisterViewController */,
+				ED982F5E1B5D86FE00B6B644 /* LoginViewController */,
+				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -110,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				ED982F481B5D345A00B6B644 /* Managers */,
-				ED982F381B5D256500B6B644 /* CustomClasses */,
 				ED982F371B5D24F300B6B644 /* Categories */,
+				ED982F381B5D256500B6B644 /* CustomClasses */,
 			);
 			path = SupportingClasses;
 			sourceTree = "<group>";
@@ -191,6 +218,8 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				ED982F551B5D82EC00B6B644 /* UINavigationController+TopButton */,
+				ED982F501B5D82B900B6B644 /* UINavigationController+Transparent */,
 				ED982F411B5D312300B6B644 /* UIColor+AppColor */,
 			);
 			path = Categories;
@@ -199,6 +228,9 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				EDD3E5971B5DAC0900405367 /* Animation */,
+				EDD3E5871B5D8D7100405367 /* OffsetTextField */,
+				EDD3E58A1B5D8D7100405367 /* TextFieldNavigator */,
 				ED982F391B5D25A900B6B644 /* MBProgressHUD */,
 			);
 			path = CustomClasses;
@@ -245,6 +277,78 @@
 				ED982F4B1B5D346100B6B644 /* DynamicUIService.m */,
 			);
 			path = DynamicUIService;
+			sourceTree = "<group>";
+		};
+		ED982F501B5D82B900B6B644 /* UINavigationController+Transparent */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F511B5D82B900B6B644 /* UINavigationController+Transparent.h */,
+				ED982F521B5D82B900B6B644 /* UINavigationController+Transparent.m */,
+			);
+			path = "UINavigationController+Transparent";
+			sourceTree = "<group>";
+		};
+		ED982F551B5D82EC00B6B644 /* UINavigationController+TopButton */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F561B5D82EC00B6B644 /* UINavigationController+TopButton.h */,
+				ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */,
+			);
+			path = "UINavigationController+TopButton";
+			sourceTree = "<group>";
+		};
+		ED982F5E1B5D86FE00B6B644 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED982F5F1B5D870E00B6B644 /* LoginViewController.h */,
+				ED982F601B5D870E00B6B644 /* LoginViewController.m */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		EDD3E5871B5D8D7100405367 /* OffsetTextField */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5881B5D8D7100405367 /* OffsetTextField.h */,
+				EDD3E5891B5D8D7100405367 /* OffsetTextField.m */,
+			);
+			path = OffsetTextField;
+			sourceTree = "<group>";
+		};
+		EDD3E58A1B5D8D7100405367 /* TextFieldNavigator */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E58B1B5D8D7100405367 /* TextFieldNavigator.h */,
+				EDD3E58C1B5D8D7100405367 /* TextFieldNavigator.m */,
+			);
+			path = TextFieldNavigator;
+			sourceTree = "<group>";
+		};
+		EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5901B5DA96300405367 /* BaseMembershipViewController.h */,
+				EDD3E5911B5DA96300405367 /* BaseMembershipViewController.m */,
+			);
+			path = BaseMembershipViewController;
+			sourceTree = "<group>";
+		};
+		EDD3E5931B5DAB8F00405367 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5941B5DAB9E00405367 /* RegisterViewController.h */,
+				EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */,
+			);
+			path = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		EDD3E5971B5DAC0900405367 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5981B5DAC0900405367 /* Animation.h */,
+				EDD3E5991B5DAC0900405367 /* Animation.m */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,9 +425,17 @@
 			files = (
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
+				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
+				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
+				ED982F611B5D870E00B6B644 /* LoginViewController.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
+				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
+				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
+				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
+				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

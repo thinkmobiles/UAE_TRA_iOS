@@ -12,3 +12,23 @@
 "tabBarMenu_item_2" = "Index";
 "tabBarMenu_item_3" = "CRM";
 "tabBarMenu_item_4" = "Settings";
+
+//LoginViewController
+
+"login.title" = "Login";
+"login.placeHolderText.username" = "Username";
+"login.placeHolderText.password" = "Password";
+"login.button.login" = "Login";
+"login.button.forgotPassword" = "Forgot the password";
+"login.button.registerButton" = "Register now";
+"login.restore_password.message" = "To restore password please enter your email that was used during registration";
+
+//RegisterViewController
+
+"register.title" = "Create account";
+"register.placeholderText.username" = "Username";
+"register.placeHolderText.gender" = "Gender";
+"register.placeHolderText.phone" = "Phone";
+"register.placeHolderText.password" ="Password";
+"register.button.register" = "Register";
+"register.button.login" = "Login";

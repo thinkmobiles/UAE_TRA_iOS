@@ -8,15 +8,32 @@
 
 #import "AppHelper.h"
 #import "MBProgressHUD.h"
+#import "AppDelegate.h"
+
+static CGFloat const MaximumTabBarFontSize = 15.f;
 
 @implementation AppHelper
 
 #pragma mark - Public
 
+#pragma mark - Common
+
++ (UITabBarController *)rootViewController
+{
+    return (UITabBarController *)[((AppDelegate *)[UIApplication sharedApplication].delegate).window rootViewController];
+}
+
 + (NSString *)appName
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
 }
+
++ (UIView *)topView
+{
+    return [UIApplication sharedApplication].keyWindow;
+}
+
+#pragma mark - InformationView
 
 + (void)alertViewWithMessage:(NSString *)message
 {
@@ -64,9 +81,34 @@
     });
 }
 
-+ (UIView *)topView
+#pragma mark - TabBarConfiguration
+
+- (void)prepareTabBarItems
 {
-    return [UIApplication sharedApplication].keyWindow;
+    NSArray *localizedMenuItems = [self localizedTabBarMenuItems];
+    CGFloat fontSize = [DynamicUIService service].fontSize;
+    fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
+    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Avenir-Roman" size:fontSize],
+                                  NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    
+    [tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * __nonnull tabBarItem, NSUInteger idx, BOOL * __nonnull stop) {
+        tabBarItem.title = localizedMenuItems[idx];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
+    }];
+}
+
+#pragma mark - Private
+
+- (NSArray *)localizedTabBarMenuItems
+{
+    NSArray *menuItemsLink = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
+    NSMutableArray *localizedMenuItems = [[NSMutableArray alloc] init];
+    for (int i = 0; i < menuItemsLink.count; i++) {
+        [localizedMenuItems addObject:dynamicLocalizedString(menuItemsLink[i])];
+    }
+    return localizedMenuItems;
 }
 
 @end

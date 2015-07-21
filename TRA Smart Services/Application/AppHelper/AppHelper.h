@@ -8,6 +8,9 @@
 
 @interface AppHelper : NSObject
 
++ (UITabBarController *)rootViewController;
++ (UIView *)topView;
+
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate otherButtonTitles:(NSString *)otherButtonTitles, ...;
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate;
 + (void)alertViewWithMessage:(NSString *)message;
@@ -18,6 +21,6 @@
 + (void)showLoaderWithText:(NSString *)text;
 + (void)hideLoader;
 
-+ (UIView *)topView;
+- (void)prepareTabBarItems;
 
 @end

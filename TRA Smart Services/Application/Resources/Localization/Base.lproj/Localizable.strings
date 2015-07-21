@@ -12,3 +12,23 @@
 "tabBarMenu_item_2" = "tabBarMenu_item_2";
 "tabBarMenu_item_3" = "tabBarMenu_item_3";
 "tabBarMenu_item_4" = "tabBarMenu_item_4";
+
+//LoginViewController
+
+"login.title" = "login.title";
+"login.placeHolderText.username" = "login.placeHolderText.username";
+"login.placeHolderText.password" = "login.placeHolderText.password";
+"login.button.login" = "login.button.login";
+"login.button.forgotPassword" = "login.button.forgotPassword";
+"login.button.registerButton" = "login.button.registerButton";
+"login.restore_password.message" = "login.restore_password.message";
+
+//RegisterViewController
+
+"register.title" = "register.title";
+"register.placeholderText.username" = "register.placeholderText.username";
+"register.placeHolderText.gender" = "register.placeHolderText.gender";
+"register.placeHolderText.phone" = "register.placeHolderText.phone";
+"register.placeHolderText.password" = "register.placeHolderText.password";
+"register.button.register" = "register.button.register";
+"register.button.login" = "register.button.login";
