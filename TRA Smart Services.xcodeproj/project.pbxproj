@@ -26,6 +26,8 @@
 		EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */; };
 		EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5991B5DAC0900405367 /* Animation.m */; };
 		EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E59D1B5E34B900405367 /* ForgotPasswordViewController.m */; };
+		EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD3E5A01B5E4ACE00405367 /* Security.framework */; };
+		EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,9 @@
 		EDD3E5991B5DAC0900405367 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 		EDD3E59C1B5E34B900405367 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDD3E59D1B5E34B900405367 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		EDD3E5A01B5E4ACE00405367 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EDD3E5A31B5E4B0800405367 /* KeychainStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainStorage.h; sourceTree = "<group>"; };
+		EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,7 @@
 		ED71927E1B5450D60086C6EE /* TRA Smart Services */ = {
 			isa = PBXGroup;
 			children = (
+				EDD3E59F1B5E4A9E00405367 /* Frameworks */,
 				ED71929E1B5451C80086C6EE /* Classes */,
 				ED982F1F1B5D24DA00B6B644 /* Application */,
 				ED7192AF1B5451E90086C6EE /* SupportingClasses */,
@@ -232,6 +239,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				EDD3E5A21B5E4AFA00405367 /* KeychainStorage */,
 				EDD3E5971B5DAC0900405367 /* Animation */,
 				EDD3E5871B5D8D7100405367 /* OffsetTextField */,
 				EDD3E58A1B5D8D7100405367 /* TextFieldNavigator */,
@@ -364,6 +372,23 @@
 			path = ForgotPasswordViewController;
 			sourceTree = "<group>";
 		};
+		EDD3E59F1B5E4A9E00405367 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5A01B5E4ACE00405367 /* Security.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDD3E5A21B5E4AFA00405367 /* KeychainStorage */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5A31B5E4B0800405367 /* KeychainStorage.h */,
+				EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */,
+			);
+			path = KeychainStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -449,6 +474,7 @@
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
