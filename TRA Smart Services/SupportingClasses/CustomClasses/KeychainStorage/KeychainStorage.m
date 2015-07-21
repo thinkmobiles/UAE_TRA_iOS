@@ -65,7 +65,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
 {
     NSMutableDictionary *keychainItem = [NSMutableDictionary dictionary];
     keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
-    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly;
     keychainItem[(__bridge id)kSecAttrServer] = UserWebSiteKey;
     keychainItem[(__bridge id)kSecAttrAccount] = login;
     
@@ -86,7 +86,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     NSMutableDictionary *keychainItem = [NSMutableDictionary dictionary];
     
     keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
-    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly;
     keychainItem[(__bridge id)kSecAttrServer] = UserWebSiteKey;
     keychainItem[(__bridge id)kSecAttrAccount] = userName;
     keychainItem[(__bridge id)kSecReturnData] = (__bridge id)kCFBooleanTrue;
@@ -114,7 +114,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     }
     
     keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
-    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly;
     keychainItem[(__bridge id)kSecAttrServer] = UserWebSiteKey;
     keychainItem[(__bridge id)kSecAttrAccount] = userLogin;
     
