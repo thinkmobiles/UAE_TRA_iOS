@@ -8,8 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Animation.h"
-
-static NSString *const CloseButtonImageName = @"close";
+#import "ForgotPasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -53,13 +52,6 @@ static NSString *const CloseButtonImageName = @"close";
     
 }
 
-- (IBAction)forgotPasswordButtonPressed:(id)sender
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[AppHelper appName] message:dynamicLocalizedString(@"login.restore_password.message") delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alertView show];
-}
-
 - (IBAction)registerButtonPressed:(id)sender
 {
     
@@ -79,14 +71,6 @@ static NSString *const CloseButtonImageName = @"close";
         [self.view.layer removeAllAnimations];
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    UITextField *emailTextFieldText = (UITextField *)[alertView textFieldAtIndex:0].text;
-    NSLog(@"%@",emailTextFieldText);
 }
 
 #pragma mark - Private

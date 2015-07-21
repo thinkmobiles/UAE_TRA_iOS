@@ -7,6 +7,6 @@
 //
 #import "BaseMembershipViewController.h"
 
-@interface LoginViewController : BaseMembershipViewController <UIAlertViewDelegate>
+@interface LoginViewController : BaseMembershipViewController
 
 @end

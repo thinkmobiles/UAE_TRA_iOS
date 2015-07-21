@@ -10,6 +10,8 @@
 #import "UINavigationController+TopButton.h"
 #import "OffsetTextField.h"
 
+static NSString *const CloseButtonImageName = @"close";
+
 @interface BaseMembershipViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

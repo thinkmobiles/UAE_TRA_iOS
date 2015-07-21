@@ -25,6 +25,7 @@
 		EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5911B5DA96300405367 /* BaseMembershipViewController.m */; };
 		EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */; };
 		EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5991B5DAC0900405367 /* Animation.m */; };
+		EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E59D1B5E34B900405367 /* ForgotPasswordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		EDD3E5951B5DAB9E00405367 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		EDD3E5981B5DAC0900405367 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		EDD3E5991B5DAC0900405367 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		EDD3E59C1B5E34B900405367 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		EDD3E59D1B5E34B900405367 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */,
 				EDD3E5931B5DAB8F00405367 /* RegisterViewController */,
 				ED982F5E1B5D86FE00B6B644 /* LoginViewController */,
 				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
@@ -351,6 +355,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E59C1B5E34B900405367 /* ForgotPasswordViewController.h */,
+				EDD3E59D1B5E34B900405367 /* ForgotPasswordViewController.m */,
+			);
+			path = ForgotPasswordViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,6 +439,7 @@
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
+				EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,

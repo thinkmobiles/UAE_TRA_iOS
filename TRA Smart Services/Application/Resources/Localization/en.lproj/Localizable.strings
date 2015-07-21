@@ -32,3 +32,10 @@
 "register.placeHolderText.password" ="Password";
 "register.button.register" = "Register";
 "register.button.login" = "Login";
+
+//RestorePasswordViewController
+
+"restorePassword.title" = "Restore Password";
+"restorePassword.PlaceholderText.email" = "E-mail";
+"restorePassword.button.restore" = "Restore Password";
+"restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";

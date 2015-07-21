@@ -32,3 +32,10 @@
 "register.placeHolderText.password" = "register.placeHolderText.password";
 "register.button.register" = "register.button.register";
 "register.button.login" = "register.button.login";
+
+//RestorePasswordViewController
+
+"restorePassword.title" = "restorePassword.title";
+"restorePassword.PlaceholderText.email" = "restorePassword.PlaceholderText.email";
+"restorePassword.button.restore" = "restorePassword.button.restore";
+"restorePassword.information.label.text" = "restorePassword.information.label.text";
