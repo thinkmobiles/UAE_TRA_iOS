@@ -18,5 +18,6 @@
 #import "UIColor+AppColor.h"
 #import "DynamicUIService.h"
 #import <Foundation/Foundation.h>
+#import "NetworkManager.h"
 
 #endif /* Prefix_pch */
