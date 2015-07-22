@@ -68,6 +68,28 @@ static NSString *const KeyLanguageFrench = @"fr";
     [self setLocaleWithLanguage:languageCode];
 }
 
+#pragma mark - ColorScheme
+
+- (UIColor *)currentApplicationColor
+{
+    UIColor *color;
+    switch (self.colorScheme) {
+        case ApplicationColorDefault:
+        case ApplicationColorOrange : {
+            color = [UIColor defaultOrangeColor];
+            break;
+        }
+        case ApplicationColorBlue: {
+            color = [UIColor defaultBlueColor];
+            break;
+        }
+        case ApplicationColorGreen: {
+            color = [UIColor defaultGreenColor];
+        }
+    }
+    return color;
+}
+
 #pragma mark - LifeCycle
 
 - (instancetype)init

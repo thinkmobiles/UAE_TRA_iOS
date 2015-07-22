@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+static NSString *const UserNameKey = @"userNameKey";
+
 static NSString *const KeychainStorageKeyLogin = @"KeychainStorageKeyLogin";
 static NSString *const KeychainStorageKeyPassword = @"KeychainStorageKeyPassword";
 

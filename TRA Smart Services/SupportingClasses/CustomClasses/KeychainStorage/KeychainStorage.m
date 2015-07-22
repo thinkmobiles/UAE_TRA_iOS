@@ -9,7 +9,6 @@
 #import "KeychainStorage.h"
 #import <Security/Security.h>
 
-static NSString *const UserNameKey = @"userNameKey";
 static NSString *const UserWebSiteKey = @"com.traSmartService";
 
 @implementation KeychainStorage

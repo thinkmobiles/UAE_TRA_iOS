@@ -23,12 +23,23 @@ typedef NS_ENUM(NSUInteger, ApplicationFont) {
     ApplicationFontBig = 24
 };
 
+typedef NS_ENUM(NSUInteger, ApplicationColor) {
+    ApplicationColorDefault,
+    ApplicationColorOrange,
+    ApplicationColorBlue,
+    ApplicationColorGreen
+};
+
 @interface DynamicUIService : NSObject
 
+@property (assign, nonatomic) ApplicationFont fontSize;
+@property (assign, nonatomic) ApplicationColor colorScheme;
+
 + (instancetype)service;
+
 - (void)setLanguage:(LanguageType)language;
 - (NSString *)localizableStringForKey:(NSString *)key;
 
-@property (assign, nonatomic) ApplicationFont fontSize;
+- (UIColor *)currentApplicationColor;
 
 @end
