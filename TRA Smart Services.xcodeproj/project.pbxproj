@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADDC1B5E62AC0013296B /* InformationViewController.m */; };
+		84B5ADE21B5E68730013296B /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADE11B5E68730013296B /* InformationTableViewCell.m */; };
+		84B5ADEE1B5ED7020013296B /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADED1B5ED7020013296B /* InformationHeaderCell.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F221B5D24DA00B6B644 /* AppDelegate.m */; };
 		ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F251B5D24DA00B6B644 /* AppHelper.m */; };
@@ -29,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84B5ADDB1B5E62AC0013296B /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		84B5ADDC1B5E62AC0013296B /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		84B5ADE01B5E68730013296B /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
+		84B5ADE11B5E68730013296B /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
+		84B5ADEC1B5ED7020013296B /* InformationHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationHeaderCell.h; sourceTree = "<group>"; };
+		84B5ADED1B5ED7020013296B /* InformationHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationHeaderCell.m; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +90,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B5ADDA1B5E62540013296B /* InformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B5ADDB1B5E62AC0013296B /* InformationViewController.h */,
+				84B5ADDC1B5E62AC0013296B /* InformationViewController.m */,
+			);
+			path = InformationViewController;
+			sourceTree = "<group>";
+		};
+		84B5ADDF1B5E682B0013296B /* InformationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84B5ADE01B5E68730013296B /* InformationTableViewCell.h */,
+				84B5ADE11B5E68730013296B /* InformationTableViewCell.m */,
+			);
+			path = InformationTableViewCell;
+			sourceTree = "<group>";
+		};
+		84B5ADEB1B5ED6CE0013296B /* InformationHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				84B5ADEC1B5ED7020013296B /* InformationHeaderCell.h */,
+				84B5ADED1B5ED7020013296B /* InformationHeaderCell.m */,
+			);
+			path = InformationHeaderCell;
+			sourceTree = "<group>";
+		};
 		ED7192731B5450D60086C6EE = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +165,9 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84B5ADEB1B5ED6CE0013296B /* InformationHeaderCell */,
+				84B5ADDF1B5E682B0013296B /* InformationTableViewCell */,
+				84B5ADDA1B5E62540013296B /* InformationViewController */,
 				EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */,
 				EDD3E5931B5DAB8F00405367 /* RegisterViewController */,
 				ED982F5E1B5D86FE00B6B644 /* LoginViewController */,
@@ -439,14 +478,17 @@
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
+				84B5ADEE1B5ED7020013296B /* InformationHeaderCell.m in Sources */,
 				EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				ED982F611B5D870E00B6B644 /* LoginViewController.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
+				84B5ADE21B5E68730013296B /* InformationTableViewCell.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
+				84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */,
 				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
