@@ -10,18 +10,16 @@
 
 static NSString *const CellIdentifier = @"infoCell";
 static NSString *const HeaderCellIdentifier = @"infoHeader";
-static NSString *const HeaderTableText = @"Header\nTable\nText";
+
 
 @interface InformationViewController ()
 
 @property (strong, nonatomic) NSArray *arrayInfoTitle;
 @property (strong, nonatomic) NSArray *arrayInfoText;
 @property (strong, nonatomic) NSArray *arrayInfoImage;
-
-@property (strong, nonatomic) NSArray *arrayInfoCell;
+@property (weak, nonatomic) NSString *headerTableText;
 
 @end
-
 
 @implementation InformationViewController
 
@@ -44,9 +42,7 @@ static NSString *const HeaderTableText = @"Header\nTable\nText";
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     InformationHeaderCell *cell=[self.tableView dequeueReusableCellWithIdentifier:HeaderCellIdentifier];
-//    cell.contentView.backgroundColor = [UIColor redColor];
-    cell.informationHeaderText.text=HeaderTableText;
-
+    cell.informationHeaderText.text=self.headerTableText;
     cell.contentView.frame = tableView.tableHeaderView.frame;
     
     return  cell.contentView;
@@ -59,27 +55,22 @@ static NSString *const HeaderTableText = @"Header\nTable\nText";
     return self.arrayInfoTitle.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return [self basicCellAtIndexPath:indexPath];
 }
 
-- (InformationTableViewCell *)basicCellAtIndexPath:(NSIndexPath *)indexPath {
+- (InformationTableViewCell *)basicCellAtIndexPath:(NSIndexPath *)indexPath
+{
     InformationTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [self configureBasicCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-- (void)configureBasicCell:(InformationTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureBasicCell:(InformationTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
     cell.informationCellTitle.text = self.arrayInfoTitle[indexPath.row];
     cell.informationCellText.text = self.arrayInfoText[indexPath.row];
-
- //   if (indexPath.row ) {
-//    cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
-//    cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, 375.f);
-//    NSLog(@"%f",cell.bounds.size.width);
- //   };
-  //      cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, 320.f);
-
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,24 +110,37 @@ static NSString *const HeaderTableText = @"Header\nTable\nText";
     return [self calculateHeightForConfiguredSizingCell:sizingCell];
 }
 
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell
+{
     [sizingCell setNeedsLayout];
     [sizingCell layoutIfNeeded];
-    
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 1.0f; // Add 1.0f for the cell separator height
+    return size.height + 1.0f;
 }
 
 #pragma mark - Private
 
 - (void)prepareDataSources
 {
-    self.arrayInfoTitle = @[@"Sample tite 1",@"Sample tite 1",@"Sample tite 1"];
-    self.arrayInfoText = @[@"ttttttttttttt\neeeeeeeeee\nsssssssss\nttttttttttttt\ntest\ntest",
-                           @"1stroka",
-                           @"t\ne\ns\nt"];
-//    NSDictionary *dataCell1=@[""];
+    self.headerTableText=@"Addressing Consumer disputes requert\nwith licensees on telecommunications\n services";
     
+    self.arrayInfoTitle = @[@"About the service",
+                            @"Service Package",
+                            @"Start the Service",
+                            @"Expected time",
+                            @"Officer in charge of this service",
+                            @"Reguired documents",
+                            @"Service fee",
+                            @"Terms and conditions"];
+    
+    self.arrayInfoText = @[@"This service invoves setting disputes of\ntelecom consumers with their service\nproviders.",
+                           @"This service invoves setting disputes of\ntelecom consumers with their service\nproviders.",
+                           @"This service invoves setting disputes of\ntelecom consumers with their service\nproviders.",
+                           @"3 days",
+                           @"Consumer Affairs Manager",
+                           @"1. Identity Card\n2. Written authorization or power of attorney\nletter (for business customers only)\n3. Reference number of the complaints\nservise provider\n4. Any other document to support the\ncomplaint (such as your phone bill, acoount\ndetails, and copies of all written\ncorrespondence from your service provider, etc.",
+                           @"None",
+                           @"The consumer should:\n- Submit the complaint to the service\nprovider\n- Take the reference number for the\ncomplaint\n- In case, the complaint is not resolved by\nthe service provider, then raise it with the\nTRA\n- Attach the above required documents to\nthe TRA through website:www.tra.gov.ae"];
     
 //    self.arrayInfoImage=@[[UIImage imageNamed:@"image1.jpg"], [UIImage imageNamed:@"image2.jpg"],
 //                       [UIImage imageNamed:@"image3.jpg"]];
