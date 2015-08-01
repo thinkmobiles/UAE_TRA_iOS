@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84B5ADF21B5FBE3E0013296B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADF11B5FBE3E0013296B /* SettingViewController.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
 		ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C41B5E734000779CBD /* AFHTTPRequestOperationManager.m */; };
@@ -59,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84B5ADF01B5FBE3E0013296B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = "TRA Smart Services/Classes/ViewControllers/SettingViewController/SettingViewController.h"; sourceTree = SOURCE_ROOT; };
+		84B5ADF11B5FBE3E0013296B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = "TRA Smart Services/Classes/ViewControllers/SettingViewController/SettingViewController.m"; sourceTree = SOURCE_ROOT; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		ED2084BE1B5E6B0400779CBD /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		ED2084C11B5E734000779CBD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -173,6 +176,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B5ADEF1B5FBDF00013296B /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B5ADF01B5FBE3E0013296B /* SettingViewController.h */,
+				84B5ADF11B5FBE3E0013296B /* SettingViewController.m */,
+			);
+			name = SettingViewController;
+			path = ForgotPasswordViewController/SettingViewController;
+			sourceTree = "<group>";
+		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +324,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84B5ADEF1B5FBDF00013296B /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */,
 				EDD3E5931B5DAB8F00405367 /* RegisterViewController */,
@@ -760,6 +774,7 @@
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
+				84B5ADF21B5FBE3E0013296B /* SettingViewController.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

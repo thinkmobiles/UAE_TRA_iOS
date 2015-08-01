@@ -9,9 +9,10 @@
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "Home";
-"tabBarMenu_item_2" = "Index";
-"tabBarMenu_item_3" = "CRM";
-"tabBarMenu_item_4" = "Settings";
+"tabBarMenu_item_2" = "Favourite";
+"tabBarMenu_item_3" = "Index";
+"tabBarMenu_item_4" = "CRM";
+"tabBarMenu_item_5" = "Settings";
 
 //LoginViewController
 
