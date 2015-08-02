@@ -9,6 +9,9 @@
 #import "DynamicUIService.h"
 
 static NSString *const KeyCurrentLanguage = @"KeyCurrentLanguage";
+static NSString *const AppKeyCurrentColor = @"AppKeyCurrentColor";
+static NSString *const AppKeyCurrentFontSize = @"AppKeyCurrentFontSize";
+
 static NSString *const KeyAppleLanguage = @"AppleLanguages";
 
 static NSString *const KeyLanguageDefault = @"en";
@@ -92,6 +95,24 @@ static NSString *const KeyLanguageFrench = @"fr";
     return color;
 }
 
+- (void)saveCurrentColorScheme:(ApplicationColor)color
+{
+    self.colorScheme = color;
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@(color) forKey:AppKeyCurrentColor];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - FontSize
+
+- (void)saveCurrentFontSize:(ApplicationFont)fontSize
+{
+    self.fontSize = fontSize;
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@(fontSize) forKey:AppKeyCurrentFontSize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - LifeCycle
 
 - (instancetype)init
@@ -99,7 +120,8 @@ static NSString *const KeyLanguageFrench = @"fr";
     self = [super init];
     if (self) {
         [self prepareDefaultLocaleBundle];
-        self.fontSize = ApplicationFontSmall;
+        self.fontSize = [self currentApplicationFontSize];
+        self.colorScheme = [self savedApplicationColor];
     }
     return self;
 }
@@ -139,6 +161,46 @@ static NSString *const KeyLanguageFrench = @"fr";
     } else if ([languageName isEqualToString:KeyLanguageArabic]) {
         _language = LanguageTypeArabic;
     }
+}
+
+#pragma mark - Color
+
+- (ApplicationColor)savedApplicationColor
+{
+    ApplicationColor savedColor;
+    NSUInteger currentColor = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentColor] integerValue];
+    if (savedColor) {
+        switch (currentColor) {
+                case 0:
+            case 1: {
+                savedColor = ApplicationColorOrange;
+                break;
+            }
+            case 2: {
+                savedColor = ApplicationColorBlue;
+                break;
+            }
+            case 3: {
+                savedColor = ApplicationColorGreen;
+                break;
+            }
+        }
+    }
+    return savedColor;
+}
+
+#pragma mark - FontSize
+
+- (ApplicationFont)currentApplicationFontSize
+{
+    ApplicationFont savedFont = ApplicationFontSmall;
+    NSUInteger fontSize = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentFontSize] integerValue];
+    if (fontSize) {
+        if (fontSize == ApplicationFontBig) {
+            savedFont = ApplicationFontBig;
+        }
+    }
+    return savedFont;
 }
 
 @end

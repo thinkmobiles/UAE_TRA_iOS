@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, LanguageType) {
 };
 
 typedef NS_ENUM(NSUInteger, ApplicationFont) {
-    ApplicationFontUndefined = 12,
+    ApplicationFontUndefined,
     ApplicationFontSmall = 12,
     ApplicationFontBig = 18
 };
@@ -39,8 +39,10 @@ typedef NS_ENUM(NSUInteger, ApplicationColor) {
 + (instancetype)service;
 
 - (void)setLanguage:(LanguageType)language;
-- (NSString *)localizableStringForKey:(NSString *)key;
+- (void)saveCurrentFontSize:(ApplicationFont)fontSize;
+- (void)saveCurrentColorScheme:(ApplicationColor)color;
 
 - (UIColor *)currentApplicationColor;
+- (NSString *)localizableStringForKey:(NSString *)key;
 
 @end

@@ -47,6 +47,8 @@
     
     [self updateLanguageSegmentControlPosition];
     [self updateFontSizeSegmentControlPosition];
+    
+    [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
 }
 
 #pragma mark - IBActions
@@ -56,12 +58,15 @@
     switch ([sender tag]) {
         case 0:
             [self makeActiveColorTheme:ApplicationColorBlue];
+            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlue];
             break;
         case 1:
             [self makeActiveColorTheme:ApplicationColorOrange];
+            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorOrange];
             break;
         case 2:
             [self makeActiveColorTheme:ApplicationColorGreen];
+            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorGreen];
             break;
     }
 }
@@ -85,11 +90,12 @@
 {
     switch (sender.selectedSegmentIndex) {
         case 0: {
-            [DynamicUIService service].fontSize = ApplicationFontBig;
+            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
             break;
         }
         case 1: {
-            [DynamicUIService service].fontSize = ApplicationFontSmall;
+            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontSmall];
+
             break;
         }
     }
