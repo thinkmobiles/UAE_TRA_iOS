@@ -12,14 +12,11 @@
 
 static NSString *const CloseButtonImageName = @"close";
 
-@interface BaseMembershipViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface BaseMembershipViewController : BaseDynamicUIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
-
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidLoad;
 
 - (void)prepareNavigationBar;
 

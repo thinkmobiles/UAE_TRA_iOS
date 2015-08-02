@@ -19,5 +19,6 @@
 #import "DynamicUIService.h"
 #import <Foundation/Foundation.h>
 #import "NetworkManager.h"
+#import "BaseDynamicUIViewController.h"
 
 #endif /* Prefix_pch */

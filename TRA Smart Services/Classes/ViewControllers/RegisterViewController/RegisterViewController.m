@@ -35,7 +35,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self localizeUI];
     [self updateUIIfNeeded];
 }
 
@@ -69,6 +68,11 @@
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.registerButton.titleLabel.text = dynamicLocalizedString(@"register.button.register");
     self.loginButton.titleLabel.text = dynamicLocalizedString(@"register.button.login");
+}
+
+- (void)updateColors
+{
+    
 }
 
 - (void)prepareNavigationBar

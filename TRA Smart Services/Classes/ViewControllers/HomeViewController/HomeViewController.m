@@ -31,12 +31,7 @@ static CGFloat const ZigZagViewTag = 1001;
 {
     [super viewDidLoad];
     
-    self.topView.delegate = self;
-//    self.topView.logoImage = [UIImage imageNamed:@"1"];
-    self.topView.userInitials = @"KK";
-    self.topView.informationButtonImage = [UIImage imageNamed:@"1"];
-    self.topView.searchButtonImage = [UIImage imageNamed:@"1"];
-    self.topView.notificationButtonImage = [UIImage imageNamed:@"1"];
+    [self prepareTopBar];
 }
 
 - (void)viewDidLayoutSubviews
@@ -120,6 +115,30 @@ static CGFloat const ZigZagViewTag = 1001;
 }
 
 #pragma mark - Private
+
+#pragma mark - TopBar
+
+- (void)prepareTopBar
+{
+    self.topView.delegate = self;
+//    self.topView.logoImage = [UIImage imageNamed:@"1"];
+    self.topView.userInitials = @"KK";
+    self.topView.informationButtonImage = [UIImage imageNamed:@"1"];
+    self.topView.searchButtonImage = [UIImage imageNamed:@"1"];
+    self.topView.notificationButtonImage = [UIImage imageNamed:@"1"];
+}
+
+#pragma mark - Localization
+
+- (void)localizeUI
+{
+    
+}
+
+- (void)updateColors
+{
+    
+}
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {

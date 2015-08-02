@@ -44,6 +44,8 @@ static NSString *const KeyLanguageFrench = @"fr";
 
 - (void)setLanguage:(LanguageType)language
 {
+    _language = language;
+    
     NSString *languageCode;
     switch (language) {
         case LanguageTypeDefault:
@@ -116,6 +118,7 @@ static NSString *const KeyLanguageFrench = @"fr";
         language = [languages objectAtIndex:0];
     }
 
+    [self updateCurrentLanguageWithName:language];
     [self setLocaleWithLanguage:language];
 }
 
@@ -127,7 +130,15 @@ static NSString *const KeyLanguageFrench = @"fr";
     } else {
         self.localeBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:KeyLanguageDefault ofType:@"lproj"] ];
     }
+}
 
+- (void)updateCurrentLanguageWithName:(NSString *)languageName
+{
+    if ([languageName isEqualToString:KeyLanguageEnglish]) {
+        _language = LanguageTypeEnglish;
+    } else if ([languageName isEqualToString:KeyLanguageArabic]) {
+        _language = LanguageTypeArabic;
+    }
 }
 
 @end

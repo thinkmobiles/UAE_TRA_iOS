@@ -36,8 +36,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self localizeUI];
-    
+        
     if (!self.isViewControllerPresented) {
         [self.view.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.0f delegate:nil] forKey:nil];
         self.view.layer.opacity = 1.0f;
@@ -85,6 +84,11 @@
     self.loginButton.titleLabel.text = dynamicLocalizedString(@"login.button.login");
     self.forgotPasswordButton.titleLabel.text = dynamicLocalizedString(@"login.button.forgotPassword");
     self.registerButton.titleLabel.text = dynamicLocalizedString(@"login.button.registerButton");
+}
+
+- (void)updateColors
+{
+    
 }
 
 - (void)prepareNavigationBarButton

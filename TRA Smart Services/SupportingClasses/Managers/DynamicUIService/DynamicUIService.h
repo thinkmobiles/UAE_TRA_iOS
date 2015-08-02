@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, LanguageType) {
 typedef NS_ENUM(NSUInteger, ApplicationFont) {
     ApplicationFontUndefined = 12,
     ApplicationFontSmall = 12,
-    ApplicationFontBig = 24
+    ApplicationFontBig = 18
 };
 
 typedef NS_ENUM(NSUInteger, ApplicationColor) {
@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, ApplicationColor) {
 
 @property (assign, nonatomic) ApplicationFont fontSize;
 @property (assign, nonatomic) ApplicationColor colorScheme;
+@property (assign, nonatomic) LanguageType language;
 
 + (instancetype)service;
 

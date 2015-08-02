@@ -40,3 +40,16 @@
 "restorePassword.PlaceholderText.email" = "E-mail";
 "restorePassword.button.restore" = "Restore Password";
 "restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
+
+//SettingsViewController
+
+"settings.textfield.username" = "Username";
+"settings.textfield.email" = "E-mail";
+"settings.label.language" = "Language";
+"settings.label.fontsize" = "Font size";
+"settings.label.themeOption" = "Color";
+"settings.label.logout" = "Logout";
+"settings.switchControl.language.arabic" = "Arabic";
+"setting.switchControl.language.english" = "English";
+"setting.switchControl.textSize.big" = "A+";
+"setting.switchControl.textSize.small" = "A-";

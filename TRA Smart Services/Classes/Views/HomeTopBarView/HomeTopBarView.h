@@ -23,9 +23,8 @@
 @property (strong, nonatomic) UIImage *informationButtonImage;
 @property (strong, nonatomic) UIImage *searchButtonImage;
 @property (strong, nonatomic) UIImage *notificationButtonImage;
-@property (copy, nonatomic) NSString *userInitials;
-
 @property (assign, nonatomic) NSUInteger notificationsCount;
+@property (copy, nonatomic) NSString *userInitials;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
 

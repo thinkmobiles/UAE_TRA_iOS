@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84B5ADF21B5FBE3E0013296B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADF11B5FBE3E0013296B /* SettingViewController.m */; };
+		ED1795EE1B6D08660078A498 /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1795ED1B6D08660078A498 /* RTLController.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
 		ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C41B5E734000779CBD /* AFHTTPRequestOperationManager.m */; };
@@ -33,6 +33,8 @@
 		ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F1C1B6B9EC400C20402 /* HomeTopBarView.m */; };
 		ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7D9F1D1B6B9EC400C20402 /* HomeTopBarView.xib */; };
 		ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F221B6BAB7B00C20402 /* UIImage+DrawText.m */; };
+		ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F251B6CD87A00C20402 /* SettingViewController.m */; };
+		ED7D9F2B1B6CF03500C20402 /* BaseDynamicUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F2A1B6CF03500C20402 /* BaseDynamicUIViewController.m */; };
 		ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F221B5D24DA00B6B644 /* AppDelegate.m */; };
 		ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F251B5D24DA00B6B644 /* AppHelper.m */; };
 		ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED982F2A1B5D24DA00B6B644 /* Assets.xcassets */; };
@@ -60,8 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84B5ADF01B5FBE3E0013296B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = "TRA Smart Services/Classes/ViewControllers/SettingViewController/SettingViewController.h"; sourceTree = SOURCE_ROOT; };
-		84B5ADF11B5FBE3E0013296B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = "TRA Smart Services/Classes/ViewControllers/SettingViewController/SettingViewController.m"; sourceTree = SOURCE_ROOT; };
+		ED1795EC1B6D08660078A498 /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
+		ED1795ED1B6D08660078A498 /* RTLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLController.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		ED2084BE1B5E6B0400779CBD /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		ED2084C11B5E734000779CBD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -116,6 +118,10 @@
 		ED7D9F1D1B6B9EC400C20402 /* HomeTopBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTopBarView.xib; sourceTree = "<group>"; };
 		ED7D9F211B6BAB7B00C20402 /* UIImage+DrawText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DrawText.h"; sourceTree = "<group>"; };
 		ED7D9F221B6BAB7B00C20402 /* UIImage+DrawText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DrawText.m"; sourceTree = "<group>"; };
+		ED7D9F251B6CD87A00C20402 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		ED7D9F261B6CD87A00C20402 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		ED7D9F291B6CF03500C20402 /* BaseDynamicUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDynamicUIViewController.h; sourceTree = "<group>"; };
+		ED7D9F2A1B6CF03500C20402 /* BaseDynamicUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDynamicUIViewController.m; sourceTree = "<group>"; };
 		ED982F211B5D24DA00B6B644 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED982F221B5D24DA00B6B644 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED982F241B5D24DA00B6B644 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
@@ -176,14 +182,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84B5ADEF1B5FBDF00013296B /* SettingViewController */ = {
+		ED1795EB1B6D08530078A498 /* RTLController */ = {
 			isa = PBXGroup;
 			children = (
-				84B5ADF01B5FBE3E0013296B /* SettingViewController.h */,
-				84B5ADF11B5FBE3E0013296B /* SettingViewController.m */,
+				ED1795EC1B6D08660078A498 /* RTLController.h */,
+				ED1795ED1B6D08660078A498 /* RTLController.m */,
 			);
-			name = SettingViewController;
-			path = ForgotPasswordViewController/SettingViewController;
+			path = RTLController;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -324,12 +329,13 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84B5ADEF1B5FBDF00013296B /* SettingViewController */,
+				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */,
 				EDD3E5931B5DAB8F00405367 /* RegisterViewController */,
 				ED982F5E1B5D86FE00B6B644 /* LoginViewController */,
 				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
+				ED7D9F281B6CEFB900C20402 /* BaseDynamicUIViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 		ED7192AF1B5451E90086C6EE /* SupportingClasses */ = {
 			isa = PBXGroup;
 			children = (
+				ED1795EB1B6D08530078A498 /* RTLController */,
 				ED5F625A1B6A4F36005A6A54 /* OpacityCollectionViewFlowLayout */,
 				ED982F481B5D345A00B6B644 /* Managers */,
 				ED982F371B5D24F300B6B644 /* Categories */,
@@ -362,6 +369,24 @@
 				ED7D9F221B6BAB7B00C20402 /* UIImage+DrawText.m */,
 			);
 			path = "UIImage+DrawText";
+			sourceTree = "<group>";
+		};
+		ED7D9F241B6CD87100C20402 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D9F261B6CD87A00C20402 /* SettingViewController.h */,
+				ED7D9F251B6CD87A00C20402 /* SettingViewController.m */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		ED7D9F281B6CEFB900C20402 /* BaseDynamicUIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D9F291B6CF03500C20402 /* BaseDynamicUIViewController.h */,
+				ED7D9F2A1B6CF03500C20402 /* BaseDynamicUIViewController.m */,
+			);
+			path = BaseDynamicUIViewController;
 			sourceTree = "<group>";
 		};
 		ED982F1F1B5D24DA00B6B644 /* Application */ = {
@@ -748,9 +773,11 @@
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
 				ED5F625D1B6A4F4B005A6A54 /* OpacityCollectionViewFlowLayout.m in Sources */,
 				ED2084EF1B5E738600779CBD /* AFNetworkActivityIndicatorManager.m in Sources */,
+				ED1795EE1B6D08660078A498 /* RTLController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				ED2084F11B5E738600779CBD /* UIAlertView+AFNetworking.m in Sources */,
+				ED7D9F2B1B6CF03500C20402 /* BaseDynamicUIViewController.m in Sources */,
 				ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */,
 				ED982F611B5D870E00B6B644 /* LoginViewController.m in Sources */,
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
@@ -763,6 +790,7 @@
 				ED2084DB1B5E734000779CBD /* AFURLResponseSerialization.m in Sources */,
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
+				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
@@ -774,7 +802,6 @@
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
-				84B5ADF21B5FBE3E0013296B /* SettingViewController.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

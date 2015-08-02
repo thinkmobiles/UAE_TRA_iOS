@@ -24,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self localizeUI];
 }
 
 - (void)viewDidLayoutSubviews
@@ -60,6 +59,11 @@
     self.userEmailTextField.placeholder = dynamicLocalizedString(@"restorePassword.PlaceholderText.email");
     self.mainButton.titleLabel.text = dynamicLocalizedString(@"restorePassword.button.restore");
     self.informationLabel.text = dynamicLocalizedString(@"restorePassword.information.label.text");
+}
+
+- (void)updateColors
+{
+    
 }
 
 @end

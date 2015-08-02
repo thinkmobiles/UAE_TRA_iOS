@@ -9,6 +9,8 @@
 #import "HomeTopBarView.h"
 #import "UIImage+DrawText.h"
 
+#import "RTLController.h"
+
 static CGFloat const LeftOffset = 10.f;
 static CGFloat const ElementsInRowCount = 8.f;
 static CGFloat const ElementsColumsCount = 2.f;
