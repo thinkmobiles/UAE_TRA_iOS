@@ -29,7 +29,7 @@
 		ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085311B5F776C00779CBD /* AutoLoginService.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
-		ED5A34411B6EB4E60082AF5B /* UIImage+HexagoneImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34401B6EB4E60082AF5B /* UIImage+HexagoneImage.m */; };
+		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F1C1B6B9EC400C20402 /* HomeTopBarView.m */; };
 		ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7D9F1D1B6B9EC400C20402 /* HomeTopBarView.xib */; };
@@ -110,8 +110,8 @@
 		ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpacityCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		ED5A343A1B6EACAC0082AF5B /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
 		ED5A343B1B6EACAC0082AF5B /* RTLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLController.m; sourceTree = "<group>"; };
-		ED5A343F1B6EB4E60082AF5B /* UIImage+HexagoneImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HexagoneImage.h"; sourceTree = "<group>"; };
-		ED5A34401B6EB4E60082AF5B /* UIImage+HexagoneImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HexagoneImage.m"; sourceTree = "<group>"; };
+		ED5A34461B6EB7EE0082AF5B /* HexagonicalImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexagonicalImage.h; sourceTree = "<group>"; };
+		ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonicalImage.m; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,13 +281,13 @@
 			path = RTLController;
 			sourceTree = "<group>";
 		};
-		ED5A343E1B6EB4D20082AF5B /* UIImage+HexagoneImage */ = {
+		ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */ = {
 			isa = PBXGroup;
 			children = (
-				ED5A343F1B6EB4E60082AF5B /* UIImage+HexagoneImage.h */,
-				ED5A34401B6EB4E60082AF5B /* UIImage+HexagoneImage.m */,
+				ED5A34461B6EB7EE0082AF5B /* HexagonicalImage.h */,
+				ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */,
 			);
-			path = "UIImage+HexagoneImage";
+			path = HexagonicalImage;
 			sourceTree = "<group>";
 		};
 		ED7192731B5450D60086C6EE = {
@@ -474,7 +474,6 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				ED5A343E1B6EB4D20082AF5B /* UIImage+HexagoneImage */,
 				ED7D9F201B6BAB4900C20402 /* UIImage+DrawText */,
 				ED2084DD1B5E738600779CBD /* UIKit+AFNetworking */,
 				ED982F551B5D82EC00B6B644 /* UINavigationController+TopButton */,
@@ -487,6 +486,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */,
 				ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */,
 				ED5A34391B6EACAC0082AF5B /* RTLController */,
 				ED20852F1B5F775B00779CBD /* AutoLoginService */,
@@ -776,7 +776,6 @@
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
 				ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */,
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
-				ED5A34411B6EB4E60082AF5B /* UIImage+HexagoneImage.m in Sources */,
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
@@ -809,6 +808,7 @@
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,

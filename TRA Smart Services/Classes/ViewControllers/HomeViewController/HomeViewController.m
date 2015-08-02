@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "MenuCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
-#import "UIImage+HexagoneImage.h"
+#import "HexagonicalImage.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -21,6 +21,8 @@ static CGFloat const ZigZagViewTag = 1001;
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCategoryCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
+
+@property (assign, nonatomic) BOOL stopRedrawBackground;
 
 @end
 
@@ -42,6 +44,13 @@ static CGFloat const ZigZagViewTag = 1001;
     [self prepareZigZagView];
     [self.topView setNeedsLayout];
     [self prepareBackgroundForMenuCollectionView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.stopRedrawBackground = YES;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -203,8 +212,13 @@ static CGFloat const ZigZagViewTag = 1001;
 
 - (void)prepareBackgroundForMenuCollectionView
 {
-    UIImage *background = [UIImage randomHexagonImageInRect:self.menuCollectionView.bounds];
-    self.menuCollectionView.backgroundView = [[UIImageView alloc] initWithImage:background];
+    if (!self.stopRedrawBackground) {
+        [self.menuCollectionView.backgroundView removeFromSuperview];
+        
+        HexagonicalImage *img = [[HexagonicalImage alloc] initWithRectColor:[UIColor greenColor]];
+        UIImage *background = [img randomHexagonImageInRect:self.menuCollectionView.bounds];
+        self.menuCollectionView.backgroundView = [[UIImageView alloc] initWithImage:background];
+    }
 }
 
 @end

@@ -1,28 +1,48 @@
 //
-//  UIImage+HexagoneImage.m
+//  HexagonicalImage.m
 //  TRA Smart Services
 //
 //  Created by Kirill Gorbushko on 02.08.15.
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-#import "UIImage+HexagoneImage.h"
+#import "HexagonicalImage.h"
 
 static NSInteger HexagonSideSize = 30;
 static NSInteger HexagonQuantity = 10;
 
-@implementation UIImage (HexagoneImage)
+@interface HexagonicalImage ()
+
+@property (strong, nonatomic) NSMutableArray *drawedRects;
+@property (strong, nonatomic) UIColor *rectColor;
+
+@end
+
+@implementation HexagonicalImage
+
+#pragma mark - LifeCycle
+
+- (instancetype)initWithRectColor:(UIColor *)rectColor
+{
+    self = [super init];
+    if (self) {
+        self.rectColor = rectColor;
+    }
+    return self;
+}
 
 #pragma mark - Public
 
-+ (UIImage *)randomHexagonImageInRect:(CGRect)imageRect
+- (UIImage *)randomHexagonImageInRect:(CGRect)imageRect
 {
+    [self cleanUp];
+    
     UIGraphicsBeginImageContext(imageRect.size);
     for (int i = 0; i < HexagonQuantity; i++) {
-        UIBezierPath *hexagonPath = [UIImage hexagonRandomPathInRect:imageRect];
+        UIBezierPath *hexagonPath = [self hexagonRandomPathInRect:imageRect];
         CGContextSaveGState(UIGraphicsGetCurrentContext()); {
             [hexagonPath addClip];
-            [[UIColor orangeColor] setStroke];
+            [self.rectColor setStroke];
             [hexagonPath stroke];
         } CGContextRestoreGState(UIGraphicsGetCurrentContext());
     }
@@ -35,12 +55,12 @@ static NSInteger HexagonQuantity = 10;
 
 #pragma mark - Private
 
-+ (UIBezierPath *)hexagonRandomPathInRect:(CGRect)parentRect
+- (UIBezierPath *)hexagonRandomPathInRect:(CGRect)parentRect
 {
-    NSInteger maxX = parentRect.size.width - HexagonSideSize;
-    NSInteger maxY = parentRect.size.height - HexagonSideSize;
-    
-    CGRect hexagonRect = CGRectMake(rand() % maxX, rand() % maxY, HexagonSideSize, HexagonSideSize);
+    CGRect hexagonRect = [self rectForHexagonInParentRect:parentRect];
+    while (CGRectIsEmpty(hexagonRect)) {
+        hexagonRect = [self rectForHexagonInParentRect:parentRect];
+    }
     
     UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
     [hexagonPath moveToPoint:CGPointMake(hexagonRect.size.width / 2 + hexagonRect.origin.x, hexagonRect.origin.y)];
@@ -53,6 +73,29 @@ static NSInteger HexagonQuantity = 10;
     
     
     return hexagonPath;
+}
+
+- (CGRect)rectForHexagonInParentRect:(CGRect)parentRect
+{
+    NSInteger maxX = parentRect.size.width - HexagonSideSize;
+    NSInteger maxY = parentRect.size.height - HexagonSideSize;
+    
+    CGRect hexagonRect = CGRectMake(rand() % maxX, rand() % maxY, HexagonSideSize, HexagonSideSize);
+    
+    for (NSValue *drawedRect in self.drawedRects) {
+        CGRect inspectedRect = drawedRect.CGRectValue;
+        if (CGRectIntersectsRect(inspectedRect, hexagonRect)) {
+            return CGRectZero;
+        }
+    }
+    
+    [self.drawedRects addObject:[NSValue valueWithCGRect:hexagonRect]];
+    return hexagonRect;
+}
+
+- (void)cleanUp
+{
+    self.drawedRects = [[NSMutableArray alloc] init];
 }
 
 @end
