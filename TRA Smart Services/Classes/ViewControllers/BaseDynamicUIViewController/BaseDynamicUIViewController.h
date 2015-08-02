@@ -6,7 +6,7 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface BaseDynamicUIViewController : UIViewController
+@interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView;
 - (void)localizeUI;

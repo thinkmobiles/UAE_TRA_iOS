@@ -18,7 +18,6 @@ static NSString *const KeyLanguageDefault = @"en";
 
 static NSString *const KeyLanguageEnglish = @"en";
 static NSString *const KeyLanguageArabic = @"ar";
-static NSString *const KeyLanguageFrench = @"fr";
 
 @interface DynamicUIService()
 
@@ -58,10 +57,6 @@ static NSString *const KeyLanguageFrench = @"fr";
         }
         case LanguageTypeArabic: {
             languageCode = KeyLanguageArabic;
-            break;
-        }
-        case LanguageTypeFrench: {
-            languageCode = KeyLanguageFrench;
             break;
         }
     }

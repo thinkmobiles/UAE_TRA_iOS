@@ -14,7 +14,6 @@ typedef NS_ENUM(NSUInteger, LanguageType) {
     LanguageTypeDefault,
     LanguageTypeEnglish,
     LanguageTypeArabic,
-    LanguageTypeFrench,
 };
 
 typedef NS_ENUM(NSUInteger, ApplicationFont) {

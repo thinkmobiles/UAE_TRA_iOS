@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "MenuCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
+#import "UIImage+HexagoneImage.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -40,6 +41,7 @@ static CGFloat const ZigZagViewTag = 1001;
     
     [self prepareZigZagView];
     [self.topView setNeedsLayout];
+    [self prepareBackgroundForMenuCollectionView];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -197,6 +199,12 @@ static CGFloat const ZigZagViewTag = 1001;
     zigZagView.tag = ZigZagViewTag;
     
     [self.view addSubview:zigZagView];
+}
+
+- (void)prepareBackgroundForMenuCollectionView
+{
+    UIImage *background = [UIImage randomHexagonImageInRect:self.menuCollectionView.bounds];
+    self.menuCollectionView.backgroundView = [[UIImageView alloc] initWithImage:background];
 }
 
 @end

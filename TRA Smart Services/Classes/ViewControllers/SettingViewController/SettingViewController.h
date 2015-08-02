@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SettingViewController : BaseDynamicUIViewController <UITextFieldDelegate>
+@interface SettingViewController : BaseDynamicUIViewController
 
 @end
