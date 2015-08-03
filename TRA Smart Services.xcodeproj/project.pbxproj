@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846D8DFD1B6F8622002B7146 /* ServiceList.plist */; };
 		84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADDC1B5E62AC0013296B /* InformationViewController.m */; };
 		84B5ADE21B5E68730013296B /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADE11B5E68730013296B /* InformationTableViewCell.m */; };
 		84B5ADEE1B5ED7020013296B /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADED1B5ED7020013296B /* InformationHeaderCell.m */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		846D8DFD1B6F8622002B7146 /* ServiceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceList.plist; sourceTree = "<group>"; };
 		84B5ADDB1B5E62AC0013296B /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		84B5ADDC1B5E62AC0013296B /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		84B5ADE01B5E68730013296B /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
+				846D8DFD1B6F8622002B7146 /* ServiceList.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
+				846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,

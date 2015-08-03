@@ -14,7 +14,7 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
 
 @interface InformationViewController ()
 
-@property (strong, nonatomic) NSArray *arrayInfoTitle;
+@property (strong, nonatomic) NSMutableArray *arrayInfoTitle;
 @property (strong, nonatomic) NSArray *arrayInfoText;
 @property (strong, nonatomic) NSArray *arrayInfoImage;
 @property (weak, nonatomic) NSString *headerTableText;
@@ -30,9 +30,10 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
     [super viewDidLoad];
     
     [self prepareDataSources];
+    [self localizeUI];
 }
 
-#pragma mark - viewForHeaderInSection
+#pragma mark - UITableDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -72,22 +73,6 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
     cell.informationCellTitle.text = self.arrayInfoTitle[indexPath.row];
     cell.informationCellText.text = self.arrayInfoText[indexPath.row];
 }
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
@@ -122,16 +107,13 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
 
 - (void)prepareDataSources
 {
-    self.headerTableText=@"Addressing Consumer disputes requert\nwith licensees on telecommunications\n services";
-    
-    self.arrayInfoTitle = @[@"About the service",
-                            @"Service Package",
-                            @"Start the Service",
-                            @"Expected time",
-                            @"Officer in charge of this service",
-                            @"Reguired documents",
-                            @"Service fee",
-                            @"Terms and conditions"];
+    NSArray *keyLists = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceList" ofType:@"plist"]];
+    for (int i = 0; i < keyLists.count; i++) {
+        if (!self.arrayInfoTitle){
+            self.arrayInfoTitle = [[NSMutableArray alloc] init];
+        }
+        [self.arrayInfoTitle addObject:dynamicLocalizedString(keyLists[i])];
+    }
     
     self.arrayInfoText = @[@"This service invoves setting disputes of\ntelecom consumers with their service\nproviders.",
                            @"This service invoves setting disputes of\ntelecom consumers with their service\nproviders.",
@@ -147,5 +129,9 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
 }
 
 
+- (void)localizeUI
+{
+    self.headerTableText = dynamicLocalizedString(@"information.service.title");
+}
 
 @end

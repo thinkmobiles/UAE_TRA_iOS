@@ -39,3 +39,15 @@
 "restorePassword.PlaceholderText.email" = "restorePassword.PlaceholderText.email";
 "restorePassword.button.restore" = "restorePassword.button.restore";
 "restorePassword.information.label.text" = "restorePassword.information.label.text";
+
+//InformationViewController
+
+"information.service.service_1" = "information.service.service_1";
+"information.service.service_2" = "information.service.service_2";
+"information.service.service_3" = "information.service.service_3";
+"information.service.service_4" = "information.service.service_4";
+"information.service.service_5" = "information.service.service_5";
+"information.service.service_6" = "information.service.service_6";
+"information.service.service_7" = "information.service.service_7";
+"information.service.service_8" = "information.service.service_8";
+"information.service.title" = "information.service.title";
