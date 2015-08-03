@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "UIImage+DrawText.h"
 
 @interface SettingViewController ()
 
@@ -45,8 +46,11 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateLanguageSegmentControlPosition];
-    [self updateFontSizeSegmentControlPosition];
+//    [self updateLanguageSegmentControlPosition];
+//    [self updateFontSizeSegmentControlPosition];
+    
+    [self customizeSegmentControl:self.textSizeSegmentControll];
+    [self customizeSegmentControl:self.languageSegmentControl];
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
 }
@@ -162,8 +166,14 @@
     self.userNameLabel.text = dynamicLocalizedString(@"settings.textfield.username");
     [self.languageSegmentControl setTitle:dynamicLocalizedString(@"settings.switchControl.language.arabic") forSegmentAtIndex:0];
     [self.languageSegmentControl setTitle:dynamicLocalizedString(@"setting.switchControl.language.english") forSegmentAtIndex:1];
-    [self.textSizeSegmentControll setTitle:dynamicLocalizedString(@"setting.switchControl.textSize.big") forSegmentAtIndex:0];
-    [self.textSizeSegmentControll setTitle:dynamicLocalizedString(@"setting.switchControl.textSize.small") forSegmentAtIndex:1];
+}
+
+- (void)customizeSegmentControl:(UISegmentedControl *)segmentControl
+{
+    segmentControl.layer.borderColor = [UIColor whiteColor].CGColor;
+    segmentControl.layer.borderWidth = 3.f;
+
+    [segmentControl setDividerImage:[UIImage imageWithColor:[UIColor lightGrayColor] inRect:CGRectMake(0, 0, 1, 1)] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)updateColors
@@ -192,6 +202,7 @@
 - (void)updateFontSizeSegmentControlPosition
 {
     switch ([DynamicUIService service].fontSize) {
+        case ApplicationFontUndefined:
         case ApplicationFontSmall: {
             self.textSizeSegmentControll.selectedSegmentIndex = 1;
             break;

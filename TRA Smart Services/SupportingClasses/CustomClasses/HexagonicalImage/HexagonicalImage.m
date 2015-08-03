@@ -77,10 +77,10 @@ static NSInteger HexagonQuantity = 10;
 
 - (CGRect)rectForHexagonInParentRect:(CGRect)parentRect
 {
-    NSInteger maxX = parentRect.size.width - HexagonSideSize;
-    NSInteger maxY = parentRect.size.height - HexagonSideSize;
+    u_int32_t maxX = parentRect.size.width - HexagonSideSize;
+    u_int32_t maxY = parentRect.size.height - HexagonSideSize;
     
-    CGRect hexagonRect = CGRectMake(rand() % maxX, rand() % maxY, HexagonSideSize, HexagonSideSize);
+    CGRect hexagonRect = CGRectMake(arc4random_uniform(maxX), arc4random_uniform(maxY), HexagonSideSize, HexagonSideSize);
     
     for (NSValue *drawedRect in self.drawedRects) {
         CGRect inspectedRect = drawedRect.CGRectValue;
