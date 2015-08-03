@@ -11,7 +11,6 @@
 static NSString *const CellIdentifier = @"infoCell";
 static NSString *const HeaderCellIdentifier = @"infoHeader";
 
-
 @interface InformationViewController ()
 
 @property (strong, nonatomic) NSMutableArray *arrayInfoTitle;
@@ -45,7 +44,6 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
     InformationHeaderCell *cell=[self.tableView dequeueReusableCellWithIdentifier:HeaderCellIdentifier];
     cell.informationHeaderText.text=self.headerTableText;
     cell.contentView.frame = tableView.tableHeaderView.frame;
-    
     return  cell.contentView;
 }
 
@@ -73,6 +71,7 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
     cell.informationCellTitle.text = self.arrayInfoTitle[indexPath.row];
     cell.informationCellText.text = self.arrayInfoText[indexPath.row];
 }
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
@@ -90,7 +89,6 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
     dispatch_once(&onceToken, ^{
         sizingCell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     });
-    
     [self configureBasicCell:sizingCell atIndexPath:indexPath];
     return [self calculateHeightForConfiguredSizingCell:sizingCell];
 }
@@ -127,7 +125,6 @@ static NSString *const HeaderCellIdentifier = @"infoHeader";
 //    self.arrayInfoImage=@[[UIImage imageNamed:@"image1.jpg"], [UIImage imageNamed:@"image2.jpg"],
 //                       [UIImage imageNamed:@"image3.jpg"]];
 }
-
 
 - (void)localizeUI
 {
