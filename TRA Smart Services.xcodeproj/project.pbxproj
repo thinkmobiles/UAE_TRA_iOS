@@ -522,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
+				846D8DFD1B6F8622002B7146 /* ServiceList.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -756,6 +757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
+				846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
@@ -779,6 +781,7 @@
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
+				84B5ADEE1B5ED7020013296B /* InformationHeaderCell.m in Sources */,
 				EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -806,6 +809,7 @@
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
+				84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */,
 				EDD3E5961B5DAB9E00405367 /* RegisterViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
