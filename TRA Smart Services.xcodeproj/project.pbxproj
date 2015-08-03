@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846D8DFD1B6F8622002B7146 /* ServiceList.plist */; };
+		84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADDC1B5E62AC0013296B /* InformationViewController.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
 		ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C41B5E734000779CBD /* AFHTTPRequestOperationManager.m */; };
@@ -27,6 +29,8 @@
 		ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084EE1B5E738600779CBD /* UIWebView+AFNetworking.m */; };
 		ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085041B5F70AC00779CBD /* NetworkManager.m */; };
 		ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085311B5F776C00779CBD /* AutoLoginService.m */; };
+		ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */; };
+		ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
 		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
@@ -63,6 +67,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		846D8DFD1B6F8622002B7146 /* ServiceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceList.plist; sourceTree = "<group>"; };
+		84B5ADDB1B5E62AC0013296B /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		84B5ADDC1B5E62AC0013296B /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		ED2084BE1B5E6B0400779CBD /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		ED2084C11B5E734000779CBD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -106,6 +113,10 @@
 		ED2085041B5F70AC00779CBD /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		ED2085301B5F776C00779CBD /* AutoLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLoginService.h; sourceTree = "<group>"; };
 		ED2085311B5F776C00779CBD /* AutoLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLoginService.m; sourceTree = "<group>"; };
+		ED31DEF41B6FAE13008875E4 /* InformationHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationHeaderCell.h; sourceTree = "<group>"; };
+		ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationHeaderCell.m; sourceTree = "<group>"; };
+		ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
+		ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
 		ED5A34371B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpacityCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpacityCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		ED5A343A1B6EACAC0082AF5B /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
@@ -185,6 +196,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B5ADDA1B5E62540013296B /* InformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B5ADDB1B5E62AC0013296B /* InformationViewController.h */,
+				84B5ADDC1B5E62AC0013296B /* InformationViewController.m */,
+			);
+			path = InformationViewController;
+			sourceTree = "<group>";
+		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +281,24 @@
 				ED2085311B5F776C00779CBD /* AutoLoginService.m */,
 			);
 			path = AutoLoginService;
+			sourceTree = "<group>";
+		};
+		ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED31DEF41B6FAE13008875E4 /* InformationHeaderCell.h */,
+				ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */,
+			);
+			path = InformationHeaderCell;
+			sourceTree = "<group>";
+		};
+		ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */,
+				ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */,
+			);
+			path = InformationTableViewCell;
 			sourceTree = "<group>";
 		};
 		ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */ = {
@@ -341,6 +379,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84B5ADDA1B5E62540013296B /* InformationViewController */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				EDD3E59B1B5E34AA00405367 /* ForgotPasswordViewController */,
@@ -656,6 +695,8 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */,
+				ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */,
 				EDEC9DF21B6A380400334503 /* CategoryCollectionViewCell */,
 				EDEC9DE91B6A337600334503 /* MenuCollectionViewCell */,
 			);
@@ -781,7 +822,6 @@
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
-				84B5ADEE1B5ED7020013296B /* InformationHeaderCell.m in Sources */,
 				EDD3E59E1B5E34B900405367 /* ForgotPasswordViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -807,6 +847,7 @@
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
+				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */,
@@ -816,6 +857,7 @@
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
+				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,
 				ED2084F21B5E738600779CBD /* UIButton+AFNetworking.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,

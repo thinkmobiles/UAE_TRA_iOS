@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-
+static NSString *const InformationHeaderCellIdentifier = @"infoHeader";
 
 @interface InformationHeaderCell : UITableViewCell
 

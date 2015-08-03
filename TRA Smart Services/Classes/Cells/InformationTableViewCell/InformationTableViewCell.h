@@ -6,14 +6,12 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
+static NSString *const InformationTableViewCellIdentifier = @"infoCell";
 
 @interface InformationTableViewCell : UITableViewCell
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *informationCellImage;
 @property (weak, nonatomic) IBOutlet UILabel *informationCellTitle;
 @property (weak, nonatomic) IBOutlet UILabel *informationCellText;
-
-
 
 @end

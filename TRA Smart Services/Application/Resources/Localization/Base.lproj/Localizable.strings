@@ -53,3 +53,16 @@
 "setting.switchControl.language.english" = "setting.switchControl.language.english";
 "setting.switchControl.textSize.big" = "setting.switchControl.textSize.big";
 "setting.switchControl.textSize.small" = "setting.switchControl.textSize.small";
+
+//InformationViewController
+
+"information.service.service_1" = "information.service.service_1";
+"information.service.service_2" = "information.service.service_2";
+"information.service.service_3" = "information.service.service_3";
+"information.service.service_4" = "information.service.service_4";
+"information.service.service_5" = "information.service.service_5";
+"information.service.service_6" = "information.service.service_6";
+"information.service.service_7" = "information.service.service_7";
+"information.service.service_8" = "information.service.service_8";
+"information.service.title" = "information.service.title";
+

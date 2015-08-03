@@ -7,23 +7,19 @@
 //
 
 #import "InformationTableViewCell.h"
+#import "RTLController.h"
 
 @implementation InformationTableViewCell
 
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-}
+#pragma mark - LifeCycle
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
     
     self.informationCellTitle.text = @"";
-    self.informationCellText.text= @"";
+    self.informationCellText.text = @"";
     self.informationCellImage.image = nil;
 }
-
 
 @end
