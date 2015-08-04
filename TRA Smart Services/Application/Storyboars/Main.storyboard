@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7IH-fi-07s"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b2G-05-2MB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-me-fgi" userLabel="Show information - UIButton">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <rect key="frame" x="285" y="261" width="30" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Info"/>
                                 <connections>
@@ -35,7 +35,7 @@
                             <constraint firstItem="gNe-me-fgi" firstAttribute="centerX" secondItem="b2G-05-2MB" secondAttribute="centerX" id="aLh-yq-tNI"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="xBk-B8-hVq"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="home153" id="xBk-B8-hVq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="km3-UF-Lxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,11 +50,11 @@
                         <viewControllerLayoutGuide type="bottom" id="m3D-g6-6Pe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MTw-6b-74T">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-3B-n5g" userLabel="Show Login">
-                                <rect key="frame" x="268" y="285" width="64" height="30"/>
+                                <rect key="frame" x="268" y="261" width="64" height="30"/>
                                 <animations/>
                                 <state key="normal" title="test login"/>
                                 <connections>
@@ -69,7 +69,7 @@
                             <constraint firstItem="vaJ-3B-n5g" firstAttribute="centerY" secondItem="MTw-6b-74T" secondAttribute="centerY" id="uGM-74-pm3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="69N-iA-H8m"/>
+                    <tabBarItem key="tabBarItem" title="Item 2" image="home153" id="69N-iA-H8m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1J-cM-BDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,12 +84,12 @@
                         <viewControllerLayoutGuide type="bottom" id="sRc-d6-oWd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GD7-sw-1kP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="PZq-U9-BB8"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="home153" id="PZq-U9-BB8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLe-IC-Zw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -866,14 +866,15 @@ a new password will be sent.</string>
                         <constraints>
                             <constraint firstItem="bUn-7M-a0W" firstAttribute="leading" secondItem="MRC-mT-wVz" secondAttribute="leading" id="7ZB-lf-Ay2"/>
                             <constraint firstAttribute="right" secondItem="dZg-l8-IHy" secondAttribute="right" id="DOu-R7-Ykk"/>
-                            <constraint firstItem="bUn-7M-a0W" firstAttribute="top" secondItem="XVO-Lv-SIx" secondAttribute="bottom" id="Ew4-hn-Gs6"/>
                             <constraint firstAttribute="bottom" secondItem="dZg-l8-IHy" secondAttribute="bottom" id="bPo-IZ-NIo"/>
                             <constraint firstAttribute="right" secondItem="bUn-7M-a0W" secondAttribute="right" id="bjD-W7-ms9"/>
                             <constraint firstItem="dZg-l8-IHy" firstAttribute="left" secondItem="MRC-mT-wVz" secondAttribute="left" id="hDk-75-heh"/>
                             <constraint firstItem="dZg-l8-IHy" firstAttribute="top" secondItem="bUn-7M-a0W" secondAttribute="bottom" id="ury-gu-ymh"/>
+                            <constraint firstItem="bUn-7M-a0W" firstAttribute="top" secondItem="MRC-mT-wVz" secondAttribute="top" constant="20" id="vu4-rO-ktW"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="dZg-l8-IHy" id="KPa-D7-gOn"/>
@@ -886,20 +887,20 @@ a new password will be sent.</string>
         <!--SettingsViewController-->
         <scene sceneID="OK6-Jb-1Mm">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uFL-R4-sWm" userLabel="SettingsViewController" customClass="SettingViewController" sceneMemberID="viewController">
+                <viewController id="uFL-R4-sWm" userLabel="SettingsViewController" customClass="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VHh-JC-6Jk"/>
                         <viewControllerLayoutGuide type="bottom" id="sJ2-Vl-kPR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3j4-lc-ZZB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="z6H-bS-01X">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="599"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-zw-Mue" userLabel="Container - UIView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-WY-UTQ" userLabel="ViewUsername">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
@@ -1033,44 +1034,48 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="width" constant="25" id="yUM-Az-zyP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HtS-U9-anh">
-                                                        <rect key="frame" x="435" y="22" width="150" height="29"/>
-                                                        <animations/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="150" id="khM-2f-IBL"/>
-                                                        </constraints>
-                                                        <segments>
-                                                            <segment title=""/>
-                                                            <segment title=""/>
-                                                        </segments>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <connections>
-                                                            <action selector="languageSegmentControllerPressed:" destination="uFL-R4-sWm" eventType="valueChanged" id="k6Y-nJ-bFQ"/>
-                                                        </connections>
-                                                    </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUF-Sj-Ju8" userLabel="Label Languages">
-                                                        <rect key="frame" x="42" y="0.0" width="385" height="70"/>
+                                                        <rect key="frame" x="42" y="0.0" width="80" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUG-jV-eJH" userLabel="Language - SegmentView" customClass="SegmentView">
+                                                        <rect key="frame" x="442" y="15" width="150" height="40"/>
+                                                        <animations/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="3Mw-0m-O4v"/>
+                                                            <constraint firstAttribute="width" constant="150" id="Jj4-0f-9uu"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="segmentViewElementsCount">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="segmentSeparatorColor">
+                                                                <color key="value" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="segmentTag">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="HtS-U9-anh" firstAttribute="leading" secondItem="UUF-Sj-Ju8" secondAttribute="trailing" constant="8" id="1yP-Vz-Nf7"/>
+                                                    <constraint firstItem="ZUG-jV-eJH" firstAttribute="centerY" secondItem="UUF-Sj-Ju8" secondAttribute="centerY" id="4PG-QS-BPO"/>
                                                     <constraint firstItem="VZD-Pi-bQC" firstAttribute="leading" secondItem="qcd-OB-Qd1" secondAttribute="leading" id="IFy-1E-IrA"/>
                                                     <constraint firstAttribute="height" constant="71" id="LXp-Ur-KjS"/>
-                                                    <constraint firstAttribute="centerY" secondItem="HtS-U9-anh" secondAttribute="centerY" id="Oix-0W-H3G"/>
                                                     <constraint firstAttribute="centerY" secondItem="V42-WM-PHj" secondAttribute="centerY" id="Owp-Eo-t78"/>
                                                     <constraint firstItem="UUF-Sj-Ju8" firstAttribute="top" secondItem="qcd-OB-Qd1" secondAttribute="top" id="PsH-tJ-Bjy"/>
                                                     <constraint firstAttribute="trailing" secondItem="VZD-Pi-bQC" secondAttribute="trailing" id="Te8-OG-pO3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZUG-jV-eJH" secondAttribute="trailing" constant="8" id="VOg-Ko-fhy"/>
                                                     <constraint firstItem="UUF-Sj-Ju8" firstAttribute="leading" secondItem="V42-WM-PHj" secondAttribute="trailing" constant="5" id="bOb-1j-yXa"/>
                                                     <constraint firstItem="V42-WM-PHj" firstAttribute="leading" secondItem="qcd-OB-Qd1" secondAttribute="leading" constant="12" id="g2j-zJ-iZN"/>
                                                     <constraint firstAttribute="bottom" secondItem="VZD-Pi-bQC" secondAttribute="bottom" id="hdO-nQ-jv9"/>
                                                     <constraint firstItem="VZD-Pi-bQC" firstAttribute="top" secondItem="UUF-Sj-Ju8" secondAttribute="bottom" id="nv4-Mh-Vss"/>
-                                                    <constraint firstAttribute="trailing" secondItem="HtS-U9-anh" secondAttribute="trailing" constant="15" id="qvn-5d-zrs"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i66-Q7-tAH" userLabel="ViewFontSize">
@@ -1093,29 +1098,33 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="width" constant="25" id="zYZ-uk-PCP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <segmentedControl opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGw-vn-g7Q">
-                                                        <rect key="frame" x="485" y="22" width="100" height="29"/>
-                                                        <animations/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="is6-Tn-fA8"/>
-                                                        </constraints>
-                                                        <segments>
-                                                            <segment title="" image="ic_a_big"/>
-                                                            <segment title="" image="ic_a_small"/>
-                                                        </segments>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <connections>
-                                                            <action selector="textSizeSegmentControlPressed:" destination="uFL-R4-sWm" eventType="valueChanged" id="mMI-7e-ysC"/>
-                                                        </connections>
-                                                    </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlC-fu-F5C" userLabel="Label FontSize">
-                                                        <rect key="frame" x="42" y="0.0" width="435" height="70"/>
+                                                        <rect key="frame" x="42" y="0.0" width="442" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-Mr-ekN" userLabel="TextSize - SegementView" customClass="SegmentView">
+                                                        <rect key="frame" x="492" y="15" width="100" height="40"/>
+                                                        <animations/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="XcI-1b-Oof"/>
+                                                            <constraint firstAttribute="height" constant="40" id="u4p-X5-Iob"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="segmentViewElementsCount">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="segmentSeparatorColor">
+                                                                <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="segmentTag">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1124,12 +1133,12 @@ a new password will be sent.</string>
                                                     <constraint firstItem="hlC-fu-F5C" firstAttribute="leading" secondItem="80q-Y7-0H4" secondAttribute="trailing" constant="5" id="41G-w4-p7N"/>
                                                     <constraint firstAttribute="height" constant="71" id="5XO-mk-S3g"/>
                                                     <constraint firstItem="SuH-e1-FLN" firstAttribute="top" secondItem="hlC-fu-F5C" secondAttribute="bottom" id="7Y4-U8-y8b"/>
-                                                    <constraint firstItem="kGw-vn-g7Q" firstAttribute="leading" secondItem="hlC-fu-F5C" secondAttribute="trailing" constant="8" id="M6O-kP-1lW"/>
+                                                    <constraint firstItem="1B2-Mr-ekN" firstAttribute="centerY" secondItem="hlC-fu-F5C" secondAttribute="centerY" id="JJh-rT-95M"/>
                                                     <constraint firstAttribute="centerY" secondItem="80q-Y7-0H4" secondAttribute="centerY" id="QAA-PF-l4I"/>
                                                     <constraint firstItem="hlC-fu-F5C" firstAttribute="top" secondItem="i66-Q7-tAH" secondAttribute="top" id="Swz-K7-0fS"/>
-                                                    <constraint firstAttribute="centerY" secondItem="kGw-vn-g7Q" secondAttribute="centerY" id="cTO-s1-C9i"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1B2-Mr-ekN" secondAttribute="trailing" constant="8" id="YQA-DP-0eq"/>
                                                     <constraint firstItem="80q-Y7-0H4" firstAttribute="leading" secondItem="i66-Q7-tAH" secondAttribute="leading" constant="12" id="e35-HO-0Hq"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kGw-vn-g7Q" secondAttribute="trailing" constant="15" id="kyK-RH-gCT"/>
+                                                    <constraint firstItem="1B2-Mr-ekN" firstAttribute="leading" secondItem="hlC-fu-F5C" secondAttribute="trailing" constant="8" id="tQA-x8-Out"/>
                                                     <constraint firstItem="SuH-e1-FLN" firstAttribute="leading" secondItem="i66-Q7-tAH" secondAttribute="leading" id="xJe-W6-VnB"/>
                                                     <constraint firstAttribute="trailing" secondItem="SuH-e1-FLN" secondAttribute="trailing" id="zNy-sa-XsN"/>
                                                 </constraints>
@@ -1318,27 +1327,29 @@ a new password will be sent.</string>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z6H-bS-01X" firstAttribute="top" secondItem="3j4-lc-ZZB" secondAttribute="top" id="USP-RE-DdI"/>
                             <constraint firstItem="z6H-bS-01X" firstAttribute="leading" secondItem="3j4-lc-ZZB" secondAttribute="leading" id="ctl-rz-rQ7"/>
                             <constraint firstAttribute="width" secondItem="lrP-zw-Mue" secondAttribute="width" priority="750" id="ebQ-uG-j2L"/>
+                            <constraint firstItem="z6H-bS-01X" firstAttribute="top" secondItem="VHh-JC-6Jk" secondAttribute="bottom" id="kQM-hT-HjX"/>
                             <constraint firstAttribute="trailing" secondItem="z6H-bS-01X" secondAttribute="trailing" id="pCE-o2-UlQ"/>
                             <constraint firstItem="sJ2-Vl-kPR" firstAttribute="top" secondItem="z6H-bS-01X" secondAttribute="bottom" constant="1" id="rqs-JR-Uil"/>
                             <constraint firstAttribute="height" secondItem="lrP-zw-Mue" secondAttribute="height" priority="750" id="wMa-Ep-Q3S"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cly-in-d9x"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="home153" id="cly-in-d9x"/>
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="colorThemeLabel" destination="cRd-bO-306" id="iGp-xI-5Ec"/>
                         <outlet property="emailLabel" destination="MxE-bX-fAf" id="3gP-9r-qjy"/>
                         <outlet property="emailTextField" destination="Kzg-nY-RDe" id="ccC-rD-3fw"/>
                         <outlet property="fontSizeLabel" destination="hlC-fu-F5C" id="BVo-gr-Gf5"/>
                         <outlet property="languageLabel" destination="UUF-Sj-Ju8" id="GKw-ci-UGw"/>
-                        <outlet property="languageSegmentControl" destination="HtS-U9-anh" id="BqJ-oG-uke"/>
+                        <outlet property="languageSegmentControl" destination="ZUG-jV-eJH" id="hcs-3z-cdS"/>
                         <outlet property="logoutLabel" destination="KLV-v7-F0t" id="CbZ-E3-RSG"/>
                         <outlet property="scrollView" destination="z6H-bS-01X" id="A4O-c9-Pji"/>
-                        <outlet property="textSizeSegmentControll" destination="kGw-vn-g7Q" id="4FW-Ha-4Gf"/>
+                        <outlet property="textSizeSegmentControll" destination="1B2-Mr-ekN" id="rw7-qC-8ql"/>
                         <outlet property="themeBlueButton" destination="COd-Qa-x3N" id="GLb-au-EvM"/>
                         <outlet property="themeGreenButton" destination="Ugu-2X-2MS" id="cSz-x9-6lF"/>
                         <outlet property="themeOrangeButton" destination="4OI-f6-YBY" id="ufg-Je-YhT"/>
@@ -1354,13 +1365,15 @@ a new password will be sent.</string>
         <scene sceneID="Na0-wG-p6t">
             <objects>
                 <tabBarController id="94k-ip-LBm" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="rW9-C4-9yr">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="rW9-C4-9yr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="kq0-Dx-8Tn" kind="relationship" relationship="viewControllers" id="PX4-CA-BfY"/>
@@ -1402,17 +1415,17 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="ie3-Q5-Cy9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q1j-1t-85u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-Bg-wVf" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJC-Yl-glo" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFo-5b-foy" userLabel="HomeDecorationVew - UiView" customClass="HomeTopBarView">
-                                                <rect key="frame" x="0.0" y="21" width="600" height="102"/>
+                                                <rect key="frame" x="0.0" y="19" width="600" height="94"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -1426,8 +1439,8 @@ a new password will be sent.</string>
                                             <constraint firstAttribute="trailing" secondItem="PFo-5b-foy" secondAttribute="trailing" id="svS-gu-BAh"/>
                                         </constraints>
                                     </view>
-                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ox-66-jV4" userLabel="Submenu - UICollectionView">
-                                        <rect key="frame" x="0.0" y="276" width="600" height="275"/>
+                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ox-66-jV4" userLabel="Submenu - UICollectionView">
+                                        <rect key="frame" x="0.0" y="253" width="600" height="275"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="K2K-1U-cZA" customClass="OpacityCollectionViewFlowLayout">
@@ -1515,7 +1528,7 @@ a new password will be sent.</string>
                                         </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-tG-8qu" userLabel="MainCategories - UICollectionView">
-                                        <rect key="frame" x="0.0" y="144" width="600" height="132"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="121"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="HCz-qM-Y5m">
@@ -1526,7 +1539,7 @@ a new password will be sent.</string>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="6if-HE-DeN" customClass="CategoryCollectionViewCell">
-                                                <rect key="frame" x="5" y="11" width="90" height="110"/>
+                                                <rect key="frame" x="5" y="6" width="90" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="110"/>
@@ -1654,7 +1667,5 @@ a new password will be sent.</string>
     </scenes>
     <resources>
         <image name="home153" width="30" height="30"/>
-        <image name="ic_a_big" width="33" height="20"/>
-        <image name="ic_a_small" width="16" height="12"/>
     </resources>
 </document>

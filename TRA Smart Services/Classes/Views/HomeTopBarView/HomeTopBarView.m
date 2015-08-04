@@ -63,7 +63,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 #pragma mark - Override
 
-- (void)touchesBegan:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+- (void)touchesBegan:(nonnull NSSet*)touches withEvent:(nullable UIEvent *)event
 {
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
     for (CALayer *layer in self.layer.sublayers) {

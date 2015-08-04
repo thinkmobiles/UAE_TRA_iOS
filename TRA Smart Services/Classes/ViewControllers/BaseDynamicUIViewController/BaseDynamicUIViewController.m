@@ -64,9 +64,6 @@
 
 - (void)updateFontSizeForView:(UIView *)view
 {
-    if ([view isKindOfClass:[NSClassFromString(@"UISegmentLabel") class]]) {
-        return;
-    }
     if ([view respondsToSelector:@selector(setFont:)]) {
         NSUInteger fontSize = [DynamicUIService service].fontSize;
         NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;

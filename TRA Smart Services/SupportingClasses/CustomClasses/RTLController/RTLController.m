@@ -28,7 +28,7 @@
         
         NSLayoutAttribute firstAttribute = constraint.firstAttribute;
         NSLayoutAttribute secondAttribute = constraint.secondAttribute;
-        
+                
         if (constraint.firstAttribute == NSLayoutAttributeLeading) {
             firstAttribute = NSLayoutAttributeLeft;
         } else if (constraint.firstAttribute == NSLayoutAttributeTrailing) {

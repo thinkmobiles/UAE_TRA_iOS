@@ -18,7 +18,7 @@
     [super prepareForReuse];
     
     self.informationCellTitle.text = @"";
-    self.informationCellText.text = @"";
+    self.informationCellText.text= @"";
     self.informationCellImage.image = nil;
 }
 

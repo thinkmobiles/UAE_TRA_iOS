@@ -21,7 +21,7 @@
     [DynamicUIService service];
     
     AppHelper *helperClass = [[AppHelper alloc] init];
-   [helperClass prepareTabBarItems];
+    [helperClass prepareTabBarItems];
     
     return YES;
 }

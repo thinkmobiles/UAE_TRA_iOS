@@ -20,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *themeOrangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *languageSegmentControl;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *textSizeSegmentControll;
+@property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
+@property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
 
 @property (weak, nonatomic) IBOutlet UILabel *languageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
@@ -40,17 +40,15 @@
 {
     [super viewDidLoad];
 
+    [self prepareSegmentsView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    [self updateLanguageSegmentControlPosition];
-//    [self updateFontSizeSegmentControlPosition];
-    
-    [self customizeSegmentControl:self.textSizeSegmentControll];
-    [self customizeSegmentControl:self.languageSegmentControl];
+
+    [self updateLanguageSegmentControlPosition];
+    [self updateFontSizeSegmentControlPosition];
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
 }
@@ -75,9 +73,9 @@
     }
 }
 
-- (IBAction)languageSegmentControllerPressed:(UISegmentedControl *)sender
+- (void)languageSegmentControllerPressed:(NSUInteger)index
 {
-    switch (sender.selectedSegmentIndex) {
+    switch (index) {
         case 0: {
             [[DynamicUIService service] setLanguage:LanguageTypeArabic];
             break;
@@ -87,28 +85,51 @@
             break;
         }
     }
+    
     [self localizeUI];
+    
+    [self updateLanguageSegmentControlPosition];
 }
 
-- (IBAction)textSizeSegmentControlPressed:(UISegmentedControl *)sender
+- (void)textSizeSegmentControlPressed:(NSUInteger)index
 {
-    switch (sender.selectedSegmentIndex) {
+    switch (index) {
         case 0: {
             [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
             break;
         }
         case 1: {
             [[DynamicUIService service] saveCurrentFontSize:ApplicationFontSmall];
-
             break;
         }
     }
+    
     [self updateSubviewForParentViewIfPossible:self.view];
+    AppHelper *helperClass = [[AppHelper alloc] init];
+    [helperClass prepareTabBarItems];
+    
+    [self updateFontSizeSegmentControlPosition];
 }
 
 - (IBAction)logoutButtonPressed:(id)sender
 {
     
+}
+
+#pragma mark - SegmentViewDelegate
+
+ - (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
+{
+    switch (segment.segmentTag) {
+        case 1: {
+            [self languageSegmentControllerPressed:item];
+            break;
+        }
+        case 2: {
+            [self textSizeSegmentControlPressed:item];
+            break;
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -164,16 +185,8 @@
     self.logoutLabel.text = dynamicLocalizedString(@"settings.label.logout");
     self.emailLabel.text = dynamicLocalizedString(@"settings.textfield.email");
     self.userNameLabel.text = dynamicLocalizedString(@"settings.textfield.username");
-    [self.languageSegmentControl setTitle:dynamicLocalizedString(@"settings.switchControl.language.arabic") forSegmentAtIndex:0];
-    [self.languageSegmentControl setTitle:dynamicLocalizedString(@"setting.switchControl.language.english") forSegmentAtIndex:1];
-}
-
-- (void)customizeSegmentControl:(UISegmentedControl *)segmentControl
-{
-    segmentControl.layer.borderColor = [UIColor whiteColor].CGColor;
-    segmentControl.layer.borderWidth = 3.f;
-
-    [segmentControl setDividerImage:[UIImage imageWithColor:[UIColor lightGrayColor] inRect:CGRectMake(0, 0, 1, 1)] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    self.languageSegmentControl.segmentItems = @[dynamicLocalizedString(@"settings.switchControl.language.arabic"), dynamicLocalizedString(@"setting.switchControl.language.english")];
+    self.textSizeSegmentControll.segmentItems = @[dynamicLocalizedString(@"setting.switchControl.textSize.big"), dynamicLocalizedString(@"setting.switchControl.textSize.small")];
 }
 
 - (void)updateColors
@@ -186,16 +199,13 @@
     switch ([DynamicUIService service].language) {
         case LanguageTypeDefault:
         case LanguageTypeArabic : {
-            self.languageSegmentControl.selectedSegmentIndex = 0;
+            [self.languageSegmentControl setSegmentItemSelectedWithTag:1];
             break;
         }
         case LanguageTypeEnglish: {
-            self.languageSegmentControl.selectedSegmentIndex = 1;
+            [self.languageSegmentControl setSegmentItemSelectedWithTag:0];
             break;
         }
-            
-        default:
-            break;
     }
 }
 
@@ -204,14 +214,30 @@
     switch ([DynamicUIService service].fontSize) {
         case ApplicationFontUndefined:
         case ApplicationFontSmall: {
-            self.textSizeSegmentControll.selectedSegmentIndex = 1;
+            [self.textSizeSegmentControll setSegmentItemSelectedWithTag:0];
             break;
         }
         case ApplicationFontBig: {
-            self.textSizeSegmentControll.selectedSegmentIndex = 0;
+            [self.textSizeSegmentControll setSegmentItemSelectedWithTag:1];
+
             break;
         }
     }
+}
+
+- (void)prepareSegmentsView
+{
+    self.languageSegmentControl.delegate = self;
+    self.textSizeSegmentControll.delegate = self;
+    
+    NSDictionary *smallTextAttributes = @{
+                                         NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:14.f]
+                                         };
+    NSDictionary *bigTextattributes = @{
+                                        NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:22.f]
+                                        };
+    self.textSizeSegmentControll.segmentItemsAttributes = @[bigTextattributes, smallTextAttributes];
+    self.languageSegmentControl.segmentItemsAttributes = @[smallTextAttributes, smallTextAttributes];
 }
 
 @end

@@ -31,6 +31,15 @@
     [self prepareDataSources];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)closeButtonPressed:(id)sender

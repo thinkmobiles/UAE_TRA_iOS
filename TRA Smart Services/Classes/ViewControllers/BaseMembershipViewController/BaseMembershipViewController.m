@@ -45,6 +45,7 @@
     [super viewWillDisappear:animated];
     
     [self removeNotifications];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 #pragma mark - UITextFieldDelegate
