@@ -30,6 +30,7 @@
 		ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084EE1B5E738600779CBD /* UIWebView+AFNetworking.m */; };
 		ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085041B5F70AC00779CBD /* NetworkManager.m */; };
 		ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085311B5F776C00779CBD /* AutoLoginService.m */; };
+		ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */; };
 		ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */; };
 		ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
@@ -116,6 +117,8 @@
 		ED2085041B5F70AC00779CBD /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		ED2085301B5F776C00779CBD /* AutoLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLoginService.h; sourceTree = "<group>"; };
 		ED2085311B5F776C00779CBD /* AutoLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLoginService.m; sourceTree = "<group>"; };
+		ED2369C81B71E8E200F0F882 /* InternetSpeedChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedChecker.h; sourceTree = "<group>"; };
+		ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedChecker.m; sourceTree = "<group>"; };
 		ED31DEF41B6FAE13008875E4 /* InformationHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationHeaderCell.h; sourceTree = "<group>"; };
 		ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationHeaderCell.m; sourceTree = "<group>"; };
 		ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
@@ -284,6 +287,15 @@
 				ED2085311B5F776C00779CBD /* AutoLoginService.m */,
 			);
 			path = AutoLoginService;
+			sourceTree = "<group>";
+		};
+		ED2369C71B71E8D200F0F882 /* InternetSpeedChecker */ = {
+			isa = PBXGroup;
+			children = (
+				ED2369C81B71E8E200F0F882 /* InternetSpeedChecker.h */,
+				ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */,
+			);
+			path = InternetSpeedChecker;
 			sourceTree = "<group>";
 		};
 		ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */ = {
@@ -535,6 +547,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				ED2369C71B71E8D200F0F882 /* InternetSpeedChecker */,
 				ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */,
 				ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */,
 				ED5A34391B6EACAC0082AF5B /* RTLController */,
@@ -850,6 +863,7 @@
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
 				ED2084EF1B5E738600779CBD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
+				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				ED2084F11B5E738600779CBD /* UIAlertView+AFNetworking.m in Sources */,

@@ -22,7 +22,7 @@
 - (void)performAutoLoginIfPossible
 {
     if ([self isAutoLoginPossible]) {
-        NSDictionary *userCredentials = [self.keychain credentialsForLoginedUser];
+      //  NSDictionary *userCredentials = [self.keychain credentialsForLoginedUser];
         //todo autologin to server CRM
     }
 }

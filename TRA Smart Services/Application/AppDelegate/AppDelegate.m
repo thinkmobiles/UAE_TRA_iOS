@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+#import "InternetSpeedChecker.h"
+
+@interface AppDelegate () <InternetSpeedCheckerDelegate>
 
 @end
 
@@ -21,7 +23,17 @@
     [DynamicUIService service];
     [AppHelper prepareTabBarItems];
     
+    InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
+    [speedCheker performFastInternetSpeedTest];
+    
     return YES;
+}
+
+#pragma mark - InternetSpeedCheckerDelegate
+
+- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed
+{
+    NSLog(@"Your speed - %f.1", speed);
 }
 
 @end
