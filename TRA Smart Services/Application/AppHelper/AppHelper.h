@@ -21,6 +21,6 @@
 + (void)showLoaderWithText:(NSString *)text;
 + (void)hideLoader;
 
-- (void)prepareTabBarItems;
++ (void)prepareTabBarItems;
 
 @end

@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
 }

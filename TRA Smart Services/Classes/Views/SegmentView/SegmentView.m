@@ -62,6 +62,7 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
 
 #pragma mark - Private
 
+/** used inverted states */
 - (void)drawElements
 {
     for (UIView *subview in self.subviews) {
@@ -84,7 +85,6 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
                 [selectedAttributes setValue:self.segmentDeselectedTintColor forKey:NSForegroundColorAttributeName];
                 NSAttributedString *selectedAttributedTitle = [[NSAttributedString alloc] initWithString:self.segmentItems[i] attributes:selectedAttributes];
                 [segmentPart setAttributedTitle:selectedAttributedTitle forState:UIControlStateSelected];
-                
             } else {
                 [segmentPart setTitle:self.segmentItems[i] forState:UIControlStateNormal];
             }

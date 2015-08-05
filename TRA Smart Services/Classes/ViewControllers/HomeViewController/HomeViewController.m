@@ -170,18 +170,14 @@ static CGFloat const ZigZagViewTag = 1001;
 #pragma mark - Decorations
 
 - (void)prepareZigZagView
-{
-    if ([self.view viewWithTag:ZigZagViewTag]) {
-        [[self.view viewWithTag:ZigZagViewTag] removeFromSuperview];
-    }
-    
+{    
     UIView *zigZagView = [[UIView alloc] initWithFrame:self.mainCategoryCollectionView.frame];
     zigZagView.backgroundColor = [UIColor clearColor];
     
     CGSize cellSize = CGSizeMake(( self.mainCategoryCollectionView.frame.size.width - (CellSpacing * (RowCount + 1))) / RowCount, [UIScreen mainScreen].bounds.size.height * 0.18f);
     CGSize  hexagonSize = CGSizeMake(cellSize.width * 0.6f, cellSize.height * 0.87f);
-    CGFloat minimumYPoint = hexagonSize.height;
-    CGFloat maximumYPoint = hexagonSize.height + hexagonSize.height * 0.25f;
+    CGFloat minimumYPoint = hexagonSize.height * 0.9f;
+    CGFloat maximumYPoint = hexagonSize.height + hexagonSize.height * 0.15f;
     
     UIBezierPath *zigZagPath = [UIBezierPath bezierPath];
     [zigZagPath moveToPoint:CGPointMake(0, minimumYPoint + CellSpacing)];
@@ -207,7 +203,7 @@ static CGFloat const ZigZagViewTag = 1001;
     [zigZagView.layer addSublayer:zigZagLayer];
     zigZagView.tag = ZigZagViewTag;
     
-    [self.view addSubview:zigZagView];
+    self.mainCategoryCollectionView.backgroundView = zigZagView;
 }
 
 - (void)prepareBackgroundForMenuCollectionView

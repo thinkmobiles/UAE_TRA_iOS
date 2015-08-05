@@ -19,9 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DynamicUIService service];
-    
-    AppHelper *helperClass = [[AppHelper alloc] init];
-    [helperClass prepareTabBarItems];
+    [AppHelper prepareTabBarItems];
     
     return YES;
 }

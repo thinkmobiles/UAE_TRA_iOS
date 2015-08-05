@@ -41,18 +41,18 @@
             secondAttribute = NSLayoutAttributeRight;
         }
         
-        NSLayoutConstraint *updatedConstraint = [self constraintWithFirstAttribute:firstAttribute secondAtribute:secondAttribute fromConstraint:constraint];
+        NSLayoutConstraint *updatedConstraint = constraint;
+        
+        if (firstAttribute != constraint.firstAttribute || secondAttribute != constraint.secondAttribute) {
+            updatedConstraint = [self constraintWithFirstAttribute:firstAttribute secondAtribute:secondAttribute fromConstraint:constraint];
+        }
+        
         [constraintsToRemove addObject:constraint];
         [constraintsToAdd addObject:updatedConstraint];
-
     }
     
-    for (NSLayoutConstraint *constraint in constraintsToRemove) {
-        [view removeConstraint:constraint];
-    }
-    for (NSLayoutConstraint *constraint in constraintsToAdd) {
-        [view addConstraint:constraint];
-    }
+    [view removeConstraints:view.constraints];
+    [view addConstraints:constraintsToAdd];
 }
 
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView

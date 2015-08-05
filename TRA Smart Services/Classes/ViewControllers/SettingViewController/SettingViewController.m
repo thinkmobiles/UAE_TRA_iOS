@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLayoutGuideConstraint;
+
 @end
 
 @implementation SettingViewController
@@ -105,9 +107,7 @@
     }
     
     [self updateSubviewForParentViewIfPossible:self.view];
-    AppHelper *helperClass = [[AppHelper alloc] init];
-    [helperClass prepareTabBarItems];
-    
+    [AppHelper prepareTabBarItems];    
     [self updateFontSizeSegmentControlPosition];
 }
 

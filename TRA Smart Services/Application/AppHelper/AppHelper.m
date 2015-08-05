@@ -83,9 +83,9 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 #pragma mark - TabBarConfiguration
 
-- (void)prepareTabBarItems
++ (void)prepareTabBarItems
 {
-    NSArray *localizedMenuItems = [self localizedTabBarMenuItems];
+    NSArray *localizedMenuItems = [AppHelper localizedTabBarMenuItems];
     CGFloat fontSize = [DynamicUIService service].fontSize;
     fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
     NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Avenir-Roman" size:fontSize],
@@ -101,7 +101,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 #pragma mark - Private
 
-- (NSArray *)localizedTabBarMenuItems
++ (NSArray *)localizedTabBarMenuItems
 {
     NSArray *menuItemsLink = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     NSMutableArray *localizedMenuItems = [[NSMutableArray alloc] init];
