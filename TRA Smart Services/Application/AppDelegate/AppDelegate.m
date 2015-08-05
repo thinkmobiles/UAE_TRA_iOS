@@ -24,16 +24,22 @@
     [AppHelper prepareTabBarItems];
     
     InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
-    [speedCheker performFastInternetSpeedTest];
+//    [speedCheker performFastInternetSpeedTest];
+    [speedCheker performAccurateInternetTest];
+    speedCheker.delegate = self;
     
     return YES;
 }
 
 #pragma mark - InternetSpeedCheckerDelegate
 
-- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed
+- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method
 {
-    NSLog(@"Your speed - %f.1", speed);
+    if (method) {
+        NSLog(@"Your speed - %.2f Mb/sec", speed);
+    } else {
+        NSLog(@"Your speed - %.2f Mb/sec (accurate)", speed);
+    }
 }
 
 @end

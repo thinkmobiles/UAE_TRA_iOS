@@ -10,6 +10,7 @@
 
 static CGFloat MaximumElapsedTime = 2.f;
 static NSUInteger Repeats = 10;
+static NSUInteger AccurateTestRepeats = 15;
 
 
 static NSString *const TestFilePath = @"https://drive.google.com/uc?export=download&id=0B1GU18BxUf8hTFdUcFpMejlYUXc";
@@ -21,6 +22,8 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
 @property (strong, nonatomic) NSDate *startTime;
 
 @property (assign, nonatomic) NSInteger tryCount;
+@property (assign, nonatomic) CGFloat averageSpeed;
+@property (assign, nonatomic) BOOL isAccurateTest;
 
 @end
 
@@ -31,6 +34,14 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
 - (void)performFastInternetSpeedTest
 {
     self.tryCount = 0;
+    self.isAccurateTest = NO;
+    [self testInternetDownloadSpeed];
+}
+
+- (void)performAccurateInternetTest
+{
+    self.tryCount = 0;
+    self.isAccurateTest = YES;
     [self testInternetDownloadSpeed];
 }
 
@@ -76,6 +87,7 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
         if (weakSelf.URLConnection){
             [weakSelf.URLConnection cancel];
             weakSelf.URLConnection = nil;
+            [weakSelf calculateMegabytesPerSecond];
         }
     });
 }
@@ -85,15 +97,30 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     CGFloat speed = -1.f;
     if (self.startTime){
         NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:self.startTime];
-        speed = self.downloadedBytes / elapsedTime / 1024;
+        speed = self.downloadedBytes / elapsedTime / 1024 / 1024;
     }
     
-    if (speed < 0 && self.tryCount < Repeats) {
-        self.tryCount++;
-        [self testInternetDownloadSpeed];
+    if (self.isAccurateTest) {
+        if (self.tryCount < AccurateTestRepeats && speed > 0) {
+            self.averageSpeed += speed;
+            self.tryCount++;
+            [self testInternetDownloadSpeed];
+        } else if (self.tryCount == AccurateTestRepeats) {
+            self.averageSpeed /= AccurateTestRepeats;
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(speedCheckerDidCalculateSpeed:testMethod:)]) {
+                [self.delegate speedCheckerDidCalculateSpeed:self.averageSpeed testMethod:SpeedTestTypeAccurate];
+            }
+            
+        }
     } else {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(speedCheckerDidCalculateSpeed:)]) {
-            [self.delegate speedCheckerDidCalculateSpeed:speed];
+        if (speed < 0 && self.tryCount < Repeats) {
+            self.tryCount++;
+            [self testInternetDownloadSpeed];
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(speedCheckerDidCalculateSpeed:testMethod:)]) {
+                [self.delegate speedCheckerDidCalculateSpeed:speed testMethod:SpeedTestTypeFast];
+            }
         }
     }
 }

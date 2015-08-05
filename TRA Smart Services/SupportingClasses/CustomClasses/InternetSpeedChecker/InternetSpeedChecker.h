@@ -6,10 +6,15 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+typedef NS_ENUM(NSUInteger, SpeedTestType) {
+    SpeedTestTypeFast,
+    SpeedTestTypeAccurate
+};
+
 @protocol InternetSpeedCheckerDelegate  <NSObject>
 
 @required
-- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed;
+- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method;
 
 @end
 
@@ -18,5 +23,6 @@
 @property (weak, nonatomic) id <InternetSpeedCheckerDelegate> delegate;
 
 - (void)performFastInternetSpeedTest;
+- (void)performAccurateInternetTest;
 
 @end
