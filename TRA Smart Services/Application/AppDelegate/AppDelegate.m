@@ -36,9 +36,9 @@
 - (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method
 {
     if (method) {
-        NSLog(@"Your speed - %.2f Mb/sec", speed);
+        NSLog(@"Your speed - %.6f Mb/sec", speed);
     } else {
-        NSLog(@"Your speed - %.2f Mb/sec (accurate)", speed);
+        NSLog(@"Your speed - %.6f Mb/sec (accurate)", speed);
     }
 }
 

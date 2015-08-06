@@ -80,6 +80,7 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     self.startTime = [NSDate date];
     self.downloadedBytes = 0;
     self.URLConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self.URLConnection start];
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MaximumElapsedTime * NSEC_PER_SEC));
     __weak typeof(self) weakSelf = self;
@@ -98,15 +99,16 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     if (self.startTime){
         NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:self.startTime];
         speed = self.downloadedBytes / elapsedTime / 1024 / 1024;
+        NSLog(@"speed - %f", speed);
     }
     
     if (self.isAccurateTest) {
-        if (self.tryCount < AccurateTestRepeats && speed > 0) {
+        if (self.tryCount < AccurateTestRepeats && speed >= 0) {
             self.averageSpeed += speed;
             self.tryCount++;
             [self testInternetDownloadSpeed];
         } else if (self.tryCount == AccurateTestRepeats) {
-            self.averageSpeed /= AccurateTestRepeats;
+            self.averageSpeed /= (CGFloat)AccurateTestRepeats;
             
             if (self.delegate && [self.delegate respondsToSelector:@selector(speedCheckerDidCalculateSpeed:testMethod:)]) {
                 [self.delegate speedCheckerDidCalculateSpeed:self.averageSpeed testMethod:SpeedTestTypeAccurate];
