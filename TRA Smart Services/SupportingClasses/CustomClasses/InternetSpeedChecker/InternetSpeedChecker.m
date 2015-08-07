@@ -80,7 +80,6 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     self.startTime = [NSDate date];
     self.downloadedBytes = 0;
     self.URLConnection = [NSURLConnection connectionWithRequest:request delegate:self];
-    [self.URLConnection start];
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MaximumElapsedTime * NSEC_PER_SEC));
     __weak typeof(self) weakSelf = self;
@@ -99,7 +98,6 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     if (self.startTime){
         NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:self.startTime];
         speed = self.downloadedBytes / elapsedTime / 1024 / 1024;
-        NSLog(@"speed - %f", speed);
     }
     
     if (self.isAccurateTest) {

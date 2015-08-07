@@ -18,6 +18,15 @@
 
 @end
 
+@interface NetworkManager()
+
+@property (strong, nonatomic) NSInputStream *inputStream;
+@property (strong, nonatomic) NSOutputStream *outputStream;
+@property (strong, nonatomic) NSMutableData *responseData;
+@property (assign, nonatomic) SocketRequestType socketRequestType;
+
+@end
+
 @implementation NetworkManager
 
 #pragma mark - Public
@@ -33,6 +42,20 @@
 }
 
 #pragma mark - Public
+
+#pragma mark - NoCRMServiceSocketBasedNetworkManager
+
+- (void)noCRMServiceGetDomainDataForDomain:(NSString *)domainName
+{
+    self.socketRequestType = SocketRequestTypeDomainData;
+    [self sendSocketRequestToEndPoint:NoCRMSocketRequestGetDomainData withRequest:domainName];
+}
+
+- (void)noCRMServiceGetDomainAvaliabilityForDomain:(NSString *)domainName
+{
+    self.socketRequestType = SocketRequestTypeDomainAvaliability;
+    [self sendSocketRequestToEndPoint:NoCRMSocketRequestCheckDomainAvaliability withRequest:domainName];
+}
 
 #pragma mark - NoCRMServicesRequests
 
@@ -334,6 +357,42 @@
     }
 }
 
+#pragma mark - NoCRMServiceNetworkManagerV2
+
+- (void)noCRMServiceV2PerformSearchDeviceByIMEI:(NSUInteger)tacCode startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)IMEISeachRequestResult
+{
+    NSString *APIKEY = @"<API_KEY>";
+    [self.manager.requestSerializer setValue:APIKEY forHTTPHeaderField:@"api_key"];
+    NSDictionary *parameters = @{
+                                 @"startIndex" : @(offset),
+                                 @"endIndex" : @(limit),
+                                 @"tac" : @(tacCode)
+                                 };
+    [self.manager GET:NoCRMServiceV2DeviceByIMEI parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        IMEISeachRequestResult(responseDictionary, nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        IMEISeachRequestResult(nil, error);
+    }];
+}
+
+- (void)noCRMServiceV2PerformSearchDeviceByBrandName:(NSString *)brandName startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)brandNameSeachRequestResult
+{
+    NSString *APIKEY = @"<API_KEY>";
+    [self.manager.requestSerializer setValue:APIKEY forHTTPHeaderField:@"api_key"];
+    NSDictionary *parameters = @{
+                                 @"startIndex" : @(offset),
+                                 @"endIndex" : @(limit),
+                                 @"manufacturer" : brandName
+                                 };
+    [self.manager GET:NoCRMServiceV2DeviceByBrandName parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        brandNameSeachRequestResult(responseDictionary, nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        brandNameSeachRequestResult(nil, error);
+    }];
+}
+
 #pragma mark - LifeCycle
 
 - (instancetype)initWithBaseURL:(NSURL *)baseURL
@@ -385,6 +444,107 @@
     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     self.manager.securityPolicy = securityPolicy;
+}
+
+#pragma mark - Sockets
+
+- (void)sendSocketRequestToEndPoint:(NSString *)endPoint withRequest:(NSString *)request
+{
+    NSURL *url = [NSURL URLWithString:endPoint];
+    
+    CFReadStreamRef readStream;
+    CFWriteStreamRef writeStream;
+    
+    CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(url.host), 43, &readStream, &writeStream);
+    
+    self.inputStream = (__bridge NSInputStream *)(readStream);
+    self.outputStream = (__bridge NSOutputStream *)(writeStream);
+    self.inputStream.delegate = self;
+    self.outputStream.delegate = self;
+    
+    [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+    [self.inputStream open];
+    [self.outputStream open];
+    
+    NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSASCIIStringEncoding]];
+    [self.outputStream write:data.bytes maxLength:data.length];
+}
+
+#pragma mark - NSStreamDelegate
+
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
+{
+    switch (eventCode) {
+        case NSStreamEventOpenCompleted: {
+            NSLog(@"Stream opened");
+        }
+        case  NSStreamEventHasBytesAvailable: {
+            if(!self.responseData) {
+                self.responseData = [NSMutableData data];
+            }
+            uint8_t buf[1024*1024];
+            long len;
+            
+            while ([self.inputStream hasBytesAvailable]) {
+                len = [self.inputStream read:buf maxLength:sizeof(buf)];
+                if (len > 0) {
+                    NSData *data = [NSData dataWithBytes:buf length:sizeof(buf)];
+                    [self.responseData appendData:data];
+                }
+            }
+            
+            NSString *response = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
+            self.responseData = nil;
+            NSDictionary *responseDic = [self parseResponse:response];
+            
+            if (responseDic.allKeys.count) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(networkManagerDidReceiveResponseType:response:error:)]) {
+                    [self.delegate networkManagerDidReceiveResponseType:self.socketRequestType response:responseDic error:nil];
+                }
+            }
+            break;
+        }
+        case NSStreamEventEndEncountered: {
+            [aStream close];
+            [aStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            aStream = nil;
+            break;
+        }
+        case NSStreamEventErrorOccurred: {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(networkManagerDidReceiveResponseType:response:error:)]) {
+                [self.delegate networkManagerDidReceiveResponseType:self.socketRequestType response:nil error:aStream.streamError];
+            }
+            [aStream close];
+            [aStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            aStream = nil;
+
+            NSLog(@"Error with sockety stream occured - %@", aStream.streamError.localizedDescription);
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (NSDictionary *)parseResponse:(NSString *)response
+{
+    NSMutableDictionary *dictionaryWithResponse = [[NSMutableDictionary alloc] init];
+    if (!response.length) {
+        return dictionaryWithResponse;
+    }
+    NSArray *values = [response componentsSeparatedByString:@"\r\n"];
+    
+    for (int i = 0; i < values.count; i++) {
+        NSArray *details = [values[i] componentsSeparatedByString:@":"];
+        [dictionaryWithResponse
+         setValue:[[details lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]]
+         forKey:[[details firstObject] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@":"]]
+         ];
+    }
+    
+    return dictionaryWithResponse;
 }
 
 @end

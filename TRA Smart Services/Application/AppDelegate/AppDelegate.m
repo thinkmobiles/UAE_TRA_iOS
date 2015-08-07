@@ -24,8 +24,8 @@
     [AppHelper prepareTabBarItems];
     
     InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
-//    [speedCheker performFastInternetSpeedTest];
-    [speedCheker performAccurateInternetTest];
+    [speedCheker performFastInternetSpeedTest];
+//    [speedCheker performAccurateInternetTest];
     speedCheker.delegate = self;
     
     return YES;

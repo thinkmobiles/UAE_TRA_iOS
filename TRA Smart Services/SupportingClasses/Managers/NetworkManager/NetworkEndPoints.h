@@ -21,3 +21,16 @@ static NSString *const NoCRMHelpSalimBlockWebsiteService = @"tra_api/service/blo
 static NSString *const NoCRMServiceRating = @"tra_api/service/servicerating?access_token=";
 static NSString *const NoCRMSMSSpam = @"tra_api/service/insertsmsspam?access_token=";
 static NSString *const NoCRMSearchRequest = @"tra_api/service/taggedsearch";
+
+#pragma mark - NoCRMServiceNetworkManagerV2
+
+static NSString *const NoCRMServiceNetworkManagerBaseURLV2 = @"https://ta-uat.tra.gov.ae:65004/tasserver/v1/imei?method=search";
+
+static NSString *const NoCRMServiceV2DeviceByIMEI = @"";
+static NSString *const NoCRMServiceV2DeviceByBrandName = @"";
+
+#pragma mark - NoCRMServiceSocketBasedNetworkManager
+
+static NSString *const NoCRMSocketRequestGetDomainData = @"http://whois.aeda.net.ae";
+static NSString *const NoCRMSocketRequestCheckDomainAvaliability = @"http://whois-check.aeda.net.ae";
+

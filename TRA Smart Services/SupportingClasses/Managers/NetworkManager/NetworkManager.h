@@ -16,9 +16,23 @@ typedef NS_ENUM(NSUInteger, BlockingWebsite) {
     BlockingWebsiteWioioebURLooooBadKayName
 };
 
-@interface NetworkManager : NSObject
+typedef NS_ENUM(NSUInteger, SocketRequestType) {
+    SocketRequestTypeUndefined,
+    SocketRequestTypeDomainData,
+    SocketRequestTypeDomainAvaliability
+};
+
+@protocol NetworkManagerDelegate <NSObject>
+
+@required
+- (void)networkManagerDidReceiveResponseType:(SocketRequestType)responseType response:(id)response error:(NSError *)responseError;
+
+@end
+
+@interface NetworkManager : NSObject <NSStreamDelegate>
 
 @property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
+@property (weak, nonatomic) id <NetworkManagerDelegate> delegate;
 
 + (instancetype)sharedManager;
 
@@ -26,6 +40,7 @@ typedef NS_ENUM(NSUInteger, BlockingWebsite) {
 
 - (void)startMonitoringNetwork;
 - (void)stopMonitoringNetwork;
+
 
 #pragma mark - NoCRMServicesRequests
 
@@ -39,5 +54,16 @@ typedef NS_ENUM(NSUInteger, BlockingWebsite) {
 - (void)noCRMServiceServiceRating:(NSString *)serviceName serviceDescription:(NSString *)description serviceRating:(NSUInteger)rating requestResult:(ResponseBlock)serviceRatingRequestResult;
 - (void)noCRMServiceSpamReportForNetName:(NSString *)netName sender:(NSString *)spammer dateSMS:(NSString *)date requestResult:(ResponseBlock)serviceSMSSpamReport;
 - (void)noCRMServicePerformSearchRequest:(NSString *)searchString requestResult:(ResponseBlock)serviceSeachRequestResult;
+
+#pragma mark - NoCRMServiceSocketBasedNetworkManager
+
+- (void)noCRMServiceGetDomainDataForDomain:(NSString *)domainName;
+- (void)noCRMServiceGetDomainAvaliabilityForDomain:(NSString *)domainName;
+
+#pragma mark - NoCRMServiceNetworkManagerV2
+
+- (void)noCRMServiceV2PerformSearchDeviceByBrandName:(NSString *)brandName startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)brandNameSeachRequestResult;
+- (void)noCRMServiceV2PerformSearchDeviceByIMEI:(NSUInteger)tacCode startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)IMEISeachRequestResult;
+
 
 @end
