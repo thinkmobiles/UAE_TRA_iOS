@@ -21,7 +21,8 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAvatarViewSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 
-@property (strong, nonatomic) CAShapeLayer *hexagonicalLayer;
+@property (strong, nonatomic) CAShapeLayer *hexagonicalTopLayer;
+@property (strong, nonatomic) CAShapeLayer *hexagonicalBottonLayer;
 @property (strong, nonatomic) CALayer *imageLayer;
 
 @property (strong, nonatomic) CALayer *informationLayer;
@@ -52,13 +53,15 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     [super layoutSubviews];
     
-    [self drawHexagonicalWire];
+    [self drawHexagonicalWireTop];
+    [self drawHexagonicalWireBotton];
     [self updateAvatarPosition];
     [self prepareLogoImage];
     
     [self prepareInformationButtonLayer];
     [self prepareSearchButtonLayer];
     [self prepareNotificationButtonLayer];
+    [self animationMinimizire];
 }
 
 #pragma mark - Override
@@ -159,22 +162,51 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 #pragma mark - Drawing
 
-- (void)drawHexagonicalWire
+- (void)drawHexagonicalWireTop
 {
-    [self.hexagonicalLayer removeFromSuperlayer];
+    [self.hexagonicalTopLayer removeFromSuperlayer];
     
-    self.hexagonicalLayer = [CAShapeLayer layer];
-    self.hexagonicalLayer.frame = self.bounds;
-    self.hexagonicalLayer.path =  [self hexagonsPath].CGPath;
-    self.hexagonicalLayer.strokeColor = [UIColor redColor].CGColor;
-    self.hexagonicalLayer.fillColor = [UIColor clearColor].CGColor;
-    self.hexagonicalLayer.position = CGPointMake(self.hexagonicalLayer.position.x - LeftOffset, self.hexagonicalLayer.position.y);
+    self.hexagonicalTopLayer = [CAShapeLayer layer];
+    self.hexagonicalTopLayer.frame = self.bounds;
+    self.hexagonicalTopLayer.path =  [self hexagonsPathTop].CGPath;
+    self.hexagonicalTopLayer.strokeColor = [UIColor redColor].CGColor;
+    self.hexagonicalTopLayer.fillColor = [UIColor clearColor].CGColor;
+    self.hexagonicalTopLayer.position = CGPointMake(self.hexagonicalTopLayer.position.x - LeftOffset, self.hexagonicalTopLayer.position.y);
     self.layer.masksToBounds = YES;
 
-    [self.layer insertSublayer:self.hexagonicalLayer atIndex:0];
+//    [self.layer insertSublayer:self.hexagonicalTopLayer atIndex:0];
 }
 
-- (UIBezierPath *)hexagonsPath
+- (void)drawHexagonicalWireBotton
+{
+    [self.hexagonicalBottonLayer removeFromSuperlayer];
+    
+    self.hexagonicalBottonLayer = [CAShapeLayer layer];
+    self.hexagonicalBottonLayer.frame = self.bounds;
+    self.hexagonicalBottonLayer.path =  [self hexagonsPathBotton].CGPath;
+    self.hexagonicalBottonLayer.strokeColor = [UIColor redColor].CGColor;
+    self.hexagonicalBottonLayer.fillColor = [UIColor redColor].CGColor;
+    self.hexagonicalBottonLayer.position = CGPointMake(self.hexagonicalBottonLayer.position.x - LeftOffset, self.hexagonicalBottonLayer.position.y);
+//    self.layer.masksToBounds = YES;
+    
+//    [self.layer insertSublayer:self.hexagonicalBottonLayer atIndex:1];
+
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = self.bounds;
+    gradientLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor blueColor].CGColor ];
+    gradientLayer.startPoint = CGPointMake(0.5,0);
+    gradientLayer.endPoint = CGPointMake(0.5,1);
+    gradientLayer.mask = self.hexagonicalBottonLayer;
+
+    [self.layer insertSublayer:gradientLayer atIndex:0];
+
+//    [self.view.layer addSublayer:gradientLayer];
+    //Using arc as a mask instead of adding it as a sublayer.
+    //[self.view.layer addSublayer:arc];
+
+}
+
+- (UIBezierPath *)hexagonsPathTop
 {
     UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
 
@@ -195,6 +227,34 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
         [hexagonPath moveToPoint:CGPointMake(hexagonSize.width * (i + 1), topOffset + hexagonSize.height * 0.25f)];
     }
+
+        [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
+        
+        for (int i = 0; i < ElementsInRowCount; i++) {
+            if (i == 2) {
+                continue;
+            }
+            [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+            
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height)];
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f + hexagonSize.height)];
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+            [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
+        }
+    
+    return hexagonPath;
+}
+
+- (UIBezierPath *)hexagonsPathBotton;
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    
+    CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
+    CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
     
     [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
     
@@ -275,7 +335,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer = [self layerWithImage:self.informationButtonImage inRect:informationLayerRect];
     [self addHexagoneMaskForLayer:self.informationLayer];
 
-    [self.layer insertSublayer:self.informationLayer below:self.hexagonicalLayer];
+    [self.layer insertSublayer:self.informationLayer below:self.hexagonicalTopLayer];
 }
 
 - (void)prepareSearchButtonLayer
@@ -290,7 +350,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.searchLayer = [self layerWithImage:self.searchButtonImage inRect:searchLayerRect];
     [self addHexagoneMaskForLayer:self.searchLayer];
 
-    [self.layer insertSublayer:self.searchLayer below:self.hexagonicalLayer];
+    [self.layer insertSublayer:self.searchLayer below:self.hexagonicalTopLayer];
 }
 
 - (void)prepareNotificationButtonLayer
@@ -307,7 +367,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.notificationLayer = [self layerWithImage:imageWithText inRect:notificationLayerRect];
     [self addHexagoneMaskForLayer:self.notificationLayer];
     
-    [self.layer insertSublayer:self.notificationLayer below:self.hexagonicalLayer];
+    [self.layer insertSublayer:self.notificationLayer below:self.hexagonicalTopLayer];
 }
 
 - (CALayer *)layerWithImage:(UIImage *)image inRect:(CGRect)rect
@@ -330,6 +390,32 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 }
 
 #pragma mark - Animations
+
+-(void)animationMinimizire
+{
+    CGPoint startPositionInformationLayer = CGPointMake(self.informationLayer.position.x, self.informationLayer.position.y);
+    CGPoint endPositionInformationLayer = CGPointMake(self.informationLayer.position.x - self.informationLayer.bounds.size.width, self.informationLayer.position.y);
+
+        CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = @"position.x";
+    animation.fromValue = [NSValue valueWithCGPoint:startPositionInformationLayer];
+    animation.toValue = [NSValue valueWithCGPoint:endPositionInformationLayer];
+    animation.duration = 0.3;
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+   [self.informationLayer addAnimation:animation forKey:@"position.x"];
+    
+    CGPoint startPositionNotificationLayer = CGPointMake(self.notificationLayer.position.x, self.notificationLayer.position.y);
+    CGPoint endPositionNotificationLayer = startPositionInformationLayer;
+    CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation2.fromValue = [NSValue valueWithCGPoint:startPositionNotificationLayer];
+    animation2.toValue = [NSValue valueWithCGPoint:endPositionNotificationLayer];
+    animation2.duration = 0.3;
+    animation2.fillMode = kCAFillModeForwards;
+    animation2.removedOnCompletion = NO;
+    [self.notificationLayer addAnimation:animation2 forKey:@"position"];
+}
 
 - (CAAnimation *)layerPressAnimation
 {
@@ -371,5 +457,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
              NSForegroundColorAttributeName : [UIColor whiteColor]
              };
 }
+
 
 @end
