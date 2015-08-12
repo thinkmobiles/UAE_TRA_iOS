@@ -20,8 +20,8 @@
 {
     [super viewDidLoad];
         
-    RTLController *rtl = [[RTLController alloc] init];
-    [rtl disableRTLForView:self.view];
+//    RTLController *rtl = [[RTLController alloc] init];
+//    [rtl disableRTLForView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
