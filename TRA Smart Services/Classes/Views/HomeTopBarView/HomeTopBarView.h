@@ -28,4 +28,7 @@
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
 
+- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel;
+- (void)animationMinimizireButtonTop:(BOOL) minimizire;
+
 @end

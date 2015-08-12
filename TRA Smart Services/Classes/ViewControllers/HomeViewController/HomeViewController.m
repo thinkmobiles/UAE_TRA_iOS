@@ -18,6 +18,8 @@ static CGFloat const ZigZagViewTag = 1001;
 
 @interface HomeViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintVerticalMailCategoes;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCategoryCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
@@ -64,7 +66,7 @@ static CGFloat const ZigZagViewTag = 1001;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSUInteger elementsCount = 12;
+    NSUInteger elementsCount = 44;
     if (collectionView == self.mainCategoryCollectionView) {
         elementsCount = 4;
     }
@@ -106,6 +108,64 @@ static CGFloat const ZigZagViewTag = 1001;
     
     CGSize cellSize = CGSizeMake((contentSize.width - (CellSpacing * (RowCount + 1))) / RowCount, cellHeight);
     return cellSize;
+}
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.menuCollectionView) {
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f)*0.5f;
+        __weak typeof(self) weakSelf = self;
+        if ((scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < maxTopY)) {
+            [self.view layoutIfNeeded];
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - scrollView.contentOffset.y;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        } else if ((scrollView.contentOffset.y <= 0) && (self.constraintVerticalMailCategoes.constant != 0)){
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = 0;
+                 [weakSelf.view layoutIfNeeded];
+            }];
+        } else if ((scrollView.contentOffset.y >= maxTopY) && (self.constraintVerticalMailCategoes.constant != -maxTopY)){
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        }
+        CGFloat gradientOpacityValue = 1.0f / 0.45f + self.constraintVerticalMailCategoes.constant / (maxTopY * 0.45f);
+        NSLog(@"%F",gradientOpacityValue);
+
+        if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f)
+        {
+            [self.topView animationMinimizireButtonTop:YES];
+            [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
+
+        } else {
+            [self.topView animationMinimizireButtonTop:NO];
+            [weakSelf.topView drawWithGradientOpacityLevel:1.0f];
+        }
+    
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+{
+    if (scrollView == self.menuCollectionView) {
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f)*0.5f;
+
+        [self.view layoutIfNeeded];
+        __weak typeof(self) weakSelf = self;
+        if ((self.constraintVerticalMailCategoes.constant < 0) && (self.constraintVerticalMailCategoes.constant > - maxTopY)) {
+            [self.topView animationMinimizireButtonTop:YES];
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
+                [weakSelf.topView drawWithGradientOpacityLevel:0];
+                [weakSelf.view layoutIfNeeded];
+            }];
+        }
+    }
 }
 
 #pragma mark - HomeTopBarViewDelegate

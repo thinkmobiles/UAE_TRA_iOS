@@ -1650,6 +1650,7 @@ a new password will be sent.</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home153" id="V1W-N5-zUj"/>
                     <connections>
+                        <outlet property="constraintVerticalMailCategoes" destination="8aK-y1-HI1" id="FQe-PN-JDh"/>
                         <outlet property="mainCategoryCollectionView" destination="Glm-tG-8qu" id="Qen-pv-xsF"/>
                         <outlet property="menuCollectionView" destination="5Ox-66-jV4" id="TYF-QU-akl"/>
                         <outlet property="topView" destination="PFo-5b-foy" id="A7D-Mc-l8f"/>
