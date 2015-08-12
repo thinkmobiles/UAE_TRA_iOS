@@ -41,29 +41,14 @@ typedef NS_ENUM(NSUInteger, SocketRequestType) {
 - (void)startMonitoringNetwork;
 - (void)stopMonitoringNetwork;
 
+#pragma mark - NoCRMServices
 
-//#pragma mark - NoCRMServicesRequests
-//
-//- (void)noCRMServiceGetDomainAvaliability:(NSString *)domainURL requestResult:(ResponseBlock)response;
-//- (void)noCRMServiceGetOwnerDetailsForDomain:(NSString *)domainURL requestResult:(ResponseBlock)domainOwnerResponse;
-//- (void)noCRMServiceGetDeviceWithBrandName:(NSString *)brandName modelName:(NSString *)modelName requestResult:(ResponseBlock)deviceDetailsRequest;
-//- (void)noCRMServiceGetAllDeviceWithModelName:(NSString *)modelName requestResult:(ResponseBlock)deviceDetailsRequest;
-//- (void)noCRMServiceCheckIMEI:(NSString *)imei requestResult:(ResponseBlock)deviceEMEICheckResult;
-//- (void)noCRMServicePoorCoverageReportFromUserEmail:(NSString *)userEmail deviceName:(NSString *)device userName:(NSString *)userName operator:(NSString *)operatorName signalValue:(NSUInteger)signalValue atLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude requestResult:(ResponseBlock)deviceEMEICheckResult;
-//- (void)noCRMServiceBlockWebsite:(NSString *)website blockType:(BlockingWebsite)blockType requestResult:(ResponseBlock)blockWebsiteRequestResult;
-//- (void)noCRMServiceServiceRating:(NSString *)serviceName serviceDescription:(NSString *)description serviceRating:(NSUInteger)rating requestResult:(ResponseBlock)serviceRatingRequestResult;
-//- (void)noCRMServiceSpamReportForNetName:(NSString *)netName sender:(NSString *)spammer dateSMS:(NSString *)date requestResult:(ResponseBlock)serviceSMSSpamReport;
-//- (void)noCRMServicePerformSearchRequest:(NSString *)searchString requestResult:(ResponseBlock)serviceSeachRequestResult;
-//
-//#pragma mark - NoCRMServiceSocketBasedNetworkManager
-//
-//- (void)noCRMServiceGetDomainDataForDomain:(NSString *)domainName;
-//- (void)noCRMServiceGetDomainAvaliabilityForDomain:(NSString *)domainName;
-//
-//#pragma mark - NoCRMServiceNetworkManagerV2
-//
-//- (void)noCRMServiceV2PerformSearchDeviceByBrandName:(NSString *)brandName startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)brandNameSeachRequestResult;
-//- (void)noCRMServiceV2PerformSearchDeviceByIMEI:(NSUInteger)tacCode startIndex:(NSUInteger)offset endIndex:(NSUInteger)limit requestResult:(ResponseBlock)IMEISeachRequestResult;
-//
+- (void)traSSNoCRMServiceGetDomainData:(NSString *)domainURL requestResult:(ResponseBlock)domainOwnerResponse;
+- (void)traSSNoCRMServiceGetDomainAvaliability:(NSString *)domainURL requestResult:(ResponseBlock)domainAvaliabilityResponse;
+- (void)traSSNoCRMServicePerformSearchByIMEI:(NSString *)mobileIMEI requestResult:(ResponseBlock)mobileIMEISearchResponse;
+- (void)traSSNoCRMServicePerformSearchByMobileBrand:(NSString *)mobileBrand requestResult:(ResponseBlock)mobileBrandSearchResponse;
+- (void)traSSNoCRMServicePOSTFeedback:(NSString *)feedback forSerivce:(NSString *)serviceName withRating:(NSUInteger)rating requestResult:(ResponseBlock)mobileBrandSearchResponse;
+- (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse;
+- (void)traSSNoCRMServicePOSTHelpSalim:(NSString *)urlAddress notes:(NSString *)comment requestResult:(ResponseBlock)helpSalimReportResponse;
 
 @end

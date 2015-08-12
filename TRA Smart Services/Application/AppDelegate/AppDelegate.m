@@ -28,14 +28,15 @@
 //    [speedCheker performAccurateInternetTest];
     speedCheker.delegate = self;
     
-    return YES;
+     
+     return YES;
 }
 
 #pragma mark - InternetSpeedCheckerDelegate
 
 - (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method
 {
-    if (method) {
+    if (!method) {
         NSLog(@"Your speed - %.6f Mb/sec", speed);
     } else {
         NSLog(@"Your speed - %.6f Mb/sec (accurate)", speed);
