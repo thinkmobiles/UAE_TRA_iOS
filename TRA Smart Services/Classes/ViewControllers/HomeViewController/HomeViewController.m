@@ -278,10 +278,10 @@ static CGFloat const ZigZagViewTag = 1001;
 {
     self.topView.delegate = self;
 //    self.topView.logoImage = [UIImage imageNamed:@"1.jpg"];
-    self.topView.userInitials = @"KK";
-    self.topView.informationButtonImage = [UIImage imageNamed:@"1.jpg"];
-    self.topView.searchButtonImage = [UIImage imageNamed:@"1.jpg"];
-    self.topView.notificationButtonImage = [UIImage imageNamed:@"1.jpg"];
+    self.topView.userInitials = @"gK";
+    self.topView.informationButtonImage = [UIImage imageNamed:@"ic_search"];
+    self.topView.searchButtonImage = [UIImage imageNamed:@"ic_lamp"];
+    self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
 }
 
 #pragma mark - Localization

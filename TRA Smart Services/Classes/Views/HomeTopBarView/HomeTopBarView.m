@@ -401,7 +401,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     CALayer *layer= [CALayer layer];
     layer.frame = rect;
-    layer.backgroundColor = [UIColor clearColor].CGColor;
+    layer.backgroundColor = [UIColor defaultOrangeColor].CGColor;
     layer.contents = (__bridge id __nullable)(image).CGImage;
     layer.contentsGravity = kCAGravityResizeAspect;
     
