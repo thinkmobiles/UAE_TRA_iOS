@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "MenuCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
-#import "HexagonicalImage.h"
 #import "AppDelegate.h"
 
 static CGFloat const CellSpacing = 5.f;
@@ -32,7 +31,6 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCategoryCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 
-@property (assign, nonatomic) BOOL stopRedrawBackground;
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSArray *otherServiceDataSource;
 
@@ -60,7 +58,6 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     
     [self prepareZigZagView];
     [self.topView setNeedsLayout];
-    [self prepareBackgroundForMenuCollectionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -74,7 +71,6 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 {
     [super viewWillDisappear:animated];
     
-    self.stopRedrawBackground = YES;
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -421,17 +417,6 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     zigZagView.tag = ZigZagViewTag;
     
     self.mainCategoryCollectionView.backgroundView = zigZagView;
-}
-
-- (void)prepareBackgroundForMenuCollectionView
-{
-    if (!self.stopRedrawBackground) {
-        [self.menuCollectionView.backgroundView removeFromSuperview];
-        
-        HexagonicalImage *img = [[HexagonicalImage alloc] initWithRectColor:[UIColor whiteColor]];
-        UIImage *background = [img randomHexagonImageInRect:self.menuCollectionView.bounds];
-        self.menuCollectionView.backgroundView = [[UIImageView alloc] initWithImage:background];
-    }
 }
 
 @end
