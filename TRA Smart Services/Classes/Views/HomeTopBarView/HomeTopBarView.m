@@ -30,7 +30,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
 @property (strong, nonatomic) CAGradientLayer *gradientHexagonicalBottonLayer;
-
 @property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
 
 @end
@@ -58,7 +57,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [super layoutSubviews];
     
     [self drawHexagonicalWireTop];
-
     [self updateAvatarPosition];
     [self prepareLogoImage];
     
@@ -66,8 +64,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         [self prepareInformationButtonLayer];
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];
-        
-        [self drawHexagonicalWireBotton:1];
+        [self drawHexagonicalWireBotton];
     }
 }
 
@@ -136,7 +133,46 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self prepareLogoImage];
 }
 
+#pragma mark - Public
+
+- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel
+{
+    self.hexagonicalBottonLayer.opacity = 1 - opacityLevel;
+}
+
+- (void)moveFakeButtonsToTop:(BOOL)moveToTop
+{
+    if (self.animationOn && [self enebleAnimation:moveToTop]) {
+        self.animationOn = NO;
+        self.disableFakeButtonLayersDrawing = YES;
+        
+        CGPoint endAnimValueInformationLayer = [self calculateEndPositionForInformationLayerWithMInizizedLayout:moveToTop];
+        CGPoint endAnimValueNotificationLayer = [self calculateEndPositionForNotificationLayerWithMInizizedLayout:moveToTop];
+        
+        CABasicAnimation *animationInformationLayer = [self animationPositionStart:self.informationLayer.position positionEnd:endAnimValueInformationLayer];
+        self.informationLayer.position = endAnimValueInformationLayer;
+        [self.informationLayer addAnimation:animationInformationLayer forKey:@"animationInformationLayer"];
+        
+        CABasicAnimation *animationNotificationLayer = [self animationPositionStart:self.notificationLayer.position positionEnd:endAnimValueNotificationLayer];
+        self.notificationLayer.position = endAnimValueNotificationLayer;
+        [self.notificationLayer addAnimation:animationNotificationLayer forKey:@"animationNotificationLayer"];
+    }
+}
+
+#pragma mark - AnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (anim == [self.notificationLayer animationForKey:@"animationNotificationLayer"]) {
+        self.animationOn = YES;
+        [self.notificationLayer removeAllAnimations];
+    }
+}
+
 #pragma mark - Private
+#pragma mark -
+
+#pragma mark - Constraints
 
 - (void)addConstraintsForView:(UIView *)view
 {
@@ -184,17 +220,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self.layer insertSublayer:self.hexagonicalTopLayer atIndex:0];
 }
 
-- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel
-{
-    self.gradientHexagonicalBottonLayer.startPoint = CGPointMake(0.5,opacityLevel);
-    if (opacityLevel < 0.01f) {
-        self.gradientHexagonicalBottonLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor,(__bridge id)[UIColor clearColor].CGColor ];
-    } else {
-        self.gradientHexagonicalBottonLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor whiteColor].CGColor ];
-    }
-}
-
-- (void)drawHexagonicalWireBotton:(CGFloat)opacityLevel
+- (void)drawHexagonicalWireBotton
 {
     [self.gradientHexagonicalBottonLayer removeFromSuperlayer];
     [self.hexagonicalBottonLayer removeFromSuperlayer];
@@ -209,9 +235,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
     self.gradientHexagonicalBottonLayer = [CAGradientLayer layer];
     self.gradientHexagonicalBottonLayer.frame = self.bounds;
-    self.gradientHexagonicalBottonLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor whiteColor].CGColor ];
-    self.gradientHexagonicalBottonLayer.startPoint = CGPointMake(0.5,opacityLevel);
-    self.gradientHexagonicalBottonLayer.endPoint = CGPointMake(0.5,1);
+    self.gradientHexagonicalBottonLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor whiteColor].CGColor];
+    self.gradientHexagonicalBottonLayer.startPoint = CGPointMake(0.5, 1);
+    self.gradientHexagonicalBottonLayer.endPoint = CGPointMake(0.5, 0);
     self.gradientHexagonicalBottonLayer.mask = self.hexagonicalBottonLayer;
 
     [self.layer insertSublayer:self.gradientHexagonicalBottonLayer atIndex:0];
@@ -384,6 +410,42 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 #pragma mark - Animations
 
+- (CABasicAnimation *)animationPositionStart:(CGPoint) startPoint positionEnd:(CGPoint) endPoint
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation.fromValue = [NSValue valueWithCGPoint:startPoint];
+    animation.toValue = [NSValue valueWithCGPoint:endPoint];
+    animation.duration = 0.3;
+    animation.delegate = self;
+    animation.removedOnCompletion = NO;
+    return animation;
+}
+
+- (CAAnimation *)layerPressAnimation
+{
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0f];
+    fadeAnimation.toValue = [NSNumber numberWithFloat:0.6f];
+    fadeAnimation.duration = 0.1f;
+    fadeAnimation.autoreverses = YES;
+    fadeAnimation.removedOnCompletion = YES;
+    
+    return fadeAnimation;
+}
+
+#pragma mark - Animations Related Calculations
+
+- (BOOL)enebleAnimation:(BOOL)enable
+{
+    if (enable && (self.notificationLayer.position.y != self.informationLayer.position.y + self.informationLayer.bounds.size.height * 0.75f)) {
+        return NO;
+    }
+    if (!enable && (self.informationLayer.position.y < self.notificationLayer.position.y)) {
+        return NO;
+    }
+    return YES;
+}
+
 - (CGPoint)calculateEndPositionForNotificationLayerWithMInizizedLayout:(BOOL)minimized
 {
     CGFloat startPositionX = self.notificationLayer.position.x;
@@ -407,74 +469,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     CGPoint position = CGPointMake( minimized ? startPositionX - deltaX : startPositionX + deltaX, startPositionY );
     return position;
-}
-
-- (CABasicAnimation *)animationPositionStart:(CGPoint) startPoint positionEnd:(CGPoint) endPoint
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    animation.fromValue = [NSValue valueWithCGPoint:startPoint];
-    animation.toValue = [NSValue valueWithCGPoint:endPoint];
-    animation.duration = 0.3;
-    animation.delegate = self;
-    animation.removedOnCompletion = NO;
-    return animation;
-}
-
-- (BOOL)enebleAnimation:(BOOL)minimizire
-{
-    if ((minimizire) && (self.notificationLayer.position.y != self.informationLayer.position.y + self.informationLayer.bounds.size.height * 0.75f)) {
-        return NO;
-    }
-    if ((!minimizire) && (self.informationLayer.position.y < self.notificationLayer.position.y)) {
-        return NO;
-    }
-    return YES;
-}
-
-- (void)animationMinimizireButtonTop:(BOOL)minimizire
-{
-    if (self.animationOn && [self enebleAnimation:minimizire])
-    {
-        self.animationOn = NO;
-        self.disableFakeButtonLayersDrawing = YES;
-
-        CGPoint endPositionInformationLayer = [self calculateEndPositionForInformationLayerWithMInizizedLayout:minimizire];
-        CGPoint endPositionNotificationLayer = [self calculateEndPositionForNotificationLayerWithMInizizedLayout:minimizire];
-        
-        CABasicAnimation *animationInformationLayer = [self animationPositionStart:self.informationLayer.position positionEnd:endPositionInformationLayer];
-        self.informationLayer.position = endPositionInformationLayer;
-
-        [self.informationLayer addAnimation:animationInformationLayer forKey:@"animationInformationLayer"];
-        
-        CABasicAnimation *animationNotificationLayer = [self animationPositionStart:self.notificationLayer.position positionEnd:endPositionNotificationLayer];
-
-        self.notificationLayer.position = endPositionNotificationLayer;
-
-        [self.notificationLayer addAnimation:animationNotificationLayer forKey:@"animationNotificationLayer"];
-    }
-}
-
-- (CAAnimation *)layerPressAnimation
-{
-    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0f];
-    fadeAnimation.toValue = [NSNumber numberWithFloat:0.6f];
-    fadeAnimation.duration = 0.1f;
-    fadeAnimation.autoreverses = YES;
-    fadeAnimation.removedOnCompletion = YES;
-    
-    return fadeAnimation;
-}
-
-#pragma mark AnimationDelegate
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (anim == [self.notificationLayer animationForKey:@"animationNotificationLayer"]) {
-        self.animationOn = YES;
-        [self.notificationLayer removeAllAnimations];
-        NSLog(@"stop animation YES");
-    }
 }
 
 #pragma mark - DrawText for Notification

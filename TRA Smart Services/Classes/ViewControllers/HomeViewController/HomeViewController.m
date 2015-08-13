@@ -47,7 +47,6 @@ static CGFloat const ZigZagViewTag = 1001;
     [self prepareZigZagView];
     [self.topView setNeedsLayout];
     [self prepareBackgroundForMenuCollectionView];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -112,12 +111,12 @@ static CGFloat const ZigZagViewTag = 1001;
     return cellSize;
 }
 
-#pragma mark UIScrollViewDelegate
+#pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == self.menuCollectionView) {
-        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f)*0.5f;
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
         __weak typeof(self) weakSelf = self;
         if ((scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < maxTopY)) {
             [self.view layoutIfNeeded];
@@ -136,32 +135,30 @@ static CGFloat const ZigZagViewTag = 1001;
                 [weakSelf.view layoutIfNeeded];
             }];
         }
-        CGFloat gradientOpacityValue = 1.0f / 0.45f + self.constraintVerticalMailCategoes.constant / (maxTopY * 0.45f);
-        if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f)
-        {
-            [self.topView animationMinimizireButtonTop:YES];
+        
+        CGFloat gradientOpacityValue = -self.constraintVerticalMailCategoes.constant / maxTopY;
+        if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f) {
+            [self.topView moveFakeButtonsToTop:YES];
             [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
-
         } else {
-            [self.topView animationMinimizireButtonTop:NO];
-            [weakSelf.topView drawWithGradientOpacityLevel:1.0f];
+            [self.topView moveFakeButtonsToTop:NO];
+            [weakSelf.topView drawWithGradientOpacityLevel:0];
         }
-    
     }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 {
     if (scrollView == self.menuCollectionView) {
-        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f)*0.5f;
-        __weak typeof(self) weakSelf = self;
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
         if ((self.constraintVerticalMailCategoes.constant < 0) && (self.constraintVerticalMailCategoes.constant > - maxTopY)) {
             self.topView.animationOn = YES;
-            [self.topView animationMinimizireButtonTop:YES];
+            [self.topView moveFakeButtonsToTop:YES];
             [self.view layoutIfNeeded];
+            __weak typeof(self) weakSelf = self;
             [UIView animateWithDuration:0.25 animations:^{
                 weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
-                [weakSelf.topView drawWithGradientOpacityLevel:0];
+                [weakSelf.topView drawWithGradientOpacityLevel:1];
                 [weakSelf.view layoutIfNeeded];
             }];
         }

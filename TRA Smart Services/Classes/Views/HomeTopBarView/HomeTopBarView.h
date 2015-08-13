@@ -31,6 +31,6 @@
 @property (unsafe_unretained, nonatomic) BOOL animationOn;
 
 - (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel;
-- (void)animationMinimizireButtonTop:(BOOL) minimizire;
+- (void)moveFakeButtonsToTop:(BOOL) minimizire;
 
 @end
