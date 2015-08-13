@@ -14,6 +14,7 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 
 @property (strong, nonatomic) UIView *previewLayer;
+@property (strong, nonatomic) UIView *scannerIndicatorView;
 
 @end
 
@@ -30,8 +31,22 @@
 #if !TARGET_IPHONE_SIMULATOR
         [self setupSession];
 #endif
+        [self prepareScanningIndicatorView];
     }
     return self;
+}
+
+- (void)prepareScanningIndicatorView
+{
+    self.scannerIndicatorView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.scannerIndicatorView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.scannerIndicatorView.layer.borderWidth = 1.f;
+    [self.previewLayer addSubview:self.scannerIndicatorView];
+}
+
+- (void)relayout
+{
+    self.videoPreviewLayer.frame = self.previewLayer.bounds;
 }
 
 - (void)startReading
@@ -104,16 +119,27 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
-    if (metadataObjects) {
+    if (metadataObjects.count) {
         AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects firstObject];
         for (NSString *type in [self allowedTypes]) {
             if ([metadataObj.type isEqualToString:type]) {
+                
+                AVMetadataMachineReadableCodeObject *barcodeObject = (AVMetadataMachineReadableCodeObject *)[self.videoPreviewLayer transformedMetadataObjectForMetadataObject:metadataObj];
+                __weak typeof(self) weakSelf = self;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weakSelf.scannerIndicatorView.frame = barcodeObject.bounds;
+                });
                 if (self.delegate && [self.delegate respondsToSelector:@selector(readerDidFinishCapturingWithResult:)]) {
                     [self.delegate readerDidFinishCapturingWithResult: metadataObj.stringValue];
                 }
                 self.isReading = NO;
             }
         }
+    } else {
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.scannerIndicatorView.frame = CGRectZero;
+        });
     }
 }
 

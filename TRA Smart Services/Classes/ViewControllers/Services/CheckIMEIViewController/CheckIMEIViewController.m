@@ -34,6 +34,13 @@
     [self prepareUI];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.reader relayout];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -148,6 +155,7 @@
     
     self.contentView.layer.cornerRadius = 8;
     self.contentView.layer.borderWidth = 1;
+    self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)endEditing

@@ -32,11 +32,12 @@
 		ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */; };
 		ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */; };
 		ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */; };
+		ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */; };
+		ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
 		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
 		ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */; };
-		ED6C8E031B7CB8E100519E96 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */; };
 		ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F1C1B6B9EC400C20402 /* HomeTopBarView.m */; };
@@ -125,6 +126,10 @@
 		ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationHeaderCell.m; sourceTree = "<group>"; };
 		ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
 		ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
+		ED3D98251B7CD6A4000DEEB8 /* CheckDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDomainViewController.h; sourceTree = "<group>"; };
+		ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDomainViewController.m; sourceTree = "<group>"; };
+		ED3D98281B7CD6A4000DEEB8 /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
+		ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIViewController.m; sourceTree = "<group>"; };
 		ED5A34371B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpacityCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpacityCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		ED5A343A1B6EACAC0082AF5B /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
@@ -133,8 +138,6 @@
 		ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonicalImage.m; sourceTree = "<group>"; };
 		ED6C8DF91B7B9D1900519E96 /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
 		ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
-		ED6C8E011B7CB8E100519E96 /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
-		ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIViewController.m; sourceTree = "<group>"; };
 		ED6C8E051B7CB90800519E96 /* BarcodeCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeCodeReader.h; sourceTree = "<group>"; };
 		ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeCodeReader.m; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +320,33 @@
 			path = InformationTableViewCell;
 			sourceTree = "<group>";
 		};
+		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
+				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D98251B7CD6A4000DEEB8 /* CheckDomainViewController.h */,
+				ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */,
+			);
+			path = CheckDomainViewController;
+			sourceTree = "<group>";
+		};
+		ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D98281B7CD6A4000DEEB8 /* CheckIMEIViewController.h */,
+				ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */,
+			);
+			path = CheckIMEIViewController;
+			sourceTree = "<group>";
+		};
 		ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,15 +390,6 @@
 				ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */,
 			);
 			path = "NSArray+Reverse";
-			sourceTree = "<group>";
-		};
-		ED6C8E001B7CB8D200519E96 /* CheckIMEIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED6C8E011B7CB8E100519E96 /* CheckIMEIViewController.h */,
-				ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */,
-			);
-			path = CheckIMEIViewController;
 			sourceTree = "<group>";
 		};
 		ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */ = {
@@ -431,7 +452,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED6C8E001B7CB8D200519E96 /* CheckIMEIViewController */,
+				ED3D98231B7CD6A4000DEEB8 /* Services */,
 				EDC04F8F1B70E3490071BADA /* Login */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
@@ -891,8 +912,8 @@
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
+				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
-				ED6C8E031B7CB8E100519E96 /* CheckIMEIViewController.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
@@ -923,6 +944,7 @@
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,

@@ -27,8 +27,10 @@
     InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
     [speedCheker performFastInternetSpeedTest];
     speedCheker.delegate = self;
-        
-     return YES;
+    
+    self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
+    
+    return YES;
 }
 
 #pragma mark - InternetSpeedCheckerDelegate

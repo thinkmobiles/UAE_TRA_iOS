@@ -72,12 +72,12 @@
 
 - (void)setRTLArabicUI
 {
-    NSLog(@"Arabic");
+    //dummy
 }
 
 - (void)setLTREuropeUI
 {
-    NSLog(@"Normal");
+    //dummy
 }
 
 #pragma mark - Private

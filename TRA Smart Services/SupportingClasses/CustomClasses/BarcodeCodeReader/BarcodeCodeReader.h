@@ -27,4 +27,6 @@
 - (instancetype)initWithView:(UIView *)viewPreview;
 - (void)startStopReading;
 
+- (void)relayout;
+
 @end

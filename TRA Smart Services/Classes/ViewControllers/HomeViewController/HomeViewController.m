@@ -17,7 +17,8 @@ static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
 static CGFloat const ZigZagViewTag = 1001;
 
-static NSString *const HomeBarcodeReaderSegueIdentifier = @"homeBarcodeReaderSegue";
+static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
+static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
 
 @interface HomeViewController ()
 
@@ -89,7 +90,16 @@ static NSString *const HomeBarcodeReaderSegueIdentifier = @"homeBarcodeReaderSeg
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (collectionView == self.mainCategoryCollectionView) {
-
+        NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
+        
+        switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+            case 7:
+                [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
+                break;
+                
+            default:
+                break;
+        }
 
     } else {
         NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
@@ -295,7 +305,7 @@ static NSString *const HomeBarcodeReaderSegueIdentifier = @"homeBarcodeReaderSeg
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    self.topView.logoImage = [UIImage imageNamed:@"1.jpg"];
+    self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
     self.topView.userInitials = @"gK";
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];

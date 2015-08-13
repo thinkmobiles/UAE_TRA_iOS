@@ -95,7 +95,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
                 if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
                     [self.delegate topBarLogoImageDidTouched:self];
                 }
-                [self.imageLayer addAnimation:[self layerPressAnimation] forKey:nil];
             }
         }
     }
@@ -403,17 +402,17 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     layer.frame = rect;
     layer.backgroundColor = [UIColor defaultOrangeColor].CGColor;
     if (mainLogo) {
-        layer.contents = (__bridge id __nullable)(image).CGImage;
-    } else {
-        CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
-        CALayer *imageLayer = [CALayer layer];
-        imageLayer.frame = centerRect;
-        imageLayer.backgroundColor = [UIColor clearColor].CGColor;
-        imageLayer.contents =(__bridge id __nullable)(image).CGImage;
-        imageLayer.contentsGravity = kCAGravityResizeAspect;
-        
-        [layer addSublayer:imageLayer];
+        layer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
     }
+    
+    CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.frame = centerRect;
+    imageLayer.backgroundColor = [UIColor clearColor].CGColor;
+    imageLayer.contents =(__bridge id __nullable)(image).CGImage;
+    imageLayer.contentsGravity = kCAGravityResizeAspect;
+    
+    [layer addSublayer:imageLayer];
     layer.contentsGravity = kCAGravityResizeAspect;
     
     return layer;
