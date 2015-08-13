@@ -71,6 +71,7 @@
 		EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DEB1B6A338000334503 /* MenuCollectionViewCell.m */; };
 		EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF01B6A33A600334503 /* HexagonView.m */; };
 		EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */; };
+		EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +202,8 @@
 		EDEC9DF01B6A33A600334503 /* HexagonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonView.m; sourceTree = "<group>"; };
 		EDEC9DF31B6A381500334503 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFeedbackViewController.h; sourceTree = "<group>"; };
+		EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFeedbackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +326,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
 				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
 			);
@@ -826,6 +830,15 @@
 			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */,
+				EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */,
+			);
+			path = PostFeedbackViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -943,6 +956,7 @@
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
+				EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,

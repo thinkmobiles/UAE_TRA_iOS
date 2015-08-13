@@ -19,6 +19,7 @@ static CGFloat const ZigZagViewTag = 1001;
 
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
+static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue";
 
 @interface HomeViewController ()
 
@@ -93,24 +94,31 @@ static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
         NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
         
         switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-            case 7:
+            case 7: {
                 [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
                 break;
-                
-            default:
+            }
+            default: {
+                [AppHelper alertViewWithMessage:MessageNotImplemented];
                 break;
+            }
         }
-
     } else {
         NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
         
         switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-            case 2:
+            case 2: {
                 [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
                 break;
-                
-            default:
+            }
+            case 4: {
+                [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
                 break;
+            }
+            default: {
+                [AppHelper alertViewWithMessage:MessageNotImplemented];
+                break;
+            }
         }
     }
 }
