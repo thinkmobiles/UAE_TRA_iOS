@@ -9,6 +9,7 @@
 @interface UIImage (DrawText)
 
 - (UIImage *)drawText:(NSString *)textToDraw atPoint:(CGPoint)pointToDraw withAttributes:(NSDictionary *)textAttributes;
+- (UIImage *)drawText:(NSString *)textToDraw atPoint:(CGPoint)pointToDraw withAttributes:(NSDictionary *)textAttributes inRect:(CGRect)rect;
 + (UIImage *)imageWithColor:(UIColor *)color inRect:(CGRect)imageRect;
 
 @end

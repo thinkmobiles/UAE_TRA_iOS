@@ -10,7 +10,6 @@
 #define setMustOverride() NSLog(@"%@ - method not implemented", NSStringFromClass([self class])); mustOverride()
 
 #import "BaseDynamicUIViewController.h"
-#import "RTLController.h"
 
 @implementation BaseDynamicUIViewController
 

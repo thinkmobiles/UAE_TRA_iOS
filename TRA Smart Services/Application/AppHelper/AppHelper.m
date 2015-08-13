@@ -30,7 +30,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (UIView *)topView
 {
-    return [UIApplication sharedApplication].keyWindow;
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).window;
 }
 
 #pragma mark - InformationView

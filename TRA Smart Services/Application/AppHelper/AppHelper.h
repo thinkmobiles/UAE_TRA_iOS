@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+static NSString *const MessageEmptyInputParameter = @"Input parameters cant be empty";
+
 @interface AppHelper : NSObject
 
 + (UITabBarController *)rootViewController;

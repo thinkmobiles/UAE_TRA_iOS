@@ -7,7 +7,6 @@
 //
 
 #import "SettingViewController.h"
-#import "UIImage+DrawText.h"
 #import "RTLController.h"
 
 @interface SettingViewController ()

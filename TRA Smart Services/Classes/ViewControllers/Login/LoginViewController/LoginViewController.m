@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "Animation.h"
 #import "ForgotPasswordViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -58,6 +59,7 @@
 
 - (void)closeButtonPressed
 {
+    self.navigationController.navigationBar.hidden = YES;
     [self.view.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"dismissView"];
     self.view.layer.opacity = 0.0f;
 }

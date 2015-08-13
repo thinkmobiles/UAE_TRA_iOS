@@ -10,11 +10,14 @@
 #import "MenuCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
 #import "HexagonicalImage.h"
+#import "AppDelegate.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
 static CGFloat const ZigZagViewTag = 1001;
+
+static NSString *const HomeBarcodeReaderSegueIdentifier = @"homeBarcodeReaderSegue";
 
 @interface HomeViewController ()
 
@@ -87,8 +90,18 @@ static CGFloat const ZigZagViewTag = 1001;
 {
     if (collectionView == self.mainCategoryCollectionView) {
 
+
     } else {
+        NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
         
+        switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+            case 2:
+                [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -189,7 +202,6 @@ static CGFloat const ZigZagViewTag = 1001;
             [UIView animateWithDuration:0.25 animations:^{
                 weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
                 [weakSelf.topView drawWithGradientOpacityLevel:1];
-                [weakSelf.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 weakSelf.bottomAnimationsEnable = YES;
             }];
@@ -216,7 +228,13 @@ static CGFloat const ZigZagViewTag = 1001;
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-    NSLog(@"Logo");
+    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+    viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+#ifdef __IPHONE_8_0
+    viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+#endif
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self.navigationController presentViewController:viewController animated:NO completion:nil];
 }
 
 #pragma mark - Notifications
@@ -277,7 +295,7 @@ static CGFloat const ZigZagViewTag = 1001;
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-//    self.topView.logoImage = [UIImage imageNamed:@"1.jpg"];
+    self.topView.logoImage = [UIImage imageNamed:@"1.jpg"];
     self.topView.userInitials = @"gK";
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];

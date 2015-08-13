@@ -389,9 +389,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
     CGRect notificationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.75f, hexagonSize.width, hexagonSize.height);
     
-    UIImage *imageWithText = [self imageWithNotificationsInRect:notificationLayerRect];
+//    UIImage *imageWithText = [self imageWithNotificationsInRect:notificationLayerRect];
     
-    self.notificationLayer = [self layerWithImage:imageWithText inRect:notificationLayerRect forMainLogo:NO];
+    self.notificationLayer = [self layerWithImage:self.notificationButtonImage inRect:notificationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.notificationLayer];
     
     [self.layer insertSublayer:self.notificationLayer below:self.hexagonicalTopLayer];
@@ -492,12 +492,17 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 #pragma mark - DrawText for Notification
 
+
 - (UIImage *)imageWithNotificationsInRect:(CGRect)rect
 {
     NSString *textToDraw = [NSString stringWithFormat:@"%i", (int)self.notificationsCount];
     CGSize textSize = [textToDraw sizeWithAttributes:[self textAttributes]];
     
-    UIImage *imageWithText = [self.notificationButtonImage drawText:textToDraw atPoint:CGPointMake(self.notificationButtonImage.size.width / 2, self.notificationButtonImage.size.height / 2 - textSize.height / 2)  withAttributes:[self textAttributes]];
+    if (!self.notificationsCount) {
+        textToDraw = @"";
+    }
+
+    UIImage *imageWithText = [self.notificationButtonImage drawText:textToDraw atPoint:CGPointMake(self.notificationButtonImage.size.width / 2, self.notificationButtonImage.size.height / 2 - textSize.height / 2)  withAttributes:[self textAttributes] inRect:rect];
     
     return imageWithText;
 }

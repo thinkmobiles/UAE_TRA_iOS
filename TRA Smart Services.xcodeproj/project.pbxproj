@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846D8DFD1B6F8622002B7146 /* ServiceList.plist */; };
-		84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5ADDC1B5E62AC0013296B /* InformationViewController.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -37,6 +36,8 @@
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
 		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
 		ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */; };
+		ED6C8E031B7CB8E100519E96 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */; };
+		ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F1C1B6B9EC400C20402 /* HomeTopBarView.m */; };
 		ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7D9F1D1B6B9EC400C20402 /* HomeTopBarView.xib */; };
@@ -73,8 +74,6 @@
 
 /* Begin PBXFileReference section */
 		846D8DFD1B6F8622002B7146 /* ServiceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceList.plist; sourceTree = "<group>"; };
-		84B5ADDB1B5E62AC0013296B /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
-		84B5ADDC1B5E62AC0013296B /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -134,6 +133,10 @@
 		ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonicalImage.m; sourceTree = "<group>"; };
 		ED6C8DF91B7B9D1900519E96 /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
 		ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
+		ED6C8E011B7CB8E100519E96 /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
+		ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIViewController.m; sourceTree = "<group>"; };
+		ED6C8E051B7CB90800519E96 /* BarcodeCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeCodeReader.h; sourceTree = "<group>"; };
+		ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeCodeReader.m; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,15 +212,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84B5ADDA1B5E62540013296B /* InformationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				84B5ADDB1B5E62AC0013296B /* InformationViewController.h */,
-				84B5ADDC1B5E62AC0013296B /* InformationViewController.m */,
-			);
-			path = InformationViewController;
-			sourceTree = "<group>";
-		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +362,24 @@
 			path = "NSArray+Reverse";
 			sourceTree = "<group>";
 		};
+		ED6C8E001B7CB8D200519E96 /* CheckIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED6C8E011B7CB8E100519E96 /* CheckIMEIViewController.h */,
+				ED6C8E021B7CB8E100519E96 /* CheckIMEIViewController.m */,
+			);
+			path = CheckIMEIViewController;
+			sourceTree = "<group>";
+		};
+		ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+				ED6C8E051B7CB90800519E96 /* BarcodeCodeReader.h */,
+				ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */,
+			);
+			path = BarcodeCodeReader;
+			sourceTree = "<group>";
+		};
 		ED7192731B5450D60086C6EE = {
 			isa = PBXGroup;
 			children = (
@@ -419,8 +431,8 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED6C8E001B7CB8D200519E96 /* CheckIMEIViewController */,
 				EDC04F8F1B70E3490071BADA /* Login */,
-				84B5ADDA1B5E62540013296B /* InformationViewController */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
@@ -564,6 +576,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */,
 				ED2369C71B71E8D200F0F882 /* InternetSpeedChecker */,
 				ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */,
 				ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */,
@@ -870,6 +883,7 @@
 			files = (
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,
+				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
 				ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */,
@@ -878,6 +892,7 @@
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
+				ED6C8E031B7CB8E100519E96 /* CheckIMEIViewController.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
@@ -907,7 +922,6 @@
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
-				84B5ADDD1B5E62AC0013296B /* InformationViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,

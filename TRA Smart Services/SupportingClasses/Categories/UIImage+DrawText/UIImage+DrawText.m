@@ -23,6 +23,17 @@
     return imageWithText;
 }
 
+- (UIImage *)drawText:(NSString *)textToDraw atPoint:(CGPoint)pointToDraw withAttributes:(NSDictionary *)textAttributes inRect:(CGRect)rect
+{
+    UIGraphicsBeginImageContext(rect.size);
+    [self drawInRect:CGRectMake(0, 0, self.size.width, self.size.height)];
+    [textToDraw drawAtPoint:pointToDraw withAttributes:textAttributes];
+    UIImage *imageWithText = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageWithText;
+}
+
 + (UIImage *)imageWithColor:(UIColor *)color inRect:(CGRect)imageRect
 {
     UIGraphicsBeginImageContext(imageRect.size);
