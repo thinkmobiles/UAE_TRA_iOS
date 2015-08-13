@@ -4,6 +4,16 @@
 <array>
 	<dict>
 		<key>serviceID</key>
+		<string>6</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.6</string>
+		<key>serviceLogo</key>
+		<string>ic_global</string>
+		<key>serviceOrder</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
 		<string>4</string>
 		<key>serviceName</key>
 		<string>speedAccess.service.name.4</string>

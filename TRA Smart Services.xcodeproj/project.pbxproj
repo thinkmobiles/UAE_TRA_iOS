@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846D8DFD1B6F8622002B7146 /* ServiceList.plist */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -72,10 +71,11 @@
 		EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF01B6A33A600334503 /* HexagonView.m */; };
 		EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */; };
 		EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */; };
+		EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */; };
+		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		846D8DFD1B6F8622002B7146 /* ServiceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceList.plist; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -204,6 +204,10 @@
 		EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFeedbackViewController.h; sourceTree = "<group>"; };
 		EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFeedbackViewController.m; sourceTree = "<group>"; };
+		EDF30AAA1B7CF693001B4441 /* HelpSalimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpSalimViewController.h; sourceTree = "<group>"; };
+		EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpSalimViewController.m; sourceTree = "<group>"; };
+		EDF30AAE1B7CF9AC001B4441 /* CoverageReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverageReportViewController.h; sourceTree = "<group>"; };
+		EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageReportViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +330,8 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
+				EDF30AA91B7CF687001B4441 /* HelpSalimViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
 				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
@@ -639,7 +645,6 @@
 			isa = PBXGroup;
 			children = (
 				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
-				846D8DFD1B6F8622002B7146 /* ServiceList.plist */,
 				EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */,
 				EDA549811B7B514F00440216 /* OtherServices.plist */,
 			);
@@ -839,6 +844,24 @@
 			path = PostFeedbackViewController;
 			sourceTree = "<group>";
 		};
+		EDF30AA91B7CF687001B4441 /* HelpSalimViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDF30AAA1B7CF693001B4441 /* HelpSalimViewController.h */,
+				EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */,
+			);
+			path = HelpSalimViewController;
+			sourceTree = "<group>";
+		};
+		EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDF30AAE1B7CF9AC001B4441 /* CoverageReportViewController.h */,
+				EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */,
+			);
+			path = CoverageReportViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -899,7 +922,6 @@
 			files = (
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
-				846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
@@ -926,6 +948,7 @@
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
+				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
@@ -962,6 +985,7 @@
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
+				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
 				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,
 				ED2084F21B5E738600779CBD /* UIButton+AFNetworking.m in Sources */,

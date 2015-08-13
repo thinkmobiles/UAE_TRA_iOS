@@ -20,6 +20,8 @@ static CGFloat const ZigZagViewTag = 1001;
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
 static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue";
+static NSString *const HomeToHelpSalimSequeIdentifier = @"HomeToHelpSalimSeque";
+static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
 
 @interface HomeViewController ()
 
@@ -98,6 +100,10 @@ static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue
                 [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
                 break;
             }
+            case 8: {
+                [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
+                break;
+            }
             default: {
                 [AppHelper alertViewWithMessage:MessageNotImplemented];
                 break;
@@ -115,6 +121,11 @@ static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue
                 [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
                 break;
             }
+            case 6: {
+                [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+                break;
+            }
+
             default: {
                 [AppHelper alertViewWithMessage:MessageNotImplemented];
                 break;

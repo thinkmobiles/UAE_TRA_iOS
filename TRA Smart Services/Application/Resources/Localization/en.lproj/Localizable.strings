@@ -54,18 +54,6 @@
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
 
-//InformationViewController
-
-"information.service.service_1" = "About this serviced";
-"information.service.service_2" = "Service Package";
-"information.service.service_3" = "Start the Service";
-"information.service.service_4" = "Expected time";
-"information.service.service_5" = "Officer in charge of this service";
-"information.service.service_6" = "Reguired documents";
-"information.service.service_7" = "Service fee";
-"information.service.service_8" = "Terms and conditions";
-"information.service.title" = "Addressing Consumer disputes requert with licensees on telecommunications services";
-
 //HomeViewController
 
 "speedAccess.service.name.0" = "Domain Info";
