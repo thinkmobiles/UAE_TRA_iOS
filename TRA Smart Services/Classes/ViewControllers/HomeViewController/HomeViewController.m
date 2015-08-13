@@ -37,6 +37,7 @@ static CGFloat const ZigZagViewTag = 1001;
     [super viewDidLoad];
     
     [self prepareTopBar];
+    self.topView.animationOn = YES;
 }
 
 - (void)viewDidLayoutSubviews
@@ -46,6 +47,7 @@ static CGFloat const ZigZagViewTag = 1001;
     [self prepareZigZagView];
     [self.topView setNeedsLayout];
     [self prepareBackgroundForMenuCollectionView];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -135,8 +137,6 @@ static CGFloat const ZigZagViewTag = 1001;
             }];
         }
         CGFloat gradientOpacityValue = 1.0f / 0.45f + self.constraintVerticalMailCategoes.constant / (maxTopY * 0.45f);
-        NSLog(@"%F",gradientOpacityValue);
-
         if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f)
         {
             [self.topView animationMinimizireButtonTop:YES];
@@ -154,11 +154,11 @@ static CGFloat const ZigZagViewTag = 1001;
 {
     if (scrollView == self.menuCollectionView) {
         CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f)*0.5f;
-
-        [self.view layoutIfNeeded];
         __weak typeof(self) weakSelf = self;
         if ((self.constraintVerticalMailCategoes.constant < 0) && (self.constraintVerticalMailCategoes.constant > - maxTopY)) {
+            self.topView.animationOn = YES;
             [self.topView animationMinimizireButtonTop:YES];
+            [self.view layoutIfNeeded];
             [UIView animateWithDuration:0.25 animations:^{
                 weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
                 [weakSelf.topView drawWithGradientOpacityLevel:0];
