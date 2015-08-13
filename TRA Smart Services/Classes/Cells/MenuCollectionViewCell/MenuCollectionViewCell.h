@@ -23,5 +23,6 @@ static NSString *const MenuCollectionViewCellIdentifier = @"menuCell";
 @property (weak, nonatomic) IBOutlet UILabel *menuTitleLabel;
 
 @property (assign, nonatomic) PresentationMode cellPresentationMode;
+@property (assign, nonatomic) NSUInteger categoryID;
 
 @end

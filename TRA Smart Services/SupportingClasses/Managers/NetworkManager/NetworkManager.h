@@ -8,31 +8,24 @@
 
 #import "AFNetworkReachabilityManager.h"
 
+typedef NS_ENUM(NSUInteger, ServiceType) {
+    ServiceTypeGetDomainData = 0,
+    ServiceTypeGetDomainAvaliability = 1,
+    ServiceTypeSearchMobileIMEI = 2,
+    ServiceTypeSearchMobileBrand = 3,
+    ServiceTypeFeedback = 4,
+    ServiceTypeSMSSpamReport = 5,
+    ServiceTypeHelpSalim = 6,
+    ServiceTypeVerification = 7,
+    ServiceTypeCoverage = 8,
+    ServiceTypeInternetSpeedTest = 9
+};
+
 typedef void(^ResponseBlock)(id response, NSError *error);
-
-typedef NS_ENUM(NSUInteger, BlockingWebsite) {
-    BlockingWebsiteUndefined,
-    BlockingWebsiteWebURL,
-    BlockingWebsiteWioioebURLooooBadKayName
-};
-
-typedef NS_ENUM(NSUInteger, SocketRequestType) {
-    SocketRequestTypeUndefined,
-    SocketRequestTypeDomainData,
-    SocketRequestTypeDomainAvaliability
-};
-
-@protocol NetworkManagerDelegate <NSObject>
-
-@required
-- (void)networkManagerDidReceiveResponseType:(SocketRequestType)responseType response:(id)response error:(NSError *)responseError;
-
-@end
 
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
 @property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
-@property (weak, nonatomic) id <NetworkManagerDelegate> delegate;
 
 + (instancetype)sharedManager;
 

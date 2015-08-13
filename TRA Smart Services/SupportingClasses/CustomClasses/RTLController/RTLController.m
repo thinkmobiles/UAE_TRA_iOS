@@ -64,6 +64,10 @@
         for (UIView * subView in subViews) {
             [self updateConstraintForView:subView];
             [self updateSubviewForParentViewIfPossible:subView];
+            
+            [subView updateConstraintsIfNeeded];
+            [subView setNeedsUpdateConstraints];
+            [subView.superview layoutIfNeeded];
         }
     }
 }

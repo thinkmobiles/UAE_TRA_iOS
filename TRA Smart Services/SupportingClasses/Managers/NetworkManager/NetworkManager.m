@@ -14,16 +14,6 @@
 @interface NetworkManager()
 
 @property (strong, nonatomic) AFHTTPRequestOperationManager *manager;
-@property (copy, nonatomic) NSString *noCRMAccessToken;
-
-@end
-
-@interface NetworkManager()
-
-@property (strong, nonatomic) NSInputStream *inputStream;
-@property (strong, nonatomic) NSOutputStream *outputStream;
-@property (strong, nonatomic) NSMutableData *responseData;
-@property (assign, nonatomic) SocketRequestType socketRequestType;
 
 @end
 

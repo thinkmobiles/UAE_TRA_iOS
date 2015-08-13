@@ -22,12 +22,14 @@
 {
     [DynamicUIService service];
     [AppHelper prepareTabBarItems];
+    [AppHelper prepareTabBarGradient];
     
     InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
     [speedCheker performFastInternetSpeedTest];
-//    [speedCheker performAccurateInternetTest];
     speedCheker.delegate = self;
     
+    if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
+    }
      
      return YES;
 }

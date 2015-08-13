@@ -10,8 +10,8 @@
 
 "tabBarMenu_item_1" = "Home";
 "tabBarMenu_item_2" = "Favourite";
-"tabBarMenu_item_3" = "Index";
-"tabBarMenu_item_4" = "CRM";
+"tabBarMenu_item_3" = "Info Hub";
+"tabBarMenu_item_4" = "Inquires";
 "tabBarMenu_item_5" = "Settings";
 
 //LoginViewController
@@ -65,3 +65,16 @@
 "information.service.service_7" = "Service fee";
 "information.service.service_8" = "Terms and conditions";
 "information.service.title" = "Addressing Consumer disputes requert with licensees on telecommunications services";
+
+//HomeViewController
+
+"speedAccess.service.name.0" = "Domain Info1";
+"speedAccess.service.name.1" = "Domain Avaliability1";
+"speedAccess.service.name.2" = "Check IMEI1";
+"speedAccess.service.name.3" = "Mobile Brand1";
+"speedAccess.service.name.4" = "Feedback1";
+"speedAccess.service.name.5" = "Spam Report1";
+"speedAccess.service.name.6" = "Help Salim1";
+"speedAccess.service.name.7" = "Verification1";
+"speedAccess.service.name.8" = "Coverage1";
+"speedAccess.service.name.9" = "Internet1";

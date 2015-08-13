@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "UIImage+DrawText.h"
+#import "RTLController.h"
 
 @interface SettingViewController ()
 
@@ -43,6 +44,9 @@
     [super viewDidLoad];
 
     [self prepareSegmentsView];
+    
+    RTLController *rtl = [[RTLController alloc] init];
+    [rtl disableRTLForView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,6 +57,7 @@
     [self updateFontSizeSegmentControlPosition];
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 #pragma mark - IBActions
@@ -89,7 +94,6 @@
     }
     
     [self localizeUI];
-    
     [self updateLanguageSegmentControlPosition];
 }
 

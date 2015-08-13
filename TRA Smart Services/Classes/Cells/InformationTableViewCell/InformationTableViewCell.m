@@ -7,7 +7,6 @@
 //
 
 #import "InformationTableViewCell.h"
-#import "RTLController.h"
 
 @implementation InformationTableViewCell
 

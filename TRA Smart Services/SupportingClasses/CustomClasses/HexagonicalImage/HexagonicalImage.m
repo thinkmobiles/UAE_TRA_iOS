@@ -40,6 +40,7 @@ static NSInteger HexagonQuantity = 10;
     UIGraphicsBeginImageContext(imageRect.size);
     for (int i = 0; i < HexagonQuantity; i++) {
         UIBezierPath *hexagonPath = [self hexagonRandomPathInRect:imageRect];
+        hexagonPath.lineWidth = 2.f;
         CGContextSaveGState(UIGraphicsGetCurrentContext()); {
             [hexagonPath addClip];
             [self.rectColor setStroke];

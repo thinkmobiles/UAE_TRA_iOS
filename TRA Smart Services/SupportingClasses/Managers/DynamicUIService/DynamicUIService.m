@@ -46,6 +46,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (void)setLanguage:(LanguageType)language
 {
+    LanguageType prevType = _language;
     _language = language;
     
     NSString *languageCode;
@@ -66,6 +67,16 @@ static NSString *const KeyLanguageArabic = @"ar";
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self setLocaleWithLanguage:languageCode];
+    
+    if (prevType != language ) {
+        if (prevType == LanguageTypeArabic) {
+            [AppHelper reverseTabBarItems];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetLTRUI object:nil];
+        } else if (language == LanguageTypeArabic) {
+            [AppHelper reverseTabBarItems];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
+        }
+    }
 }
 
 #pragma mark - ColorScheme

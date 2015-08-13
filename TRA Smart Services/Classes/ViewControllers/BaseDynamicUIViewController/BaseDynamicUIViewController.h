@@ -12,4 +12,7 @@
 - (void)localizeUI;
 - (void)updateColors;
 
+- (void)setRTLArabicUI;
+- (void)setLTREuropeUI;
+
 @end

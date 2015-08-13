@@ -16,4 +16,8 @@ static NSString *const CategoryCollectionViewCellIdentifier = @"categoryCell";
 @property (weak, nonatomic) IBOutlet UIImageView *categoryLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *categoryTitleLabel;
 
+@property (assign, nonatomic) NSUInteger categoryID;
+
+- (void)setTintColorForLabel:(UIColor *)color;
+
 @end

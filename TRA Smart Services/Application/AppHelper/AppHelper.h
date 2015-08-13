@@ -22,5 +22,7 @@
 + (void)hideLoader;
 
 + (void)prepareTabBarItems;
++ (void)reverseTabBarItems;
++ (void)prepareTabBarGradient;
 
 @end

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Inquiries-->
         <scene sceneID="ntu-wX-F5s">
             <objects>
                 <viewController id="Ylg-l3-PgM" sceneMemberID="viewController">
@@ -35,13 +35,13 @@
                             <constraint firstItem="gNe-me-fgi" firstAttribute="centerX" secondItem="b2G-05-2MB" secondAttribute="centerX" id="aLh-yq-tNI"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="home153" id="xBk-B8-hVq"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Inquiries" image="ic_inq" id="xBk-B8-hVq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="km3-UF-Lxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1123" y="1674"/>
         </scene>
-        <!--Item 2-->
+        <!--Favourite-->
         <scene sceneID="hfd-DE-eJz">
             <objects>
                 <viewController id="VHI-KM-fqJ" sceneMemberID="viewController">
@@ -54,11 +54,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-3B-n5g" userLabel="Show Login">
-                                <rect key="frame" x="268" y="261" width="64" height="30"/>
+                                <rect key="frame" x="269" y="261" width="63" height="30"/>
                                 <animations/>
                                 <state key="normal" title="test login"/>
                                 <connections>
-                                    <segue destination="sVq-f5-LAL" kind="presentation" animates="NO" modalPresentationStyle="overCurrentContext" id="imC-Kf-DsY"/>
+                                    <segue destination="sVq-f5-LAL" kind="presentation" modalPresentationStyle="overCurrentContext" animates="NO" id="imC-Kf-DsY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -69,13 +69,13 @@
                             <constraint firstItem="vaJ-3B-n5g" firstAttribute="centerY" secondItem="MTw-6b-74T" secondAttribute="centerY" id="uGM-74-pm3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="home153" id="69N-iA-H8m"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Favourite" image="ic_favorites" id="69N-iA-H8m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1J-cM-BDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1123" y="207"/>
         </scene>
-        <!--Item-->
+        <!--Info Hub-->
         <scene sceneID="Z79-gI-UVL">
             <objects>
                 <viewController id="TQi-Yr-SCA" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="home153" id="PZq-U9-BB8"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Info Hub" image="ic_info" id="PZq-U9-BB8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLe-IC-Zw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -737,7 +737,7 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="20" width="600" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-bB-Kqg">
-                                        <rect key="frame" x="18" y="8" width="39" height="30"/>
+                                        <rect key="frame" x="18" y="8" width="40" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Close">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -916,7 +916,7 @@ a new password will be sent.</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-bB-4z9" userLabel="Label UserName">
                                                         <rect key="frame" x="42" y="0.0" width="235" height="70"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1335,7 +1335,7 @@ a new password will be sent.</string>
                             <constraint firstAttribute="height" secondItem="lrP-zw-Mue" secondAttribute="height" priority="750" id="wMa-Ep-Q3S"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="home153" id="cly-in-d9x"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Setting" image="ic_settings" id="cly-in-d9x"/>
                     <toolbarItems/>
                     <connections>
                         <outlet property="colorThemeLabel" destination="cRd-bO-306" id="iGp-xI-5Ec"/>
@@ -1363,7 +1363,7 @@ a new password will be sent.</string>
         <scene sceneID="Na0-wG-p6t">
             <objects>
                 <tabBarController id="94k-ip-LBm" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="rW9-C4-9yr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1371,10 +1371,10 @@ a new password will be sent.</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kq0-Dx-8Tn" kind="relationship" relationship="viewControllers" id="PX4-CA-BfY"/>
+                        <segue destination="oBx-Gx-wdB" kind="relationship" relationship="viewControllers" id="PX4-CA-BfY"/>
+                        <segue destination="VHI-KM-fqJ" kind="relationship" relationship="viewControllers" id="3AC-Bf-LwD"/>
                         <segue destination="TQi-Yr-SCA" kind="relationship" relationship="viewControllers" id="1h2-El-9aF"/>
                         <segue destination="Ylg-l3-PgM" kind="relationship" relationship="viewControllers" id="DaG-Jq-lcO"/>
-                        <segue destination="VHI-KM-fqJ" kind="relationship" relationship="viewControllers" id="3AC-Bf-LwD"/>
                         <segue destination="uFL-R4-sWm" kind="relationship" relationship="viewControllers" id="vG7-XI-Azj"/>
                     </connections>
                 </tabBarController>
@@ -1416,6 +1416,9 @@ a new password will be sent.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-Bg-wVf" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-4i-Son" userLabel="BackgroundView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJC-Yl-glo" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                         <subviews>
@@ -1426,7 +1429,7 @@ a new password will be sent.</string>
                                             </view>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="PFo-5b-foy" firstAttribute="leading" secondItem="YJC-Yl-glo" secondAttribute="leading" id="06B-1N-L0n"/>
                                             <constraint firstItem="PFo-5b-foy" firstAttribute="centerY" secondItem="YJC-Yl-glo" secondAttribute="centerY" id="CKr-XC-SpB"/>
@@ -1458,8 +1461,8 @@ a new password will be sent.</string>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRH-zT-RmH" userLabel="Polygon - UIView" customClass="HexagonView">
                                                                     <rect key="frame" x="10" y="0.0" width="70" height="82"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-7M-nqD" userLabel="ItemLogo - UiIMageView">
-                                                                            <rect key="frame" x="0.0" y="21" width="70" height="41"/>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chat" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-7M-nqD" userLabel="ItemLogo - UiIMageView">
+                                                                            <rect key="frame" x="8" y="21" width="54" height="41"/>
                                                                             <animations/>
                                                                         </imageView>
                                                                     </subviews>
@@ -1470,12 +1473,12 @@ a new password will be sent.</string>
                                                                         <constraint firstAttribute="width" secondItem="vRH-zT-RmH" secondAttribute="height" multiplier="35:41" id="7Jg-7c-pjR"/>
                                                                         <constraint firstItem="ZhU-7M-nqD" firstAttribute="centerY" secondItem="vRH-zT-RmH" secondAttribute="centerY" id="LXV-Wl-uH0"/>
                                                                         <constraint firstItem="ZhU-7M-nqD" firstAttribute="height" secondItem="vRH-zT-RmH" secondAttribute="height" multiplier="0.5" id="PTJ-cd-Fap"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="ZhU-7M-nqD" secondAttribute="trailing" id="Yf2-HK-cxV"/>
-                                                                        <constraint firstItem="ZhU-7M-nqD" firstAttribute="leading" secondItem="vRH-zT-RmH" secondAttribute="leading" id="okv-0N-V9T"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ZhU-7M-nqD" secondAttribute="trailing" constant="8" id="Yf2-HK-cxV"/>
+                                                                        <constraint firstItem="ZhU-7M-nqD" firstAttribute="leading" secondItem="vRH-zT-RmH" secondAttribute="leading" constant="8" id="okv-0N-V9T"/>
                                                                         <constraint firstItem="ZhU-7M-nqD" firstAttribute="centerX" secondItem="vRH-zT-RmH" secondAttribute="centerX" id="wIt-uz-48C"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="ogC-e8-auB" userLabel="TitleLabel">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="ogC-e8-auB" userLabel="TitleLabel">
                                                                     <rect key="frame" x="0.0" y="82" width="90" height="24"/>
                                                                     <animations/>
                                                                     <constraints>
@@ -1545,44 +1548,38 @@ a new password will be sent.</string>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XV9-Kt-ScE" userLabel="Polygon - UIview" customClass="HexagonView">
                                                                     <rect key="frame" x="7" y="0.0" width="77" height="91"/>
+                                                                    <animations/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="XV9-Kt-ScE" secondAttribute="height" multiplier="35:41" id="tV0-uU-0ET"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cha-E6-zYZ" userLabel="TitleView">
+                                                                    <rect key="frame" x="7" y="22" width="77" height="66"/>
                                                                     <subviews>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cha-E6-zYZ" userLabel="TitleView">
-                                                                            <rect key="frame" x="0.0" y="23" width="77" height="45"/>
-                                                                            <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CrD-aK-gX9" userLabel="Logo - Image View">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="77" height="36"/>
-                                                                                    <animations/>
-                                                                                </imageView>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OG-3l-qVb" userLabel="Title - Label">
-                                                                                    <rect key="frame" x="0.0" y="36" width="77" height="9"/>
-                                                                                    <animations/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
-                                                                            </subviews>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="CrD-aK-gX9" userLabel="Logo - Image View">
+                                                                            <rect key="frame" x="8" y="2" width="61" height="29"/>
                                                                             <animations/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="trailing" secondItem="CrD-aK-gX9" secondAttribute="trailing" id="0DR-rB-aAV"/>
-                                                                                <constraint firstItem="CrD-aK-gX9" firstAttribute="top" secondItem="cha-E6-zYZ" secondAttribute="top" id="5Lf-hK-7gT"/>
-                                                                                <constraint firstItem="9OG-3l-qVb" firstAttribute="top" secondItem="CrD-aK-gX9" secondAttribute="bottom" id="8HH-3i-CB5"/>
-                                                                                <constraint firstItem="9OG-3l-qVb" firstAttribute="height" secondItem="cha-E6-zYZ" secondAttribute="height" multiplier="0.22" id="C28-dX-BPt"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="9OG-3l-qVb" secondAttribute="bottom" id="ZLp-qo-cb7"/>
-                                                                                <constraint firstItem="CrD-aK-gX9" firstAttribute="leading" secondItem="cha-E6-zYZ" secondAttribute="leading" id="hZc-wc-sat"/>
-                                                                                <constraint firstItem="9OG-3l-qVb" firstAttribute="leading" secondItem="cha-E6-zYZ" secondAttribute="leading" id="kAL-QN-CH7"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="9OG-3l-qVb" secondAttribute="trailing" id="xcz-b6-oxe"/>
-                                                                            </constraints>
-                                                                        </view>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="9OG-3l-qVb" userLabel="Title - Label">
+                                                                            <rect key="frame" x="4" y="31" width="69" height="23"/>
+                                                                            <animations/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <animations/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="cha-E6-zYZ" secondAttribute="trailing" id="VMn-Ir-Lla"/>
-                                                                        <constraint firstItem="cha-E6-zYZ" firstAttribute="height" secondItem="XV9-Kt-ScE" secondAttribute="height" multiplier="0.5" id="bpe-bi-bsJ"/>
-                                                                        <constraint firstItem="cha-E6-zYZ" firstAttribute="centerY" secondItem="XV9-Kt-ScE" secondAttribute="centerY" id="eVA-0T-PW9"/>
-                                                                        <constraint firstItem="cha-E6-zYZ" firstAttribute="leading" secondItem="XV9-Kt-ScE" secondAttribute="leading" id="qtr-uM-Pam"/>
-                                                                        <constraint firstAttribute="width" secondItem="XV9-Kt-ScE" secondAttribute="height" multiplier="35:41" id="tV0-uU-0ET"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="CrD-aK-gX9" secondAttribute="trailing" constant="8" id="0DR-rB-aAV"/>
+                                                                        <constraint firstItem="CrD-aK-gX9" firstAttribute="top" secondItem="cha-E6-zYZ" secondAttribute="top" constant="2" id="5Lf-hK-7gT"/>
+                                                                        <constraint firstItem="9OG-3l-qVb" firstAttribute="top" secondItem="CrD-aK-gX9" secondAttribute="bottom" id="8HH-3i-CB5"/>
+                                                                        <constraint firstItem="9OG-3l-qVb" firstAttribute="height" secondItem="cha-E6-zYZ" secondAttribute="height" multiplier="0.35" id="C28-dX-BPt"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="9OG-3l-qVb" secondAttribute="bottom" constant="12" id="ZLp-qo-cb7"/>
+                                                                        <constraint firstItem="CrD-aK-gX9" firstAttribute="leading" secondItem="cha-E6-zYZ" secondAttribute="leading" constant="8" id="hZc-wc-sat"/>
+                                                                        <constraint firstItem="9OG-3l-qVb" firstAttribute="leading" secondItem="cha-E6-zYZ" secondAttribute="leading" constant="4" id="kAL-QN-CH7"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="9OG-3l-qVb" secondAttribute="trailing" constant="4" id="xcz-b6-oxe"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -1590,6 +1587,10 @@ a new password will be sent.</string>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="XV9-Kt-ScE" firstAttribute="height" secondItem="je9-Z6-SXu" secondAttribute="height" multiplier="0.83" id="Epu-9y-ATq"/>
+                                                                <constraint firstAttribute="centerY" secondItem="cha-E6-zYZ" secondAttribute="centerY" id="HHU-WH-pOR"/>
+                                                                <constraint firstItem="XV9-Kt-ScE" firstAttribute="centerX" secondItem="cha-E6-zYZ" secondAttribute="centerX" id="Wiz-oY-EEC"/>
+                                                                <constraint firstItem="cha-E6-zYZ" firstAttribute="height" secondItem="je9-Z6-SXu" secondAttribute="height" multiplier="0.6" id="XJu-Zy-40e"/>
+                                                                <constraint firstItem="XV9-Kt-ScE" firstAttribute="width" secondItem="cha-E6-zYZ" secondAttribute="width" id="k1J-so-MyE"/>
                                                                 <constraint firstItem="XV9-Kt-ScE" firstAttribute="top" secondItem="je9-Z6-SXu" secondAttribute="top" id="naA-9Q-yMu"/>
                                                                 <constraint firstItem="XV9-Kt-ScE" firstAttribute="centerX" secondItem="je9-Z6-SXu" secondAttribute="centerX" id="y0l-ki-gdo"/>
                                                             </constraints>
@@ -1624,13 +1625,17 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Glm-tG-8qu" firstAttribute="top" secondItem="YJC-Yl-glo" secondAttribute="bottom" id="8aK-y1-HI1"/>
+                                    <constraint firstAttribute="trailing" secondItem="NLw-4i-Son" secondAttribute="trailing" id="OIx-Br-TwP"/>
                                     <constraint firstItem="5Ox-66-jV4" firstAttribute="top" secondItem="Glm-tG-8qu" secondAttribute="bottom" id="Pin-f6-odw"/>
+                                    <constraint firstItem="NLw-4i-Son" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="QiM-wp-fbO"/>
                                     <constraint firstItem="Glm-tG-8qu" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="RJG-Lo-fjC"/>
                                     <constraint firstAttribute="trailing" secondItem="Glm-tG-8qu" secondAttribute="trailing" id="XYP-N3-dtM"/>
                                     <constraint firstAttribute="bottom" secondItem="5Ox-66-jV4" secondAttribute="bottom" id="Y9H-VH-A5X"/>
                                     <constraint firstItem="YJC-Yl-glo" firstAttribute="top" secondItem="YSc-Bg-wVf" secondAttribute="top" id="aVD-jG-LEK"/>
                                     <constraint firstItem="5Ox-66-jV4" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="bm5-ly-Eyn"/>
+                                    <constraint firstItem="NLw-4i-Son" firstAttribute="top" secondItem="YSc-Bg-wVf" secondAttribute="top" id="fDZ-9c-jJo"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ox-66-jV4" secondAttribute="trailing" id="hGX-Fb-XgQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="NLw-4i-Son" secondAttribute="bottom" id="mVN-4e-4F2"/>
                                     <constraint firstAttribute="trailing" secondItem="YJC-Yl-glo" secondAttribute="trailing" id="rS7-9u-13g"/>
                                     <constraint firstItem="YJC-Yl-glo" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="xBe-Zc-Cev"/>
                                 </constraints>
@@ -1648,7 +1653,8 @@ a new password will be sent.</string>
                             <constraint firstItem="Glm-tG-8qu" firstAttribute="height" secondItem="Q1j-1t-85u" secondAttribute="height" multiplier="0.22" id="dHX-yx-eeE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home153" id="V1W-N5-zUj"/>
+                    <navigationItem key="navigationItem" id="Qpe-S3-tKt"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mainCategoryCollectionView" destination="Glm-tG-8qu" id="Qen-pv-xsF"/>
                         <outlet property="menuCollectionView" destination="5Ox-66-jV4" id="TYF-QU-akl"/>
@@ -1657,10 +1663,36 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtq-cG-a1w" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1935" y="-572"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Nuy-Xp-yjR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oBx-Gx-wdB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="ic_home" id="V1W-N5-zUj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZJC-Cg-wn9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kq0-Dx-8Tn" kind="relationship" relationship="rootViewController" id="XXT-S1-lEb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AzU-LX-T4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1123" y="-572"/>
         </scene>
     </scenes>
     <resources>
-        <image name="home153" width="30" height="30"/>
+        <image name="background" width="640" height="960"/>
+        <image name="close" width="64" height="64"/>
+        <image name="ic_chat" width="30" height="24"/>
+        <image name="ic_favorites" width="21" height="19"/>
+        <image name="ic_home" width="22" height="18"/>
+        <image name="ic_info" width="20" height="21"/>
+        <image name="ic_inq" width="20" height="20"/>
+        <image name="ic_settings" width="18" height="18"/>
     </resources>
 </document>

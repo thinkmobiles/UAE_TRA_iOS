@@ -20,5 +20,6 @@
 #import <Foundation/Foundation.h>
 #import "NetworkManager.h"
 #import "BaseDynamicUIViewController.h"
+#import "NSArray+Reverse.h"
 
 #endif /* Prefix_pch */

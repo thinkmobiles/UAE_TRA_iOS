@@ -9,8 +9,6 @@
 #import "HomeTopBarView.h"
 #import "UIImage+DrawText.h"
 
-#import "RTLController.h"
-
 static CGFloat const LeftOffset = 10.f;
 static CGFloat const ElementsInRowCount = 8.f;
 static CGFloat const ElementsColumsCount = 2.f;
@@ -19,7 +17,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @interface HomeTopBarView()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAvatarViewSpaceConstraint;
-@property (weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property (strong, nonatomic) CAShapeLayer *hexagonicalLayer;
 @property (strong, nonatomic) CALayer *imageLayer;
@@ -86,6 +83,16 @@ static CGFloat const CornerWidthForAvatar = 3.f;
             }
         }
     }
+    for (CALayer *layer in self.avatarView.layer.sublayers) {
+        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
+            if (layer == self.imageLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
+                    [self.delegate topBarLogoImageDidTouched:self];
+                }
+                [self.imageLayer addAnimation:[self layerPressAnimation] forKey:nil];
+            }
+        }
+    }
 }
 
 #pragma mark - CustomAccessors
@@ -124,6 +131,15 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     _userInitials = userInitials;
     [self prepareLogoImage];
+}
+
+#pragma mark - Public
+
+- (void)reverseLayers
+{
+    self.notificationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.searchLayer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.informationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
 }
 
 #pragma mark - Private
@@ -166,7 +182,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.hexagonicalLayer = [CAShapeLayer layer];
     self.hexagonicalLayer.frame = self.bounds;
     self.hexagonicalLayer.path =  [self hexagonsPath].CGPath;
-    self.hexagonicalLayer.strokeColor = [UIColor redColor].CGColor;
+    self.hexagonicalLayer.strokeColor = [UIColor whiteColor].CGColor;
     self.hexagonicalLayer.fillColor = [UIColor clearColor].CGColor;
     self.hexagonicalLayer.position = CGPointMake(self.hexagonicalLayer.position.x - LeftOffset, self.hexagonicalLayer.position.y);
     self.layer.masksToBounds = YES;
@@ -221,8 +237,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
     CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
     
-    CGFloat constraintSpace = hexagonSize.width + (hexagonSize.width / 2 - LeftOffset) - self.avatarView.bounds.size.width / 2;
-    self.leadingAvatarViewSpaceConstraint.constant = constraintSpace;
+    CGFloat originX = hexagonSize.width + (hexagonSize.width / 2 - LeftOffset) - self.avatarView.bounds.size.width / 2;
+    self.leadingAvatarViewSpaceConstraint.constant = originX;
+    self.avatarView.frame = CGRectMake(originX, self.avatarView.frame.origin.y, self.avatarView.frame.size.width, self.avatarView.frame.size.height);
 }
 
 - (void)prepareLogoImage
@@ -236,7 +253,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     CAShapeLayer *borderLayer = [CAShapeLayer layer];
     borderLayer.fillColor = [UIColor clearColor].CGColor;
-    borderLayer.strokeColor = [UIColor yellowColor].CGColor;
+    borderLayer.strokeColor = [UIColor whiteColor].CGColor;
     borderLayer.lineWidth = CornerWidthForAvatar;
     borderLayer.frame = self.bounds;
     borderLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;

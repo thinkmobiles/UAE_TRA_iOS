@@ -16,7 +16,7 @@ static CGFloat ShadowOffset = 2.f;
 @property (strong, nonatomic) CAGradientLayer *gradientLayer;
 
 @property (assign, nonatomic) BOOL needToDrawFradient;
-@property (strong, nonatomic) NSArray *colors;
+@property (strong, nonatomic) NSMutableArray *colorsForGradient;
 
 @end
 
@@ -36,22 +36,30 @@ static CGFloat ShadowOffset = 2.f;
     [super layoutSubviews];
     
     [self preparePolygonLayer];
-    if (self.colors.count) {
-        [self setGradientWithTopColor:[self.colors firstObject] bottomColor:[self.colors lastObject]];
+    if (self.colorsForGradient.count) {
+        [self setGradientWithTopColors:self.colorsForGradient];
     }
 }
 
 #pragma mark - Public
 
-- (void)setGradientWithTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor
+- (void)removeAllDrawings
 {
+    [self.gradientLayer removeFromSuperlayer];
+    [self.polygonLayer removeFromSuperlayer];
+    [self.colorsForGradient removeAllObjects];
+}
+
+- (void)setGradientWithTopColors:(NSArray *)colors
+{
+    if (!self.colorsForGradient.count) {
+        self.colorsForGradient = [colors mutableCopy];
+    }
+    
     [self.gradientLayer removeFromSuperlayer];
     
     self.gradientLayer = [CAGradientLayer layer];
-    if (!self.colors) {
-        self.colors = @[(id)topColor.CGColor, (id)bottomColor.CGColor];
-    }
-    self.gradientLayer.colors = self.colors;
+    self.gradientLayer.colors = self.colorsForGradient;
     self.gradientLayer.startPoint = CGPointMake(0.5, 0.2);
     self.gradientLayer.endPoint = CGPointMake(0.5, 1);
     self.gradientLayer.frame = self.bounds;

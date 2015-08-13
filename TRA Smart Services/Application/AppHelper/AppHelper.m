@@ -85,30 +85,54 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)prepareTabBarItems
 {
-    NSArray *localizedMenuItems = [AppHelper localizedTabBarMenuItems];
+    NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     CGFloat fontSize = [DynamicUIService service].fontSize;
     fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
-    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Avenir-Roman" size:fontSize],
+    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [UIColor defaultOrangeColor];
+    tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
-    [tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * __nonnull tabBarItem, NSUInteger idx, BOOL * __nonnull stop) {
-        tabBarItem.title = localizedMenuItems[idx];
+    for (int idx = 0; idx < tabBar.items.count; idx++) {
+        UITabBarItem *tabBarItem = tabBar.items[idx];
+        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
-    }];
+        
+        [tabBarItem setSelectedImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"selectedImage"]]];
+        [tabBarItem setImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"normalImage"]]];
+    }
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+        tabBarController.viewControllers = viewControllers;
+        tabBarController.selectedViewController = [viewControllers lastObject];
+    }
 }
 
-#pragma mark - Private
-
-+ (NSArray *)localizedTabBarMenuItems
++ (void)prepareTabBarGradient
 {
-    NSArray *menuItemsLink = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
-    NSMutableArray *localizedMenuItems = [[NSMutableArray alloc] init];
-    for (int i = 0; i < menuItemsLink.count; i++) {
-        [localizedMenuItems addObject:dynamicLocalizedString(menuItemsLink[i])];
-    }
-    return localizedMenuItems;
+    UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+    
+    CAGradientLayer *headerGradient = [CAGradientLayer layer];
+    CGRect gradientFrame = tabBarController.tabBar.bounds;
+    headerGradient.frame = gradientFrame;
+    headerGradient.colors = @[(id)[UIColor lightGrayTabBarColor].CGColor, (id)[UIColor darkGrayTabBarColor].CGColor];
+    
+    UIGraphicsBeginImageContext(tabBarController.tabBar.bounds.size);
+    [headerGradient renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    [tabBarController.tabBar setBackgroundImage:viewImage];
+}
+
++ (void)reverseTabBarItems
+{
+    UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+    NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+    tabBarController.viewControllers = viewControllers;
 }
 
 @end

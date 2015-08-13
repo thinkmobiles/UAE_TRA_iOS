@@ -14,6 +14,7 @@ IB_DESIGNABLE
 @property (strong, nonatomic) IBInspectable UIColor *viewFillColor;
 @property (strong, nonatomic) IBInspectable UIColor *viewStrokeColor;
 
-- (void)setGradientWithTopColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor;
+- (void)setGradientWithTopColors:(NSArray *)colors;
+- (void)removeAllDrawings;
 
 @end

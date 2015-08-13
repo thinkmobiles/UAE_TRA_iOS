@@ -29,6 +29,9 @@ typedef NS_ENUM(NSUInteger, ApplicationColor) {
     ApplicationColorGreen
 };
 
+static NSString *const UIDynamicServiceNotificationKeyNeedSetRTLUI = @"UIDynamicServiceNotificationKeyNeedSetRTLUI";
+static NSString *const UIDynamicServiceNotificationKeyNeedSetLTRUI = @"UIDynamicServiceNotificationKeyNeedSetLTRUI";
+
 @interface DynamicUIService : NSObject
 
 @property (assign, nonatomic) ApplicationFont fontSize;

@@ -19,9 +19,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-//    RTLController *rtl = [[RTLController alloc] init];
-//    [rtl disableRTLForView:self.view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRTLArabicUI) name:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setLTREuropeUI) name:UIDynamicServiceNotificationKeyNeedSetLTRUI object:nil];
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        [self setRTLArabicUI];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -31,6 +35,13 @@
     [self updateSubviewForParentViewIfPossible:self.view];
     [self localizeUI];
     [self updateColors];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Pubic
@@ -60,10 +71,24 @@
     //dummy
 }
 
+- (void)setRTLArabicUI
+{
+    NSLog(@"Arabic");
+}
+
+- (void)setLTREuropeUI
+{
+    NSLog(@"Normal");
+}
+
 #pragma mark - Private
 
 - (void)updateFontSizeForView:(UIView *)view
 {
+    if (view.tag == 1001) {
+        return;
+    }
+    
     if ([view respondsToSelector:@selector(setFont:)]) {
         NSUInteger fontSize = [DynamicUIService service].fontSize;
         NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;

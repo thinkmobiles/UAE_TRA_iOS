@@ -36,6 +36,7 @@
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
 		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
+		ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
 		ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D9F1C1B6B9EC400C20402 /* HomeTopBarView.m */; };
 		ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7D9F1D1B6B9EC400C20402 /* HomeTopBarView.xib */; };
@@ -53,6 +54,8 @@
 		ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F4B1B5D346100B6B644 /* DynamicUIService.m */; };
 		ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F521B5D82B900B6B644 /* UINavigationController+Transparent.m */; };
 		ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */; };
+		EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */; };
+		EDA549821B7B514F00440216 /* OtherServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA549811B7B514F00440216 /* OtherServices.plist */; };
 		EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */; };
 		EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F951B70E35B0071BADA /* LoginViewController.m */; };
 		EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F981B70E35B0071BADA /* RegisterViewController.m */; };
@@ -129,6 +132,8 @@
 		ED5A343B1B6EACAC0082AF5B /* RTLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLController.m; sourceTree = "<group>"; };
 		ED5A34461B6EB7EE0082AF5B /* HexagonicalImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexagonicalImage.h; sourceTree = "<group>"; };
 		ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonicalImage.m; sourceTree = "<group>"; };
+		ED6C8DF91B7B9D1900519E96 /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
+		ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
 		ED71927C1B5450D60086C6EE /* TRA Smart Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRA Smart Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7192801B5450D60086C6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7192901B5450D60086C6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +168,8 @@
 		ED982F521B5D82B900B6B644 /* UINavigationController+Transparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Transparent.m"; sourceTree = "<group>"; };
 		ED982F561B5D82EC00B6B644 /* UINavigationController+TopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+TopButton.h"; sourceTree = "<group>"; };
 		ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+TopButton.m"; sourceTree = "<group>"; };
+		EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpeedAccessServices.plist; sourceTree = "<group>"; };
+		EDA549811B7B514F00440216 /* OtherServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OtherServices.plist; sourceTree = "<group>"; };
 		EDC04F911B70E35B0071BADA /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		EDC04F941B70E35B0071BADA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -352,6 +359,15 @@
 			path = SegmentView;
 			sourceTree = "<group>";
 		};
+		ED6C8DF81B7B9CF100519E96 /* NSArray+Reverse */ = {
+			isa = PBXGroup;
+			children = (
+				ED6C8DF91B7B9D1900519E96 /* NSArray+Reverse.h */,
+				ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */,
+			);
+			path = "NSArray+Reverse";
+			sourceTree = "<group>";
+		};
 		ED7192731B5450D60086C6EE = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +551,7 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				ED6C8DF81B7B9CF100519E96 /* NSArray+Reverse */,
 				ED7D9F201B6BAB4900C20402 /* UIImage+DrawText */,
 				ED2084DD1B5E738600779CBD /* UIKit+AFNetworking */,
 				ED982F551B5D82EC00B6B644 /* UINavigationController+TopButton */,
@@ -585,6 +602,8 @@
 			children = (
 				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
 				846D8DFD1B6F8622002B7146 /* ServiceList.plist */,
+				EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */,
+				EDA549811B7B514F00440216 /* OtherServices.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -831,8 +850,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
 				846D8DFE1B6F8622002B7146 /* ServiceList.plist in Resources */,
+				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
@@ -894,6 +915,7 @@
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
 				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,
 				ED2084F21B5E738600779CBD /* UIButton+AFNetworking.m in Sources */,
+				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,

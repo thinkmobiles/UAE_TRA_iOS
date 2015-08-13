@@ -15,4 +15,13 @@
 + (UIColor *)defaultGreenColor;
 + (UIColor *)tabBarTextColor;
 
+#pragma mark - HomeViewController
+
++ (UIColor *)itemGradientTopColor;
++ (UIColor *)itemGradientBottomColor;
++ (UIColor *)menuItemGrayColor;
+
++ (UIColor *)lightGrayTabBarColor;
++ (UIColor *)darkGrayTabBarColor;
+
 @end

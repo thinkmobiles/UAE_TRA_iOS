@@ -34,6 +34,33 @@
     return [UIColor colorWithRealRed:34 green:34 blue:34 alpha:1.0f];
 }
 
+#pragma mark - HomeViewController
+
++ (UIColor *)itemGradientTopColor
+{
+    return [UIColor colorWithRealRed:54 green:67 blue:76 alpha:1.0f];
+}
+
++ (UIColor *)itemGradientBottomColor
+{
+    return [UIColor colorWithRealRed:65 green:116 blue:134 alpha:1.0f];
+}
+
++ (UIColor *)menuItemGrayColor
+{
+    return [UIColor colorWithRealRed:188 green:187 blue:186 alpha:1.0f];
+}
+
++ (UIColor *)lightGrayTabBarColor
+{
+    return [UIColor colorWithRealRed:241 green:241 blue:241 alpha:1.0f];
+}
+
++ (UIColor *)darkGrayTabBarColor
+{
+    return [UIColor colorWithRealRed:215 green:214 blue:213 alpha:1.0f];
+}
+
 #pragma mark - Private
 
 + (UIColor *)colorWithRealRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha

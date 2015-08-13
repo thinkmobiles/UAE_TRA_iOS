@@ -14,10 +14,13 @@
 - (void)topBarInformationButtonDidPressedInView:(HomeTopBarView *)parentView;
 - (void)topBarSearchButtonDidPressedInView:(HomeTopBarView *)parentView;
 - (void)topBarNotificationButtonDidPressedInView:(HomeTopBarView *)parentView;
+- (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView;
 
 @end
 
 @interface HomeTopBarView : UIView
+
+@property (weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property (strong, nonatomic) UIImage *logoImage;
 @property (strong, nonatomic) UIImage *informationButtonImage;
@@ -27,5 +30,7 @@
 @property (copy, nonatomic) NSString *userInitials;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
+
+- (void)reverseLayers;
 
 @end

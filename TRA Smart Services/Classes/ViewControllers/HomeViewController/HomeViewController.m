@@ -23,6 +23,9 @@ static CGFloat const ZigZagViewTag = 1001;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 
 @property (assign, nonatomic) BOOL stopRedrawBackground;
+@property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
+@property (strong, nonatomic) NSArray *otherServiceDataSource;
+@property (assign, nonatomic) BOOL needsRealodCollectionsViews;
 
 @end
 
@@ -35,6 +38,7 @@ static CGFloat const ZigZagViewTag = 1001;
     [super viewDidLoad];
     
     [self prepareTopBar];
+    [self prepareDataSource];
 }
 
 - (void)viewDidLayoutSubviews
@@ -46,27 +50,50 @@ static CGFloat const ZigZagViewTag = 1001;
     [self prepareBackgroundForMenuCollectionView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
     self.stopRedrawBackground = YES;
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.needsRealodCollectionsViews) {
+        [self.menuCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [self.mainCategoryCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        self.needsRealodCollectionsViews = NO;
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    <#expression#>;
+    if (collectionView == self.mainCategoryCollectionView) {
+
+    } else {
+        
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSUInteger elementsCount = 12;
+    NSUInteger elementsCount = self.otherServiceDataSource.count;
     if (collectionView == self.mainCategoryCollectionView) {
-        elementsCount = 4;
+        elementsCount = self.speedAccessDataSource.count;
     }
     return elementsCount;
 }
@@ -125,7 +152,66 @@ static CGFloat const ZigZagViewTag = 1001;
     NSLog(@"3");
 }
 
+- (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
+{
+    NSLog(@"Logo");
+}
+
+#pragma mark - Notifications
+
+- (void)reverseDataSource
+{
+    self.needsRealodCollectionsViews = YES;
+    self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
+    
+    NSMutableArray *reversedItems = [[NSMutableArray alloc] init];
+
+    if (self.otherServiceDataSource.count < RowCount) {
+        reversedItems = [[self.otherServiceDataSource reversedArray] mutableCopy];
+    } else {
+        int i;
+        for (i = 0; i < (int)(self.otherServiceDataSource.count / RowCount); i++) {
+            int j = RowCount - 1;
+            while (j >= 0) {
+                [reversedItems addObject:self.otherServiceDataSource[j + i * (int)RowCount]];
+                j--;
+            }
+        }
+        for (int k = (int)self.otherServiceDataSource.count - 1; k >= i* RowCount; k--) {
+            [reversedItems addObject:self.otherServiceDataSource[k]];
+        }
+    }
+    self.otherServiceDataSource = reversedItems;
+    
+//    self.topView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+//    self.topView.avatarView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+}
+
+- (void)transformTopView:(CATransform3D)transform
+{
+    self.topView.layer.transform = transform;
+    self.topView.avatarView.layer.transform = transform;
+}
+
+- (void)setRTLArabicUI
+{
+    [self reverseDataSource];
+    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
+}
+
+- (void)setLTREuropeUI
+{
+    [self reverseDataSource];
+    [self transformTopView:CATransform3DIdentity];
+}
+
 #pragma mark - Private
+
+- (void)prepareDataSource
+{
+    self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
+    self.otherServiceDataSource = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
+}
 
 #pragma mark - TopBar
 
@@ -159,12 +245,32 @@ static CGFloat const ZigZagViewTag = 1001;
         cell.cellPresentationMode = PresentationModeModeTop;
     }
     
-    cell.polygonView.viewStrokeColor = [UIColor grayColor];
+    cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
+        cell.itemLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+    }
+    cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
+    cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
+    cell.menuTitleLabel.textColor = [UIColor menuItemGrayColor];
 }
 
 - (void)configureCategoryCell:(CategoryCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    [cell.polygonView setGradientWithTopColor:[UIColor grayColor] bottomColor:[UIColor lightGrayColor]];
+    NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
+    
+    if ([[selectedServiceDetails valueForKey:@"serviceNeedGradient"] boolValue]) {
+        [cell.polygonView setGradientWithTopColors:@[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor]];
+    } else {
+        [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
+        [cell setTintColorForLabel:[UIColor defaultOrangeColor]];
+    }
+    
+    if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
+        cell.categoryLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+    }
+    cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
+    cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
 }
 
 #pragma mark - Decorations
@@ -198,7 +304,7 @@ static CGFloat const ZigZagViewTag = 1001;
     
     CAShapeLayer *zigZagLayer = [CAShapeLayer layer];
     zigZagLayer.path = zigZagPath.CGPath;
-    zigZagLayer.strokeColor = [UIColor redColor].CGColor;
+    zigZagLayer.strokeColor = [UIColor whiteColor].CGColor;
     zigZagLayer.fillColor = [UIColor clearColor].CGColor;
     [zigZagView.layer addSublayer:zigZagLayer];
     zigZagView.tag = ZigZagViewTag;
@@ -211,7 +317,7 @@ static CGFloat const ZigZagViewTag = 1001;
     if (!self.stopRedrawBackground) {
         [self.menuCollectionView.backgroundView removeFromSuperview];
         
-        HexagonicalImage *img = [[HexagonicalImage alloc] initWithRectColor:[UIColor greenColor]];
+        HexagonicalImage *img = [[HexagonicalImage alloc] initWithRectColor:[UIColor whiteColor]];
         UIImage *background = [img randomHexagonImageInRect:self.menuCollectionView.bounds];
         self.menuCollectionView.backgroundView = [[UIImageView alloc] initWithImage:background];
     }
