@@ -27,10 +27,7 @@
     InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
     [speedCheker performFastInternetSpeedTest];
     speedCheker.delegate = self;
-    
-    if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
-    }
-     
+        
      return YES;
 }
 

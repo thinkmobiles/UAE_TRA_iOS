@@ -318,7 +318,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     [self.imageLayer removeFromSuperlayer];
 
-    self.imageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds];
+    self.imageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
     [self addHexagoneMaskForLayer:self.imageLayer];
     
     CAShapeLayer *borderLayer = [CAShapeLayer layer];
@@ -359,7 +359,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
     CGRect informationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset, topOffset, hexagonSize.width, hexagonSize.height);
     
-    self.informationLayer = [self layerWithImage:self.informationButtonImage inRect:informationLayerRect];
+    self.informationLayer = [self layerWithImage:self.informationButtonImage inRect:informationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.informationLayer];
 
     [self.layer insertSublayer:self.informationLayer below:self.hexagonicalTopLayer];
@@ -374,7 +374,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
     CGRect searchLayerRect = CGRectMake(hexagonSize.width * 7 - LeftOffset, topOffset, hexagonSize.width, hexagonSize.height);
     
-    self.searchLayer = [self layerWithImage:self.searchButtonImage inRect:searchLayerRect];
+    self.searchLayer = [self layerWithImage:self.searchButtonImage inRect:searchLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.searchLayer];
 
     [self.layer insertSublayer:self.searchLayer below:self.hexagonicalTopLayer];
@@ -391,18 +391,29 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     UIImage *imageWithText = [self imageWithNotificationsInRect:notificationLayerRect];
     
-    self.notificationLayer = [self layerWithImage:imageWithText inRect:notificationLayerRect];
+    self.notificationLayer = [self layerWithImage:imageWithText inRect:notificationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.notificationLayer];
     
     [self.layer insertSublayer:self.notificationLayer below:self.hexagonicalTopLayer];
 }
 
-- (CALayer *)layerWithImage:(UIImage *)image inRect:(CGRect)rect
+- (CALayer *)layerWithImage:(UIImage *)image inRect:(CGRect)rect forMainLogo:(BOOL)mainLogo
 {
     CALayer *layer= [CALayer layer];
     layer.frame = rect;
     layer.backgroundColor = [UIColor defaultOrangeColor].CGColor;
-    layer.contents = (__bridge id __nullable)(image).CGImage;
+    if (mainLogo) {
+        layer.contents = (__bridge id __nullable)(image).CGImage;
+    } else {
+        CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
+        CALayer *imageLayer = [CALayer layer];
+        imageLayer.frame = centerRect;
+        imageLayer.backgroundColor = [UIColor clearColor].CGColor;
+        imageLayer.contents =(__bridge id __nullable)(image).CGImage;
+        imageLayer.contentsGravity = kCAGravityResizeAspect;
+        
+        [layer addSublayer:imageLayer];
+    }
     layer.contentsGravity = kCAGravityResizeAspect;
     
     return layer;
