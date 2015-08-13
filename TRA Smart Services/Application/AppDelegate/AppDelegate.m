@@ -8,9 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "InternetSpeedChecker.h"
-
-@interface AppDelegate () <InternetSpeedCheckerDelegate>
+@interface AppDelegate ()
 
 @end
 
@@ -23,25 +21,9 @@
     [DynamicUIService service];
     [AppHelper prepareTabBarItems];
     [AppHelper prepareTabBarGradient];
-    
-    InternetSpeedChecker *speedCheker = [[InternetSpeedChecker alloc] init];
-    [speedCheker performFastInternetSpeedTest];
-    speedCheker.delegate = self;
-    
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
     
     return YES;
-}
-
-#pragma mark - InternetSpeedCheckerDelegate
-
-- (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method
-{
-    if (!method) {
-        NSLog(@"Your speed - %.6f Mb/sec", speed);
-    } else {
-        NSLog(@"Your speed - %.6f Mb/sec (accurate)", speed);
-    }
 }
 
 @end

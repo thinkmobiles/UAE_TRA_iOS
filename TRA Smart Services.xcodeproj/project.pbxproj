@@ -73,6 +73,7 @@
 		EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */; };
 		EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */; };
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
+		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -208,6 +209,8 @@
 		EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpSalimViewController.m; sourceTree = "<group>"; };
 		EDF30AAE1B7CF9AC001B4441 /* CoverageReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverageReportViewController.h; sourceTree = "<group>"; };
 		EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageReportViewController.m; sourceTree = "<group>"; };
+		EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedTestViewController.h; sourceTree = "<group>"; };
+		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +333,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AA91B7CF687001B4441 /* HelpSalimViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
@@ -862,6 +866,15 @@
 			path = CoverageReportViewController;
 			sourceTree = "<group>";
 		};
+		EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */,
+				EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */,
+			);
+			path = InternetSpeedTestViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -985,6 +998,7 @@
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
+				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
 				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,

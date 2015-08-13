@@ -56,7 +56,7 @@
 - (void)locationDidFailWithError:(NSError *)failError
 {
     [AppHelper hideLoader];
-
+    [AppHelper alertViewWithMessage:failError.localizedDescription];
 }
 
 @end
