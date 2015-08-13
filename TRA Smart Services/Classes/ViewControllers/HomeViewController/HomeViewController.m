@@ -18,6 +18,8 @@ static CGFloat const ZigZagViewTag = 1001;
 
 @interface HomeViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintVerticalMailCategoes;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCategoryCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
@@ -25,7 +27,9 @@ static CGFloat const ZigZagViewTag = 1001;
 @property (assign, nonatomic) BOOL stopRedrawBackground;
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSArray *otherServiceDataSource;
+
 @property (assign, nonatomic) BOOL needsRealodCollectionsViews;
+@property (assign, nonatomic) BOOL bottomAnimationsEnable;
 
 @end
 
@@ -39,6 +43,7 @@ static CGFloat const ZigZagViewTag = 1001;
     
     [self prepareTopBar];
     [self prepareDataSource];
+    self.topView.enableFakeBarAnimations = YES;
 }
 
 - (void)viewDidLayoutSubviews
@@ -135,6 +140,63 @@ static CGFloat const ZigZagViewTag = 1001;
     return cellSize;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.menuCollectionView) {
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
+        __weak typeof(self) weakSelf = self;
+        if ((scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < maxTopY)) {
+            [self.view layoutIfNeeded];
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - scrollView.contentOffset.y;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        } else if ((scrollView.contentOffset.y <= 0) && (self.constraintVerticalMailCategoes.constant != 0)){
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = 0;
+                 [weakSelf.view layoutIfNeeded];
+            }];
+        } else if ((scrollView.contentOffset.y >= maxTopY) && (self.constraintVerticalMailCategoes.constant != -maxTopY)){
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        }
+        
+        CGFloat gradientOpacityValue = -self.constraintVerticalMailCategoes.constant / maxTopY;
+        if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f) {
+            [self.topView moveFakeButtonsToTop:YES];
+            [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
+        } else {
+            [self.topView moveFakeButtonsToTop:NO];
+            [weakSelf.topView drawWithGradientOpacityLevel:0];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+{
+    if (scrollView == self.menuCollectionView && self.bottomAnimationsEnable) {
+        self.bottomAnimationsEnable = NO;
+        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
+        if ((self.constraintVerticalMailCategoes.constant < 0) && (self.constraintVerticalMailCategoes.constant > - maxTopY)) {
+            self.topView.enableFakeBarAnimations = YES;
+            [self.topView moveFakeButtonsToTop:YES];
+            [self.view layoutIfNeeded];
+            __weak typeof(self) weakSelf = self;
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
+                [weakSelf.topView drawWithGradientOpacityLevel:1];
+                [weakSelf.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                weakSelf.bottomAnimationsEnable = YES;
+            }];
+        }
+    }
+}
+
 #pragma mark - HomeTopBarViewDelegate
 
 - (void)topBarInformationButtonDidPressedInView:(HomeTopBarView *)parentView
@@ -182,9 +244,6 @@ static CGFloat const ZigZagViewTag = 1001;
         }
     }
     self.otherServiceDataSource = reversedItems;
-    
-//    self.topView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-//    self.topView.avatarView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
 }
 
 - (void)transformTopView:(CATransform3D)transform

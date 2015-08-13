@@ -30,7 +30,10 @@
 @property (copy, nonatomic) NSString *userInitials;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
+@property (assign, nonatomic) BOOL enableFakeBarAnimations;
 
 - (void)reverseLayers;
+- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel;
+- (void)moveFakeButtonsToTop:(BOOL) minimizire;
 
 @end
