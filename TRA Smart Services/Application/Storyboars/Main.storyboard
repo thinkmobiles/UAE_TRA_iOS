@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1550,8 +1549,8 @@ a new password will be sent.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="constraintVerticalMailCategoes" destination="8aK-y1-HI1" id="FQe-PN-JDh"/>
-                        <outlet property="mainCategoryCollectionView" destination="Glm-tG-8qu" id="Qen-pv-xsF"/>
                         <outlet property="menuCollectionView" destination="5Ox-66-jV4" id="TYF-QU-akl"/>
+                        <outlet property="speedAccessCollectionView" destination="Glm-tG-8qu" id="eT5-hI-7da"/>
                         <outlet property="topView" destination="PFo-5b-foy" id="A7D-Mc-l8f"/>
                         <segue destination="91c-7m-CxN" kind="show" identifier="HomeBarcodeReaderSegue" id="2O9-2k-adl"/>
                         <segue destination="dey-3G-9KT" kind="show" identifier="HomeCheckDomainSegue" id="jMU-my-Fn1"/>

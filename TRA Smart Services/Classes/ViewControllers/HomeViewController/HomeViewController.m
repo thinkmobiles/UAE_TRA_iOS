@@ -15,6 +15,7 @@ static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
 static CGFloat const ZigZagViewTag = 1001;
+static CGFloat const TopViewHeightMultiplierValue = 0.18f;
 
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
@@ -28,14 +29,17 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintVerticalMailCategoes;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *mainCategoryCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *speedAccessCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSArray *otherServiceDataSource;
 
 @property (assign, nonatomic) BOOL needsRealodCollectionsViews;
-@property (assign, nonatomic) BOOL bottomAnimationsEnable;
+
+@property (assign, nonatomic) CGFloat lastContentOffset;
+@property (assign, nonatomic) BOOL isScrollintToTop;
+@property (assign, nonatomic) BOOL stopAnimate;
 
 @end
 
@@ -80,7 +84,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     
     if (self.needsRealodCollectionsViews) {
         [self.menuCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        [self.mainCategoryCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         self.needsRealodCollectionsViews = NO;
     }
 }
@@ -89,48 +93,55 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.mainCategoryCollectionView) {
-        NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
-        
-        switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-            case 7: {
-                [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
-                break;
-            }
-            case 8: {
-                [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
-                break;
-            }
-            case 9: {
-                [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
-                break;
-            }
-            default: {
-                [AppHelper alertViewWithMessage:MessageNotImplemented];
-                break;
-            }
-        }
+    if (collectionView == self.speedAccessCollectionView) {
+        [self speedAccessCollectionViewCellSelectedAtIndexPath:indexPath];
     } else {
-        NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-        
-        switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-            case 2: {
-                [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
-                break;
-            }
-            case 4: {
-                [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
-                break;
-            }
-            case 6: {
-                [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
-                break;
-            }
+        [self otherServiceCollectionViewCellSelectedAtIndexPath:indexPath];
+    }
+}
 
-            default: {
-                [AppHelper alertViewWithMessage:MessageNotImplemented];
-                break;
-            }
+- (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
+    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+        case 7: {
+            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
+            break;
+        }
+        case 8: {
+            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
+            break;
+        }
+        case 9: {
+            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
+            break;
+        }
+        default: {
+            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            break;
+        }
+    }
+}
+
+- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+        case 2: {
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            break;
+        }
+        case 6: {
+            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            break;
+        }
+        default: {
+            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            break;
         }
     }
 }
@@ -140,7 +151,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSUInteger elementsCount = self.otherServiceDataSource.count;
-    if (collectionView == self.mainCategoryCollectionView) {
+    if (collectionView == self.speedAccessCollectionView) {
         elementsCount = self.speedAccessDataSource.count;
     }
     return elementsCount;
@@ -157,7 +168,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     }
     [self configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:indexPath];
         
-    } else if (collectionView == self.mainCategoryCollectionView) {
+    } else if (collectionView == self.speedAccessCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCollectionViewCellIdentifier forIndexPath:indexPath];
         if (!cell) {
             cell = [[CategoryCollectionViewCell alloc] init];
@@ -174,9 +185,9 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     CGFloat cellHeight = CellSubmenuHeight;
     CGSize contentSize = self.menuCollectionView.frame.size;
 
-    if (collectionView == self.mainCategoryCollectionView) {
-        cellHeight = [UIScreen mainScreen].bounds.size.height * 0.18f;
-        contentSize = self.mainCategoryCollectionView.frame.size;
+    if (collectionView == self.speedAccessCollectionView) {
+        cellHeight = [UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue;
+        contentSize = self.speedAccessCollectionView.frame.size;
     }
     
     CGSize cellSize = CGSizeMake((contentSize.width - (CellSpacing * (RowCount + 1))) / RowCount, cellHeight);
@@ -187,29 +198,24 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView == self.menuCollectionView) {
-        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
-        __weak typeof(self) weakSelf = self;
-        if ((scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < maxTopY)) {
+    [self detectScrollDirectioninScrollView:scrollView];
+    self.lastContentOffset = scrollView.contentOffset.y;
+    
+    if (scrollView == self.menuCollectionView && !self.stopAnimate) {
+        CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
+        CGFloat contentOffsetY = scrollView.contentOffset.y;
+        if(contentOffsetY < minimumAllowedY && contentOffsetY >= 0 ) {
+            self.constraintVerticalMailCategoes.constant = - contentOffsetY;
             [self.view layoutIfNeeded];
-            [UIView animateWithDuration:0.25 animations:^{
-                weakSelf.constraintVerticalMailCategoes.constant = - scrollView.contentOffset.y;
-                [weakSelf.view layoutIfNeeded];
-            }];
-        } else if ((scrollView.contentOffset.y <= 0) && (self.constraintVerticalMailCategoes.constant != 0)){
-            [UIView animateWithDuration:0.25 animations:^{
-                weakSelf.constraintVerticalMailCategoes.constant = 0;
-                 [weakSelf.view layoutIfNeeded];
-            }];
-        } else if ((scrollView.contentOffset.y >= maxTopY) && (self.constraintVerticalMailCategoes.constant != -maxTopY)){
-            [UIView animateWithDuration:0.25 animations:^{
-                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
-                [weakSelf.view layoutIfNeeded];
-            }];
         }
-        
-        CGFloat gradientOpacityValue = -self.constraintVerticalMailCategoes.constant / maxTopY;
-        if (self.constraintVerticalMailCategoes.constant < - maxTopY * 0.55f) {
+        if (contentOffsetY > minimumAllowedY / 2 && self.isScrollintToTop) {
+            [self.topView moveFakeButtonsToTop:YES];
+        } else if (contentOffsetY < minimumAllowedY / 2 && !self.isScrollintToTop) {
+            [self.topView moveFakeButtonsToTop:NO];
+        }
+        __weak typeof(self) weakSelf = self;
+        CGFloat gradientOpacityValue = -self.constraintVerticalMailCategoes.constant / minimumAllowedY;
+        if (self.constraintVerticalMailCategoes.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
             [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
         } else {
@@ -221,21 +227,36 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-    if (scrollView == self.menuCollectionView && self.bottomAnimationsEnable) {
-        self.bottomAnimationsEnable = NO;
-        CGFloat maxTopY = ([UIScreen mainScreen].bounds.size.height * 0.18f) * 0.5f;
-        if ((self.constraintVerticalMailCategoes.constant < 0) && (self.constraintVerticalMailCategoes.constant > - maxTopY)) {
-            self.topView.enableFakeBarAnimations = YES;
-            [self.topView moveFakeButtonsToTop:YES];
-            [self.view layoutIfNeeded];
-            __weak typeof(self) weakSelf = self;
-            [UIView animateWithDuration:0.25 animations:^{
-                weakSelf.constraintVerticalMailCategoes.constant = - maxTopY;
-                [weakSelf.topView drawWithGradientOpacityLevel:1];
-            } completion:^(BOOL finished) {
-                weakSelf.bottomAnimationsEnable = YES;
-            }];
+    self.stopAnimate = YES;
+    CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
+    if (scrollView == self.menuCollectionView) {
+        CGFloat constantValue = 0;
+        if (self.isScrollintToTop) {
+            constantValue = minimumAllowedY;
         }
+        if (!self.topView.isFakeButtonsOnTop && self.isScrollintToTop) {
+            [self.topView moveFakeButtonsToTop:YES];
+        } else if (self.topView.isFakeButtonsOnTop && !self.isScrollintToTop) {
+            [self.topView moveFakeButtonsToTop:NO];
+        }
+        [self.view layoutIfNeeded];
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.2 animations:^{
+            weakSelf.constraintVerticalMailCategoes.constant = - constantValue;
+            [weakSelf.topView drawWithGradientOpacityLevel:constantValue ? 1 : 0];
+            [weakSelf.view layoutIfNeeded];
+        }completion:^(BOOL finished) {
+            weakSelf.stopAnimate = NO;
+        }];
+    }
+}
+
+- (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
+{
+    if (self.lastContentOffset > scrollView.contentOffset.y) {
+        self.isScrollintToTop = NO;
+    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
+        self.isScrollintToTop = YES;
     }
 }
 
@@ -384,10 +405,10 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 
 - (void)prepareZigZagView
 {    
-    UIView *zigZagView = [[UIView alloc] initWithFrame:self.mainCategoryCollectionView.frame];
+    UIView *zigZagView = [[UIView alloc] initWithFrame:self.speedAccessCollectionView.frame];
     zigZagView.backgroundColor = [UIColor clearColor];
     
-    CGSize cellSize = CGSizeMake(( self.mainCategoryCollectionView.frame.size.width - (CellSpacing * (RowCount + 1))) / RowCount, [UIScreen mainScreen].bounds.size.height * 0.18f);
+    CGSize cellSize = CGSizeMake(( self.speedAccessCollectionView.frame.size.width - (CellSpacing * (RowCount + 1))) / RowCount, [UIScreen mainScreen].bounds.size.height * 0.18f);
     CGSize  hexagonSize = CGSizeMake(cellSize.width * 0.6f, cellSize.height * 0.87f);
     CGFloat minimumYPoint = hexagonSize.height * 0.9f;
     CGFloat maximumYPoint = hexagonSize.height + hexagonSize.height * 0.15f;
@@ -416,7 +437,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
     [zigZagView.layer addSublayer:zigZagLayer];
     zigZagView.tag = ZigZagViewTag;
     
-    self.mainCategoryCollectionView.backgroundView = zigZagView;
+    self.speedAccessCollectionView.backgroundView = zigZagView;
 }
 
 @end

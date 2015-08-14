@@ -155,6 +155,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop
 {
     if (self.enableFakeBarAnimations && [self enebleAnimation:moveToTop]) {
+        
+        self.isFakeButtonsOnTop = moveToTop;
+        
         self.enableFakeBarAnimations = NO;
         self.disableFakeButtonLayersDrawing = YES;
         CGPoint endAnimValueInformationLayer = [self calculateEndPositionForInformationLayerWithMInizizedLayout:moveToTop];

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TRA Smart Services/Classes/Views/HomeTopBarView/HomeTopBarView.m"
-            timestampString = "461157336.705142"
+            timestampString = "461229460.681674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "-imageWithNotificationsInRect:"
             landmarkType = "5">
          </BreakpointContent>

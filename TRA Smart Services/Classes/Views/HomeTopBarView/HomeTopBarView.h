@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIImage *notificationButtonImage;
 @property (assign, nonatomic) NSUInteger notificationsCount;
 @property (copy, nonatomic) NSString *userInitials;
+@property (assign, nonatomic) BOOL isFakeButtonsOnTop;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
 @property (assign, nonatomic) BOOL enableFakeBarAnimations;
