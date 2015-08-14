@@ -23,6 +23,7 @@ static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue
 static NSString *const HomeToHelpSalimSequeIdentifier = @"HomeToHelpSalimSeque";
 static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
 static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
+static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 
 @interface HomeViewController ()
 
@@ -114,6 +115,10 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
         }
         case 9: {
             [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
+            break;
+        }
+        case 5: {
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
             break;
         }
         default: {
