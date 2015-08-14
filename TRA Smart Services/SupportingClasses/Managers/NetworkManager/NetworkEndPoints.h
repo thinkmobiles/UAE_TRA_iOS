@@ -8,7 +8,7 @@
 
 #pragma mark - NoCRMServices
 
-static NSString *const traSSNoCRMServiceBaseURL = @"http://134.249.165.53:7791";
+static NSString *const traSSNoCRMServiceBaseURL = @"http://134.249.164.53:7791";
 
 static NSString *const traSSNOCRMServiceGETDomainData = @"/checkWhois?checkUrl=";
 static NSString *const traSSNOCRMServiceGETDomainAvaliability = @"/checkWhoisAvailable?checkUrl=";
@@ -17,3 +17,4 @@ static NSString *const traSSNOCRMServiceGETSearchMobileBrand = @"/searchMobileBr
 static NSString *const traSSNOCRMServicePOSTFeedBack = @"/feedback";
 static NSString *const traSSNOCRMServicePOSTSMSSPamReport = @"/complainSmsSpam";
 static NSString *const traSSNOCRMServicePOSTHelpSalim = @"/sendHelpSalim";
+static NSString *const traSSNOCRMServicePOSTCompliantServiceProvider = @"/complainServiceProvider";

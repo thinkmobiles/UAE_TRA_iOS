@@ -23,6 +23,7 @@
     [AppHelper prepareTabBarGradient];
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
     
+    
     return YES;
 }
 

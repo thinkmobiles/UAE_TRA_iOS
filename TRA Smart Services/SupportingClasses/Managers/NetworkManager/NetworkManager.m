@@ -127,6 +127,33 @@
     }];
 }
 
+- (void)traSSNoCRMServicePOSCompliantAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet requestResult:(ResponseBlock)compliantAboutServiceProviderResponse
+{
+    NSMutableDictionary *parameters = [ @{
+                                 
+                                 @"title" : compliantTitle,
+                                 @"serviceProvider" : serviceProvider,
+                                 @"description" : compliantDescription,
+                                 @"referenceNumber" : @(number)
+                                 } mutableCopy];
+    if (compliantAttachmnet) {
+        NSData *imageData = UIImagePNGRepresentation(compliantAttachmnet);
+        NSString *base64PhotoString = [imageData base64EncodedStringWithOptions:kNilOptions];
+
+        if (imageData) {
+            [parameters setValue:base64PhotoString forKey:@"attachment"];
+        }
+    }
+    
+    [self.manager POST:traSSNOCRMServicePOSTCompliantServiceProvider parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        compliantAboutServiceProviderResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        compliantAboutServiceProviderResponse(nil, error);
+    }];
+}
+
+
 #pragma mark - LifeCycle
 
 - (instancetype)initWithBaseURL:(NSURL *)baseURL
