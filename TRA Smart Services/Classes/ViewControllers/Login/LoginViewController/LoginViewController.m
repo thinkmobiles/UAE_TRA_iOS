@@ -49,7 +49,25 @@
 
 - (IBAction)loginButtonPressed:(id)sender
 {
-    
+    if (self.userNameTextField.text.length && self.passwordTextField.text.length) {
+        [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
+        
+        [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                [AppHelper alertViewWithMessage:response];
+            }
+            
+            weakSelf.userNameTextField.text = @"";
+            weakSelf.passwordTextField.text = @"";
+            
+            [AppHelper hideLoader];
+        }];
+    } else {
+        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    }
 }
 
 - (IBAction)registerButtonPressed:(id)sender

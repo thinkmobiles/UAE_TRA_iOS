@@ -23,8 +23,9 @@
     [AppHelper prepareTabBarGradient];
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
     
+    UIImage *testomage = [UIImage imageNamed:@"close"];
     
-    return YES;
+     return YES;
 }
 
 @end

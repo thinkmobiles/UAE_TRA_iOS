@@ -49,7 +49,27 @@
 
 - (IBAction)registerButtonPress:(id)sender
 {
-    
+    if (self.userNameTextField.text.length && self.genderTextField.text.length && self.phoneTextField.text.length && self.passwordTextField.text.length) {
+        [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
+
+        [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text gender:self.genderTextField.text phoneNumber:self.phoneTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                [AppHelper alertViewWithMessage:response];
+            }
+            
+            weakSelf.userNameTextField.text = @"";
+            weakSelf.genderTextField.text = @"";
+            weakSelf.phoneTextField.text = @"";
+            weakSelf.passwordTextField.text = @"";
+            
+            [AppHelper hideLoader];
+        }];
+    } else {
+        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    }
 }
 
 - (IBAction)loginButtonPress:(id)sender

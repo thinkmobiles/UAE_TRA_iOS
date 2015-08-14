@@ -68,4 +68,5 @@
 "speedAccess.service.name.7" = "Verification";
 "speedAccess.service.name.8" = "Coverage";
 "speedAccess.service.name.9" = "Internet";
-"speedAccess.service.name.10" = "Compliant about service provider";
+"speedAccess.service.name.10" = "Compliant";
+"speedAccess.service.name.11" = "Suggestion";

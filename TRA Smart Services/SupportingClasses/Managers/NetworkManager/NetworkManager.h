@@ -19,7 +19,14 @@ typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeVerification = 7,
     ServiceTypeCoverage = 8,
     ServiceTypeInternetSpeedTest = 9,
-    ServiceTypeCompliantAboutServiceProvider = 10
+    ServiceTypeCompliantAboutServiceProvider = 10,
+    ServiceTypeSuggestion = 11
+};
+
+typedef NS_ENUM(NSUInteger, ComplianType) {
+    ComplianTypeCustomProvider,
+    ComplianTypeEnquires,
+    ComplianTypeTRAService,
 };
 
 typedef void(^ResponseBlock)(id response, NSError *error);
@@ -44,8 +51,13 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePOSTFeedback:(NSString *)feedback forSerivce:(NSString *)serviceName withRating:(NSUInteger)rating requestResult:(ResponseBlock)mobileBrandSearchResponse;
 - (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse;
 - (void)traSSNoCRMServicePOSTHelpSalim:(NSString *)urlAddress notes:(NSString *)comment requestResult:(ResponseBlock)helpSalimReportResponse;
+- (void)traSSNoCRMServicePOSTPoorCoverageAtLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude signalPower:(NSUInteger)signalLevel requestResult:(ResponseBlock)poorCoverageResponse;
 
-- (void)traSSNoCRMServicePOSCompliantAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet requestResult:(ResponseBlock)compliantAboutServiceProviderResponse;
+- (void)traSSNoCRMServicePOSTComplianAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet complienType:(ComplianType)type requestResult:(ResponseBlock)compliantAboutServiceProviderResponse;
+- (void)traSSNoCRMServicePOSTSendSuggestion:(NSString *)suggestionTitle description:(NSString *)suggestionDescription attachment:(UIImage *)suggestionAttachment requestResult:(ResponseBlock)suggestionResponse;
+
+- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password gender:(NSString *)gender phoneNumber:(NSString *)number requestResult:(ResponseBlock)registerResponse;
+- (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
 
 #pragma mark - Temp
 

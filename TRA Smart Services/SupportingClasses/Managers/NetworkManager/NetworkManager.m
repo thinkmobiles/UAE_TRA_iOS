@@ -11,6 +11,8 @@
 #import "NetworkEndPoints.h"
 #import <CoreTelephony/CoreTelephonyDefines.h>
 
+static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
+
 @interface NetworkManager()
 
 @property (strong, nonatomic) AFHTTPRequestOperationManager *manager;
@@ -127,29 +129,130 @@
     }];
 }
 
-- (void)traSSNoCRMServicePOSCompliantAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet requestResult:(ResponseBlock)compliantAboutServiceProviderResponse
+- (void)traSSNoCRMServicePOSTComplianAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet complienType:(ComplianType)type requestResult:(ResponseBlock)compliantAboutServiceProviderResponse
 {
     NSMutableDictionary *parameters = [ @{
-                                 
-                                 @"title" : compliantTitle,
-                                 @"serviceProvider" : serviceProvider,
-                                 @"description" : compliantDescription,
-                                 @"referenceNumber" : @(number)
-                                 } mutableCopy];
+                                          @"title" : compliantTitle,
+                                          @"description" : compliantDescription
+                                          } mutableCopy];
+    
+    if (type == ComplianTypeCustomProvider) {
+        [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        [parameters setValue:@(number) forKey:@"referenceNumber"];
+    }
+    
     if (compliantAttachmnet) {
         NSData *imageData = UIImagePNGRepresentation(compliantAttachmnet);
         NSString *base64PhotoString = [imageData base64EncodedStringWithOptions:kNilOptions];
-
+        base64PhotoString = [ImagePrefixBase64String stringByAppendingString:base64PhotoString];
         if (imageData) {
             [parameters setValue:base64PhotoString forKey:@"attachment"];
         }
     }
     
-    [self.manager POST:traSSNOCRMServicePOSTCompliantServiceProvider parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *path;
+    switch (type) {
+        case ComplianTypeCustomProvider:{
+            path = traSSNOCRMServicePOSTCompliantServiceProvider;
+            break;
+        }
+        case ComplianTypeEnquires: {
+            path = traSSNOCRMServicePOSTCompliantAboutEnquires;
+            break;
+        }
+        case ComplianTypeTRAService: {
+            path = traSSNOCRMServicePOSTCompliantAboutTRAService;
+            break;
+        }
+    }
+    
+    [self.manager POST:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         compliantAboutServiceProviderResponse([responseDictionary valueForKey:@"status"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         compliantAboutServiceProviderResponse(nil, error);
+    }];
+}
+
+- (void)traSSNoCRMServicePOSTSendSuggestion:(NSString *)suggestionTitle description:(NSString *)suggestionDescription attachment:(UIImage *)suggestionAttachment requestResult:(ResponseBlock)suggestionResponse
+{
+    NSMutableDictionary *parameters = [ @{
+                                          @"title" : suggestionTitle,
+                                          @"description" : suggestionDescription
+                                          } mutableCopy];
+    
+    if (suggestionAttachment) {
+        NSData *imageData = UIImagePNGRepresentation(suggestionAttachment);
+        NSString *base64PhotoString = [imageData base64EncodedStringWithOptions:kNilOptions];
+        base64PhotoString = [ImagePrefixBase64String stringByAppendingString:base64PhotoString];
+        if (imageData) {
+            [parameters setValue:base64PhotoString forKey:@"attachment"];
+        }
+    }
+    
+    [self.manager POST:traSSNOCRMServicePOSTSendSuggestin parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        suggestionResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        suggestionResponse(nil, error);
+    }];
+}
+
+- (void)traSSNoCRMServicePOSTPoorCoverageAtLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude signalPower:(NSUInteger)signalLevel requestResult:(ResponseBlock)poorCoverageResponse
+{
+    NSDictionary *parameters = @{
+                                 @"location" : @{
+                                         @"latitude" : @(latitude),
+                                         @"longtitude" : @(longtitude)
+                                         },
+                                 @"signalLevel" : @(signalLevel)
+                                 };
+    
+    [self.manager POST:traSSNOCRMServicePOSTPoorCoverage parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        poorCoverageResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        poorCoverageResponse(nil, error);
+    }];
+}
+
+#pragma mark - UserInteraction
+
+- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password gender:(NSString *)gender phoneNumber:(NSString *)number requestResult:(ResponseBlock)registerResponse
+{
+    NSDictionary *parameters = @{
+                                 @"login" : username,
+                                 @"pass" : password,
+                                 @"gender" : gender,
+                                 @"phone" : number
+                                 };
+    
+    [self.manager POST:traSSRegister parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        registerResponse([responseDictionary valueForKey:@"succeess"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        NSString *responseString;
+        if (operation.responseObject) {
+            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
+            responseString = [response valueForKey:@"error"];
+        }
+
+        registerResponse(responseString, error);
+    }];
+}
+
+- (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse
+{
+    NSDictionary *parameters = @{
+                                 @"login" : username,
+                                 @"pass" : password
+                                 };
+    
+    [self.manager POST:traSSRegister parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        loginResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        loginResponse(nil, error);
     }];
 }
 
