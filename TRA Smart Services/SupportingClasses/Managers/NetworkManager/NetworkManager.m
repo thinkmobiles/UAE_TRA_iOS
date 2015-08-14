@@ -169,4 +169,11 @@
     self.manager.securityPolicy = securityPolicy;
 }
 
+#pragma mark - Temp
+
+- (void)setBaseURL:(NSString *)baseURL
+{
+    [self prepareNetworkManagerWithURL:[NSURL URLWithString:baseURL]];
+}
+
 @end

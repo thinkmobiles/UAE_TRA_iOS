@@ -32,6 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLayoutGuideConstraint;
 
+@property (weak, nonatomic) IBOutlet UITextField *baseURLLinkTextField;
+
 @end
 
 @implementation SettingViewController
@@ -123,6 +125,15 @@
 - (IBAction)logoutButtonPressed:(id)sender
 {
     
+}
+
+- (IBAction)updateBaseURLButtonTapped:(id)sender
+{
+    if (!self.baseURLLinkTextField.text.length) {
+        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    }
+    [[NetworkManager sharedManager] setBaseURL:self.baseURLLinkTextField.text];
+    [AppHelper alertViewWithMessage:MessageSuccess];
 }
 
 #pragma mark - SegmentViewDelegate

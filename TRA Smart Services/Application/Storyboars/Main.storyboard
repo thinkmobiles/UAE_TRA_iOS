@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1179,14 +1180,46 @@ a new password will be sent.</string>
                                                     <constraint firstItem="5No-f3-BjR" firstAttribute="top" secondItem="KLV-v7-F0t" secondAttribute="bottom" id="zAx-yW-v6W"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b18-gC-X0U" userLabel="BaseURL Change - Test - uiView">
+                                                <rect key="frame" x="0.0" y="426" width="600" height="71"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://134.249.164.53:7791" borderStyle="roundedRect" placeholder="Base URL like: http://134.249.164.53:7791" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-tn-K3P">
+                                                        <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-85-cYK">
+                                                        <rect key="frame" x="150" y="40" width="300" height="30"/>
+                                                        <state key="normal" title="Change Server Base URL">
+                                                            <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="updateBaseURLButtonTapped:" destination="uFL-R4-sWm" eventType="touchUpInside" id="Fcf-UP-GFB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="Bo8-85-cYK" firstAttribute="width" secondItem="b18-gC-X0U" secondAttribute="width" multiplier="0.5" id="8I6-rA-ITq"/>
+                                                    <constraint firstItem="Bo8-85-cYK" firstAttribute="top" secondItem="N3r-tn-K3P" secondAttribute="bottom" constant="2" id="I31-FP-I9e"/>
+                                                    <constraint firstAttribute="centerX" secondItem="Bo8-85-cYK" secondAttribute="centerX" id="TNV-L7-YwN"/>
+                                                    <constraint firstItem="N3r-tn-K3P" firstAttribute="top" secondItem="b18-gC-X0U" secondAttribute="top" constant="8" id="ZYn-01-ZLu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="N3r-tn-K3P" secondAttribute="trailing" constant="8" id="cSG-QX-NYx"/>
+                                                    <constraint firstItem="N3r-tn-K3P" firstAttribute="leading" secondItem="b18-gC-X0U" secondAttribute="leading" constant="8" id="xJh-uJ-od6"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="i66-Q7-tAH" firstAttribute="top" secondItem="qcd-OB-Qd1" secondAttribute="bottom" id="191-oc-N1k"/>
+                                            <constraint firstItem="b18-gC-X0U" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="2q6-78-t1p"/>
                                             <constraint firstItem="Hw2-UR-0GJ" firstAttribute="top" secondItem="KBE-WY-UTQ" secondAttribute="bottom" id="3AM-gb-RXg"/>
                                             <constraint firstAttribute="trailing" secondItem="Hw2-UR-0GJ" secondAttribute="trailing" id="6rQ-cX-1O1"/>
                                             <constraint firstItem="qcd-OB-Qd1" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="8Zo-bo-v3o"/>
+                                            <constraint firstItem="b18-gC-X0U" firstAttribute="top" secondItem="SG1-km-gzC" secondAttribute="bottom" id="Au3-AR-CNY"/>
+                                            <constraint firstAttribute="trailing" secondItem="b18-gC-X0U" secondAttribute="trailing" id="BFa-vA-Noo"/>
                                             <constraint firstItem="x4j-Rr-N00" firstAttribute="top" secondItem="i66-Q7-tAH" secondAttribute="bottom" id="RPO-cG-P7I"/>
                                             <constraint firstAttribute="trailing" secondItem="SG1-km-gzC" secondAttribute="trailing" id="UnL-5h-r8U"/>
                                             <constraint firstItem="KBE-WY-UTQ" firstAttribute="top" secondItem="lrP-zw-Mue" secondAttribute="top" id="ZGI-ge-8ZK"/>
@@ -1195,6 +1228,7 @@ a new password will be sent.</string>
                                             <constraint firstItem="SG1-km-gzC" firstAttribute="top" secondItem="x4j-Rr-N00" secondAttribute="bottom" id="cc0-Bj-iNi"/>
                                             <constraint firstAttribute="trailing" secondItem="x4j-Rr-N00" secondAttribute="trailing" id="cxd-HQ-fFT"/>
                                             <constraint firstItem="x4j-Rr-N00" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="dlr-NJ-wZg"/>
+                                            <constraint firstItem="SG1-km-gzC" firstAttribute="height" secondItem="b18-gC-X0U" secondAttribute="height" id="hIl-ak-BJU"/>
                                             <constraint firstItem="Hw2-UR-0GJ" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="kRI-uO-qih"/>
                                             <constraint firstAttribute="trailing" secondItem="i66-Q7-tAH" secondAttribute="trailing" id="qTL-ha-BB6"/>
                                             <constraint firstItem="qcd-OB-Qd1" firstAttribute="top" secondItem="Hw2-UR-0GJ" secondAttribute="bottom" id="qUq-vt-pPT"/>
@@ -1228,6 +1262,7 @@ a new password will be sent.</string>
                     <tabBarItem key="tabBarItem" tag="4" title="Setting" image="ic_settings" id="cly-in-d9x"/>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="baseURLLinkTextField" destination="N3r-tn-K3P" id="7hv-TN-SDQ"/>
                         <outlet property="colorThemeLabel" destination="cRd-bO-306" id="iGp-xI-5Ec"/>
                         <outlet property="emailLabel" destination="MxE-bX-fAf" id="3gP-9r-qjy"/>
                         <outlet property="emailTextField" destination="Kzg-nY-RDe" id="ccC-rD-3fw"/>

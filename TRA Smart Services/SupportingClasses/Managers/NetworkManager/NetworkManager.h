@@ -44,4 +44,8 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse;
 - (void)traSSNoCRMServicePOSTHelpSalim:(NSString *)urlAddress notes:(NSString *)comment requestResult:(ResponseBlock)helpSalimReportResponse;
 
+#pragma mark - Temp
+
+- (void)setBaseURL:(NSString *)baseURL;
+
 @end
