@@ -12,12 +12,10 @@
 @interface CompliantViewController ()
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentProvider;
-
 @property (weak, nonatomic) IBOutlet UITextField *providerText;
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *compliantDescription;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
-
 
 @end
 
@@ -39,7 +37,6 @@
 
 - (IBAction)segmentProvider:(id)sender
 {
-    NSLog(@"%li", self.segmentProvider.selectedSegmentIndex);
     switch (self.segmentProvider.selectedSegmentIndex) {
         case 0:{
             self.compliantDescription.enabled = YES;
@@ -52,32 +49,40 @@
             break;
         }
     }
-     
 }
 
 - (IBAction)compliant:(id)sender
 {
     [self.view endEditing:YES];
-    if (!self.providerText.text.length || !self.compliantTitle.text.length || (!self.segmentProvider.selectedSegmentIndex && ( !self.compliantDescription.text.length || !self.refNumber.text.length))){
+    if (!self.providerText.text.length ||
+        !self.compliantTitle.text.length ||
+        (!self.segmentProvider.selectedSegmentIndex && (!self.compliantDescription.text.length ||
+                                                        !self.refNumber.text.length))){
+        
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
     } else {
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSCompliantAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescription.text refNumber:[self.refNumber.text integerValue] attachment:nil requestResult:^(id response, NSError *error) {
-            if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
-            } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
-            }
-            [AppHelper hideLoader];
+//        __weak typeof(self) weakSelf = self;
+        
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:@"" title:@"" description:@"" refNumber:3 attachment:nil complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.providerText.text = @"";
-                weakSelf.compliantTitle.text = @"";
-                weakSelf.compliantDescription.text = @"";
-                weakSelf.refNumber.text = @"";
-            });
         }];
+        
+//        [[NetworkManager sharedManager] traSSNoCRMServicePOSCompliantAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescription.text refNumber:[self.refNumber.text integerValue] attachment:nil requestResult:^(id response, NSError *error) {
+//            if (error) {
+//                [AppHelper alertViewWithMessage:error.localizedDescription];
+//            } else {
+//                [AppHelper alertViewWithMessage:MessageSuccess];
+//            }
+//            [AppHelper hideLoader];
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                weakSelf.providerText.text = @"";
+//                weakSelf.compliantTitle.text = @"";
+//                weakSelf.compliantDescription.text = @"";
+//                weakSelf.refNumber.text = @"";
+//            });
+//        }];
     }
 }
 

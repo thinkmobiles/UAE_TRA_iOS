@@ -25,8 +25,8 @@ typedef NS_ENUM(NSUInteger, ServiceType) {
 
 typedef NS_ENUM(NSUInteger, ComplianType) {
     ComplianTypeCustomProvider,
-    ComplianTypeEnquires,
     ComplianTypeTRAService,
+    ComplianTypeEnquires
 };
 
 typedef void(^ResponseBlock)(id response, NSError *error);
@@ -52,7 +52,6 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse;
 - (void)traSSNoCRMServicePOSTHelpSalim:(NSString *)urlAddress notes:(NSString *)comment requestResult:(ResponseBlock)helpSalimReportResponse;
 - (void)traSSNoCRMServicePOSTPoorCoverageAtLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude signalPower:(NSUInteger)signalLevel requestResult:(ResponseBlock)poorCoverageResponse;
-
 - (void)traSSNoCRMServicePOSTComplianAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet complienType:(ComplianType)type requestResult:(ResponseBlock)compliantAboutServiceProviderResponse;
 - (void)traSSNoCRMServicePOSTSendSuggestion:(NSString *)suggestionTitle description:(NSString *)suggestionDescription attachment:(UIImage *)suggestionAttachment requestResult:(ResponseBlock)suggestionResponse;
 
