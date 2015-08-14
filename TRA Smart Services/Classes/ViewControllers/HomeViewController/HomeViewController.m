@@ -24,6 +24,8 @@ static NSString *const HomeToHelpSalimSequeIdentifier = @"HomeToHelpSalimSeque";
 static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
 static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
+static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
+
 
 @interface HomeViewController ()
 
@@ -144,6 +146,11 @@ static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue
             [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
             break;
         }
+        case 10: {
+            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
+            break;
+        }
+
         default: {
             [AppHelper alertViewWithMessage:MessageNotImplemented];
             break;
