@@ -1184,13 +1184,19 @@ a new password will be sent.</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b18-gC-X0U" userLabel="BaseURL Change - Test - uiView">
                                                 <rect key="frame" x="0.0" y="426" width="600" height="71"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://134.249.164.53:7791" borderStyle="roundedRect" placeholder="Base URL like: http://134.249.164.53:7791" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-tn-K3P">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://134.249.164.53:7791" borderStyle="roundedRect" placeholder="Base URL like: http://134.249.164.53:7791" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-tn-K3P">
                                                         <rect key="frame" x="8" y="8" width="584" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="uFL-R4-sWm" id="DHf-pl-Ypc"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-85-cYK">
                                                         <rect key="frame" x="150" y="40" width="300" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="FXA-nn-Cq1"/>
+                                                        </constraints>
                                                         <state key="normal" title="Change Server Base URL">
                                                             <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1202,11 +1208,11 @@ a new password will be sent.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="Bo8-85-cYK" firstAttribute="width" secondItem="b18-gC-X0U" secondAttribute="width" multiplier="0.5" id="8I6-rA-ITq"/>
                                                     <constraint firstItem="Bo8-85-cYK" firstAttribute="top" secondItem="N3r-tn-K3P" secondAttribute="bottom" constant="2" id="I31-FP-I9e"/>
                                                     <constraint firstAttribute="centerX" secondItem="Bo8-85-cYK" secondAttribute="centerX" id="TNV-L7-YwN"/>
                                                     <constraint firstItem="N3r-tn-K3P" firstAttribute="top" secondItem="b18-gC-X0U" secondAttribute="top" constant="8" id="ZYn-01-ZLu"/>
                                                     <constraint firstAttribute="trailing" secondItem="N3r-tn-K3P" secondAttribute="trailing" constant="8" id="cSG-QX-NYx"/>
+                                                    <constraint firstAttribute="height" constant="71" id="jnN-qG-07V"/>
                                                     <constraint firstItem="N3r-tn-K3P" firstAttribute="leading" secondItem="b18-gC-X0U" secondAttribute="leading" constant="8" id="xJh-uJ-od6"/>
                                                 </constraints>
                                             </view>
@@ -1229,7 +1235,6 @@ a new password will be sent.</string>
                                             <constraint firstItem="SG1-km-gzC" firstAttribute="top" secondItem="x4j-Rr-N00" secondAttribute="bottom" id="cc0-Bj-iNi"/>
                                             <constraint firstAttribute="trailing" secondItem="x4j-Rr-N00" secondAttribute="trailing" id="cxd-HQ-fFT"/>
                                             <constraint firstItem="x4j-Rr-N00" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="dlr-NJ-wZg"/>
-                                            <constraint firstItem="SG1-km-gzC" firstAttribute="height" secondItem="b18-gC-X0U" secondAttribute="height" id="hIl-ak-BJU"/>
                                             <constraint firstItem="Hw2-UR-0GJ" firstAttribute="leading" secondItem="lrP-zw-Mue" secondAttribute="leading" id="kRI-uO-qih"/>
                                             <constraint firstAttribute="trailing" secondItem="i66-Q7-tAH" secondAttribute="trailing" id="qTL-ha-BB6"/>
                                             <constraint firstItem="qcd-OB-Qd1" firstAttribute="top" secondItem="Hw2-UR-0GJ" secondAttribute="bottom" id="qUq-vt-pPT"/>

@@ -234,7 +234,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.hexagonicalTopLayer.position = CGPointMake(self.hexagonicalTopLayer.position.x - LeftOffset, self.hexagonicalTopLayer.position.y);
     self.layer.masksToBounds = YES;
 
-    [self.layer insertSublayer:self.hexagonicalTopLayer atIndex:0];
+    [self.layer insertSublayer:self.hexagonicalTopLayer above:self.notificationLayer];
 }
 
 - (void)drawHexagonicalWireBotton

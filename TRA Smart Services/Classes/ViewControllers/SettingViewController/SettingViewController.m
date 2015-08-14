@@ -59,12 +59,14 @@
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self unregisterForKeyboardNotification];
 }
 
 #pragma mark - IBActions
@@ -161,9 +163,41 @@
         [nextResponder becomeFirstResponder];
     } else if (textField.returnKeyType == UIReturnKeyDone) {
         [self.view endEditing:YES];
+        if (textField.tag == 10) {
+            [self.view layoutIfNeeded];
+            __weak typeof(self) weakSelf = self;
+            [UIView animateWithDuration:0.2 animations:^{
+                [weakSelf.scrollView setContentOffset:CGPointZero];
+                [weakSelf.view layoutIfNeeded];
+            }];
+        }
         return YES;
     }
     return NO;
+}
+
+#pragma mark - Keyboard
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboadWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)unregisterForKeyboardNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboadWillShow:(NSNotification*)notification
+{
+    if ([self.baseURLLinkTextField isFirstResponder]) {
+        [self.view layoutIfNeeded];
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.2 animations:^{
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, 200)];
+            [weakSelf.view layoutIfNeeded];
+        }];
+    }
 }
 
 #pragma mark - Private

@@ -111,11 +111,7 @@
 
 - (void)unregisterForKeyboardNotification
 {
-    @try {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-    } @catch (NSException *exc) {
-        NSLog(@"Cant remove observer - %@", exc);
-    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)keyboadWillShow:(NSNotification*)notification
