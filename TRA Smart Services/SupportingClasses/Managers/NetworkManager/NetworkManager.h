@@ -18,7 +18,8 @@ typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeHelpSalim = 6,
     ServiceTypeVerification = 7,
     ServiceTypeCoverage = 8,
-    ServiceTypeInternetSpeedTest = 9
+    ServiceTypeInternetSpeedTest = 9,
+    ServiceTypeCompliantAboutServiceProvider = 10
 };
 
 typedef void(^ResponseBlock)(id response, NSError *error);

@@ -56,6 +56,8 @@
 
 //HomeViewController
 
+"speedAccess.service.name.-1" = "Demo";
+
 "speedAccess.service.name.0" = "Domain Info";
 "speedAccess.service.name.1" = "Domain Avaliability";
 "speedAccess.service.name.2" = "Check IMEI";
@@ -66,4 +68,4 @@
 "speedAccess.service.name.7" = "Verification";
 "speedAccess.service.name.8" = "Coverage";
 "speedAccess.service.name.9" = "Internet";
-"speedAccess.service.name.10" = "Demo";
+"speedAccess.service.name.10" = "Compliant about service provider";
