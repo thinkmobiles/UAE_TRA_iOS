@@ -12,3 +12,61 @@
 "tabBarMenu_item_2" = "tabBarMenu_item_2";
 "tabBarMenu_item_3" = "tabBarMenu_item_3";
 "tabBarMenu_item_4" = "tabBarMenu_item_4";
+"tabBarMenu_item_5" = "tabBarMenu_item_5";
+
+//LoginViewController
+
+"login.title" = "login.title";
+"login.placeHolderText.username" = "login.placeHolderText.username";
+"login.placeHolderText.password" = "login.placeHolderText.password";
+"login.button.login" = "login.button.login";
+"login.button.forgotPassword" = "login.button.forgotPassword";
+"login.button.registerButton" = "login.button.registerButton";
+"login.restore_password.message" = "login.restore_password.message";
+
+//RegisterViewController
+
+"register.title" = "register.title";
+"register.placeholderText.username" = "register.placeholderText.username";
+"register.placeHolderText.gender" = "register.placeHolderText.gender";
+"register.placeHolderText.phone" = "register.placeHolderText.phone";
+"register.placeHolderText.password" = "register.placeHolderText.password";
+"register.button.register" = "register.button.register";
+"register.button.login" = "register.button.login";
+
+//RestorePasswordViewController
+
+"restorePassword.title" = "restorePassword.title";
+"restorePassword.PlaceholderText.email" = "restorePassword.PlaceholderText.email";
+"restorePassword.button.restore" = "restorePassword.button.restore";
+"restorePassword.information.label.text" = "restorePassword.information.label.text";
+
+//SettingsViewController
+
+"settings.textfield.username" = "settings.textfield.username";
+"settings.textfield.email" = "settings.textfield.email";
+"settings.label.language" = "settings.label.language";
+"settings.label.fontsize" = "settings.label.fontsize";
+"settings.label.themeOption" = "settings.label.themeOption";
+"settings.label.logout" = "settings.label.logout";
+"settings.switchControl.language.arabic" = "settings.switchControl.language.arabic";
+"setting.switchControl.language.english" = "setting.switchControl.language.english";
+"setting.switchControl.textSize.big" = "setting.switchControl.textSize.big";
+"setting.switchControl.textSize.small" = "setting.switchControl.textSize.small";
+
+//HomeViewController
+
+"speedAccess.service.name.-1" = "speedAccess.service.name.-1";
+
+"speedAccess.service.name.0" = "speedAccess.service.name.0";
+"speedAccess.service.name.1" = "speedAccess.service.name.1";
+"speedAccess.service.name.2" = "speedAccess.service.name.2";
+"speedAccess.service.name.3" = "speedAccess.service.name.3";
+"speedAccess.service.name.4" = "speedAccess.service.name.4";
+"speedAccess.service.name.5" = "speedAccess.service.name.5";
+"speedAccess.service.name.6" = "speedAccess.service.name.6";
+"speedAccess.service.name.7" = "speedAccess.service.name.7";
+"speedAccess.service.name.8" = "speedAccess.service.name.8";
+"speedAccess.service.name.9" = "speedAccess.service.name.9";
+"speedAccess.service.name.10" = "speedAccess.service.name.10";
+"speedAccess.service.name.11" = "speedAccess.service.name.11";

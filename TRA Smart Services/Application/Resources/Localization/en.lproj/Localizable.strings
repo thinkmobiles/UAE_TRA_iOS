@@ -9,6 +9,64 @@
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "Home";
-"tabBarMenu_item_2" = "Index";
-"tabBarMenu_item_3" = "CRM";
-"tabBarMenu_item_4" = "Settings";
+"tabBarMenu_item_2" = "Favourite";
+"tabBarMenu_item_3" = "Info Hub";
+"tabBarMenu_item_4" = "Inquires";
+"tabBarMenu_item_5" = "Settings";
+
+//LoginViewController
+
+"login.title" = "Login";
+"login.placeHolderText.username" = "Username";
+"login.placeHolderText.password" = "Password";
+"login.button.login" = "Login";
+"login.button.forgotPassword" = "Forgot the password";
+"login.button.registerButton" = "Register now";
+"login.restore_password.message" = "To restore password please enter your email that was used during registration";
+
+//RegisterViewController
+
+"register.title" = "Create account";
+"register.placeholderText.username" = "Username";
+"register.placeHolderText.gender" = "Gender";
+"register.placeHolderText.phone" = "Phone";
+"register.placeHolderText.password" ="Password";
+"register.button.register" = "Register";
+"register.button.login" = "Login";
+
+//RestorePasswordViewController
+
+"restorePassword.title" = "Restore Password";
+"restorePassword.PlaceholderText.email" = "E-mail";
+"restorePassword.button.restore" = "Restore Password";
+"restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
+
+//SettingsViewController
+
+"settings.textfield.username" = "Username";
+"settings.textfield.email" = "E-mail";
+"settings.label.language" = "Language";
+"settings.label.fontsize" = "Font size";
+"settings.label.themeOption" = "Color";
+"settings.label.logout" = "Logout";
+"settings.switchControl.language.arabic" = "Arabic";
+"setting.switchControl.language.english" = "English";
+"setting.switchControl.textSize.big" = "A+";
+"setting.switchControl.textSize.small" = "A-";
+
+//HomeViewController
+
+"speedAccess.service.name.-1" = "Demo";
+
+"speedAccess.service.name.0" = "Domain Info";
+"speedAccess.service.name.1" = "Domain Avaliability";
+"speedAccess.service.name.2" = "Check IMEI";
+"speedAccess.service.name.3" = "Mobile Brand";
+"speedAccess.service.name.4" = "Feedback";
+"speedAccess.service.name.5" = "Spam Report";
+"speedAccess.service.name.6" = "Help Salim";
+"speedAccess.service.name.7" = "Verification";
+"speedAccess.service.name.8" = "Coverage";
+"speedAccess.service.name.9" = "Internet";
+"speedAccess.service.name.10" = "Compliant";
+"speedAccess.service.name.11" = "Suggestion";

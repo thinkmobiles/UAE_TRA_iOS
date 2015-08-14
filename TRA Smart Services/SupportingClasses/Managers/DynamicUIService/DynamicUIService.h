@@ -14,21 +14,37 @@ typedef NS_ENUM(NSUInteger, LanguageType) {
     LanguageTypeDefault,
     LanguageTypeEnglish,
     LanguageTypeArabic,
-    LanguageTypeFrench,
 };
 
 typedef NS_ENUM(NSUInteger, ApplicationFont) {
-    ApplicationFontUndefined = 12,
+    ApplicationFontUndefined,
     ApplicationFontSmall = 12,
-    ApplicationFontBig = 24
+    ApplicationFontBig = 18
 };
+
+typedef NS_ENUM(NSUInteger, ApplicationColor) {
+    ApplicationColorDefault,
+    ApplicationColorOrange,
+    ApplicationColorBlue,
+    ApplicationColorGreen
+};
+
+static NSString *const UIDynamicServiceNotificationKeyNeedSetRTLUI = @"UIDynamicServiceNotificationKeyNeedSetRTLUI";
+static NSString *const UIDynamicServiceNotificationKeyNeedSetLTRUI = @"UIDynamicServiceNotificationKeyNeedSetLTRUI";
 
 @interface DynamicUIService : NSObject
 
-+ (instancetype)service;
-- (void)setLanguage:(LanguageType)language;
-- (NSString *)localizableStringForKey:(NSString *)key;
-
 @property (assign, nonatomic) ApplicationFont fontSize;
+@property (assign, nonatomic) ApplicationColor colorScheme;
+@property (assign, nonatomic) LanguageType language;
+
++ (instancetype)service;
+
+- (void)setLanguage:(LanguageType)language;
+- (void)saveCurrentFontSize:(ApplicationFont)fontSize;
+- (void)saveCurrentColorScheme:(ApplicationColor)color;
+
+- (UIColor *)currentApplicationColor;
+- (NSString *)localizableStringForKey:(NSString *)key;
 
 @end
