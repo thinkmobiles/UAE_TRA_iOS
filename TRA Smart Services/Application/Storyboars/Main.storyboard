@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -1583,9 +1584,9 @@ a new password will be sent.</string>
                         <barButtonItem key="backBarButtonItem" title=" " id="4P2-ob-QPp"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="constraintVerticalMailCategoes" destination="8aK-y1-HI1" id="FQe-PN-JDh"/>
                         <outlet property="menuCollectionView" destination="5Ox-66-jV4" id="TYF-QU-akl"/>
                         <outlet property="speedAccessCollectionView" destination="Glm-tG-8qu" id="eT5-hI-7da"/>
+                        <outlet property="speedAccessCollectionViewTopSpaceConstraint" destination="8aK-y1-HI1" id="Pee-9P-WxE"/>
                         <outlet property="topView" destination="PFo-5b-foy" id="A7D-Mc-l8f"/>
                         <segue destination="91c-7m-CxN" kind="show" identifier="HomeBarcodeReaderSegue" id="2O9-2k-adl"/>
                         <segue destination="dey-3G-9KT" kind="show" identifier="HomeCheckDomainSegue" id="jMU-my-Fn1"/>
@@ -1820,14 +1821,8 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPN-N6-tg1">
-                                <rect key="frame" x="0.0" y="148" width="600" height="403"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="agV-IF-JEb">
-                                <rect key="frame" x="282" y="332" width="37" height="37"/>
+                                <rect key="frame" x="282" y="282" width="37" height="37"/>
                                 <color key="color" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select signal level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7At-u8-Abk">
@@ -1853,29 +1848,33 @@ a new password will be sent.</string>
                                     <action selector="reportSignalButtonTapped:" destination="Vhn-R2-wMo" eventType="touchUpInside" id="CyH-hL-7hc"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND8-GO-Vhl">
+                                <rect key="frame" x="16" y="327" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7At-u8-Abk" firstAttribute="top" secondItem="7VJ-fE-W4H" secondAttribute="bottom" constant="16" id="24G-HW-HoQ"/>
+                            <constraint firstItem="ND8-GO-Vhl" firstAttribute="top" secondItem="agV-IF-JEb" secondAttribute="bottom" constant="8" id="25g-vU-s1W"/>
                             <constraint firstItem="hs9-FK-GCr" firstAttribute="top" secondItem="7At-u8-Abk" secondAttribute="bottom" constant="8" id="69j-f5-SfH"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="width" secondItem="SMr-ZX-DHO" secondAttribute="width" multiplier="0.5" id="9JF-TC-ycP"/>
-                            <constraint firstItem="pSd-kN-qYz" firstAttribute="top" secondItem="RPN-N6-tg1" secondAttribute="bottom" id="Oaf-6x-o45"/>
                             <constraint firstAttribute="trailing" secondItem="hs9-FK-GCr" secondAttribute="trailing" constant="16" id="PXI-w8-gPh"/>
-                            <constraint firstAttribute="centerY" secondItem="agV-IF-JEb" secondAttribute="centerY" constant="-50" id="QrA-0j-vuw"/>
+                            <constraint firstAttribute="centerY" secondItem="agV-IF-JEb" secondAttribute="centerY" id="QrA-0j-vuw"/>
                             <constraint firstAttribute="centerX" secondItem="U4p-qb-9cc" secondAttribute="centerX" id="ZUk-k9-Zdg"/>
-                            <constraint firstAttribute="trailing" secondItem="RPN-N6-tg1" secondAttribute="trailing" id="ZjM-So-Bh5"/>
                             <constraint firstItem="7At-u8-Abk" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="aF2-93-I1Q"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="top" secondItem="hs9-FK-GCr" secondAttribute="bottom" constant="8" id="aSO-4s-whL"/>
+                            <constraint firstItem="ND8-GO-Vhl" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leadingMargin" id="gdY-4j-92j"/>
                             <constraint firstAttribute="trailing" secondItem="7At-u8-Abk" secondAttribute="trailing" constant="16" id="jyZ-M1-oxo"/>
                             <constraint firstItem="hs9-FK-GCr" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="rAm-7c-6Tf"/>
-                            <constraint firstItem="RPN-N6-tg1" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" id="tyS-dI-wP9"/>
-                            <constraint firstItem="RPN-N6-tg1" firstAttribute="top" secondItem="7At-u8-Abk" secondAttribute="bottom" constant="8" id="xCk-ME-viv"/>
+                            <constraint firstItem="ND8-GO-Vhl" firstAttribute="trailing" secondItem="SMr-ZX-DHO" secondAttribute="trailingMargin" id="rcy-CQ-pFG"/>
                             <constraint firstAttribute="centerX" secondItem="agV-IF-JEb" secondAttribute="centerX" id="zw7-fG-n08"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="agV-IF-JEb" id="JWd-hP-6Gi"/>
-                        <outlet property="infoLabel" destination="RPN-N6-tg1" id="YV5-bn-LTB"/>
+                        <outlet property="addressTextField" destination="ND8-GO-Vhl" id="7zQ-BL-Gef"/>
                         <outlet property="reportSignalButton" destination="U4p-qb-9cc" id="m15-Ls-MAg"/>
                         <outlet property="signalLevelSlider" destination="hs9-FK-GCr" id="ITZ-hJ-RdF"/>
                     </connections>

@@ -31,7 +31,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 @interface HomeViewController ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintVerticalMailCategoes;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *speedAccessCollectionViewTopSpaceConstraint;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *speedAccessCollectionView;
@@ -45,6 +45,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (assign, nonatomic) CGFloat lastContentOffset;
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
+
+
 
 @end
 
@@ -216,14 +218,21 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self detectScrollDirectioninScrollView:scrollView];
-    self.lastContentOffset = scrollView.contentOffset.y;
-    
     if (scrollView == self.menuCollectionView && !self.stopAnimate) {
+        
+        [self detectScrollDirectioninScrollView:scrollView];
+        
         CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
         CGFloat contentOffsetY = scrollView.contentOffset.y;
+        CGFloat delta = self.lastContentOffset - contentOffsetY;
+        
         if(contentOffsetY < minimumAllowedY && contentOffsetY >= 0 ) {
-            self.constraintVerticalMailCategoes.constant = - contentOffsetY;
+            if (ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant + delta) > minimumAllowedY ||
+                (ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant + delta) < 0)) {
+                return;
+            }
+            self.speedAccessCollectionViewTopSpaceConstraint.constant += delta;
+            [self.speedAccessCollectionView setContentOffset:CGPointZero];
             [self.view layoutIfNeeded];
         }
         if (contentOffsetY > minimumAllowedY / 2 && self.isScrollintToTop) {
@@ -232,8 +241,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self.topView moveFakeButtonsToTop:NO];
         }
         __weak typeof(self) weakSelf = self;
-        CGFloat gradientOpacityValue = -self.constraintVerticalMailCategoes.constant / minimumAllowedY;
-        if (self.constraintVerticalMailCategoes.constant < - minimumAllowedY / 2) {
+        CGFloat gradientOpacityValue = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
+        if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
             [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
         } else {
@@ -241,16 +250,22 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [weakSelf.topView drawWithGradientOpacityLevel:0];
         }
     }
+    self.lastContentOffset = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-    self.stopAnimate = YES;
-    CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
     if (scrollView == self.menuCollectionView) {
+        self.stopAnimate = YES;
+        CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
+        
         CGFloat constantValue = 0;
         if (self.isScrollintToTop) {
             constantValue = minimumAllowedY;
+        }
+        if (constantValue == ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant)) {
+            self.stopAnimate = NO;
+            return;
         }
         if (!self.topView.isFakeButtonsOnTop && self.isScrollintToTop) {
             [self.topView moveFakeButtonsToTop:YES];
@@ -260,10 +275,10 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         [self.view layoutIfNeeded];
         __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.2 animations:^{
-            weakSelf.constraintVerticalMailCategoes.constant = - constantValue;
+            weakSelf.speedAccessCollectionViewTopSpaceConstraint.constant = - constantValue;
             [weakSelf.topView drawWithGradientOpacityLevel:constantValue ? 1 : 0];
             [weakSelf.view layoutIfNeeded];
-        }completion:^(BOOL finished) {
+        } completion:^(BOOL finished) {
             weakSelf.stopAnimate = NO;
         }];
     }

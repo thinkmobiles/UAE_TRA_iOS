@@ -198,15 +198,23 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     }];
 }
 
-- (void)traSSNoCRMServicePOSTPoorCoverageAtLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude signalPower:(NSUInteger)signalLevel requestResult:(ResponseBlock)poorCoverageResponse
+- (void)traSSNoCRMServicePOSTPoorCoverageAtLatitude:(CGFloat)latitude longtitude:(CGFloat)longtitude address:(NSString *)address signalPower:(NSUInteger)signalLevel requestResult:(ResponseBlock)poorCoverageResponse
 {
-    NSDictionary *parameters = @{
-                                 @"location" : @{
-                                         @"latitude" : @(latitude),
-                                         @"longtitude" : @(longtitude)
-                                         },
-                                 @"signalLevel" : @(signalLevel)
-                                 };
+    NSMutableDictionary *parameters = [ @{
+                                          @"signalLevel" : @(signalLevel)
+                                          } mutableCopy];
+    
+    if (latitude && longtitude) {
+        [parameters setValue: @{
+                                @"latitude" : @(latitude),
+                                @"longtitude" : @(longtitude)
+                                }
+                      forKey:@"location"];
+    }
+    
+    if (address.length) {
+        [parameters setValue:address forKey:@"address"];
+    }
     
     [self.manager POST:traSSNOCRMServicePOSTPoorCoverage parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];

@@ -70,6 +70,9 @@
             subView.layer.borderWidth = 1;
         }
     }
+    self.feedbackTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.feedbackTextView.layer.borderWidth = 1;
+    self.feedbackTextView.layer.cornerRadius = 8;
 }
 
 - (BOOL)isNSStringIsValid:(NSString *)stringToCheck
