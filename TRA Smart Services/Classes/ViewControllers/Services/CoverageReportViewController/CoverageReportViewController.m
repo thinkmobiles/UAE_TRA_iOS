@@ -34,9 +34,9 @@
 {
     [super viewWillAppear:animated];
     
+    [AppHelper showLoader];
     [LocationManager sharedManager].delegate = self;
     [[LocationManager sharedManager] startUpdatingLocation];
-    [AppHelper showLoader];
 }
 
 #pragma mark - LocationManagerDelegate

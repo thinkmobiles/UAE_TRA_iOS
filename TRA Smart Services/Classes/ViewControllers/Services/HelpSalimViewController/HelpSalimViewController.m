@@ -65,6 +65,10 @@
             subView.layer.borderWidth = 1;
         }
     }
+    
+    self.commentTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.commentTextView.layer.borderWidth = 1;
+    self.commentTextView.layer.cornerRadius = 8;
 }
 
 
