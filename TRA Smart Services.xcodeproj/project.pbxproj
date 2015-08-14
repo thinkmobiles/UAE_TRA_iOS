@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
+		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
+		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -81,6 +83,10 @@
 /* Begin PBXFileReference section */
 		84869E2A1B7DEBE100177B5B /* CompliantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompliantViewController.h; sourceTree = "<group>"; };
 		84869E2B1B7DEBE100177B5B /* CompliantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompliantViewController.m; sourceTree = "<group>"; };
+		84869E2E1B7E132D00177B5B /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
+		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
+		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
+		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -240,6 +246,24 @@
 			path = CompliantViewController;
 			sourceTree = "<group>";
 		};
+		84869E2D1B7E130C00177B5B /* SuggestionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84869E2E1B7E132D00177B5B /* SuggestionViewController.h */,
+				84869E2F1B7E132D00177B5B /* SuggestionViewController.m */,
+			);
+			path = SuggestionViewController;
+			sourceTree = "<group>";
+		};
+		84869E311B7E1D5900177B5B /* BaseSelectImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */,
+				84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */,
+			);
+			path = BaseSelectImageViewController;
+			sourceTree = "<group>";
+		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +372,8 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
+				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
 				EDFEE7161B7DE32F0062CB64 /* SpamReportViewController */,
 				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
@@ -978,6 +1004,7 @@
 			files = (
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,
+				84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
@@ -1016,6 +1043,7 @@
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
+				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
 				EDFEE7191B7DE32F0062CB64 /* SpamReportViewController.m in Sources */,

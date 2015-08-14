@@ -1595,6 +1595,7 @@ a new password will be sent.</string>
                         <segue destination="g1T-5v-LUj" kind="show" identifier="HomeSpeedTestSegue" id="rT5-X8-51s"/>
                         <segue destination="OLV-R2-oyn" kind="show" identifier="HomeToSpamReportSegue" id="lsz-QU-WFE"/>
                         <segue destination="9jW-oN-JHA" kind="show" identifier="HomeToCompliantSeque" id="AP5-vn-iSI"/>
+                        <segue destination="EUe-xY-9fo" kind="show" identifier="HomeToSuggestionSeque" id="ye5-Hu-sFZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtq-cG-a1w" sceneMemberID="firstResponder"/>
@@ -2045,16 +2046,6 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="EDI-GP-B5M"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqB-uh-k4b">
-                                <rect key="frame" x="150" y="304" width="300" height="30"/>
-                                <state key="normal" title="Compliant">
-                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="compliant:" destination="9jW-oN-JHA" eventType="touchUpInside" id="WLE-PV-aoJ"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aui-Gn-Uda">
                                 <rect key="frame" x="16" y="112" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2075,10 +2066,30 @@ a new password will be sent.</string>
                                     <action selector="segmentProvider:" destination="9jW-oN-JHA" eventType="valueChanged" id="dx9-ju-vJ5"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-oz-Osj">
+                                <rect key="frame" x="16" y="304" width="51" height="30"/>
+                                <state key="normal" title=" Image ">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImage:" destination="9jW-oN-JHA" eventType="touchUpInside" id="QEP-ix-Zgp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqB-uh-k4b">
+                                <rect key="frame" x="180" y="304" width="240" height="30"/>
+                                <state key="normal" title="Compliant">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="compliant:" destination="9jW-oN-JHA" eventType="touchUpInside" id="WLE-PV-aoJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pqB-uh-k4b" firstAttribute="width" secondItem="X0O-F8-uuJ" secondAttribute="width" multiplier="0.5" id="3ua-HD-sJ5"/>
+                            <constraint firstItem="pqB-uh-k4b" firstAttribute="width" secondItem="X0O-F8-uuJ" secondAttribute="width" multiplier="0.4" id="3ua-HD-sJ5"/>
                             <constraint firstAttribute="centerX" secondItem="xmG-D0-Lb9" secondAttribute="centerX" id="4Yn-20-wpn"/>
                             <constraint firstItem="aui-Gn-Uda" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="6Mh-fZ-Fsm"/>
                             <constraint firstAttribute="trailing" secondItem="Bdz-MP-GcU" secondAttribute="trailing" constant="16" id="7qL-RT-MIX"/>
@@ -2087,6 +2098,7 @@ a new password will be sent.</string>
                             <constraint firstItem="NTG-Gy-QYa" firstAttribute="top" secondItem="aui-Gn-Uda" secondAttribute="bottom" constant="16" id="ObG-bd-LZe"/>
                             <constraint firstItem="NTG-Gy-QYa" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="QvG-Y3-Rza"/>
                             <constraint firstItem="xmG-D0-Lb9" firstAttribute="top" secondItem="FDM-75-p06" secondAttribute="bottom" constant="8" id="W1z-6A-Rvn"/>
+                            <constraint firstItem="h5I-oz-Osj" firstAttribute="centerY" secondItem="pqB-uh-k4b" secondAttribute="centerY" id="ZQk-4e-GSl"/>
                             <constraint firstAttribute="trailing" secondItem="aui-Gn-Uda" secondAttribute="trailing" constant="16" id="aHv-FC-QzF"/>
                             <constraint firstItem="4a7-XT-aXS" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="bIJ-t9-W3l"/>
                             <constraint firstAttribute="centerX" secondItem="pqB-uh-k4b" secondAttribute="centerX" id="dxj-Ts-0TS"/>
@@ -2095,6 +2107,7 @@ a new password will be sent.</string>
                             <constraint firstItem="aui-Gn-Uda" firstAttribute="top" secondItem="xmG-D0-Lb9" secondAttribute="bottom" constant="12" id="m8o-4t-VV6"/>
                             <constraint firstItem="pqB-uh-k4b" firstAttribute="top" secondItem="4a7-XT-aXS" secondAttribute="bottom" constant="24" id="oE7-y9-nDU"/>
                             <constraint firstItem="Bdz-MP-GcU" firstAttribute="top" secondItem="NTG-Gy-QYa" secondAttribute="bottom" constant="16" id="vkf-RR-Wsc"/>
+                            <constraint firstItem="h5I-oz-Osj" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="yEM-XN-6bu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2103,11 +2116,86 @@ a new password will be sent.</string>
                         <outlet property="providerText" destination="aui-Gn-Uda" id="r4Q-kG-HkB"/>
                         <outlet property="refNumber" destination="4a7-XT-aXS" id="AGW-jx-bqQ"/>
                         <outlet property="segmentProvider" destination="xmG-D0-Lb9" id="ocH-Pn-gsK"/>
+                        <outlet property="selectImageButton" destination="h5I-oz-Osj" id="rDT-3X-2jJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN1-sQ-thU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3488" y="195"/>
+        </scene>
+        <!--Suggestion View Controller-->
+        <scene sceneID="JYw-bg-v7i">
+            <objects>
+                <viewController id="EUe-xY-9fo" customClass="SuggestionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rk5-1G-ihz"/>
+                        <viewControllerLayoutGuide type="bottom" id="H12-nI-23z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oyd-8j-Png">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6D5-Qo-oCu">
+                                <rect key="frame" x="16" y="72" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EUe-xY-9fo" id="axZ-t8-Aoj"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ry-Gx-ds2">
+                                <rect key="frame" x="16" y="110" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EUe-xY-9fo" id="vIS-d9-ybZ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sac-CW-4SX">
+                                <rect key="frame" x="180" y="164" width="240" height="30"/>
+                                <state key="normal" title="Send suggection">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="suggection:" destination="EUe-xY-9fo" eventType="touchUpInside" id="reg-fa-SRi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRf-P8-nQu">
+                                <rect key="frame" x="16" y="164" width="50" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title=" Image ">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImage:" destination="EUe-xY-9fo" eventType="touchUpInside" id="2fz-ZM-RyN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6D5-Qo-oCu" firstAttribute="top" secondItem="rk5-1G-ihz" secondAttribute="bottom" constant="8" id="4gU-fP-EtZ"/>
+                            <constraint firstItem="6D5-Qo-oCu" firstAttribute="leading" secondItem="Oyd-8j-Png" secondAttribute="leading" constant="16" id="63k-p9-0nE"/>
+                            <constraint firstAttribute="trailing" secondItem="6D5-Qo-oCu" secondAttribute="trailing" constant="16" id="7gl-J4-Jah"/>
+                            <constraint firstItem="sac-CW-4SX" firstAttribute="top" secondItem="7Ry-Gx-ds2" secondAttribute="bottom" constant="24" id="7lI-6b-kWm"/>
+                            <constraint firstItem="7Ry-Gx-ds2" firstAttribute="leading" secondItem="Oyd-8j-Png" secondAttribute="leading" constant="16" id="9ke-O4-iO9"/>
+                            <constraint firstItem="7Ry-Gx-ds2" firstAttribute="top" secondItem="6D5-Qo-oCu" secondAttribute="bottom" constant="8" id="Y1r-70-qCh"/>
+                            <constraint firstItem="sac-CW-4SX" firstAttribute="width" secondItem="Oyd-8j-Png" secondAttribute="width" multiplier="0.4" id="bZV-cM-WPk"/>
+                            <constraint firstItem="WRf-P8-nQu" firstAttribute="leading" secondItem="Oyd-8j-Png" secondAttribute="leading" constant="16" id="cNH-tM-9Vz"/>
+                            <constraint firstAttribute="trailing" secondItem="7Ry-Gx-ds2" secondAttribute="trailing" constant="16" id="cep-17-eJR"/>
+                            <constraint firstAttribute="centerX" secondItem="sac-CW-4SX" secondAttribute="centerX" id="djm-Mi-5M6"/>
+                            <constraint firstItem="WRf-P8-nQu" firstAttribute="centerY" secondItem="sac-CW-4SX" secondAttribute="centerY" id="p7d-ow-xkC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="selectImageButton" destination="WRf-P8-nQu" id="mbR-8s-BsO"/>
+                        <outlet property="suggectionDescription" destination="7Ry-Gx-ds2" id="uzx-6V-2TP"/>
+                        <outlet property="suggestionTitle" destination="6D5-Qo-oCu" id="2Qt-jf-xWA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N60-Wu-85y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4252" y="191"/>
         </scene>
         <!--Spam Report View Controller-->
         <scene sceneID="dqR-62-x4l">

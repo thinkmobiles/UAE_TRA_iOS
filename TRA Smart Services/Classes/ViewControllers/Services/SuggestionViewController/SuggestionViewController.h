@@ -1,5 +1,5 @@
 //
-//  CompliantViewController.h
+//  SuggestionViewController.h
 //  TRA Smart Services
 //
 //  Created by RomanVizenko on 14.08.15.
@@ -8,6 +8,6 @@
 
 #import "BaseSelectImageViewController.h"
 
-@interface CompliantViewController : BaseSelectImageViewController
+@interface SuggestionViewController : BaseSelectImageViewController
 
 @end

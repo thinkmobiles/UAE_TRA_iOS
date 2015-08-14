@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *compliantDescription;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
+@property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
 
 @end
 
@@ -35,17 +36,24 @@
 
 #pragma mark - IABaction
 
+- (IBAction)selectImage:(id)sender
+{
+    [self selectImagePickerController];
+}
+
 - (IBAction)segmentProvider:(id)sender
 {
     switch (self.segmentProvider.selectedSegmentIndex) {
         case 0:{
-            self.compliantDescription.enabled = YES;
+            self.providerText.enabled = YES;
             self.refNumber.enabled = YES;
             break;
         }
         default:{
-            self.compliantDescription.enabled = NO;
+            self.providerText.enabled = NO;
             self.refNumber.enabled = NO;
+            self.providerText.text = @"";
+            self.refNumber.text = @"";
             break;
         }
     }
@@ -54,35 +62,30 @@
 - (IBAction)compliant:(id)sender
 {
     [self.view endEditing:YES];
-    if (!self.providerText.text.length ||
+    if (!self.compliantDescription.text.length ||
         !self.compliantTitle.text.length ||
-        (!self.segmentProvider.selectedSegmentIndex && (!self.compliantDescription.text.length ||
+        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length ||
                                                         !self.refNumber.text.length))){
         
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
     } else {
         [AppHelper showLoader];
-//        __weak typeof(self) weakSelf = self;
-        
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:@"" title:@"" description:@"" refNumber:3 attachment:nil complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
+        __weak typeof(self) weakSelf = self;
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescription.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
+            if (error) {
+                [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                [AppHelper alertViewWithMessage:MessageSuccess];
+            }
+            [AppHelper hideLoader];
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.providerText.text = @"";
+                weakSelf.compliantTitle.text = @"";
+                weakSelf.compliantDescription.text = @"";
+                weakSelf.refNumber.text = @"";            
+            });
         }];
-        
-//        [[NetworkManager sharedManager] traSSNoCRMServicePOSCompliantAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescription.text refNumber:[self.refNumber.text integerValue] attachment:nil requestResult:^(id response, NSError *error) {
-//            if (error) {
-//                [AppHelper alertViewWithMessage:error.localizedDescription];
-//            } else {
-//                [AppHelper alertViewWithMessage:MessageSuccess];
-//            }
-//            [AppHelper hideLoader];
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                weakSelf.providerText.text = @"";
-//                weakSelf.compliantTitle.text = @"";
-//                weakSelf.compliantDescription.text = @"";
-//                weakSelf.refNumber.text = @"";
-//            });
-//        }];
     }
 }
 

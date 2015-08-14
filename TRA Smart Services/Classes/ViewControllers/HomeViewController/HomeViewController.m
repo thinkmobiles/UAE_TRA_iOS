@@ -25,6 +25,8 @@ static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
 static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
+static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
+
 
 
 @interface HomeViewController ()
@@ -148,6 +150,10 @@ static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
         }
         case 10: {
             [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
+            break;
+        }
+        case 11: {
+            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
             break;
         }
 
