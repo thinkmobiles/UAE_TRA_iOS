@@ -45,13 +45,16 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setTranslucent:YES];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    if (self.needTransparentNavigationBar) {
+        self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+        
+        [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setTranslucent:YES];
+        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    } else {
+        self.title = @"Check IMEI";
+    }
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
     [self registerForKeyboardNotifications];
     
     [self.reader startStopReading];
@@ -63,7 +66,10 @@
     
     [self.reader startStopReading];
     [self unregisterForKeyboardNotification];
-    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
+    if (self.needTransparentNavigationBar) {
+        [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
+    }
+    self.title = @" ";
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -97,9 +103,14 @@
     }
 }
 
-- (IBAction)scanButtonTapped:(id)sender
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self.reader startStopReading];
+    if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
+        CheckIMEIViewController *viewController = segue.destinationViewController;
+        viewController.needTransparentNavigationBar = YES;
+    }
 }
 
 #pragma mark - Keyboard
@@ -142,7 +153,7 @@
 - (void)prepareUI
 {
     for (UIView *subView in self.contentView.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
+        if ([subView isKindOfClass:[UIButton class]] && !subView.tag) {
             subView.layer.cornerRadius = 8;
             subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
             subView.layer.borderWidth = 1;

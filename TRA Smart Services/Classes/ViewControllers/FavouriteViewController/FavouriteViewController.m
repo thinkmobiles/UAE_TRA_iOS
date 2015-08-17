@@ -11,6 +11,9 @@
 
 @interface FavouriteViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
+@property (weak, nonatomic) IBOutlet UILabel *informationLabel;
+
 @end
 
 @implementation FavouriteViewController
@@ -29,6 +32,14 @@
     NSLog(@"text - %@", searchText);
 }
 
+#pragma mark - IBActions
+
+- (IBAction)addFavouriteButtonPress:(id)sender
+{
+    
+}
+
+#pragma mark - Private
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
