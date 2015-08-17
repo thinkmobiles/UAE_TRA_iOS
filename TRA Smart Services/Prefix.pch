@@ -21,5 +21,6 @@
 #import "NetworkManager.h"
 #import "BaseDynamicUIViewController.h"
 #import "NSArray+Reverse.h"
+#import "UIView+Snapshot.h"
 
 #endif /* Prefix_pch */

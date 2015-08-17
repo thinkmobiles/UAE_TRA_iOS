@@ -120,7 +120,7 @@
 {
     [super prepareNavigationBar];
     [self prepareNavigationBarButton];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 @end

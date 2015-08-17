@@ -51,6 +51,8 @@
     return [UIColor colorWithRealRed:188 green:187 blue:186 alpha:1.0f];
 }
 
+#pragma mark - TabBarColors
+
 + (UIColor *)lightGrayTabBarColor
 {
     return [UIColor colorWithRealRed:241 green:241 blue:241 alpha:1.0f];
@@ -59,6 +61,13 @@
 + (UIColor *)darkGrayTabBarColor
 {
     return [UIColor colorWithRealRed:215 green:214 blue:213 alpha:1.0f];
+}
+
+#pragma mark - FavouriteViewController
+
++ (UIColor *)lightOrangeColor
+{
+    return [UIColor colorWithRealRed:255 green:243 blue:229 alpha:1.0f];
 }
 
 #pragma mark - Private

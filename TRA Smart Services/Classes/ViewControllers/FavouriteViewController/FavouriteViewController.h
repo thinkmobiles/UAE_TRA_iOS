@@ -8,6 +8,6 @@
 
 #import "BaseSearchableViewController.h"
 
-@interface FavouriteViewController : BaseSearchableViewController 
+@interface FavouriteViewController : BaseSearchableViewController <UITabBarDelegate, UITableViewDataSource>
 
 @end

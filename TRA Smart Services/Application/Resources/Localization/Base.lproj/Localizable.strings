@@ -76,3 +76,8 @@
 "favourite.title" = "favourite.title";
 "favourite.button.addFav.title" = "favourite.button.addFav.title";
 "favourite.notification" = "favourite.notification";
+
+//FavouriteCell
+
+"favouriteCell.infoButton.title" = "favouriteCell.infoButton.title";
+"favouriteCell.deleteButton.title" = "favouriteCell.deleteButton.title";

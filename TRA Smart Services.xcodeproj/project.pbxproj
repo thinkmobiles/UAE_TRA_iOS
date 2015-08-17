@@ -62,6 +62,11 @@
 		EDA549821B7B514F00440216 /* OtherServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA549811B7B514F00440216 /* OtherServices.plist */; };
 		EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */; };
 		EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */; };
+		EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAA8EE11B81D63100269F1A /* CoreData.framework */; };
+		EDAA8EE61B81D79A00269F1A /* TRAService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EE41B81D79A00269F1A /* TRAService.xcdatamodeld */; };
+		EDAA8EED1B81D9A600269F1A /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EEC1B81D9A600269F1A /* TRAService.m */; };
+		EDAA8EF11B81DB7100269F1A /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */; };
+		EDAA8EF51B81EB5200269F1A /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */; };
 		EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */; };
 		EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F951B70E35B0071BADA /* LoginViewController.m */; };
 		EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F981B70E35B0071BADA /* RegisterViewController.m */; };
@@ -194,6 +199,14 @@
 		EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewController.m; sourceTree = "<group>"; };
 		EDAA8EA91B81AB2700269F1A /* BaseSearchableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSearchableViewController.h; sourceTree = "<group>"; };
 		EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSearchableViewController.m; sourceTree = "<group>"; };
+		EDAA8EE11B81D63100269F1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EDAA8EE51B81D79A00269F1A /* TRAService.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TRAService.xcdatamodel; sourceTree = "<group>"; };
+		EDAA8EEB1B81D9A600269F1A /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
+		EDAA8EEC1B81D9A600269F1A /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
+		EDAA8EEF1B81DB7100269F1A /* FavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTableViewCell.h; sourceTree = "<group>"; };
+		EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTableViewCell.m; sourceTree = "<group>"; };
+		EDAA8EF31B81EB5200269F1A /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		EDC04F911B70E35B0071BADA /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		EDC04F941B70E35B0071BADA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -236,6 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */,
 				EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +591,7 @@
 		ED982F1F1B5D24DA00B6B644 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EE31B81D78700269F1A /* CoreData */,
 				ED982F201B5D24DA00B6B644 /* AppDelegate */,
 				ED982F231B5D24DA00B6B644 /* AppHelper */,
 				ED982F261B5D24DA00B6B644 /* Constants */,
@@ -649,6 +664,7 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EF21B81EB3A00269F1A /* UIView+Snapshot */,
 				ED6C8DF81B7B9CF100519E96 /* NSArray+Reverse */,
 				ED7D9F201B6BAB4900C20402 /* UIImage+DrawText */,
 				ED2084DD1B5E738600779CBD /* UIKit+AFNetworking */,
@@ -761,6 +777,42 @@
 			path = BaseSearchableViewController;
 			sourceTree = "<group>";
 		};
+		EDAA8EE31B81D78700269F1A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EE71B81D94100269F1A /* EntityModels */,
+				EDAA8EE41B81D79A00269F1A /* TRAService.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		EDAA8EE71B81D94100269F1A /* EntityModels */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EEB1B81D9A600269F1A /* TRAService.h */,
+				EDAA8EEC1B81D9A600269F1A /* TRAService.m */,
+			);
+			path = EntityModels;
+			sourceTree = "<group>";
+		};
+		EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EEF1B81DB7100269F1A /* FavouriteTableViewCell.h */,
+				EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */,
+			);
+			path = FavouriteTableViewCell;
+			sourceTree = "<group>";
+		};
+		EDAA8EF21B81EB3A00269F1A /* UIView+Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EF31B81EB5200269F1A /* UIView+Snapshot.h */,
+				EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */,
+			);
+			path = "UIView+Snapshot";
+			sourceTree = "<group>";
+		};
 		EDC04F8F1B70E3490071BADA /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,6 +889,7 @@
 		EDD3E59F1B5E4A9E00405367 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EE11B81D63100269F1A /* CoreData.framework */,
 				EDD3E5A01B5E4ACE00405367 /* Security.framework */,
 			);
 			path = Frameworks;
@@ -863,6 +916,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */,
 				ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */,
 				ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */,
 				EDEC9DF21B6A380400334503 /* CategoryCollectionViewCell */,
@@ -1044,7 +1098,9 @@
 				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
+				EDAA8EF11B81DB7100269F1A /* FavouriteTableViewCell.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				EDAA8EED1B81D9A600269F1A /* TRAService.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
@@ -1072,6 +1128,7 @@
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
+				EDAA8EF51B81EB5200269F1A /* UIView+Snapshot.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
@@ -1086,6 +1143,7 @@
 				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
+				EDAA8EE61B81D79A00269F1A /* TRAService.xcdatamodeld in Sources */,
 				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,
 				ED2084F21B5E738600779CBD /* UIButton+AFNetworking.m in Sources */,
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
@@ -1204,7 +1262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1221,7 +1279,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1251,6 +1309,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EDAA8EE41B81D79A00269F1A /* TRAService.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EDAA8EE51B81D79A00269F1A /* TRAService.xcdatamodel */,
+			);
+			currentVersion = EDAA8EE51B81D79A00269F1A /* TRAService.xcdatamodel */;
+			path = TRAService.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ED7192741B5450D60086C6EE /* Project object */;
 }
