@@ -74,3 +74,5 @@
 //FavouriteViewController
 
 "favourite.title" = "favourite.title";
+"favourite.button.addFav.title" = "favourite.button.addFav.title";
+"favourite.notification" = "favourite.notification";

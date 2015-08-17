@@ -173,7 +173,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (ApplicationColor)savedApplicationColor
 {
-    ApplicationColor savedColor;
+    ApplicationColor savedColor = ApplicationColorDefault;
     NSUInteger currentColor = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentColor] integerValue];
     if (savedColor) {
         switch (currentColor) {

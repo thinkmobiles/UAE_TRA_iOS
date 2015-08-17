@@ -74,3 +74,5 @@
 //FavouriteViewController
 
 "favourite.title" = "FAVORITES";
+"favourite.button.addFav.title" = "ADD A SERVICE";
+"favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";

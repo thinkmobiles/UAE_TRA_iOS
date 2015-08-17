@@ -515,9 +515,9 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */,
-				ED3D98231B7CD6A4000DEEB8 /* Services */,
 				EDC04F8F1B70E3490071BADA /* Login */,
+				ED3D98231B7CD6A4000DEEB8 /* Services */,
+				EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				ED7D9F281B6CEFB900C20402 /* BaseDynamicUIViewController */,
