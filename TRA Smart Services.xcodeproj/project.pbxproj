@@ -60,6 +60,8 @@
 		ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */; };
 		EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */; };
 		EDA549821B7B514F00440216 /* OtherServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA549811B7B514F00440216 /* OtherServices.plist */; };
+		EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */; };
+		EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */; };
 		EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */; };
 		EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F951B70E35B0071BADA /* LoginViewController.m */; };
 		EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F981B70E35B0071BADA /* RegisterViewController.m */; };
@@ -188,6 +190,10 @@
 		ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+TopButton.m"; sourceTree = "<group>"; };
 		EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpeedAccessServices.plist; sourceTree = "<group>"; };
 		EDA549811B7B514F00440216 /* OtherServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OtherServices.plist; sourceTree = "<group>"; };
+		EDAA8EA11B7E3F4700269F1A /* FavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteViewController.h; sourceTree = "<group>"; };
+		EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewController.m; sourceTree = "<group>"; };
+		EDAA8EA91B81AB2700269F1A /* BaseSearchableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSearchableViewController.h; sourceTree = "<group>"; };
+		EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSearchableViewController.m; sourceTree = "<group>"; };
 		EDC04F911B70E35B0071BADA /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		EDC04F941B70E35B0071BADA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -509,12 +515,14 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */,
 				ED3D98231B7CD6A4000DEEB8 /* Services */,
 				EDC04F8F1B70E3490071BADA /* Login */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
-				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
 				ED7D9F281B6CEFB900C20402 /* BaseDynamicUIViewController */,
+				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
+				EDAA8EA81B81AB1A00269F1A /* BaseSearchableViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -733,6 +741,24 @@
 				ED982F571B5D82EC00B6B644 /* UINavigationController+TopButton.m */,
 			);
 			path = "UINavigationController+TopButton";
+			sourceTree = "<group>";
+		};
+		EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EA11B7E3F4700269F1A /* FavouriteViewController.h */,
+				EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */,
+			);
+			path = FavouriteViewController;
+			sourceTree = "<group>";
+		};
+		EDAA8EA81B81AB1A00269F1A /* BaseSearchableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EA91B81AB2700269F1A /* BaseSearchableViewController.h */,
+				EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */,
+			);
+			path = BaseSearchableViewController;
 			sourceTree = "<group>";
 		};
 		EDC04F8F1B70E3490071BADA /* Login */ = {
@@ -1016,6 +1042,7 @@
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
 				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
+				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
@@ -1043,6 +1070,7 @@
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
+				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,

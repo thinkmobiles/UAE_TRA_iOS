@@ -70,3 +70,7 @@
 "speedAccess.service.name.9" = "Internet1";
 "speedAccess.service.name.10" = "Compliant1";
 "speedAccess.service.name.11" = "Suggestion";
+
+//FavouriteViewController
+
+"favourite.title" = "FAVORITES";
