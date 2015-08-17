@@ -937,9 +937,9 @@
 		EDEC9DED1B6A338B00334503 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EDEC9DEE1B6A339A00334503 /* HexagonView */,
 				ED6537291B6FFDAF00A50CBC /* SegmentView */,
 				ED7D9F1A1B6B9EC400C20402 /* HomeTopBarView */,
-				EDEC9DEE1B6A339A00334503 /* HexagonView */,
 			);
 			path = Views;
 			sourceTree = "<group>";

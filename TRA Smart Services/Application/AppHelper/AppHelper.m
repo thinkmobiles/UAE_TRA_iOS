@@ -139,9 +139,13 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view
 {
-    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
     CGRect hexagonRect = CGRectMake(view.bounds.origin.x, view.bounds.origin.y, view.bounds.size.width, view.bounds.size.height);
-    
+    return [AppHelper hexagonPathForRect:hexagonRect];
+}
+
++ (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
     [hexagonPath moveToPoint:CGPointMake(CGRectGetMidX(hexagonRect), 0)];
     [hexagonPath addLineToPoint:CGPointMake(CGRectGetMaxX(hexagonRect), CGRectGetMaxY(hexagonRect) * 0.25)];
     [hexagonPath addLineToPoint:CGPointMake(CGRectGetMaxX(hexagonRect), CGRectGetMaxY(hexagonRect) * 0.75)];
@@ -152,6 +156,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     
     return hexagonPath;
 }
+
 
 
 @end

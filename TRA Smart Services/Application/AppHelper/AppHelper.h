@@ -31,5 +31,6 @@ static NSString *const MessageIncorrectRating = @"Incorrect rating format - shou
 + (void)prepareTabBarGradient;
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view;
++ (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect;
 
 @end
