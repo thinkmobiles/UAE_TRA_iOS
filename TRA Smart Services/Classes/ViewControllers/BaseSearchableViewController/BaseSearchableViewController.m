@@ -89,6 +89,9 @@
     UIView *titleView = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.bounds];
     self.titleView = titleView;
     self.navigationItem.titleView = self.titleView;
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
 }
 
 - (void)prepareTitleLabel

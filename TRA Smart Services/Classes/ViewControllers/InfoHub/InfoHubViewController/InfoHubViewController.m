@@ -56,7 +56,6 @@ static CGFloat const heightTableViewCell = 90.0f;
     InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:infoHubCollectionViewCellIdentifier forIndexPath:indexPath];
     cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     cell.textLabel.text = [NSString stringWithFormat:@"Text numer %li", (long)indexPath.row + 1];
-//    cell.image.image =
    
     return cell;
 }
@@ -98,11 +97,6 @@ static CGFloat const heightTableViewCell = 90.0f;
 
 #pragma mark - IBActions
 
-- (IBAction)addFavouriteButtonPress:(id)sender
-{
-    
-}
-
 #pragma mark - Private
 
 - (void)backgroundClear
@@ -115,9 +109,9 @@ static CGFloat const heightTableViewCell = 90.0f;
 
 - (void)localizeUI
 {
-    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
-    self.announcementsLabel.text = @"ANNOUNCEMENTS";
-    [self.seeMoreButton setTitle:@"See more" forState:UIControlStateNormal];
+    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
+    self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
+    [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors

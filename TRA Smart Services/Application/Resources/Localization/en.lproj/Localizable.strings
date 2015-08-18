@@ -74,3 +74,17 @@
 //FavouriteViewController
 
 "favourite.title" = "FAVORITES";
+
+//InfoHubViewController
+
+"infoHub.title" = "INFO HUB";
+"announcements.label.text" = "ANNOUNCEMENTS";
+"seeMore.button.title" = "See more";
+
+//AnnoucementsViewController
+
+"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+
+//DetailsViewController
+
+"details.title" = "INFO HUB DETAILS";

@@ -15,8 +15,11 @@
 
 static CGFloat const heightTableViewCell = 90.0f;
 static NSString *const AnnoucementsTableViewCellIdentifier = @"AnnoucementsTableViewCell";
+static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 
 @implementation AnnoucementsViewController
+
+#pragma mark - Life Cicle
 
 - (void)viewDidLoad
 {
@@ -61,9 +64,13 @@ static NSString *const AnnoucementsTableViewCellIdentifier = @"AnnoucementsTable
 
 #pragma mark - IBActions
 
-- (IBAction)addFavouriteButtonPress:(id)sender
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString: segueDetailsViewIdentifier]) {
+        NSLog(@"segue to Details ViewController");
+    }
 }
 
 #pragma mark - Private
@@ -71,7 +78,7 @@ static NSString *const AnnoucementsTableViewCellIdentifier = @"AnnoucementsTable
 
 - (void)localizeUI
 {
-    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
+    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"annoucements.title");
 }
 
 - (void)updateColors
