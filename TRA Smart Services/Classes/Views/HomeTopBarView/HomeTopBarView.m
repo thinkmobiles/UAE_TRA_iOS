@@ -156,8 +156,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     if (self.enableFakeBarAnimations && [self enebleAnimation:moveToTop]) {
         
-        self.isFakeButtonsOnTop = moveToTop;
+        [self makeLogoLayerScaled:!moveToTop];
         
+        self.isFakeButtonsOnTop = moveToTop;
         self.enableFakeBarAnimations = NO;
         self.disableFakeButtonLayersDrawing = YES;
         CGPoint endAnimValueInformationLayer = [self calculateEndPositionForInformationLayerWithMInizizedLayout:moveToTop];
@@ -171,6 +172,18 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         self.notificationLayer.position = endAnimValueNotificationLayer;
         [self.notificationLayer addAnimation:animationNotificationLayer forKey:@"animationNotificationLayer"];
     }
+}
+
+- (void)makeLogoLayerScaled:(BOOL)scaled
+{
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    CATransform3D tr = CATransform3DIdentity;
+    tr = scaled ? CATransform3DIdentity : CATransform3DScale(tr, 0.85, 0.85, 1);
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:self.imageLayer.transform];
+    scaleAnimation.toValue = [NSValue valueWithCATransform3D:tr];
+    scaleAnimation.duration = 0.25;
+    [self.imageLayer addAnimation:scaleAnimation forKey:nil];
+    self.imageLayer.transform = tr;
 }
 
 #pragma mark - AnimationDelegate

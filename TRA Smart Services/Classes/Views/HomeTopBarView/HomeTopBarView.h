@@ -35,6 +35,7 @@
 
 - (void)reverseLayers;
 - (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel;
-- (void)moveFakeButtonsToTop:(BOOL) minimizire;
+- (void)moveFakeButtonsToTop:(BOOL)moveToTop;
+- (void)makeLogoLayerScaled:(BOOL)scaled;
 
 @end

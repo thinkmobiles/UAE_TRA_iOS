@@ -228,11 +228,11 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         
         if(contentOffsetY < minimumAllowedY && contentOffsetY >= 0 ) {
             if (ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant + delta) > minimumAllowedY ||
-                (ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant + delta) < 0)) {
+                (self.speedAccessCollectionViewTopSpaceConstraint.constant + delta > 0)) {
                 return;
             }
             self.speedAccessCollectionViewTopSpaceConstraint.constant += delta;
-            [self.speedAccessCollectionView setContentOffset:CGPointZero];
+            [self.speedAccessCollectionView setContentOffset:CGPointZero animated:YES];
             [self.view layoutIfNeeded];
         }
         if (contentOffsetY > minimumAllowedY / 2 && self.isScrollintToTop) {
@@ -265,22 +265,22 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         }
         if (constantValue == ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant)) {
             self.stopAnimate = NO;
-            return;
+        } else {
+            if (!self.topView.isFakeButtonsOnTop && self.isScrollintToTop) {
+                [self.topView moveFakeButtonsToTop:YES];
+            } else if (self.topView.isFakeButtonsOnTop && !self.isScrollintToTop) {
+                [self.topView moveFakeButtonsToTop:NO];
+            }
+            [self.view layoutIfNeeded];
+            __weak typeof(self) weakSelf = self;
+            [UIView animateWithDuration:0.2 animations:^{
+                weakSelf.speedAccessCollectionViewTopSpaceConstraint.constant = - constantValue;
+                [weakSelf.topView drawWithGradientOpacityLevel:constantValue ? 1 : 0];
+                [weakSelf.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                weakSelf.stopAnimate = NO;
+            }];
         }
-        if (!self.topView.isFakeButtonsOnTop && self.isScrollintToTop) {
-            [self.topView moveFakeButtonsToTop:YES];
-        } else if (self.topView.isFakeButtonsOnTop && !self.isScrollintToTop) {
-            [self.topView moveFakeButtonsToTop:NO];
-        }
-        [self.view layoutIfNeeded];
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:0.2 animations:^{
-            weakSelf.speedAccessCollectionViewTopSpaceConstraint.constant = - constantValue;
-            [weakSelf.topView drawWithGradientOpacityLevel:constantValue ? 1 : 0];
-            [weakSelf.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            weakSelf.stopAnimate = NO;
-        }];
     }
 }
 
