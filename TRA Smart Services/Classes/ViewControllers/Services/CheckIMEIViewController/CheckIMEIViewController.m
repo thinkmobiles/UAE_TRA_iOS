@@ -14,10 +14,14 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
 @property (strong, nonatomic) UIImage *navigationBarImage;
+
+@property (strong, nonatomic) CALayer *shapeLayer;
+@property (strong, nonatomic) CAShapeLayer *lineLayer;
 
 @end
 
@@ -39,6 +43,8 @@
     [super viewDidLayoutSubviews];
     
     [self.reader relayout];
+    [self drawLayers];
+    self.reader.acceptableRect = self.scannerZoneView.frame;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -174,6 +180,46 @@
         self.centerPositionForTextFieldConstraint.constant = 100;
         [self.view layoutIfNeeded];
     }];
+}
+
+#pragma mark - Drawing
+
+- (void)drawLayers
+{
+    [self.shapeLayer removeFromSuperlayer];
+    
+    self.shapeLayer = [CALayer layer];
+    self.shapeLayer.frame = self.barcodeView.bounds;
+    self.shapeLayer.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.3f].CGColor;
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    UIBezierPath *boundPath = [UIBezierPath bezierPathWithRect:self.barcodeView.frame];
+    UIBezierPath *scannerViewPath = [UIBezierPath bezierPathWithRoundedRect:self.scannerZoneView.frame byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8, 8)];
+    [boundPath appendPath:scannerViewPath];
+    [boundPath setUsesEvenOddFillRule:YES];
+    
+    maskLayer.path = boundPath.CGPath;
+    maskLayer.fillRule = kCAFillRuleEvenOdd;
+    
+    self.shapeLayer.masksToBounds = YES;
+    self.shapeLayer.mask = maskLayer;
+    
+    [self.lineLayer removeFromSuperlayer];
+    
+    self.lineLayer = [CAShapeLayer layer];
+    self.lineLayer.frame = self.scannerZoneView.frame;
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(0, self.scannerZoneView.bounds.size.height / 2)];
+    [linePath addLineToPoint:CGPointMake(self.scannerZoneView.bounds.size.width, self.scannerZoneView.bounds.size.height /2)];
+    self.lineLayer.strokeColor = [UIColor greenColor].CGColor;
+    self.lineLayer.lineWidth = 1.f;
+    self.lineLayer.path = linePath.CGPath;
+    
+    [self.barcodeView.layer addSublayer:self.lineLayer];
+    [self.barcodeView.layer addSublayer:self.shapeLayer];
+    
+    self.scannerZoneView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.scannerZoneView.layer.borderWidth = 1.f;
 }
 
 @end

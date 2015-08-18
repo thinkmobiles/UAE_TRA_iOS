@@ -1826,7 +1826,22 @@ a new password will be sent.</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="772-Rq-o7n" userLabel="BarcodeReaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-0p-d7L" userLabel="Scanner - UIView">
+                                        <rect key="frame" x="16" y="225" width="568" height="150"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="Oc9-te-pGy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SQ5-0p-d7L" firstAttribute="leading" secondItem="772-Rq-o7n" secondAttribute="leading" constant="16" id="O8e-wR-PP6"/>
+                                    <constraint firstAttribute="trailing" secondItem="SQ5-0p-d7L" secondAttribute="trailing" constant="16" id="UHE-mb-H8B"/>
+                                    <constraint firstAttribute="centerX" secondItem="SQ5-0p-d7L" secondAttribute="centerX" id="UMl-5m-PYo"/>
+                                    <constraint firstAttribute="centerY" secondItem="SQ5-0p-d7L" secondAttribute="centerY" id="oIa-FZ-asH"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-9Q-2T6" userLabel="ContentView">
                                 <rect key="frame" x="16" y="432" width="568" height="160"/>
@@ -1894,6 +1909,7 @@ a new password will be sent.</string>
                         <outlet property="contentView" destination="yzA-9Q-2T6" id="56f-ip-NPS"/>
                         <outlet property="resultLabel" destination="XGa-On-k9Z" id="5ri-oM-dRe"/>
                         <outlet property="resultTextField" destination="wVH-kR-kfR" id="uGk-Ge-ERk"/>
+                        <outlet property="scannerZoneView" destination="SQ5-0p-d7L" id="3hp-k5-q9c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PR3-Dj-yrr" userLabel="First Responder" sceneMemberID="firstResponder"/>

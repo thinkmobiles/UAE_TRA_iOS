@@ -46,8 +46,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
 
-
-
 @end
 
 @implementation HomeViewController
