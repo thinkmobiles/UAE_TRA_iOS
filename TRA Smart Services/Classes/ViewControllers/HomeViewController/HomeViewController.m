@@ -45,7 +45,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (assign, nonatomic) CGFloat lastContentOffset;
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
-
 @property (assign, nonatomic) BOOL isFirstTimeLoaded;
 
 @end

@@ -97,7 +97,22 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     }];
 }
 
-- (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse
+- (void)traSSNoCRMServicePOSTSMSSpamReport:(NSString *)spammerPhoneNumber notes:(NSString *)note requestResult:(ResponseBlock)SMSSpamReportResponse
+{
+    NSDictionary *parameters = @{
+                                 @"phone": spammerPhoneNumber,
+                                 @"description": note
+                                 };
+    
+    [self.manager POST:traSSNOCRMServicePOSTSMSSPamReport parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        SMSSpamReportResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        SMSSpamReportResponse(nil, error);
+    }];
+}
+
+- (void)traSSNoCRMServicePOSTSMSBlock:(NSString *)spammerPhoneNumber phoneProvider:(NSString *)provider providerType:(NSString *)providerType notes:(NSString *)note requestResult:(ResponseBlock)SMSBlockResponse
 {
     NSDictionary *parameters = @{
                                  @"phone": spammerPhoneNumber,
@@ -108,9 +123,9 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTSMSSPamReport parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        SMSSpamReportResponse([responseDictionary valueForKey:@"status"], nil);
+        SMSBlockResponse([responseDictionary valueForKey:@"status"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
-        SMSSpamReportResponse(nil, error);
+        SMSBlockResponse(nil, error);
     }];
 }
 

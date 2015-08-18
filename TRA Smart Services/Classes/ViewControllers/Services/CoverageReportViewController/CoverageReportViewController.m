@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
+@property (weak, nonatomic) IBOutlet UILabel *selectedSignalLevel;
 
 @end
 
@@ -81,6 +82,13 @@
     } else {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
     }
+}
+
+- (IBAction)sliderDidChnageValue:(UISlider *)sender
+{
+    sender.value = roundf(sender.value / sender.maximumValue * 5) * sender.maximumValue / 5 ;
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"Selected signal Level - %i", (int)sender.value];
+
 }
 
 #pragma mark - Private

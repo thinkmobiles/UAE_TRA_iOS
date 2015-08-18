@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) id <BarcodeCodeReaderDelegate> delegate;
 @property (nonatomic) BOOL isReading;
+@property (assign, nonatomic) CGRect acceptableRect;
 
 - (instancetype)initWithView:(UIView *)viewPreview;
 - (void)startStopReading;

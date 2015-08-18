@@ -125,12 +125,14 @@
             if ([metadataObj.type isEqualToString:type]) {
                 
                 AVMetadataMachineReadableCodeObject *barcodeObject = (AVMetadataMachineReadableCodeObject *)[self.videoPreviewLayer transformedMetadataObjectForMetadataObject:metadataObj];
-                __weak typeof(self) weakSelf = self;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.scannerIndicatorView.frame = barcodeObject.bounds;
-                });
-                if (self.delegate && [self.delegate respondsToSelector:@selector(readerDidFinishCapturingWithResult:)]) {
-                    [self.delegate readerDidFinishCapturingWithResult: metadataObj.stringValue];
+                if (CGRectIntersectsRect(barcodeObject.bounds, self.acceptableRect)) {
+                    __weak typeof(self) weakSelf = self;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        weakSelf.scannerIndicatorView.frame = barcodeObject.bounds;
+                    });
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(readerDidFinishCapturingWithResult:)]) {
+                        [self.delegate readerDidFinishCapturingWithResult: metadataObj.stringValue];
+                    }
                 }
                 self.isReading = NO;
             }
