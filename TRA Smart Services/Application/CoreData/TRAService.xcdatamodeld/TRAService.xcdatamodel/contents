@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TRAService" representedClassName="TRAService" syncable="YES">
-        <attribute name="serviceDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceDescription" optional="YES" attributeType="String" defaultValueString="No description" syncable="YES"/>
         <attribute name="serviceIcon" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="serviceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceName" optional="YES" attributeType="String" defaultValueString="No name Service" syncable="YES"/>
+        <attribute name="serviceOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <fetchRequest name="FetchRequestAllService" entity="TRAService"/>
     <elements>
-        <element name="TRAService" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="TRAService" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

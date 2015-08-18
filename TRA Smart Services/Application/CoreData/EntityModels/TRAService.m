@@ -14,5 +14,6 @@
 @dynamic serviceName;
 @dynamic serviceDescription;
 @dynamic serviceIcon;
+@dynamic serviceOrder;
 
 @end

@@ -137,25 +137,36 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="vLv-wo-qaP" userLabel="Description - UILabel">
                                                                     <rect key="frame" x="20" y="16" width="475" height="36"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" red="0.0039215686274509803" green="0.10588235294117647" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
                                                                     <rect key="frame" x="20" y="56" width="238" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="hwC-Bl-wpe"/>
                                                                     </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <state key="normal">
+                                                                        <color key="titleColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <state key="selected">
+                                                                        <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="serviceInfoButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="cgL-v3-SmM"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
                                                                     <rect key="frame" x="258" y="56" width="237" height="25"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <state key="normal">
+                                                                        <color key="titleColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <state key="selected">
+                                                                        <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
                                                                 </button>
                                                             </subviews>

@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString * serviceName;
 @property (nonatomic, retain) NSString * serviceDescription;
 @property (nonatomic, retain) NSData * serviceIcon;
+@property (nonatomic, retain) NSNumber * serviceOrder;
 
 @end
