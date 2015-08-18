@@ -16,6 +16,7 @@ static NSString *const traSSNOCRMServiceGETSearchMobileIMEI = @"/searchMobile?im
 static NSString *const traSSNOCRMServiceGETSearchMobileBrand = @"/searchMobileBrand?brand=";
 static NSString *const traSSNOCRMServicePOSTFeedBack = @"/feedback";
 static NSString *const traSSNOCRMServicePOSTSMSSPamReport = @"/complainSmsSpam";
+static NSString *const traSSNOCRMServicePOSTSMSBlock = @"/complainSmsBlock";
 static NSString *const traSSNOCRMServicePOSTHelpSalim = @"/sendHelpSalim";
 static NSString *const traSSNOCRMServicePOSTCompliantServiceProvider = @"/complainServiceProvider";
 static NSString *const traSSNOCRMServicePOSTCompliantAboutTRAService = @"/complainTRAService";

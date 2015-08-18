@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *providerType;
 
 @property (weak, nonatomic) IBOutlet UITextView *notes;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *reportSegment;
+@property (weak, nonatomic) IBOutlet UIButton *reportButton;
 
 @end
 
@@ -40,26 +42,61 @@
 {
     [self.view endEditing:YES];
     
-    if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    if (self.reportSegment.selectedSegmentIndex) {
+        if (!self.phoneNumber.text.length || !self.notes.text.length) {
+            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        } else {
+            [AppHelper showLoader];
+            __weak typeof(self) weakSelf = self;
+            [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+                if (error) {
+                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                } else {
+                    [AppHelper alertViewWithMessage:MessageSuccess];
+                }
+                [AppHelper hideLoader];
+                [weakSelf refreshControls];
+            }];
+        }
     } else {
-        [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
-            if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
-            } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
-            }
-            [AppHelper hideLoader];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.providerType.text = @"";
-                weakSelf.notes.text = @"";
-                weakSelf.phoneNumber.text = @"";
-                weakSelf.phoneProvider.text = @"";
-            });
-        }];
+        if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
+            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        } else {
+            [AppHelper showLoader];
+            __weak typeof(self) weakSelf = self;
+            [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+                if (error) {
+                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                } else {
+                    [AppHelper alertViewWithMessage:MessageSuccess];
+                }
+                [AppHelper hideLoader];
+                [weakSelf refreshControls];
+            }];
+        }
+    }
+}
+
+- (void)refreshControls
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.providerType.text = @"";
+        self.notes.text = @"";
+        self.phoneNumber.text = @"";
+        self.phoneProvider.text = @"";
+    });
+}
+
+- (IBAction)didChangeReportType:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex) {
+        self.providerType.enabled = NO;
+        self.phoneProvider.enabled = NO;
+        [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
+    } else {
+        self.providerType.enabled = YES;
+        self.phoneProvider.enabled = YES;
+        [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
     }
 }
 
