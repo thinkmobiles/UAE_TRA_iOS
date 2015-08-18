@@ -52,34 +52,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="j1e-2z-EqT" userLabel="Background - UIIMageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-pG-xt6" userLabel="PlaceHolder - UIView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evL-Md-oxP" userLabel="Logo - Image View">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_warn" translatesAutoresizingMaskIntoConstraints="NO" id="evL-Md-oxP" userLabel="Logo - Image View">
                                         <rect key="frame" x="263" y="75" width="75" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="geK-WY-sQS"/>
                                             <constraint firstAttribute="width" constant="75" id="omU-Kt-jfd"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="568" translatesAutoresizingMaskIntoConstraints="NO" id="uBq-Kr-a20" userLabel="Information - UiLabel">
-                                        <rect key="frame" x="16" y="205" width="568" height="75"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="568" translatesAutoresizingMaskIntoConstraints="NO" id="uBq-Kr-a20" userLabel="Information - UiLabel">
+                                        <rect key="frame" x="16" y="205" width="568" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="W4L-6d-xR7"/>
+                                            <constraint firstAttribute="height" constant="90" id="W4L-6d-xR7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doX-zm-C5K" userLabel="AddServic - UIButton">
-                                        <rect key="frame" x="255" y="347" width="90" height="90"/>
+                                    <button opaque="NO" tag="1001" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doX-zm-C5K" userLabel="AddServic - UIButton">
+                                        <rect key="frame" x="245" y="362" width="110" height="75"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="Iql-Yb-UIL"/>
-                                            <constraint firstAttribute="height" constant="90" id="aRZ-Tp-4zf"/>
+                                            <constraint firstAttribute="width" constant="110" id="Iql-Yb-UIL"/>
+                                            <constraint firstAttribute="height" constant="75" id="aRZ-Tp-4zf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" image="test">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" image="btn_add_serv">
+                                            <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -87,6 +91,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="doX-zm-C5K" secondAttribute="bottom" constant="50" id="Czs-E2-IGD"/>
                                     <constraint firstItem="evL-Md-oxP" firstAttribute="top" secondItem="Xeg-pG-xt6" secondAttribute="top" constant="75" id="Fg9-8H-vxZ"/>
@@ -97,14 +102,9 @@
                                     <constraint firstItem="uBq-Kr-a20" firstAttribute="leading" secondItem="Xeg-pG-xt6" secondAttribute="leading" constant="16" id="zzd-fL-cYG"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j1e-2z-EqT" userLabel="Background - UIIMageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WIv-F5-QDv" userLabel="Favourite - UITableViewCell">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteEuropianCell" rowHeight="85" id="DOT-jm-8DA" customClass="FavouriteTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -112,10 +112,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DOT-jm-8DA" id="GcU-zv-9cN">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-r3-3QZ" userLabel="ContainerView - UIView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-r3-3QZ" userLabel="EuropeanUI">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-fr-rRl" userLabel="IMageHolder - UiView">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-fr-rRl" userLabel="ImageHolder - UiView">
                                                             <rect key="frame" x="515" y="0.0" width="85" height="85"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n9x-6o-IGj" userLabel="Logo - UiIMageView">
@@ -141,14 +141,13 @@
                                                                     <color key="textColor" red="0.0039215686274509803" green="0.10588235294117647" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
                                                                     <rect key="frame" x="20" y="56" width="238" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="hwC-Bl-wpe"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                    <state key="normal">
-                                                                        <color key="titleColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <state key="normal" image="ic_info_sml">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <state key="selected">
@@ -161,13 +160,16 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
                                                                     <rect key="frame" x="258" y="56" width="237" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                    <state key="normal">
+                                                                    <state key="normal" image="ic_remove_dctv">
                                                                         <color key="titleColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <state key="selected">
+                                                                    <state key="selected" image="ic_remove_act">
                                                                         <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="removeButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="rEZ-72-u7S"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -197,9 +199,93 @@
                                                         <constraint firstAttribute="bottom" secondItem="zyT-fr-rRl" secondAttribute="bottom" id="grR-Jm-E6Z"/>
                                                     </constraints>
                                                 </view>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRT-vO-eaa" userLabel="ArabicUI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXo-dn-nMJ" userLabel="ImageHolder - UiView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-9x-8uR" userLabel="Logo - UiIMageView">
+                                                                    <rect key="frame" x="18" y="15" width="49" height="55"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="Efe-9x-8uR" firstAttribute="width" secondItem="pXo-dn-nMJ" secondAttribute="width" multiplier="0.57" id="L3m-mu-pjK"/>
+                                                                <constraint firstItem="Efe-9x-8uR" firstAttribute="height" secondItem="pXo-dn-nMJ" secondAttribute="height" multiplier="0.65" id="SG3-og-pMa"/>
+                                                                <constraint firstAttribute="width" constant="85" id="U1h-wO-LNB"/>
+                                                                <constraint firstAttribute="centerX" secondItem="Efe-9x-8uR" secondAttribute="centerX" id="jup-MX-yjh"/>
+                                                                <constraint firstAttribute="centerY" secondItem="Efe-9x-8uR" secondAttribute="centerY" id="l2y-gF-nBn"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5c-db-qOu" userLabel="Data- UiView">
+                                                            <rect key="frame" x="85" y="0.0" width="515" height="85"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="u60-lB-GwS" userLabel="Description - UILabel">
+                                                                    <rect key="frame" x="20" y="16" width="475" height="36"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ge-Eh-mYZ" userLabel="Remove - UIButton">
+                                                                    <rect key="frame" x="0.0" y="56" width="248" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="25" id="ZAV-cP-CQg"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <state key="normal" title="" image="ic_remove_dctv">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <state key="selected" image="ic_remove_act"/>
+                                                                    <connections>
+                                                                        <action selector="removeButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="4eM-Th-woM"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-0I-uUA" userLabel="ServiceInfor - UIButton">
+                                                                    <rect key="frame" x="248" y="56" width="247" height="25"/>
+                                                                    <state key="normal" title="" image="ic_info_sml">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="serviceInfoButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="WEH-1E-Fd3"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="fO4-0I-uUA" firstAttribute="top" secondItem="u60-lB-GwS" secondAttribute="bottom" constant="4" id="2d3-Vw-DPb"/>
+                                                                <constraint firstItem="u60-lB-GwS" firstAttribute="top" secondItem="v5c-db-qOu" secondAttribute="top" constant="16" id="BdW-FY-5WZ"/>
+                                                                <constraint firstItem="1ge-Eh-mYZ" firstAttribute="width" secondItem="fO4-0I-uUA" secondAttribute="width" id="PUR-bB-XtS"/>
+                                                                <constraint firstItem="1ge-Eh-mYZ" firstAttribute="left" secondItem="v5c-db-qOu" secondAttribute="left" id="Q2O-ic-TAq"/>
+                                                                <constraint firstAttribute="right" secondItem="fO4-0I-uUA" secondAttribute="right" constant="20" id="ZCV-yf-1Z8"/>
+                                                                <constraint firstAttribute="right" secondItem="u60-lB-GwS" secondAttribute="right" constant="20" id="bJB-5M-IAb"/>
+                                                                <constraint firstItem="u60-lB-GwS" firstAttribute="left" secondItem="v5c-db-qOu" secondAttribute="left" constant="20" id="g4q-rt-R5M"/>
+                                                                <constraint firstAttribute="bottom" secondItem="fO4-0I-uUA" secondAttribute="bottom" constant="4" id="gPc-ln-GCL"/>
+                                                                <constraint firstItem="1ge-Eh-mYZ" firstAttribute="centerY" secondItem="fO4-0I-uUA" secondAttribute="centerY" id="mlV-Fp-mu4"/>
+                                                                <constraint firstItem="fO4-0I-uUA" firstAttribute="left" secondItem="1ge-Eh-mYZ" secondAttribute="right" id="qDK-5E-8K0"/>
+                                                                <constraint firstItem="1ge-Eh-mYZ" firstAttribute="height" secondItem="fO4-0I-uUA" secondAttribute="height" id="yPE-1Q-Soi"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="right" secondItem="v5c-db-qOu" secondAttribute="right" id="4Sa-Pi-wKX"/>
+                                                        <constraint firstItem="pXo-dn-nMJ" firstAttribute="top" secondItem="dRT-vO-eaa" secondAttribute="top" id="IOQ-Qf-CMe"/>
+                                                        <constraint firstItem="v5c-db-qOu" firstAttribute="left" secondItem="pXo-dn-nMJ" secondAttribute="right" id="Mn6-z2-CRT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pXo-dn-nMJ" secondAttribute="bottom" id="VzR-Z4-nve"/>
+                                                        <constraint firstAttribute="bottom" secondItem="v5c-db-qOu" secondAttribute="bottom" id="Wch-BP-1hP"/>
+                                                        <constraint firstItem="pXo-dn-nMJ" firstAttribute="left" secondItem="dRT-vO-eaa" secondAttribute="left" id="ZoD-4C-fuJ"/>
+                                                        <constraint firstItem="v5c-db-qOu" firstAttribute="top" secondItem="dRT-vO-eaa" secondAttribute="top" id="yV8-Pp-pTU"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="dRT-vO-eaa" firstAttribute="left" secondItem="GcU-zv-9cN" secondAttribute="left" id="G3l-gt-KS8"/>
+                                                <constraint firstItem="dRT-vO-eaa" firstAttribute="top" secondItem="GcU-zv-9cN" secondAttribute="top" id="Joi-yD-FZc"/>
+                                                <constraint firstAttribute="right" secondItem="dRT-vO-eaa" secondAttribute="right" id="Ksz-BU-JEV"/>
+                                                <constraint firstAttribute="bottom" secondItem="dRT-vO-eaa" secondAttribute="bottom" id="OfR-II-Jxf"/>
                                                 <constraint firstAttribute="bottom" secondItem="iUa-r3-3QZ" secondAttribute="bottom" id="Vbb-ZD-zzw"/>
                                                 <constraint firstAttribute="right" secondItem="iUa-r3-3QZ" secondAttribute="right" id="diy-NW-3WL"/>
                                                 <constraint firstItem="iUa-r3-3QZ" firstAttribute="left" secondItem="GcU-zv-9cN" secondAttribute="left" id="gJd-33-15X"/>
@@ -208,9 +294,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="arabicContent" destination="dRT-vO-eaa" id="rNm-t2-Rky"/>
+                                            <outlet property="europeanContent" destination="iUa-r3-3QZ" id="cUj-7u-vCd"/>
                                             <outlet property="favourieDescriptionLabel" destination="vLv-wo-qaP" id="Kb4-xG-rph"/>
-                                            <outlet property="favouriteServiceLogoImageView" destination="n9x-6o-IGj" id="yzD-XP-80N"/>
+                                            <outlet property="favouriteDescriptionArabicLabel" destination="u60-lB-GwS" id="2F3-xc-msf"/>
+                                            <outlet property="favouriteServiceLogoImageView" destination="n9x-6o-IGj" id="zrW-dc-0En"/>
+                                            <outlet property="favouriteServiceLogoImageViewArabic" destination="Efe-9x-8uR" id="uGn-FM-aU9"/>
+                                            <outlet property="removeArabicButton" destination="1ge-Eh-mYZ" id="rpF-Vh-jv9"/>
                                             <outlet property="removeButton" destination="Hpd-C9-8yO" id="Oy0-Bm-TTq"/>
+                                            <outlet property="serviceInfoArabicButton" destination="fO4-0I-uUA" id="Fw8-ee-CZ8"/>
                                             <outlet property="serviceInfoButton" destination="KFl-CR-nRh" id="CVy-ll-X4j"/>
                                         </connections>
                                     </tableViewCell>
@@ -240,7 +332,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZhX-he-Bnk">
                         <barButtonItem key="backBarButtonItem" title=" " id="g8j-os-pyg"/>
-                        <barButtonItem key="rightBarButtonItem" image="ic_search" id="uXb-rc-lm6" userLabel="Search Bar Button Item">
+                        <barButtonItem key="rightBarButtonItem" image="btn_search" id="uXb-rc-lm6" userLabel="Search Bar Button Item">
                             <connections>
                                 <action selector="searchBarButtonTapped:" destination="VHI-KM-fqJ" id="oYj-WS-Xfn"/>
                             </connections>
@@ -1680,7 +1772,7 @@ a new password will be sent.</string>
                                             <outlet property="delegate" destination="kq0-Dx-8Tn" id="gYK-ZZ-0Ja"/>
                                         </connections>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-tG-8qu" userLabel="MainCategories - UICollectionView">
+                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-tG-8qu" userLabel="MainCategories - UICollectionView">
                                         <rect key="frame" x="0.0" y="144" width="600" height="132"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2592,15 +2684,20 @@ a new password will be sent.</string>
     </scenes>
     <resources>
         <image name="background" width="320" height="517"/>
+        <image name="btn_add_serv" width="46" height="53"/>
+        <image name="btn_search" width="12" height="12"/>
         <image name="camera" width="32" height="32"/>
         <image name="close" width="64" height="64"/>
+        <image name="fav_back_orange" width="640" height="960"/>
         <image name="ic_chat" width="30" height="24"/>
         <image name="ic_favorites" width="21" height="19"/>
         <image name="ic_home" width="22" height="18"/>
         <image name="ic_info" width="20" height="21"/>
+        <image name="ic_info_sml" width="16" height="16"/>
         <image name="ic_inq" width="20" height="20"/>
-        <image name="ic_search" width="15" height="15"/>
+        <image name="ic_remove_act" width="16" height="16"/>
+        <image name="ic_remove_dctv" width="16" height="16"/>
         <image name="ic_settings" width="18" height="18"/>
-        <image name="test" width="80" height="78"/>
+        <image name="ic_warn" width="78" height="89"/>
     </resources>
 </document>

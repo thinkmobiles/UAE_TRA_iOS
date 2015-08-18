@@ -67,6 +67,7 @@
 		EDAA8EF11B81DB7100269F1A /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */; };
 		EDAA8EF51B81EB5200269F1A /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */; };
 		EDAA8EF81B825A7E00269F1A /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF71B825A7E00269F1A /* TRAService.m */; };
+		EDAA8EFC1B831C7400269F1A /* ServiceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EFB1B831C7400269F1A /* ServiceInfoViewController.m */; };
 		EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */; };
 		EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F951B70E35B0071BADA /* LoginViewController.m */; };
 		EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F981B70E35B0071BADA /* RegisterViewController.m */; };
@@ -207,6 +208,8 @@
 		EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		EDAA8EF61B825A7E00269F1A /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
 		EDAA8EF71B825A7E00269F1A /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
+		EDAA8EFA1B831C7400269F1A /* ServiceInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoViewController.h; sourceTree = "<group>"; };
+		EDAA8EFB1B831C7400269F1A /* ServiceInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoViewController.m; sourceTree = "<group>"; };
 		EDC04F911B70E35B0071BADA /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		EDC04F941B70E35B0071BADA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -529,6 +532,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EDAA8EF91B831C5800269F1A /* ServiceInfoViewController */,
 				EDC04F8F1B70E3490071BADA /* Login */,
 				ED3D98231B7CD6A4000DEEB8 /* Services */,
 				EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */,
@@ -811,6 +815,15 @@
 				EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */,
 			);
 			path = "UIView+Snapshot";
+			sourceTree = "<group>";
+		};
+		EDAA8EF91B831C5800269F1A /* ServiceInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA8EFA1B831C7400269F1A /* ServiceInfoViewController.h */,
+				EDAA8EFB1B831C7400269F1A /* ServiceInfoViewController.m */,
+			);
+			path = ServiceInfoViewController;
 			sourceTree = "<group>";
 		};
 		EDC04F8F1B70E3490071BADA /* Login */ = {
@@ -1107,6 +1120,7 @@
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
+				EDAA8EFC1B831C7400269F1A /* ServiceInfoViewController.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				ED2084F11B5E738600779CBD /* UIAlertView+AFNetworking.m in Sources */,
 				ED7D9F2B1B6CF03500C20402 /* BaseDynamicUIViewController.m in Sources */,

@@ -58,6 +58,7 @@
 {
     [self.searchBar.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideSearchBar"];
     self.searchBar.layer.opacity = 0.f;
+    [self.searchBar endEditing:YES];
     
     [self prepareTitleLabel];
 }
@@ -100,5 +101,26 @@
     }
     [self.titleView addSubview: self.searchanbeleViewControllerTitle];
 }
+
+- (void)localizeUI
+{
+    //dummy
+}
+
+- (void)updateColors
+{
+    //dummy
+}
+
+- (void)setRTLArabicUI
+{
+    //dummy
+}
+
+- (void)setLTREuropeUI
+{
+    //dummy
+}
+
 
 @end

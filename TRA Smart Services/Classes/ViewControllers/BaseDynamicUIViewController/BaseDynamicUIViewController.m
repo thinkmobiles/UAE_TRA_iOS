@@ -24,6 +24,8 @@
     
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         [self setRTLArabicUI];
+    } else {
+        [self setLTREuropeUI];
     }
 }
 

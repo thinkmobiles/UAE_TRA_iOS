@@ -9,7 +9,6 @@
 @class FavouriteTableViewCell;
 
 static NSString *const FavouriteEuropianTableViewCellIdentifier = @"favouriteEuropianCell";
-static NSString *const FavouriteArabicTableViewCellIdentifier = @"favouriteArabicCell";
 
 @protocol FavouriteTableViewCellDelegate <NSObject>
 
@@ -20,11 +19,15 @@ static NSString *const FavouriteArabicTableViewCellIdentifier = @"favouriteArabi
 
 @interface FavouriteTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UIButton *removeArabicButton;
+
+@property (weak, nonatomic) IBOutlet UIView *arabicContent;
+@property (weak, nonatomic) IBOutlet UIView *europeanContent;
 
 @property (strong, nonatomic) UIImage *logoImage;
-@property (weak, nonatomic) id <FavouriteTableViewCellDelegate> delegate;
+@property (copy, nonatomic) NSString *descriptionText;
 
+@property (weak, nonatomic) id <FavouriteTableViewCellDelegate> delegate;
 
 @end

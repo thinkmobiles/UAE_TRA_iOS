@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "TRAService.h"
 #import "Animation.h"
+#import "RTLController.h"
 
 static CGFloat const AnimationDuration = 0.3f;
 
@@ -45,12 +46,15 @@ static CGFloat const AnimationDuration = 0.3f;
     
 //    [self addDemoData];
     [self fetchFavouriteList];
+    
+    RTLController *rtl = [[RTLController alloc] init];
+    [rtl disableRTLForView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+ 
     [self prepareAddFavouriteButton];
 }
 
@@ -64,6 +68,13 @@ static CGFloat const AnimationDuration = 0.3f;
         context = [delegate managedObjectContext];
     }
     return context;
+}
+
+- (void)setDataSource:(NSMutableArray *)dataSource
+{
+    _dataSource = dataSource;
+    
+    [self showPlaceHolderIfNeeded];
 }
 
 #pragma mark - IBActions
@@ -83,8 +94,12 @@ static CGFloat const AnimationDuration = 0.3f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FavouriteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FavouriteEuropianTableViewCellIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[FavouriteTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FavouriteEuropianTableViewCellIdentifier];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        cell.arabicContent.hidden = NO;
+        cell.europeanContent.hidden = YES;
+    } else {
+        cell.arabicContent.hidden = YES;
+        cell.europeanContent.hidden = NO;
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -104,9 +119,9 @@ static CGFloat const AnimationDuration = 0.3f;
 
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = indexPath.row % 2 ? [UIColor lightOrangeColor] : [UIColor clearColor];
+    cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.favourieDescriptionLabel.text = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
 }
 
 #pragma mark - UISearchBarDelegate
@@ -117,6 +132,17 @@ static CGFloat const AnimationDuration = 0.3f;
 }
 
 #pragma mark - Private
+
+#pragma mark - UICustomization
+
+- (void)showPlaceHolderIfNeeded
+{
+    if (self.dataSource.count) {
+        self.placeHolderView.hidden = YES;
+    } else {
+        self.placeHolderView.hidden = NO;
+    }
+}
 
 #pragma mark - CoreData
 
@@ -136,10 +162,10 @@ static CGFloat const AnimationDuration = 0.3f;
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
         service.serviceOrder = @(i);
-        service.serviceDescription = [NSString stringWithFormat:@"Description text - %i", (int)i];;
+        service.serviceDescription = [NSString stringWithFormat:@"Description text sdf- %i", (int)i];;
         service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"tempImage"], 1.0);
         service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
     }
@@ -159,10 +185,13 @@ static CGFloat const AnimationDuration = 0.3f;
     CGPoint location = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     FavouriteTableViewCell *selectedCell = (FavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
     CGPoint locationInCell = [self.tableView convertPoint:location toView:selectedCell.contentView];
     
     CGRect longPressAcceptableRect = selectedCell.removeButton.frame;
+
     BOOL shouldProceedLongPress = CGRectContainsPoint(longPressAcceptableRect, locationInCell);
+    
     
     static UIView *snapshotView;
     static NSIndexPath *sourceIndexPath;
@@ -170,7 +199,6 @@ static CGFloat const AnimationDuration = 0.3f;
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {
             if (shouldProceedLongPress) {
-                [self drawDeleteArea];
                 
                 self.removeProcessIsActive = YES;
                 sourceIndexPath = indexPath;
@@ -180,6 +208,8 @@ static CGFloat const AnimationDuration = 0.3f;
                 snapshotView.center = center;
                 snapshotView.alpha = 0.f;
                 [self.tableView addSubview:snapshotView];
+
+                [self drawDeleteArea];
                 
                 [UIView animateWithDuration:0.25f animations:^{
                     center.y = location.y;
@@ -206,7 +236,7 @@ static CGFloat const AnimationDuration = 0.3f;
                         sourceIndexPath = indexPath;
                     }
                 }
-                if ([self isCellInRemoveAreaWithCenter:center]) {
+                if ([self isCellInRemoveAreaWithCenter:CGPointMake(0, center.y - self.tableView.contentOffset.y)]) {
                     [self selectDeleteZone:YES];
                 } else {
                     [self selectDeleteZone:NO];
@@ -226,7 +256,8 @@ static CGFloat const AnimationDuration = 0.3f;
                     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
                     
                     [self.dataSource removeObjectAtIndex:sourceIndexPath.row];
-                    [self.tableView deleteRowsAtIndexPaths:@[sourceIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self showPlaceHolderIfNeeded];
+                    [self.tableView deleteRowsAtIndexPaths:@[sourceIndexPath] withRowAnimation:UITableViewRowAnimationFade];
                 } else {
                     [self.dataSource sortUsingComparator:^NSComparisonResult(TRAService *obj1, TRAService *obj2) {
                         return obj1.serviceOrder > obj2.serviceOrder;
@@ -237,7 +268,7 @@ static CGFloat const AnimationDuration = 0.3f;
                 snapshotView = nil;
                 self.removeProcessIsActive = NO;
                 [self animateDeleteZoneDisapearing];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadData];
             }
             break;
         }
@@ -262,7 +293,7 @@ static CGFloat const AnimationDuration = 0.3f;
 {
     CGSize buttonSize = self.addFavouriteButton.frame.size;
     NSString *buttonTitle = dynamicLocalizedString(@"favourite.button.addFav.title");
-    CGSize titleSize = [buttonTitle sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:12.f] }];
+    CGSize titleSize = [buttonTitle sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:10.f] }];
     UIImage *buttonImage = self.addFavouriteButton.imageView.image;
     CGSize buttonImageSize = buttonImage.size;
     
@@ -271,9 +302,10 @@ static CGFloat const AnimationDuration = 0.3f;
     [self.addFavouriteButton setImageEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 - offsetBetweenImageAndText,
                                                 (buttonSize.width - buttonImageSize.width) / 2,
                                                 0,0)];
+    self.addFavouriteButton.titleLabel.tag = 1001;
     [self.addFavouriteButton setTitleEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 + buttonImageSize.height + offsetBetweenImageAndText,
-                                                titleSize.width + [self.addFavouriteButton imageEdgeInsets].left > buttonSize.width ? -buttonImage.size.width  +  (buttonSize.width - titleSize.width) / 2 : (buttonSize.width - titleSize.width) / 2 - buttonImage.size.width,
-                                                0,0)];
+                                                                 titleSize.width + [self.addFavouriteButton imageEdgeInsets].left > buttonSize.width ? -buttonImage.size.width  +  (buttonSize.width - titleSize.width) / 2 : (buttonSize.width - titleSize.width) / 2 - buttonImage.size.width,
+                                                                 0,0)];
 }
 
 #pragma mark - Drawings
@@ -306,7 +338,7 @@ static CGFloat const AnimationDuration = 0.3f;
     CALayer *imageLayer = [CALayer layer];
     imageLayer.frame = centerRect;
     imageLayer.backgroundColor = [UIColor clearColor].CGColor;
-    imageLayer.contents =(__bridge id __nullable)([UIImage imageNamed:@"garbagecan12"]).CGImage;
+    imageLayer.contents =(__bridge id __nullable)([UIImage imageNamed:@"ic_remove_red"]).CGImage;
     imageLayer.contentsGravity = kCAGravityResizeAspect;
     
     [self.contentFakeIconLayer addSublayer:imageLayer];
@@ -427,6 +459,8 @@ static CGFloat const AnimationDuration = 0.3f;
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    [super animationDidStop:anim finished:flag];
+    
     if (anim == [self.arcDeleteZoneLayer animationForKey:@"disapearAnimation"]) {
         [self.arcDeleteZoneLayer removeAllAnimations];
         [self removeDeleteZone];
@@ -449,12 +483,14 @@ static CGFloat const AnimationDuration = 0.3f;
 
 - (void)setRTLArabicUI
 {
-    
+    [super setRTLArabicUI];
+    [self.tableView reloadData];//reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)setLTREuropeUI
 {
-    
+    [super setLTREuropeUI];
+    [self.tableView reloadData];//reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

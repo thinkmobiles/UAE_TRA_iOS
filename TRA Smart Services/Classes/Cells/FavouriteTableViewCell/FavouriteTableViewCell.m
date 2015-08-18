@@ -12,6 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *serviceInfoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageViewArabic;
+@property (weak, nonatomic) IBOutlet UILabel *favouriteDescriptionArabicLabel;
+@property (weak, nonatomic) IBOutlet UIButton *serviceInfoArabicButton;
 
 @end
 
@@ -33,8 +39,12 @@
     
     [self localizeButtons];
     self.backgroundColor = [UIColor clearColor];
+    
     self.favourieDescriptionLabel.text = @"";
     self.favouriteServiceLogoImageView.image = nil;
+    self.favouriteDescriptionArabicLabel.text = @"";
+    self.favouriteServiceLogoImageViewArabic.image = nil;
+
 }
 
 #pragma mark - IBActions
@@ -46,13 +56,29 @@
     }
 }
 
+- (IBAction)removeButtonTapped:(id)sender
+{
+    self.removeButton.selected = !self.removeButton.selected;
+    self.removeArabicButton.selected = !self.removeArabicButton.selected;
+}
+
 #pragma mark - Custom Accessors
 
 - (void)setLogoImage:(UIImage *)logoImage
 {
     _logoImage = logoImage;
     _favouriteServiceLogoImageView.image = logoImage;
+    _favouriteServiceLogoImageViewArabic.image = logoImage;
     [self addHexagoneMaskForLayer:self.favouriteServiceLogoImageView.layer];
+    [self addHexagoneMaskForLayer:self.favouriteServiceLogoImageViewArabic.layer];
+}
+
+- (void)setDescriptionText:(NSString *)descriptionText
+{
+    _descriptionText = descriptionText;
+    
+    self.favourieDescriptionLabel.text = descriptionText;
+    self.favouriteDescriptionArabicLabel.text = descriptionText;
 }
 
 #pragma mark - Private
@@ -61,6 +87,9 @@
 {
     [self.serviceInfoButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
     [self.removeButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
+    
+    [self.serviceInfoArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
+    [self.removeArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
 }
 
 - (void)addHexagoneMaskForLayer:(CALayer *)layer

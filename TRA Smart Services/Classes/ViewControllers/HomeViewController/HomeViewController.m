@@ -38,7 +38,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
-@property (strong, nonatomic) NSArray *otherServiceDataSource;
+@property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
 
 @property (assign, nonatomic) BOOL needsRealodCollectionsViews;
 
@@ -46,7 +46,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
 
-
+@property (assign, nonatomic) BOOL isFirstTimeLoaded;
 
 @end
 
@@ -59,8 +59,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     [super viewDidLoad];
     
     [self prepareTopBar];
-    [self prepareDataSource];
     self.topView.enableFakeBarAnimations = YES;
+    self.needsRealodCollectionsViews = NO;
 }
 
 - (void)viewDidLayoutSubviews
@@ -75,6 +75,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 {
     [super viewWillAppear:animated];
     
+    [self prepareDataSource];
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -83,6 +84,10 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     [super viewWillDisappear:animated];
     
     self.navigationController.navigationBar.hidden = NO;
+    [self.speedAccessDataSource removeAllObjects];
+    [self.otherServiceDataSource removeAllObjects];
+    [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [self.speedAccessCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -90,10 +95,24 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     [super viewDidAppear:animated];
     
     if (self.needsRealodCollectionsViews) {
-        [self.menuCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [self.speedAccessCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
         self.needsRealodCollectionsViews = NO;
     }
+    
+    if (self.isFirstTimeLoaded) {
+        [self.speedAccessCollectionView reloadData];
+        [self.menuCollectionView  reloadData];
+    }
+    
+    self.isFirstTimeLoaded = YES;
+
+//    UIGraphicsBeginImageContext(self.topView.bounds.size);
+//    [self.topView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    
+    //need to animate layer
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -212,6 +231,30 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     
     CGSize cellSize = CGSizeMake((contentSize.width - (CellSpacing * (RowCount + 1))) / RowCount, cellHeight);
     return cellSize;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == self.speedAccessCollectionView) {
+
+        CAKeyframeAnimation *moveAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        moveAnim.values = @ [
+                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
+                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
+                             [NSValue valueWithCGPoint:cell.center]
+                             ];
+        moveAnim.keyTimes = @[@(0), @(0.1 * indexPath.row), @(1)];
+        
+        CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        opacityAnim.fromValue = @(0);
+        opacityAnim.toValue = @(1);
+        
+        CAAnimationGroup *group = [CAAnimationGroup animation];
+        group.animations = @[moveAnim, opacityAnim];
+        group.duration = 0.1 + 0.05 * indexPath.row;
+        
+        [cell.layer addAnimation:group forKey:nil];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -356,13 +399,11 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)setRTLArabicUI
 {
-    [self reverseDataSource];
     [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
 }
 
 - (void)setLTREuropeUI
 {
-    [self reverseDataSource];
     [self transformTopView:CATransform3DIdentity];
 }
 
@@ -371,7 +412,11 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)prepareDataSource
 {
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
-    self.otherServiceDataSource = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
+    self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        [self reverseDataSource];
+    }
 }
 
 #pragma mark - TopBar
