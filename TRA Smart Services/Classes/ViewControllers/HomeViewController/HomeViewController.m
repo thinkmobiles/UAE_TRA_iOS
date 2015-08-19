@@ -201,15 +201,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         __weak typeof(self) weakSelf = self;
         CGFloat gradientOpacityValue = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
         
-        CGFloat scaleValue = gradientOpacityValue;
-        CGFloat scalePercent = scaleValue == 1 ? scaleValue : 1 - (0.15 ) * scaleValue;
-        
-        NSLog(@"%f", scalePercent);
-        
-        
-        if (scalePercent < 1 && scalePercent) {
-            [self.topView scaleLogoFor:scalePercent];
-        }
+        [self animateTopLogoWithProgress:gradientOpacityValue];
         
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
@@ -220,6 +212,15 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         }
     }
     self.lastContentOffset = scrollView.contentOffset.y;
+}
+
+- (void)animateTopLogoWithProgress:(CGFloat)progress
+{
+    CGFloat scalePercent = progress == 1 ? progress : 1 - (0.15 ) * progress;
+    
+    if (scalePercent < 1 && scalePercent) {
+        [self.topView scaleLogoFor:scalePercent];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;

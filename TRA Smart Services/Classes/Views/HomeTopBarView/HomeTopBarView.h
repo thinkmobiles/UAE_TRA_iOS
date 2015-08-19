@@ -42,5 +42,4 @@
 - (void)scaleLogo:(BOOL)scale;
 - (void)scaleLogoFor:(CGFloat)scale;
 
-
 @end
