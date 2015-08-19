@@ -145,6 +145,8 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="hwC-Bl-wpe"/>
                                                                     </constraints>
+                                                                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     <state key="normal" image="ic_info_sml">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +161,8 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
                                                                     <rect key="frame" x="258" y="56" width="237" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     <state key="normal" image="ic_remove_dctv">
                                                                         <color key="titleColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,9 +170,9 @@
                                                                     <state key="selected" image="ic_remove_act">
                                                                         <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
-                                                                    <connections>
-                                                                        <action selector="removeButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="rEZ-72-u7S"/>
-                                                                    </connections>
+                                                                    <state key="highlighted" image="ic_remove_act">
+                                                                        <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </state>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -233,16 +237,22 @@
                                                                         <constraint firstAttribute="height" constant="25" id="ZAV-cP-CQg"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                                     <state key="normal" title="" image="ic_remove_dctv">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <state key="selected" image="ic_remove_act"/>
-                                                                    <connections>
-                                                                        <action selector="removeButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="4eM-Th-woM"/>
-                                                                    </connections>
+                                                                    <state key="selected" image="ic_remove_act">
+                                                                        <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </state>
+                                                                    <state key="highlighted" image="ic_remove_act">
+                                                                        <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </state>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-0I-uUA" userLabel="ServiceInfor - UIButton">
                                                                     <rect key="frame" x="248" y="56" width="247" height="25"/>
+                                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                                     <state key="normal" title="" image="ic_info_sml">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>

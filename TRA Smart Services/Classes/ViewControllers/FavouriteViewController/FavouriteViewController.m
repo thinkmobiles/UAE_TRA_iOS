@@ -185,23 +185,24 @@ static CGFloat const AnimationDuration = 0.3f;
     CGPoint location = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     FavouriteTableViewCell *selectedCell = (FavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    CGPoint locationInCell = [self.tableView convertPoint:location toView:selectedCell.contentView];
-    
-    CGRect longPressAcceptableRect = selectedCell.removeButton.frame;
 
+    CGPoint locationInCell = [self.tableView convertPoint:location toView:selectedCell.contentView];
+    CGRect longPressAcceptableRect = selectedCell.removeButton.frame;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        longPressAcceptableRect = selectedCell.removeArabicButton.frame;
+    }
     BOOL shouldProceedLongPress = CGRectContainsPoint(longPressAcceptableRect, locationInCell);
-    
-    
+
     static UIView *snapshotView;
     static NSIndexPath *sourceIndexPath;
     
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {
             if (shouldProceedLongPress) {
-                
                 self.removeProcessIsActive = YES;
                 sourceIndexPath = indexPath;
+                [selectedCell markRemoveButtonSelected:YES];
+                
                 snapshotView = [selectedCell snapshot];
                 
                 __block CGPoint center = selectedCell.center;
@@ -246,9 +247,10 @@ static CGFloat const AnimationDuration = 0.3f;
         }
         default: {
             if (self.removeProcessIsActive) {
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+                FavouriteTableViewCell *cell = (FavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:sourceIndexPath];
                 cell.hidden = NO;
                 cell.alpha = 0.0f;
+                [cell markRemoveButtonSelected:NO];
                 
                 if ([self isCellInRemoveAreaWithCenter:snapshotView.center]) {
                     

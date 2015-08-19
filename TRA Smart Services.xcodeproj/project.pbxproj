@@ -64,10 +64,10 @@
 		EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */; };
 		EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAA8EE11B81D63100269F1A /* CoreData.framework */; };
 		EDAA8EE61B81D79A00269F1A /* TRAService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EE41B81D79A00269F1A /* TRAService.xcdatamodeld */; };
-		EDAA8EF11B81DB7100269F1A /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */; };
-		EDAA8EF51B81EB5200269F1A /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */; };
 		EDAA8EF81B825A7E00269F1A /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF71B825A7E00269F1A /* TRAService.m */; };
 		EDAA8F021B83C18F00269F1A /* ServiceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F011B83C18F00269F1A /* ServiceInfoViewController.m */; };
+		EDAA8F051B84D2FA00269F1A /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F041B84D2FA00269F1A /* FavouriteTableViewCell.m */; };
+		EDAA8F081B84DAE800269F1A /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F071B84DAE800269F1A /* UIView+Snapshot.m */; };
 		EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */; };
 		EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F951B70E35B0071BADA /* LoginViewController.m */; };
 		EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC04F981B70E35B0071BADA /* RegisterViewController.m */; };
@@ -202,14 +202,14 @@
 		EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSearchableViewController.m; sourceTree = "<group>"; };
 		EDAA8EE11B81D63100269F1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EDAA8EE51B81D79A00269F1A /* TRAService.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TRAService.xcdatamodel; sourceTree = "<group>"; };
-		EDAA8EEF1B81DB7100269F1A /* FavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTableViewCell.h; sourceTree = "<group>"; };
-		EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTableViewCell.m; sourceTree = "<group>"; };
-		EDAA8EF31B81EB5200269F1A /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
-		EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		EDAA8EF61B825A7E00269F1A /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
 		EDAA8EF71B825A7E00269F1A /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
 		EDAA8F001B83C18F00269F1A /* ServiceInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoViewController.h; sourceTree = "<group>"; };
 		EDAA8F011B83C18F00269F1A /* ServiceInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoViewController.m; sourceTree = "<group>"; };
+		EDAA8F031B84D2FA00269F1A /* FavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTableViewCell.h; sourceTree = "<group>"; };
+		EDAA8F041B84D2FA00269F1A /* FavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTableViewCell.m; sourceTree = "<group>"; };
+		EDAA8F061B84DAE800269F1A /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		EDAA8F071B84DAE800269F1A /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		EDC04F911B70E35B0071BADA /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		EDC04F921B70E35B0071BADA /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		EDC04F941B70E35B0071BADA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -802,8 +802,8 @@
 		EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EDAA8EEF1B81DB7100269F1A /* FavouriteTableViewCell.h */,
-				EDAA8EF01B81DB7100269F1A /* FavouriteTableViewCell.m */,
+				EDAA8F031B84D2FA00269F1A /* FavouriteTableViewCell.h */,
+				EDAA8F041B84D2FA00269F1A /* FavouriteTableViewCell.m */,
 			);
 			path = FavouriteTableViewCell;
 			sourceTree = "<group>";
@@ -811,8 +811,8 @@
 		EDAA8EF21B81EB3A00269F1A /* UIView+Snapshot */ = {
 			isa = PBXGroup;
 			children = (
-				EDAA8EF31B81EB5200269F1A /* UIView+Snapshot.h */,
-				EDAA8EF41B81EB5200269F1A /* UIView+Snapshot.m */,
+				EDAA8F061B84DAE800269F1A /* UIView+Snapshot.h */,
+				EDAA8F071B84DAE800269F1A /* UIView+Snapshot.m */,
 			);
 			path = "UIView+Snapshot";
 			sourceTree = "<group>";
@@ -1102,6 +1102,7 @@
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
+				EDAA8F081B84DAE800269F1A /* UIView+Snapshot.m in Sources */,
 				ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */,
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
@@ -1111,7 +1112,6 @@
 				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
-				EDAA8EF11B81DB7100269F1A /* FavouriteTableViewCell.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
@@ -1122,6 +1122,7 @@
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				EDAA8F021B83C18F00269F1A /* ServiceInfoViewController.m in Sources */,
+				EDAA8F051B84D2FA00269F1A /* FavouriteTableViewCell.m in Sources */,
 				ED2084F11B5E738600779CBD /* UIAlertView+AFNetworking.m in Sources */,
 				ED7D9F2B1B6CF03500C20402 /* BaseDynamicUIViewController.m in Sources */,
 				ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */,
@@ -1141,7 +1142,6 @@
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
-				EDAA8EF51B81EB5200269F1A /* UIView+Snapshot.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,

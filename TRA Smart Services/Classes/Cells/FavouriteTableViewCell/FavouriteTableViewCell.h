@@ -30,4 +30,6 @@ static NSString *const FavouriteEuropianTableViewCellIdentifier = @"favouriteEur
 
 @property (weak, nonatomic) id <FavouriteTableViewCellDelegate> delegate;
 
+- (void)markRemoveButtonSelected:(BOOL)selected;
+
 @end

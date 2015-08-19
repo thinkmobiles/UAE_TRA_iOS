@@ -27,5 +27,4 @@
     return snapshotView;
 }
 
-
 @end

@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TRA Smart Services/Classes/ViewControllers/FavouriteViewController/FavouriteViewController.m"
-            timestampString = "461595166.396833"
+            timestampString = "461693367.573704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
             landmarkName = "-setRTLArabicUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TRA Smart Services/Classes/ViewControllers/FavouriteViewController/FavouriteViewController.m"
-            timestampString = "461595166.396833"
+            timestampString = "461693367.573704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "-setLTREuropeUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TRA Smart Services/Classes/ViewControllers/FavouriteViewController/FavouriteViewController.m"
-            timestampString = "461595154.513625"
+            timestampString = "461693367.573704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "481"
-            endingLineNumber = "481"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "-updateColors"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TRA Smart Services/Classes/ViewControllers/FavouriteViewController/FavouriteViewController.m"
-            timestampString = "461595156.875579"
+            timestampString = "461693367.573704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "-localizeUI"
             landmarkType = "5">
          </BreakpointContent>
