@@ -234,12 +234,13 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGPoint center = cell.center;
     if (collectionView == self.speedAccessCollectionView) {
 
         CAKeyframeAnimation *moveAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         moveAnim.values = @ [
-                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
-                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
+                             [NSValue valueWithCGPoint:CGPointMake(center.x, 0)],
+                             [NSValue valueWithCGPoint:CGPointMake(center.x, 0)],
                              [NSValue valueWithCGPoint:cell.center]
                              ];
         moveAnim.keyTimes = @[@(0), @(0.1 * indexPath.row), @(1)];
@@ -253,7 +254,23 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         group.duration = 0.1 + 0.05 * indexPath.row;
         
         [cell.layer addAnimation:group forKey:nil];
+    } else if (collectionView == self.menuCollectionView) {
+        [CATransaction begin];
+        [CATransaction setCompletionBlock:^{
+            [self animationWithStartY:center.y - 5 stopY:center.y duration:0.2 andLayer:cell.layer];
+        }];
+        [self animationWithStartY:center.y + 50 stopY:center.y - 5 duration:0.2 andLayer:cell.layer];
+        [CATransaction commit];
     }
+}
+
+- (void)animationWithStartY:(NSInteger)startY stopY:(NSInteger)stopY duration:(CGFloat)duration andLayer:(CALayer *)layer
+{
+    CABasicAnimation *topToDownAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    topToDownAnimation.fromValue = @(startY);
+    topToDownAnimation.toValue = @(stopY);
+    topToDownAnimation.duration = duration;
+    [layer addAnimation:topToDownAnimation forKey:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
