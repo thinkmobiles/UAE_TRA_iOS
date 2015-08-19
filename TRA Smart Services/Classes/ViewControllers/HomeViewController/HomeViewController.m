@@ -34,6 +34,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *speedAccessCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *movableImageView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
@@ -227,6 +229,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self.topView moveFakeButtonsToTop:NO];
             [weakSelf.topView updateOpacityForHexagons:0];
         }
+        [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta )];
     }
     self.lastContentOffset = scrollView.contentOffset.y;
 }
@@ -302,7 +305,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 {
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
     self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
-    
+        
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         [self reverseDataSource];
     }

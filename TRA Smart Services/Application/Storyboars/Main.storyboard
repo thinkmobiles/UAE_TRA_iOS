@@ -1662,7 +1662,7 @@ a new password will be sent.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-Bg-wVf" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-4i-Son" userLabel="BackgroundView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-4i-Son" userLabel="BackgroundView - UIImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJC-Yl-glo" userLabel="TopView">
@@ -1683,6 +1683,25 @@ a new password will be sent.</string>
                                             <constraint firstAttribute="trailing" secondItem="PFo-5b-foy" secondAttribute="trailing" id="svS-gu-BAh"/>
                                         </constraints>
                                     </view>
+                                    <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfP-gB-jlM" userLabel="ContentImage - UIScrollView">
+                                        <rect key="frame" x="0.0" y="276" width="600" height="275"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_polygons" translatesAutoresizingMaskIntoConstraints="NO" id="8jN-lT-ALJ" userLabel="Movable Background - UiIMageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="375" id="kje-AV-drE"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8jN-lT-ALJ" secondAttribute="trailing" id="MBO-ba-07L"/>
+                                            <constraint firstAttribute="bottom" secondItem="8jN-lT-ALJ" secondAttribute="bottom" constant="-225" id="hIC-b9-Typ"/>
+                                            <constraint firstItem="8jN-lT-ALJ" firstAttribute="top" secondItem="dfP-gB-jlM" secondAttribute="top" id="kGO-j0-L2r"/>
+                                            <constraint firstItem="8jN-lT-ALJ" firstAttribute="leading" secondItem="dfP-gB-jlM" secondAttribute="leading" id="zF0-3Z-dkq"/>
+                                        </constraints>
+                                    </scrollView>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ox-66-jV4" userLabel="Submenu - UICollectionView">
                                         <rect key="frame" x="0.0" y="276" width="600" height="275"/>
                                         <animations/>
@@ -1875,15 +1894,20 @@ a new password will be sent.</string>
                                     <constraint firstItem="5Ox-66-jV4" firstAttribute="top" secondItem="Glm-tG-8qu" secondAttribute="bottom" id="Pin-f6-odw"/>
                                     <constraint firstItem="NLw-4i-Son" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="QiM-wp-fbO"/>
                                     <constraint firstItem="Glm-tG-8qu" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="RJG-Lo-fjC"/>
+                                    <constraint firstAttribute="centerX" secondItem="dfP-gB-jlM" secondAttribute="centerX" id="UBU-LK-hzd"/>
                                     <constraint firstAttribute="trailing" secondItem="Glm-tG-8qu" secondAttribute="trailing" id="XYP-N3-dtM"/>
                                     <constraint firstAttribute="bottom" secondItem="5Ox-66-jV4" secondAttribute="bottom" id="Y9H-VH-A5X"/>
                                     <constraint firstItem="YJC-Yl-glo" firstAttribute="top" secondItem="YSc-Bg-wVf" secondAttribute="top" id="aVD-jG-LEK"/>
                                     <constraint firstItem="5Ox-66-jV4" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="bm5-ly-Eyn"/>
                                     <constraint firstItem="NLw-4i-Son" firstAttribute="top" secondItem="YSc-Bg-wVf" secondAttribute="top" id="fDZ-9c-jJo"/>
+                                    <constraint firstAttribute="trailing" secondItem="dfP-gB-jlM" secondAttribute="trailing" id="gBI-jv-XIF"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ox-66-jV4" secondAttribute="trailing" id="hGX-Fb-XgQ"/>
+                                    <constraint firstItem="dfP-gB-jlM" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="jrY-71-Bag"/>
                                     <constraint firstAttribute="bottom" secondItem="NLw-4i-Son" secondAttribute="bottom" id="mVN-4e-4F2"/>
                                     <constraint firstAttribute="trailing" secondItem="YJC-Yl-glo" secondAttribute="trailing" id="rS7-9u-13g"/>
+                                    <constraint firstItem="dfP-gB-jlM" firstAttribute="top" secondItem="Glm-tG-8qu" secondAttribute="bottom" id="sFE-aU-qre"/>
                                     <constraint firstItem="YJC-Yl-glo" firstAttribute="leading" secondItem="YSc-Bg-wVf" secondAttribute="leading" id="xBe-Zc-Cev"/>
+                                    <constraint firstAttribute="bottom" secondItem="dfP-gB-jlM" secondAttribute="bottom" id="zQj-b1-5C6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1897,6 +1921,7 @@ a new password will be sent.</string>
                             <constraint firstAttribute="trailing" secondItem="YSc-Bg-wVf" secondAttribute="trailing" id="LSp-hp-DGD"/>
                             <constraint firstItem="YSc-Bg-wVf" firstAttribute="leading" secondItem="Q1j-1t-85u" secondAttribute="leading" id="cJe-kR-EIT"/>
                             <constraint firstItem="Glm-tG-8qu" firstAttribute="height" secondItem="Q1j-1t-85u" secondAttribute="height" multiplier="0.22" id="dHX-yx-eeE"/>
+                            <constraint firstAttribute="width" secondItem="8jN-lT-ALJ" secondAttribute="width" id="dZF-nP-xey"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qpe-S3-tKt">
@@ -1904,6 +1929,8 @@ a new password will be sent.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="menuCollectionView" destination="5Ox-66-jV4" id="TYF-QU-akl"/>
+                        <outlet property="movableImageView" destination="8jN-lT-ALJ" id="ZUu-A5-3ww"/>
+                        <outlet property="scrollView" destination="dfP-gB-jlM" id="hT4-sa-xVi"/>
                         <outlet property="speedAccessCollectionView" destination="Glm-tG-8qu" id="eT5-hI-7da"/>
                         <outlet property="speedAccessCollectionViewTopSpaceConstraint" destination="8aK-y1-HI1" id="Pee-9P-WxE"/>
                         <outlet property="topView" destination="PFo-5b-foy" id="A7D-Mc-l8f"/>
@@ -2736,5 +2763,6 @@ a new password will be sent.</string>
         <image name="ic_remove_dctv" width="16" height="16"/>
         <image name="ic_settings" width="18" height="18"/>
         <image name="ic_warn" width="78" height="89"/>
+        <image name="res_polygons" width="320" height="375"/>
     </resources>
 </document>
