@@ -27,20 +27,15 @@ static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
 
-
-
 @interface HomeViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *speedAccessCollectionViewTopSpaceConstraint;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *speedAccessCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
-
-@property (assign, nonatomic) BOOL needsRealodCollectionsViews;
 
 @property (assign, nonatomic) CGFloat lastContentOffset;
 @property (assign, nonatomic) BOOL isScrollintToTop;
@@ -59,7 +54,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
-    self.needsRealodCollectionsViews = NO;
 }
 
 - (void)viewDidLayoutSubviews
@@ -74,8 +68,14 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 {
     [super viewWillAppear:animated];
     
-    [self prepareDataSource];
     self.navigationController.navigationBar.hidden = YES;
+    [self prepareDataSource];
+    
+    if (self.isFirstTimeLoaded) {
+        [self.speedAccessCollectionView reloadData];
+        [self.menuCollectionView  reloadData];
+    }
+    self.isFirstTimeLoaded = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -84,34 +84,9 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     
     self.navigationController.navigationBar.hidden = NO;
     [self.speedAccessDataSource removeAllObjects];
-    [self.otherServiceDataSource removeAllObjects];
-    [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    [self.speedAccessCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (self.needsRealodCollectionsViews) {
-        [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        [self.speedAccessCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        self.needsRealodCollectionsViews = NO;
-    }
-    
-    if (self.isFirstTimeLoaded) {
-        [self.speedAccessCollectionView reloadData];
-        [self.menuCollectionView  reloadData];
-    }
-    
-    self.isFirstTimeLoaded = YES;
-
-//    UIGraphicsBeginImageContext(self.topView.bounds.size);
-//    [self.topView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    
-    //need to animate layer
+    //    [self.otherServiceDataSource removeAllObjects];
+    //    [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -250,7 +225,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         
         CAAnimationGroup *group = [CAAnimationGroup animation];
         group.animations = @[moveAnim, opacityAnim];
-        group.duration = 0.1 + 0.05 * indexPath.row;
+        group.duration = 0.15 + 0.05 * indexPath.row;
         
         [cell.layer addAnimation:group forKey:nil];
     }
@@ -367,7 +342,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)reverseDataSource
 {
-    self.needsRealodCollectionsViews = YES;
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
     
     NSMutableArray *reversedItems = [[NSMutableArray alloc] init];
