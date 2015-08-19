@@ -26,7 +26,13 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *searchLayer;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
+@property (strong, nonatomic) CAShapeLayer *bottomLeftHexagonLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomMidHexagonLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomRightHexagonLayer;
+
 @property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
+
+@property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
 @end
 
@@ -149,7 +155,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)updateOpacityForHexagons:(CGFloat)opacityLevel
 {
-    self.hexagonicalBottonLayer.opacity = 1 - opacityLevel;
+    self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel;
+    self.bottomMidHexagonLayer.opacity = 1 - opacityLevel;
+    self.bottomRightHexagonLayer.opacity = 1 - opacityLevel;
 }
 
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop
@@ -190,6 +198,28 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.imageLayer.transform = transformation;
 }
 
+- (void)moveBottomHexagonWireToTop:(BOOL)toTop
+{
+    [self moveBottomLeftHexagonToTop:toTop];
+    [self moveLayer:self.bottomMidHexagonLayer toTop:toTop];
+    [self moveLayer:self.bottomRightHexagonLayer toTop:toTop];
+    self.isBottomHexagonWireOnTop = toTop;
+}
+
+- (void)updatedPositionForBottomWireForMovingProgress:(CGFloat)progress
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    CGFloat maximumXOffset = hexagonSize.width * 0.5f;
+    CGFloat maximumYOffset = hexagonSize.height * 0.75f;
+    
+    CGFloat currentXOffset = maximumXOffset * progress;
+    CGFloat currentYOffset = maximumYOffset * progress;
+    
+    self.bottomLeftHexagonLayer.position = CGPointMake(self.bottomLayerDefaultPosition.x - currentXOffset, self.bottomLayerDefaultPosition.y - currentYOffset);
+    self.bottomMidHexagonLayer.position = CGPointMake(self.bottomLayerDefaultPosition.x + currentXOffset, self.bottomLayerDefaultPosition.y - currentYOffset);
+    self.bottomRightHexagonLayer.position = CGPointMake(self.bottomLayerDefaultPosition.x + currentXOffset, self.bottomLayerDefaultPosition.y - currentYOffset);
+}
+
 #pragma mark - AnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -206,37 +236,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 #pragma mark - Private
 #pragma mark -
 
-#pragma mark - Constraints
-
-- (void)addConstraintsForView:(UIView *)view
-{
-    [self addConstraints:@[[NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeBottom
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeBottom
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeTop
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeTop
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeLeading
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeLeading
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeTrailing
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeTrailing
-                                                       multiplier:1.0
-                                                         constant:0]
-                           ]];
-}
-
 #pragma mark - Drawing
 
 - (void)drawHexagonicalWireTop
@@ -250,82 +249,47 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.hexagonicalTopLayer.fillColor = [UIColor clearColor].CGColor;
     self.hexagonicalTopLayer.position = CGPointMake(self.hexagonicalTopLayer.position.x - LeftOffset, self.hexagonicalTopLayer.position.y);
     self.layer.masksToBounds = YES;
-
+    
     [self.layer insertSublayer:self.hexagonicalTopLayer above:self.notificationLayer];
 }
 
 - (void)drawHexagonicalWireBotton
 {
-    [self.hexagonicalBottonLayer removeFromSuperlayer];
+    [self.bottomLeftHexagonLayer removeFromSuperlayer];
+    self.bottomLeftHexagonLayer = [CAShapeLayer layer];
+    [self prepareLayer:self.bottomLeftHexagonLayer onPosition:0];
+    [self.layer insertSublayer:self.bottomLeftHexagonLayer atIndex:0];
     
-    self.hexagonicalBottonLayer = [CAShapeLayer layer];
-    self.hexagonicalBottonLayer.frame = self.bounds;
-    self.hexagonicalBottonLayer.path =  [self hexagonsPathBotton].CGPath;
-    self.hexagonicalBottonLayer.strokeColor = [UIColor whiteColor].CGColor;
-    self.hexagonicalBottonLayer.fillColor = [UIColor clearColor].CGColor;
-    self.hexagonicalBottonLayer.position = CGPointMake(self.hexagonicalBottonLayer.position.x - LeftOffset, self.hexagonicalBottonLayer.position.y);
+    [self.bottomMidHexagonLayer removeFromSuperlayer];
+    self.bottomMidHexagonLayer = [CAShapeLayer layer];
+    [self prepareLayer:self.bottomMidHexagonLayer onPosition:1];
+    [self.layer insertSublayer:self.bottomMidHexagonLayer atIndex:0];
+
+    [self.bottomRightHexagonLayer removeFromSuperlayer];
+    self.bottomRightHexagonLayer = [CAShapeLayer layer];
+    [self prepareLayer:self.bottomRightHexagonLayer onPosition:3];
+    [self.layer insertSublayer:self.bottomRightHexagonLayer above:self.notificationLayer];
+    
+    self.bottomLayerDefaultPosition = self.bottomLeftHexagonLayer.position;
+}
+
+- (void)prepareLayer:(CAShapeLayer *)shapeLayer onPosition:(NSUInteger)position
+{
+    shapeLayer.frame = self.bounds;
+    if (position == 3) {
+        shapeLayer.path =  [self pathForBottomRightHexagon].CGPath;
+    } else {
+        shapeLayer.path =  [self pathForBottomHexagonAtIndex:position].CGPath;
+    }
+    shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.position = CGPointMake(shapeLayer.position.x - LeftOffset, shapeLayer.position.y);
     self.layer.masksToBounds = YES;
-
-    [self.layer insertSublayer:self.hexagonicalBottonLayer atIndex:0];
-}
-
-- (UIBezierPath *)hexagonsPathTop
-{
-    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
-
-    CGFloat topOffset = self.bounds.size.height * 0.12f;
-    
-    CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
-    CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
-    
-    [hexagonPath moveToPoint:CGPointMake(0, topOffset + hexagonSize.height * 0.25f)];
-    
-    for (int i = 0; i < ElementsInRowCount; i++) {
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.25f)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width * i, topOffset + hexagonSize.height * 0.25f)];
-
-        [hexagonPath moveToPoint:CGPointMake(hexagonSize.width * (i + 1), topOffset + hexagonSize.height * 0.25f)];
-    }
-    return hexagonPath;
-}
-
-- (UIBezierPath *)hexagonsPathBotton;
-{
-    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
-    
-    CGFloat topOffset = self.bounds.size.height * 0.12f;
-    
-    CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
-    CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
-    
-    [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
-    
-    for (int i = 0; i < ElementsInRowCount; i++) {
-        if (i == 2) {
-            continue;
-        }
-        [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
-        
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f + hexagonSize.height)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
-        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
-    }
-    return hexagonPath;
 }
 
 - (void)updateAvatarPosition
 {
-    CGFloat topOffset = self.bounds.size.height * 0.12f;
-    CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
-    CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
-    
+    CGSize hexagonSize = [self hexagonOnWireSize];
     CGFloat originX = hexagonSize.width + (hexagonSize.width / 2 - LeftOffset) - self.avatarView.bounds.size.width / 2;
     self.leadingAvatarViewSpaceConstraint.constant = originX;
     self.avatarView.frame = CGRectMake(originX, self.avatarView.frame.origin.y, self.avatarView.frame.size.width, self.avatarView.frame.size.height);
@@ -334,7 +298,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)prepareLogoImage
 {
     [self prepareLogImageWithInitials];
-    
     [self.imageLayer removeFromSuperlayer];
 
     self.imageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
@@ -347,10 +310,11 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     borderLayer.frame = self.bounds;
     borderLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;
     [self.imageLayer addSublayer:borderLayer];
-    
     self.avatarView.layer.masksToBounds = YES;
     [self.avatarView.layer addSublayer:self.imageLayer];
 }
+
+#pragma mark - BezierPath calculation
 
 - (UIBezierPath *)prepareHexagonPathForRect:(CGRect)hexagonRect
 {
@@ -364,6 +328,67 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [hexagonPath addLineToPoint:CGPointMake(0, CGRectGetMaxY(hexagonRect) * 0.25)];
     [hexagonPath addLineToPoint:CGPointMake(CGRectGetMidX(hexagonRect), 0)];
     
+    return hexagonPath;
+}
+
+- (UIBezierPath *)hexagonsPathTop
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    [hexagonPath moveToPoint:CGPointMake(0, topOffset + hexagonSize.height * 0.25f)];
+    
+    for (int i = 0; i < ElementsInRowCount; i++) {
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.25f)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width * i, topOffset + hexagonSize.height * 0.25f)];
+        
+        [hexagonPath moveToPoint:CGPointMake(hexagonSize.width * (i + 1), topOffset + hexagonSize.height * 0.25f)];
+    }
+    return hexagonPath;
+}
+
+- (UIBezierPath *)pathForBottomRightHexagon
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
+    
+    for (int i = 3; i < ElementsInRowCount; i++) {
+        [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+        
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
+        [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+    }
+    return hexagonPath;
+}
+
+- (UIBezierPath *)pathForBottomHexagonAtIndex:(NSUInteger)i
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    
+    [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
+    [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+    
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f + hexagonSize.height)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
+    [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
     return hexagonPath;
 }
 
@@ -471,6 +496,38 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     return fadeAnimation;
 }
 
+- (void)moveBottomLeftHexagonToTop:(BOOL)top
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:self.bottomLeftHexagonLayer.position];
+    if (top) {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.bottomLayerDefaultPosition.x - hexagonSize.width * 0.5f, self.bottomLayerDefaultPosition.y - hexagonSize.height * 0.75f)];
+    } else {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:self.bottomLayerDefaultPosition];
+    }
+    positionAnimation.duration = 0.25f;
+    [self.bottomLeftHexagonLayer addAnimation:positionAnimation forKey:nil];
+    self.bottomLeftHexagonLayer.position = [positionAnimation.toValue CGPointValue];
+}
+
+- (void)moveLayer:(CAShapeLayer *)shapeLayer toTop:(BOOL)top
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:shapeLayer.position];
+    if (top) {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.bottomLayerDefaultPosition.x + hexagonSize.width * 0.5f, self.bottomLayerDefaultPosition.y - hexagonSize.height * 0.75f)];
+    } else {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:self.bottomLayerDefaultPosition];
+    }
+    positionAnimation.duration = 0.25f;
+    [shapeLayer addAnimation:positionAnimation forKey:nil];
+    shapeLayer.position = [positionAnimation.toValue CGPointValue];
+}
+
 #pragma mark - Animations Related Calculations
 
 - (BOOL)enebleAnimation:(BOOL)enable
@@ -509,6 +566,14 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     return position;
 }
 
+- (CGSize)hexagonOnWireSize
+{
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGRect placeHolderHexagonRect = CGRectMake(0, topOffset, self.bounds.size.width, self.bounds.size.height);
+    CGSize hexagonSize = CGSizeMake(placeHolderHexagonRect.size.width / ElementsInRowCount, placeHolderHexagonRect.size.height / ElementsColumsCount);
+    return hexagonSize;
+}
+
 #pragma mark - DrawText for Notification
 
 
@@ -541,6 +606,37 @@ static CGFloat const CornerWidthForAvatar = 3.f;
              NSFontAttributeName : [UIFont boldSystemFontOfSize:24.f],
              NSForegroundColorAttributeName : [UIColor whiteColor]
              };
+}
+
+#pragma mark - Constraints
+
+- (void)addConstraintsForView:(UIView *)view
+{
+    [self addConstraints:@[[NSLayoutConstraint constraintWithItem:view
+                                                        attribute:NSLayoutAttributeBottom
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self attribute:NSLayoutAttributeBottom
+                                                       multiplier:1.0
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:view
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self attribute:NSLayoutAttributeTop
+                                                       multiplier:1.0
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:view
+                                                        attribute:NSLayoutAttributeLeading
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self attribute:NSLayoutAttributeLeading
+                                                       multiplier:1.0
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:view
+                                                        attribute:NSLayoutAttributeTrailing
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self attribute:NSLayoutAttributeTrailing
+                                                       multiplier:1.0
+                                                         constant:0]
+                           ]];
 }
 
 @end

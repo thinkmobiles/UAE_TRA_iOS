@@ -30,7 +30,9 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 @property (strong, nonatomic) UIImage *notificationButtonImage;
 @property (assign, nonatomic) NSUInteger notificationsCount;
 @property (copy, nonatomic) NSString *userInitials;
+
 @property (assign, nonatomic) BOOL isFakeButtonsOnTop;
+@property (assign, nonatomic) BOOL isBottomHexagonWireOnTop;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
 @property (assign, nonatomic) BOOL enableFakeBarAnimations;
@@ -38,6 +40,9 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 - (void)reverseLayers;
 
 - (void)updateOpacityForHexagons:(CGFloat)opacityLevel;
+
+- (void)moveBottomHexagonWireToTop:(BOOL)toTop;
+- (void)updatedPositionForBottomWireForMovingProgress:(CGFloat)progress;
 
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop;
 

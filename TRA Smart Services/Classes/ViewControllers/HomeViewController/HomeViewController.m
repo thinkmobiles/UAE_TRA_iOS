@@ -163,7 +163,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == self.menuCollectionView && !self.stopAnimate) {
-        
         [self detectScrollDirectioninScrollView:scrollView];
         
         CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
@@ -189,7 +188,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         
         [self animateTopLogoWithProgress:progress];
         [self animateSpeedAcceesCollectionViewCellWithScaleFactor:progress];
-        
+        [self.topView updatedPositionForBottomWireForMovingProgress:progress];
+
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
             [weakSelf.topView updateOpacityForHexagons:progress];
@@ -229,8 +229,12 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
                 weakSelf.stopAnimate = NO;
             }];
         }
-        [self scaleLogo];
-        [self scaleCells];
+        
+        [self.topView scaleLogo:!self.isScrollintToTop];
+        [self speedAcceesCollectionViewCellScale:!self.isScrollintToTop];
+        if (self.topView.isBottomHexagonWireOnTop != self.isScrollintToTop) {
+            [self.topView moveBottomHexagonWireToTop:self.isScrollintToTop];
+        }
     }
 }
 
@@ -517,23 +521,23 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     }
 }
 
-- (void)scaleCells
-{
-    if (self.isScrollintToTop) {
-        [self speedAcceesCollectionViewCellScale:NO];
-    } else {
-        [self speedAcceesCollectionViewCellScale:YES];
-    }
-}
+//- (void)scaleCells
+//{
+//    if (self.isScrollintToTop) {
+//        [self speedAcceesCollectionViewCellScale:!self.isScrollintToTop];
+//    } else {
+//        [self speedAcceesCollectionViewCellScale:YES];
+//    }
+//}
 
-- (void)scaleLogo
-{
-    if (self.isScrollintToTop) {
-        [self.topView scaleLogo:NO];
-    } else {
-        [self.topView scaleLogo:YES];
-    }
-}
+//- (void)scaleLogo
+//{
+//    if (self.isScrollintToTop) {
+//        [self.topView scaleLogo:!self.isScrollintToTop];
+//    } else {
+//        [self.topView scaleLogo:YES];
+//    }
+//}
 
 - (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
 {
@@ -561,6 +565,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.animations = @[moveAnim, opacityAnim];
     group.duration = 0.15 + 0.05 * indexPath.row;
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     [cell.layer addAnimation:group forKey:nil];
 }
