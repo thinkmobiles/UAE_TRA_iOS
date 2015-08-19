@@ -11,6 +11,8 @@
 
 @interface AnnoucementsViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 static CGFloat const heightTableViewCell = 90.0f;
@@ -24,6 +26,11 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - UITableViewDataSource
@@ -45,12 +52,18 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
     cell.textAnnocementsLabel.text = @"Text";
     cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        [cell.conteinerArabicUI setHidden:NO];
+        [cell.conteinerEuropeUI setHidden:YES];
+    } else {
+        [cell.conteinerArabicUI setHidden:YES];
+        [cell.conteinerEuropeUI setHidden:NO];
+    }
     if (indexPath.row % 2) {
         cell.deltaConstraint.constant = 44;
     } else {
         cell.deltaConstraint.constant = 24;
     }
-    
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }

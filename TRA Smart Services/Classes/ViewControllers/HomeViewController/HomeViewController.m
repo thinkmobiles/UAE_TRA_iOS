@@ -218,9 +218,9 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView == self.menuCollectionView && !self.stopAnimate) {
+     if (scrollView == self.menuCollectionView && !self.stopAnimate) {
         
-        [self detectScrollDirectioninScrollView:scrollView];
+       [self detectScrollDirectioninScrollView:scrollView];
         
         CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
         CGFloat contentOffsetY = scrollView.contentOffset.y;

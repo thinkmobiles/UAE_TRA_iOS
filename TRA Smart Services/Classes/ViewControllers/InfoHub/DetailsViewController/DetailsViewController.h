@@ -8,6 +8,6 @@
 
 #import "BaseSearchableViewController.h"
 
-@interface DetailsViewController : BaseSearchableViewController
+@interface DetailsViewController : BaseDynamicUIViewController
 
 @end

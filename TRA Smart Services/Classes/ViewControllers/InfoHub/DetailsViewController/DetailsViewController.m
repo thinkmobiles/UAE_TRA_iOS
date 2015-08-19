@@ -11,6 +11,8 @@
 @interface DetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *detailsText;
+@property (weak, nonatomic) IBOutlet UILabel *detailsTitleDate;
+@property (weak, nonatomic) IBOutlet UILabel *detailsTitleText;
 
 @end
 
@@ -23,7 +25,6 @@
     [super viewDidLoad];
     [self sourceDatail];
     
-    [self localizeUI];
 }
 
 #pragma mark - Private
@@ -38,7 +39,7 @@
 
 - (void)localizeUI
 {
-    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"details.title");
+    self.title = dynamicLocalizedString(@"details.title");
 }
 
 - (void)updateColors
@@ -46,5 +47,18 @@
     
 }
 
+- (void)setLTREuropeUI
+{
+    self.detailsText.textAlignment = NSTextAlignmentLeft;
+    self.detailsTitleDate.textAlignment = NSTextAlignmentLeft;
+    self.detailsTitleText.textAlignment = NSTextAlignmentLeft;
+}
+
+- (void)setRTLArabicUI
+{
+    self.detailsText.textAlignment = NSTextAlignmentRight;
+    self.detailsTitleDate.textAlignment = NSTextAlignmentRight;
+    self.detailsTitleText.textAlignment = NSTextAlignmentRight;
+}
 
 @end
