@@ -172,11 +172,21 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGPoint center = cell.center;
     if (collectionView == self.speedAccessCollectionView) {
         [self animateSpeedAccessCell:cell atIndexPath:indexPath];
     } else {
         [self animateOtherCell:cell atIndexPath:indexPath];
     }
+}
+
+- (void)animationWithStartY:(NSInteger)startY stopY:(NSInteger)stopY duration:(CGFloat)duration andLayer:(CALayer *)layer
+{
+    CABasicAnimation *topToDownAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    topToDownAnimation.fromValue = @(startY);
+    topToDownAnimation.toValue = @(stopY);
+    topToDownAnimation.duration = duration;
+    [layer addAnimation:topToDownAnimation forKey:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
