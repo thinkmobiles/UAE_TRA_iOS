@@ -77,13 +77,6 @@ static CGFloat ShadowOffset = 2.f;
     [self prepareShadowWithLayer:self.polygonLayer];
 }
 
-- (void)redrawHexagonWithScale:(CGFloat)scale
-{
-    CATransform3D transformation = CATransform3DIdentity;
-    transformation = CATransform3DScale(transformation, scale, scale, 1);
-    self.gradientLayer.transform = transformation;
-}
-
 #pragma mark - Private
 
 - (void)prepareShadowWithLayer:(CAShapeLayer *)layer

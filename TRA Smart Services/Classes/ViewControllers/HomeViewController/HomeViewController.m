@@ -152,24 +152,9 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (collectionView == self.speedAccessCollectionView) {
-
-        CAKeyframeAnimation *moveAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-        moveAnim.values = @ [
-                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
-                             [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
-                             [NSValue valueWithCGPoint:cell.center]
-                             ];
-        moveAnim.keyTimes = @[@(0), @(0.1 * indexPath.row), @(1)];
-        
-        CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        opacityAnim.fromValue = @(0);
-        opacityAnim.toValue = @(1);
-        
-        CAAnimationGroup *group = [CAAnimationGroup animation];
-        group.animations = @[moveAnim, opacityAnim];
-        group.duration = 0.15 + 0.05 * indexPath.row;
-        
-        [cell.layer addAnimation:group forKey:nil];
+        [self animateSpeedAccessCell:cell atIndexPath:indexPath];
+    } else {
+        [self animateOtherCell:cell atIndexPath:indexPath];
     }
 }
 
@@ -541,7 +526,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     }
 }
 
-
 - (void)scaleLogo
 {
     if (self.isScrollintToTop) {
@@ -558,6 +542,36 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     } else if (self.lastContentOffset < scrollView.contentOffset.y) {
         self.isScrollintToTop = YES;
     }
+}
+
+- (void)animateSpeedAccessCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    CAKeyframeAnimation *moveAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    moveAnim.values = @ [
+                         [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
+                         [NSValue valueWithCGPoint:CGPointMake(cell.center.x, 0)],
+                         [NSValue valueWithCGPoint:cell.center]
+                         ];
+    moveAnim.keyTimes = @[@(0), @(0.1 * indexPath.row), @(1)];
+    
+    CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnim.fromValue = @(0);
+    opacityAnim.toValue = @(1);
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.animations = @[moveAnim, opacityAnim];
+    group.duration = 0.15 + 0.05 * indexPath.row;
+    
+    [cell.layer addAnimation:group forKey:nil];
+}
+
+- (void)animateOtherCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnim.fromValue = @(0);
+    opacityAnim.toValue = @(1);
+    opacityAnim.duration = 0.15 + 0.05 * indexPath.row;
+    [cell.layer addAnimation:opacityAnim forKey:nil];
 }
 
 @end
