@@ -81,7 +81,7 @@ static CGFloat const heightTableViewCell = 90.0f;
 {
     InfoHubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:infoHubTableViewCellIdentifier forIndexPath:indexPath];
     
-    cell.textInfoLabel.text = @"Text";
+    cell.textInfoLabel.text = @"Text Text Text Text Text Text Text Text Text Text Text Text";
     cell.titleInfoLabel.text = @"Title";
     cell.dateInfoLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     
