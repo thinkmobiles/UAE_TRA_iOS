@@ -100,65 +100,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     }
 }
 
-- (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-        case 7: {
-            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
-            break;
-        }
-        case 8: {
-            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
-            break;
-        }
-        case 9: {
-            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
-            break;
-        }
-        case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-        default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
-            break;
-        }
-    }
-}
-
-- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-        case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
-            break;
-        }
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
-            break;
-        }
-        case 10: {
-            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
-            break;
-        }
-        case 11: {
-            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
-            break;
-        }
-
-        default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
-            break;
-        }
-    }
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -259,12 +200,23 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         }
         __weak typeof(self) weakSelf = self;
         CGFloat gradientOpacityValue = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
+        
+        CGFloat scaleValue = gradientOpacityValue;
+        CGFloat scalePercent = scaleValue == 1 ? scaleValue : 1 - (0.15 ) * scaleValue;
+        
+        NSLog(@"%f", scalePercent);
+        
+        
+        if (scalePercent < 1 && scalePercent) {
+            [self.topView scaleLogoFor:scalePercent];
+        }
+        
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
-            [weakSelf.topView drawWithGradientOpacityLevel:gradientOpacityValue];
+            [weakSelf.topView updateOpacityForHexagons:gradientOpacityValue];
         } else {
             [self.topView moveFakeButtonsToTop:NO];
-            [weakSelf.topView drawWithGradientOpacityLevel:0];
+            [weakSelf.topView updateOpacityForHexagons:0];
         }
     }
     self.lastContentOffset = scrollView.contentOffset.y;
@@ -292,11 +244,17 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             __weak typeof(self) weakSelf = self;
             [UIView animateWithDuration:0.2 animations:^{
                 weakSelf.speedAccessCollectionViewTopSpaceConstraint.constant = - constantValue;
-                [weakSelf.topView drawWithGradientOpacityLevel:constantValue ? 1 : 0];
+                [weakSelf.topView updateOpacityForHexagons:constantValue ? 1 : 0];
                 [weakSelf.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 weakSelf.stopAnimate = NO;
             }];
+        }
+        
+        if (self.isScrollintToTop) {
+            [self.topView scaleLogo:NO];
+        } else {
+            [self.topView scaleLogo:YES];
         }
     }
 }
@@ -343,9 +301,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)reverseDataSource
 {
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
-    
     NSMutableArray *reversedItems = [[NSMutableArray alloc] init];
-
+    
     if (self.otherServiceDataSource.count < RowCount) {
         reversedItems = [[self.otherServiceDataSource reversedArray] mutableCopy];
     } else {
@@ -378,6 +335,67 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)setLTREuropeUI
 {
     [self transformTopView:CATransform3DIdentity];
+}
+
+#pragma mark - Navigations
+
+- (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
+    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+        case 7: {
+            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
+            break;
+        }
+        case 8: {
+            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
+            break;
+        }
+        case 9: {
+            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
+            break;
+        }
+        case 5: {
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
+            break;
+        }
+        default: {
+            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            break;
+        }
+    }
+}
+
+- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+        case 2: {
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            break;
+        }
+        case 6: {
+            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            break;
+        }
+        case 10: {
+            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
+            break;
+        }
+        case 11: {
+            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
+            break;
+        }
+            
+        default: {
+            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            break;
+        }
+    }
 }
 
 #pragma mark - Private

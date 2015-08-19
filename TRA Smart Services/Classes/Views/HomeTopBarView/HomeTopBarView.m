@@ -147,7 +147,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
 }
 
-- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel
+- (void)updateOpacityForHexagons:(CGFloat)opacityLevel
 {
     self.hexagonicalBottonLayer.opacity = 1 - opacityLevel;
 }
@@ -155,9 +155,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop
 {
     if (self.enableFakeBarAnimations && [self enebleAnimation:moveToTop]) {
-        
-        [self makeLogoLayerScaled:!moveToTop];
-        
         self.isFakeButtonsOnTop = moveToTop;
         self.enableFakeBarAnimations = NO;
         self.disableFakeButtonLayersDrawing = YES;
@@ -174,16 +171,23 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     }
 }
 
-- (void)makeLogoLayerScaled:(BOOL)scaled
+- (void)scaleLogo:(BOOL)scale
 {
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    CATransform3D tr = CATransform3DIdentity;
-    tr = scaled ? CATransform3DIdentity : CATransform3DScale(tr, 0.85, 0.85, 1);
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = scale ? CATransform3DIdentity : CATransform3DScale(transformation, 0.85, 0.85, 1);
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:self.imageLayer.transform];
-    scaleAnimation.toValue = [NSValue valueWithCATransform3D:tr];
+    scaleAnimation.toValue = [NSValue valueWithCATransform3D:transformation];
     scaleAnimation.duration = 0.25;
     [self.imageLayer addAnimation:scaleAnimation forKey:nil];
-    self.imageLayer.transform = tr;
+    self.imageLayer.transform = transformation;
+}
+
+- (void)scaleLogoFor:(CGFloat)scale
+{
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = CATransform3DScale(transformation, scale, scale, 1);
+    self.imageLayer.transform = transformation;
 }
 
 #pragma mark - AnimationDelegate

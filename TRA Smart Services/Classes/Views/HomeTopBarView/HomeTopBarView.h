@@ -34,8 +34,13 @@
 @property (assign, nonatomic) BOOL enableFakeBarAnimations;
 
 - (void)reverseLayers;
-- (void)drawWithGradientOpacityLevel:(CGFloat)opacityLevel;
+
+- (void)updateOpacityForHexagons:(CGFloat)opacityLevel;
+
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop;
-- (void)makeLogoLayerScaled:(BOOL)scaled;
+
+- (void)scaleLogo:(BOOL)scale;
+- (void)scaleLogoFor:(CGFloat)scale;
+
 
 @end
