@@ -19,18 +19,18 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAvatarViewSpaceConstraint;
 
 @property (strong, nonatomic) CAShapeLayer *hexagonicalTopLayer;
-@property (strong, nonatomic) CAShapeLayer *hexagonicalBottonLayer;
-@property (strong, nonatomic) CALayer *imageLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomLeftHexagonLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomMidHexagonLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomRightHexagonLayer;
+@property (strong, nonatomic) CAShapeLayer *borderLogoLayer;
 
+@property (strong, nonatomic) CALayer *avatarImageLayer;
 @property (strong, nonatomic) CALayer *informationLayer;
 @property (strong, nonatomic) CALayer *searchLayer;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
-@property (strong, nonatomic) CAShapeLayer *bottomLeftHexagonLayer;
-@property (strong, nonatomic) CAShapeLayer *bottomMidHexagonLayer;
-@property (strong, nonatomic) CAShapeLayer *bottomRightHexagonLayer;
-
 @property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
+@property (assign, nonatomic) __block BOOL isAppearenceAnimationCompleted;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
@@ -67,6 +67,8 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];
         [self drawHexagonicalWireBotton];
+        
+        [self setStartApearenceAnimationParameters];
     }
 }
 
@@ -97,7 +99,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     }
     for (CALayer *layer in self.avatarView.layer.sublayers) {
         if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
-            if (layer == self.imageLayer) {
+            if (layer == self.avatarImageLayer) {
                 if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
                     [self.delegate topBarLogoImageDidTouched:self];
                 }
@@ -155,9 +157,11 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)updateOpacityForHexagons:(CGFloat)opacityLevel
 {
-    self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel;
-    self.bottomMidHexagonLayer.opacity = 1 - opacityLevel;
-    self.bottomRightHexagonLayer.opacity = 1 - opacityLevel;
+    if (self.isAppearenceAnimationCompleted) {
+        self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel;
+        self.bottomMidHexagonLayer.opacity = 1 - opacityLevel;
+        self.bottomRightHexagonLayer.opacity = 1 - opacityLevel;
+    }
 }
 
 - (void)moveFakeButtonsToTop:(BOOL)moveToTop
@@ -184,18 +188,18 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     CATransform3D transformation = CATransform3DIdentity;
     transformation = scale ? CATransform3DIdentity : CATransform3DScale(transformation, LogoScaleMinValue, LogoScaleMinValue, 1);
-    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:self.imageLayer.transform];
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:self.avatarImageLayer.transform];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:transformation];
     scaleAnimation.duration = 0.25;
-    [self.imageLayer addAnimation:scaleAnimation forKey:nil];
-    self.imageLayer.transform = transformation;
+    [self.avatarImageLayer addAnimation:scaleAnimation forKey:nil];
+    self.avatarImageLayer.transform = transformation;
 }
 
 - (void)scaleLogoFor:(CGFloat)scale
 {
     CATransform3D transformation = CATransform3DIdentity;
     transformation = CATransform3DScale(transformation, scale, scale, 1);
-    self.imageLayer.transform = transformation;
+    self.avatarImageLayer.transform = transformation;
 }
 
 - (void)moveBottomHexagonWireToTop:(BOOL)toTop
@@ -220,6 +224,65 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.bottomRightHexagonLayer.position = CGPointMake(self.bottomLayerDefaultPosition.x + currentXOffset, self.bottomLayerDefaultPosition.y - currentYOffset);
 }
 
+- (void)animateTopViewApearence
+{
+    CGFloat AnimationTimeForLine = 0.3f;
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = AnimationTimeForLine;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [self.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
+    [self.avatarImageLayer addAnimation:pathAnimation forKey:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    CGFloat delayForInfoDrawing = AnimationTimeForLine * (6. / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.informationLayer.opacity = 1.f;
+    });
+    
+    CGFloat delayForSearchDrawing = AnimationTimeForLine * (7. / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForSearchDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.searchLayer.opacity = 1.f;
+    });
+    
+    CGFloat delayForRightBottomPart = AnimationTimeForLine;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomRightHexagonLayer.opacity = 1.f;
+        [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
+    });
+    
+    CGFloat delayForNotificationLayer = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.notificationLayer.opacity = 1.f;
+    });
+
+    CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomMidHexagonLayer.opacity = 1.f;
+        [weakSelf.bottomMidHexagonLayer addAnimation:pathAnimation forKey:nil];
+    });
+    
+    CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
+        pathAnimation.delegate = self;
+        pathAnimation.removedOnCompletion = NO;
+        [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
+    });
+}
+
+- (void)setStartApearenceAnimationParameters
+{
+    self.informationLayer.opacity = 0.f;
+    self.searchLayer.opacity = 0.f;
+    self.notificationLayer.opacity = 0.f;
+    self.bottomRightHexagonLayer.opacity = 0.f;
+    self.bottomMidHexagonLayer.opacity = 0.f;
+    self.bottomLeftHexagonLayer.opacity = 0.f;
+    
+    self.isAppearenceAnimationCompleted = NO;
+}
+
 #pragma mark - AnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -230,6 +293,11 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     }
     if (anim == [self.informationLayer animationForKey:@"animationInformationLayer"]) {
         [self.informationLayer removeAllAnimations];
+    }
+    
+    if (anim == [self.bottomLeftHexagonLayer animationForKey:@"lastTopAppearenceAnimation"]) {
+        [self.bottomLeftHexagonLayer removeAllAnimations];
+        self.isAppearenceAnimationCompleted = YES;
     }
 }
 
@@ -298,20 +366,20 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)prepareLogoImage
 {
     [self prepareLogImageWithInitials];
-    [self.imageLayer removeFromSuperlayer];
+    [self.avatarImageLayer removeFromSuperlayer];
 
-    self.imageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
-    [self addHexagoneMaskForLayer:self.imageLayer];
+    self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
+    [self addHexagoneMaskForLayer:self.avatarImageLayer];
     
-    CAShapeLayer *borderLayer = [CAShapeLayer layer];
-    borderLayer.fillColor = [UIColor clearColor].CGColor;
-    borderLayer.strokeColor = [UIColor whiteColor].CGColor;
-    borderLayer.lineWidth = CornerWidthForAvatar;
-    borderLayer.frame = self.bounds;
-    borderLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;
-    [self.imageLayer addSublayer:borderLayer];
+    self.borderLogoLayer = [CAShapeLayer layer];
+        self.borderLogoLayer.fillColor = [UIColor clearColor].CGColor;
+        self.borderLogoLayer.strokeColor = [UIColor whiteColor].CGColor;
+        self.borderLogoLayer.lineWidth = CornerWidthForAvatar;
+        self.borderLogoLayer.frame = self.bounds;
+        self.borderLogoLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;
+    [self.avatarImageLayer addSublayer:self.borderLogoLayer];
     self.avatarView.layer.masksToBounds = YES;
-    [self.avatarView.layer addSublayer:self.imageLayer];
+    [self.avatarView.layer addSublayer:self.avatarImageLayer];
 }
 
 #pragma mark - BezierPath calculation
@@ -353,13 +421,15 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (UIBezierPath *)pathForBottomRightHexagon
 {
-    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    UIBezierPath *resultPath = [UIBezierPath bezierPath];
     
     CGFloat topOffset = self.bounds.size.height * 0.12f;
     CGSize hexagonSize = [self hexagonOnWireSize];
-    [hexagonPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
+    [resultPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
     
+    NSMutableArray *paths = [[NSMutableArray alloc] init];
     for (int i = 3; i < ElementsInRowCount; i++) {
+        UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
         [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
         
         [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
@@ -369,8 +439,13 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
         [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
         [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+        
+        [paths addObject:[hexagonPath bezierPathByReversingPath]];
     }
-    return hexagonPath;
+    for (UIBezierPath *invertedPath in [paths reversedArray]) {
+        [resultPath appendPath:invertedPath];
+    }
+    return resultPath;
 }
 
 - (UIBezierPath *)pathForBottomHexagonAtIndex:(NSUInteger)i
@@ -389,6 +464,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height * 0.5f + hexagonSize.height)];
     [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width / 2 + hexagonSize.width * i, topOffset + hexagonSize.height)];
     [hexagonPath addLineToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
+    
     return hexagonPath;
 }
 

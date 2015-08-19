@@ -49,4 +49,7 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 - (void)scaleLogo:(BOOL)scale;
 - (void)scaleLogoFor:(CGFloat)scale;
 
+- (void)animateTopViewApearence;
+- (void)setStartApearenceAnimationParameters;
+
 @end

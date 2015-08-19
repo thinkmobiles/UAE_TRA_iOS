@@ -77,6 +77,24 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         [self.menuCollectionView  reloadData];
     }
     self.isFirstTimeLoaded = YES;
+    
+    
+    //    UIGraphicsBeginImageContext(self.topView.bounds.size);
+    //    [self.topView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    //    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    //    UIGraphicsEndImageContext();
+    
+    //need to animate layer
+
+    
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.topView animateTopViewApearence];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -88,6 +106,9 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     //    [self.otherServiceDataSource removeAllObjects];
     //    [self.menuCollectionView  reloadSections:[NSIndexSet indexSetWithIndex:0]];
     [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    
+    [self.topView setStartApearenceAnimationParameters];
+
 }
 
 #pragma mark - UICollectionViewDelegate
