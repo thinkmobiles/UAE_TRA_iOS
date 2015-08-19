@@ -8,6 +8,8 @@
 
 @class HomeTopBarView;
 
+static CGFloat const LogoScaleMinValue = 0.85f;
+
 @protocol HomeTopBarViewDelegate <NSObject>
 
 @optional

@@ -22,6 +22,8 @@ static CGFloat ShadowOffset = 2.f;
 
 @implementation HexagonView
 
+#pragma mark - LifeCycle
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -73,6 +75,13 @@ static CGFloat ShadowOffset = 2.f;
     [self.layer addSublayer:self.gradientLayer];
     
     [self prepareShadowWithLayer:self.polygonLayer];
+}
+
+- (void)redrawHexagonWithScale:(CGFloat)scale
+{
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = CATransform3DScale(transformation, scale, scale, 1);
+    self.gradientLayer.transform = transformation;
 }
 
 #pragma mark - Private

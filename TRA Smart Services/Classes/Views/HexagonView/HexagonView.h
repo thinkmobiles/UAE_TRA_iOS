@@ -17,4 +17,6 @@ IB_DESIGNABLE
 - (void)setGradientWithTopColors:(NSArray *)colors;
 - (void)removeAllDrawings;
 
+- (void)redrawHexagonWithScale:(CGFloat)scale;
+
 @end

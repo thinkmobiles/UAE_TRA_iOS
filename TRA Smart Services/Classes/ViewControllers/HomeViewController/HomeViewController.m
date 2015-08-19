@@ -16,6 +16,7 @@ static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
 static CGFloat const ZigZagViewTag = 1001;
 static CGFloat const TopViewHeightMultiplierValue = 0.18f;
+static CGFloat const MaxScaleFactorForSpeedAccessCell = 0.9f;
 
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
@@ -199,28 +200,20 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self.topView moveFakeButtonsToTop:NO];
         }
         __weak typeof(self) weakSelf = self;
-        CGFloat gradientOpacityValue = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
+        CGFloat progress = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
         
-        [self animateTopLogoWithProgress:gradientOpacityValue];
+        [self animateTopLogoWithProgress:progress];
+        [self animateSpeedAcceesCollectionViewCellWithScaleFactor:progress];
         
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
-            [weakSelf.topView updateOpacityForHexagons:gradientOpacityValue];
+            [weakSelf.topView updateOpacityForHexagons:progress];
         } else {
             [self.topView moveFakeButtonsToTop:NO];
             [weakSelf.topView updateOpacityForHexagons:0];
         }
     }
     self.lastContentOffset = scrollView.contentOffset.y;
-}
-
-- (void)animateTopLogoWithProgress:(CGFloat)progress
-{
-    CGFloat scalePercent = progress == 1 ? progress : 1 - (0.15 ) * progress;
-    
-    if (scalePercent < 1 && scalePercent) {
-        [self.topView scaleLogoFor:scalePercent];
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
@@ -251,21 +244,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
                 weakSelf.stopAnimate = NO;
             }];
         }
-        
-        if (self.isScrollintToTop) {
-            [self.topView scaleLogo:NO];
-        } else {
-            [self.topView scaleLogo:YES];
-        }
-    }
-}
-
-- (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
-{
-    if (self.lastContentOffset > scrollView.contentOffset.y) {
-        self.isScrollintToTop = NO;
-    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
-        self.isScrollintToTop = YES;
+        [self scaleLogo];
+        [self scaleCells];
     }
 }
 
@@ -295,6 +275,18 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 #endif
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentViewController:viewController animated:NO completion:nil];
+}
+
+#pragma mark - Private
+
+- (void)prepareDataSource
+{
+    self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
+    self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        [self reverseDataSource];
+    }
 }
 
 #pragma mark - Notifications
@@ -399,18 +391,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     }
 }
 
-#pragma mark - Private
-
-- (void)prepareDataSource
-{
-    self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
-    self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        [self reverseDataSource];
-    }
-}
-
 #pragma mark - TopBar
 
 - (void)prepareTopBar
@@ -508,6 +488,76 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     zigZagView.tag = ZigZagViewTag;
     
     self.speedAccessCollectionView.backgroundView = zigZagView;
+}
+
+#pragma mark - Animations vs Calculation for Animations
+
+- (void)animateTopLogoWithProgress:(CGFloat)progress
+{
+    CGFloat scalePercent = progress == 1 ? progress : 1 - (1 - LogoScaleMinValue) * progress;
+    
+    if (scalePercent < 1 && scalePercent) {
+        [self.topView scaleLogoFor:scalePercent];
+    }
+}
+
+- (void)animateSpeedAcceesCollectionViewCellWithScaleFactor:(CGFloat)scaleFactor
+{
+    CGFloat scalePercent = scaleFactor == 1 ? scaleFactor : 1 - (1 - MaxScaleFactorForSpeedAccessCell) * scaleFactor;
+    
+    if (scalePercent < 1 && scalePercent) {
+        for (CategoryCollectionViewCell *cell in [self.speedAccessCollectionView visibleCells]) {
+            CATransform3D transformation = CATransform3DIdentity;
+            transformation = CATransform3DScale(transformation, scalePercent, scalePercent, 1);
+            cell.layer.transform  = transformation;
+        }
+    }
+}
+
+- (void)speedAcceesCollectionViewCellScale:(BOOL)animate
+{
+    CategoryCollectionViewCell *cell = (CategoryCollectionViewCell *)[[self.speedAccessCollectionView visibleCells] firstObject];
+    CATransform3D startTransform = cell.layer.transform;
+    
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = animate ? CATransform3DIdentity : CATransform3DScale(transformation, MaxScaleFactorForSpeedAccessCell, MaxScaleFactorForSpeedAccessCell, 1);
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:startTransform];
+    scaleAnimation.toValue = [NSValue valueWithCATransform3D:transformation];
+    scaleAnimation.duration = 0.25;
+    
+    for (CategoryCollectionViewCell *cell in [self.speedAccessCollectionView visibleCells]) {
+        [cell.layer addAnimation:scaleAnimation forKey:nil];
+        cell.layer.transform  = transformation;
+    }
+}
+
+- (void)scaleCells
+{
+    if (self.isScrollintToTop) {
+        [self speedAcceesCollectionViewCellScale:NO];
+    } else {
+        [self speedAcceesCollectionViewCellScale:YES];
+    }
+}
+
+
+- (void)scaleLogo
+{
+    if (self.isScrollintToTop) {
+        [self.topView scaleLogo:NO];
+    } else {
+        [self.topView scaleLogo:YES];
+    }
+}
+
+- (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
+{
+    if (self.lastContentOffset > scrollView.contentOffset.y) {
+        self.isScrollintToTop = NO;
+    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
+        self.isScrollintToTop = YES;
+    }
 }
 
 @end

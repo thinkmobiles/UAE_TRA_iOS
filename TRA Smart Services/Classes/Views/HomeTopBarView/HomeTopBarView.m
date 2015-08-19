@@ -175,7 +175,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     CATransform3D transformation = CATransform3DIdentity;
-    transformation = scale ? CATransform3DIdentity : CATransform3DScale(transformation, 0.85, 0.85, 1);
+    transformation = scale ? CATransform3DIdentity : CATransform3DScale(transformation, LogoScaleMinValue, LogoScaleMinValue, 1);
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:self.imageLayer.transform];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:transformation];
     scaleAnimation.duration = 0.25;
