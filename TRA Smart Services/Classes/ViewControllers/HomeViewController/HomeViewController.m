@@ -172,7 +172,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGPoint center = cell.center;
     if (collectionView == self.speedAccessCollectionView) {
         [self animateSpeedAccessCell:cell atIndexPath:indexPath];
     } else {
@@ -552,24 +551,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     }
 }
 
-//- (void)scaleCells
-//{
-//    if (self.isScrollintToTop) {
-//        [self speedAcceesCollectionViewCellScale:!self.isScrollintToTop];
-//    } else {
-//        [self speedAcceesCollectionViewCellScale:YES];
-//    }
-//}
-
-//- (void)scaleLogo
-//{
-//    if (self.isScrollintToTop) {
-//        [self.topView scaleLogo:!self.isScrollintToTop];
-//    } else {
-//        [self.topView scaleLogo:YES];
-//    }
-//}
-
 - (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
 {
     if (self.lastContentOffset > scrollView.contentOffset.y) {
@@ -608,6 +589,14 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     opacityAnim.toValue = @(1);
     opacityAnim.duration = 0.15 + 0.05 * indexPath.row;
     [cell.layer addAnimation:opacityAnim forKey:nil];
+    
+    CGPoint center = cell.center;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        [self animationWithStartY:center.y - 5 stopY:center.y duration:0.2 andLayer:cell.layer];
+    }];
+    [self animationWithStartY:center.y + 50 stopY:center.y - 5 duration:0.2 andLayer:cell.layer];
+    [CATransaction commit];
 }
 
 @end
