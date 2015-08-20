@@ -85,6 +85,17 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)prepareTabBarItems
 {
+    [AppHelper performResetupTabBar];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+        tabBarController.viewControllers = viewControllers;
+        tabBarController.selectedViewController = [viewControllers lastObject];
+    }
+}
+
++ (void)performResetupTabBar
+{
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     CGFloat fontSize = [DynamicUIService service].fontSize;
     fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
@@ -102,12 +113,6 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
         
         [tabBarItem setSelectedImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"selectedImage"]]];
         [tabBarItem setImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"normalImage"]]];
-    }
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
-        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
-        tabBarController.viewControllers = viewControllers;
-        tabBarController.selectedViewController = [viewControllers lastObject];
     }
 }
 

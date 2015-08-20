@@ -79,8 +79,8 @@
 
 //FavouriteCell
 
-"favouriteCell.infoButton.title" = "Service Info";
-"favouriteCell.deleteButton.title" = "Remove";
+"favouriteCell.infoButton.title" = "Service Info11";
+"favouriteCell.deleteButton.title" = "Remove11";
 
 //ServiceInfoViewController
 

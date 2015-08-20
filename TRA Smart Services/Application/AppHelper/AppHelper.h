@@ -27,6 +27,7 @@ static NSString *const MessageIncorrectRating = @"Incorrect rating format - shou
 + (void)hideLoader;
 
 + (void)prepareTabBarItems;
++ (void)performResetupTabBar;
 + (void)reverseTabBarItems;
 + (void)prepareTabBarGradient;
 

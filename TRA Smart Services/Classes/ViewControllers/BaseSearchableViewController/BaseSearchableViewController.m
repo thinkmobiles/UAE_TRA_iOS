@@ -12,6 +12,7 @@
 @interface BaseSearchableViewController ()
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItemArabic;
 
 
 @property (strong, nonatomic) UISearchBar *searchBar;

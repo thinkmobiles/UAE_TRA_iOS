@@ -8,12 +8,14 @@
 
 @class FavouriteTableViewCell;
 
-static NSString *const FavouriteEuropianTableViewCellIdentifier = @"favouriteEuropianCell";
+static NSString *const FavouriteEuroCellIdentifier = @"euroFavCell";
+static NSString *const FavouriteArabicCellIdentifier = @"arabicFavCell";
 
 @protocol FavouriteTableViewCellDelegate <NSObject>
 
 @optional
 - (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell;
+- (void)favouriteServiceDeleteButtonDidReceiveGestureRecognizerInCell:(FavouriteTableViewCell *)cell gesture:(UILongPressGestureRecognizer *)gesture;
 
 @end
 
@@ -21,9 +23,6 @@ static NSString *const FavouriteEuropianTableViewCellIdentifier = @"favouriteEur
 
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
 @property (weak, nonatomic) IBOutlet UIButton *removeArabicButton;
-
-@property (weak, nonatomic) IBOutlet UIView *arabicContent;
-@property (weak, nonatomic) IBOutlet UIView *europeanContent;
 
 @property (strong, nonatomic) UIImage *logoImage;
 @property (copy, nonatomic) NSString *descriptionText;

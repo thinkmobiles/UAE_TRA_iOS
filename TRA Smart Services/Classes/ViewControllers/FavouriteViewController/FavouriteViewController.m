@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "TRAService.h"
 #import "Animation.h"
-#import "RTLController.h"
 #import "ServiceInfoViewController.h"
 
 static CGFloat const AnimationDuration = 0.3f;
@@ -48,11 +47,8 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     [super viewDidLoad];
     
-    [self addGestureRecognizer];
+    [self registerNibs];
     [self fetchFavouriteList];
-    
-    RTLController *rtl = [[RTLController alloc] init];
-    [rtl disableRTLForView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,6 +56,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     [super viewWillAppear:animated];
  
     [self prepareAddFavouriteButton];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Custom Accessors
@@ -99,13 +96,11 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FavouriteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FavouriteEuropianTableViewCellIdentifier forIndexPath:indexPath];
+    FavouriteTableViewCell *cell;
     if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell.arabicContent.hidden = NO;
-        cell.europeanContent.hidden = YES;
+        cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteArabicCellIdentifier forIndexPath:indexPath];
     } else {
-        cell.arabicContent.hidden = YES;
-        cell.europeanContent.hidden = NO;
+        cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteEuroCellIdentifier forIndexPath:indexPath];
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -130,11 +125,12 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
     cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
@@ -163,19 +159,11 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     [self updateAndDisplayDataSource];
 }
 
-#pragma mark - FavouriteTableViewCellDelegate
-
-- (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell
-{
-    [self performSegueWithIdentifier:ServiceInfoListSegueIdentifier sender:self];
-}
-
 #pragma mark - Navigations
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:ServiceInfoListSegueIdentifier]) {
-        
         ServiceInfoViewController *serviceInfoController = segue.destinationViewController;
         CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
@@ -193,6 +181,12 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     [self fetchFavouriteList];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)registerNibs
+{
+    [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteEuroTableViewCell" bundle:nil] forCellReuseIdentifier:FavouriteEuroCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteArabicTableViewCell" bundle:nil ] forCellReuseIdentifier:FavouriteArabicCellIdentifier];
 }
 
 #pragma mark - UICustomization
@@ -241,56 +235,48 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
 }
 
-#pragma mark - GestureRecognizer
+#pragma mark - FavouriteTableViewCellDelegate
 
-- (void)addGestureRecognizer
+- (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell
 {
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapGesture:)];
-    [self.tableView addGestureRecognizer:longPressGesture];
+    [self performSegueWithIdentifier:ServiceInfoListSegueIdentifier sender:self];
 }
 
-- (void)longTapGesture:(UILongPressGestureRecognizer *)gesture
+#pragma mark - GestureRecognizer on FavouriteTableViewCell
+
+- (void)favouriteServiceDeleteButtonDidReceiveGestureRecognizerInCell:(FavouriteTableViewCell *)cell gesture:(UILongPressGestureRecognizer *)gesture
 {
     CGPoint location = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-    FavouriteTableViewCell *selectedCell = (FavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-
-    CGPoint locationInCell = [self.tableView convertPoint:location toView:selectedCell.contentView];
-    CGRect longPressAcceptableRect = selectedCell.removeButton.frame;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        longPressAcceptableRect = selectedCell.removeArabicButton.frame;
-    }
-    BOOL shouldProceedLongPress = CGRectContainsPoint(longPressAcceptableRect, locationInCell);
+    FavouriteTableViewCell *selectedCell = cell;
 
     static UIView *snapshotView;
     static NSIndexPath *sourceIndexPath;
     
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {
-            if (shouldProceedLongPress) {
-                self.removeProcessIsActive = YES;
-                sourceIndexPath = indexPath;
-                [selectedCell markRemoveButtonSelected:YES];
-                
-                snapshotView = [selectedCell snapshot];
-                
-                __block CGPoint center = selectedCell.center;
+            self.removeProcessIsActive = YES;
+            sourceIndexPath = indexPath;
+            [selectedCell markRemoveButtonSelected:YES];
+            
+            snapshotView = [selectedCell snapshot];
+            
+            __block CGPoint center = selectedCell.center;
+            snapshotView.center = center;
+            snapshotView.alpha = 0.f;
+            [self.tableView addSubview:snapshotView];
+            
+            [self drawDeleteArea];
+            
+            [UIView animateWithDuration:0.25f animations:^{
+                center.y = location.y;
                 snapshotView.center = center;
-                snapshotView.alpha = 0.f;
-                [self.tableView addSubview:snapshotView];
-
-                [self drawDeleteArea];
-                
-                [UIView animateWithDuration:0.25f animations:^{
-                    center.y = location.y;
-                    snapshotView.center = center;
-                    snapshotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
-                    snapshotView.alpha = 0.98f;
-                    selectedCell.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    selectedCell.hidden = YES;
-                }];
-            }
+                snapshotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
+                snapshotView.alpha = 0.98f;
+                selectedCell.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                selectedCell.hidden = YES;
+            }];
             break;
         }
         case UIGestureRecognizerStateChanged: {
@@ -555,13 +541,15 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)setRTLArabicUI
 {
     [super setRTLArabicUI];
-    [self.tableView reloadData];//reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self fetchFavouriteList];
+    [self.tableView reloadData];
 }
 
 - (void)setLTREuropeUI
 {
     [super setLTREuropeUI];
-    [self.tableView reloadData];//reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self fetchFavouriteList];
+    [self.tableView reloadData];
 }
 
 @end

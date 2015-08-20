@@ -35,7 +35,6 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 {
     [super viewDidLoad];
     
-    self.dataSource = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceInfoList" ofType:@"plist"]];
     if (self.fakeBackground) {
         self.fakeBackgroundImageView.image = self.fakeBackground;
     }
@@ -44,18 +43,10 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.isControllerPresented) {
-        [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
-        self.isControllerPresented = YES;
-    } else {
-        [self.collectionView reloadData];
-    }
     
+    [self reverseDataSourceIfNeeded];
+    [self animatAappearence];
     self.navigationController.navigationBar.hidden = YES;
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        self.dataSource = [self.dataSource reversedArrayByElementsInGroup:RowCount];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -153,6 +144,24 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     NSDictionary *selectedElement = self.dataSource[indexPath.row];
     cell.serviceInfoTitleLabel.text = dynamicLocalizedString([selectedElement valueForKey:@"serviceInfoItemName"]);
     cell.serviceInfologoImageView.image = [UIImage imageNamed:[selectedElement valueForKey:@"serviceInfoItemLogoName"]];
+}
+
+- (void)reverseDataSourceIfNeeded
+{
+    self.dataSource = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceInfoList" ofType:@"plist"]];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        self.dataSource = [self.dataSource reversedArrayByElementsInGroup:RowCount];
+    }
+}
+
+- (void)animatAappearence
+{
+    if (!self.isControllerPresented) {
+        [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
+        self.isControllerPresented = YES;
+    } else {
+        [self.collectionView reloadData];
+    }
 }
 
 @end

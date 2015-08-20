@@ -233,11 +233,12 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
 
     __weak typeof(self) weakSelf = self;
-    CGFloat delayForTopDrawing = 0.01;
+    CGFloat delayForTopDrawing = 0.05;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
-        [self.avatarImageLayer addAnimation:pathAnimation forKey:nil];
-        self.hexagonicalTopLayer.opacity = 1.0f;
+        [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
+        [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];
+        weakSelf.hexagonicalTopLayer.opacity = 1.0f;
+        weakSelf.avatarImageLayer.opacity = 1.f;
     });
     
     CGFloat delayForInfoDrawing = AnimationTimeForLine * (6. / 8.);
@@ -278,14 +279,15 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)setStartApearenceAnimationParameters
 {
-        self.informationLayer.opacity = 0.f;
-        self.searchLayer.opacity = 0.f;
-        self.notificationLayer.opacity = 0.f;
-        self.bottomRightHexagonLayer.opacity = 0.f;
-        self.bottomMidHexagonLayer.opacity = 0.f;
-        self.bottomLeftHexagonLayer.opacity = 0.f;
+    self.informationLayer.opacity = 0.f;
+    self.searchLayer.opacity = 0.f;
+    self.notificationLayer.opacity = 0.f;
+    self.bottomRightHexagonLayer.opacity = 0.f;
+    self.bottomMidHexagonLayer.opacity = 0.f;
+    self.bottomLeftHexagonLayer.opacity = 0.f;
     
-        self.hexagonicalTopLayer.opacity = 0.0f;
+    self.hexagonicalTopLayer.opacity = 0.0f;
+    self.avatarImageLayer.opacity = 0.f;
 
     self.isAppearenceAnimationCompleted = NO;
 }
@@ -374,16 +376,16 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     [self prepareLogImageWithInitials];
     [self.avatarImageLayer removeFromSuperlayer];
-
+    
     self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
     [self addHexagoneMaskForLayer:self.avatarImageLayer];
     
     self.borderLogoLayer = [CAShapeLayer layer];
-        self.borderLogoLayer.fillColor = [UIColor clearColor].CGColor;
-        self.borderLogoLayer.strokeColor = [UIColor whiteColor].CGColor;
-        self.borderLogoLayer.lineWidth = CornerWidthForAvatar;
-        self.borderLogoLayer.frame = self.bounds;
-        self.borderLogoLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;
+    self.borderLogoLayer.fillColor = [UIColor clearColor].CGColor;
+    self.borderLogoLayer.strokeColor = [UIColor whiteColor].CGColor;
+    self.borderLogoLayer.lineWidth = CornerWidthForAvatar;
+    self.borderLogoLayer.frame = self.bounds;
+    self.borderLogoLayer.path = [self prepareHexagonPathForRect:self.avatarView.bounds].CGPath;
     [self.avatarImageLayer addSublayer:self.borderLogoLayer];
     self.avatarView.layer.masksToBounds = YES;
     [self.avatarView.layer addSublayer:self.avatarImageLayer];

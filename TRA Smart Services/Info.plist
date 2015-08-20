@@ -49,8 +49,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Droid Arabic Kufi Bold</string>
-		<string>Droid Arabic Kufi</string>
+		<string>DroidKufi-Bold.ttf</string>
+		<string>DroidKufi-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

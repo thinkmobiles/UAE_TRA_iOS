@@ -15,6 +15,10 @@
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
 		93A436EE1B85D196009299C5 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436ED1B85D196009299C5 /* PushNoAnimationSegue.m */; };
 		93A436F21B85F778009299C5 /* UIFont+AppFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436F11B85F778009299C5 /* UIFont+AppFonts.m */; };
+		93A436F41B860EAA009299C5 /* FavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A436F31B860EAA009299C5 /* FavouriteEuroTableViewCell.xib */; };
+		93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A436F71B861455009299C5 /* FavouriteArabicTableViewCell.xib */; };
+		93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */; };
+		93A436FD1B862123009299C5 /* DroidKufi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -109,6 +113,10 @@
 		93A436ED1B85D196009299C5 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
 		93A436F01B85F778009299C5 /* UIFont+AppFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AppFonts.h"; sourceTree = "<group>"; };
 		93A436F11B85F778009299C5 /* UIFont+AppFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AppFonts.m"; sourceTree = "<group>"; };
+		93A436F31B860EAA009299C5 /* FavouriteEuroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteEuroTableViewCell.xib; sourceTree = "<group>"; };
+		93A436F71B861455009299C5 /* FavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
+		93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidKufi-Bold.ttf"; sourceTree = "<group>"; };
+		93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidKufi-Regular.ttf"; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -335,6 +343,15 @@
 				93A436F11B85F778009299C5 /* UIFont+AppFonts.m */,
 			);
 			path = "UIFont+AppFonts";
+			sourceTree = "<group>";
+		};
+		93A436F91B8620F6009299C5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */,
+				93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -685,6 +702,7 @@
 		ED982F281B5D24DA00B6B644 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93A436F91B8620F6009299C5 /* Fonts */,
 				ED982F451B5D337500B6B644 /* Plists */,
 				ED982F291B5D24DA00B6B644 /* Images */,
 				ED982F2B1B5D24DA00B6B644 /* Localization */,
@@ -858,6 +876,8 @@
 			children = (
 				EDAA8F031B84D2FA00269F1A /* FavouriteTableViewCell.h */,
 				EDAA8F041B84D2FA00269F1A /* FavouriteTableViewCell.m */,
+				93A436F31B860EAA009299C5 /* FavouriteEuroTableViewCell.xib */,
+				93A436F71B861455009299C5 /* FavouriteArabicTableViewCell.xib */,
 			);
 			path = FavouriteTableViewCell;
 			sourceTree = "<group>";
@@ -1136,10 +1156,14 @@
 			files = (
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
+				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
+				93A436F41B860EAA009299C5 /* FavouriteEuroTableViewCell.xib in Resources */,
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
+				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
+				93A436FD1B862123009299C5 /* DroidKufi-Regular.ttf in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
 				ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */,
 			);
