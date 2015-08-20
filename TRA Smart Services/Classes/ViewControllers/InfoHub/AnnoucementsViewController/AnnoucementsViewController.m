@@ -31,6 +31,8 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -75,18 +77,6 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
     NSLog(@"text - %@", searchText);
 }
 
-#pragma mark - IBActions
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString: segueDetailsViewIdentifier]) {
-        NSLog(@"segue to Details ViewController");
-    }
-}
-
-#pragma mark - Private
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
@@ -98,6 +88,5 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 {
     
 }
-
 
 @end

@@ -9,6 +9,7 @@
 #import "InfoHubViewController.h"
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
+#import "RTLController.h"
 
 @interface InfoHubViewController ()
 
@@ -17,11 +18,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 
+@property (strong, nonatomic) NSString *headerText;
+
 @end
 
 static NSString *const infoHubCollectionViewCellIdentifier = @"InfoHubCollectionViewCell";
 static NSString *const infoHubTableViewCellIdentifier = @"InfoHubTableViewCell";
 static CGFloat const heightTableViewCell = 90.0f;
+static CGFloat const SectionHeaderHeight =80.0f;
+static CGFloat const deltaTableViewCell = 20.0f;
+static CGFloat const indentTableViewCell = 24.0f;
 
 @implementation InfoHubViewController
 
@@ -30,6 +36,17 @@ static CGFloat const heightTableViewCell = 90.0f;
     [super viewDidLoad];
     
     [self backgroundClear];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+    [self.collectionView reloadData];
+    
+//    RTLController *rtl = [[RTLController alloc] init];
+//    [rtl disableRTLForView:self.view];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -56,7 +73,16 @@ static CGFloat const heightTableViewCell = 90.0f;
     InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:infoHubCollectionViewCellIdentifier forIndexPath:indexPath];
     cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     cell.textLabel.text = [NSString stringWithFormat:@"Text numer %li", (long)indexPath.row + 1];
-   
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        [cell.conteinerArabicUI setHidden:NO];
+        [cell.conteinerEuropeUI setHidden:YES];
+        NSLog(@"ArabicUI");
+    } else {
+        [cell.conteinerArabicUI setHidden:YES];
+        [cell.conteinerEuropeUI setHidden:NO];
+        NSLog(@"EuropeUI");
+    }
     return cell;
 }
 
@@ -86,16 +112,39 @@ static CGFloat const heightTableViewCell = 90.0f;
     cell.dateInfoLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     
     if (indexPath.row % 2) {
-        cell.deltaConsrtraint.constant = 44;
+        cell.deltaConsrtraintArabicUI.constant = indentTableViewCell + deltaTableViewCell;
+        cell.deltaConsrtraintEuropeUI.constant = indentTableViewCell + deltaTableViewCell;
     } else {
-        cell.deltaConsrtraint.constant = 24;
+        cell.deltaConsrtraintArabicUI.constant = indentTableViewCell;
+        cell.deltaConsrtraintEuropeUI.constant = indentTableViewCell;
     }
-    
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        [cell.conteinerArabicUI setHidden:NO];
+        [cell.conteinerEuropeUI setHidden:YES];
+    } else {
+        [cell.conteinerArabicUI setHidden:YES];
+        [cell.conteinerEuropeUI setHidden:NO];
+    }
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
-#pragma mark - IBActions
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return SectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(indentTableViewCell, 30, self.view.bounds.size.width - indentTableViewCell, 30);
+    label.backgroundColor = [UIColor clearColor];
+    label.text = self.headerText;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, SectionHeaderHeight)];
+    [view addSubview:label];
+    return view;
+}
 
 #pragma mark - Private
 
@@ -111,6 +160,7 @@ static CGFloat const heightTableViewCell = 90.0f;
 {
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
+    self.headerText = dynamicLocalizedString(@"transactions.label.text");
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 

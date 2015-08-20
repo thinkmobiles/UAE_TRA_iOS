@@ -80,6 +80,7 @@
 "infoHub.title" = "INFO HUB";
 "announcements.label.text" = "ANNOUNCEMENTS";
 "seeMore.button.title" = "See more";
+"transactions.label.text" = "TRANSACTIONS";
 
 //AnnoucementsViewController
 

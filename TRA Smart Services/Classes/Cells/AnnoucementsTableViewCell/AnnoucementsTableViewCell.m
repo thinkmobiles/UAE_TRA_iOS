@@ -29,6 +29,8 @@
     [super setSelected:selected animated:animated];
 }
 
+#pragma Set Get Methods
+
 - (UIImageView *)image
 {
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
