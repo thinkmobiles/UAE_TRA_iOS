@@ -14,6 +14,8 @@
 #import "RTLController.h"
 
 static CGFloat const AnimationDuration = 0.3f;
+static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
+static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 @interface FavouriteViewController ()
 
@@ -109,7 +111,17 @@ static CGFloat const AnimationDuration = 0.3f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85.f;
+    NSString *serviceTitle = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    NSDictionary *attributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:12]};
+
+    CGSize textSize = [serviceTitle sizeWithAttributes:attributes];
+    CGFloat widthOfViewWithImage = 85.f;
+    CGFloat labelWidth = CGRectGetWidth([UIScreen mainScreen].bounds) - (widthOfViewWithImage + DefaultOffsetForElementConstraintInCell * 2);
+    
+    NSUInteger numbersOfLines = ceil(textSize.width / labelWidth);
+    CGFloat height = numbersOfLines * textSize.height + SummOfVerticalOffsetsForCell;
+    
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -165,7 +177,7 @@ static CGFloat const AnimationDuration = 0.3f;
     for (int i = 0; i < 5; i++) {
         TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
         service.serviceOrder = @(i);
-        service.serviceDescription = [NSString stringWithFormat:@"Description text sdf- %i", (int)i];;
+        service.serviceDescription = [NSString stringWithFormat:@"Description text sdf service.serviceDescription =:@Description text sdf- %i", (int)i];;
         service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"tempImage"], 1.0);
         service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
     }

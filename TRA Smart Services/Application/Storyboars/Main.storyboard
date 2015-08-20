@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -105,43 +105,45 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteEuropianCell" rowHeight="85" id="DOT-jm-8DA" customClass="FavouriteTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteEuropianCell" rowHeight="88" id="DOT-jm-8DA" customClass="FavouriteTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DOT-jm-8DA" id="GcU-zv-9cN">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-r3-3QZ" userLabel="EuropeanUI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-fr-rRl" userLabel="ImageHolder - UiView">
-                                                            <rect key="frame" x="515" y="0.0" width="85" height="85"/>
+                                                            <rect key="frame" x="515" y="0.0" width="85" height="88"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n9x-6o-IGj" userLabel="Logo - UiIMageView">
-                                                                    <rect key="frame" x="18" y="15" width="49" height="55"/>
+                                                                    <rect key="frame" x="18" y="16" width="49" height="57"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="n9x-6o-IGj" secondAttribute="height" multiplier="49:57" id="wOg-2t-sie"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="n9x-6o-IGj" firstAttribute="width" secondItem="zyT-fr-rRl" secondAttribute="width" multiplier="0.57" id="1pH-ET-lNL"/>
-                                                                <constraint firstItem="n9x-6o-IGj" firstAttribute="height" secondItem="zyT-fr-rRl" secondAttribute="height" multiplier="0.65" id="FZI-ZG-YBl"/>
-                                                                <constraint firstAttribute="width" constant="85" id="IjP-38-cmY"/>
+                                                                <constraint firstAttribute="width" constant="85" id="io7-UT-jUW"/>
                                                                 <constraint firstAttribute="centerY" secondItem="n9x-6o-IGj" secondAttribute="centerY" id="qy8-en-sNm"/>
                                                                 <constraint firstAttribute="centerX" secondItem="n9x-6o-IGj" secondAttribute="centerX" id="xDk-2S-cu2"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-Sr-NzU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="515" height="85"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-Sr-NzU" userLabel="Data- UiView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="515" height="88"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="vLv-wo-qaP" userLabel="Description - UILabel">
-                                                                    <rect key="frame" x="20" y="16" width="475" height="36"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="vLv-wo-qaP" userLabel="Description - UILabel">
+                                                                    <rect key="frame" x="20" y="16" width="475" height="27"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.0039215686274509803" green="0.10588235294117647" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
-                                                                    <rect key="frame" x="20" y="56" width="238" height="25"/>
+                                                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-CR-nRh" userLabel="ServiceInfor - UIButton">
+                                                                    <rect key="frame" x="20" y="47" width="238" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="hwC-Bl-wpe"/>
                                                                     </constraints>
@@ -158,8 +160,8 @@
                                                                         <action selector="serviceInfoButtonTapped:" destination="DOT-jm-8DA" eventType="touchUpInside" id="cgL-v3-SmM"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
-                                                                    <rect key="frame" x="258" y="56" width="237" height="25"/>
+                                                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-C9-8yO" userLabel="Remove - UIButton">
+                                                                    <rect key="frame" x="258" y="47" width="238" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -179,7 +181,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="KFl-CR-nRh" firstAttribute="centerY" secondItem="Hpd-C9-8yO" secondAttribute="centerY" id="2Bz-S5-Cmb"/>
                                                                 <constraint firstItem="KFl-CR-nRh" firstAttribute="width" secondItem="Hpd-C9-8yO" secondAttribute="width" id="4yv-go-rgR"/>
-                                                                <constraint firstAttribute="bottom" secondItem="KFl-CR-nRh" secondAttribute="bottom" constant="4" id="ECE-iP-0uA"/>
+                                                                <constraint firstAttribute="bottom" secondItem="KFl-CR-nRh" secondAttribute="bottom" constant="16" id="ECE-iP-0uA"/>
                                                                 <constraint firstItem="KFl-CR-nRh" firstAttribute="top" secondItem="vLv-wo-qaP" secondAttribute="bottom" constant="4" id="EWS-71-hr5"/>
                                                                 <constraint firstAttribute="right" secondItem="vLv-wo-qaP" secondAttribute="right" constant="20" id="Ez4-4M-vcB"/>
                                                                 <constraint firstItem="Hpd-C9-8yO" firstAttribute="left" secondItem="KFl-CR-nRh" secondAttribute="right" id="Ja5-Pv-S7x"/>
@@ -203,36 +205,38 @@
                                                     </constraints>
                                                 </view>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRT-vO-eaa" userLabel="ArabicUI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXo-dn-nMJ" userLabel="ImageHolder - UiView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="88"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-9x-8uR" userLabel="Logo - UiIMageView">
-                                                                    <rect key="frame" x="18" y="15" width="49" height="55"/>
+                                                                    <rect key="frame" x="18" y="16" width="49" height="57"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="Efe-9x-8uR" secondAttribute="height" multiplier="49:57" id="WfO-F5-WfV"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" constant="85" id="9b5-Bc-Ftp"/>
                                                                 <constraint firstItem="Efe-9x-8uR" firstAttribute="width" secondItem="pXo-dn-nMJ" secondAttribute="width" multiplier="0.57" id="L3m-mu-pjK"/>
-                                                                <constraint firstItem="Efe-9x-8uR" firstAttribute="height" secondItem="pXo-dn-nMJ" secondAttribute="height" multiplier="0.65" id="SG3-og-pMa"/>
-                                                                <constraint firstAttribute="width" constant="85" id="U1h-wO-LNB"/>
                                                                 <constraint firstAttribute="centerX" secondItem="Efe-9x-8uR" secondAttribute="centerX" id="jup-MX-yjh"/>
                                                                 <constraint firstAttribute="centerY" secondItem="Efe-9x-8uR" secondAttribute="centerY" id="l2y-gF-nBn"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5c-db-qOu" userLabel="Data- UiView">
-                                                            <rect key="frame" x="85" y="0.0" width="515" height="85"/>
+                                                            <rect key="frame" x="85" y="0.0" width="515" height="88"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="u60-lB-GwS" userLabel="Description - UILabel">
-                                                                    <rect key="frame" x="20" y="16" width="475" height="36"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="u60-lB-GwS" userLabel="Description - UILabel">
+                                                                    <rect key="frame" x="20" y="16" width="475" height="27"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ge-Eh-mYZ" userLabel="Remove - UIButton">
-                                                                    <rect key="frame" x="0.0" y="56" width="248" height="25"/>
+                                                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ge-Eh-mYZ" userLabel="Remove - UIButton">
+                                                                    <rect key="frame" x="0.0" y="47" width="248" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="ZAV-cP-CQg"/>
                                                                     </constraints>
@@ -249,8 +253,8 @@
                                                                         <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-0I-uUA" userLabel="ServiceInfor - UIButton">
-                                                                    <rect key="frame" x="248" y="56" width="247" height="25"/>
+                                                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-0I-uUA" userLabel="ServiceInfor - UIButton">
+                                                                    <rect key="frame" x="248" y="47" width="248" height="25"/>
                                                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                                     <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                                     <state key="normal" title="" image="ic_info_sml">
@@ -270,7 +274,7 @@
                                                                 <constraint firstAttribute="right" secondItem="fO4-0I-uUA" secondAttribute="right" constant="20" id="ZCV-yf-1Z8"/>
                                                                 <constraint firstAttribute="right" secondItem="u60-lB-GwS" secondAttribute="right" constant="20" id="bJB-5M-IAb"/>
                                                                 <constraint firstItem="u60-lB-GwS" firstAttribute="left" secondItem="v5c-db-qOu" secondAttribute="left" constant="20" id="g4q-rt-R5M"/>
-                                                                <constraint firstAttribute="bottom" secondItem="fO4-0I-uUA" secondAttribute="bottom" constant="4" id="gPc-ln-GCL"/>
+                                                                <constraint firstAttribute="bottom" secondItem="fO4-0I-uUA" secondAttribute="bottom" constant="16" id="gPc-ln-GCL"/>
                                                                 <constraint firstItem="1ge-Eh-mYZ" firstAttribute="centerY" secondItem="fO4-0I-uUA" secondAttribute="centerY" id="mlV-Fp-mu4"/>
                                                                 <constraint firstItem="fO4-0I-uUA" firstAttribute="left" secondItem="1ge-Eh-mYZ" secondAttribute="right" id="qDK-5E-8K0"/>
                                                                 <constraint firstItem="1ge-Eh-mYZ" firstAttribute="height" secondItem="fO4-0I-uUA" secondAttribute="height" id="yPE-1Q-Soi"/>

@@ -43,8 +43,6 @@
     self.favouriteServiceLogoImageView.image = nil;
     self.favouriteDescriptionArabicLabel.text = @"";
     self.favouriteServiceLogoImageViewArabic.image = nil;
-//    self.removeButton.selected = NO;
-//    self.removeArabicButton.selected = NO;
 }
 
 #pragma mark - IBActions
@@ -85,6 +83,10 @@
 - (void)setDescriptionText:(NSString *)descriptionText
 {
     _descriptionText = descriptionText;
+    
+    if (descriptionText.length > 200) {
+        descriptionText = [[descriptionText substringToIndex:190] stringByAppendingString:@"..."];
+    }
     
     self.favourieDescriptionLabel.text = descriptionText;
     self.favouriteDescriptionArabicLabel.text = descriptionText;
