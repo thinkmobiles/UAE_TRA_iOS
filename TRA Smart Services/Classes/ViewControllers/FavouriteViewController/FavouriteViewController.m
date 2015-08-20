@@ -535,7 +535,8 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (void)updateColors
 {
-    
+    [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
+    [self.addFavouriteButton setTitleColor: [[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
 }
 
 - (void)setRTLArabicUI
