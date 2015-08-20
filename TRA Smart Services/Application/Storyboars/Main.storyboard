@@ -192,7 +192,7 @@
                                     <constraint firstAttribute="height" constant="57" id="zje-sk-WTW"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-d6-J7p">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-d6-J7p">
                                 <rect key="frame" x="0.0" y="121" width="600" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="Tki-AK-MQK"/>
@@ -217,18 +217,18 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_type_apr" translatesAutoresizingMaskIntoConstraints="NO" id="xIo-XJ-vtP">
                                                             <rect key="frame" x="156" y="0.0" width="70" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" priority="750" constant="70" id="6K9-dd-GqI"/>
-                                                                <constraint firstAttribute="height" priority="750" constant="80" id="jSP-Jp-DCn"/>
+                                                                <constraint firstAttribute="width" constant="70" id="6K9-dd-GqI"/>
+                                                                <constraint firstAttribute="height" constant="80" id="jSP-Jp-DCn"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-Tg-v1a" userLabel="Text - Label">
-                                                            <rect key="frame" x="8" y="40" width="128" height="0.0"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="text" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-Tg-v1a" userLabel="Text - Label">
+                                                            <rect key="frame" x="8" y="31" width="128" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMF-C2-sLM" userLabel="Date - Label">
-                                                            <rect key="frame" x="8" y="32" width="140" height="0.0"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMF-C2-sLM" userLabel="Date - Label">
+                                                            <rect key="frame" x="8" y="5" width="140" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -242,6 +242,7 @@
                                                         <constraint firstItem="dSg-Tg-v1a" firstAttribute="top" secondItem="RMF-C2-sLM" secondAttribute="bottom" constant="8" id="W0h-j9-4UY"/>
                                                         <constraint firstItem="dSg-Tg-v1a" firstAttribute="centerY" secondItem="xIo-XJ-vtP" secondAttribute="centerY" id="an1-5N-U8X"/>
                                                         <constraint firstAttribute="right" secondItem="xIo-XJ-vtP" secondAttribute="right" constant="24" id="eVH-3e-zL8"/>
+                                                        <constraint firstItem="RMF-C2-sLM" firstAttribute="top" secondItem="yht-y5-Ovl" secondAttribute="top" constant="5" id="sIk-qr-omJ"/>
                                                         <constraint firstItem="RMF-C2-sLM" firstAttribute="left" secondItem="yht-y5-Ovl" secondAttribute="left" constant="8" id="tdh-d1-8Hf"/>
                                                         <constraint firstItem="xIo-XJ-vtP" firstAttribute="left" secondItem="RMF-C2-sLM" secondAttribute="right" constant="8" id="ve5-N0-8lw"/>
                                                     </constraints>
@@ -252,18 +253,18 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_type_apr" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-AW-3E5">
                                                             <rect key="frame" x="24" y="0.0" width="70" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" priority="750" constant="80" id="A6E-Pg-Oli"/>
+                                                                <constraint firstAttribute="height" constant="80" id="A6E-Pg-Oli"/>
                                                                 <constraint firstAttribute="width" priority="750" constant="70" id="cLM-kx-mep"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4f-0P-VNs" userLabel="Text - Label">
-                                                            <rect key="frame" x="118" y="40" width="124" height="0.0"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4f-0P-VNs" userLabel="Text - Label">
+                                                            <rect key="frame" x="118" y="31" width="124" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-p8-yjn" userLabel="Date - Label">
-                                                            <rect key="frame" x="102" y="32" width="140" height="0.0"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-p8-yjn" userLabel="Date - Label">
+                                                            <rect key="frame" x="102" y="5" width="140" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -275,6 +276,7 @@
                                                         <constraint firstItem="3YL-AW-3E5" firstAttribute="top" secondItem="QoI-mU-E7p" secondAttribute="top" id="MbF-ML-to6"/>
                                                         <constraint firstItem="z4f-0P-VNs" firstAttribute="centerY" secondItem="3YL-AW-3E5" secondAttribute="centerY" id="Tgn-J1-1JF"/>
                                                         <constraint firstItem="3YL-AW-3E5" firstAttribute="left" secondItem="QoI-mU-E7p" secondAttribute="left" constant="24" id="UU5-34-dQ1"/>
+                                                        <constraint firstItem="xmc-p8-yjn" firstAttribute="top" secondItem="QoI-mU-E7p" secondAttribute="top" constant="5" id="fbh-oe-YMS"/>
                                                         <constraint firstAttribute="right" secondItem="z4f-0P-VNs" secondAttribute="right" constant="8" id="h2v-HZ-EDh"/>
                                                         <constraint firstItem="xmc-p8-yjn" firstAttribute="left" secondItem="3YL-AW-3E5" secondAttribute="right" constant="8" id="inP-ys-ZMM"/>
                                                         <constraint firstItem="z4f-0P-VNs" firstAttribute="left" secondItem="3YL-AW-3E5" secondAttribute="right" constant="24" id="na5-P6-8sl"/>
@@ -2116,8 +2118,8 @@ a new password will be sent.</string>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cha-E6-zYZ" userLabel="TitleView">
                                                                     <rect key="frame" x="7" y="22" width="77" height="66"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="CrD-aK-gX9" userLabel="Logo - Image View">
-                                                                            <rect key="frame" x="8" y="2" width="61" height="29"/>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="CrD-aK-gX9" userLabel="Logo - Image View">
+                                                                            <rect key="frame" x="8" y="2" width="61" height="64"/>
                                                                             <animations/>
                                                                         </imageView>
                                                                     </subviews>
@@ -3115,6 +3117,6 @@ a new password will be sent.</string>
         <image name="ic_warn_red" width="70" height="81"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1cj-11-BKy"/>
+        <segue reference="tvm-x1-NbL"/>
     </inferredMetricsTieBreakers>
 </document>

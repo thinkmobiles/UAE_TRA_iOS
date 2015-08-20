@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIView *conteinerArabicUI;
 @property (weak, nonatomic) IBOutlet UIView *conteinerEuropeUI;
 
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *textLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @end

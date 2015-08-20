@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *textArabicUI;
 @property (weak, nonatomic) IBOutlet UIImageView *imageArabicUI;
 
-
 @end
 
 @implementation InfoHubCollectionViewCell

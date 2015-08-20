@@ -65,7 +65,7 @@ static CGFloat const indentTableViewCell = 24.0f;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -107,7 +107,7 @@ static CGFloat const indentTableViewCell = 24.0f;
 {
     InfoHubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:infoHubTableViewCellIdentifier forIndexPath:indexPath];
     
-    cell.textInfoLabel.text = @"Text Text Text Text Text Text Text Text Text Text Text Text";
+    cell.textInfoLabel.text = @"Text Text Text";
     cell.titleInfoLabel.text = @"Title";
     cell.dateInfoLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     

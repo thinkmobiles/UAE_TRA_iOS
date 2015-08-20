@@ -13,9 +13,9 @@
 @property (weak, nonatomic) IBOutlet UIView *conteinerEuropeUI;
 @property (weak, nonatomic) IBOutlet UIView *conteinerArabicUI;
 
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *textAnnocementsLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *textAnnocementsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
 
 @end

@@ -37,14 +37,15 @@
 
 - (void)prepareNavigationBar
 {
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
 }
 
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
 {
-    self.title = dynamicLocalizedString(@"details.title");
+    [self setTitleNavigationBar:dynamicLocalizedString(@"details.title")];
 }
 
 - (void)updateColors
@@ -64,6 +65,19 @@
     self.detailsText.textAlignment = NSTextAlignmentRight;
     self.detailsTitleDate.textAlignment = NSTextAlignmentRight;
     self.detailsTitleText.textAlignment = NSTextAlignmentRight;
+}
+
+#pragma mark - Private
+
+- (void)setTitleNavigationBar:(NSString *)title
+{
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    titleView = [[UILabel alloc] init];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.textColor = [UIColor whiteColor];
+    titleView.text = title;
+    self.navigationItem.titleView = titleView;
+    [titleView sizeToFit];
 }
 
 @end
