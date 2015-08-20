@@ -21,4 +21,26 @@
     return array;
 }
 
+- (NSMutableArray *)reversedArrayByElementsInGroup:(NSInteger)elementsInGroup
+{
+    NSMutableArray *reversedItems = [[NSMutableArray alloc] init];
+    
+    if (self.count < elementsInGroup) {
+        reversedItems = [[self reversedArray] mutableCopy];
+    } else {
+        int i;
+        for (i = 0; i < (int)(self.count / elementsInGroup); i++) {
+            int j = (int)elementsInGroup - 1;
+            while (j >= 0) {
+                [reversedItems addObject:self[j + i * (int)elementsInGroup]];
+                j--;
+            }
+        }
+        for (int k = (int)self.count - 1; k >= i* elementsInGroup; k--) {
+            [reversedItems addObject:self[k]];
+        }
+    }
+    return reversedItems;
+}
+
 @end

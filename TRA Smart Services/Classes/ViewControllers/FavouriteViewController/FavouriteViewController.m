@@ -7,15 +7,17 @@
 //
 
 #import "FavouriteViewController.h"
-#import "FavouriteTableViewCell.h"
 #import "AppDelegate.h"
 #import "TRAService.h"
 #import "Animation.h"
 #import "RTLController.h"
+#import "ServiceInfoViewController.h"
 
 static CGFloat const AnimationDuration = 0.3f;
 static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
 static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
+
+static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 @interface FavouriteViewController ()
 
@@ -85,7 +87,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 - (IBAction)addFavouriteButtonPress:(id)sender
 {
-    
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -136,6 +138,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
     cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    cell.delegate = self;
 }
 
 #pragma mark - UISearchBarDelegate
@@ -158,6 +161,19 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     [super searchBarCancelButtonClicked:searchBar];
 
     [self updateAndDisplayDataSource];
+}
+
+#pragma mark - FavouriteTableViewCellDelegate
+
+- (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell
+{
+    ServiceInfoViewController *serviceInfoController = [self.storyboard instantiateViewControllerWithIdentifier:@"serviceInfoIdentifier"];
+    serviceInfoController.modalPresentationStyle = UIModalPresentationCurrentContext;
+#ifdef __IPHONE_8_0
+    serviceInfoController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+#endif
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:serviceInfoController animated:NO completion:nil];
 }
 
 #pragma mark - Private

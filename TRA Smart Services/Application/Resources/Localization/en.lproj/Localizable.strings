@@ -81,3 +81,20 @@
 
 "favouriteCell.infoButton.title" = "Service Info";
 "favouriteCell.deleteButton.title" = "Remove";
+
+//ServiceInfoViewController
+
+"serviceInfoItemName.0" = "Service Info";
+"serviceInfoItemName.1" = "Required Documents";
+"serviceInfoItemName.2" = "Terms & Conditions";
+"serviceInfoItemName.3" = "Service Package";
+"serviceInfoItemName.4" = "Processing Time";
+"serviceInfoItemName.5" = "Service Fees";
+"serviceInfoItemName.6" = "Conatct In-change";
+"serviceInfoItmeDetailedDescription.0" = "No description";
+"serviceInfoItmeDetailedDescription.1" = "No description";
+"serviceInfoItmeDetailedDescription.2" = "No description";
+"serviceInfoItmeDetailedDescription.3" = "No description";
+"serviceInfoItmeDetailedDescription.4" = "No description";
+"serviceInfoItmeDetailedDescription.5" = "No description";
+"serviceInfoItmeDetailedDescription.6" = "No description";

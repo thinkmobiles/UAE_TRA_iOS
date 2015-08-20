@@ -302,24 +302,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 - (void)reverseDataSource
 {
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
-    NSMutableArray *reversedItems = [[NSMutableArray alloc] init];
-    
-    if (self.otherServiceDataSource.count < RowCount) {
-        reversedItems = [[self.otherServiceDataSource reversedArray] mutableCopy];
-    } else {
-        int i;
-        for (i = 0; i < (int)(self.otherServiceDataSource.count / RowCount); i++) {
-            int j = RowCount - 1;
-            while (j >= 0) {
-                [reversedItems addObject:self.otherServiceDataSource[j + i * (int)RowCount]];
-                j--;
-            }
-        }
-        for (int k = (int)self.otherServiceDataSource.count - 1; k >= i* RowCount; k--) {
-            [reversedItems addObject:self.otherServiceDataSource[k]];
-        }
-    }
-    self.otherServiceDataSource = reversedItems;
+    self.otherServiceDataSource = [self.otherServiceDataSource reversedArrayByElementsInGroup:RowCount];
 }
 
 - (void)transformTopView:(CATransform3D)transform

@@ -7,7 +7,8 @@
 //
 
 #import "BaseSearchableViewController.h"
+#import "FavouriteTableViewCell.h"
 
-@interface FavouriteViewController : BaseSearchableViewController <UITabBarDelegate, UITableViewDataSource>
+@interface FavouriteViewController : BaseSearchableViewController <UITabBarDelegate, UITableViewDataSource, FavouriteTableViewCellDelegate>
 
 @end

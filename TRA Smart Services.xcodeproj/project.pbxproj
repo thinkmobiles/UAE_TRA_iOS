@@ -10,6 +10,8 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
+		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -95,6 +97,9 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
+		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
+		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -285,6 +290,15 @@
 				84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */,
 			);
 			path = BaseSelectImageViewController;
+			sourceTree = "<group>";
+		};
+		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */,
+				93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */,
+			);
+			path = ServiceInfoCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -722,6 +736,7 @@
 				ED982F461B5D33A500B6B644 /* TabBarMenuList.plist */,
 				EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */,
 				EDA549811B7B514F00440216 /* OtherServices.plist */,
+				93A436E51B85BC08009299C5 /* ServiceInfoList.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -929,6 +944,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */,
 				EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */,
 				ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */,
 				ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */,
@@ -1079,6 +1095,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
@@ -1113,6 +1130,7 @@
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
