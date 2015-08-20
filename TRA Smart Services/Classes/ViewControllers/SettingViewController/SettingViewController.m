@@ -87,6 +87,8 @@
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorGreen];
             break;
     }
+    [AppHelper updateTabBarTintColor];
+    [AppHelper updateNavigationBarColor];
 }
 
 - (void)languageSegmentControllerPressed:(NSUInteger)index

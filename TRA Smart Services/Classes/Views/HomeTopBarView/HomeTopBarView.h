@@ -51,5 +51,6 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 
 - (void)animateTopViewApearence;
 - (void)setStartApearenceAnimationParameters;
+- (void)updateUIColor;
 
 @end

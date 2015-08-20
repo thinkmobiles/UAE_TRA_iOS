@@ -29,6 +29,9 @@ static NSString *const MessageIncorrectRating = @"Incorrect rating format - shou
 + (void)prepareTabBarItems;
 + (void)reverseTabBarItems;
 + (void)prepareTabBarGradient;
++ (void)updateTabBarTintColor;
+
++ (void)updateNavigationBarColor;
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view;
 + (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect;

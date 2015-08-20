@@ -9,6 +9,7 @@
 #import "AppHelper.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+#import "DynamicUIService.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
 
@@ -91,7 +92,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [UIColor defaultOrangeColor];
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -133,6 +134,25 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
     NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
     tabBarController.viewControllers = viewControllers;
+}
+
++ (void)updateTabBarTintColor
+{
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+}
+
+#pragma mark - NavigationBar Configuration
+
++ (void)updateNavigationBarColor
+{
+    UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+    for (UINavigationController *viewController in tabBarController.viewControllers) {
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            viewController.navigationBar.barTintColor = [DynamicUIService service].currentApplicationColor;
+            viewController.navigationBar.translucent = NO;
+        }
+    }
 }
 
 #pragma mark - Hexagon
