@@ -28,6 +28,8 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *filteredDataSource;
+
 @property (assign, nonatomic) BOOL removeProcessIsActive;
 
 @property (strong, nonatomic) CALayer *arcDeleteZoneLayer;
@@ -140,10 +142,31 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSLog(@"text - %@", searchText);
+    if (searchText.length) {
+        NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceDescription contains %@", searchText];
+        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:filter] mutableCopy];
+    
+        self.dataSource = self.filteredDataSource;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self updateAndDisplayDataSource];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [super searchBarCancelButtonClicked:searchBar];
+
+    [self updateAndDisplayDataSource];
 }
 
 #pragma mark - Private
+
+- (void)updateAndDisplayDataSource
+{
+    [self fetchFavouriteList];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
 
 #pragma mark - UICustomization
 
@@ -177,8 +200,13 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     for (int i = 0; i < 5; i++) {
         TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
         service.serviceOrder = @(i);
-        service.serviceDescription = [NSString stringWithFormat:@"Description text sdf service.serviceDescription =:@Description text sdf- %i", (int)i];;
-        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"tempImage"], 1.0);
+        if (i % 2) {
+            service.serviceDescription = [NSString stringWithFormat:@"Addressing consumer disputes request with licensees on telecomunication services -  %i", (int)i];
+            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_chat"], 1.0);
+        } else {
+            service.serviceDescription = [NSString stringWithFormat:@"Broadband speed test -  %i", (int)i];
+            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);
+        }
         service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
     }
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
