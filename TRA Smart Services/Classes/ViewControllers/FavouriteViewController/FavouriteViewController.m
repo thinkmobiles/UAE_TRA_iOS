@@ -49,8 +49,6 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     [super viewDidLoad];
     
     [self addGestureRecognizer];
-    
-//    [self addDemoData];
     [self fetchFavouriteList];
     
     RTLController *rtl = [[RTLController alloc] init];
@@ -87,7 +85,9 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (IBAction)addFavouriteButtonPress:(id)sender
 {
-
+    [self addDemoData];
+    [self fetchFavouriteList];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITableViewDataSource
@@ -167,13 +167,24 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell
 {
-    ServiceInfoViewController *serviceInfoController = [self.storyboard instantiateViewControllerWithIdentifier:@"serviceInfoIdentifier"];
-    serviceInfoController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-    serviceInfoController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:serviceInfoController animated:NO completion:nil];
+    [self performSegueWithIdentifier:ServiceInfoListSegueIdentifier sender:self];
+}
+
+#pragma mark - Navigations
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ServiceInfoListSegueIdentifier]) {
+        
+        ServiceInfoViewController *serviceInfoController = segue.destinationViewController;
+        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+        [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        serviceInfoController.fakeBackground = image;
+    }
 }
 
 #pragma mark - Private
@@ -190,8 +201,10 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     if (self.dataSource.count) {
         self.placeHolderView.hidden = YES;
+        self.tableView.hidden = NO;
     } else {
         self.placeHolderView.hidden = NO;
+        self.tableView.hidden = YES;
     }
 }
 
@@ -213,7 +226,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
     
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 2; i++) {
         TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
         service.serviceOrder = @(i);
         if (i % 2) {

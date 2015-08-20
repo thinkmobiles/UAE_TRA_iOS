@@ -358,7 +358,7 @@
                         <outlet property="placeHolderView" destination="Xeg-pG-xt6" id="tgS-Bc-nlU"/>
                         <outlet property="searchBarButtonItem" destination="uXb-rc-lm6" id="0It-6j-xCy"/>
                         <outlet property="tableView" destination="WIv-F5-QDv" id="IMB-jG-xfd"/>
-                        <segue destination="ZFB-jH-a5E" kind="presentation" identifier="serviceInfoListSegue" modalPresentationStyle="overCurrentContext" animates="NO" id="eFn-sG-2u4"/>
+                        <segue destination="ZFB-jH-a5E" kind="custom" identifier="serviceInfoListSegue" customClass="PushNoAnimationSegue" id="eFn-sG-2u4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1J-cM-BDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2160,6 +2160,103 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="3488" y="-572"/>
         </scene>
+        <!--Service Detailed Info View Controller-->
+        <scene sceneID="zaB-gM-3ZJ">
+            <objects>
+                <viewController id="xEC-ib-kWe" customClass="ServiceDetailedInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="60A-xT-E4j"/>
+                        <viewControllerLayoutGuide type="bottom" id="XHx-tL-uw8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dA9-kB-VDJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pra-pJ-EID" userLabel="FakeBackground - UIIMageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvO-ma-Cyd" userLabel="Content - UIView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDI-wN-Poe" userLabel="Close - UIButton">
+                                        <rect key="frame" x="554" y="22" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="1oP-0k-aY8"/>
+                                            <constraint firstAttribute="height" constant="30" id="9Qw-Iw-ggo"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_close">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="xEC-ib-kWe" eventType="touchUpInside" id="8ea-W6-E6q"/>
+                                            <action selector="closeButtonTapped:" destination="ZFB-jH-a5E" eventType="touchUpInside" id="eSE-WC-U5S"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiU-Li-deR">
+                                        <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qiU-yu-9mv">
+                                                <rect key="frame" x="239" y="16" width="122" height="102"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="qiU-yu-9mv" secondAttribute="height" multiplier="6:5" id="IRy-5d-pWl"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muP-dF-MLW">
+                                                <rect key="frame" x="20" y="138" width="560" height="382"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="qiU-yu-9mv" secondAttribute="centerX" id="DAa-87-4hc"/>
+                                            <constraint firstItem="muP-dF-MLW" firstAttribute="top" secondItem="qiU-yu-9mv" secondAttribute="bottom" constant="20" id="UCf-DD-h4c"/>
+                                            <constraint firstAttribute="trailing" secondItem="muP-dF-MLW" secondAttribute="trailing" constant="20" id="V3B-hB-zj7"/>
+                                            <constraint firstItem="qiU-yu-9mv" firstAttribute="top" secondItem="wiU-Li-deR" secondAttribute="top" constant="16" id="Y1D-DL-LjM"/>
+                                            <constraint firstItem="muP-dF-MLW" firstAttribute="leading" secondItem="wiU-Li-deR" secondAttribute="leading" constant="20" id="dwM-5u-UD2"/>
+                                            <constraint firstAttribute="bottom" secondItem="muP-dF-MLW" secondAttribute="bottom" constant="20" id="ftA-wJ-pIE"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wiU-Li-deR" secondAttribute="trailing" id="2At-3n-QAj"/>
+                                    <constraint firstItem="wiU-Li-deR" firstAttribute="top" secondItem="MvO-ma-Cyd" secondAttribute="top" constant="60" id="HhC-yS-LW6"/>
+                                    <constraint firstAttribute="trailing" secondItem="fDI-wN-Poe" secondAttribute="trailing" constant="16" id="LE1-yC-mgd"/>
+                                    <constraint firstItem="wiU-Li-deR" firstAttribute="leading" secondItem="MvO-ma-Cyd" secondAttribute="leading" id="ohR-nu-eSW"/>
+                                    <constraint firstItem="wiU-Li-deR" firstAttribute="top" secondItem="fDI-wN-Poe" secondAttribute="bottom" constant="8" id="pf4-be-uWk"/>
+                                    <constraint firstAttribute="bottom" secondItem="wiU-Li-deR" secondAttribute="bottom" id="tCk-hQ-PTL"/>
+                                    <constraint firstItem="qiU-yu-9mv" firstAttribute="height" secondItem="MvO-ma-Cyd" secondAttribute="height" multiplier="0.17" id="v6i-oQ-RjG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XHx-tL-uw8" firstAttribute="top" secondItem="MvO-ma-Cyd" secondAttribute="bottom" id="5Cp-Jp-Ek5"/>
+                            <constraint firstItem="XHx-tL-uw8" firstAttribute="top" secondItem="Pra-pJ-EID" secondAttribute="bottom" id="HBT-Kq-COn"/>
+                            <constraint firstAttribute="trailing" secondItem="Pra-pJ-EID" secondAttribute="trailing" id="QYR-62-zj3"/>
+                            <constraint firstItem="Pra-pJ-EID" firstAttribute="top" secondItem="dA9-kB-VDJ" secondAttribute="top" id="XTf-pb-chB"/>
+                            <constraint firstAttribute="trailing" secondItem="MvO-ma-Cyd" secondAttribute="trailing" id="jXp-3l-0k6"/>
+                            <constraint firstItem="Pra-pJ-EID" firstAttribute="leading" secondItem="dA9-kB-VDJ" secondAttribute="leading" id="o1v-C6-JY4"/>
+                            <constraint firstItem="MvO-ma-Cyd" firstAttribute="leading" secondItem="dA9-kB-VDJ" secondAttribute="leading" id="pqN-ic-HN2"/>
+                            <constraint firstItem="MvO-ma-Cyd" firstAttribute="top" secondItem="dA9-kB-VDJ" secondAttribute="top" id="udY-Fl-fBt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="MvO-ma-Cyd" id="5pi-Cl-iyE"/>
+                        <outlet property="descriptionTextView" destination="muP-dF-MLW" id="38L-KA-Ohv"/>
+                        <outlet property="fakeBackgroundImageView" destination="Pra-pJ-EID" id="bh4-mr-gfe"/>
+                        <outlet property="logoImageView" destination="qiU-yu-9mv" id="JDU-Xw-cQB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWh-fr-ik1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3486" y="205"/>
+        </scene>
         <!--Post Feedback View Controller-->
         <scene sceneID="ZWx-Bm-skz">
             <objects>
@@ -2555,7 +2652,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN1-sQ-thU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4300" y="195"/>
+            <point key="canvasLocation" x="5740" y="-1317"/>
         </scene>
         <!--Suggestion View Controller-->
         <scene sceneID="JYw-bg-v7i">
@@ -2629,12 +2726,12 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N60-Wu-85y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5064" y="191"/>
+            <point key="canvasLocation" x="5740" y="-572"/>
         </scene>
         <!--Service Info View Controller-->
         <scene sceneID="M1X-eR-eAK">
             <objects>
-                <viewController storyboardIdentifier="serviceInfoIdentifier" id="ZFB-jH-a5E" customClass="ServiceInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="serviceInfoIdentifier" modalPresentationStyle="overCurrentContext" id="ZFB-jH-a5E" customClass="ServiceInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HPd-xs-bw4"/>
                         <viewControllerLayoutGuide type="bottom" id="EvA-WF-UaR"/>
@@ -2643,13 +2740,16 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BH6-dK-xOH" userLabel="FakeBackground - UIIMageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-N3-RnZ" userLabel="Content - UiView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="B8L-oR-LpL" userLabel="ServiceDetails - UICollectionView">
                                         <rect key="frame" x="0.0" y="60" width="600" height="540"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J1a-ZW-z2f">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="J1a-ZW-z2f">
                                             <size key="itemSize" width="144" height="158"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2738,15 +2838,21 @@ a new password will be sent.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EvA-WF-UaR" firstAttribute="top" secondItem="BH6-dK-xOH" secondAttribute="bottom" id="CQ1-FT-i9z"/>
+                            <constraint firstAttribute="trailing" secondItem="BH6-dK-xOH" secondAttribute="trailing" id="FZM-d0-hls"/>
                             <constraint firstItem="wwh-N3-RnZ" firstAttribute="top" secondItem="XoJ-UF-oKD" secondAttribute="top" id="cXu-g1-1SB"/>
+                            <constraint firstItem="BH6-dK-xOH" firstAttribute="top" secondItem="XoJ-UF-oKD" secondAttribute="top" id="dog-yb-8WE"/>
                             <constraint firstAttribute="trailing" secondItem="wwh-N3-RnZ" secondAttribute="trailing" id="k52-4e-zJD"/>
                             <constraint firstItem="EvA-WF-UaR" firstAttribute="top" secondItem="wwh-N3-RnZ" secondAttribute="bottom" id="p3c-1y-md4"/>
                             <constraint firstItem="wwh-N3-RnZ" firstAttribute="leading" secondItem="XoJ-UF-oKD" secondAttribute="leading" id="vc3-3O-LT2"/>
+                            <constraint firstItem="BH6-dK-xOH" firstAttribute="leading" secondItem="XoJ-UF-oKD" secondAttribute="leading" id="wTm-1b-qvE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="wwh-N3-RnZ" id="QyG-K7-kiY"/>
                         <outlet property="collectionView" destination="B8L-oR-LpL" id="vjs-ye-yff"/>
+                        <outlet property="fakeBackgroundImageView" destination="BH6-dK-xOH" id="vE4-SJ-PGw"/>
+                        <segue destination="xEC-ib-kWe" kind="custom" identifier="serviceDetailsSegue" customClass="PushNoAnimationSegue" id="ROI-yH-j9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXQ-uy-mlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2859,7 +2965,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk4-vB-rEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3550" y="195"/>
+            <point key="canvasLocation" x="5004" y="-1317"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="hE0-TG-9Zo">

@@ -18,7 +18,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_doc</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_doc_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.1</string>
 	</dict>
@@ -28,7 +28,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_terms</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_terms_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.2</string>
 	</dict>
@@ -38,7 +38,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_serv_pack</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_serv_packbig</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.3</string>
 	</dict>
@@ -48,7 +48,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_time</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_time_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.4</string>
 	</dict>
@@ -58,7 +58,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_fees</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_fees_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.5</string>
 	</dict>
@@ -68,7 +68,7 @@
 		<key>serviceInfoItemLogoName</key>
 		<string>btn_contact</string>
 		<key>serviceInfoItemBigLogoName</key>
-		<string></string>
+		<string>btn_contact_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.6</string>
 	</dict>

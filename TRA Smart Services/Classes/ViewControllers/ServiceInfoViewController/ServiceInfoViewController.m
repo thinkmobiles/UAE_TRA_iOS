@@ -9,16 +9,21 @@
 #import "ServiceInfoViewController.h"
 #import "ServiceInfoCollectionViewCell.h"
 #import "Animation.h"
+#import "ServiceDetailedInfoViewController.h"
 
 static NSUInteger const RowCount = 2;
 static NSUInteger const ColumsCount = 5;
+
+static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 
 @interface ServiceInfoViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *fakeBackgroundImageView;
 
 @property (strong, nonatomic) NSArray *dataSource;
+@property (assign, nonatomic) BOOL isControllerPresented;
 
 @end
 
@@ -31,24 +36,40 @@ static NSUInteger const ColumsCount = 5;
     [super viewDidLoad];
     
     self.dataSource = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceInfoList" ofType:@"plist"]];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        self.dataSource = [self.dataSource reversedArrayByElementsInGroup:RowCount];
+    if (self.fakeBackground) {
+        self.fakeBackgroundImageView.image = self.fakeBackground;
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (!self.isControllerPresented) {
+        [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
+        self.isControllerPresented = YES;
+    } else {
+        [self.collectionView reloadData];
+    }
     
-    [self.view.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
+    self.navigationController.navigationBar.hidden = YES;
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        self.dataSource = [self.dataSource reversedArrayByElementsInGroup:RowCount];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    [self performSegueWithIdentifier:ServiceDetailsSegueIdentifier sender:self];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -74,15 +95,11 @@ static NSUInteger const ColumsCount = 5;
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat originY = self.collectionView.frame.origin.y;
-    
     CGFloat collectionViewHeight = screenSize.height - originY;
     CGFloat collectionViewWidth = screenSize.width;
-    
     CGFloat numbersOfRow = ColumsCount;
     CGFloat numbersOfColums = RowCount;
-    
     CGFloat minimumSpacing = 10;
-    
     CGFloat cellWidth = (collectionViewWidth - minimumSpacing * numbersOfColums) / numbersOfColums;
     CGFloat cellHeight = collectionViewHeight / numbersOfRow;
     
@@ -91,7 +108,6 @@ static NSUInteger const ColumsCount = 5;
     }
     
     CGSize cellSize = CGSizeMake(cellWidth, cellHeight);
-    
     return cellSize;
 }
 
@@ -99,17 +115,34 @@ static NSUInteger const ColumsCount = 5;
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [self.view.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideView"];
-    self.view.layer.opacity = 0.f;
+    [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideView"];
+    self.backgroundView.layer.opacity = 0.f;
 }
 
 #pragma mark - Animations
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    if (anim == [self.view.layer animationForKey:@"hideView"]) {
-        [self.view.layer removeAllAnimations];
-        [self dismissViewControllerAnimated:NO completion:nil];
+    if (anim == [self.backgroundView.layer animationForKey:@"hideView"]) {
+        [self.backgroundView.layer removeAllAnimations];
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ServiceDetailsSegueIdentifier]) {
+        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+        [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSDictionary *dataSource = self.dataSource[((NSIndexPath *)[[self.collectionView indexPathsForSelectedItems] firstObject]).row];
+        
+        ServiceDetailedInfoViewController *serviceInfoController = segue.destinationViewController;
+        serviceInfoController.fakeBackground = image;
+        serviceInfoController.dataSource = dataSource;
     }
 }
 

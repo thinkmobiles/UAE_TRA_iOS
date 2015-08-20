@@ -86,7 +86,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     [super viewDidAppear:animated];
     
     [self.topView animateTopViewApearence];
-}
+}    
 
 - (void)viewWillDisappear:(BOOL)animated
 {

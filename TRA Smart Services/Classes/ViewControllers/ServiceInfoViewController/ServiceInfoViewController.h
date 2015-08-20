@@ -8,4 +8,6 @@
 
 @interface ServiceInfoViewController : UIViewController
 
+@property (strong, nonatomic) UIImage *fakeBackground;
+
 @end
