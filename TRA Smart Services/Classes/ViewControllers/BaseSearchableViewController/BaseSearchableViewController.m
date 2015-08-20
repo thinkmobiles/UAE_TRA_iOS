@@ -43,7 +43,7 @@
     CGFloat offset = 20.f;
     self.searchBar.frame = CGRectMake(offset / 2, 0, navBarRect.size.width - offset, navBarRect.size.height);
     self.searchBar.barTintColor = [UIColor whiteColor];
-    self.searchBar.tintColor = [UIColor defaultOrangeColor];
+    self.searchBar.tintColor = [DynamicUIService service].currentApplicationColor;
     
     self.searchBar.layer.opacity = 1.f;
     [self.titleView addSubview: self.searchBar];

@@ -292,6 +292,14 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.isAppearenceAnimationCompleted = NO;
 }
 
+- (void)updateUIColor;
+{
+    struct CGColor *color = [DynamicUIService service].currentApplicationColor.CGColor;
+    self.informationLayer.backgroundColor = color;
+    self.searchLayer.backgroundColor = color;
+    self.notificationLayer.backgroundColor = color;
+}
+
 #pragma mark - AnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -530,7 +538,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     CALayer *layer= [CALayer layer];
     layer.frame = rect;
-    layer.backgroundColor = [UIColor defaultOrangeColor].CGColor;
+    layer.backgroundColor = [DynamicUIService service].currentApplicationColor.CGColor;
     if (mainLogo) {
         layer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
     }

@@ -36,6 +36,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *movableImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
@@ -57,6 +58,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
+    
+    [AppHelper updateNavigationBarColor];
 }
 
 - (void)viewDidLayoutSubviews
@@ -403,7 +406,8 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)updateColors
 {
-    
+    self.backgroundImageView.image = [UIImage imageNamed:@"background"];
+    [self.topView updateUIColor];
 }
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
