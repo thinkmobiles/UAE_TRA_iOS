@@ -79,6 +79,16 @@ static NSString *const KeyLanguageArabic = @"ar";
     }
 }
 
+- (void)setFontSize:(ApplicationFont)fontSize
+{
+    ApplicationFont prevFont = _fontSize;
+    _fontSize = fontSize;
+    
+    if (_fontSize != prevFont && prevFont != ApplicationFontUndefined) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
+    }
+}
+
 #pragma mark - ColorScheme
 
 - (UIColor *)currentApplicationColor
@@ -173,23 +183,20 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (ApplicationColor)savedApplicationColor
 {
-    ApplicationColor savedColor;
+    ApplicationColor savedColor = ApplicationColorDefault;
     NSUInteger currentColor = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentColor] integerValue];
-    if (savedColor) {
-        switch (currentColor) {
-                case 0:
-            case 1: {
-                savedColor = ApplicationColorOrange;
-                break;
-            }
-            case 2: {
-                savedColor = ApplicationColorBlue;
-                break;
-            }
-            case 3: {
-                savedColor = ApplicationColorGreen;
-                break;
-            }
+    switch (currentColor) {
+        case 1: {
+            savedColor = ApplicationColorOrange;
+            break;
+        }
+        case 2: {
+            savedColor = ApplicationColorBlue;
+            break;
+        }
+        case 3: {
+            savedColor = ApplicationColorGreen;
+            break;
         }
     }
     return savedColor;

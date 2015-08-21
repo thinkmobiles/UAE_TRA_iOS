@@ -22,6 +22,8 @@ static CGFloat ShadowOffset = 2.f;
 
 @implementation HexagonView
 
+#pragma mark - LifeCycle
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];

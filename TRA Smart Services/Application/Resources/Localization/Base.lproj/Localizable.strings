@@ -70,3 +70,32 @@
 "speedAccess.service.name.9" = "speedAccess.service.name.9";
 "speedAccess.service.name.10" = "speedAccess.service.name.10";
 "speedAccess.service.name.11" = "speedAccess.service.name.11";
+
+//FavouriteViewController
+
+"favourite.title" = "favourite.title";
+"favourite.button.addFav.title" = "favourite.button.addFav.title";
+"favourite.notification" = "favourite.notification";
+
+//FavouriteCell
+
+"favouriteCell.infoButton.title" = "favouriteCell.infoButton.title";
+"favouriteCell.deleteButton.title" = "favouriteCell.deleteButton.title";
+
+//ServiceInfoViewController
+
+"serviceInfoItemName.0" = "serviceInfoItemName.0";
+"serviceInfoItemName.1" = "serviceInfoItemName.1";
+"serviceInfoItemName.2" = "serviceInfoItemName.2";
+"serviceInfoItemName.3" = "serviceInfoItemName.3";
+"serviceInfoItemName.4" = "serviceInfoItemName.4";
+"serviceInfoItemName.5" = "serviceInfoItemName.5";
+"serviceInfoItemName.6" = "serviceInfoItemName.6";
+"serviceInfoItmeDetailedDescription.0" = "serviceInfoItmeDetailedDescription.0";
+"serviceInfoItmeDetailedDescription.1" = "serviceInfoItmeDetailedDescription.1";
+"serviceInfoItmeDetailedDescription.2" = "serviceInfoItmeDetailedDescription.2";
+"serviceInfoItmeDetailedDescription.3" = "serviceInfoItmeDetailedDescription.3";
+"serviceInfoItmeDetailedDescription.4" = "serviceInfoItmeDetailedDescription.4";
+"serviceInfoItmeDetailedDescription.5" = "serviceInfoItmeDetailedDescription.5";
+"serviceInfoItmeDetailedDescription.6" = "serviceInfoItmeDetailedDescription.6";
+

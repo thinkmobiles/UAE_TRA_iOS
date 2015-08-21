@@ -21,7 +21,13 @@
 + (UIColor *)itemGradientBottomColor;
 + (UIColor *)menuItemGrayColor;
 
+#pragma mark - TabBarColors
+
 + (UIColor *)lightGrayTabBarColor;
 + (UIColor *)darkGrayTabBarColor;
+
+#pragma mark - FavouriteViewController
+
++ (UIColor *)lightOrangeColor;
 
 @end

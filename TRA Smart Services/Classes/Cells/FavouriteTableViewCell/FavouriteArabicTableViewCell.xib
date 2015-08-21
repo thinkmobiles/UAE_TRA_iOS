@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="arabicFavCell" rowHeight="88" id="KLw-NL-vgl" customClass="FavouriteTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="88"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KLw-NL-vgl" id="bX8-y9-9gB">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-LU-jTg" userLabel="ArabicUI">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="88"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWn-QB-F6B" userLabel="ImageHolder - UiView">
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="88"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j7o-8B-ZoJ" userLabel="Logo - UiIMageView">
+                                        <rect key="frame" x="18" y="16" width="49" height="57"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="j7o-8B-ZoJ" secondAttribute="height" multiplier="49:57" id="nRg-As-YqT"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Bik-Fp-epi"/>
+                                    <constraint firstAttribute="centerY" secondItem="j7o-8B-ZoJ" secondAttribute="centerY" id="Fd0-MH-hfj"/>
+                                    <constraint firstAttribute="centerX" secondItem="j7o-8B-ZoJ" secondAttribute="centerX" id="edu-yU-jYs"/>
+                                    <constraint firstItem="j7o-8B-ZoJ" firstAttribute="width" secondItem="jWn-QB-F6B" secondAttribute="width" multiplier="0.57" id="psj-R7-LVr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-9A-PI0" userLabel="Data- UiView">
+                                <rect key="frame" x="85" y="0.0" width="483" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
+                                        <rect key="frame" x="20" y="16" width="443" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-xu-65g" userLabel="Remove - UIButton">
+                                        <rect key="frame" x="0.0" y="35" width="232" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="C2Z-QU-xKl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <state key="normal" image="ic_remove_dctv">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="ic_remove_act">
+                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_remove_act">
+                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
+                                        <rect key="frame" x="232" y="47" width="232" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <state key="normal" image="ic_info_sml">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="serviceInfoButtonTapped:" destination="KLw-NL-vgl" eventType="touchUpInside" id="oda-J6-R2M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kS9-xu-65g" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" id="1jp-Fs-z6c"/>
+                                    <constraint firstItem="kS9-xu-65g" firstAttribute="centerY" secondItem="qXh-7i-Xql" secondAttribute="centerY" id="4J0-ml-742"/>
+                                    <constraint firstAttribute="right" secondItem="qXh-7i-Xql" secondAttribute="right" constant="20" id="5cr-QE-3Xz"/>
+                                    <constraint firstAttribute="bottom" secondItem="qXh-7i-Xql" secondAttribute="bottom" constant="16" id="i7V-bP-nbF"/>
+                                    <constraint firstItem="igG-Z5-rt3" firstAttribute="top" secondItem="rA3-9A-PI0" secondAttribute="top" constant="16" id="lsn-oS-Dmf"/>
+                                    <constraint firstItem="kS9-xu-65g" firstAttribute="width" secondItem="qXh-7i-Xql" secondAttribute="width" id="mdo-7c-78W"/>
+                                    <constraint firstItem="qXh-7i-Xql" firstAttribute="top" secondItem="igG-Z5-rt3" secondAttribute="bottom" constant="4" id="rCt-Dy-noD"/>
+                                    <constraint firstItem="qXh-7i-Xql" firstAttribute="left" secondItem="kS9-xu-65g" secondAttribute="right" id="rx2-7n-7F2"/>
+                                    <constraint firstAttribute="right" secondItem="igG-Z5-rt3" secondAttribute="right" constant="20" id="s2e-c6-HPf"/>
+                                    <constraint firstItem="igG-Z5-rt3" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" constant="20" id="tLQ-m8-rqM"/>
+                                    <constraint firstItem="qXh-7i-Xql" firstAttribute="height" secondItem="kS9-xu-65g" secondAttribute="height" multiplier="0.5" id="wL1-kF-WZQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jWn-QB-F6B" secondAttribute="bottom" id="BbC-Xb-mFp"/>
+                            <constraint firstItem="jWn-QB-F6B" firstAttribute="top" secondItem="dVq-LU-jTg" secondAttribute="top" id="KSM-05-Q6m"/>
+                            <constraint firstAttribute="right" secondItem="rA3-9A-PI0" secondAttribute="right" id="dvi-E3-gOB"/>
+                            <constraint firstItem="jWn-QB-F6B" firstAttribute="left" secondItem="dVq-LU-jTg" secondAttribute="left" id="lMa-0w-Oz9"/>
+                            <constraint firstAttribute="bottom" secondItem="rA3-9A-PI0" secondAttribute="bottom" id="loX-LA-gUN"/>
+                            <constraint firstItem="rA3-9A-PI0" firstAttribute="top" secondItem="dVq-LU-jTg" secondAttribute="top" id="rBO-BT-9Sm"/>
+                            <constraint firstItem="rA3-9A-PI0" firstAttribute="left" secondItem="jWn-QB-F6B" secondAttribute="right" id="zhf-oS-voC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dVq-LU-jTg" firstAttribute="top" secondItem="bX8-y9-9gB" secondAttribute="top" id="8XF-fT-s5L"/>
+                    <constraint firstAttribute="bottom" secondItem="dVq-LU-jTg" secondAttribute="bottom" id="AL5-ZI-BCf"/>
+                    <constraint firstAttribute="right" secondItem="dVq-LU-jTg" secondAttribute="right" id="Lrh-N0-fYZ"/>
+                    <constraint firstItem="dVq-LU-jTg" firstAttribute="left" secondItem="bX8-y9-9gB" secondAttribute="left" id="bC2-3d-9LR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backgroundView" destination="bX8-y9-9gB" id="PYm-mp-rTY"/>
+                <outlet property="favourieDescriptionLabel" destination="igG-Z5-rt3" id="8tK-wI-kl1"/>
+                <outlet property="favouriteServiceLogoImageView" destination="j7o-8B-ZoJ" id="bVi-of-zZ0"/>
+                <outlet property="removeArabicButton" destination="kS9-xu-65g" id="xWI-rk-Equ"/>
+                <outlet property="serviceInfoArabicButton" destination="qXh-7i-Xql" id="XmX-nL-PMm"/>
+            </connections>
+            <point key="canvasLocation" x="463" y="455"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_info_sml" width="16" height="16"/>
+        <image name="ic_remove_act" width="16" height="16"/>
+        <image name="ic_remove_dctv" width="16" height="16"/>
+    </resources>
+</document>

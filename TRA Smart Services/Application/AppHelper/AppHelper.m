@@ -9,6 +9,7 @@
 #import "AppHelper.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+#import "DynamicUIService.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
 
@@ -85,13 +86,24 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)prepareTabBarItems
 {
+    [AppHelper performResetupTabBar];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+        tabBarController.viewControllers = viewControllers;
+        tabBarController.selectedViewController = [viewControllers lastObject];
+    }
+}
+
++ (void)performResetupTabBar
+{
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
+    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
     NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [UIColor defaultOrangeColor];
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -103,11 +115,23 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
         [tabBarItem setSelectedImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"selectedImage"]]];
         [tabBarItem setImage:[UIImage imageNamed:[localizedMenuItems[idx] valueForKey:@"normalImage"]]];
     }
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
-        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
-        tabBarController.viewControllers = viewControllers;
-        tabBarController.selectedViewController = [viewControllers lastObject];
+}
+
++ (void)updateFontsOnTabBar
+{
+    CGFloat fontSize = [DynamicUIService service].fontSize;
+    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
+    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
+                                  NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
+
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.backgroundColor = [UIColor menuItemGrayColor];
+    
+    for (int idx = 0; idx < tabBar.items.count; idx++) {
+        UITabBarItem *tabBarItem = tabBar.items[idx];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
     }
 }
 
@@ -134,5 +158,48 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
     tabBarController.viewControllers = viewControllers;
 }
+
++ (void)updateTabBarTintColor
+{
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+}
+
+#pragma mark - NavigationBar Configuration
+
++ (void)updateNavigationBarColor
+{
+    UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+    for (UINavigationController *viewController in tabBarController.viewControllers) {
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            viewController.navigationBar.barTintColor = [DynamicUIService service].currentApplicationColor;
+            viewController.navigationBar.translucent = NO;
+        }
+    }
+}
+
+#pragma mark - Hexagon
+
++ (UIBezierPath *)hexagonPathForView:(UIView *)view
+{
+    CGRect hexagonRect = CGRectMake(view.bounds.origin.x, view.bounds.origin.y, view.bounds.size.width, view.bounds.size.height);
+    return [AppHelper hexagonPathForRect:hexagonRect];
+}
+
++ (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect
+{
+    UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
+    [hexagonPath moveToPoint:CGPointMake(CGRectGetMidX(hexagonRect), 0)];
+    [hexagonPath addLineToPoint:CGPointMake(CGRectGetMaxX(hexagonRect), CGRectGetMaxY(hexagonRect) * 0.25)];
+    [hexagonPath addLineToPoint:CGPointMake(CGRectGetMaxX(hexagonRect), CGRectGetMaxY(hexagonRect) * 0.75)];
+    [hexagonPath addLineToPoint:CGPointMake(CGRectGetMidX(hexagonRect), CGRectGetMaxY(hexagonRect))];
+    [hexagonPath addLineToPoint:CGPointMake(0, CGRectGetMaxY(hexagonRect) * 0.75)];
+    [hexagonPath addLineToPoint:CGPointMake(0, CGRectGetMaxY(hexagonRect) * 0.25)];
+    [hexagonPath addLineToPoint:CGPointMake(CGRectGetMidX(hexagonRect), 0)];
+    
+    return hexagonPath;
+}
+
+
 
 @end

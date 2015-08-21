@@ -14,10 +14,14 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
 @property (strong, nonatomic) UIImage *navigationBarImage;
+
+@property (strong, nonatomic) CALayer *shapeLayer;
+@property (strong, nonatomic) CAShapeLayer *lineLayer;
 
 @end
 
@@ -39,19 +43,24 @@
     [super viewDidLayoutSubviews];
     
     [self.reader relayout];
+    [self drawLayers];
+    self.reader.acceptableRect = self.scannerZoneView.frame;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setTranslucent:YES];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    if (self.needTransparentNavigationBar) {
+        self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+        
+        [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setTranslucent:YES];
+        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    } else {
+        self.title = @"Check IMEI";
+    }
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
     [self registerForKeyboardNotifications];
     
     [self.reader startStopReading];
@@ -63,7 +72,10 @@
     
     [self.reader startStopReading];
     [self unregisterForKeyboardNotification];
-    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
+    if (self.needTransparentNavigationBar) {
+        [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
+    }
+    self.title = @" ";
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -97,9 +109,14 @@
     }
 }
 
-- (IBAction)scanButtonTapped:(id)sender
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self.reader startStopReading];
+    if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
+        CheckIMEIViewController *viewController = segue.destinationViewController;
+        viewController.needTransparentNavigationBar = YES;
+    }
 }
 
 #pragma mark - Keyboard
@@ -142,7 +159,7 @@
 - (void)prepareUI
 {
     for (UIView *subView in self.contentView.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
+        if ([subView isKindOfClass:[UIButton class]] && !subView.tag) {
             subView.layer.cornerRadius = 8;
             subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
             subView.layer.borderWidth = 1;
@@ -163,6 +180,46 @@
         self.centerPositionForTextFieldConstraint.constant = 100;
         [self.view layoutIfNeeded];
     }];
+}
+
+#pragma mark - Drawing
+
+- (void)drawLayers
+{
+    [self.shapeLayer removeFromSuperlayer];
+    
+    self.shapeLayer = [CALayer layer];
+    self.shapeLayer.frame = self.barcodeView.bounds;
+    self.shapeLayer.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.3f].CGColor;
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    UIBezierPath *boundPath = [UIBezierPath bezierPathWithRect:self.barcodeView.frame];
+    UIBezierPath *scannerViewPath = [UIBezierPath bezierPathWithRoundedRect:self.scannerZoneView.frame byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8, 8)];
+    [boundPath appendPath:scannerViewPath];
+    [boundPath setUsesEvenOddFillRule:YES];
+    
+    maskLayer.path = boundPath.CGPath;
+    maskLayer.fillRule = kCAFillRuleEvenOdd;
+    
+    self.shapeLayer.masksToBounds = YES;
+    self.shapeLayer.mask = maskLayer;
+    
+    [self.lineLayer removeFromSuperlayer];
+    
+    self.lineLayer = [CAShapeLayer layer];
+    self.lineLayer.frame = self.scannerZoneView.frame;
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(0, self.scannerZoneView.bounds.size.height / 2)];
+    [linePath addLineToPoint:CGPointMake(self.scannerZoneView.bounds.size.width, self.scannerZoneView.bounds.size.height /2)];
+    self.lineLayer.strokeColor = [UIColor greenColor].CGColor;
+    self.lineLayer.lineWidth = 1.f;
+    self.lineLayer.path = linePath.CGPath;
+    
+    [self.barcodeView.layer addSublayer:self.lineLayer];
+    [self.barcodeView.layer addSublayer:self.shapeLayer];
+    
+    self.scannerZoneView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.scannerZoneView.layer.borderWidth = 1.f;
 }
 
 @end

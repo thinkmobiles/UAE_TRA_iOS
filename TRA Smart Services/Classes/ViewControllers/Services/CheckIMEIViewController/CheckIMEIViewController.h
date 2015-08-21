@@ -10,4 +10,6 @@
 
 @interface CheckIMEIViewController : UIViewController <BarcodeCodeReaderDelegate>
 
+@property (assign, nonatomic) BOOL needTransparentNavigationBar;
+
 @end

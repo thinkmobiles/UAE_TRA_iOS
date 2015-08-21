@@ -11,5 +11,6 @@
 @interface NSArray (Reverse)
 
 - (NSArray *)reversedArray;
+- (NSMutableArray *)reversedArrayByElementsInGroup:(NSInteger)elementsInGroup;
 
 @end
