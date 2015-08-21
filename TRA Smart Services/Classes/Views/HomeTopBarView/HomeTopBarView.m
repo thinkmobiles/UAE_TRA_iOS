@@ -58,11 +58,11 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     [super layoutSubviews];
     
-    [self drawHexagonicalWireTop];
     [self updateAvatarPosition];
-    [self prepareLogoImage];
     
     if (!self.disableFakeButtonLayersDrawing) {
+        [self drawHexagonicalWireTop];
+        [self prepareLogoImage];
         [self prepareInformationButtonLayer];
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];

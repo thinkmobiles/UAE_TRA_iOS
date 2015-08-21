@@ -70,6 +70,18 @@
     }
 }
 
+#pragma mark - Superclass
+
+- (void)localizeUI
+{
+    self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
+}
+
+- (void)updateColors
+{
+    self.backgroundView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+}
+
 #pragma mark - Private
 
 - (void)configureViewController

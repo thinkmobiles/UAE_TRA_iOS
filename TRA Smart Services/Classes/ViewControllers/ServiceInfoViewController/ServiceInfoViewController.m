@@ -137,6 +137,18 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     }
 }
 
+#pragma mark - Superclass
+
+- (void)localizeUI
+{
+    [self.collectionView reloadData];
+}
+
+- (void)updateColors
+{
+    self.backgroundView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+}
+
 #pragma mark - Private
 
 - (void)configureCell:(ServiceInfoCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

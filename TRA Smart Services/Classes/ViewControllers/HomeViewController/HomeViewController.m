@@ -436,11 +436,12 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor]];
     } else {
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
-        [cell setTintColorForLabel:[UIColor defaultOrangeColor]];
+        [cell setTintColorForLabel:[[DynamicUIService service] currentApplicationColor]];
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
         cell.categoryLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     }
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];

@@ -1964,10 +1964,10 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDI-wN-Poe" userLabel="Close - UIButton">
-                                        <rect key="frame" x="554" y="22" width="30" height="30"/>
+                                        <rect key="frame" x="534" y="12" width="50" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="1oP-0k-aY8"/>
-                                            <constraint firstAttribute="height" constant="30" id="9Qw-Iw-ggo"/>
+                                            <constraint firstAttribute="width" constant="50" id="1oP-0k-aY8"/>
+                                            <constraint firstAttribute="height" constant="40" id="9Qw-Iw-ggo"/>
                                         </constraints>
                                         <state key="normal" image="btn_close">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2597,10 +2597,10 @@ a new password will be sent.</string>
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfX-qy-j27" userLabel="Close - UIButton">
-                                        <rect key="frame" x="554" y="22" width="30" height="30"/>
+                                        <rect key="frame" x="534" y="12" width="50" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="oGs-da-KuF"/>
-                                            <constraint firstAttribute="width" constant="30" id="szX-DY-cNc"/>
+                                            <constraint firstAttribute="height" constant="40" id="oGs-da-KuF"/>
+                                            <constraint firstAttribute="width" constant="50" id="szX-DY-cNc"/>
                                         </constraints>
                                         <state key="normal" image="btn_close">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface ServiceInfoViewController : UIViewController
+@interface ServiceInfoViewController : BaseDynamicUIViewController
 
 @property (strong, nonatomic) UIImage *fakeBackground;
 
