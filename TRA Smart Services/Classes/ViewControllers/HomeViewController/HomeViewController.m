@@ -254,9 +254,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         
         [self.topView scaleLogo:!self.isScrollintToTop];
         [self speedAcceesCollectionViewCellScale:!self.isScrollintToTop];
-        if (self.topView.isBottomHexagonWireOnTop != self.isScrollintToTop) {
-            [self.topView moveBottomHexagonWireToTop:self.isScrollintToTop];
-        }
+        [self.topView moveBottomHexagonWireToTop:self.isScrollintToTop];
     }
 }
 

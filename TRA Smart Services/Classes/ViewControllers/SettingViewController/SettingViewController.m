@@ -122,7 +122,7 @@
     }
     
     [self updateSubviewForParentViewIfPossible:self.view];
-    [AppHelper performResetupTabBar];
+    [AppHelper updateFontsOnTabBar];
     [self updateFontSizeSegmentControlPosition];
 }
 

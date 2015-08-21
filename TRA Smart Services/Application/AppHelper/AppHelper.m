@@ -117,6 +117,24 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     }
 }
 
++ (void)updateFontsOnTabBar
+{
+    CGFloat fontSize = [DynamicUIService service].fontSize;
+    fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
+    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
+                                  NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
+
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.backgroundColor = [UIColor menuItemGrayColor];
+    
+    for (int idx = 0; idx < tabBar.items.count; idx++) {
+        UITabBarItem *tabBarItem = tabBar.items[idx];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
+        [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
+    }
+}
+
 + (void)prepareTabBarGradient
 {
     UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
