@@ -129,7 +129,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZhX-he-Bnk">
                         <barButtonItem key="backBarButtonItem" title=" " id="g8j-os-pyg"/>
-                        <barButtonItem key="rightBarButtonItem" image="btn_search" id="6pZ-ch-QLs" userLabel="Search Bar Button Item">
+                        <barButtonItem key="leftBarButtonItem" image="addBlueIcon" id="43r-t7-0Qe" userLabel="AddElement - UiBarButtonItem">
+                            <connections>
+                                <action selector="addFavouriteButtonPress:" destination="VHI-KM-fqJ" id="o3R-1m-6QR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="btn_search" id="6pZ-ch-QLs" userLabel="Search - UiBarButtonItem">
                             <connections>
                                 <action selector="searchBarButtonTapped:" destination="VHI-KM-fqJ" id="Zyb-d7-fux"/>
                             </connections>
@@ -137,6 +142,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addBarButton" destination="43r-t7-0Qe" id="nxm-gO-z1L"/>
                         <outlet property="addFavouriteButton" destination="doX-zm-C5K" id="mh1-vG-njK"/>
                         <outlet property="backgroundImageView" destination="j1e-2z-EqT" id="G0d-b5-PKo"/>
                         <outlet property="informationLabel" destination="uBq-Kr-a20" id="WIs-eN-hf9"/>
@@ -2775,6 +2781,7 @@ a new password will be sent.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="addBlueIcon" width="15" height="15"/>
         <image name="background" width="320" height="517"/>
         <image name="btn_add_serv" width="46" height="53"/>
         <image name="btn_close" width="11" height="11"/>
