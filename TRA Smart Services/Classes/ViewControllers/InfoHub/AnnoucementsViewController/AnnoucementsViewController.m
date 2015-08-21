@@ -102,14 +102,6 @@ static CGFloat const indentTableViewCell = 24.0f;
 
 #pragma mark _ Private
 
-- (NSString *)cellUINib
-{
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        return cellArabicUINib;
-    }
-    return cellEuropeUINib;
-}
-
 - (NSString *)cellUIIdentifier
 {
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
