@@ -19,23 +19,41 @@
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 
 @property (strong, nonatomic) NSString *headerText;
+@property (strong, nonatomic) NSArray *textArray;
+@property (strong, nonatomic) NSMutableArray *searchArray;
 
 @end
 
-static NSString *const infoHubCollectionViewCellIdentifier = @"InfoHubCollectionViewCell";
-static NSString *const infoHubTableViewCellIdentifier = @"InfoHubTableViewCell";
 static CGFloat const heightTableViewCell = 90.0f;
 static CGFloat const SectionHeaderHeight =80.0f;
 static CGFloat const deltaTableViewCell = 20.0f;
 static CGFloat const indentTableViewCell = 24.0f;
 
+static NSString *const tableViewCellEuropeUIIdentifier = @"InfoHubTableViewCellEuropeUI";
+static NSString *const tableViewCellArabicUIIdentifier = @"InfoHubTableViewCellArabicUI";
+static NSString *const tableViewCellEuropeUINib =@"InfoHubTableViewCellEuropeUI";
+static NSString *const tableViewCellArabicUINib =@"InfoHubTableViewCellArabicUI";
+
+static NSString *const collectionViewCellEuropeUIIdentifier = @"InfoHubCollectionViewCellEuropeUI";
+static NSString *const collectionViewCellArabicUIIdentifier = @"InfoHubCollectionViewCellArabicUI";
+static NSString *const collectionViewCellEuropeUINib =@"InfoHubCollectionViewCellEuropeUI";
+static NSString *const collectionViewCellArabicUINib =@"InfoHubCollectionViewCellArabicUI";
+
 @implementation InfoHubViewController
+
+#pragma mark - Life Cicle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.collectionView registerNib:[UINib nibWithNibName:collectionViewCellEuropeUINib bundle:nil] forCellWithReuseIdentifier:collectionViewCellEuropeUIIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:collectionViewCellArabicUINib bundle:nil] forCellWithReuseIdentifier:collectionViewCellArabicUIIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:tableViewCellEuropeUINib bundle:nil] forCellReuseIdentifier:tableViewCellEuropeUIIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:tableViewCellArabicUINib bundle:nil] forCellReuseIdentifier:tableViewCellArabicUIIdentifier];
+
     [self backgroundClear];
+    
+    [self sourceDatail];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,50 +63,52 @@ static CGFloat const indentTableViewCell = 24.0f;
     [self.tableView reloadData];
     [self.collectionView reloadData];
     
-//    RTLController *rtl = [[RTLController alloc] init];
-//    [rtl disableRTLForView:self.view];
+    RTLController *rtl = [[RTLController alloc] init];
+    [rtl disableRTLForView:self.view];
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSLog(@"text - %@", searchText);
+    if(searchText.length == 0) {
+        self.searchArray = [[NSMutableArray alloc] initWithArray:self.textArray];
+    } else {    
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", searchText];
+        NSArray *arraySort = [self.textArray filteredArrayUsingPredicate:predicate];
+        self.searchArray = [[NSMutableArray alloc] initWithArray:arraySort];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
+{
+    [self sourceDatail];
+    [self.tableView reloadData];
 }
 
 #pragma mark - CollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return 7;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:infoHubCollectionViewCellIdentifier forIndexPath:indexPath];
+    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
+
     cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
     cell.textLabel.text = [NSString stringWithFormat:@"Text numer %li", (long)indexPath.row + 1];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        [cell.conteinerArabicUI setHidden:NO];
-        [cell.conteinerEuropeUI setHidden:YES];
-        NSLog(@"ArabicUI");
-    } else {
-        [cell.conteinerArabicUI setHidden:YES];
-        [cell.conteinerEuropeUI setHidden:NO];
-        NSLog(@"EuropeUI");
-    }
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.window.frame.size.width * 0.7f, 100.f);
+    if (self.view.window.frame.size.width * 0.7f < 250.0f) {
+        return CGSizeMake(250.0f, 100.0f);
+    }
+    return CGSizeMake(self.view.window.frame.size.width * 0.7f, 100.0f);
 }
 
 #pragma mark - UITableViewDataSource
@@ -100,32 +120,23 @@ static CGFloat const indentTableViewCell = 24.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return self.searchArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:infoHubTableViewCellIdentifier forIndexPath:indexPath];
-    
-    cell.textInfoLabel.text = @"Text Text Text";
-    cell.titleInfoLabel.text = @"Title";
-    cell.dateInfoLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
-    
+    InfoHubTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self tableViewCellUIIdentifier]];
     if (indexPath.row % 2) {
-        cell.deltaConsrtraintArabicUI.constant = indentTableViewCell + deltaTableViewCell;
-        cell.deltaConsrtraintEuropeUI.constant = indentTableViewCell + deltaTableViewCell;
+        cell.deltaConstraint.constant = indentTableViewCell + deltaTableViewCell;
     } else {
-        cell.deltaConsrtraintArabicUI.constant = indentTableViewCell;
-        cell.deltaConsrtraintEuropeUI.constant = indentTableViewCell;
-    }
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        [cell.conteinerArabicUI setHidden:NO];
-        [cell.conteinerEuropeUI setHidden:YES];
-    } else {
-        [cell.conteinerArabicUI setHidden:YES];
-        [cell.conteinerEuropeUI setHidden:NO];
+        cell.deltaConstraint.constant = indentTableViewCell;
     }
     cell.backgroundColor = [UIColor clearColor];
+   
+    cell.textInfoLabel.text = @"Text Text Text";
+    cell.titleInfoLabel.text = self.searchArray[indexPath.row];
+    cell.dateInfoLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+    
     return cell;
 }
 
@@ -152,6 +163,29 @@ static CGFloat const indentTableViewCell = 24.0f;
 {
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (NSString *)tableViewCellUIIdentifier
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        return tableViewCellArabicUIIdentifier;
+    }
+    return tableViewCellEuropeUIIdentifier;
+}
+
+- (NSString *)collectionViewCellUIIdentifier
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        return collectionViewCellArabicUIIdentifier;
+    }
+    return collectionViewCellEuropeUIIdentifier;
+}
+
+- (void) sourceDatail
+{
+    self.textArray = @[@"BMV",@"Mazda",@"Opel",@"Mercedes",@"Audi",@"Toyta",@"Porche"];
+    self.searchArray = [[NSMutableArray alloc] initWithArray:self.textArray];
+    
 }
 
 #pragma mark - Superclass Methods

@@ -23,22 +23,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self sourceDatail];
     
-    [self prepareNavigationBar];
+    [self sourceDatail];
 }
 
 #pragma mark - Private
 
+- (void)setTitleNavigationBar:(NSString *)title
+{
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    titleView = [[UILabel alloc] init];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.textColor = [UIColor whiteColor];
+    titleView.text = title;
+    self.navigationItem.titleView = titleView;
+    [titleView sizeToFit];
+}
+
 - (void) sourceDatail
 {
     self.detailsText.text = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in";
-}
-
-- (void)prepareNavigationBar
-{
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
 }
 
 #pragma mark - Superclass Methods
@@ -65,19 +69,6 @@
     self.detailsText.textAlignment = NSTextAlignmentRight;
     self.detailsTitleDate.textAlignment = NSTextAlignmentRight;
     self.detailsTitleText.textAlignment = NSTextAlignmentRight;
-}
-
-#pragma mark - Private
-
-- (void)setTitleNavigationBar:(NSString *)title
-{
-    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
-    titleView = [[UILabel alloc] init];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.textColor = [UIColor whiteColor];
-    titleView.text = title;
-    self.navigationItem.titleView = titleView;
-    [titleView sizeToFit];
 }
 
 @end

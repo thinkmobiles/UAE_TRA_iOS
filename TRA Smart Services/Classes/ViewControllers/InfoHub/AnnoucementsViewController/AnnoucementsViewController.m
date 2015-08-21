@@ -8,6 +8,8 @@
 
 #import "AnnoucementsViewController.h"
 #import "AnnoucementsTableViewCell.h"
+#import "DetailsViewController.h"
+
 
 @interface AnnoucementsViewController ()
 
@@ -16,8 +18,16 @@
 @end
 
 static CGFloat const heightTableViewCell = 90.0f;
-static NSString *const AnnoucementsTableViewCellIdentifier = @"AnnoucementsTableViewCell";
-static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
+static NSString *const cellEuropeUIIdentifier = @"annoucementsCellEuropeUIIdentifier";
+static NSString *const cellArabicUIIdentifier = @"annoucementsCellArabicUIIdentifier";
+static NSString *const cellEuropeUINib =@"AnnoucementsTableViewCellEuropeUI";
+static NSString *const cellArabicUINib =@"AnnoucementsTableViewCellArabicUI";
+static NSString *const segueToDetailsViewControllerIdentifier =@"segueToDetailsViewController";
+
+
+static CGFloat const deltaTableViewCell = 20.0f;
+static CGFloat const indentTableViewCell = 24.0f;
+
 
 @implementation AnnoucementsViewController
 
@@ -26,6 +36,9 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:cellEuropeUINib bundle:nil] forCellReuseIdentifier:cellEuropeUIIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:cellArabicUINib bundle:nil] forCellReuseIdentifier:cellArabicUIIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,25 +62,23 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AnnoucementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AnnoucementsTableViewCellIdentifier forIndexPath:indexPath];
-    
-    cell.textAnnocementsLabel.text = @"Text";
-    cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        [cell.conteinerArabicUI setHidden:NO];
-        [cell.conteinerEuropeUI setHidden:YES];
-    } else {
-        [cell.conteinerArabicUI setHidden:YES];
-        [cell.conteinerEuropeUI setHidden:NO];
-    }
+    AnnoucementsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self cellUIIdentifier]];
     if (indexPath.row % 2) {
-        cell.deltaConstraint.constant = 44;
+        cell.deltaConstraint.constant = indentTableViewCell + deltaTableViewCell;
     } else {
-        cell.deltaConstraint.constant = 24;
+        cell.deltaConstraint.constant = indentTableViewCell;
     }
     cell.backgroundColor = [UIColor clearColor];
+    
+    cell.annocementsText.text = @"Text";
+    cell.annocementsDate.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     [self performSegueWithIdentifier:segueToDetailsViewControllerIdentifier sender:nil];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -87,6 +98,24 @@ static NSString *const segueDetailsViewIdentifier = @"segueDetailsView";
 - (void)updateColors
 {
     
+}
+
+#pragma mark _ Private
+
+- (NSString *)cellUINib
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        return cellArabicUINib;
+    }
+    return cellEuropeUINib;
+}
+
+- (NSString *)cellUIIdentifier
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        return cellArabicUIIdentifier;
+    }
+    return cellEuropeUIIdentifier;
 }
 
 @end

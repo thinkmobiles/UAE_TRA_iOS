@@ -10,12 +10,9 @@
 
 @interface AnnoucementsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *conteinerEuropeUI;
-@property (weak, nonatomic) IBOutlet UIView *conteinerArabicUI;
-
-@property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UILabel *textAnnocementsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
+@property (strong, nonatomic) IBOutlet UIImageView *annocementsImage;
+@property (strong, nonatomic) IBOutlet UILabel *annocementsText;
+@property (strong, nonatomic) IBOutlet UILabel *annocementsDate;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
 
 @end

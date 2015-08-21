@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8467EF281B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */; };
+		8467EF2A1B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467EF291B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib */; };
 		84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84709EAE1B82F2AC008F3D14 /* InfoHubViewController.m */; };
 		84709EB31B82F335008F3D14 /* InfoHubCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84709EB21B82F335008F3D14 /* InfoHubCollectionViewCell.m */; };
 		84709EB71B82F393008F3D14 /* InfoHubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84709EB61B82F393008F3D14 /* InfoHubTableViewCell.m */; };
+		847A847B1B8701B700BB1D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A847A1B8701B700BB1D80 /* Main.storyboard */; };
+		847A847D1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A847C1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib */; };
+		847A847F1B8729FB00BB1D80 /* InfoHubTableViewCellArabicUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A847E1B8729FB00BB1D80 /* InfoHubTableViewCellArabicUI.xib */; };
+		847A84811B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A84801B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib */; };
+		847A84831B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A84821B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib */; };
 		847D03E31B832AE300B0768C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D03E21B832AE300B0768C /* DetailsViewController.m */; };
 		847D03E61B832AF400B0768C /* AnnoucementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D03E51B832AF400B0768C /* AnnoucementsViewController.m */; };
 		847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D03EA1B83407400B0768C /* AnnoucementsTableViewCell.m */; };
-		847D03ED1B83531600B0768C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847D03EC1B83531600B0768C /* Main.storyboard */; };
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
@@ -89,19 +95,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellEuropeUI.xib; sourceTree = "<group>"; };
+		8467EF291B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellArabicUI.xib; sourceTree = "<group>"; };
 		84709EAD1B82F2AC008F3D14 /* InfoHubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoHubViewController.h; sourceTree = "<group>"; };
 		84709EAE1B82F2AC008F3D14 /* InfoHubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoHubViewController.m; sourceTree = "<group>"; };
 		84709EB11B82F335008F3D14 /* InfoHubCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoHubCollectionViewCell.h; sourceTree = "<group>"; };
 		84709EB21B82F335008F3D14 /* InfoHubCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoHubCollectionViewCell.m; sourceTree = "<group>"; };
 		84709EB51B82F393008F3D14 /* InfoHubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoHubTableViewCell.h; sourceTree = "<group>"; };
 		84709EB61B82F393008F3D14 /* InfoHubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoHubTableViewCell.m; sourceTree = "<group>"; };
+		847A847A1B8701B700BB1D80 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		847A847C1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoHubTableViewCellEuropeUI.xib; sourceTree = "<group>"; };
+		847A847E1B8729FB00BB1D80 /* InfoHubTableViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoHubTableViewCellArabicUI.xib; sourceTree = "<group>"; };
+		847A84801B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoHubCollectionViewCellEuropeUI.xib; sourceTree = "<group>"; };
+		847A84821B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoHubCollectionViewCellArabicUI.xib; sourceTree = "<group>"; };
 		847D03E11B832AE300B0768C /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		847D03E21B832AE300B0768C /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		847D03E41B832AF400B0768C /* AnnoucementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoucementsViewController.h; sourceTree = "<group>"; };
 		847D03E51B832AF400B0768C /* AnnoucementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoucementsViewController.m; sourceTree = "<group>"; };
 		847D03E91B83407400B0768C /* AnnoucementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoucementsTableViewCell.h; sourceTree = "<group>"; };
 		847D03EA1B83407400B0768C /* AnnoucementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoucementsTableViewCell.m; sourceTree = "<group>"; };
-		847D03EC1B83531600B0768C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84869E2A1B7DEBE100177B5B /* CompliantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompliantViewController.h; sourceTree = "<group>"; };
 		84869E2B1B7DEBE100177B5B /* CompliantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompliantViewController.m; sourceTree = "<group>"; };
 		84869E2E1B7E132D00177B5B /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
@@ -285,6 +297,8 @@
 			children = (
 				84709EB11B82F335008F3D14 /* InfoHubCollectionViewCell.h */,
 				84709EB21B82F335008F3D14 /* InfoHubCollectionViewCell.m */,
+				847A84801B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib */,
+				847A84821B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib */,
 			);
 			path = InfoHubCollectionViewCell;
 			sourceTree = "<group>";
@@ -294,6 +308,8 @@
 			children = (
 				84709EB51B82F393008F3D14 /* InfoHubTableViewCell.h */,
 				84709EB61B82F393008F3D14 /* InfoHubTableViewCell.m */,
+				847A847C1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib */,
+				847A847E1B8729FB00BB1D80 /* InfoHubTableViewCellArabicUI.xib */,
 			);
 			path = InfoHubTableViewCell;
 			sourceTree = "<group>";
@@ -321,6 +337,8 @@
 			children = (
 				847D03E91B83407400B0768C /* AnnoucementsTableViewCell.h */,
 				847D03EA1B83407400B0768C /* AnnoucementsTableViewCell.m */,
+				8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */,
+				8467EF291B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib */,
 			);
 			path = AnnoucementsTableViewCell;
 			sourceTree = "<group>";
@@ -724,7 +742,7 @@
 		ED982F301B5D24DA00B6B644 /* Storyboars */ = {
 			isa = PBXGroup;
 			children = (
-				847D03EC1B83531600B0768C /* Main.storyboard */,
+				847A847A1B8701B700BB1D80 /* Main.storyboard */,
 			);
 			path = Storyboars;
 			sourceTree = "<group>";
@@ -1098,13 +1116,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847D03ED1B83531600B0768C /* Main.storyboard in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
+				847A84811B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
+				847A84831B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib in Resources */,
+				847A847F1B8729FB00BB1D80 /* InfoHubTableViewCellArabicUI.xib in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
 				ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */,
+				847A847B1B8701B700BB1D80 /* Main.storyboard in Resources */,
+				8467EF281B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib in Resources */,
+				847A847D1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib in Resources */,
+				8467EF2A1B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

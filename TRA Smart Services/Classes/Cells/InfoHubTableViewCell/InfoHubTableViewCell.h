@@ -10,14 +10,10 @@
 
 @interface InfoHubTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UILabel *textInfoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateInfoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleInfoLabel;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConsrtraintEuropeUI;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConsrtraintArabicUI;
-@property (weak, nonatomic) IBOutlet UIView *conteinerEuropeUI;
-@property (weak, nonatomic) IBOutlet UIView *conteinerArabicUI;
+@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UILabel *textInfoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateInfoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleInfoLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
 
 @end
