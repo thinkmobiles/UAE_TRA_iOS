@@ -247,7 +247,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         weakSelf.avatarImageLayer.opacity = 1.f;
     });
     
-    CGFloat delayForInfoDrawing = AnimationTimeForLine * (6. / 8.);
+    CGFloat delayForInfoDrawing = self.isFakeButtonsOnTop ? AnimationTimeForLine * (5. / 8.) : AnimationTimeForLine * (6. / 8.);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.informationLayer.opacity = 1.f;
     });
@@ -270,7 +270,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
     });
     
-    CGFloat delayForNotificationLayer = AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
+    CGFloat delayForNotificationLayer = self.isFakeButtonsOnTop ? AnimationTimeForLine * (6. / 8.) : AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.notificationLayer.opacity = 1.f;
     });
