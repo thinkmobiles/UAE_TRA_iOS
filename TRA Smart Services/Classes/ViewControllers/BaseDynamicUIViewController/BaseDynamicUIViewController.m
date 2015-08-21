@@ -21,6 +21,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRTLArabicUI) name:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setLTREuropeUI) name:UIDynamicServiceNotificationKeyNeedSetLTRUI object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setNeedsUpdateFont) name:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
     
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         [self setRTLArabicUI];
@@ -33,7 +34,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateSubviewForParentViewIfPossible:self.view];
     [self localizeUI];
     [self updateColors];
     
@@ -82,19 +82,29 @@
     //dummy
 }
 
+#pragma mark - Private Notifications
+
+- (void)setNeedsUpdateFont
+{
+    [self updateSubviewForParentViewIfPossible:self.view];
+}
+
 #pragma mark - Private
 
 - (void)updateFontSizeForView:(UIView *)view
 {
-    if (view.tag == 1001) {
-        return;
-    }
-    
     if ([view respondsToSelector:@selector(setFont:)]) {
-        NSUInteger fontSize = [DynamicUIService service].fontSize;
-        NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
-        UIFont *updatedFont = [UIFont fontWithName:fontName size:fontSize];
-        [view setValue:updatedFont forKey:@"font"];
+        CGFloat smallMultiplier = 0.9f;
+        CGFloat bigMultiplier = 1.1f;
+        
+        CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
+
+        if ([DynamicUIService service].fontSize) {
+            CGFloat fontSize = [DynamicUIService service].fontSize == ApplicationFontSmall ? currentFontSize * smallMultiplier : currentFontSize * bigMultiplier;
+            NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
+            UIFont *updatedFont = [UIFont fontWithName:fontName size:fontSize];
+            [view setValue:updatedFont forKey:@"font"];
+        }
     }
 }
 

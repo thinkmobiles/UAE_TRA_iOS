@@ -99,7 +99,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 {
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
+    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
     NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
@@ -120,7 +120,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 + (void)updateFontsOnTabBar
 {
     CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize > MaximumTabBarFontSize ? MaximumTabBarFontSize : fontSize;
+    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
     NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
 

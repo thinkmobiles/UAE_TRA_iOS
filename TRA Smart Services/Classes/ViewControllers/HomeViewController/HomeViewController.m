@@ -35,6 +35,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 @property (weak, nonatomic) IBOutlet UICollectionView *speedAccessCollectionView;
 @property (weak, nonatomic) IBOutlet HomeTopBarView *topView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *movableImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
@@ -89,7 +90,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     [super viewDidAppear:animated];
     
     [self.topView animateTopViewApearence];
-}    
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {

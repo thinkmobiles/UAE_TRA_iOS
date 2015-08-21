@@ -79,6 +79,16 @@ static NSString *const KeyLanguageArabic = @"ar";
     }
 }
 
+- (void)setFontSize:(ApplicationFont)fontSize
+{
+    ApplicationFont prevFont = _fontSize;
+    _fontSize = fontSize;
+    
+    if (_fontSize != prevFont && prevFont != ApplicationFontUndefined) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
+    }
+}
+
 #pragma mark - ColorScheme
 
 - (UIColor *)currentApplicationColor
