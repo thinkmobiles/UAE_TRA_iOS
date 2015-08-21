@@ -71,18 +71,25 @@ static NSString *const collectionViewCellArabicUINib =@"InfoHubCollectionViewCel
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(searchText.length == 0) {
+    if(!searchText.length) {
         self.searchArray = [[NSMutableArray alloc] initWithArray:self.textArray];
-    } else {    
+    } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", searchText];
         NSArray *arraySort = [self.textArray filteredArrayUsingPredicate:predicate];
         self.searchArray = [[NSMutableArray alloc] initWithArray:arraySort];
-        [self.tableView reloadData];
     }
+    [self.tableView reloadData];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
 {
+    [self sourceDatail];
+    [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [super searchBarCancelButtonClicked:searchBar];
     [self sourceDatail];
     [self.tableView reloadData];
 }
