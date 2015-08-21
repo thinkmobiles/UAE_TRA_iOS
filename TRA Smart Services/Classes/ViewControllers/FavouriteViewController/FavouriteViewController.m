@@ -220,18 +220,16 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
     
-    for (int i = 0; i < 2; i++) {
-        TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
-        service.serviceOrder = @(i);
-        if (i % 2) {
-            service.serviceDescription = [NSString stringWithFormat:@"Addressing consumer disputes request with licensees on telecomunication services -  %i", (int)i];
-            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_chat"], 1.0);
-        } else {
-            service.serviceDescription = [NSString stringWithFormat:@"Broadband speed test -  %i", (int)i];
-            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);
-        }
-        service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
+    int i = 0;
+    TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
+    if (arc4random() % 2) {
+        service.serviceDescription = [NSString stringWithFormat:@"Addressing consumer disputes request with licensees on telecomunication services -  %i", (int)i];
+        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_chat"], 1.0);
+    } else {
+        service.serviceDescription = [NSString stringWithFormat:@"Broadband speed test -  %i", (int)i];
+        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);
     }
+    service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
 }
 

@@ -8,7 +8,7 @@
 
 #pragma mark - NoCRMServices
 
-static NSString *const traSSNoCRMServiceBaseURL = @"http://134.249.164.53:7791";
+static NSString *const traSSNoCRMServiceBaseURL = @"http://mobws.tra.gov.ae";//@"http://134.249.164.53:7791";
 
 static NSString *const traSSNOCRMServiceGETDomainData = @"/checkWhois?checkUrl=";
 static NSString *const traSSNOCRMServiceGETDomainAvaliability = @"/checkWhoisAvailable?checkUrl=";

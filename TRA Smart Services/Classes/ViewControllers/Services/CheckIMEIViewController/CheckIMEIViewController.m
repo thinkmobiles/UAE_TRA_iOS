@@ -93,7 +93,6 @@
 - (IBAction)checkButtonTapped:(id)sender
 {
     if (self.resultTextField.text.length) {
-        self.resultTextField.text = @"";
         [AppHelper showLoader];
         [self endEditing];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
@@ -103,6 +102,7 @@
                 //todo
             }
             [AppHelper hideLoader];
+            self.resultTextField.text = @"";
         }];
     } else {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];

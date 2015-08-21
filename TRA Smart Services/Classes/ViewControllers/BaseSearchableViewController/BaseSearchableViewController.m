@@ -12,7 +12,7 @@
 @interface BaseSearchableViewController ()
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItemArabic;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addBarButton;
 
 
 @property (strong, nonatomic) UISearchBar *searchBar;
@@ -41,16 +41,19 @@
     
     CGRect navBarRect = self.navigationController.navigationBar.bounds;
     CGFloat offset = 20.f;
-    self.searchBar.frame = CGRectMake(offset / 2, 0, navBarRect.size.width - offset, navBarRect.size.height);
+    self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2, navBarRect.size.height);
     self.searchBar.barTintColor = [UIColor whiteColor];
     self.searchBar.tintColor = [DynamicUIService service].currentApplicationColor;
     
     self.searchBar.layer.opacity = 1.f;
-    [self.titleView addSubview: self.searchBar];
+    CGRect titleRect = CGRectMake(0, 0, self.searchBar.bounds.size.width, self.titleView.bounds.size.height);
+    self.titleView.bounds = titleRect;
+    [self.titleView addSubview:self.searchBar];
     [self.searchBar.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
     [self.searchBar becomeFirstResponder];
     
     self.navigationItem.rightBarButtonItems = @[];
+    self.navigationItem.leftBarButtonItems = @[];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -60,8 +63,6 @@
     [self.searchBar.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideSearchBar"];
     self.searchBar.layer.opacity = 0.f;
     [self.searchBar endEditing:YES];
-    
-    [self prepareTitleLabel];
 }
 
 #pragma mark - Animations
@@ -71,7 +72,11 @@
     if (anim == [self.searchBar.layer animationForKey:@"hideSearchBar"]) {
         [self.searchBar.layer removeAllAnimations];
         [self.searchBar removeFromSuperview];
+        [self.navigationItem setLeftBarButtonItem:self.addBarButton animated:YES];
         [self.navigationItem setRightBarButtonItem:self.searchBarButtonItem animated:YES];
+        CGRect titleRect = CGRectMake(self.navigationController.navigationBar.bounds.origin.x, self.navigationController.navigationBar.bounds.origin.y, self.navigationController.navigationBar.bounds.size.width / 2, self.navigationController.navigationBar.bounds.size.height);
+        self.titleView.frame = titleRect;
+        [self.titleView addSubview: self.searchanbeleViewControllerTitle];
     }
 }
 
@@ -88,7 +93,8 @@
 - (void)prepareNavigationBar
 {
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    UIView *titleView = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.bounds];
+    CGRect titleRect = CGRectMake(self.navigationController.navigationBar.bounds.origin.x, self.navigationController.navigationBar.bounds.origin.y, self.navigationController.navigationBar.bounds.size.width / 2, self.navigationController.navigationBar.bounds.size.height);
+    UIView *titleView = [[UIView alloc] initWithFrame:titleRect];
     self.titleView = titleView;
     self.navigationItem.titleView = self.titleView;
 }
@@ -96,7 +102,7 @@
 - (void)prepareTitleLabel
 {
     if (!self.searchanbeleViewControllerTitle) {
-        self.searchanbeleViewControllerTitle = [[UILabel alloc] initWithFrame:self.navigationController.navigationBar.bounds];
+        self.searchanbeleViewControllerTitle = [[UILabel alloc] initWithFrame:self.titleView.bounds];
         self.searchanbeleViewControllerTitle.textColor = [UIColor whiteColor];
         self.searchanbeleViewControllerTitle.textAlignment = NSTextAlignmentCenter;
     }
