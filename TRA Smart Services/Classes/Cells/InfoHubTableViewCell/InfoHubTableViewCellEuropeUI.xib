@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoHubTableViewCellEuropeUI" id="URg-MT-sR0" customClass="InfoHubTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="URg-MT-sR0" id="o6F-dJ-uc6">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nt-zh-Msp" userLabel="ConteinerEuropeUI - View">
+                        <rect key="frame" x="24" y="0.0" width="296" height="89"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-3a-deF" userLabel="Separator - View">
+                                <rect key="frame" x="90" y="88" width="206" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="jWj-Dm-e1M"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_warn_red" translatesAutoresizingMaskIntoConstraints="NO" id="mQ5-nU-u4g" userLabel="Image">
+                                <rect key="frame" x="0.0" y="9" width="70" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="R4H-Ya-7H9"/>
+                                    <constraint firstAttribute="height" constant="80" id="ZyK-Ni-QAK"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-t2-I88" userLabel="SubConteiner - View">
+                                <rect key="frame" x="90" y="34" width="186" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eoj-C8-kdx" userLabel="Title - Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-7L-fR4" userLabel="Date - Label">
+                                        <rect key="frame" x="186" y="0.0" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-Vo-XwA" userLabel="TextInfo - Label">
+                                        <rect key="frame" x="0.0" y="30" width="186" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="right" secondItem="Oc4-7L-fR4" secondAttribute="right" id="0BE-v0-6ac"/>
+                                    <constraint firstItem="Eoj-C8-kdx" firstAttribute="top" secondItem="n3P-t2-I88" secondAttribute="top" id="1m5-oK-3hY"/>
+                                    <constraint firstItem="Exe-Vo-XwA" firstAttribute="top" secondItem="Eoj-C8-kdx" secondAttribute="bottom" constant="8" id="2Wx-AZ-3WR"/>
+                                    <constraint firstItem="Exe-Vo-XwA" firstAttribute="left" secondItem="n3P-t2-I88" secondAttribute="left" id="AYl-Ex-oLX"/>
+                                    <constraint firstItem="Oc4-7L-fR4" firstAttribute="top" secondItem="n3P-t2-I88" secondAttribute="top" id="I8n-jL-9ia"/>
+                                    <constraint firstAttribute="right" secondItem="Exe-Vo-XwA" secondAttribute="right" id="OmF-Od-WJ2"/>
+                                    <constraint firstItem="Eoj-C8-kdx" firstAttribute="left" secondItem="n3P-t2-I88" secondAttribute="left" id="Rl7-5h-8Zx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Exe-Vo-XwA" secondAttribute="bottom" id="e2k-IF-plf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="hyg-Le-NkL"/>
+                                    <constraint firstItem="Oc4-7L-fR4" firstAttribute="left" secondItem="Eoj-C8-kdx" secondAttribute="right" constant="16" id="ldq-6Q-Tlh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mQ5-nU-u4g" firstAttribute="left" secondItem="3nt-zh-Msp" secondAttribute="left" id="CTO-sG-IUl"/>
+                            <constraint firstAttribute="right" secondItem="L6e-3a-deF" secondAttribute="right" id="DUP-GZ-ZcT"/>
+                            <constraint firstItem="n3P-t2-I88" firstAttribute="left" secondItem="mQ5-nU-u4g" secondAttribute="right" constant="20" id="Mhp-hA-sgV"/>
+                            <constraint firstItem="n3P-t2-I88" firstAttribute="centerY" secondItem="mQ5-nU-u4g" secondAttribute="centerY" id="XqN-8q-TFy"/>
+                            <constraint firstAttribute="right" secondItem="n3P-t2-I88" secondAttribute="right" constant="20" id="gws-H9-ufP"/>
+                            <constraint firstAttribute="bottom" secondItem="mQ5-nU-u4g" secondAttribute="bottom" id="ht4-Zo-ewl"/>
+                            <constraint firstAttribute="bottom" secondItem="L6e-3a-deF" secondAttribute="bottom" id="rMm-Lg-wMa"/>
+                            <constraint firstItem="L6e-3a-deF" firstAttribute="left" secondItem="mQ5-nU-u4g" secondAttribute="right" constant="20" id="w0w-kO-tR7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="right" secondItem="3nt-zh-Msp" secondAttribute="right" id="Mpj-GH-H1S"/>
+                    <constraint firstAttribute="bottom" secondItem="3nt-zh-Msp" secondAttribute="bottom" id="NBz-dr-vgJ"/>
+                    <constraint firstItem="3nt-zh-Msp" firstAttribute="left" secondItem="o6F-dJ-uc6" secondAttribute="left" constant="24" id="qf6-5V-mnL"/>
+                    <constraint firstItem="3nt-zh-Msp" firstAttribute="top" secondItem="o6F-dJ-uc6" secondAttribute="top" id="v7C-NR-fU4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="infoHubTransactionDateLabel" destination="Oc4-7L-fR4" id="FBg-gn-wOf"/>
+                <outlet property="infoHubTransactionDescriptionLabel" destination="Exe-Vo-XwA" id="4fj-XZ-haS"/>
+                <outlet property="infoHubTransactionImageView" destination="mQ5-nU-u4g" id="Y8D-i3-QgO"/>
+                <outlet property="infoHubTransactionTitleLabel" destination="Eoj-C8-kdx" id="889-3o-nkh"/>
+                <outlet property="marginInfoHubContainerConstraint" destination="qf6-5V-mnL" id="9le-Ok-asP"/>
+            </connections>
+            <point key="canvasLocation" x="277" y="161"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_warn_red" width="70" height="81"/>
+    </resources>
+</document>

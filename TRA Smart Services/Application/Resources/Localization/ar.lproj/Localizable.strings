@@ -106,3 +106,18 @@
 "coverageReport.good" = "جيدة";
 "coverageReport.strong" = "قوية";
 "coverageReport.veryStrong" = "قوية جداً";
+
+//InfoHubViewController
+
+"infoHub.title" = "INFO HUB";
+"announcements.label.text" = "ANNOUNCEMENTS";
+"seeMore.button.title" = "See more";
+"transactions.label.text" = "TRANSACTIONS";
+
+//AnnoucementsViewController
+
+"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+
+//DetailsViewController
+
+"details.title" = "INFO HUB DETAILS";
