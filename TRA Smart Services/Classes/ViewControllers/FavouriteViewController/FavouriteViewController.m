@@ -407,7 +407,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     
     [self.arcDeleteZoneLayer addSublayer:self.contentFakeIconLayer];
     [self.arcDeleteZoneLayer insertSublayer:self.shadowFakeIconLayer below:self.contentFakeIconLayer];
-    [self.view.layer addSublayer:self.arcDeleteZoneLayer];
+    [self.tableView.layer addSublayer:self.arcDeleteZoneLayer];
     
     [self animateDeleteZoneAppearence];
 }
