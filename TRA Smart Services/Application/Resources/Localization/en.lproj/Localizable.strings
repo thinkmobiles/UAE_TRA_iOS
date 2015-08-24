@@ -49,7 +49,7 @@
 "settings.label.fontsize" = "Font size";
 "settings.label.themeOption" = "Color";
 "settings.label.logout" = "Logout";
-"settings.switchControl.language.arabic" = "Arabic";
+"settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";

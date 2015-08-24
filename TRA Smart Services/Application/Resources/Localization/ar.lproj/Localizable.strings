@@ -8,48 +8,48 @@
 
 //TabBarMenuItems
 
-"tabBarMenu_item_1" = "Home";
-"tabBarMenu_item_2" = "Favourite";
-"tabBarMenu_item_3" = "Info Hub";
-"tabBarMenu_item_4" = "Inquires";
-"tabBarMenu_item_5" = "Settings";
+"tabBarMenu_item_1" = "الرئيسية";
+"tabBarMenu_item_2" = "المفضلة";
+"tabBarMenu_item_3" = "معلومات";
+"tabBarMenu_item_4" = "استفسارات";
+"tabBarMenu_item_5" = "إعدادات";
 
 //LoginViewController
 
-"login.title" = "Login";
-"login.placeHolderText.username" = "Username";
-"login.placeHolderText.password" = "Password";
-"login.button.login" = "Login";
-"login.button.forgotPassword" = "Forgot the password";
-"login.button.registerButton" = "Register now";
+"login.title" = "تسجيل الدخول";
+"login.placeHolderText.username" = "اسم المستخدم";
+"login.placeHolderText.password" = "كلمة المرور";
+"login.button.login" = "تسجيل الدخول";
+"login.button.forgotPassword" = "نسيت كلمة المرور";
+"login.button.registerButton" = "تسجيل";
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
 
 //RegisterViewController
 
 "register.title" = "Create account";
-"register.placeholderText.username" = "Username";
-"register.placeHolderText.gender" = "Gender";
-"register.placeHolderText.phone" = "Phone";
-"register.placeHolderText.password" ="Password";
-"register.button.register" = "Register";
-"register.button.login" = "Login";
+"register.placeholderText.username" = "اسم المستخدم";
+"register.placeHolderText.gender" = "النوع";
+"register.placeHolderText.phone" = "الهاتف";
+"register.placeHolderText.password" ="كلمة المرور";
+"register.button.register" = "تسجيل";
+"register.button.login" = "تسجيل الدخول";
 
 //RestorePasswordViewController
 
 "restorePassword.title" = "Restore Password";
-"restorePassword.PlaceholderText.email" = "E-mail";
+"restorePassword.PlaceholderText.email" = "البريد الالكتروني";
 "restorePassword.button.restore" = "Restore Password";
 "restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
 
 //SettingsViewController
 
-"settings.textfield.username" = "Username1";
-"settings.textfield.email" = "E-mail1";
-"settings.label.language" = "Language1";
-"settings.label.fontsize" = "Font size1";
-"settings.label.themeOption" = "Color1";
-"settings.label.logout" = "Logout1";
-"settings.switchControl.language.arabic" = "Arabic";
+"settings.textfield.username" = "اسم المستخدم";
+"settings.textfield.email" = "البريد الالكتروني";
+"settings.label.language" = "اللغة";
+"settings.label.fontsize" = "حجم الخط";
+"settings.label.themeOption" = "خيارات الألوان";
+"settings.label.logout" = "تسجيل الخروج";
+"settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
@@ -58,39 +58,39 @@
 //HomeViewController
 
 "speedAccess.service.name.-1" = "Demo";
-"speedAccess.service.name.0" = "Domain Info1";
-"speedAccess.service.name.1" = "Domain Avaliability1";
+"speedAccess.service.name.0" = "تفاصيل النطاق";
+"speedAccess.service.name.1" = "تحقق من توفر النطاق";
 "speedAccess.service.name.2" = "Check IMEI1";
 "speedAccess.service.name.3" = "Mobile Brand1";
 "speedAccess.service.name.4" = "Feedback1";
-"speedAccess.service.name.5" = "Spam Report1";
+"speedAccess.service.name.5" = "رسائل غير مرغوبة";
 "speedAccess.service.name.6" = "Help Salim1";
-"speedAccess.service.name.7" = "Verification1";
-"speedAccess.service.name.8" = "Coverage1";
-"speedAccess.service.name.9" = "Internet1";
-"speedAccess.service.name.10" = "Compliant1";
+"speedAccess.service.name.7" = "تحقق";
+"speedAccess.service.name.8" = "التغطية";
+"speedAccess.service.name.9" = "انترنت";
+"speedAccess.service.name.10" = "شكوى";
 "speedAccess.service.name.11" = "Suggestion";
 
 //FavouriteViewController
 
 "favourite.title" = "FAVORITES";
-"favourite.button.addFav.title" = "ADD A SERVICE";
-"favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";
+"favourite.button.addFav.title" = "إضافة خدمة";
+"favourite.notification" = "لم تقم باختيار n\خدمة ضمن قائمة n\الخدمات المفضلة.";
 
 //FavouriteCell
 
-"favouriteCell.infoButton.title" = "Service Info11";
-"favouriteCell.deleteButton.title" = "Remove11";
+"favouriteCell.infoButton.title" = "معلومات الخدمة";
+"favouriteCell.deleteButton.title" = "حذف";
 
 //ServiceInfoViewController
 
-"serviceInfoItemName.0" = "Service Info";
-"serviceInfoItemName.1" = "Required Documents";
-"serviceInfoItemName.2" = "Terms & Conditions";
-"serviceInfoItemName.3" = "Service Package";
-"serviceInfoItemName.4" = "Processing Time";
-"serviceInfoItemName.5" = "Service Fees";
-"serviceInfoItemName.6" = "Conatct In-change";
+"serviceInfoItemName.0" = "عن الخدمة";
+"serviceInfoItemName.1" = "الوثائق المطلوبة";
+"serviceInfoItemName.2" = "شروط و متطلبات الحصول على الخدمة";
+"serviceInfoItemName.3" = "باقة الخدمة";
+"serviceInfoItemName.4" = "زمن تقديم الخدمة";
+"serviceInfoItemName.5" = "رسوم الخدمة";
+"serviceInfoItemName.6" = "المسؤول المباشر عن الخدمة";
 "serviceInfoItmeDetailedDescription.0" = "No description";
 "serviceInfoItmeDetailedDescription.1" = "No description";
 "serviceInfoItmeDetailedDescription.2" = "No description";

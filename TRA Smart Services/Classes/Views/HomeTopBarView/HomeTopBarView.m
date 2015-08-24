@@ -609,9 +609,10 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     animation.fromValue = [NSValue valueWithCGPoint:startPoint];
     animation.toValue = [NSValue valueWithCGPoint:endPoint];
-    animation.duration = 0.3;
+    animation.duration = 0.32;
     animation.delegate = self;
     animation.removedOnCompletion = NO;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     return animation;
 }
 

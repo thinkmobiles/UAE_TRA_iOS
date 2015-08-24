@@ -34,37 +34,38 @@
 {
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    } else {
+        [AppHelper showLoader];
+        [self.view endEditing:YES];
+        __weak typeof(self) weakSelf = self;
+        [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                weakSelf.informationTextView.text = response;
+            }
+            [AppHelper hideLoader];
+        }];
     }
-    [AppHelper showLoader];
-    [self.view endEditing:YES];
-    __weak typeof(self) weakSelf = self;
-    [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:error.localizedDescription];
-        } else {
-            weakSelf.informationTextView.text = response;
-        }
-        [AppHelper hideLoader];
-    }];
 }
 
 - (IBAction)whoIsButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+    } else {
+        [AppHelper showLoader];
+        [self.view endEditing:YES];
+        __weak typeof(self) weakSelf = self;
+        [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                weakSelf.informationTextView.text = response;
+            }
+            [AppHelper hideLoader];
+        }];
     }
-    [AppHelper showLoader];
-    [self.view endEditing:YES];
-    __weak typeof(self) weakSelf = self;
-    [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:error.localizedDescription];
-        } else {
-            weakSelf.informationTextView.text = response;
-        }
-        [AppHelper hideLoader];
-    }];
-
 }
 
 #pragma mark - Private
