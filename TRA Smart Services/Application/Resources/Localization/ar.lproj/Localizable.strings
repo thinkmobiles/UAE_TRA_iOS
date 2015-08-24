@@ -26,7 +26,7 @@
 
 //RegisterViewController
 
-"register.title" = "Create account";
+"register.title" = "تسجيل";
 "register.placeholderText.username" = "اسم المستخدم";
 "register.placeHolderText.gender" = "النوع";
 "register.placeHolderText.phone" = "الهاتف";
@@ -73,7 +73,7 @@
 
 //FavouriteViewController
 
-"favourite.title" = "FAVORITES";
+"favourite.title" = "المفضلة";
 "favourite.button.addFav.title" = "إضافة خدمة";
 "favourite.notification" = "لم تقم باختيار n\خدمة ضمن قائمة n\الخدمات المفضلة.";
 
