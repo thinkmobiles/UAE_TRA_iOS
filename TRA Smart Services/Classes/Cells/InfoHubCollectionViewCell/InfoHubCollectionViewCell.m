@@ -16,9 +16,9 @@
 {
     [super prepareForReuse];
     
-    self.image.image = nil;
-    self.dateLabel.text = @"";
-    self.textLabel.text = @"";
+    self.announcementPreviewIconImageView.image = nil;
+    self.announcementPreviewDateLabel.text = @"";
+    self.announcementPreviewDescriptionLabel.text = @"";
 }
 
 @end

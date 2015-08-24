@@ -69,15 +69,15 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
-
-    cell.dateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
-    cell.textLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
+    InfoHubCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
+    cell.announcementPreviewDateLabel.text = @"06/28/15";
+    cell.announcementPreviewIconImageView.image = [UIImage imageNamed:@"ic_type_apr"];
+    cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     return cell;
 }
 

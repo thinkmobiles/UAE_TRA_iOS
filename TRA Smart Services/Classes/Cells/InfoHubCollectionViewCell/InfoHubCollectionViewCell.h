@@ -11,8 +11,8 @@ static NSString *const InfoHubCollectionViewCellArabicIdentifier = @"InfoHubColl
 
 @interface InfoHubCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *textLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UILabel *announcementPreviewDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *announcementPreviewDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *announcementPreviewIconImageView;
 
 @end
