@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -87,11 +87,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dateInfoLabel" destination="62O-Y2-V7I" id="NiU-Q4-RmM"/>
-                <outlet property="deltaConstraint" destination="OX6-KA-mBe" id="Gg6-9R-xYA"/>
-                <outlet property="image" destination="GR7-Ag-5Mw" id="aYD-Pg-gw2"/>
-                <outlet property="textInfoLabel" destination="eSP-wr-lZT" id="fKV-aE-ESb"/>
-                <outlet property="titleInfoLabel" destination="Baf-n5-1qu" id="epY-zb-ZuG"/>
+                <outlet property="infoHubTransactionDateLabel" destination="62O-Y2-V7I" id="Dsz-Q7-RhT"/>
+                <outlet property="infoHubTransactionDescriptionLabel" destination="eSP-wr-lZT" id="x9U-Tx-EAI"/>
+                <outlet property="infoHubTransactionImageView" destination="GR7-Ag-5Mw" id="4Sf-vU-Euj"/>
+                <outlet property="infoHubTransactionTitleLabel" destination="Baf-n5-1qu" id="bXg-hq-DsV"/>
+                <outlet property="marginInfoHubContainerConstraint" destination="OX6-KA-mBe" id="WvH-HH-7G2"/>
             </connections>
             <point key="canvasLocation" x="193" y="63"/>
         </tableViewCell>

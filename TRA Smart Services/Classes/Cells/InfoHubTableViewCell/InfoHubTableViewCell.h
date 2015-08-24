@@ -6,14 +6,15 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+static NSString *const InfoHubTableViewCellEuropeIdentifier = @"InfoHubTableViewCellEuropeUI";
+static NSString *const InfoHubTableViewCellArabicIdentifier = @"InfoHubTableViewCellArabicUI";
 
 @interface InfoHubTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *textInfoLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateInfoLabel;
-@property (strong, nonatomic) IBOutlet UILabel *titleInfoLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deltaConstraint;
+@property (strong, nonatomic) IBOutlet UIImageView *infoHubTransactionImageView;
+@property (strong, nonatomic) IBOutlet UILabel *infoHubTransactionDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *infoHubTransactionDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *infoHubTransactionTitleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *marginInfoHubContainerConstraint;
 
 @end

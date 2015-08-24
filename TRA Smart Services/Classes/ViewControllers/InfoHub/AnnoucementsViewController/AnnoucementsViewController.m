@@ -17,16 +17,11 @@
 
 @end
 
-static CGFloat const heightTableViewCell = 90.0f;
-static NSString *const cellEuropeUIIdentifier = @"annoucementsCellEuropeUIIdentifier";
-static NSString *const cellArabicUIIdentifier = @"annoucementsCellArabicUIIdentifier";
-static NSString *const cellEuropeUINib =@"AnnoucementsTableViewCellEuropeUI";
-static NSString *const cellArabicUINib =@"AnnoucementsTableViewCellArabicUI";
-static NSString *const segueToDetailsViewControllerIdentifier =@"segueToDetailsViewController";
+static NSString *const SegueToDetailsViewControllerIdentifier = @"segueToDetailsViewController";
 
 
-static CGFloat const deltaTableViewCell = 20.0f;
-static CGFloat const indentTableViewCell = 24.0f;
+static CGFloat const AdditionalCellOffset = 20.0f;
+static CGFloat const DefaultCellOffset = 24.0f;
 
 
 @implementation AnnoucementsViewController
@@ -37,8 +32,8 @@ static CGFloat const indentTableViewCell = 24.0f;
 {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:cellEuropeUINib bundle:nil] forCellReuseIdentifier:cellEuropeUIIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:cellArabicUINib bundle:nil] forCellReuseIdentifier:cellArabicUIIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellEuropeUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellEuropeIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellArabicIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,7 +47,7 @@ static CGFloat const indentTableViewCell = 24.0f;
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return heightTableViewCell;
+    return 90.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,21 +59,21 @@ static CGFloat const indentTableViewCell = 24.0f;
 {
     AnnoucementsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self cellUIIdentifier]];
     if (indexPath.row % 2) {
-        cell.deltaConstraint.constant = indentTableViewCell + deltaTableViewCell;
+        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
     } else {
-        cell.deltaConstraint.constant = indentTableViewCell;
+        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
     }
     cell.backgroundColor = [UIColor clearColor];
     
-    cell.annocementsText.text = @"Text";
-    cell.annocementsDate.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+    cell.annocementsDescriptionLabel.text = @"Text";
+    cell.annocementsDateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
 
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     [self performSegueWithIdentifier:segueToDetailsViewControllerIdentifier sender:nil];
+     [self performSegueWithIdentifier:SegueToDetailsViewControllerIdentifier sender:nil];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -105,9 +100,9 @@ static CGFloat const indentTableViewCell = 24.0f;
 - (NSString *)cellUIIdentifier
 {
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        return cellArabicUIIdentifier;
+        return AnnoucementsTableViewCellArabicIdentifier;
     }
-    return cellEuropeUIIdentifier;
+    return AnnoucementsTableViewCellEuropeIdentifier;
 }
 
 @end

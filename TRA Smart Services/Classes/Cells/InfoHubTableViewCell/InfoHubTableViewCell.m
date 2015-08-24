@@ -10,19 +10,16 @@
 
 @implementation InfoHubTableViewCell
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-}
+#pragma mark - LifeCycle
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
     
-    self.image.image = nil;
-    self.textInfoLabel.text = @"";
-    self.dateInfoLabel.text = @"";
-    self.titleInfoLabel.text = @"";
+    self.infoHubTransactionImageView.image = nil;
+    self.infoHubTransactionDescriptionLabel.text = @"";
+    self.infoHubTransactionDateLabel.text = @"";
+    self.infoHubTransactionTitleLabel.text = @"";
 }
 
 @end

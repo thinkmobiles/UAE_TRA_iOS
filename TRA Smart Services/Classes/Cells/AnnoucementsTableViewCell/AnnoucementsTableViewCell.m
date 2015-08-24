@@ -10,18 +10,15 @@
 
 @implementation AnnoucementsTableViewCell
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-}
+#pragma mark - LifeCycle
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
     
-    self.annocementsImage = nil;
-    self.annocementsDate.text = @"";
-    self.annocementsText.text = @"";
+    self.annocementsImageView = nil;
+    self.annocementsDateLabel.text = @"";
+    self.annocementsDescriptionLabel.text = @"";
 }
 
 @end

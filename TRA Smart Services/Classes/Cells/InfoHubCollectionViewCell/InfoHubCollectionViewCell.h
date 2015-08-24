@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+static NSString *const InfoHubCollectionViewCellEuropeIdentifier = @"InfoHubCollectionViewCellEuropeUI";
+static NSString *const InfoHubCollectionViewCellArabicIdentifier = @"InfoHubCollectionViewCellArabicUI";
 
 @interface InfoHubCollectionViewCell : UICollectionViewCell
 

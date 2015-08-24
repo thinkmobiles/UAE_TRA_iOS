@@ -45,8 +45,6 @@
 		ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085041B5F70AC00779CBD /* NetworkManager.m */; };
 		ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085311B5F776C00779CBD /* AutoLoginService.m */; };
 		ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */; };
-		ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */; };
-		ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */; };
 		ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */; };
 		ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
@@ -167,10 +165,6 @@
 		ED2085311B5F776C00779CBD /* AutoLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLoginService.m; sourceTree = "<group>"; };
 		ED2369C81B71E8E200F0F882 /* InternetSpeedChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedChecker.h; sourceTree = "<group>"; };
 		ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedChecker.m; sourceTree = "<group>"; };
-		ED31DEF41B6FAE13008875E4 /* InformationHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationHeaderCell.h; sourceTree = "<group>"; };
-		ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationHeaderCell.m; sourceTree = "<group>"; };
-		ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
-		ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
 		ED3D98251B7CD6A4000DEEB8 /* CheckDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDomainViewController.h; sourceTree = "<group>"; };
 		ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDomainViewController.m; sourceTree = "<group>"; };
 		ED3D98281B7CD6A4000DEEB8 /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
@@ -455,24 +449,6 @@
 				ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */,
 			);
 			path = InternetSpeedChecker;
-			sourceTree = "<group>";
-		};
-		ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */ = {
-			isa = PBXGroup;
-			children = (
-				ED31DEF41B6FAE13008875E4 /* InformationHeaderCell.h */,
-				ED31DEF51B6FAE13008875E4 /* InformationHeaderCell.m */,
-			);
-			path = InformationHeaderCell;
-			sourceTree = "<group>";
-		};
-		ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				ED31DEF71B6FAE13008875E4 /* InformationTableViewCell.h */,
-				ED31DEF81B6FAE13008875E4 /* InformationTableViewCell.m */,
-			);
-			path = InformationTableViewCell;
 			sourceTree = "<group>";
 		};
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
@@ -967,8 +943,6 @@
 				847D03E81B83405500B0768C /* AnnoucementsTableViewCell */,
 				84709EB41B82F35E008F3D14 /* InfoHubTableViewCell */,
 				84709EB01B82F31C008F3D14 /* InfoHubCollectionViewCell */,
-				ED31DEF31B6FAE13008875E4 /* InformationHeaderCell */,
-				ED31DEF61B6FAE13008875E4 /* InformationTableViewCell */,
 				EDEC9DF21B6A380400334503 /* CategoryCollectionViewCell */,
 				EDEC9DE91B6A337600334503 /* MenuCollectionViewCell */,
 			);
@@ -1185,7 +1159,6 @@
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
-				ED31DEF91B6FAE13008875E4 /* InformationHeaderCell.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
@@ -1202,7 +1175,6 @@
 				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
-				ED31DEFA1B6FAE13008875E4 /* InformationTableViewCell.m in Sources */,
 				ED2084F21B5E738600779CBD /* UIButton+AFNetworking.m in Sources */,
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
