@@ -18,15 +18,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 
-@property (strong, nonatomic) NSString *headerText;
 @property (strong, nonatomic) NSArray *demoDataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
 
 @end
 
-static CGFloat const SectionHeaderHeight = 80.0f;
+static CGFloat const SectionHeaderHeight = 40.0f;
 static CGFloat const AdditionalCellOffset = 20.0f;
-static CGFloat const DefaultCellOffset = 24.0f;
+static CGFloat const DefaultCellOffset = 22.0f;
+static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 @implementation InfoHubViewController
 
@@ -69,7 +69,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    return VisibleAnnouncementPreviewElementsCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -126,14 +126,21 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(DefaultCellOffset, 30, self.view.bounds.size.width - DefaultCellOffset, 30);
-    label.backgroundColor = [UIColor clearColor];
-    label.text = self.headerText;
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(DefaultCellOffset, 0, tableView.frame.size.width - DefaultCellOffset * 2, SectionHeaderHeight)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
+    headerLabel.font = [UIFont latoBoldWithSize:11.f];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, SectionHeaderHeight)];
-    [view addSubview:label];
-    return view;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight)];
+    [headerView addSubview:headerLabel];
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        headerLabel.textAlignment = NSTextAlignmentRight;
+    } else {
+        headerLabel.textAlignment = NSTextAlignmentLeft;
+    }
+
+    return headerView;
 }
 
 #pragma mark - Private
@@ -181,7 +188,6 @@ static CGFloat const DefaultCellOffset = 24.0f;
 {
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
-    self.headerText = dynamicLocalizedString(@"transactions.label.text");
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 

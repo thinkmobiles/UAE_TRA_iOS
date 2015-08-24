@@ -29,7 +29,7 @@
 
 + (UIFont *)latoBlackWithSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"Lato Black" size:size];
+    return [UIFont fontWithName:@"Lato-Black" size:size];
 }
 
 + (UIFont *)latoLightWithSize:(CGFloat)size
@@ -39,7 +39,7 @@
 
 + (UIFont *)latoBoldWithSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"Lato Bold" size:size];
+    return [UIFont fontWithName:@"Lato-Bold" size:size];
 }
 
 @end
