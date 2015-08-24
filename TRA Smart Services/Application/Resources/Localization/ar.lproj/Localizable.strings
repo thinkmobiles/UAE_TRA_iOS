@@ -106,3 +106,4 @@
 "coverageReport.good" = "جيدة";
 "coverageReport.strong" = "قوية";
 "coverageReport.veryStrong" = "قوية جداً";
+"coverageLevel.title" = "قوة التغطية";

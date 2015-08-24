@@ -26,7 +26,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Coverage Report";
+    self.title = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = dynamicLocalizedString(@"coverageLevel.title");
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
 }
@@ -114,7 +115,7 @@
             break;
     }
 
-    self.selectedSignalLevel.text = value;
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), value];
 }
 
 #pragma mark - Private

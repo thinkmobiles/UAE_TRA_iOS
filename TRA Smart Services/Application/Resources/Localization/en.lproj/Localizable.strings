@@ -106,3 +106,4 @@
 "coverageReport.good" = "Good";
 "coverageReport.strong" = "Strong";
 "coverageReport.veryStrong" = "Very Strong";
+"coverageLevel.title" = "Coverage Level";
