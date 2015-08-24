@@ -102,8 +102,13 @@
         if ([DynamicUIService service].fontSize) {
             CGFloat fontSize = [DynamicUIService service].fontSize == ApplicationFontSmall ? currentFontSize * smallMultiplier : currentFontSize * bigMultiplier;
             NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
-            UIFont *updatedFont = [UIFont fontWithName:fontName size:fontSize];
-            [view setValue:updatedFont forKey:@"font"];
+            
+            UIFont *font = [UIFont fontWithName:fontName size:fontSize];
+            if ([DynamicUIService service].language == LanguageTypeArabic) {
+                font = [UIFont droidKufiRegularFontForSize:fontSize];
+            }
+
+            [view setValue:font forKey:@"font"];
         }
     }
 }
