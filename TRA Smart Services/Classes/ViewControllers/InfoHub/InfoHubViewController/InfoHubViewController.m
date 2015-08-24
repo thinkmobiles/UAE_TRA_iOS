@@ -9,7 +9,6 @@
 #import "InfoHubViewController.h"
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
-#import "RTLController.h"
 
 @interface InfoHubViewController ()
 
@@ -17,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
+@property (weak, nonatomic) IBOutlet UIView *topContentView;
 
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
 @property (strong, nonatomic) NSArray *tableViewDataSource;
@@ -39,12 +41,26 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     
     [self registerNibs];
     [self prepareDemoDataSource];
-    
-    RTLController *rtl = [[RTLController alloc] init];
-    [rtl disableRTLForView:self.view];
 }
 
 #pragma mark - UISearchBarDelegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.45 animations:^{
+        CGFloat currentOffsetForContentView = weakSelf.tableViewContentHolderView.frame.origin.y;
+        CGFloat distanceToMoveView = currentOffsetForContentView - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+        weakSelf.tableViewVerticalSpaceConstraint.constant = - distanceToMoveView;
+        weakSelf.topContentView.center = CGPointMake(weakSelf.topContentView.center.x, weakSelf.topContentView.center.y - weakSelf.topContentView.frame.size.height);
+        [weakSelf.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        weakSelf.topContentView.hidden = YES;
+    }];
+    
+    return YES;
+}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
@@ -64,6 +80,15 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     
     [self prepareDemoDataSource];
     [self.tableView reloadData];
+    
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.tableViewVerticalSpaceConstraint.constant = 0;
+        weakSelf.topContentView.hidden = NO;
+        weakSelf.topContentView.center = CGPointMake(weakSelf.topContentView.center.x, weakSelf.topContentView.center.y + weakSelf.topContentView.frame.size.height);
+        [weakSelf.view layoutIfNeeded];
+    }];
 }
 
 #pragma mark - CollectionViewDataSource
@@ -75,9 +100,9 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
+    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
     cell.announcementPreviewDateLabel.text = @"06/28/15";
-    cell.announcementPreviewIconImageView.image = [UIImage imageNamed:@"ic_type_apr"];
+    cell.previewLogoImage = [UIImage imageNamed:@"ic_type_apr"];
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
@@ -115,10 +140,11 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
         cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset;
     }
     cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
     cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
-    cell.infoHubTransactionDateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+    cell.infoHubTransactionDateLabel.text = @"12/12/34";
     cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
     
     return cell;
@@ -136,7 +162,12 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
     headerLabel.font = [UIFont latoBoldWithSize:11.f];
     
+    CAGradientLayer *headerGradient = [CAGradientLayer layer];
+    headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight);
+    headerGradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.1].CGColor];
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight)];
+    [headerView.layer addSublayer:headerGradient];
     [headerView addSubview:headerLabel];
     
     if ([DynamicUIService service].language == LanguageTypeArabic) {

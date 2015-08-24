@@ -11,9 +11,10 @@ static NSString *const AnnoucementsTableViewCellArabicIdentifier = @"annoucement
 
 @interface AnnoucementsTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *annocementsImageView;
 @property (strong, nonatomic) IBOutlet UILabel *annocementsDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *annocementsDateLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *marginAnnouncementContainerConstraint;
+
+@property (strong, nonatomic) UIImage *annoucementLogoImage;
 
 @end

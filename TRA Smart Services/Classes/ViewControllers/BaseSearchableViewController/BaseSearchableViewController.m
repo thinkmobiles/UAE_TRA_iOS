@@ -97,9 +97,7 @@
     UIView *titleView = [[UIView alloc] initWithFrame:titleRect];
     self.titleView = titleView;
     self.navigationItem.titleView = self.titleView;
-    
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
-//    self.navigationItem.backBarButtonItem = backButton;
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void)prepareTitleLabel
@@ -108,6 +106,8 @@
         self.searchanbeleViewControllerTitle = [[UILabel alloc] initWithFrame:self.titleView.bounds];
         self.searchanbeleViewControllerTitle.textColor = [UIColor whiteColor];
         self.searchanbeleViewControllerTitle.textAlignment = NSTextAlignmentCenter;
+        self.searchanbeleViewControllerTitle.minimumScaleFactor = 0.8f;
+        self.searchanbeleViewControllerTitle.numberOfLines = 0;
     }
     [self.titleView addSubview: self.searchanbeleViewControllerTitle];
 }

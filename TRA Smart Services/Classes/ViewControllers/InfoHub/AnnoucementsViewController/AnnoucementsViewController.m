@@ -10,19 +10,17 @@
 #import "AnnoucementsTableViewCell.h"
 #import "DetailsViewController.h"
 
-
 @interface AnnoucementsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSArray *dataSource;
+
 @end
 
 static NSString *const SegueToDetailsViewControllerIdentifier = @"segueToDetailsViewController";
-
-
 static CGFloat const AdditionalCellOffset = 20.0f;
 static CGFloat const DefaultCellOffset = 24.0f;
-
 
 @implementation AnnoucementsViewController
 
@@ -32,8 +30,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
 {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellEuropeUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellEuropeIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellArabicIdentifier];
+    [self registerNibs];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,8 +62,9 @@ static CGFloat const DefaultCellOffset = 24.0f;
     }
     cell.backgroundColor = [UIColor clearColor];
     
-    cell.annocementsDescriptionLabel.text = @"Text";
-    cell.annocementsDateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+    cell.annocementsDescriptionLabel.text = @"Regarding annoucement the start of a public consultations with all concerdned parties";
+    cell.annoucementLogoImage = [UIImage imageNamed:@"test"];
+    cell.annocementsDateLabel.text = @"08/03/15";
 
     return cell;
 }
@@ -95,7 +93,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
     
 }
 
-#pragma mark _ Private
+#pragma mark - Private
 
 - (NSString *)cellUIIdentifier
 {
@@ -103,6 +101,12 @@ static CGFloat const DefaultCellOffset = 24.0f;
         return AnnoucementsTableViewCellArabicIdentifier;
     }
     return AnnoucementsTableViewCellEuropeIdentifier;
+}
+
+- (void)registerNibs
+{
+    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellEuropeUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellEuropeIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AnnoucementsTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:AnnoucementsTableViewCellArabicIdentifier];
 }
 
 @end

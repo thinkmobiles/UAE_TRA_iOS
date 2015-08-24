@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-ii-gdx" userLabel="ImageHolder - UIView">
                                 <rect key="frame" x="5" y="0.0" width="110" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_type_apr" translatesAutoresizingMaskIntoConstraints="NO" id="e8y-Sa-nWN" userLabel="LogoImage - UiImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8y-Sa-nWN" userLabel="LogoImage - UiImageView">
                                         <rect key="frame" x="20" y="10" width="70" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -43,12 +43,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="uPi-k9-RnK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.58039215690000001" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="p5X-XE-E9b" userLabel="Description - UILabel">
-                                        <rect key="frame" x="0.0" y="33" width="300" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="33" width="300" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.20784313725490197" green="0.2627450980392157" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -59,8 +59,9 @@
                                     <constraint firstItem="vyN-Ju-g6I" firstAttribute="top" secondItem="5fV-c0-RBq" secondAttribute="top" constant="4" id="3D4-s7-UHU"/>
                                     <constraint firstItem="p5X-XE-E9b" firstAttribute="top" secondItem="vyN-Ju-g6I" secondAttribute="bottom" constant="8" id="72X-6s-b6s"/>
                                     <constraint firstItem="vyN-Ju-g6I" firstAttribute="left" secondItem="5fV-c0-RBq" secondAttribute="left" id="DaV-ls-gz5"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p5X-XE-E9b" secondAttribute="bottom" constant="16" id="PmH-35-dYe"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="p5X-XE-E9b" secondAttribute="bottom" constant="50" id="PmH-35-dYe"/>
                                     <constraint firstAttribute="right" secondItem="vyN-Ju-g6I" secondAttribute="right" constant="8" id="lVv-D4-Cfk"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p5X-XE-E9b" secondAttribute="bottom" constant="16" id="r4d-ci-5RR"/>
                                     <constraint firstItem="p5X-XE-E9b" firstAttribute="left" secondItem="5fV-c0-RBq" secondAttribute="left" id="s4r-xq-bxe"/>
                                     <constraint firstAttribute="right" secondItem="p5X-XE-E9b" secondAttribute="right" constant="4" id="wF7-cA-1s0"/>
                                 </constraints>
@@ -96,7 +97,4 @@
             <point key="canvasLocation" x="400.5" y="-192"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic_type_apr" width="70" height="80"/>
-    </resources>
 </document>
