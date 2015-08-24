@@ -29,6 +29,7 @@ static NSString *const MessageIncorrectRating = @"Incorrect rating format - shou
 + (void)prepareTabBarItems;
 + (void)performResetupTabBar;
 + (void)updateFontsOnTabBar;
++ (void)localizeTitlesOnTabBar;
 + (void)reverseTabBarItems;
 + (void)prepareTabBarGradient;
 + (void)updateTabBarTintColor;

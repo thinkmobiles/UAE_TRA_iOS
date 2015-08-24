@@ -84,13 +84,13 @@
 
 //ServiceInfoViewController
 
-"serviceInfoItemName.0" = "Service Info";
+"serviceInfoItemName.0" = "About the Service";
 "serviceInfoItemName.1" = "Required Documents";
-"serviceInfoItemName.2" = "Terms & Conditions";
+"serviceInfoItemName.2" = "Terms and Conditions";
 "serviceInfoItemName.3" = "Service Package";
-"serviceInfoItemName.4" = "Processing Time";
+"serviceInfoItemName.4" = "Expected Time";
 "serviceInfoItemName.5" = "Service Fees";
-"serviceInfoItemName.6" = "Conatct In-change";
+"serviceInfoItemName.6" = "Officer in Charge of this Service";
 "serviceInfoItmeDetailedDescription.0" = "No description";
 "serviceInfoItmeDetailedDescription.1" = "No description";
 "serviceInfoItmeDetailedDescription.2" = "No description";
@@ -98,3 +98,11 @@
 "serviceInfoItmeDetailedDescription.4" = "No description";
 "serviceInfoItmeDetailedDescription.5" = "No description";
 "serviceInfoItmeDetailedDescription.6" = "No description";
+
+//CoverageReport
+
+"coverageReport.very_weak" = "Very Weak";
+"coverageReport.weak" = "Weak";
+"coverageReport.good" = "Good";
+"coverageReport.strong" = "Strong";
+"coverageReport.veryStrong" = "Very Strong";

@@ -22,4 +22,24 @@
     return [UIFont fontWithName:@"Droid Arabic Kufi" size:size];
 }
 
++ (UIFont *)latoRegularWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"Lato-Regular" size:size];
+}
+
++ (UIFont *)latoBlackWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"Lato Black" size:size];
+}
+
++ (UIFont *)latoLightWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"Lato-Light" size:size];
+}
+
++ (UIFont *)latoBoldWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"Lato Bold" size:size];
+}
+
 @end

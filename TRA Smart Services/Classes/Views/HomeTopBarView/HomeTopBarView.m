@@ -69,8 +69,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         [self prepareNotificationButtonLayer];
         [self drawHexagonicalWireBotton];
         
-        [self setStartApearenceAnimationParameters];
     }
+    [self setStartApearenceAnimationParameters];
+
 }
 
 #pragma mark - Override
@@ -159,9 +160,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)updateOpacityForHexagons:(CGFloat)opacityLevel
 {
     if (self.isAppearenceAnimationCompleted) {
-        self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel;
-        self.bottomMidHexagonLayer.opacity = 1 - opacityLevel;
-        self.bottomRightHexagonLayer.opacity = 1 - opacityLevel;
+        self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel * 1.25;
+        self.bottomMidHexagonLayer.opacity = 1 - opacityLevel * 1.25;
+        self.bottomRightHexagonLayer.opacity = 1 - opacityLevel * 1.25;
     }
 }
 

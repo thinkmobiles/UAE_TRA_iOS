@@ -99,3 +99,10 @@
 "serviceInfoItmeDetailedDescription.5" = "serviceInfoItmeDetailedDescription.5";
 "serviceInfoItmeDetailedDescription.6" = "serviceInfoItmeDetailedDescription.6";
 
+//CoverageReport
+
+"coverageReport.very_weak" = "coverageReport.very_weak";
+"coverageReport.weak" = "coverageReport.weak";
+"coverageReport.good" = "coverageReport.good";
+"coverageReport.strong" = "coverageReport.strong";
+"coverageReport.veryStrong" = "coverageReport.veryStrong";

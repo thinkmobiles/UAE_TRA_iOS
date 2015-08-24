@@ -98,3 +98,11 @@
 "serviceInfoItmeDetailedDescription.4" = "No description";
 "serviceInfoItmeDetailedDescription.5" = "No description";
 "serviceInfoItmeDetailedDescription.6" = "No description";
+
+//CoverageReport
+
+"coverageReport.very_weak" = "ضعيفة جداً";
+"coverageReport.weak" = "ضعيفة";
+"coverageReport.good" = "جيدة";
+"coverageReport.strong" = "قوية";
+"coverageReport.veryStrong" = "قوية جداً";

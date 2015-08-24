@@ -19,6 +19,10 @@
 		93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A436F71B861455009299C5 /* FavouriteArabicTableViewCell.xib */; };
 		93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */; };
 		93A436FD1B862123009299C5 /* DroidKufi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */; };
+		93A437081B8AF64E009299C5 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437041B8AF64E009299C5 /* Lato-Black.ttf */; };
+		93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437051B8AF64E009299C5 /* Lato-Bold.ttf */; };
+		93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437061B8AF64E009299C5 /* Lato-Light.ttf */; };
+		93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437071B8AF64E009299C5 /* Lato-Regular.ttf */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -117,6 +121,10 @@
 		93A436F71B861455009299C5 /* FavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
 		93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidKufi-Bold.ttf"; sourceTree = "<group>"; };
 		93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidKufi-Regular.ttf"; sourceTree = "<group>"; };
+		93A437041B8AF64E009299C5 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		93A437051B8AF64E009299C5 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		93A437061B8AF64E009299C5 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		93A437071B8AF64E009299C5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -348,6 +356,10 @@
 		93A436F91B8620F6009299C5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				93A437041B8AF64E009299C5 /* Lato-Black.ttf */,
+				93A437051B8AF64E009299C5 /* Lato-Bold.ttf */,
+				93A437061B8AF64E009299C5 /* Lato-Light.ttf */,
+				93A437071B8AF64E009299C5 /* Lato-Regular.ttf */,
 				93A436FA1B862103009299C5 /* DroidKufi-Bold.ttf */,
 				93A436FB1B862103009299C5 /* DroidKufi-Regular.ttf */,
 			);
@@ -1154,6 +1166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
@@ -1161,9 +1174,12 @@
 				ED982F361B5D24DA00B6B644 /* Main.storyboard in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
+				93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */,
 				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
+				93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */,
 				93A436FD1B862123009299C5 /* DroidKufi-Regular.ttf in Resources */,
+				93A437081B8AF64E009299C5 /* Lato-Black.ttf in Resources */,
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
 				ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */,
 			);

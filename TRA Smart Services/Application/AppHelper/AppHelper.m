@@ -100,7 +100,12 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
     CGFloat fontSize = [DynamicUIService service].fontSize;
     fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
-    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
+    UIFont *font = [UIFont latoRegularWithSize:fontSize];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        font = [UIFont droidKufiRegularFontForSize:fontSize];
+    }
+    
+    NSDictionary *parameters = @{ NSFontAttributeName : font,
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
     tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
@@ -117,11 +122,35 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     }
 }
 
++ (void)localizeTitlesOnTabBar
+{
+    NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        localizedMenuItems = [localizedMenuItems reversedArray];
+    }
+    
+    UITabBar *tabBar = [AppHelper rootViewController].tabBar;
+    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.backgroundColor = [UIColor menuItemGrayColor];
+    
+    for (int idx = 0; idx < tabBar.items.count; idx++) {
+        UITabBarItem *tabBarItem = tabBar.items[idx];
+        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+    }
+}
+
 + (void)updateFontsOnTabBar
 {
     CGFloat fontSize = [DynamicUIService service].fontSize;
     fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
-    NSDictionary *parameters = @{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:fontSize],
+    
+    UIFont *font = [UIFont latoRegularWithSize:fontSize];
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        font = [UIFont droidKufiRegularFontForSize:fontSize];
+    }
+
+    NSDictionary *parameters = @{ NSFontAttributeName :font,
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
 
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
