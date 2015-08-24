@@ -183,9 +183,9 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyi-7M-hFB">
-                                        <rect key="frame" x="484" y="0.0" width="100" height="45"/>
+                                        <rect key="frame" x="534" y="0.0" width="50" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Hfv-Jm-bgF"/>
+                                            <constraint firstAttribute="width" constant="50" id="Hfv-Jm-bgF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <state key="normal" title="See more">
@@ -197,7 +197,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANNOUNCEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="155" translatesAutoresizingMaskIntoConstraints="NO" id="8Hg-kQ-kSK">
-                                        <rect key="frame" x="22" y="0.0" width="454" height="45"/>
+                                        <rect key="frame" x="22" y="0.0" width="504" height="45"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.13725490196078433" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -215,12 +215,13 @@
                                     <constraint firstAttribute="height" constant="45" id="zje-sk-WTW"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-d6-J7p" userLabel="Announcement - UICollectionView">
-                                <rect key="frame" x="0.0" y="109" width="600" height="100"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l4w-d6-J7p" userLabel="Announcement - UICollectionView">
+                                <rect key="frame" x="10" y="109" width="580" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Tki-AK-MQK"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="1Nr-ma-hEW">
                                     <size key="itemSize" width="250" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -256,10 +257,10 @@
                             <constraint firstItem="3Nr-e8-odP" firstAttribute="left" secondItem="GD7-sw-1kP" secondAttribute="left" id="5jC-4v-ba9"/>
                             <constraint firstItem="W9d-Qk-241" firstAttribute="leading" secondItem="GD7-sw-1kP" secondAttribute="leading" id="8pK-Qk-h3R"/>
                             <constraint firstItem="gBr-2H-0Ew" firstAttribute="top" secondItem="l4w-d6-J7p" secondAttribute="bottom" constant="20" id="EPG-J2-UU0"/>
-                            <constraint firstAttribute="trailing" secondItem="l4w-d6-J7p" secondAttribute="trailing" id="Glg-Je-Sc8"/>
+                            <constraint firstAttribute="trailing" secondItem="l4w-d6-J7p" secondAttribute="trailing" constant="10" id="Glg-Je-Sc8"/>
                             <constraint firstAttribute="right" secondItem="3Nr-e8-odP" secondAttribute="right" id="Lnw-il-0CA"/>
                             <constraint firstItem="3Nr-e8-odP" firstAttribute="top" secondItem="gBr-2H-0Ew" secondAttribute="bottom" constant="10" id="OEI-4v-Xpl"/>
-                            <constraint firstItem="l4w-d6-J7p" firstAttribute="leading" secondItem="GD7-sw-1kP" secondAttribute="leading" id="PqR-KL-xbY"/>
+                            <constraint firstItem="l4w-d6-J7p" firstAttribute="leading" secondItem="GD7-sw-1kP" secondAttribute="leading" constant="10" id="PqR-KL-xbY"/>
                             <constraint firstItem="gBr-2H-0Ew" firstAttribute="leading" secondItem="GD7-sw-1kP" secondAttribute="leading" constant="22" id="QyF-4E-1DZ"/>
                             <constraint firstItem="l4w-d6-J7p" firstAttribute="top" secondItem="W9d-Qk-241" secondAttribute="bottom" id="UVI-mb-ima"/>
                             <constraint firstItem="sRc-d6-oWd" firstAttribute="top" secondItem="Kyb-Ms-rT0" secondAttribute="bottom" id="W98-FW-E6u"/>

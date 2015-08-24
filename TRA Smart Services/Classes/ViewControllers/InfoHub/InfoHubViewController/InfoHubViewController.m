@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 
-@property (strong, nonatomic) NSArray *demoDataSource;
+@property (strong, nonatomic) NSArray *collectionViewDataSource;
+@property (strong, nonatomic) NSArray *tableViewDataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
 
 @end
@@ -49,10 +50,10 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 {
     if(searchText.length) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", searchText];
-        NSArray *arraySort = [self.demoDataSource filteredArrayUsingPredicate:predicate];
+        NSArray *arraySort = [self.tableViewDataSource filteredArrayUsingPredicate:predicate];
         self.filteredDataSource = [[NSMutableArray alloc] initWithArray:arraySort];
     } else {
-        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.demoDataSource];
+        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
     }
     [self.tableView reloadData];
 }
@@ -78,6 +79,9 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.announcementPreviewDateLabel.text = @"06/28/15";
     cell.announcementPreviewIconImageView.image = [UIImage imageNamed:@"ic_type_apr"];
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
+    if (indexPath.row) {
+        cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
+    }
     return cell;
 }
 
@@ -112,9 +116,10 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     }
     cell.backgroundColor = [UIColor clearColor];
    
-    cell.infoHubTransactionDescriptionLabel.text = @"Text Text Text";
+    cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
     cell.infoHubTransactionDateLabel.text = [NSString stringWithFormat:@"date %li", (long)indexPath.row + 1];
+    cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
     
     return cell;
 }
@@ -171,9 +176,8 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)prepareDemoDataSource
 {
-    self.demoDataSource = @[@"BMV",@"Mazda",@"Opel",@"Mercedes",@"Audi",@"Toyta",@"Porche"];
-    self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.demoDataSource];
-    
+    self.tableViewDataSource = @[@"Type Approval", @"Frequesncy Spectrum Authorizaions", @".ea Domain news"];
+    self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
 }
 
 - (void)updateUI
@@ -198,11 +202,13 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)setRTLArabicUI
 {
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
     [self updateUI];
 }
 
 - (void)setLTREuropeUI
 {
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
     [self updateUI];
 }
 

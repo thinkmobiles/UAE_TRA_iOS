@@ -26,7 +26,7 @@
 
 //RegisterViewController
 
-"register.title" = "Create account";
+"register.title" = "تسجيل";
 "register.placeholderText.username" = "اسم المستخدم";
 "register.placeHolderText.gender" = "النوع";
 "register.placeHolderText.phone" = "الهاتف";
@@ -73,7 +73,7 @@
 
 //FavouriteViewController
 
-"favourite.title" = "FAVORITES";
+"favourite.title" = "المفضلة";
 "favourite.button.addFav.title" = "إضافة خدمة";
 "favourite.notification" = "لم تقم باختيار n\خدمة ضمن قائمة n\الخدمات المفضلة.";
 
@@ -109,15 +109,15 @@
 
 //InfoHubViewController
 
-"infoHub.title" = "INFO HUB";
-"announcements.label.text" = "ANNOUNCEMENTS";
-"seeMore.button.title" = "See more";
-"transactions.label.text" = "TRANSACTIONS";
+"infoHub.title" = "معلومات";
+"announcements.label.text" = "اعلانات";
+"seeMore.button.title" = "شاهد المزيد";
+"transactions.label.text" = "معاملات";
 
 //AnnoucementsViewController
 
-"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+"annoucements.title" = "معلومات اعلانات";
 
 //DetailsViewController
 
-"details.title" = "INFO HUB DETAILS";
+"details.title" = "معلومات";
