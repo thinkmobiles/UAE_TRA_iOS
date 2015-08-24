@@ -99,11 +99,11 @@
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"login.title");
-    self.passwordTextField.placeholder = dynamicLocalizedString(@"login.placeHolderText.username");
+    self.userNameTextField.placeholder = dynamicLocalizedString(@"login.placeHolderText.username");
     self.passwordTextField.placeholder = dynamicLocalizedString(@"login.placeHolderText.password");
-    self.loginButton.titleLabel.text = dynamicLocalizedString(@"login.button.login");
-    self.forgotPasswordButton.titleLabel.text = dynamicLocalizedString(@"login.button.forgotPassword");
-    self.registerButton.titleLabel.text = dynamicLocalizedString(@"login.button.registerButton");
+    [self.loginButton setTitle:dynamicLocalizedString(@"login.button.login") forState:UIControlStateNormal];;
+    [self.forgotPasswordButton setTitle:dynamicLocalizedString(@"login.button.forgotPassword") forState:UIControlStateNormal];
+    [self.registerButton setTitle:dynamicLocalizedString(@"login.button.registerButton") forState:UIControlStateNormal];;
 }
 
 - (void)updateColors

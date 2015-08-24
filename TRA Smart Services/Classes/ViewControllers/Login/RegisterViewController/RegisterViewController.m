@@ -86,8 +86,8 @@
     self.genderTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.gender");
     self.phoneTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.phone");
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
-    self.registerButton.titleLabel.text = dynamicLocalizedString(@"register.button.register");
-    self.loginButton.titleLabel.text = dynamicLocalizedString(@"register.button.login");
+    [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
+    [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
