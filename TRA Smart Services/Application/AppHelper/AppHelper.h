@@ -41,4 +41,7 @@ static NSString *const MessageArabicIncorrectDomainName = @"يرجى ادخال 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view;
 + (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect;
 
++ (NSString *)detailedDateStringFrom:(NSDate *)date;
++ (NSString *)compactDateStringFrom:(NSDate *)date;
+
 @end

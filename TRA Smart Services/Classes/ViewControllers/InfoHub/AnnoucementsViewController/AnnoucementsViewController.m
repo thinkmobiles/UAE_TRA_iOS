@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSArray *filteredDataSource;
 
 @end
 
@@ -76,7 +77,14 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSLog(@"text - %@", searchText);
+    if(searchText.length) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", searchText];
+        NSArray *arraySort = [self.dataSource filteredArrayUsingPredicate:predicate];
+        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:arraySort];
+    } else {
+        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.dataSource];
+    }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Superclass Methods

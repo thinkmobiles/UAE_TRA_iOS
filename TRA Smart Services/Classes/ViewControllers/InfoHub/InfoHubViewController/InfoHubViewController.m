@@ -71,7 +71,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     } else {
         self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
     }
-    [self.tableView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -101,7 +101,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
-    cell.announcementPreviewDateLabel.text = @"06/28/15";
+    cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     cell.previewLogoImage = [UIImage imageNamed:@"ic_type_apr"];
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
@@ -109,6 +109,8 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     }
     return cell;
 }
+
+#pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,7 +147,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
     cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
-    cell.infoHubTransactionDateLabel.text = @"12/12/34";
+    cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
     
     return cell;
@@ -178,6 +180,32 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     }
 
     return headerView;
+}
+
+#pragma mark - Superclass Methods
+
+- (void)localizeUI
+{
+    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
+    self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
+    [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
+}
+
+- (void)updateColors
+{
+    [self.tableView reloadData];
+}
+
+- (void)setRTLArabicUI
+{
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    [self updateUI];
+}
+
+- (void)setLTREuropeUI
+{
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    [self updateUI];
 }
 
 #pragma mark - Private
@@ -216,32 +244,6 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 {
     [self.tableView reloadData];
     [self.collectionView reloadData];
-}
-
-#pragma mark - Superclass Methods
-
-- (void)localizeUI
-{
-    self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
-    self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
-    [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
-}
-
-- (void)updateColors
-{
-    [self.tableView reloadData];
-}
-
-- (void)setRTLArabicUI
-{
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    [self updateUI];
-}
-
-- (void)setLTREuropeUI
-{
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    [self updateUI];
 }
 
 @end

@@ -229,6 +229,22 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     return hexagonPath;
 }
 
+#pragma mark - Date
 
++ (NSString *)detailedDateStringFrom:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"LLLL dd, yyyy"];
+    NSString *formattedDate = [dateFormatter stringFromDate:date];
+    return formattedDate;
+}
+
++ (NSString *)compactDateStringFrom:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/d/yy"];
+    NSString *formattedDate = [dateFormatter stringFromDate:date];
+    return formattedDate;
+}
 
 @end
