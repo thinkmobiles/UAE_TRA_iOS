@@ -446,6 +446,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
         cell.categoryLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
         cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     }
+    
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
 }
@@ -560,6 +561,12 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     [cell.layer addAnimation:group forKey:nil];
+    
+    BOOL shouldBeScaled = self.speedAccessCollectionView.frame.origin.y < CGRectGetMaxY(self.topView.frame);
+    
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = shouldBeScaled ? CATransform3DScale(transformation, MaxScaleFactorForSpeedAccessCell, MaxScaleFactorForSpeedAccessCell, 1) : CATransform3DIdentity;
+    cell.layer.transform = transformation;
 }
 
 - (void)animateOtherCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

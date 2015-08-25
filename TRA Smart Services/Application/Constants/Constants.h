@@ -22,3 +22,12 @@
 #define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+#pragma mark - Messages
+
+static NSString *const MessageNotImplemented = @"Not implemented";
+static NSString *const MessageSuccess = @"Success";
+static NSString *const MessageEmptyInputParameter = @"Please enter text in the textfield";
+static NSString *const MessageIncorrectRating = @"Incorrect rating format - shoul use only numbers";
+
+static NSString *const MessageArabicIncorrectDomainName = @"يرجى ادخال اسم نطاق صالح";
