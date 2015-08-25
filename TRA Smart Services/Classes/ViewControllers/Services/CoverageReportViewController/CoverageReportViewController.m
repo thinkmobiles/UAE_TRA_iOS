@@ -26,7 +26,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Coverage Report";
+    self.title = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = dynamicLocalizedString(@"coverageLevel.title");
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
 }
@@ -87,8 +88,34 @@
 - (IBAction)sliderDidChnageValue:(UISlider *)sender
 {
     sender.value = roundf(sender.value / sender.maximumValue * 5) * sender.maximumValue / 5 ;
-    self.selectedSignalLevel.text = [NSString stringWithFormat:@"Selected signal Level - %i", (int)sender.value];
+    
+    NSString *value;
+    switch ((int)sender.value) {
+        case 1: {
+            value = dynamicLocalizedString(@"coverageReport.very_weak");
+            break;
+        }
+        case 2: {
+            value = dynamicLocalizedString(@"coverageReport.weak");
+            break;
+        }
+        case 3: {
+            value = dynamicLocalizedString(@"coverageReport.good");
+            break;
+        }
+        case 4: {
+            value = dynamicLocalizedString(@"coverageReport.strong");
+            break;
+        }
+        case 5: {
+            value = dynamicLocalizedString(@"coverageReport.veryStrong");
+            break;
+        }
+        default:
+            break;
+    }
 
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), value];
 }
 
 #pragma mark - Private

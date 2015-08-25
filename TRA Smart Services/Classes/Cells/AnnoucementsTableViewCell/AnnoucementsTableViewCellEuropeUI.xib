@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="annoucementsCellEuropeUIIdentifier" rowHeight="90" id="SOC-SH-bLR" customClass="AnnoucementsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SOC-SH-bLR" id="JzE-yV-bPh">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opY-i7-AFU" userLabel="Conteiner EuropeUI - View">
+                        <rect key="frame" x="24" y="0.0" width="296" height="89"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-oa-erX" userLabel="Logo - UiImageView">
+                                <rect key="frame" x="0.0" y="9" width="70" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="X1E-lD-Z0T"/>
+                                    <constraint firstAttribute="height" constant="80" id="yus-Rx-8hr"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bnp-Oa-xZa" userLabel="Separator - View">
+                                <rect key="frame" x="90" y="88" width="206" height="1"/>
+                                <color key="backgroundColor" red="0.76078431372549016" green="0.75686274509803919" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="azv-Nh-cg6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkV-lN-evX" userLabel="Date - UiLabel">
+                                <rect key="frame" x="90" y="8" width="186" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="sZW-kj-hiw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <color key="textColor" red="0.53725490196078429" green="0.5490196078431373" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIY-6S-9dd" userLabel="Description - Uilabel">
+                                <rect key="frame" x="90" y="37" width="186" height="35"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <color key="textColor" red="0.21176470588235294" green="0.2627450980392157" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="right" secondItem="Bnp-Oa-xZa" secondAttribute="right" id="4sN-5k-AKV"/>
+                            <constraint firstItem="NkV-lN-evX" firstAttribute="top" secondItem="opY-i7-AFU" secondAttribute="top" constant="8" id="5Lh-Zy-sFM"/>
+                            <constraint firstItem="b7A-oa-erX" firstAttribute="left" secondItem="opY-i7-AFU" secondAttribute="left" id="8AL-xn-6JC"/>
+                            <constraint firstAttribute="right" secondItem="NkV-lN-evX" secondAttribute="right" constant="20" id="G9x-db-Pge"/>
+                            <constraint firstItem="YIY-6S-9dd" firstAttribute="width" secondItem="NkV-lN-evX" secondAttribute="width" id="I25-k2-qBh"/>
+                            <constraint firstItem="NkV-lN-evX" firstAttribute="left" secondItem="b7A-oa-erX" secondAttribute="right" constant="20" id="KFD-t0-e1a"/>
+                            <constraint firstItem="YIY-6S-9dd" firstAttribute="top" secondItem="NkV-lN-evX" secondAttribute="bottom" constant="8" id="Ls4-Mu-vdf"/>
+                            <constraint firstItem="Bnp-Oa-xZa" firstAttribute="left" secondItem="b7A-oa-erX" secondAttribute="right" constant="20" id="WtP-up-mQZ"/>
+                            <constraint firstItem="Bnp-Oa-xZa" firstAttribute="top" relation="lessThanOrEqual" secondItem="YIY-6S-9dd" secondAttribute="bottom" constant="16" id="eu1-wZ-4SA"/>
+                            <constraint firstAttribute="right" secondItem="YIY-6S-9dd" secondAttribute="right" constant="20" id="oOt-KM-X5D"/>
+                            <constraint firstAttribute="bottom" secondItem="b7A-oa-erX" secondAttribute="bottom" id="qoC-P2-mg8"/>
+                            <constraint firstItem="Bnp-Oa-xZa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YIY-6S-9dd" secondAttribute="bottom" constant="12" id="uon-on-Be8"/>
+                            <constraint firstAttribute="bottom" secondItem="Bnp-Oa-xZa" secondAttribute="bottom" id="yM7-U6-q5X"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="opY-i7-AFU" firstAttribute="top" secondItem="JzE-yV-bPh" secondAttribute="top" id="2YD-X7-fjR"/>
+                    <constraint firstItem="opY-i7-AFU" firstAttribute="left" secondItem="JzE-yV-bPh" secondAttribute="left" constant="24" id="bfF-rl-JYI"/>
+                    <constraint firstAttribute="bottom" secondItem="opY-i7-AFU" secondAttribute="bottom" id="k6q-kV-Orz"/>
+                    <constraint firstAttribute="right" secondItem="opY-i7-AFU" secondAttribute="right" id="u3e-Ho-xth"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="annocementsDateLabel" destination="NkV-lN-evX" id="Ucr-IA-qwb"/>
+                <outlet property="annocementsDescriptionLabel" destination="YIY-6S-9dd" id="s8L-mF-WqZ"/>
+                <outlet property="annocementsImageView" destination="b7A-oa-erX" id="yIc-W3-zQg"/>
+                <outlet property="marginAnnouncementContainerConstraint" destination="bfF-rl-JYI" id="4Yh-dZ-oxO"/>
+            </connections>
+            <point key="canvasLocation" x="175" y="150"/>
+        </tableViewCell>
+    </objects>
+</document>

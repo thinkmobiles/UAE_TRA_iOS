@@ -99,3 +99,26 @@
 "serviceInfoItmeDetailedDescription.5" = "serviceInfoItmeDetailedDescription.5";
 "serviceInfoItmeDetailedDescription.6" = "serviceInfoItmeDetailedDescription.6";
 
+//CoverageReport
+
+"coverageReport.very_weak" = "coverageReport.very_weak";
+"coverageReport.weak" = "coverageReport.weak";
+"coverageReport.good" = "coverageReport.good";
+"coverageReport.strong" = "coverageReport.strong";
+"coverageReport.veryStrong" = "coverageReport.veryStrong";
+"coverageLevel.title" = "coverageLevel.title";
+
+//InfoHubViewController
+
+"infoHub.title" = "infoHub.title";
+"announcements.label.text" = "announcements.label.text";
+"seeMore.button.title" = "seeMore.button.title";
+"transactions.label.text" = "transactions.label.text";
+
+//AnnoucementsViewController
+
+"annoucements.title" = "annoucements.title";
+
+//DetailsViewController
+
+"details.title" = "details.title";

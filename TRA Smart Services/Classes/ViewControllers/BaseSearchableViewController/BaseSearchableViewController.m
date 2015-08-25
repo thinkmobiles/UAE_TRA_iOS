@@ -41,7 +41,7 @@
     
     CGRect navBarRect = self.navigationController.navigationBar.bounds;
     CGFloat offset = 20.f;
-    self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2, navBarRect.size.height);
+    self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2.25, navBarRect.size.height); //2.25 - appox dimension
     self.searchBar.barTintColor = [UIColor whiteColor];
     self.searchBar.tintColor = [DynamicUIService service].currentApplicationColor;
     
@@ -97,6 +97,7 @@
     UIView *titleView = [[UIView alloc] initWithFrame:titleRect];
     self.titleView = titleView;
     self.navigationItem.titleView = self.titleView;
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void)prepareTitleLabel
@@ -105,6 +106,8 @@
         self.searchanbeleViewControllerTitle = [[UILabel alloc] initWithFrame:self.titleView.bounds];
         self.searchanbeleViewControllerTitle.textColor = [UIColor whiteColor];
         self.searchanbeleViewControllerTitle.textAlignment = NSTextAlignmentCenter;
+        self.searchanbeleViewControllerTitle.minimumScaleFactor = 0.8f;
+        self.searchanbeleViewControllerTitle.numberOfLines = 0;
     }
     [self.titleView addSubview: self.searchanbeleViewControllerTitle];
 }

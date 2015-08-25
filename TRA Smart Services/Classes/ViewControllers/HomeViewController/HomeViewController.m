@@ -219,7 +219,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self.topView moveFakeButtonsToTop:NO];
             [weakSelf.topView updateOpacityForHexagons:0];
         }
-        [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta )];
+        [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta)];
     }
     self.lastContentOffset = scrollView.contentOffset.y;
 }

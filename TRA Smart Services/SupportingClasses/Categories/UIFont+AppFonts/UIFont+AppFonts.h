@@ -11,4 +11,9 @@
 + (UIFont *)droidKufiBoldFontForSize:(CGFloat)size;
 + (UIFont *)droidKufiRegularFontForSize:(CGFloat)size;
 
++ (UIFont *)latoRegularWithSize:(CGFloat)size;
++ (UIFont *)latoBlackWithSize:(CGFloat)size;
++ (UIFont *)latoLightWithSize:(CGFloat)size;
++ (UIFont *)latoBoldWithSize:(CGFloat)size;
+
 @end

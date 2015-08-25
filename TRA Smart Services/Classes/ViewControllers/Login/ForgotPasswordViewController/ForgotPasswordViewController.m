@@ -57,7 +57,7 @@
 {
     self.title = dynamicLocalizedString(@"restorePassword.title");
     self.userEmailTextField.placeholder = dynamicLocalizedString(@"restorePassword.PlaceholderText.email");
-    self.mainButton.titleLabel.text = dynamicLocalizedString(@"restorePassword.button.restore");
+    [self.mainButton setTitle:dynamicLocalizedString(@"restorePassword.button.restore") forState:UIControlStateNormal];
     self.informationLabel.text = dynamicLocalizedString(@"restorePassword.information.label.text");
 }
 

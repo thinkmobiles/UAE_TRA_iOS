@@ -14,9 +14,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentProvider;
 @property (weak, nonatomic) IBOutlet UITextField *providerText;
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
-@property (weak, nonatomic) IBOutlet UITextField *compliantDescription;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UITextView *compliantDescriptionTextView;
 
 @end
 
@@ -62,7 +62,7 @@
 - (IBAction)compliant:(id)sender
 {
     [self.view endEditing:YES];
-    if (!self.compliantDescription.text.length ||
+    if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
         (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length ||
                                                         !self.refNumber.text.length))){
@@ -71,7 +71,7 @@
     } else {
         [AppHelper showLoader];
         __weak typeof(self) weakSelf = self;
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescription.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
@@ -82,7 +82,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.providerText.text = @"";
                 weakSelf.compliantTitle.text = @"";
-                weakSelf.compliantDescription.text = @"";
+                weakSelf.compliantDescriptionTextView.text = @"";
                 weakSelf.refNumber.text = @"";            
             });
         }];

@@ -105,6 +105,7 @@
     }
     
     [self localizeUI];
+    [AppHelper localizeTitlesOnTabBar];
     [self updateLanguageSegmentControlPosition];
 }
 
@@ -112,10 +113,16 @@
 {
     switch (index) {
         case 0: {
+            if ([DynamicUIService service].fontSize == ApplicationFontBig) {
+                return;
+            }
             [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
             break;
         }
         case 1: {
+            if ([DynamicUIService service].fontSize == ApplicationFontSmall) {
+                return;
+            }
             [[DynamicUIService service] saveCurrentFontSize:ApplicationFontSmall];
             break;
         }
