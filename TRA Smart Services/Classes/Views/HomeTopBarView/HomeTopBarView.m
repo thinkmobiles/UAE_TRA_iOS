@@ -71,7 +71,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         
     }
     [self setStartApearenceAnimationParameters];
-
 }
 
 #pragma mark - Override

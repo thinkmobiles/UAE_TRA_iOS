@@ -107,3 +107,18 @@
 "coverageReport.strong" = "Strong";
 "coverageReport.veryStrong" = "Very Strong";
 "coverageLevel.title" = "Coverage Level";
+
+//InfoHubViewController
+
+"infoHub.title" = "INFO HUB";
+"announcements.label.text" = "ANNOUNCEMENTS";
+"seeMore.button.title" = "See more";
+"transactions.label.text" = "TRANSACTIONS";
+
+//AnnoucementsViewController
+
+"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+
+//DetailsViewController
+
+"details.title" = "INFO HUB DETAILS";

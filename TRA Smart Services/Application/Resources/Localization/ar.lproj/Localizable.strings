@@ -107,3 +107,18 @@
 "coverageReport.strong" = "قوية";
 "coverageReport.veryStrong" = "قوية جداً";
 "coverageLevel.title" = "قوة التغطية";
+
+//InfoHubViewController
+
+"infoHub.title" = "معلومات";
+"announcements.label.text" = "اعلانات";
+"seeMore.button.title" = "شاهد المزيد";
+"transactions.label.text" = "معاملات";
+
+//AnnoucementsViewController
+
+"annoucements.title" = "معلومات اعلانات";
+
+//DetailsViewController
+
+"details.title" = "معلومات";

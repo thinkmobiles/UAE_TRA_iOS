@@ -71,7 +71,7 @@
 {
     _logoImage = logoImage;
     _favouriteServiceLogoImageView.image = logoImage;
-    [self addHexagoneMaskForLayer:self.favouriteServiceLogoImageView.layer view:self.favouriteServiceLogoImageView];
+    [self addHexagoneOnView:self.favouriteServiceLogoImageView];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText
@@ -117,12 +117,12 @@
     }
 }
 
-- (void)addHexagoneMaskForLayer:(CALayer *)layer view:(UIView *)view
+- (void)addHexagoneOnView:(UIView *)view
 {
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = layer.bounds;
+    maskLayer.frame = view.layer.bounds;
     maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    layer.mask = maskLayer;
+    view.layer.mask = maskLayer;
 }
 
 #pragma mark - Gestures
