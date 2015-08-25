@@ -26,7 +26,8 @@ typedef NS_ENUM(NSUInteger, ApplicationColor) {
     ApplicationColorDefault,
     ApplicationColorOrange,
     ApplicationColorBlue,
-    ApplicationColorGreen
+    ApplicationColorGreen,
+    ApplicationColorBlackAndWhite
 };
 
 static NSString *const UIDynamicServiceNotificationKeyNeedSetRTLUI = @"UIDynamicServiceNotificationKeyNeedSetRTLUI";

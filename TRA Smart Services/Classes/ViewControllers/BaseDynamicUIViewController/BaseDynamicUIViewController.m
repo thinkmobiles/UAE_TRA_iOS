@@ -55,12 +55,13 @@
     NSArray *subViews = mainView.subviews;
     if (subViews.count) {
         for (UIView * subView in subViews) {
+            
             if ([subView isKindOfClass:[UITextField class]] || [subView isKindOfClass:[UILabel class]] || [subView isKindOfClass:[UIButton class]] ) {
-                if (includeFontSizeChange) {
-                    [self updateFontSizeForView:subView];
-                } else {
-                    [self updateFontForView:subView];
-                }
+                    if (includeFontSizeChange) {
+                        [self updateFontSizeForView:subView];
+                    } else {
+                        [self updateFontForView:subView];
+                    }
             }
             [self updateSubviewForParentViewIfPossible:subView fontSizeInclude:includeFontSizeChange];
         }
@@ -105,7 +106,8 @@
 
 - (void)updateFontSizeForView:(UIView *)view
 {
-    if ([view respondsToSelector:@selector(setFont:)]) {
+    if ([view respondsToSelector:@selector(setFont:)] && view.tag != DeclineTagForFontUpdate) {
+        
         CGFloat smallMultiplier = 0.9f;
         CGFloat bigMultiplier = 1.1f;
         
@@ -129,7 +131,8 @@
 
 - (void)updateFontForView:(UIView *)view
 {
-    if ([view respondsToSelector:@selector(setFont:)]) {
+    if ([view respondsToSelector:@selector(setFont:)] && view.tag != DeclineTagForFontUpdate) {
+        
         CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
         
         if ([DynamicUIService service].fontSize) {
@@ -144,6 +147,5 @@
         }
     }
 }
-
 
 @end

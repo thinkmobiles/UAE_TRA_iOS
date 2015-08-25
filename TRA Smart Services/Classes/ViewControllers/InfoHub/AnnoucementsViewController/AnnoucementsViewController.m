@@ -64,7 +64,8 @@ static CGFloat const DefaultCellOffset = 24.0f;
     cell.annocementsDescriptionLabel.text = @"Regarding annoucement the start of a public consultations with all concerdned parties";
     cell.annoucementLogoImage = [UIImage imageNamed:@"test"];
     cell.annocementsDateLabel.text = @"08/03/15";
-
+    cell.annocementsDescriptionLabel.tag = DeclineTagForFontUpdate;
+    
     return cell;
 }
 

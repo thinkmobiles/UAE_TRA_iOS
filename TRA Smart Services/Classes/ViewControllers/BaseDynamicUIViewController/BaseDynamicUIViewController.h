@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+static CGFloat const DeclineTagForFontUpdate = 2000;
+
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView fontSizeInclude:(BOOL)includeFontSizeChange;

@@ -107,6 +107,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     if (indexPath.row) {
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
     }
+    cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
     return cell;
 }
 
@@ -149,6 +150,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
+    cell.infoHubTransactionDescriptionLabel.tag = DeclineTagForFontUpdate;
     
     return cell;
 }

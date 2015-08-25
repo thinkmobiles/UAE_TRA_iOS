@@ -25,6 +25,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 @property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -55,7 +56,6 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     [super viewWillAppear:animated];
  
-    [self prepareAddFavouriteButton];
     [self.tableView reloadData];
 }
 
@@ -342,27 +342,6 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     return isInRemoveArea;
 }
 
-#pragma mark - UI
-
-- (void)prepareAddFavouriteButton
-{
-    CGSize buttonSize = self.addFavouriteButton.frame.size;
-    NSString *buttonTitle = dynamicLocalizedString(@"favourite.button.addFav.title");
-    CGSize titleSize = [buttonTitle sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:10.f] }];
-    UIImage *buttonImage = self.addFavouriteButton.imageView.image;
-    CGSize buttonImageSize = buttonImage.size;
-    
-    CGFloat offsetBetweenImageAndText = 10; //vertical space between image and text
-    
-    [self.addFavouriteButton setImageEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 - offsetBetweenImageAndText,
-                                                (buttonSize.width - buttonImageSize.width) / 2,
-                                                0,0)];
-    self.addFavouriteButton.titleLabel.tag = 1001;
-    [self.addFavouriteButton setTitleEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 + buttonImageSize.height + offsetBetweenImageAndText,
-                                                                 titleSize.width + [self.addFavouriteButton imageEdgeInsets].left > buttonSize.width ? -buttonImage.size.width  +  (buttonSize.width - titleSize.width) / 2 : (buttonSize.width - titleSize.width) / 2 - buttonImage.size.width,
-                                                                 0,0)];
-}
-
 #pragma mark - Drawings
 
 - (void)drawDeleteArea
@@ -527,14 +506,14 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)localizeUI
 {
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
-    [self.addFavouriteButton setTitle: dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
+    self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
 }
 
 - (void)updateColors
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
-    [self.addFavouriteButton setTitleColor: [[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (void)setRTLArabicUI

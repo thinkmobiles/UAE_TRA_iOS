@@ -429,6 +429,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
     cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
     cell.menuTitleLabel.textColor = [UIColor menuItemGrayColor];
+    cell.menuTitleLabel.tag = DeclineTagForFontUpdate;
 }
 
 - (void)configureCategoryCell:(CategoryCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -448,6 +449,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     }
     
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
+    cell.categoryTitleLabel.tag = DeclineTagForFontUpdate;
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
 }
 

@@ -78,6 +78,7 @@
 {
     _descriptionText = descriptionText;
     self.favourieDescriptionLabel.text = descriptionText;
+    self.favourieDescriptionLabel.tag = DeclineTagForFontUpdate;
 }
 
 #pragma mark - Private
