@@ -122,3 +122,7 @@
 //DetailsViewController
 
 "details.title" = "details.title";
+
+//SearchMobileBrandNameViewController
+
+"searchMobileBrandNameViewController.title" = "searchMobileBrandNameViewController.title";

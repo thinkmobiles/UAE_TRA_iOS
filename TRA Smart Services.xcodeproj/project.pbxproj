@@ -23,6 +23,7 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -137,6 +138,8 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
+		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -411,6 +414,15 @@
 			path = BaseSelectImageViewController;
 			sourceTree = "<group>";
 		};
+		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */,
+				9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */,
+			);
+			path = SearchMobileBrandNameViewController;
+			sourceTree = "<group>";
+		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +562,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
@@ -1313,6 +1326,7 @@
 				ED7D9F2B1B6CF03500C20402 /* BaseDynamicUIViewController.m in Sources */,
 				ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */,
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
+				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,

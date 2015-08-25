@@ -27,6 +27,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
+static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBrandNameSegue";
 
 @interface HomeViewController ()
 
@@ -376,7 +377,10 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
             break;
         }
-            
+        case 3: {
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            break;
+        }
         default: {
             [AppHelper alertViewWithMessage:MessageNotImplemented];
             break;

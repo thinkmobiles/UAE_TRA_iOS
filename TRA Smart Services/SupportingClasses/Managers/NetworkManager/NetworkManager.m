@@ -51,7 +51,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServiceGetDomainAvaliability:(NSString *)domainURL requestResult:(ResponseBlock)domainAvaliabilityResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETDomainAvaliability, domainURL];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         domainAvaliabilityResponse([responseDictionary valueForKey:@"availableStatus"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
@@ -62,7 +63,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServicePerformSearchByIMEI:(NSString *)mobileIMEI requestResult:(ResponseBlock)mobileIMEISearchResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETSearchMobileIMEI, mobileIMEI];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         mobileIMEISearchResponse(responseDictionary, nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
@@ -73,7 +75,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServicePerformSearchByMobileBrand:(NSString *)mobileBrand requestResult:(ResponseBlock)mobileBrandSearchResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETSearchMobileBrand, mobileBrand];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         mobileBrandSearchResponse(responseDictionary, nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {

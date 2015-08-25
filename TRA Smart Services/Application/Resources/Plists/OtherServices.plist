@@ -54,9 +54,9 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>3</string>
 		<key>serviceName</key>
-		<string>speedAccess.service.name.-1</string>
+		<string>speedAccess.service.name.3</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>

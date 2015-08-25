@@ -122,3 +122,7 @@
 //DetailsViewController
 
 "details.title" = "INFO HUB DETAILS";
+
+//SearchMobileBrandNameViewController
+
+"searchMobileBrandNameViewController.title" = "Search Mobile Brand";
