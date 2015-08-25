@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import "BaseSearchableViewController.h"
-
 @interface DetailsViewController : BaseDynamicUIViewController
 
 @end

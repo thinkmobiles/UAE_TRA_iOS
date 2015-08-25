@@ -56,19 +56,20 @@
                             <constraint firstAttribute="right" secondItem="Bnp-Oa-xZa" secondAttribute="right" id="4sN-5k-AKV"/>
                             <constraint firstItem="NkV-lN-evX" firstAttribute="top" secondItem="opY-i7-AFU" secondAttribute="top" constant="8" id="5Lh-Zy-sFM"/>
                             <constraint firstItem="b7A-oa-erX" firstAttribute="left" secondItem="opY-i7-AFU" secondAttribute="left" id="8AL-xn-6JC"/>
-                            <constraint firstAttribute="trailing" secondItem="NkV-lN-evX" secondAttribute="trailing" constant="20" id="G9x-db-Pge"/>
+                            <constraint firstAttribute="right" secondItem="NkV-lN-evX" secondAttribute="right" constant="20" id="G9x-db-Pge"/>
                             <constraint firstItem="YIY-6S-9dd" firstAttribute="width" secondItem="NkV-lN-evX" secondAttribute="width" id="I25-k2-qBh"/>
-                            <constraint firstItem="NkV-lN-evX" firstAttribute="leading" secondItem="b7A-oa-erX" secondAttribute="trailing" constant="20" id="KFD-t0-e1a"/>
+                            <constraint firstItem="NkV-lN-evX" firstAttribute="left" secondItem="b7A-oa-erX" secondAttribute="right" constant="20" id="KFD-t0-e1a"/>
                             <constraint firstItem="YIY-6S-9dd" firstAttribute="top" secondItem="NkV-lN-evX" secondAttribute="bottom" constant="8" id="Ls4-Mu-vdf"/>
                             <constraint firstItem="Bnp-Oa-xZa" firstAttribute="left" secondItem="b7A-oa-erX" secondAttribute="right" constant="20" id="WtP-up-mQZ"/>
                             <constraint firstItem="Bnp-Oa-xZa" firstAttribute="top" relation="lessThanOrEqual" secondItem="YIY-6S-9dd" secondAttribute="bottom" constant="16" id="eu1-wZ-4SA"/>
-                            <constraint firstAttribute="trailing" secondItem="YIY-6S-9dd" secondAttribute="trailing" constant="20" id="oOt-KM-X5D"/>
+                            <constraint firstAttribute="right" secondItem="YIY-6S-9dd" secondAttribute="right" constant="20" id="oOt-KM-X5D"/>
                             <constraint firstAttribute="bottom" secondItem="b7A-oa-erX" secondAttribute="bottom" id="qoC-P2-mg8"/>
                             <constraint firstItem="Bnp-Oa-xZa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YIY-6S-9dd" secondAttribute="bottom" constant="12" id="uon-on-Be8"/>
                             <constraint firstAttribute="bottom" secondItem="Bnp-Oa-xZa" secondAttribute="bottom" id="yM7-U6-q5X"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="opY-i7-AFU" firstAttribute="top" secondItem="JzE-yV-bPh" secondAttribute="top" id="2YD-X7-fjR"/>
                     <constraint firstItem="opY-i7-AFU" firstAttribute="left" secondItem="JzE-yV-bPh" secondAttribute="left" constant="24" id="bfF-rl-JYI"/>
@@ -76,6 +77,7 @@
                     <constraint firstAttribute="right" secondItem="opY-i7-AFU" secondAttribute="right" id="u3e-Ho-xth"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="annocementsDateLabel" destination="NkV-lN-evX" id="Ucr-IA-qwb"/>
                 <outlet property="annocementsDescriptionLabel" destination="YIY-6S-9dd" id="s8L-mF-WqZ"/>

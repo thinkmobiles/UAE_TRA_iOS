@@ -9,8 +9,12 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
@@ -356,6 +360,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i0T-yf-d9W">
+                        <barButtonItem key="backBarButtonItem" title=" " id="0p7-z7-hzA"/>
                         <barButtonItem key="rightBarButtonItem" image="ic_search" id="1b1-Uu-W9l" userLabel="SearchBar Button Item">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -2979,47 +2984,77 @@ a new password will be sent.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDf-P1-tNY" userLabel="Conteiner - View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XD7-H6-fHx" userLabel="Background - Image View">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XD7-H6-fHx" userLabel="TitleIMage - UIImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="PIk-fG-V9P"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahb-zu-ARn" userLabel="DateTitle - Label">
-                                                <rect key="frame" x="20" y="133" width="560" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="560" translatesAutoresizingMaskIntoConstraints="NO" id="Ahb-zu-ARn" userLabel="Date - UILabel">
+                                                <rect key="frame" x="22" y="140" width="553" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="biF-mb-0Os"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="text" translatesAutoresizingMaskIntoConstraints="NO" id="css-Qc-gPT">
-                                                <rect key="frame" x="20" y="210" width="560" height="331"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Bc6-g4-o8A" userLabel="Title - UILabel">
+                                                <rect key="frame" x="22" y="169" width="553" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Wem-HQ-LU0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="css-Qc-gPT" userLabel="Description - UITextField">
+                                                <rect key="frame" x="22" y="222" width="556" height="236"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc6-g4-o8A" userLabel="Title - Label">
-                                                <rect key="frame" x="20" y="169" width="560" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="tdR-xP-Hen" userLabel="Source - UiLabel">
+                                                <rect key="frame" x="25" y="488" width="267" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="Bke-Oe-ffX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="duR-PF-4nw" userLabel="Author - UILabel">
+                                                <rect key="frame" x="308" y="488" width="267" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="rRL-4v-Naj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Ahb-zu-ARn" secondAttribute="trailing" constant="20" id="07y-Ms-Wtw"/>
-                                            <constraint firstItem="Bc6-g4-o8A" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" constant="20" id="4NU-2I-0im"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ahb-zu-ARn" secondAttribute="trailing" constant="25" id="07y-Ms-Wtw"/>
+                                            <constraint firstItem="Bc6-g4-o8A" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" constant="22" id="4NU-2I-0im"/>
+                                            <constraint firstAttribute="trailing" secondItem="duR-PF-4nw" secondAttribute="trailing" constant="25" id="5s0-71-N7s"/>
+                                            <constraint firstItem="duR-PF-4nw" firstAttribute="centerY" secondItem="tdR-xP-Hen" secondAttribute="centerY" id="BcW-Dc-bfu"/>
                                             <constraint firstItem="XD7-H6-fHx" firstAttribute="top" secondItem="nDf-P1-tNY" secondAttribute="top" id="IMy-dj-KPu"/>
-                                            <constraint firstAttribute="bottom" secondItem="css-Qc-gPT" secondAttribute="bottom" constant="10" id="Pw2-r6-g4f"/>
+                                            <constraint firstAttribute="bottom" secondItem="duR-PF-4nw" secondAttribute="bottom" constant="42" id="JEb-Xs-slO"/>
+                                            <constraint firstItem="duR-PF-4nw" firstAttribute="leading" secondItem="tdR-xP-Hen" secondAttribute="trailing" constant="16" id="QHf-18-jdS"/>
                                             <constraint firstItem="Bc6-g4-o8A" firstAttribute="bottom" secondItem="XD7-H6-fHx" secondAttribute="bottom" constant="-10" id="S8R-2Q-biZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="css-Qc-gPT" secondAttribute="trailing" constant="20" id="Sdp-i8-akC"/>
+                                            <constraint firstAttribute="trailing" secondItem="css-Qc-gPT" secondAttribute="trailing" constant="22" id="Sdp-i8-akC"/>
                                             <constraint firstItem="Bc6-g4-o8A" firstAttribute="leading" secondItem="Ahb-zu-ARn" secondAttribute="leading" id="VQ1-dc-YjA"/>
-                                            <constraint firstItem="css-Qc-gPT" firstAttribute="top" secondItem="XD7-H6-fHx" secondAttribute="bottom" constant="10" id="WCf-qZ-Ix7"/>
-                                            <constraint firstAttribute="trailing" secondItem="Bc6-g4-o8A" secondAttribute="trailing" constant="20" id="XDT-Su-uez"/>
+                                            <constraint firstItem="css-Qc-gPT" firstAttribute="top" secondItem="XD7-H6-fHx" secondAttribute="bottom" constant="22" id="WCf-qZ-Ix7"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bc6-g4-o8A" secondAttribute="trailing" constant="25" id="XDT-Su-uez"/>
+                                            <constraint firstItem="tdR-xP-Hen" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" constant="25" id="gzY-d7-cQs"/>
                                             <constraint firstAttribute="trailing" secondItem="XD7-H6-fHx" secondAttribute="trailing" id="hiD-Tr-f4Z"/>
-                                            <constraint firstItem="css-Qc-gPT" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" constant="20" id="hpo-p1-X5d"/>
+                                            <constraint firstItem="css-Qc-gPT" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" constant="22" id="hpo-p1-X5d"/>
                                             <constraint firstItem="XD7-H6-fHx" firstAttribute="leading" secondItem="nDf-P1-tNY" secondAttribute="leading" id="lYF-0D-WGj"/>
-                                            <constraint firstItem="Bc6-g4-o8A" firstAttribute="top" secondItem="Ahb-zu-ARn" secondAttribute="bottom" constant="16" id="vMA-aX-EbG"/>
+                                            <constraint firstItem="duR-PF-4nw" firstAttribute="top" secondItem="css-Qc-gPT" secondAttribute="bottom" constant="30" id="vI5-KF-HX0"/>
+                                            <constraint firstItem="Bc6-g4-o8A" firstAttribute="top" secondItem="Ahb-zu-ARn" secondAttribute="bottom" constant="8" id="vMA-aX-EbG"/>
+                                            <constraint firstItem="duR-PF-4nw" firstAttribute="width" secondItem="tdR-xP-Hen" secondAttribute="width" id="wUI-h4-yhs"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3033,18 +3068,22 @@ a new password will be sent.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" secondItem="nDf-P1-tNY" secondAttribute="height" priority="750" id="0Iw-ZP-oft"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" secondItem="nDf-P1-tNY" secondAttribute="height" id="0Iw-ZP-oft"/>
                             <constraint firstItem="fhi-PW-rNF" firstAttribute="top" secondItem="FGV-H2-tRk" secondAttribute="top" id="RKB-QG-Ckv"/>
-                            <constraint firstAttribute="width" secondItem="nDf-P1-tNY" secondAttribute="width" priority="750" id="aDq-dU-NBf"/>
+                            <constraint firstAttribute="width" secondItem="nDf-P1-tNY" secondAttribute="width" id="aDq-dU-NBf"/>
                             <constraint firstItem="8FF-Zr-RM8" firstAttribute="top" secondItem="fhi-PW-rNF" secondAttribute="bottom" id="aGn-cE-87h"/>
                             <constraint firstAttribute="trailing" secondItem="fhi-PW-rNF" secondAttribute="trailing" id="hl6-C8-Rp5"/>
                             <constraint firstItem="fhi-PW-rNF" firstAttribute="leading" secondItem="FGV-H2-tRk" secondAttribute="leading" id="uCD-q8-vQY"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="detailsText" destination="css-Qc-gPT" id="Rxt-XD-E37"/>
-                        <outlet property="detailsTitleDate" destination="Ahb-zu-ARn" id="kKS-gM-lNe"/>
-                        <outlet property="detailsTitleText" destination="Bc6-g4-o8A" id="hih-dU-k9O"/>
+                        <outlet property="authorLabel" destination="duR-PF-4nw" id="yRE-ea-HWG"/>
+                        <outlet property="dateLabel" destination="Ahb-zu-ARn" id="dSt-c4-OT8"/>
+                        <outlet property="descriptionTextView" destination="css-Qc-gPT" id="Av3-XA-ru8"/>
+                        <outlet property="screenTitleLabel" destination="Bc6-g4-o8A" id="KMN-wK-qaN"/>
+                        <outlet property="scrollView" destination="fhi-PW-rNF" id="Gm4-zH-o8a"/>
+                        <outlet property="sourceLabel" destination="tdR-xP-Hen" id="dXZ-Dd-mwb"/>
+                        <outlet property="titleImageView" destination="XD7-H6-fHx" id="NeN-me-TRT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9B-Gt-vbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3081,6 +3120,7 @@ a new password will be sent.</string>
                     <navigationBar key="navigationBar" alpha="0.69999999999999973" contentMode="scaleToFill" id="khH-9g-Omk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

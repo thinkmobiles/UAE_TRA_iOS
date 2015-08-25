@@ -70,6 +70,13 @@
     return [UIColor colorWithRealRed:255 green:243 blue:229 alpha:1.0f];
 }
 
+#pragma mark - InfoHubDetailsViewController
+
++ (UIColor *)lightGrayTextColor
+{
+    return [UIColor colorWithRealRed:158 green:158 blue:158 alpha:1.0f];
+}
+
 #pragma mark - Private
 
 + (UIColor *)colorWithRealRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha

@@ -59,9 +59,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
         cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
     } else {
         cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
-    }
-    cell.backgroundColor = [UIColor clearColor];
-    
+    }    
     cell.annocementsDescriptionLabel.text = @"Regarding annoucement the start of a public consultations with all concerdned parties";
     cell.annoucementLogoImage = [UIImage imageNamed:@"test"];
     cell.annocementsDateLabel.text = @"08/03/15";

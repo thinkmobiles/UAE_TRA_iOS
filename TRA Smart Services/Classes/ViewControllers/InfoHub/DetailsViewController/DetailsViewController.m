@@ -7,12 +7,17 @@
 //
 
 #import "DetailsViewController.h"
+#import "RTLController.h"
 
 @interface DetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextView *detailsText;
-@property (weak, nonatomic) IBOutlet UILabel *detailsTitleDate;
-@property (weak, nonatomic) IBOutlet UILabel *detailsTitleText;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -24,12 +29,58 @@
 {
     [super viewDidLoad];
     
-    [self sourceDatail];
+    [self fillWithdemoData];
+    
+    RTLController *rtl = [[RTLController alloc] init];
+    [rtl disableRTLForView:self.view];
+}
+
+#pragma mark - Superclass Methods
+
+- (void)localizeUI
+{
+    [self setTitleForDetailsScreen:dynamicLocalizedString(@"details.title")];
+}
+
+- (void)updateColors
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        self.authorLabel.textColor = [UIColor lightGrayTextColor];
+        self.sourceLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    } else {
+        self.authorLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+        self.sourceLabel.textColor = [UIColor lightGrayTextColor];
+    }
+}
+
+- (void)setLTREuropeUI
+{
+    self.descriptionTextView.textAlignment = NSTextAlignmentLeft;
+    self.dateLabel.textAlignment = NSTextAlignmentLeft;
+    self.screenTitleLabel.textAlignment = NSTextAlignmentLeft;
+    
+    [self exchangeLabelsText];
+}
+
+- (void)setRTLArabicUI
+{
+    self.descriptionTextView.textAlignment = NSTextAlignmentRight;
+    self.dateLabel.textAlignment = NSTextAlignmentRight;
+    self.screenTitleLabel.textAlignment = NSTextAlignmentRight;
+    
+    [self exchangeLabelsText];
+}
+
+- (void)exchangeLabelsText
+{
+    NSString *buffer = self.authorLabel.text;
+    self.authorLabel.text = self.sourceLabel.text;
+    self.sourceLabel.text = buffer;
 }
 
 #pragma mark - Private
 
-- (void)setTitleNavigationBar:(NSString *)title
+- (void)setTitleForDetailsScreen:(NSString *)title
 {
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     titleView = [[UILabel alloc] init];
@@ -40,35 +91,24 @@
     [titleView sizeToFit];
 }
 
-- (void) sourceDatail
+- (void)fillWithdemoData
 {
-    self.detailsText.text = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in";
-}
+    self.dateLabel.text = @"June 28, 2015";
+    self.screenTitleLabel.text = @"All Mobiles phone devices with a fraduent IMEI number  will caease to wotk wihint the";
+    NSString *content = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \nDuis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation t et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in";
 
-#pragma mark - Superclass Methods
-
-- (void)localizeUI
-{
-    [self setTitleNavigationBar:dynamicLocalizedString(@"details.title")];
-}
-
-- (void)updateColors
-{
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.paragraphSpacing = 24.f;
+    style.alignment = [DynamicUIService service].language == LanguageTypeArabic ? NSTextAlignmentRight : NSTextAlignmentLeft;
     
-}
+    NSAttributedString *text = [[NSAttributedString alloc] initWithString:content attributes:@{
+                                                                                               NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:12.f] : [UIFont latoRegularWithSize:12.f],
+                                                                                               NSParagraphStyleAttributeName : style} ];
+    self.descriptionTextView.attributedText = text;
 
-- (void)setLTREuropeUI
-{
-    self.detailsText.textAlignment = NSTextAlignmentLeft;
-    self.detailsTitleDate.textAlignment = NSTextAlignmentLeft;
-    self.detailsTitleText.textAlignment = NSTextAlignmentLeft;
-}
-
-- (void)setRTLArabicUI
-{
-    self.detailsText.textAlignment = NSTextAlignmentRight;
-    self.detailsTitleDate.textAlignment = NSTextAlignmentRight;
-    self.detailsTitleText.textAlignment = NSTextAlignmentRight;
+    self.sourceLabel.text = @"tra.gov.ae";
+    self.authorLabel.text = @"Federal Authority";
+    self.titleImageView.image = [UIImage imageNamed:@"demo"];
 }
 
 @end

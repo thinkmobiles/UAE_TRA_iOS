@@ -144,6 +144,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
    
     cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
+    cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = @"12/12/34";
     cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
     
@@ -228,7 +229,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)updateColors
 {
-    
+    [self.tableView reloadData];
 }
 
 - (void)setRTLArabicUI

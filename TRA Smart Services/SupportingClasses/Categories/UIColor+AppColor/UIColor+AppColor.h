@@ -30,4 +30,8 @@
 
 + (UIColor *)lightOrangeColor;
 
+#pragma mark - InfoHubDetailsViewController
+
++ (UIColor *)lightGrayTextColor;
+
 @end
