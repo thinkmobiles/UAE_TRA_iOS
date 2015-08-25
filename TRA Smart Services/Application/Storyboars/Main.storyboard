@@ -359,6 +359,8 @@
                     <connections>
                         <outlet property="announcementsLabel" destination="xYL-ma-Icr" id="S4X-fZ-ux1"/>
                         <outlet property="collectionView" destination="DO2-wt-CDh" id="2QX-2Z-7tl"/>
+                        <outlet property="leftSeparatorSpaceConstraint" destination="7zv-Jk-Kbi" id="6vA-GG-yfa"/>
+                        <outlet property="rightSeparatorSpaceConstraint" destination="SZQ-hX-eXw" id="gDi-y7-AfD"/>
                         <outlet property="searchBarButtonItem" destination="eyN-xX-Vqh" id="BA0-HP-HeT"/>
                         <outlet property="seeMoreButton" destination="j45-km-Tl5" id="tb1-Xt-yX4"/>
                         <outlet property="tableView" destination="0RF-Wa-xRD" id="Tzl-v1-LNZ"/>

@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
+
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
 @property (strong, nonatomic) NSArray *tableViewDataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
@@ -108,6 +111,11 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
     }
     cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+    }
+
     return cell;
 }
 
@@ -165,7 +173,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(DefaultCellOffset, 0, tableView.frame.size.width - DefaultCellOffset * 2, SectionHeaderHeight)];
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
-    headerLabel.font = [UIFont latoBoldWithSize:11.f];
+    headerLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight);
@@ -201,13 +209,21 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 - (void)setRTLArabicUI
 {
     self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    self.leftSeparatorSpaceConstraint.constant = 0;
+    self.rightSeparatorSpaceConstraint.constant = DefaultCellOffset;
     [self updateUI];
+    
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
 }
 
 - (void)setLTREuropeUI
 {
     self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    self.leftSeparatorSpaceConstraint.constant = DefaultCellOffset;
+    self.rightSeparatorSpaceConstraint.constant = 0;
     [self updateUI];
+    
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
 }
 
 #pragma mark - Private
