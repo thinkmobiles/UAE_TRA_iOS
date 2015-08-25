@@ -106,6 +106,7 @@
     
     [self localizeUI];
     [AppHelper localizeTitlesOnTabBar];
+    [AppHelper updateFontsOnTabBar];
     [self updateLanguageSegmentControlPosition];
 }
 
