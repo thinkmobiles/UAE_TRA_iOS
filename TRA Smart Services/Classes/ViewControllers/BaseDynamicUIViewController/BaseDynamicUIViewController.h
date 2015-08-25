@@ -8,7 +8,7 @@
 
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
-- (void)updateSubviewForParentViewIfPossible:(UIView *)mainView;
+- (void)updateSubviewForParentViewIfPossible:(UIView *)mainView fontSizeInclude:(BOOL)includeFontSizeChange;
 - (void)localizeUI;
 - (void)updateColors;
 

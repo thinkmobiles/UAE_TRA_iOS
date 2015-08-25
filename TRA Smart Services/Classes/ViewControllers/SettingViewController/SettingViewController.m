@@ -48,6 +48,8 @@
     
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
+    
+    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,14 +61,12 @@
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self unregisterForKeyboardNotification];
 }
 
 #pragma mark - IBActions
@@ -128,7 +128,6 @@
         }
     }
     
-    [self updateSubviewForParentViewIfPossible:self.view];
     [AppHelper updateFontsOnTabBar];
     [self updateFontSizeSegmentControlPosition];
 }
@@ -190,11 +189,6 @@
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboadWillShow:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)unregisterForKeyboardNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)keyboadWillShow:(NSNotification*)notification

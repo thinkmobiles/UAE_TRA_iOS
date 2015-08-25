@@ -76,6 +76,7 @@ static NSString *const KeyLanguageArabic = @"ar";
             [AppHelper reverseTabBarItems];
             [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
     }
 }
 
@@ -85,7 +86,7 @@ static NSString *const KeyLanguageArabic = @"ar";
     _fontSize = fontSize;
     
     if (_fontSize != prevFont && prevFont != ApplicationFontUndefined) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFontWithSize object:nil];
     }
 }
 
