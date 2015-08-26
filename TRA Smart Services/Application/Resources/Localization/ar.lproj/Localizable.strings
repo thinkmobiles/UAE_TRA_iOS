@@ -33,6 +33,15 @@
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
+"register.placeHolderText.comfirmPassword" = "Comfirm Password";
+"register.placeHolderText.firstName" = "First Name";
+"register.placeHolderText.emirateID" = "Emirates ID №";
+"register.placeHolderText.lastName" = "Last Name";
+"register.placeHolderText.address" = "Address";
+"register.placeHolderText.landline" = "Landline";
+"register.placeHolderText.country" = "Country";
+"register.placeHolderText.email" = "Email";
+"register.placeHolderText.state" = "State";
 
 //RestorePasswordViewController
 
