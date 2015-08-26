@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -162,11 +162,12 @@
                         <outlet property="searchBarButtonItem" destination="6pZ-ch-QLs" id="HDQ-Av-hDa"/>
                         <outlet property="tableView" destination="WIv-F5-QDv" id="IMB-jG-xfd"/>
                         <segue destination="ZFB-jH-a5E" kind="custom" identifier="serviceInfoListSegue" customClass="PushNoAnimationSegue" id="eFn-sG-2u4"/>
+                        <segue destination="yWy-fr-TAl" kind="custom" identifier="addToFavoriteSegue" customClass="PushNoAnimationSegue" id="2Df-2E-7TR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1J-cM-BDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="207"/>
+            <point key="canvasLocation" x="1848" y="255"/>
         </scene>
         <!--Info Hub View Controller-->
         <scene sceneID="Z79-gI-UVL">
@@ -3205,6 +3206,63 @@ a new password will be sent.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7B-tz-pN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6498" y="-1317"/>
+        </scene>
+        <!--Add To Favourite View Controller-->
+        <scene sceneID="0Um-lp-Jzf">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yWy-fr-TAl" customClass="AddToFavouriteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9mh-Te-rNZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="8X4-Eq-A0J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E8m-t9-MIJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="AfH-0f-6Az" userLabel="Background - UIIMageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5hp-MY-dbh" userLabel="Favourite - UITableViewCell">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yWy-fr-TAl" id="bvK-bn-80N"/>
+                                    <outlet property="delegate" destination="yWy-fr-TAl" id="jfR-bU-Oxt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8X4-Eq-A0J" firstAttribute="top" secondItem="5hp-MY-dbh" secondAttribute="bottom" id="6PH-Ii-1Eh"/>
+                            <constraint firstAttribute="trailing" secondItem="AfH-0f-6Az" secondAttribute="trailing" id="IUG-0e-mbS"/>
+                            <constraint firstItem="AfH-0f-6Az" firstAttribute="leading" secondItem="E8m-t9-MIJ" secondAttribute="leading" id="JjF-60-GgE"/>
+                            <constraint firstItem="5hp-MY-dbh" firstAttribute="top" secondItem="9mh-Te-rNZ" secondAttribute="bottom" id="Ma6-fX-E0u"/>
+                            <constraint firstItem="8X4-Eq-A0J" firstAttribute="top" secondItem="AfH-0f-6Az" secondAttribute="bottom" id="UB4-2e-JMq"/>
+                            <constraint firstItem="5hp-MY-dbh" firstAttribute="left" secondItem="E8m-t9-MIJ" secondAttribute="left" id="ZcG-rc-c5w"/>
+                            <constraint firstAttribute="right" secondItem="5hp-MY-dbh" secondAttribute="right" id="iXN-TK-UlI"/>
+                            <constraint firstItem="AfH-0f-6Az" firstAttribute="top" secondItem="E8m-t9-MIJ" secondAttribute="top" id="pVU-54-BKW"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qvR-a1-ibr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EfH-yo-mjk"/>
+                        <barButtonItem key="rightBarButtonItem" image="btn_search" id="k7Y-TT-ovG" userLabel="Search - UiBarButtonItem">
+                            <connections>
+                                <action selector="searchBarButtonTapped:" destination="yWy-fr-TAl" id="tCQ-NS-w5y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="AfH-0f-6Az" id="l4g-xb-Fn3"/>
+                        <outlet property="searchBarButtonItem" destination="k7Y-TT-ovG" id="WTg-UW-u1A"/>
+                        <outlet property="tableView" destination="5hp-MY-dbh" id="0mq-DG-6vn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kMF-H9-ZWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3513" y="926"/>
         </scene>
     </scenes>
     <resources>
