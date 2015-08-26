@@ -8,6 +8,6 @@
 
 #import "BaseSelectImageViewController.h"
 
-@interface SuggestionViewController : BaseSelectImageViewController
+@interface SuggestionViewController : BaseSelectImageViewController <UITextFieldDelegate>
 
 @end

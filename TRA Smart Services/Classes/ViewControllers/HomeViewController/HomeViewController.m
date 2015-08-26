@@ -11,6 +11,13 @@
 #import "CategoryCollectionViewCell.h"
 #import "AppDelegate.h"
 
+#define Mask8(x) ( (x) & 0xFF )
+#define R(x) ( Mask8(x) )
+#define G(x) ( Mask8(x >> 8 ) )
+#define B(x) ( Mask8(x >> 16) )
+#define A(x) ( Mask8(x >> 24) )
+#define RGBAMake(r, g, b, a) ( Mask8(r) | Mask8(g) << 8 | Mask8(b) << 16 | Mask8(a) << 24 )
+
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
@@ -313,20 +320,15 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     self.topView.avatarView.layer.transform = transform;
 }
 
-- (void)setRTLArabicUI
-{
-    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
-}
-
-- (void)setLTREuropeUI
-{
-    [self transformTopView:CATransform3DIdentity];
-}
-
 #pragma mark - Navigations
 
 - (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:MessageNoInternetConnection];
+        return;
+    }
+    
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
         case 7: {
@@ -354,6 +356,11 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 
 - (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:MessageNoInternetConnection];
+        return;
+    }
+    
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
         case 2: {
@@ -399,7 +406,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
 }
 
-#pragma mark - Localization
+#pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
@@ -408,9 +415,31 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 
 - (void)updateColors
 {
-    self.backgroundImageView.image = [UIImage imageNamed:@"background"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"background"];
+    UIImage *movableImage = [UIImage imageNamed:@"res_polygons"];
+
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+        movableImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:movableImage];
+    }
+    
+    self.movableImageView.image = movableImage;
+    self.backgroundImageView.image = backgroundImage;
+    
     [self.topView updateUIColor];
 }
+
+- (void)setRTLArabicUI
+{
+    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
+}
+
+- (void)setLTREuropeUI
+{
+    [self transformTopView:CATransform3DIdentity];
+}
+
+#pragma mark - Configurations for Cells
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -423,7 +452,9 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        cell.itemLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        
+        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        cell.itemLogoImageView.image = serviceLogo;
     }
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
     cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
@@ -435,15 +466,26 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 {
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     
+    NSArray *gradientColors = @[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        gradientColors = @[(id)[UIColor blackColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.5f].CGColor];
+    }
+    
     if ([[selectedServiceDetails valueForKey:@"serviceNeedGradient"] boolValue]) {
-        [cell.polygonView setGradientWithTopColors:@[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor]];
+        [cell.polygonView setGradientWithTopColors:gradientColors];
     } else {
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
         [cell setTintColorForLabel:[[DynamicUIService service] currentApplicationColor]];
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        cell.categoryLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        
+        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+            serviceLogo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:serviceLogo];
+        }
+
+        cell.categoryLogoImageView.image = serviceLogo;
         cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     }
     

@@ -33,10 +33,6 @@
 {
     [super viewDidLoad];
     
-    if (self.needTransparentNavigationBar) {
-        self.reader = [[BarcodeCodeReader alloc] initWithView:self.barcodeView];
-        self.reader.delegate = self;
-    }
     [self prepareUI];
 }
 
@@ -55,9 +51,10 @@
 {
     [super viewWillAppear:animated];
     
+    [self prepareReaderIfNeeded];
+    
     if (self.needTransparentNavigationBar) {
         self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-        
         [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setTranslucent:YES];
         [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -66,10 +63,6 @@
     }
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self registerForKeyboardNotifications];
-    
-    if (self.needTransparentNavigationBar) {
-        [self.reader startStopReading];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -105,10 +98,9 @@
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                //todo
+                [AppHelper alertViewWithMessage:MessageSuccess];
             }
             [AppHelper hideLoader];
-            self.resultTextField.text = @"";
         }];
     } else {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
@@ -186,6 +178,32 @@
         self.centerPositionForTextFieldConstraint.constant = 100;
         [self.view layoutIfNeeded];
     }];
+}
+
+- (void)prepareReaderIfNeeded
+{
+    if (self.needTransparentNavigationBar && self.barcodeView) {
+        if ([BarcodeCodeReader isDeviceHasBackCamera]) {
+            __weak typeof(self) weakSelf = self;
+            [BarcodeCodeReader checkPermissionForCamera:^(BOOL status) {
+                if (status) {
+                    weakSelf.reader = [[BarcodeCodeReader alloc] initWithView:weakSelf.barcodeView];
+                    weakSelf.reader.delegate = weakSelf;
+                    [weakSelf.reader startStopReading];
+                } else {
+                    [AppHelper alertViewWithMessage:MessageNoCameraPermissionGranted delegate:weakSelf];
+                }
+            }];
+        }
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:settingsURL];
 }
 
 #pragma mark - Drawing

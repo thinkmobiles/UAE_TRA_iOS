@@ -7,6 +7,7 @@
 //
 
 #import "CoverageReportViewController.h"
+#import "MBProgressHUD+CancelButton.h"
 
 @interface CoverageReportViewController ()
 
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSignalLevel;
+
+@property (strong, nonatomic) MBProgressHUD *HUD;
 
 @end
 
@@ -30,15 +33,43 @@
     self.selectedSignalLevel.text = dynamicLocalizedString(@"coverageLevel.title");
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
+    
+    [self prepareHUD];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [AppHelper showLoader];
-    [LocationManager sharedManager].delegate = self;
-    [[LocationManager sharedManager] startUpdatingLocation];
+    if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
+        __weak typeof(self) weakSelf = self;
+        [[LocationManager sharedManager] checkLocationPermissions:^(BOOL result) {
+            if (result) {
+                [weakSelf.HUD show:YES];
+                [LocationManager sharedManager].delegate = weakSelf;
+                [[LocationManager sharedManager] startUpdatingLocation];
+            } else {
+                [AppHelper alertViewWithMessage:MessageNoLocationPermissionGranted delegate:weakSelf];
+            }
+        }];
+    } else {
+        [AppHelper alertViewWithMessage:MessageNoLocationEnabledOnDevice delegate:self];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.HUD removeFromSuperview];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
 }
 
 #pragma mark - LocationManagerDelegate
@@ -54,7 +85,7 @@
             weakSelf.addressTextField.text = address;
             [weakSelf.activityIndicator stopAnimating];
         });
-        [AppHelper hideLoader];
+        [weakSelf.HUD hide:YES];
     }];
 }
 
@@ -62,6 +93,15 @@
 {
     [AppHelper hideLoader];
     [AppHelper alertViewWithMessage:failError.localizedDescription];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:settingsURL];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - IbAction
@@ -77,8 +117,8 @@
             } else {
                 [AppHelper alertViewWithMessage:response];
             }
-            weakSelf.addressTextField.text = @"";
-            [AppHelper hideLoader];
+            [weakSelf.HUD hide:YES];
+
         }];
     } else {
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
@@ -118,6 +158,12 @@
     self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), value];
 }
 
+- (void)MBProgressHUDCancelButtonDidPressed
+{
+    [self.HUD hide:YES];
+    [[LocationManager sharedManager] stopUpdatingLocation];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
@@ -131,5 +177,12 @@
     }
 }
 
+- (void)prepareHUD
+{
+    self.HUD = [[MBProgressHUD alloc] initWithView:[AppHelper topView]];
+    [[AppHelper rootViewController].view addSubview:self.HUD];
+    self.HUD.dimBackground = YES;
+    [self.HUD addCancelButtonForTarger:self andSelector:NSStringFromSelector(@selector(MBProgressHUDCancelButtonDidPressed))];
+}
 
 @end

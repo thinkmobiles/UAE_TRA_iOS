@@ -131,7 +131,11 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
+    UIColor *pairCellColor = [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    }
+    cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
     cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
     cell.delegate = self;
@@ -344,6 +348,15 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 #pragma mark - Drawings
 
+- (UIColor *)currentDeleteAreaColor
+{
+    UIColor *deleteAreaColor = [[UIColor redColor] colorWithAlphaComponent:0.8f];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        deleteAreaColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.8f];
+    }
+    return deleteAreaColor;
+}
+
 - (void)drawDeleteArea
 {
     [self prepareArcLayer];
@@ -364,7 +377,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     self.contentFakeIconLayer = [CALayer layer];
     CGFloat contentHeight = 50.f;
     CGFloat contentWidth = 44.f;
-    self.contentFakeIconLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.contentFakeIconLayer.backgroundColor = [self currentDeleteAreaColor].CGColor;
     CGRect contentLayerRect = CGRectMake(width / 2 - contentWidth / 2, startY - heightOfBottomDeletePart / 2 , contentWidth, contentHeight);
     self.contentFakeIconLayer.frame = contentLayerRect;
     
@@ -395,7 +408,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     self.arcDeleteZoneLayer = [CALayer layer];
     self.arcDeleteZoneLayer.frame = self.tableView.bounds;
-    self.arcDeleteZoneLayer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f].CGColor;
+    self.arcDeleteZoneLayer.backgroundColor = [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
     self.arcDeleteZoneLayer.masksToBounds = YES;
 }
 
@@ -461,7 +474,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     self.shadowFakeIconLayer.shadowOpacity = select ? 0.02f : 0.2f;
     self.contentFakeIconLayer.opacity = select ? 0.5 : 1.0;
-    self.arcDeleteZoneLayer.backgroundColor = select ? [[UIColor redColor] colorWithAlphaComponent:0.7f].CGColor : [[UIColor redColor] colorWithAlphaComponent:0.3f].CGColor;
+    self.arcDeleteZoneLayer.backgroundColor = select ? [[self currentDeleteAreaColor] colorWithAlphaComponent:0.7f].CGColor : [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
 }
 
 - (void)animateDeleteZoneDisapearing
@@ -514,6 +527,12 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI

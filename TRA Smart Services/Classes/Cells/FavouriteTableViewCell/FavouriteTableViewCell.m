@@ -52,16 +52,21 @@
 
 - (void)markRemoveButtonSelected:(BOOL)selected
 {
+    UIColor *selectionColor = [UIColor redColor];
+    UIImage *actRemoveImage = [UIImage imageNamed:@"ic_remove_act"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        selectionColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.8f];
+        actRemoveImage = [UIImage imageNamed:@"ic_remove_dctv"];
+    }
+
     if (selected) {
-        [self.removeButton setTintColor:[UIColor redColor]];
-        [self.removeButton setImage:[UIImage imageNamed:@"ic_remove_act"] forState:UIControlStateNormal];
-        [self.removeArabicButton setTintColor:[UIColor redColor]];
-        [self.removeArabicButton setImage:[UIImage imageNamed:@"ic_remove_act"] forState:UIControlStateNormal];
+        [self prepareButton:self.removeButton withColor:selectionColor image:actRemoveImage];
+        [self prepareButton:self.removeArabicButton withColor:selectionColor image:actRemoveImage];
     } else {
-        [self.removeButton setTintColor:[UIColor lightGrayColor]];
-        [self.removeButton setImage:[UIImage imageNamed:@"ic_remove_dctv"] forState:UIControlStateNormal];
-        [self.removeArabicButton setTintColor:[UIColor lightGrayColor]];
-        [self.removeArabicButton setImage:[UIImage imageNamed:@"ic_remove_dctv"] forState:UIControlStateNormal];
+        UIColor *inactColor = [UIColor lightGrayColor];
+        UIImage *inactImage = [UIImage imageNamed:@"ic_remove_dctv"];
+        [self prepareButton:self.removeButton withColor:inactColor image:inactImage];
+        [self prepareButton:self.removeArabicButton withColor:inactColor image:inactImage];
     }
 }
 
@@ -82,6 +87,18 @@
 }
 
 #pragma mark - Private
+
+- (void)prepareButton:(UIButton *)button withColor:(UIColor *)color image:(UIImage *)buttonImage
+{
+    button.titleLabel.textColor = color;
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button setTitleColor:color forState:UIControlStateSelected];
+    [button setTitleColor:color forState:UIControlStateHighlighted];
+    
+    [button setImage:buttonImage forState:UIControlStateNormal];
+    [button setImage:buttonImage forState:UIControlStateSelected];
+    [button setImage:buttonImage forState:UIControlStateHighlighted];
+}
 
 - (void)localizeAndPrepareButtons
 {

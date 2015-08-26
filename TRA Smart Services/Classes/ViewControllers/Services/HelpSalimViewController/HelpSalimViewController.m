@@ -38,8 +38,6 @@
     }
     [AppHelper showLoader];
     [self.view endEditing:YES];
-    __weak typeof(self) weakSelf = self;
-
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.urlToReportTextField.text notes:self.commentTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:error.localizedDescription];
@@ -48,10 +46,27 @@
         }
         
         [AppHelper hideLoader];
-        
-        weakSelf.urlToReportTextField.text = @"";
-        weakSelf.commentTextView.text = @"";
     }];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Private
@@ -70,6 +85,5 @@
     self.commentTextView.layer.borderWidth = 1;
     self.commentTextView.layer.cornerRadius = 8;
 }
-
 
 @end

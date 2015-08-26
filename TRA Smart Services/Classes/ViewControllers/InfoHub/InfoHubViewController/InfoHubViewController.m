@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
@@ -105,7 +106,13 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 {
     InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
     cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
-    cell.previewLogoImage = [UIImage imageNamed:@"ic_type_apr"];
+    
+    UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+    cell.previewLogoImage = logo;
+
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
@@ -157,7 +164,11 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
     cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
-    cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
+    UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+    cell.infoHubTransactionImageView.image = logo;
     cell.infoHubTransactionDescriptionLabel.tag = DeclineTagForFontUpdate;
     
     return cell;
@@ -204,6 +215,13 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 - (void)updateColors
 {
     [self.tableView reloadData];
+    [self.collectionView reloadData];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI

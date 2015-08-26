@@ -13,6 +13,7 @@
 @interface AnnoucementsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
@@ -62,7 +63,11 @@ static CGFloat const DefaultCellOffset = 24.0f;
         cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
     }    
     cell.annocementsDescriptionLabel.text = @"Regarding annoucement the start of a public consultations with all concerdned parties";
-    cell.annoucementLogoImage = [UIImage imageNamed:@"test"];
+    UIImage *logo = [UIImage imageNamed:@"test"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+    cell.annoucementLogoImage = logo;
     cell.annocementsDateLabel.text = @"08/03/15";
     cell.annocementsDescriptionLabel.tag = DeclineTagForFontUpdate;
     
@@ -97,7 +102,11 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (void)updateColors
 {
-    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 #pragma mark - Private

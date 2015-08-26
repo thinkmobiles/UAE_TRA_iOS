@@ -316,6 +316,13 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 - (void)prepareNetworkManagerWithURL:(NSURL *)baseURL
 {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:TESTBaseURLPathKey]) {
+        NSString *path = [[NSUserDefaults standardUserDefaults] valueForKey:TESTBaseURLPathKey];
+        if (path.length) {
+            baseURL = [NSURL URLWithString:path];
+        }
+    }
+
     self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -329,6 +336,9 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 - (void)setBaseURL:(NSString *)baseURL
 {
+    [[NSUserDefaults standardUserDefaults] setValue:baseURL forKey:TESTBaseURLPathKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self prepareNetworkManagerWithURL:[NSURL URLWithString:baseURL]];
 }
 

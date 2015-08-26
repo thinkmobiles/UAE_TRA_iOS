@@ -107,6 +107,11 @@ static NSString *const KeyLanguageArabic = @"ar";
         }
         case ApplicationColorGreen: {
             color = [UIColor defaultGreenColor];
+            break;
+        }
+        case ApplicationColorBlackAndWhite: {
+            color = [UIColor blackColor];
+            break;
         }
     }
     return color;
@@ -198,6 +203,9 @@ static NSString *const KeyLanguageArabic = @"ar";
         case 3: {
             savedColor = ApplicationColorGreen;
             break;
+        }
+        case 4: {
+            savedColor = ApplicationColorBlackAndWhite;
         }
     }
     return savedColor;

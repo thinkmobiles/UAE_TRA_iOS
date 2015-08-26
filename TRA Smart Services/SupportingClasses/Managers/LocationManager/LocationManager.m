@@ -38,6 +38,16 @@
     }
 }
 
+- (void)checkLocationPermissions:(AccessResult)result
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusNotDetermined) {
+        result(NO);
+    } else if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+        result(YES);
+    }
+}
+
 - (BOOL)isLocationServiceEnabled
 {
     return [CLLocationManager locationServicesEnabled];

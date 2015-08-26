@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *themeBlueButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeOrangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
+@property (weak, nonatomic) IBOutlet UIButton *themeColorBlackAndWhite;
 
 @property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
 @property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
@@ -74,18 +75,26 @@
 - (IBAction)selectedThemes:(id)sender
 {
     switch ([sender tag]) {
-        case 0:
+        case 0: {
             [self makeActiveColorTheme:ApplicationColorBlue];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlue];
             break;
-        case 1:
+        }
+        case 1: {
             [self makeActiveColorTheme:ApplicationColorOrange];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorOrange];
             break;
-        case 2:
+        }
+        case 2: {
             [self makeActiveColorTheme:ApplicationColorGreen];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorGreen];
             break;
+        }
+        case 3: {
+            [self makeActiveColorTheme:ApplicationColorBlackAndWhite];
+            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlackAndWhite];
+            break;
+        }
     }
     [AppHelper updateTabBarTintColor];
     [AppHelper updateNavigationBarColor];
@@ -211,6 +220,7 @@
     self.themeBlueButton.backgroundColor = [UIColor whiteColor];
     self.themeOrangeButton.backgroundColor = [UIColor whiteColor];
     self.themeGreenButton.backgroundColor = [UIColor whiteColor];
+    self.themeColorBlackAndWhite.backgroundColor = [UIColor whiteColor];
 
     [[DynamicUIService service] setColorScheme:selectedColor];
 
@@ -226,6 +236,10 @@
         }
         case ApplicationColorGreen: {
             self.themeGreenButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            break;
+        }
+        case ApplicationColorBlackAndWhite: {
+            self.themeColorBlackAndWhite.backgroundColor = [[DynamicUIService service] currentApplicationColor];
             break;
         }
     }

@@ -58,7 +58,7 @@
 		<key>serviceName</key>
 		<string>speedAccess.service.name.3</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string>ic_share</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 	</dict>

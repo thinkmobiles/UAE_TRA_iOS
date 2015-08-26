@@ -45,7 +45,6 @@
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
     } else {
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTSendSuggestion:self.suggestionTitle.text description:self.suggectionDescription.text attachment:self.selectImage requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
@@ -53,11 +52,6 @@
                 [AppHelper alertViewWithMessage:MessageSuccess];
             }
             [AppHelper hideLoader];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.suggestionTitle.text = @"";
-                weakSelf.suggectionDescription.text = @"";
-            });
         }];
     }
 }
@@ -66,11 +60,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType == UIReturnKeyNext) {
-        UITextField *nextTextField = (UITextField *)[self.view viewWithTag: (textField.tag + 1)];
-        [nextTextField becomeFirstResponder];
-    }
-    return NO;
+    [self.view endEditing:YES];
+    return YES;
 }
 
 #pragma mark - Private

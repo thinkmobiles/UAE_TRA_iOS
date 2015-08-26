@@ -79,12 +79,6 @@
                                             <color key="titleColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="ic_remove_act">
-                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_remove_act">
-                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -134,7 +128,6 @@
     </objects>
     <resources>
         <image name="ic_info_sml" width="16" height="16"/>
-        <image name="ic_remove_act" width="16" height="16"/>
         <image name="ic_remove_dctv" width="16" height="16"/>
     </resources>
 </document>

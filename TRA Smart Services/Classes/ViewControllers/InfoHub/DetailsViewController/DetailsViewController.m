@@ -108,7 +108,12 @@
 
     self.sourceLabel.text = @"tra.gov.ae";
     self.authorLabel.text = @"Federal Authority";
-    self.titleImageView.image = [UIImage imageNamed:@"demo"];
+    UIImage *logo = [UIImage imageNamed:@"demo"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+
+    self.titleImageView.image = logo;
 }
 
 @end

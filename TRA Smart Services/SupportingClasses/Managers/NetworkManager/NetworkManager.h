@@ -8,6 +8,8 @@
 
 #import "AFNetworkReachabilityManager.h"
 
+static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
+
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
     ServiceTypeGetDomainAvaliability = 1,

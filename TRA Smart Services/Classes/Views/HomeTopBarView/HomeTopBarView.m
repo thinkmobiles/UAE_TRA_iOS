@@ -313,6 +313,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.backgroundColor = color;
     self.searchLayer.backgroundColor = color;
     self.notificationLayer.backgroundColor = color;
+    self.avatarImageLayer.backgroundColor = color;
 }
 
 #pragma mark - AnimationDelegate
@@ -578,9 +579,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CALayer *layer= [CALayer layer];
     layer.frame = rect;
     layer.backgroundColor = [DynamicUIService service].currentApplicationColor.CGColor;
-    if (mainLogo) {
-        layer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
-    }
     
     CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
     CALayer *imageLayer = [CALayer layer];

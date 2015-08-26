@@ -43,20 +43,33 @@
     }
     [AppHelper showLoader];
     [self.view endEditing:YES];
-    __weak typeof(self) weakSelf = self;
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:error.localizedDescription];
         } else {
             [AppHelper alertViewWithMessage:MessageSuccess];
         }
-        
         [AppHelper hideLoader];
-        
-        weakSelf.feedbackTextView.text = @"";
-        weakSelf.serviceNameTextField.text = @"";
-        weakSelf.ratingTextField.text = @"";
     }];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Private

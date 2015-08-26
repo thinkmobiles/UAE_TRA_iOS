@@ -64,13 +64,10 @@
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
-        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length ||
-                                                        !self.refNumber.text.length))){
-        
+        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
         [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
     } else {
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
@@ -78,13 +75,6 @@
                 [AppHelper alertViewWithMessage:MessageSuccess];
             }
             [AppHelper hideLoader];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.providerText.text = @"";
-                weakSelf.compliantTitle.text = @"";
-                weakSelf.compliantDescriptionTextView.text = @"";
-                weakSelf.refNumber.text = @"";            
-            });
         }];
     }
 }
@@ -93,11 +83,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType == UIReturnKeyNext) {
-        UITextField *nextTextField = (UITextField *)[self.view viewWithTag: (textField.tag + 1)];
-        [nextTextField becomeFirstResponder];
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 #pragma mark - Private
@@ -111,6 +109,10 @@
             subView.layer.borderWidth = 1;
         }
     }
+    
+    self.compliantDescriptionTextView.layer.cornerRadius = 8;
+    self.compliantDescriptionTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
+    self.compliantDescriptionTextView.layer.borderWidth = 1;
 }
 
 @end

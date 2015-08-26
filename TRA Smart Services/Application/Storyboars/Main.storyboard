@@ -358,6 +358,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="announcementsLabel" destination="xYL-ma-Icr" id="S4X-fZ-ux1"/>
+                        <outlet property="backgroundImageView" destination="o3f-kR-2mZ" id="Cde-tH-FSi"/>
                         <outlet property="collectionView" destination="DO2-wt-CDh" id="2QX-2Z-7tl"/>
                         <outlet property="leftSeparatorSpaceConstraint" destination="7zv-Jk-Kbi" id="6vA-GG-yfa"/>
                         <outlet property="rightSeparatorSpaceConstraint" destination="SZQ-hX-eXw" id="gDi-y7-AfD"/>
@@ -385,7 +386,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="nIk-CI-nrh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="nIk-CI-nrh" userLabel="Background - UiIMageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AbL-as-jI4">
@@ -419,6 +420,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImageView" destination="nIk-CI-nrh" id="dps-9N-krm"/>
                         <outlet property="searchBarButtonItem" destination="1b1-Uu-W9l" id="feT-EZ-2JW"/>
                         <outlet property="tableView" destination="AbL-as-jI4" id="F0d-SR-GW7"/>
                         <segue destination="j00-Gg-DDr" kind="show" identifier="segueToDetailsViewController" id="GTz-2f-RbN"/>
@@ -1113,7 +1115,10 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="30" id="oOv-GM-CrL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1461,20 +1466,24 @@ a new password will be sent.</string>
                                                             <action selector="selectedThemes:" destination="uFL-R4-sWm" eventType="touchUpInside" id="TYR-sv-6rE"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Q-sC-4e6" userLabel="Button Theme3">
-                                                        <rect key="frame" x="566" y="0.0" width="30" height="71"/>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Q-sC-4e6" userLabel="Button Theme3">
+                                                        <rect key="frame" x="566" y="0.0" width="30" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="HgW-vI-lNT"/>
                                                         </constraints>
                                                         <state key="normal" title="T4">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="selectedThemes:" destination="uFL-R4-sWm" eventType="touchUpInside" id="xYc-9b-xKi"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="cRd-bO-306" firstAttribute="top" secondItem="x4j-Rr-N00" secondAttribute="top" id="6xB-xb-QLN"/>
+                                                    <constraint firstItem="s8Q-sC-4e6" firstAttribute="height" secondItem="Ugu-2X-2MS" secondAttribute="height" id="F3P-4N-seh"/>
                                                     <constraint firstItem="f4H-RZ-f87" firstAttribute="top" secondItem="cRd-bO-306" secondAttribute="bottom" id="GOT-CC-SdE"/>
                                                     <constraint firstItem="f4H-RZ-f87" firstAttribute="top" secondItem="Ugu-2X-2MS" secondAttribute="bottom" id="Hu4-Wc-Bic"/>
                                                     <constraint firstItem="4OI-f6-YBY" firstAttribute="width" secondItem="Ugu-2X-2MS" secondAttribute="width" id="JSt-bY-JBU"/>
@@ -1491,7 +1500,6 @@ a new password will be sent.</string>
                                                     <constraint firstItem="Ugu-2X-2MS" firstAttribute="leading" secondItem="4OI-f6-YBY" secondAttribute="trailing" constant="10" id="ZjX-3P-Vsb"/>
                                                     <constraint firstItem="s8Q-sC-4e6" firstAttribute="top" secondItem="x4j-Rr-N00" secondAttribute="top" id="btX-sv-RhF"/>
                                                     <constraint firstAttribute="trailing" secondItem="f4H-RZ-f87" secondAttribute="trailing" id="gYL-8O-VKd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="s8Q-sC-4e6" secondAttribute="bottom" id="h2A-qV-85T"/>
                                                     <constraint firstAttribute="centerY" secondItem="l6U-ah-gOD" secondAttribute="centerY" id="jBL-tL-upA"/>
                                                     <constraint firstItem="4OI-f6-YBY" firstAttribute="top" secondItem="x4j-Rr-N00" secondAttribute="top" id="qJq-cq-7uG"/>
                                                     <constraint firstAttribute="height" constant="71" id="qdZ-2G-bZp"/>
@@ -1659,6 +1667,7 @@ a new password will be sent.</string>
                         <outlet property="scrollView" destination="z6H-bS-01X" id="A4O-c9-Pji"/>
                         <outlet property="textSizeSegmentControll" destination="1B2-Mr-ekN" id="rw7-qC-8ql"/>
                         <outlet property="themeBlueButton" destination="COd-Qa-x3N" id="GLb-au-EvM"/>
+                        <outlet property="themeColorBlackAndWhite" destination="s8Q-sC-4e6" id="VQt-wj-JO7"/>
                         <outlet property="themeGreenButton" destination="Ugu-2X-2MS" id="cSz-x9-6lF"/>
                         <outlet property="themeOrangeButton" destination="4OI-f6-YBY" id="ufg-Je-YhT"/>
                         <outlet property="topLayoutGuideConstraint" destination="GQx-aL-CzO" id="9Kh-0t-SFm"/>
@@ -2049,6 +2058,9 @@ a new password will be sent.</string>
                                 <rect key="frame" x="16" y="16" width="528" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8EY-X5-ZEA" id="XB0-ll-ZhU"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56H-gX-NS3">
                                 <rect key="frame" x="150" y="54" width="300" height="30"/>
@@ -2134,8 +2146,9 @@ a new password will be sent.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-9Q-2T6" userLabel="ContentView">
                                 <rect key="frame" x="16" y="368" width="568" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVH-kR-kfR">
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVH-kR-kfR">
                                         <rect key="frame" x="16" y="46" width="536" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="C0z-Yx-fgJ"/>
                                         </constraints>
@@ -2318,11 +2331,17 @@ a new password will be sent.</string>
                                 <rect key="frame" x="16" y="8" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9dF-S3-6Fb" id="tSa-w0-6zU"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rating" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9s-zP-nQg">
                                 <rect key="frame" x="16" y="46" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9dF-S3-6Fb" id="bME-6s-uOG"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qat-5X-YL1">
                                 <rect key="frame" x="16" y="84" width="568" height="21"/>
@@ -2351,6 +2370,9 @@ a new password will be sent.</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9dF-S3-6Fb" id="Jex-d6-k0f"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2428,6 +2450,9 @@ a new password will be sent.</string>
                                 <rect key="frame" x="16" y="295" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Vhn-R2-wMo" id="OQM-xd-ArR"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2534,6 +2559,9 @@ a new password will be sent.</string>
                                 <rect key="frame" x="16" y="8" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bNC-bU-kdP" id="xKk-SZ-KlF"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNp-0b-wbu">
                                 <rect key="frame" x="16" y="46" width="568" height="21"/>
@@ -2559,6 +2587,9 @@ a new password will be sent.</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bNC-bU-kdP" id="Eqa-aw-Smf"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2601,7 +2632,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-Gy-QYa" userLabel="Title">
                                 <rect key="frame" x="16" y="94" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="kpc-YD-2Eq"/>
                                 </connections>
@@ -2617,7 +2648,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aui-Gn-Uda">
                                 <rect key="frame" x="16" y="48" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="sgI-4v-OTV"/>
                                 </connections>
@@ -2662,6 +2693,9 @@ a new password will be sent.</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9jW-oN-JHA" id="sRA-tp-P4t"/>
+                                </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="cy8-1h-hFG">
                                 <rect key="frame" x="16" y="132" width="100" height="21"/>
@@ -2727,7 +2761,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6D5-Qo-oCu">
                                 <rect key="frame" x="16" y="8" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="EUe-xY-9fo" id="axZ-t8-Aoj"/>
                                 </connections>
@@ -2933,7 +2967,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
                                 <rect key="frame" x="308" y="52" width="276" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="5ZJ-47-k8q"/>
                                 </connections>
@@ -2941,7 +2975,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oeP-3G-30v" userLabel="PhoneProvider">
                                 <rect key="frame" x="16" y="52" width="276" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="NGN-5f-Smn"/>
                                 </connections>
@@ -2949,7 +2983,7 @@ a new password will be sent.</string>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
                                 <rect key="frame" x="16" y="100" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="Kmq-OW-MXa"/>
                                 </connections>
@@ -2971,9 +3005,9 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="100" id="sCh-Bi-aOw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
-                                    <outlet property="delegate" destination="OLV-R2-oyn" id="BRp-QL-tOV"/>
+                                    <outlet property="delegate" destination="OLV-R2-oyn" id="UX2-48-Heq"/>
                                 </connections>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-ir-Bvk">
@@ -3230,9 +3264,9 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="30" id="1FC-jv-k2M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                 <connections>
-                                    <outlet property="delegate" destination="s8m-33-967" id="LbX-kl-LV0"/>
+                                    <outlet property="delegate" destination="s8m-33-967" id="VmM-3q-6Vt"/>
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-Rr-urp" userLabel="Result - UiTextView">
