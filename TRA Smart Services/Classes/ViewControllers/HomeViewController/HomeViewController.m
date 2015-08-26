@@ -206,7 +206,6 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
         } else if (contentOffsetY < minimumAllowedY / 2 && !self.isScrollintToTop) {
             [self.topView moveFakeButtonsToTop:NO];
         }
-        __weak typeof(self) weakSelf = self;
         CGFloat progress = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
         
         [self animateTopLogoWithProgress:progress];
@@ -215,11 +214,11 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
-            [weakSelf.topView updateOpacityForHexagons:progress];
         } else {
             [self.topView moveFakeButtonsToTop:NO];
-            [weakSelf.topView updateOpacityForHexagons:0];
         }
+        
+        [self.topView updateOpacityForHexagons:progress];
         [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta)];
     }
     self.lastContentOffset = scrollView.contentOffset.y;

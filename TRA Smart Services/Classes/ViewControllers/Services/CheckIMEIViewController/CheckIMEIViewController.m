@@ -33,8 +33,10 @@
 {
     [super viewDidLoad];
     
-    self.reader = [[BarcodeCodeReader alloc] initWithView:self.barcodeView];
-    self.reader.delegate = self;
+    if (self.needTransparentNavigationBar) {
+        self.reader = [[BarcodeCodeReader alloc] initWithView:self.barcodeView];
+        self.reader.delegate = self;
+    }
     [self prepareUI];
 }
 
@@ -42,9 +44,11 @@
 {
     [super viewDidLayoutSubviews];
     
-    [self.reader relayout];
-    [self drawLayers];
-    self.reader.acceptableRect = self.scannerZoneView.frame;
+    if (self.needTransparentNavigationBar) {
+        [self.reader relayout];
+        [self drawLayers];
+        self.reader.acceptableRect = self.scannerZoneView.frame;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,7 +67,9 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self registerForKeyboardNotifications];
     
-    [self.reader startStopReading];
+    if (self.needTransparentNavigationBar) {
+        [self.reader startStopReading];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
