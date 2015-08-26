@@ -98,12 +98,12 @@
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 
@@ -191,7 +191,7 @@
                     weakSelf.reader.delegate = weakSelf;
                     [weakSelf.reader startStopReading];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageNoCameraPermissionGranted delegate:weakSelf];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoCameraPermissionsGranted") delegate:weakSelf];
                 }
             }];
         }

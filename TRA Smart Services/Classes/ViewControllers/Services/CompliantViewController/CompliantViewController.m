@@ -65,14 +65,14 @@
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
         (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];
         }];

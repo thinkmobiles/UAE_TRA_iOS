@@ -44,28 +44,28 @@
     
     if (self.reportSegment.selectedSegmentIndex) {
         if (!self.phoneNumber.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [AppHelper showLoader];
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
             }];
         }
     } else {
         if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [AppHelper showLoader];
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
             }];

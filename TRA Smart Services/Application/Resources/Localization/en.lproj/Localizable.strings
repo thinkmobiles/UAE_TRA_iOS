@@ -6,6 +6,18 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//Messages for Alerts
+
+"message.notImplemented" = "Not implemented";
+"message.success" = "Success";
+"message.EmptyInputParameters" = "Please enter text in the text field";
+"message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
+"message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
+"message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
+"message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
+"message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
+"message.IncorrectDomainName" = "Incorrect DomainName";
+
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "Home";

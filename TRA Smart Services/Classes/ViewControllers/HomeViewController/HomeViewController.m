@@ -325,7 +325,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 - (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
     if (![NetworkManager sharedManager].networkStatus) {
-        [AppHelper alertViewWithMessage:MessageNoInternetConnection];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
         return;
     }
     
@@ -348,7 +348,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
             break;
         }
         default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
         }
     }
@@ -357,7 +357,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 - (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
     if (![NetworkManager sharedManager].networkStatus) {
-        [AppHelper alertViewWithMessage:MessageNoInternetConnection];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
         return;
     }
     
@@ -388,7 +388,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
             break;
         }
         default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
         }
     }

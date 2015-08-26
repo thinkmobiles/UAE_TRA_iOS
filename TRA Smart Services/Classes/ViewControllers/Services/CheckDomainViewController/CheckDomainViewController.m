@@ -33,7 +33,7 @@
 - (IBAction)avaliabilityButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];
@@ -52,7 +52,7 @@
 - (IBAction)whoIsButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];

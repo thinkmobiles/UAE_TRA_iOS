@@ -22,17 +22,3 @@
 #define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
-
-#pragma mark - Messages
-
-static NSString *const MessageNotImplemented = @"Not implemented";
-static NSString *const MessageSuccess = @"Success";
-static NSString *const MessageEmptyInputParameter = @"Please enter text in the text field";
-static NSString *const MessageIncorrectRating = @"Incorrect rating format - shoul use only numbers";
-static NSString *const MessageNoCameraPermissionGranted = @"This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
-static NSString *const MessageNoLocationPermissionGranted = @"This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
-static NSString *const MessageNoLocationEnabledOnDevice = @"Location service disabled on your device. Please enable Location service and try again.";
-
-static NSString *const MessageNoInternetConnection = @"No internetConnection Avaliable. Please check your network and try again.";
-
-static NSString *const MessageArabicIncorrectDomainName = @"يرجى ادخال اسم نطاق صالح";

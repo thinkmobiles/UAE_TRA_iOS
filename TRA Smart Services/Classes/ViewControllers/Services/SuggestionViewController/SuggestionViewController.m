@@ -42,14 +42,14 @@
 {
     [self.view endEditing:YES];
     if (!self.suggestionTitle.text.length || !self.suggectionDescription.text.length){
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTSendSuggestion:self.suggestionTitle.text description:self.suggectionDescription.text attachment:self.selectImage requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];
         }];

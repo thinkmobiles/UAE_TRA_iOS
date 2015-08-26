@@ -150,10 +150,10 @@
 - (IBAction)updateBaseURLButtonTapped:(id)sender
 {
     if (!self.baseURLLinkTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
     [[NetworkManager sharedManager] setBaseURL:self.baseURLLinkTextField.text];
-    [AppHelper alertViewWithMessage:MessageSuccess];
+    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
 }
 
 #pragma mark - SegmentViewDelegate

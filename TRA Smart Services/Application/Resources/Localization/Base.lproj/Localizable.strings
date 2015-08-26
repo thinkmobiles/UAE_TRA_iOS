@@ -6,6 +6,18 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//Messages for Alerts
+
+"message.notImplemented" = "message.notImplemented";
+"message.success" = "message.success";
+"message.EmptyInputParameters" = "message.EmptyInputParameters";
+"message.IncorrectRatings" = "message.IncorrectRatings";
+"message.NoCameraPermissionsGranted" = "message.NoCameraPermissionsGranted";
+"message.NoLocationPermissionGranted" = "message.NoLocationPermissionGranted";
+"message.NoLocationEnabledOnDevice" = "message.NoLocationEnabledOnDevice";
+"message.NoInternetConnection" = "message.NoInternetConnection";
+"message.IncorrectDomainName" = "message.IncorrectDomainName";
+
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "tabBarMenu_item_1";

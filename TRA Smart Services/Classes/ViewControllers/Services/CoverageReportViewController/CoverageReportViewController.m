@@ -49,11 +49,11 @@
                 [LocationManager sharedManager].delegate = weakSelf;
                 [[LocationManager sharedManager] startUpdatingLocation];
             } else {
-                [AppHelper alertViewWithMessage:MessageNoLocationPermissionGranted delegate:weakSelf];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf];
             }
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageNoLocationEnabledOnDevice delegate:self];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self];
     }
 }
 
@@ -121,7 +121,7 @@
 
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 

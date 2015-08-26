@@ -33,7 +33,7 @@
 - (IBAction)reportURlButtonTapped:(id)sender
 {
     if (!self.urlToReportTextField.text.length || !self.commentTextView.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         return;
     }
     [AppHelper showLoader];

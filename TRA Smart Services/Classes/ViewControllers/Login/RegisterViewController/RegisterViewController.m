@@ -68,7 +68,7 @@
             [AppHelper hideLoader];
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 

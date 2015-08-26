@@ -34,11 +34,11 @@
 - (IBAction)sendButtonTapped:(id)sender
 {
     if (![self isNSStringIsValid:self.ratingTextField.text]){
-        [AppHelper alertViewWithMessage:MessageIncorrectRating];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.IncorrectRatings")];
         return;
     }
     if (!self.serviceNameTextField.text.length || !self.ratingTextField.text.length || !self.feedbackTextView.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         return;
     }
     [AppHelper showLoader];
@@ -47,7 +47,7 @@
         if (error) {
             [AppHelper alertViewWithMessage:error.localizedDescription];
         } else {
-            [AppHelper alertViewWithMessage:MessageSuccess];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
         }
         [AppHelper hideLoader];
     }];
