@@ -45,6 +45,7 @@
 
 - (IBAction)serviceInfoButtonTapped:(id)sender
 {
+    [self setSelected:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(favouriteServiceInfoButtonDidPressedInCell:)]) {
         [self.delegate favouriteServiceInfoButtonDidPressedInCell:self];
     }

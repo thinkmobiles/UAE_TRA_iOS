@@ -113,6 +113,10 @@
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		EDFEE7191B7DE32F0062CB64 /* SpamReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */; };
+		F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */; };
+		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
+		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
+		F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +315,12 @@
 		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
 		EDFEE7171B7DE32F0062CB64 /* SpamReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamReportViewController.h; sourceTree = "<group>"; };
 		EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamReportViewController.m; sourceTree = "<group>"; };
+		F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
+		F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteEuroTableViewCell.xib; sourceTree = "<group>"; };
+		F17785471B8DB8A400D96B1E /* AddToFavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteTableViewCell.h; sourceTree = "<group>"; };
+		F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteTableViewCell.m; sourceTree = "<group>"; };
+		F177854D1B8DE23800D96B1E /* AddToFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteViewController.h; sourceTree = "<group>"; };
+		F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +747,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F177854C1B8DE23800D96B1E /* AddToFavoriteViewController */,
 				93A436E71B85CD86009299C5 /* ServiceDetailedInfoViewController */,
 				EDAA8EF91B831C5800269F1A /* ServiceInfoViewController */,
 				84709EAB1B82F292008F3D14 /* InfoHub */,
@@ -1144,6 +1155,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */,
 				93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */,
 				EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */,
 				847D03E81B83405500B0768C /* AnnoucementsTableViewCell */,
@@ -1237,6 +1249,26 @@
 			path = SpamReportViewController;
 			sourceTree = "<group>";
 		};
+		F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */,
+				F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */,
+				F17785471B8DB8A400D96B1E /* AddToFavouriteTableViewCell.h */,
+				F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */,
+			);
+			path = AddToFavoriteTableViewCell;
+			sourceTree = "<group>";
+		};
+		F177854C1B8DE23800D96B1E /* AddToFavoriteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F177854D1B8DE23800D96B1E /* AddToFavouriteViewController.h */,
+				F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */,
+			);
+			path = AddToFavoriteViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1315,8 +1347,10 @@
 				ED982F471B5D33A500B6B644 /* TabBarMenuList.plist in Resources */,
 				ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */,
 				847A847B1B8701B700BB1D80 /* Main.storyboard in Resources */,
+				F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */,
 				8467EF281B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib in Resources */,
 				847A847D1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib in Resources */,
+				F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */,
 				8467EF2A1B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1328,6 +1362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */,
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,
 				84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */,
@@ -1407,6 +1442,7 @@
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
+				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,

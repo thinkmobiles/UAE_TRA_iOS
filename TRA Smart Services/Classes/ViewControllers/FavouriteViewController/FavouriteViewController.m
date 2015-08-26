@@ -17,6 +17,7 @@ static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
 static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
+static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 @interface FavouriteViewController ()
 
@@ -82,9 +83,10 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (IBAction)addFavouriteButtonPress:(id)sender
 {
-    [self addDemoData];
-    [self fetchFavouriteList];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:AddToFavoriteSegueIdentifier sender:self];
+//    [self addDemoData];
+//    [self fetchFavouriteList];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITableViewDataSource
