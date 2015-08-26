@@ -45,7 +45,6 @@
 
 - (IBAction)serviceInfoButtonTapped:(id)sender
 {
-    [self setSelected:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(favouriteServiceInfoButtonDidPressedInCell:)]) {
         [self.delegate favouriteServiceInfoButtonDidPressedInCell:self];
     }
@@ -89,6 +88,17 @@
 
 #pragma mark - Private
 
+- (void)prepareButton:(UIButton *)button withColor:(UIColor *)color image:(UIImage *)buttonImage
+{
+    button.titleLabel.textColor = color;
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button setTitleColor:color forState:UIControlStateSelected];
+    [button setTitleColor:color forState:UIControlStateHighlighted];
+    
+    [button setImage:buttonImage forState:UIControlStateNormal];
+    [button setImage:buttonImage forState:UIControlStateSelected];
+    [button setImage:buttonImage forState:UIControlStateHighlighted];
+}
 
 - (void)localizeAndPrepareButtons
 {

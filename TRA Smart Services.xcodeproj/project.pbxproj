@@ -27,6 +27,7 @@
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
+		934629041B8E17060017E4CD /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629031B8E17060017E4CD /* TRAService.m */; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -91,7 +92,6 @@
 		EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */; };
 		EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAA8EE11B81D63100269F1A /* CoreData.framework */; };
 		EDAA8EE61B81D79A00269F1A /* TRAService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EE41B81D79A00269F1A /* TRAService.xcdatamodeld */; };
-		EDAA8EF81B825A7E00269F1A /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8EF71B825A7E00269F1A /* TRAService.m */; };
 		EDAA8F021B83C18F00269F1A /* ServiceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F011B83C18F00269F1A /* ServiceInfoViewController.m */; };
 		EDAA8F051B84D2FA00269F1A /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F041B84D2FA00269F1A /* FavouriteTableViewCell.m */; };
 		EDAA8F081B84DAE800269F1A /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAA8F071B84DAE800269F1A /* UIView+Snapshot.m */; };
@@ -153,6 +153,8 @@
 		934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAGradientRadialLayer.m; sourceTree = "<group>"; };
 		934628FF1B8DBDAA0017E4CD /* BlackWhiteConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteConverter.h; sourceTree = "<group>"; };
 		934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteConverter.m; sourceTree = "<group>"; };
+		934629021B8E17060017E4CD /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
+		934629031B8E17060017E4CD /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -272,8 +274,6 @@
 		EDAA8EAA1B81AB2700269F1A /* BaseSearchableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSearchableViewController.m; sourceTree = "<group>"; };
 		EDAA8EE11B81D63100269F1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EDAA8EE51B81D79A00269F1A /* TRAService.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TRAService.xcdatamodel; sourceTree = "<group>"; };
-		EDAA8EF61B825A7E00269F1A /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
-		EDAA8EF71B825A7E00269F1A /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
 		EDAA8F001B83C18F00269F1A /* ServiceInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoViewController.h; sourceTree = "<group>"; };
 		EDAA8F011B83C18F00269F1A /* ServiceInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoViewController.m; sourceTree = "<group>"; };
 		EDAA8F031B84D2FA00269F1A /* FavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTableViewCell.h; sourceTree = "<group>"; };
@@ -1017,8 +1017,8 @@
 		EDAA8EE71B81D94100269F1A /* EntityModels */ = {
 			isa = PBXGroup;
 			children = (
-				EDAA8EF61B825A7E00269F1A /* TRAService.h */,
-				EDAA8EF71B825A7E00269F1A /* TRAService.m */,
+				934629021B8E17060017E4CD /* TRAService.h */,
+				934629031B8E17060017E4CD /* TRAService.m */,
 			);
 			path = EntityModels;
 			sourceTree = "<group>";
@@ -1429,7 +1429,6 @@
 				84709EB31B82F335008F3D14 /* InfoHubCollectionViewCell.m in Sources */,
 				EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
-				EDAA8EF81B825A7E00269F1A /* TRAService.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
@@ -1442,6 +1441,7 @@
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
+				934629041B8E17060017E4CD /* TRAService.m in Sources */,
 				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,

@@ -50,6 +50,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [super viewDidLoad];
     
     [self registerNibs];
+    
+    [self saveFavoriteListToDBIfNeeded];
+    
     [self fetchFavouriteList];
 }
 
@@ -237,6 +240,37 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
     service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
+}
+
+- (void)saveFavoriteListToDBIfNeeded
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TRAService"];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"serviceOrder" ascending:YES];
+    [fetchRequest setSortDescriptors: @[descriptor]];
+    NSError *error;
+    NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (error) {
+        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+    }
+    
+    if (!data.count) {
+        NSArray *speedAccessServices = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
+        NSMutableArray *otherServices = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist" ]];
+        [otherServices addObjectsFromArray:speedAccessServices];
+        
+        for (NSDictionary *dic in otherServices) {
+            NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
+            TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
+            
+            service.serviceIsFavorite = @(NO);
+            service.serviceName = [dic valueForKey:@"serviceName"];
+            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceLogo"]], 1.0);
+            service.serviceDescription = @"No decription provided";
+            service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
+        }
+    }
+    
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - FavouriteTableViewCellDelegate
