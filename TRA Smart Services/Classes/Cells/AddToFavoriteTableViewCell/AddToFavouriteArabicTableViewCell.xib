@@ -52,7 +52,7 @@
                                             <constraint firstAttribute="height" constant="44" id="xcd-GS-Arj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <state key="normal" image="ic_info_sml">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -99,7 +99,4 @@
             <point key="canvasLocation" x="463" y="455"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic_info_sml" width="16" height="16"/>
-    </resources>
 </document>

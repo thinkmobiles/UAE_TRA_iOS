@@ -2776,7 +2776,7 @@ a new password will be sent.</string>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sac-CW-4SX">
                                 <rect key="frame" x="180" y="100" width="240" height="30"/>
-                                <state key="normal" title="Send suggection">
+                                <state key="normal" title="Send suggestion">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

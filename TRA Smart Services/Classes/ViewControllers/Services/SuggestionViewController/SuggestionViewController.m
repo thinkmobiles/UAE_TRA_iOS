@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    self.title = @"Send suggection";
+    self.title = @"Send suggestion";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.suggestionTitle becomeFirstResponder];
 }

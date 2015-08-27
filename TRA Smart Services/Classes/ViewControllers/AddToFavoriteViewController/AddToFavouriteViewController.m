@@ -12,7 +12,7 @@
 #import "Animation.h"
 
 static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
-static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
+static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 @interface AddToFavouriteViewController ()
 
@@ -111,6 +111,9 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
     cell.indexPath = indexPath;
     cell.delegate = self;
+    
+    BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
+    [cell setServiceFavourite:isFavourite];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -173,7 +176,16 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     TRAService *selectedService = self.dataSource[indexPath.row];
     selectedService.serviceIsFavorite = @(![selectedService.serviceIsFavorite boolValue]);
     
-    [self.managedObjectContext save:nil];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    if (error) {
+        [AppHelper alertViewWithMessage:error.localizedDescription];
+    } else {
+        AddToFavouriteTableViewCell *cell = (AddToFavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
+        [cell setServiceFavourite:isFavourite];
+    }
 }
 
 #pragma mark - Superclass Methods

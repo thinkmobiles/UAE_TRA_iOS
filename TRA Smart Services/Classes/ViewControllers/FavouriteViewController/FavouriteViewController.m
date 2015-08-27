@@ -299,14 +299,15 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
         [otherServices addObjectsFromArray:speedAccessServices];
         
         for (NSDictionary *dic in otherServices) {
-            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) {
+            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) { //temp while not all data avaliable
                 NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
                 TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
                 
                 service.serviceIsFavorite = @(NO);
                 service.serviceName = [dic valueForKey:@"serviceName"];
-                
-                service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);//  UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceLogo"]], 1.0);
+                if ([dic valueForKey:@"serviceDisplayLogo"]) {
+                    service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceDisplayLogo"]], 1.0);
+                }
                 service.serviceDescription = @"No decription provided";
                 service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
             }

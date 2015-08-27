@@ -26,4 +26,6 @@ static NSString *const AddToFavouriteArabicCellIdentifier = @"arabicAddToFavCell
 
 @property (weak, nonatomic) id <AddToFavouriteTableViewCellDelegate> delegate;
 
+- (void)setServiceFavourite:(BOOL)isFavourite;
+
 @end

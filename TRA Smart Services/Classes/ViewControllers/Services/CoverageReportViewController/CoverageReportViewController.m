@@ -163,6 +163,7 @@
 {
     [self.HUD hide:YES];
     [[LocationManager sharedManager] stopUpdatingLocation];
+    [self.activityIndicator stopAnimating];
 }
 
 #pragma mark - Private

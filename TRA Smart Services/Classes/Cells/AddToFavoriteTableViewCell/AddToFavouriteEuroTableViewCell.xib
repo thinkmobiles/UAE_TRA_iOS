@@ -53,7 +53,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <state key="normal" image="ic_info_sml">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -104,7 +104,4 @@
             <point key="canvasLocation" x="480.5" y="431"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic_info_sml" width="16" height="16"/>
-    </resources>
 </document>

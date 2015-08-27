@@ -6,6 +6,10 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//UIElements Title
+
+"uiElement.cancelButton.title" = "Cancel";
+
 //Messages for Alerts
 
 "message.notImplemented" = "Not implemented";

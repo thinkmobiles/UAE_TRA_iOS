@@ -8,6 +8,9 @@
 
 #import "AddToFavouriteTableViewCell.h"
 
+static NSString *const FavIconNameActive = @"check_act";
+static NSString *const FavIconNameInActive = @"check_disact";
+
 @interface AddToFavouriteTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -59,6 +62,25 @@
 {
     _descriptionText = descriptionText;
     self.favourieDescriptionLabel.text = descriptionText;
+}
+
+#pragma mark - Public
+
+- (void)setServiceFavourite:(BOOL)isFavourite
+{
+    if (isFavourite) {
+        UIImage *activeIcon = [UIImage imageNamed:FavIconNameActive];
+        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+            activeIcon = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:activeIcon];
+        }
+        [self.favoriteButton setImage:activeIcon forState:UIControlStateNormal];
+    } else {
+        UIImage *inActiveIcon = [UIImage imageNamed:FavIconNameInActive];
+        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+            inActiveIcon = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:inActiveIcon];
+        }
+        [self.favoriteButton setImage:inActiveIcon forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - Private
