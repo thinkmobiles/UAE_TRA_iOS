@@ -40,16 +40,16 @@
                                 <rect key="frame" x="85" y="0.0" width="483" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
-                                        <rect key="frame" x="20" y="16" width="407" height="55"/>
+                                        <rect key="frame" x="20" y="16" width="395" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
-                                        <rect key="frame" x="447" y="36" width="16" height="16"/>
+                                    <button opaque="NO" tag="1001" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
+                                        <rect key="frame" x="435" y="22" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="2ew-eb-398"/>
-                                            <constraint firstAttribute="height" constant="16" id="xcd-GS-Arj"/>
+                                            <constraint firstAttribute="width" constant="44" id="2ew-eb-398"/>
+                                            <constraint firstAttribute="height" constant="44" id="xcd-GS-Arj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <state key="normal" image="ic_info_sml">
@@ -62,7 +62,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="right" secondItem="qXh-7i-Xql" secondAttribute="right" constant="20" id="5cr-QE-3Xz"/>
+                                    <constraint firstAttribute="right" secondItem="qXh-7i-Xql" secondAttribute="right" constant="4" id="5cr-QE-3Xz"/>
                                     <constraint firstItem="qXh-7i-Xql" firstAttribute="leading" secondItem="igG-Z5-rt3" secondAttribute="trailing" constant="20" id="Um3-rs-dwb"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="top" secondItem="rA3-9A-PI0" secondAttribute="top" constant="16" id="lsn-oS-Dmf"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" constant="20" id="tLQ-m8-rqM"/>

@@ -10,7 +10,7 @@
 #import "UINavigationController+TopButton.h"
 #import "OffsetTextField.h"
 
-static NSString *const CloseButtonImageName = @"close";
+static NSString *const CloseButtonImageName = @"btn_close";
 
 @interface BaseMembershipViewController : BaseDynamicUIViewController <UIGestureRecognizerDelegate>
 

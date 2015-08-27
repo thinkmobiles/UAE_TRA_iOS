@@ -8,6 +8,8 @@
         <attribute name="serviceName" optional="YES" attributeType="String" defaultValueString="No name Service" syncable="YES"/>
         <attribute name="serviceOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <fetchRequest name="AllService" entity="TRAService"/>
+    <fetchRequest name="FavouriteService" entity="TRAService" predicateString="serviceIsFavorite == 1"/>
     <elements>
         <element name="TRAService" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>

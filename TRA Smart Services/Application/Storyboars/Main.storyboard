@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1J-cM-BDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="255"/>
+            <point key="canvasLocation" x="1935" y="255"/>
         </scene>
         <!--Info Hub View Controller-->
         <scene sceneID="Z79-gI-UVL">
@@ -428,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLG-LK-w7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714" y="964"/>
+            <point key="canvasLocation" x="2738" y="964"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="9OZ-Kd-Sk2">
@@ -1065,7 +1065,7 @@ a new password will be sent.</string>
         <!--Check Domain View Controller-->
         <scene sceneID="UHM-cK-24o">
             <objects>
-                <viewController id="dey-3G-9KT" customClass="CheckDomainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="verificationID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dey-3G-9KT" customClass="CheckDomainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fGv-Ef-FpK"/>
                         <viewControllerLayoutGuide type="bottom" id="Ltd-9H-2wx"/>
@@ -2045,7 +2045,7 @@ a new password will be sent.</string>
         <!--CheckIMEI View Controller-->
         <scene sceneID="7Gj-gB-SZx">
             <objects>
-                <viewController id="8EY-X5-ZEA" customClass="CheckIMEIViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="checkIMEIID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8EY-X5-ZEA" customClass="CheckIMEIViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LQa-dx-40R"/>
                         <viewControllerLayoutGuide type="bottom" id="ljP-gJ-ehm"/>
@@ -2110,7 +2110,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEh-GB-KuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="-572"/>
+            <point key="canvasLocation" x="2738" y="-480"/>
         </scene>
         <!--CheckIMEI View Controller-->
         <scene sceneID="aWk-f6-gKS">
@@ -2215,7 +2215,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PR3-Dj-yrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3488" y="-572"/>
+            <point key="canvasLocation" x="3488" y="-480"/>
         </scene>
         <!--Service Detailed Info View Controller-->
         <scene sceneID="zaB-gM-3ZJ">
@@ -2313,12 +2313,12 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWh-fr-ik1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3486" y="205"/>
+            <point key="canvasLocation" x="3488" y="255"/>
         </scene>
         <!--Post Feedback View Controller-->
         <scene sceneID="ZWx-Bm-skz">
             <objects>
-                <viewController id="9dF-S3-6Fb" customClass="PostFeedbackViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedbackID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9dF-S3-6Fb" customClass="PostFeedbackViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7uI-Xf-Pcb"/>
                         <viewControllerLayoutGuide type="bottom" id="Qsf-MT-PW1"/>
@@ -2407,7 +2407,7 @@ a new password will be sent.</string>
         <!--Coverage Report View Controller-->
         <scene sceneID="e88-Li-3V5">
             <objects>
-                <viewController id="Vhn-R2-wMo" customClass="CoverageReportViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="coverageID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vhn-R2-wMo" customClass="CoverageReportViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7VJ-fE-W4H"/>
                         <viewControllerLayoutGuide type="bottom" id="pSd-kN-qYz"/>
@@ -2488,7 +2488,7 @@ a new password will be sent.</string>
         <!--Internet Speed Test View Controller-->
         <scene sceneID="hHW-CY-Kua">
             <objects>
-                <viewController id="g1T-5v-LUj" customClass="InternetSpeedTestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="internetSpeedID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g1T-5v-LUj" customClass="InternetSpeedTestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UnL-1i-j3Q"/>
                         <viewControllerLayoutGuide type="bottom" id="Dkl-MC-02B"/>
@@ -2541,12 +2541,12 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMH-Nr-l1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5004" y="-572"/>
+            <point key="canvasLocation" x="5004" y="-532"/>
         </scene>
         <!--Help Salim View Controller-->
         <scene sceneID="7Hn-Vk-6P1">
             <objects>
-                <viewController id="bNC-bU-kdP" customClass="HelpSalimViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="helpSalimID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bNC-bU-kdP" customClass="HelpSalimViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cnk-k5-gUg"/>
                         <viewControllerLayoutGuide type="bottom" id="L8g-N7-vCI"/>
@@ -2615,12 +2615,12 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxg-ju-yIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4246" y="-572"/>
+            <point key="canvasLocation" x="4254" y="-504"/>
         </scene>
         <!--Compliant View Controller-->
         <scene sceneID="eHz-AH-Vcz">
             <objects>
-                <viewController id="9jW-oN-JHA" customClass="CompliantViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="compliantID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9jW-oN-JHA" customClass="CompliantViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FDM-75-p06"/>
                         <viewControllerLayoutGuide type="bottom" id="74n-dy-0xV"/>
@@ -2749,7 +2749,7 @@ a new password will be sent.</string>
         <!--Suggestion View Controller-->
         <scene sceneID="JYw-bg-v7i">
             <objects>
-                <viewController id="EUe-xY-9fo" customClass="SuggestionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="suggestionID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EUe-xY-9fo" customClass="SuggestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rk5-1G-ihz"/>
                         <viewControllerLayoutGuide type="bottom" id="H12-nI-23z"/>
@@ -2950,12 +2950,12 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXQ-uy-mlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="207"/>
+            <point key="canvasLocation" x="2738" y="255"/>
         </scene>
         <!--Spam Report View Controller-->
         <scene sceneID="dqR-62-x4l">
             <objects>
-                <viewController id="OLV-R2-oyn" customClass="SpamReportViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="spamReportID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OLV-R2-oyn" customClass="SpamReportViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ven-WD-rF4"/>
                         <viewControllerLayoutGuide type="bottom" id="3sm-6D-lco"/>
@@ -3182,7 +3182,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9B-Gt-vbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2246" y="1712"/>
+            <point key="canvasLocation" x="3488" y="964"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="hE0-TG-9Zo">
@@ -3195,6 +3195,9 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3203,7 +3206,7 @@ a new password will be sent.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXu-Qu-l58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="207"/>
+            <point key="canvasLocation" x="1116" y="255"/>
         </scene>
         <!--Info Hub-->
         <scene sceneID="2Nc-SB-XwR">
@@ -3216,6 +3219,9 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3229,7 +3235,7 @@ a new password will be sent.</string>
         <!--Search Mobile Brand Name View Controller-->
         <scene sceneID="Lf2-Pc-4Dh">
             <objects>
-                <viewController id="s8m-33-967" customClass="SearchMobileBrandNameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mobileBrandID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s8m-33-967" customClass="SearchMobileBrandNameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D5c-VF-68f"/>
                         <viewControllerLayoutGuide type="bottom" id="6NQ-Hb-UlE"/>
@@ -3316,7 +3322,7 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5hp-MY-dbh" userLabel="Favourite - UITableViewCell">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5hp-MY-dbh" userLabel="Favourite - UITableViewCell">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -3355,7 +3361,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMF-H9-ZWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3488" y="964"/>
+            <point key="canvasLocation" x="4254" y="475"/>
         </scene>
     </scenes>
     <resources>

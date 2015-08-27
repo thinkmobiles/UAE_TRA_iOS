@@ -20,6 +20,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
@@ -35,7 +36,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     [super viewDidLoad];
     
     [self registerNibs];
-    [self fetchFavouriteList];
+    [self fetchServiceList];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,6 +56,11 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
         context = [delegate managedObjectContext];
     }
     return context;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
 }
 
 #pragma mark - UITableViewDataSource
@@ -96,9 +102,13 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 - (void)configureCell:(AddToFavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
+    UIColor *pairCellColor = [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    }
+    cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
     cell.indexPath = indexPath;
     cell.delegate = self;
 }
@@ -108,7 +118,8 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length) {
-        NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceDescription contains %@", searchText];
+        NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceName contains %@", searchText];
+        [self fetchServiceList];
         self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:filter] mutableCopy];
     
         self.dataSource = self.filteredDataSource;
@@ -129,7 +140,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 - (void)updateAndDisplayDataSource
 {
-    [self fetchFavouriteList];
+    [self fetchServiceList];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -141,11 +152,9 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 #pragma mark - CoreData
 
-- (void)fetchFavouriteList
+- (void)fetchServiceList
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TRAService"];
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"serviceOrder" ascending:YES];
-    [fetchRequest setSortDescriptors: @[descriptor]];
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
     NSError *error;
     self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     if (error) {
@@ -157,7 +166,10 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 - (void)addRemoveFavoriteService:(NSIndexPath *)indexPath
 {
-    NSLog(@"%li", (long)indexPath.row);
+    TRAService *selectedService = self.dataSource[indexPath.row];
+    selectedService.serviceIsFavorite = @(![selectedService.serviceIsFavorite boolValue]);
+    
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - Superclass Methods
@@ -167,17 +179,26 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
 }
 
+- (void)updateColors
+{
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
+}
+
 - (void)setRTLArabicUI
 {
     [super setRTLArabicUI];
-    [self fetchFavouriteList];
+    [self fetchServiceList];
     [self.tableView reloadData];
 }
 
 - (void)setLTREuropeUI
 {
     [super setLTREuropeUI];
-    [self fetchFavouriteList];
+    [self fetchServiceList];
     [self.tableView reloadData];
 }
 

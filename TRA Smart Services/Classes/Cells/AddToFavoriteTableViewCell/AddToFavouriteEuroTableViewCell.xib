@@ -40,16 +40,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
-                                        <rect key="frame" x="56" y="16" width="374" height="55"/>
+                                        <rect key="frame" x="68" y="16" width="362" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
-                                        <rect key="frame" x="20" y="36" width="16" height="16"/>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
+                                        <rect key="frame" x="4" y="22" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="66g-Mx-Qjh"/>
-                                            <constraint firstAttribute="height" constant="16" id="lE5-ni-g9Z"/>
+                                            <constraint firstAttribute="width" constant="44" id="66g-Mx-Qjh"/>
+                                            <constraint firstAttribute="height" constant="44" id="lE5-ni-g9Z"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
@@ -67,7 +67,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="LJc-me-O8w" firstAttribute="left" secondItem="2CO-rj-PUO" secondAttribute="left" constant="20" id="4FW-6f-a33"/>
+                                    <constraint firstItem="LJc-me-O8w" firstAttribute="left" secondItem="2CO-rj-PUO" secondAttribute="left" constant="4" id="4FW-6f-a33"/>
                                     <constraint firstAttribute="bottom" secondItem="1rN-pa-6OS" secondAttribute="bottom" constant="16" id="4lT-nH-Jrj"/>
                                     <constraint firstAttribute="right" secondItem="1rN-pa-6OS" secondAttribute="right" constant="20" id="Nzk-14-CFg"/>
                                     <constraint firstItem="1rN-pa-6OS" firstAttribute="top" secondItem="2CO-rj-PUO" secondAttribute="top" constant="16" id="gA1-dA-gkw"/>

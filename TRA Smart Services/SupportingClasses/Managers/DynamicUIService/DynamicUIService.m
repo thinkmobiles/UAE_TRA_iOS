@@ -17,6 +17,7 @@ static NSString *const KeyAppleLanguage = @"AppleLanguages";
 static NSString *const KeyLanguageDefault = @"en";
 
 static NSString *const KeyLanguageEnglish = @"en";
+static NSString *const KeyLanguageEnglish2 = @"uk";
 static NSString *const KeyLanguageArabic = @"ar";
 
 @interface DynamicUIService()
@@ -178,7 +179,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (void)updateCurrentLanguageWithName:(NSString *)languageName
 {
-    if ([languageName isEqualToString:KeyLanguageEnglish]) {
+    if ([languageName isEqualToString:KeyLanguageEnglish] || [languageName isEqualToString:KeyLanguageEnglish2]) {
         _language = LanguageTypeEnglish;
     } else if ([languageName isEqualToString:KeyLanguageArabic]) {
         _language = LanguageTypeArabic;

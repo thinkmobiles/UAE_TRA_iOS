@@ -244,13 +244,17 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 #pragma mark - UserInteraction
 
-- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password gender:(NSString *)gender phoneNumber:(NSString *)number requestResult:(ResponseBlock)registerResponse
+- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse
 {
     NSDictionary *parameters = @{
                                  @"login" : username,
                                  @"pass" : password,
-                                 @"gender" : gender,
-                                 @"phone" : number
+                                 @"first" : firstName,
+                                 @"last" : lastName,
+                                 @"emiratesId" : countryID,
+                                 @"state" : state,
+                                 @"mobile" : mobile,
+                                 @"email" : emailAddress
                                  };
     
     [self.manager POST:traSSRegister parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
@@ -279,6 +283,16 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
         loginResponse([responseDictionary valueForKey:@"status"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         loginResponse(nil, error);
+    }];
+}
+
+- (void)traSSLogout:(ResponseBlock)logoutResponse
+{
+    [self.manager POST:traSSLogin parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        logoutResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        logoutResponse(nil, error);
     }];
 }
 

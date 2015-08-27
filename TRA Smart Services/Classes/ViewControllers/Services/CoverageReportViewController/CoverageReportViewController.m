@@ -91,7 +91,7 @@
 
 - (void)locationDidFailWithError:(NSError *)failError
 {
-    [AppHelper hideLoader];
+    [self.HUD hide:YES];
     [AppHelper alertViewWithMessage:failError.localizedDescription];
 }
 
@@ -109,13 +109,14 @@
 - (IBAction)reportSignalButtonTapped:(id)sender
 {
     if ([LocationManager sharedManager].currentLattitude || self.addressTextField.text.length) {
-        [AppHelper showLoader];
+        [self.HUD show:YES];
+
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTPoorCoverageAtLatitude:[LocationManager sharedManager].currentLattitude longtitude:[LocationManager sharedManager].currentLongtitude address:self.addressTextField.text signalPower:self.signalLevelSlider.value  requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:response];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [weakSelf.HUD hide:YES];
 

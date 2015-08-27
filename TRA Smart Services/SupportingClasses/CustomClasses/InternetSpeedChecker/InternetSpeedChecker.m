@@ -8,9 +8,9 @@
 
 #import "InternetSpeedChecker.h"
 
-static CGFloat MaximumElapsedTime = 2.f;
+static CGFloat MaximumElapsedTime = 8.f;
 static NSUInteger Repeats = 10;
-static NSUInteger AccurateTestRepeats = 15;
+static NSUInteger AccurateTestRepeats = 7;
 
 
 static NSString *const TestFilePath = @"https://drive.google.com/uc?export=download&id=0B1GU18BxUf8hTFdUcFpMejlYUXc";

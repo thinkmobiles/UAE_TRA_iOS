@@ -29,6 +29,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
@@ -50,16 +51,14 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [super viewDidLoad];
     
     [self registerNibs];
-    
     [self saveFavoriteListToDBIfNeeded];
-    
-    [self fetchFavouriteList];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
  
+    [self fetchFavouriteList];
     [self.tableView reloadData];
 }
 
@@ -75,6 +74,11 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     return context;
 }
 
+- (NSManagedObjectModel *)managedObjectModel
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
+}
+
 - (void)setDataSource:(NSMutableArray *)dataSource
 {
     _dataSource = dataSource;
@@ -87,9 +91,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (IBAction)addFavouriteButtonPress:(id)sender
 {
     [self performSegueWithIdentifier:AddToFavoriteSegueIdentifier sender:self];
-//    [self addDemoData];
-//    [self fetchFavouriteList];
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITableViewDataSource
@@ -131,6 +132,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    TRAService *serviceToGo = self.dataSource[indexPath.row];
+    NSUInteger navigationIndex = [serviceToGo.serviceInternalID integerValue];
+    [self performNavigationToServiceWithIndex:navigationIndex];
 }
 
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +147,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
     cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
     cell.delegate = self;
 }
 
@@ -152,6 +157,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     if (searchText.length) {
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceDescription contains %@", searchText];
+        [self fetchFavouriteList];
         self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:filter] mutableCopy];
     
         self.dataSource = self.filteredDataSource;
@@ -182,6 +188,57 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
         serviceInfoController.fakeBackground = image;
     }
+}
+
+- (void)performNavigationToServiceWithIndex:(NSUInteger)navigationIndex
+{
+    UIViewController *selectedService;
+    switch (navigationIndex) {
+        case 2: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"checkIMEIID"];
+            break;
+        }
+        case 3: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileBrandID"];
+            break;
+        }
+        case 4: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"feedbackID"];
+            break;
+        }
+        case 5: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"spamReportID"];
+            break;
+        }
+        case 6: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"helpSalimID"];
+            break;
+        }
+        case 7: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
+            break;
+        }
+        case 8: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"coverageID"];
+            break;
+        }
+        case 9: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"internetSpeedID"];
+            break;
+        }
+        case 10: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"compliantID"];
+            break;
+        }
+        case 11: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"suggestionID"];
+            break;
+        }
+        default:
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+            break;
+    }
+    [self.navigationController pushViewController:selectedService animated:YES];
 }
 
 #pragma mark - Private
@@ -215,9 +272,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)fetchFavouriteList
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TRAService"];
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"serviceOrder" ascending:YES];
-    [fetchRequest setSortDescriptors: @[descriptor]];
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"FavouriteService"];
     NSError *error;
     self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     if (error) {
@@ -225,28 +280,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
 }
 
-- (void)addDemoData
-{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
-    
-    int i = 0;
-    TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
-    if (arc4random() % 2) {
-        service.serviceDescription = [NSString stringWithFormat:@"Addressing consumer disputes request with licensees on telecomunication services -  %i", (int)i];
-        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_chat"], 1.0);
-    } else {
-        service.serviceDescription = [NSString stringWithFormat:@"Broadband speed test -  %i", (int)i];
-        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);
-    }
-    service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
-    [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
-}
-
 - (void)saveFavoriteListToDBIfNeeded
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TRAService"];
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"serviceOrder" ascending:YES];
-    [fetchRequest setSortDescriptors: @[descriptor]];
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
     NSError *error;
     NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     if (error) {
@@ -259,14 +295,17 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
         [otherServices addObjectsFromArray:speedAccessServices];
         
         for (NSDictionary *dic in otherServices) {
-            NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
-            TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
-            
-            service.serviceIsFavorite = @(NO);
-            service.serviceName = [dic valueForKey:@"serviceName"];
-            service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceLogo"]], 1.0);
-            service.serviceDescription = @"No decription provided";
-            service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
+            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) {
+                NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
+                TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
+                
+                service.serviceIsFavorite = @(NO);
+                service.serviceName = [dic valueForKey:@"serviceName"];
+                
+                service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);//  UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceLogo"]], 1.0);
+                service.serviceDescription = @"No decription provided";
+                service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
+            }
         }
     }
     
@@ -346,8 +385,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
                 [cell markRemoveButtonSelected:NO];
                 
                 if ([self isCellInRemoveAreaWithCenter:snapshotView.center]) {
+                    TRAService *serviceToRemoveFromFav = self.dataSource[sourceIndexPath.row];
+                    serviceToRemoveFromFav.serviceIsFavorite = @(![serviceToRemoveFromFav.serviceIsFavorite boolValue]);
                     
-                    [self.managedObjectContext deleteObject:self.dataSource[sourceIndexPath.row]];
                     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
                     
                     [self.dataSource removeObjectAtIndex:sourceIndexPath.row];

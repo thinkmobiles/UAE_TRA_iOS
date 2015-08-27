@@ -1252,10 +1252,10 @@
 		F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */,
-				F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */,
 				F17785471B8DB8A400D96B1E /* AddToFavouriteTableViewCell.h */,
 				F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */,
+				F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */,
+				F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */,
 			);
 			path = AddToFavoriteTableViewCell;
 			sourceTree = "<group>";
