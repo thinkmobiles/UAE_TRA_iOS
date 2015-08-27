@@ -118,9 +118,13 @@ static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length) {
-        NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceName contains %@", searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
+            NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
+            BOOL containsString = [localizedServiceName rangeOfString:searchText].location !=NSNotFound;
+            return containsString;
+        }];
         [self fetchServiceList];
-        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:filter] mutableCopy];
+        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:predicate] mutableCopy];
     
         self.dataSource = self.filteredDataSource;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
