@@ -32,8 +32,7 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topYSpaceForRegisterButtonConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomYSpaceForRegisterButtonConstraint;
+@property (assign, nonatomic) CGFloat offSetTextFildY;
 
 @end
 
@@ -50,7 +49,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateUIIfNeeded];
     [self prepareNotification];
 }
 
@@ -73,39 +71,55 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [TextFieldNavigator findNextTextFieldFromCurrent:textField];
+
     if (textField.returnKeyType == UIReturnKeyNext) {
-        CGFloat offsetForScrollViewY = self.scrollView.contentOffset.y+50;
+        CGFloat offsetForScrollViewY = ((CGFloat) textField.tag + 1) * 50.f;
+        if (self.scrollView.contentOffset.y > offsetForScrollViewY ) {
+            offsetForScrollViewY = self.scrollView.contentOffset.y;
+        }
         __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.25 animations:^{
             [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
             [weakSelf.view layoutIfNeeded];
         }];
-
     }
-    
     if (textField.returnKeyType == UIReturnKeyDone) {
-//        [self.scrollView scrollRectToVisible:self.registerButton.frame animated:YES];
-        
+        CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.5 animations:^{
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
+            [weakSelf.view layoutIfNeeded];
+        }];
         return YES;
     }
     return NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height;
+    return YES;
 }
 
 #pragma mark - IBActions
 
 - (IBAction)registerButtonPress:(id)sender
 {
+    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Passwords no equal" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
         [AppHelper showLoader];
         __weak typeof(self) weakSelf = self;
-
+        
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text gender:self.genderTextField.text phoneNumber:self.mobileTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:response];
             }
-            
             weakSelf.userNameTextField.text = @"";
             weakSelf.genderTextField.text = @"";
             weakSelf.mobileTextField.text = @"";
@@ -163,16 +177,6 @@
     self.title = dynamicLocalizedString(@"register.title");
 }
 
-- (void)updateUIIfNeeded
-{
-    if (IS_IPHONE_5) {
-        self.topYSpaceForRegisterButtonConstraint.constant = 0.f;
-        self.bottomYSpaceForRegisterButtonConstraint.constant = 8.f;
-    } else if (IS_IPHONE_4_OR_LESS) {
-        self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 600);
-    }
-}
-
 #pragma mark - Keyboard
 
 - (void)prepareNotification
@@ -191,24 +195,20 @@
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyboardHeight = keyboardRect.size.height;
     
-    CGFloat bottomRequiredVisiblePointYPosition = self.containerView.frame.origin.y + self.containerView.frame.size.height;
-    CGFloat offsetForScrollViewY = keyboardHeight - ([UIScreen mainScreen].bounds.size.height - bottomRequiredVisiblePointYPosition);
+    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.logoImageView.frame.size.height - self.scrollView.contentOffset.y - keyboardHeight;
     
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY < 50.f ? 50.f : offsetForScrollViewY)];
-        [weakSelf.view layoutIfNeeded];
-    }];
+     if (offsetForScrollViewY <= self.offSetTextFildY ) {
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.25 animations:^{
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 75.f)];
+            [weakSelf.view layoutIfNeeded];
+        }];
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        [weakSelf.scrollView setContentOffset:CGPointZero];
-        [weakSelf.view layoutIfNeeded];
-    }];
+    
 }
-
 
 @end
