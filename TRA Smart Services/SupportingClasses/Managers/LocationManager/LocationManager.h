@@ -8,6 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+typedef void(^AccessResult)(BOOL result);
 typedef void(^FetchedAddress)(NSString *);
 
 @protocol LocationManagerDelegate <NSObject>
@@ -37,5 +38,6 @@ typedef void(^FetchedAddress)(NSString *);
 - (void)fetchAddressWithLocation:(CLLocation *)location completionBlock:(FetchedAddress)completionBlock;
 
 + (NSString *)GPSDataFromLocation:(CLLocationCoordinate2D)location latitudeRef:(NSString *)latitudeRef longtitudeRef:(NSString *)longtitudeRef;
+- (void)checkLocationPermissions:(AccessResult)result;
 
 @end

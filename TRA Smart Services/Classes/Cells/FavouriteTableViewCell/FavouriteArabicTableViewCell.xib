@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="arabicFavCell" rowHeight="88" id="KLw-NL-vgl" customClass="FavouriteTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="568" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KLw-NL-vgl" id="bX8-y9-9gB">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-LU-jTg" userLabel="ArabicUI">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="88"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWn-QB-F6B" userLabel="ImageHolder - UiView">
                                 <rect key="frame" x="0.0" y="0.0" width="85" height="88"/>
@@ -37,33 +45,27 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-9A-PI0" userLabel="Data- UiView">
-                                <rect key="frame" x="85" y="0.0" width="483" height="88"/>
+                                <rect key="frame" x="85" y="0.0" width="235" height="88"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="475" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
-                                        <rect key="frame" x="20" y="16" width="443" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
+                                        <rect key="frame" x="20" y="16" width="195" height="27"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-xu-65g" userLabel="Remove - UIButton">
-                                        <rect key="frame" x="0.0" y="35" width="232" height="50"/>
+                                        <rect key="frame" x="0.0" y="35" width="108" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="C2Z-QU-xKl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <state key="normal" image="ic_remove_dctv">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="ic_remove_act">
-                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_remove_act">
-                                            <color key="titleColor" red="1" green="0.089098478620000005" blue="0.1114309211" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
                                     </button>
                                     <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
-                                        <rect key="frame" x="232" y="47" width="232" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <rect key="frame" x="108" y="47" width="108" height="25"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <state key="normal" image="ic_info_sml">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -119,7 +121,6 @@
     </objects>
     <resources>
         <image name="ic_info_sml" width="16" height="16"/>
-        <image name="ic_remove_act" width="16" height="16"/>
         <image name="ic_remove_dctv" width="16" height="16"/>
     </resources>
 </document>

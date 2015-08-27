@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+typedef void(^AccessGranted)(BOOL status);
+
 @protocol BarcodeCodeReaderDelegate <NSObject>
 
 @optional
@@ -29,5 +31,8 @@
 - (void)startStopReading;
 
 - (void)relayout;
+
++ (BOOL)isDeviceHasBackCamera;
++ (void)checkPermissionForCamera:(AccessGranted)status;
 
 @end

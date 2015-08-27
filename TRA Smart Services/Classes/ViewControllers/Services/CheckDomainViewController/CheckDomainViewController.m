@@ -33,7 +33,7 @@
 - (IBAction)avaliabilityButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];
@@ -52,7 +52,7 @@
 - (IBAction)whoIsButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];
@@ -66,6 +66,25 @@
             [AppHelper hideLoader];
         }];
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Private

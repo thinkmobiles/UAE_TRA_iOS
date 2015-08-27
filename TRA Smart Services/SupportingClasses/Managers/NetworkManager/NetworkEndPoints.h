@@ -8,7 +8,9 @@
 
 #pragma mark - NoCRMServices
 
-static NSString *const traSSNoCRMServiceBaseURL = @"http://mobws.tra.gov.ae";//@"http://134.249.164.53:7791";
+static NSString *const traSSNoCRMServiceBaseURL =
+@"http://mobws.tra.gov.ae";
+//@"http://134.249.164.53:7791";
 
 static NSString *const traSSNOCRMServiceGETDomainData = @"/checkWhois?checkUrl=";
 static NSString *const traSSNOCRMServiceGETDomainAvaliability = @"/checkWhoisAvailable?checkUrl=";
@@ -23,5 +25,6 @@ static NSString *const traSSNOCRMServicePOSTCompliantAboutTRAService = @"/compla
 static NSString *const traSSNOCRMServicePOSTCompliantAboutEnquires = @"/complainEnquiries";
 static NSString *const traSSNOCRMServicePOSTSendSuggestin = @"/sendSuggestion";
 static NSString *const traSSNOCRMServicePOSTPoorCoverage = @"/sendPoorCoverage";
-static NSString *const traSSRegister = @"/user/register";
-static NSString *const traSSLogin = @"/user/signIn";
+static NSString *const traSSRegister = @"/crm/register";
+static NSString *const traSSLogin = @"/crm/signIn";
+static NSString *const traSSLogOut = @"/crm/signOut";

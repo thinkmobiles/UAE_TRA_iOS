@@ -22,5 +22,6 @@
 #import "NSArray+Reverse.h"
 #import "UIView+Snapshot.h"
 #import "UIFont+AppFonts.h"
+#import "BlackWhiteConverter.h"
 
 #endif /* Prefix_pch */

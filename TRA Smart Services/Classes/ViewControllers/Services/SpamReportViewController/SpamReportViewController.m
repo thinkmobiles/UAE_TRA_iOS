@@ -44,47 +44,33 @@
     
     if (self.reportSegment.selectedSegmentIndex) {
         if (!self.phoneNumber.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [AppHelper showLoader];
-            __weak typeof(self) weakSelf = self;
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
-                [weakSelf refreshControls];
             }];
         }
     } else {
         if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [AppHelper showLoader];
-            __weak typeof(self) weakSelf = self;
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
-                [weakSelf refreshControls];
             }];
         }
     }
-}
-
-- (void)refreshControls
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.providerType.text = @"";
-        self.notes.text = @"";
-        self.phoneNumber.text = @"";
-        self.phoneProvider.text = @"";
-    });
 }
 
 - (IBAction)didChangeReportType:(UISegmentedControl *)sender
@@ -104,11 +90,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType == UIReturnKeyNext) {
-        UITextField *nextTextField = (UITextField *)[self.view viewWithTag: (textField.tag + 1)];
-        [nextTextField becomeFirstResponder];
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 #pragma mark - Private

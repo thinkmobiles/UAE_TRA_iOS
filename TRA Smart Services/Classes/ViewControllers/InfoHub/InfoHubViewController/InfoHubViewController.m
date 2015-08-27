@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
 
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
 @property (strong, nonatomic) NSArray *tableViewDataSource;
@@ -102,11 +106,23 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 {
     InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
     cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
-    cell.previewLogoImage = [UIImage imageNamed:@"ic_type_apr"];
+    
+    UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+    cell.previewLogoImage = logo;
+
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
     }
+    cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+    }
+
     return cell;
 }
 
@@ -148,7 +164,12 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
     cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
-    cell.infoHubTransactionImageView.image = [UIImage imageNamed:@"ic_warn_red"];
+    UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
+    }
+    cell.infoHubTransactionImageView.image = logo;
+    cell.infoHubTransactionDescriptionLabel.tag = DeclineTagForFontUpdate;
     
     return cell;
 }
@@ -163,7 +184,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(DefaultCellOffset, 0, tableView.frame.size.width - DefaultCellOffset * 2, SectionHeaderHeight)];
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
-    headerLabel.font = [UIFont latoBoldWithSize:11.f];
+    headerLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight);
@@ -194,18 +215,33 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 - (void)updateColors
 {
     [self.tableView reloadData];
+    [self.collectionView reloadData];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI
 {
     self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    self.leftSeparatorSpaceConstraint.constant = 0;
+    self.rightSeparatorSpaceConstraint.constant = DefaultCellOffset;
     [self updateUI];
+    
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
 }
 
 - (void)setLTREuropeUI
 {
     self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    self.leftSeparatorSpaceConstraint.constant = DefaultCellOffset;
+    self.rightSeparatorSpaceConstraint.constant = 0;
     [self updateUI];
+    
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
 }
 
 #pragma mark - Private

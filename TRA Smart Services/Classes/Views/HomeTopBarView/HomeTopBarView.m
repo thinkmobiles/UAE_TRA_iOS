@@ -60,10 +60,10 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [super layoutSubviews];
     
     [self updateAvatarPosition];
+    [self prepareLogoImage];
     
     if (!self.disableFakeButtonLayersDrawing) {
         [self drawHexagonicalWireTop];
-        [self prepareLogoImage];
         [self prepareInformationButtonLayer];
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];
@@ -159,9 +159,10 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)updateOpacityForHexagons:(CGFloat)opacityLevel
 {
     if (self.isAppearenceAnimationCompleted) {
-        self.bottomLeftHexagonLayer.opacity = 1 - opacityLevel * 1.25;
-        self.bottomMidHexagonLayer.opacity = 1 - opacityLevel * 1.25;
-        self.bottomRightHexagonLayer.opacity = 1 - opacityLevel * 1.25;
+        CGFloat opacity = (1 - opacityLevel);
+        self.bottomLeftHexagonLayer.opacity = opacity;
+        self.bottomMidHexagonLayer.opacity = opacity;
+        self.bottomRightHexagonLayer.opacity = opacity;
     }
 }
 
@@ -312,6 +313,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.backgroundColor = color;
     self.searchLayer.backgroundColor = color;
     self.notificationLayer.backgroundColor = color;
+    self.avatarImageLayer.backgroundColor = color;
 }
 
 #pragma mark - AnimationDelegate
@@ -577,9 +579,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CALayer *layer= [CALayer layer];
     layer.frame = rect;
     layer.backgroundColor = [DynamicUIService service].currentApplicationColor.CGColor;
-    if (mainLogo) {
-        layer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
-    }
     
     CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
     CALayer *imageLayer = [CALayer layer];

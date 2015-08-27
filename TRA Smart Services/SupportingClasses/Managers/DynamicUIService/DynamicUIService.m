@@ -17,6 +17,7 @@ static NSString *const KeyAppleLanguage = @"AppleLanguages";
 static NSString *const KeyLanguageDefault = @"en";
 
 static NSString *const KeyLanguageEnglish = @"en";
+static NSString *const KeyLanguageEnglish2 = @"uk";
 static NSString *const KeyLanguageArabic = @"ar";
 
 @interface DynamicUIService()
@@ -76,6 +77,7 @@ static NSString *const KeyLanguageArabic = @"ar";
             [AppHelper reverseTabBarItems];
             [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
     }
 }
 
@@ -85,7 +87,7 @@ static NSString *const KeyLanguageArabic = @"ar";
     _fontSize = fontSize;
     
     if (_fontSize != prevFont && prevFont != ApplicationFontUndefined) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFontWithSize object:nil];
     }
 }
 
@@ -106,6 +108,11 @@ static NSString *const KeyLanguageArabic = @"ar";
         }
         case ApplicationColorGreen: {
             color = [UIColor defaultGreenColor];
+            break;
+        }
+        case ApplicationColorBlackAndWhite: {
+            color = [UIColor blackColor];
+            break;
         }
     }
     return color;
@@ -172,7 +179,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (void)updateCurrentLanguageWithName:(NSString *)languageName
 {
-    if ([languageName isEqualToString:KeyLanguageEnglish]) {
+    if ([languageName isEqualToString:KeyLanguageEnglish] || [languageName isEqualToString:KeyLanguageEnglish2]) {
         _language = LanguageTypeEnglish;
     } else if ([languageName isEqualToString:KeyLanguageArabic]) {
         _language = LanguageTypeArabic;
@@ -197,6 +204,9 @@ static NSString *const KeyLanguageArabic = @"ar";
         case 3: {
             savedColor = ApplicationColorGreen;
             break;
+        }
+        case 4: {
+            savedColor = ApplicationColorBlackAndWhite;
         }
     }
     return savedColor;

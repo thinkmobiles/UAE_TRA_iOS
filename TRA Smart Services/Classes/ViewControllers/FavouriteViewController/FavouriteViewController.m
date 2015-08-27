@@ -17,6 +17,7 @@ static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
 static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
 static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
+static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 @interface FavouriteViewController ()
 
@@ -25,8 +26,10 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 @property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
@@ -48,14 +51,14 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     [super viewDidLoad];
     
     [self registerNibs];
-    [self fetchFavouriteList];
+    [self saveFavoriteListToDBIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
  
-    [self prepareAddFavouriteButton];
+    [self fetchFavouriteList];
     [self.tableView reloadData];
 }
 
@@ -71,6 +74,11 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     return context;
 }
 
+- (NSManagedObjectModel *)managedObjectModel
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
+}
+
 - (void)setDataSource:(NSMutableArray *)dataSource
 {
     _dataSource = dataSource;
@@ -82,9 +90,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (IBAction)addFavouriteButtonPress:(id)sender
 {
-    [self addDemoData];
-    [self fetchFavouriteList];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:AddToFavoriteSegueIdentifier sender:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -126,14 +132,22 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    TRAService *serviceToGo = self.dataSource[indexPath.row];
+    NSUInteger navigationIndex = [serviceToGo.serviceInternalID integerValue];
+    [self performNavigationToServiceWithIndex:navigationIndex];
 }
 
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = indexPath.row % 2 ? [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f] : [UIColor clearColor];
+    UIColor *pairCellColor = [[UIColor lightOrangeColor] colorWithAlphaComponent:0.8f];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    }
+    cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.descriptionText = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
+    cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
     cell.delegate = self;
 }
 
@@ -142,8 +156,13 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length) {
-        NSPredicate *filter = [NSPredicate predicateWithFormat:@"SELF.serviceDescription contains %@", searchText];
-        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:filter] mutableCopy];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
+            NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
+            BOOL containsString = [localizedServiceName rangeOfString:searchText].location !=NSNotFound;
+            return containsString;
+        }];
+        [self fetchFavouriteList];
+        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:predicate] mutableCopy];
     
         self.dataSource = self.filteredDataSource;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
@@ -173,6 +192,57 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
         serviceInfoController.fakeBackground = image;
     }
+}
+
+- (void)performNavigationToServiceWithIndex:(NSUInteger)navigationIndex
+{
+    UIViewController *selectedService;
+    switch (navigationIndex) {
+        case 2: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"checkIMEIID"];
+            break;
+        }
+        case 3: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileBrandID"];
+            break;
+        }
+        case 4: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"feedbackID"];
+            break;
+        }
+        case 5: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"spamReportID"];
+            break;
+        }
+        case 6: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"helpSalimID"];
+            break;
+        }
+        case 7: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
+            break;
+        }
+        case 8: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"coverageID"];
+            break;
+        }
+        case 9: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"internetSpeedID"];
+            break;
+        }
+        case 10: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"compliantID"];
+            break;
+        }
+        case 11: {
+            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"suggestionID"];
+            break;
+        }
+        default:
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+            break;
+    }
+    [self.navigationController pushViewController:selectedService animated:YES];
 }
 
 #pragma mark - Private
@@ -206,9 +276,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 
 - (void)fetchFavouriteList
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TRAService"];
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"serviceOrder" ascending:YES];
-    [fetchRequest setSortDescriptors: @[descriptor]];
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"FavouriteService"];
     NSError *error;
     self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     if (error) {
@@ -216,21 +284,36 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     }
 }
 
-- (void)addDemoData
+- (void)saveFavoriteListToDBIfNeeded
 {
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
-    
-    int i = 0;
-    TRAService *service = [[TRAService alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
-    if (arc4random() % 2) {
-        service.serviceDescription = [NSString stringWithFormat:@"Addressing consumer disputes request with licensees on telecomunication services -  %i", (int)i];
-        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_chat"], 1.0);
-    } else {
-        service.serviceDescription = [NSString stringWithFormat:@"Broadband speed test -  %i", (int)i];
-        service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
+    NSError *error;
+    NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (error) {
+        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
     }
-    service.serviceName = [NSString stringWithFormat:@"Service name - %i", (int)i];
-    [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
+    
+    if (!data.count) {
+        NSArray *speedAccessServices = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
+        NSMutableArray *otherServices = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist" ]];
+        [otherServices addObjectsFromArray:speedAccessServices];
+        
+        for (NSDictionary *dic in otherServices) {
+            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) {
+                NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
+                TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
+                
+                service.serviceIsFavorite = @(NO);
+                service.serviceName = [dic valueForKey:@"serviceName"];
+                
+                service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:@"btn_settings"], 1.0);//  UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceLogo"]], 1.0);
+                service.serviceDescription = @"No decription provided";
+                service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
+            }
+        }
+    }
+    
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - FavouriteTableViewCellDelegate
@@ -306,8 +389,9 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
                 [cell markRemoveButtonSelected:NO];
                 
                 if ([self isCellInRemoveAreaWithCenter:snapshotView.center]) {
+                    TRAService *serviceToRemoveFromFav = self.dataSource[sourceIndexPath.row];
+                    serviceToRemoveFromFav.serviceIsFavorite = @(![serviceToRemoveFromFav.serviceIsFavorite boolValue]);
                     
-                    [self.managedObjectContext deleteObject:self.dataSource[sourceIndexPath.row]];
                     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
                     
                     [self.dataSource removeObjectAtIndex:sourceIndexPath.row];
@@ -342,28 +426,16 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     return isInRemoveArea;
 }
 
-#pragma mark - UI
-
-- (void)prepareAddFavouriteButton
-{
-    CGSize buttonSize = self.addFavouriteButton.frame.size;
-    NSString *buttonTitle = dynamicLocalizedString(@"favourite.button.addFav.title");
-    CGSize titleSize = [buttonTitle sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:10.f] }];
-    UIImage *buttonImage = self.addFavouriteButton.imageView.image;
-    CGSize buttonImageSize = buttonImage.size;
-    
-    CGFloat offsetBetweenImageAndText = 10; //vertical space between image and text
-    
-    [self.addFavouriteButton setImageEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 - offsetBetweenImageAndText,
-                                                (buttonSize.width - buttonImageSize.width) / 2,
-                                                0,0)];
-    self.addFavouriteButton.titleLabel.tag = 1001;
-    [self.addFavouriteButton setTitleEdgeInsets:UIEdgeInsetsMake((buttonSize.height - (titleSize.height + buttonImageSize.height)) / 2 + buttonImageSize.height + offsetBetweenImageAndText,
-                                                                 titleSize.width + [self.addFavouriteButton imageEdgeInsets].left > buttonSize.width ? -buttonImage.size.width  +  (buttonSize.width - titleSize.width) / 2 : (buttonSize.width - titleSize.width) / 2 - buttonImage.size.width,
-                                                                 0,0)];
-}
-
 #pragma mark - Drawings
+
+- (UIColor *)currentDeleteAreaColor
+{
+    UIColor *deleteAreaColor = [[UIColor redColor] colorWithAlphaComponent:0.8f];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        deleteAreaColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.8f];
+    }
+    return deleteAreaColor;
+}
 
 - (void)drawDeleteArea
 {
@@ -385,7 +457,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
     self.contentFakeIconLayer = [CALayer layer];
     CGFloat contentHeight = 50.f;
     CGFloat contentWidth = 44.f;
-    self.contentFakeIconLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.contentFakeIconLayer.backgroundColor = [self currentDeleteAreaColor].CGColor;
     CGRect contentLayerRect = CGRectMake(width / 2 - contentWidth / 2, startY - heightOfBottomDeletePart / 2 , contentWidth, contentHeight);
     self.contentFakeIconLayer.frame = contentLayerRect;
     
@@ -416,7 +488,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     self.arcDeleteZoneLayer = [CALayer layer];
     self.arcDeleteZoneLayer.frame = self.tableView.bounds;
-    self.arcDeleteZoneLayer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f].CGColor;
+    self.arcDeleteZoneLayer.backgroundColor = [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
     self.arcDeleteZoneLayer.masksToBounds = YES;
 }
 
@@ -482,7 +554,7 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 {
     self.shadowFakeIconLayer.shadowOpacity = select ? 0.02f : 0.2f;
     self.contentFakeIconLayer.opacity = select ? 0.5 : 1.0;
-    self.arcDeleteZoneLayer.backgroundColor = select ? [[UIColor redColor] colorWithAlphaComponent:0.7f].CGColor : [[UIColor redColor] colorWithAlphaComponent:0.3f].CGColor;
+    self.arcDeleteZoneLayer.backgroundColor = select ? [[self currentDeleteAreaColor] colorWithAlphaComponent:0.7f].CGColor : [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
 }
 
 - (void)animateDeleteZoneDisapearing
@@ -527,14 +599,20 @@ static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 - (void)localizeUI
 {
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
-    [self.addFavouriteButton setTitle: dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
+    self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
 }
 
 - (void)updateColors
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
-    [self.addFavouriteButton setTitleColor: [[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI

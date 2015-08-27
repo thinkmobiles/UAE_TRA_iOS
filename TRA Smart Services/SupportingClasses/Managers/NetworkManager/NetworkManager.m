@@ -51,7 +51,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServiceGetDomainAvaliability:(NSString *)domainURL requestResult:(ResponseBlock)domainAvaliabilityResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETDomainAvaliability, domainURL];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         domainAvaliabilityResponse([responseDictionary valueForKey:@"availableStatus"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
@@ -62,7 +63,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServicePerformSearchByIMEI:(NSString *)mobileIMEI requestResult:(ResponseBlock)mobileIMEISearchResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETSearchMobileIMEI, mobileIMEI];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         mobileIMEISearchResponse(responseDictionary, nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
@@ -73,7 +75,8 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 - (void)traSSNoCRMServicePerformSearchByMobileBrand:(NSString *)mobileBrand requestResult:(ResponseBlock)mobileBrandSearchResponse
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETSearchMobileBrand, mobileBrand];
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
         mobileBrandSearchResponse(responseDictionary, nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
@@ -241,13 +244,17 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 #pragma mark - UserInteraction
 
-- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password gender:(NSString *)gender phoneNumber:(NSString *)number requestResult:(ResponseBlock)registerResponse
+- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse
 {
     NSDictionary *parameters = @{
                                  @"login" : username,
                                  @"pass" : password,
-                                 @"gender" : gender,
-                                 @"phone" : number
+                                 @"first" : firstName,
+                                 @"last" : lastName,
+                                 @"emiratesId" : countryID,
+                                 @"state" : state,
+                                 @"mobile" : mobile,
+                                 @"email" : emailAddress
                                  };
     
     [self.manager POST:traSSRegister parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
@@ -276,6 +283,16 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
         loginResponse([responseDictionary valueForKey:@"status"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         loginResponse(nil, error);
+    }];
+}
+
+- (void)traSSLogout:(ResponseBlock)logoutResponse
+{
+    [self.manager POST:traSSLogin parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        logoutResponse([responseDictionary valueForKey:@"status"], nil);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        logoutResponse(nil, error);
     }];
 }
 
@@ -313,6 +330,13 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 - (void)prepareNetworkManagerWithURL:(NSURL *)baseURL
 {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:TESTBaseURLPathKey]) {
+        NSString *path = [[NSUserDefaults standardUserDefaults] valueForKey:TESTBaseURLPathKey];
+        if (path.length) {
+            baseURL = [NSURL URLWithString:path];
+        }
+    }
+
     self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -326,6 +350,9 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 - (void)setBaseURL:(NSString *)baseURL
 {
+    [[NSUserDefaults standardUserDefaults] setValue:baseURL forKey:TESTBaseURLPathKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self prepareNetworkManagerWithURL:[NSURL URLWithString:baseURL]];
 }
 
