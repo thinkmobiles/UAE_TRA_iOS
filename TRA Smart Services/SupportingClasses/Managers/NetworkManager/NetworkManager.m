@@ -35,6 +35,11 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 #pragma mark - Public
 
+- (void)cancelAllOperations
+{
+    [self.manager.operationQueue cancelAllOperations];
+}
+
 #pragma mark - NoCRMServices
 
 - (void)traSSNoCRMServiceGetDomainData:(NSString *)domainURL requestResult:(ResponseBlock)domainOwnerResponse

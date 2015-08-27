@@ -21,6 +21,7 @@
 "message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
+"message.OperationCanceledByUser" = "Operation canceled by user";
 
 //TabBarMenuItems
 

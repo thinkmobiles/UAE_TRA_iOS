@@ -21,6 +21,7 @@
 "message.NoLocationEnabledOnDevice" = "message.NoLocationEnabledOnDevice";
 "message.NoInternetConnection" = "message.NoInternetConnection";
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
+"message.OperationCanceledByUser" = "message.OperationCanceledByUser";
 
 //TabBarMenuItems
 

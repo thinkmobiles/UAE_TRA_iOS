@@ -114,7 +114,11 @@
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTPoorCoverageAtLatitude:[LocationManager sharedManager].currentLattitude longtitude:[LocationManager sharedManager].currentLongtitude address:self.addressTextField.text signalPower:self.signalLevelSlider.value  requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                if (error.code == -999) {
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.OperationCanceledByUser")];
+                } else {
+                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                }
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
@@ -162,6 +166,7 @@
 - (void)MBProgressHUDCancelButtonDidPressed
 {
     [self.HUD hide:YES];
+    [[NetworkManager sharedManager] cancelAllOperations];
     [[LocationManager sharedManager] stopUpdatingLocation];
     [self.activityIndicator stopAnimating];
 }

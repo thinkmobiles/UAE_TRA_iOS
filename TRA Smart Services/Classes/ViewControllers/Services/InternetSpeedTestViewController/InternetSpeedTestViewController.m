@@ -52,7 +52,7 @@
         self.speedTestResult.text = [NSString stringWithFormat:@"Your speed - %.6f Mb/sec (accurate)", speed];
     }
     [self.activityIndicator stopAnimating];
-    self.checkButton.enabled = !self.checkButton.enabled;
+    self.checkButton.enabled = YES;
 }
 
 #pragma mark - Private
