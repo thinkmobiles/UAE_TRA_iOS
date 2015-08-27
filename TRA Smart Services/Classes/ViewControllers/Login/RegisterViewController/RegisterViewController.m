@@ -182,7 +182,6 @@
 - (void)prepareNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)removeNotifications
@@ -204,11 +203,6 @@
             [weakSelf.view layoutIfNeeded];
         }];
     }
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    
 }
 
 @end
