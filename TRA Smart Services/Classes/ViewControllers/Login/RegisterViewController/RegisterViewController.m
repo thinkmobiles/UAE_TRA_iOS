@@ -30,7 +30,8 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+@property (weak, nonatomic) IBOutlet OffsetTextField *stateTextField;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 
@@ -50,6 +51,7 @@
     [super viewWillAppear:animated];
     
     [self prepareNotification];
+    [self prepareLogoImageView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -73,19 +75,23 @@
     [TextFieldNavigator findNextTextFieldFromCurrent:textField];
 
     if (textField.returnKeyType == UIReturnKeyNext) {
-        CGFloat offsetForScrollViewY = ((CGFloat) textField.tag + 1) * 50.f;
-        if (self.scrollView.contentOffset.y > offsetForScrollViewY ) {
-            offsetForScrollViewY = self.scrollView.contentOffset.y;
+        CGFloat offsetTextField = textField.frame.origin.y + self.logoImageView.frame.size.height;
+        
+        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - 216.f - 110.f;
+        
+        if (offsetTextField  > lineEventScroll) {
+            __weak typeof(self) weakSelf = self;
+            [self.view layoutIfNeeded];
+            [UIView animateWithDuration:0.25 animations:^{
+                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f )];
+                [weakSelf.view layoutIfNeeded];
+            }];
         }
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:0.25 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
-            [weakSelf.view layoutIfNeeded];
-        }];
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
         CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
         __weak typeof(self) weakSelf = self;
+        [self.view layoutIfNeeded];
         [UIView animateWithDuration:0.5 animations:^{
             [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
             [weakSelf.view layoutIfNeeded];
@@ -106,43 +112,56 @@
 - (IBAction)registerButtonPress:(id)sender
 {
     if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Passwords no equal" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
     if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
-        
-        [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text gender:self.genderTextField.text phoneNumber:self.mobileTextField.text requestResult:^(id response, NSError *error) {
+      
+        [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text firstName:self.firstNameTextField.text lastName:self.lastNameTextField.text emiratesID:self.emiratesIDTextField.text state:self.stateTextField.text mobilePhone:self.mobileTextField.text email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:response];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
-            weakSelf.userNameTextField.text = @"";
-            weakSelf.genderTextField.text = @"";
-            weakSelf.mobileTextField.text = @"";
-            weakSelf.passwordTextField.text = @"";
-            weakSelf.confirmPasswordTextField.text = @"";
-            weakSelf.firstNameTextField.text = @"";
-            weakSelf.emiratesIDTextField.text = @"";
-            weakSelf.lastNameTextField.text = @"";
-            weakSelf.addressTextField.text = @"";
-            weakSelf.landlineTextField.text = @"";
-            weakSelf.countryTextField.text = @"";
-            weakSelf.emailTextField.text = @"";
-            
-            [AppHelper hideLoader];
         }];
+
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 
 - (IBAction)loginButtonPress:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Keyboard
+
+- (void)prepareNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)removeNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWillAppear:(NSNotification *)notification
+{
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = keyboardRect.size.height;
+    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.logoImageView.frame.size.height - self.scrollView.contentOffset.y - keyboardHeight;
+        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - keyboardHeight - 110.f;
+        if (lineEventScroll < self.offSetTextFildY + self.logoImageView.frame.size.height - 50.f) {
+        __weak typeof(self) weakSelf = self;
+        [weakSelf.view layoutIfNeeded];
+        [UIView animateWithDuration:0.25 animations:^{
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 50.f)];
+            [weakSelf.view layoutIfNeeded];
+        }];
+    }
 }
 
 #pragma mark - Private
@@ -162,7 +181,7 @@
     self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");
     self.countryTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.country");
     self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
-    self.stateLabel.text = dynamicLocalizedString(@"register.placeHolderText.state");
+    self.stateTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.state");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
 }
@@ -177,32 +196,9 @@
     self.title = dynamicLocalizedString(@"register.title");
 }
 
-#pragma mark - Keyboard
-
-- (void)prepareNotification
+- (void)prepareLogoImageView
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)removeNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)keyboardWillAppear:(NSNotification *)notification
-{
-    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat keyboardHeight = keyboardRect.size.height;
-    
-    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.logoImageView.frame.size.height - self.scrollView.contentOffset.y - keyboardHeight;
-    
-     if (offsetForScrollViewY <= self.offSetTextFildY ) {
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:0.25 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 75.f)];
-            [weakSelf.view layoutIfNeeded];
-        }];
-    }
+    self.heightLogoImageViewConstraint.constant = 252.f - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;  //252 - temp while no design provided
 }
 
 @end

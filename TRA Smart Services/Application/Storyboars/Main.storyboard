@@ -29,6 +29,35 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -579,11 +608,6 @@ a new password will be sent.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzO-GQ-2aE" userLabel="Content - UiView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-4j-L9P" userLabel="Logo - UIImageView">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.93725490196078431" green="0.52941176470588236" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rv4-jf-6gs" userLabel="RegisterContainer - UIView">
                                                 <rect key="frame" x="0.0" y="252" width="600" height="122"/>
                                                 <subviews>
@@ -711,6 +735,11 @@ a new password will be sent.</string>
                                                     <segue destination="DFS-gr-7R1" kind="show" id="Z47-c0-pb2"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-4j-L9P" userLabel="Logo - UIImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.93725490196078431" green="0.52941176470588236" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </imageView>
                                         </subviews>
                                         <animations/>
                                         <constraints>
@@ -789,16 +818,8 @@ a new password will be sent.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXG-29-8qD" userLabel="Content - UiView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEO-tK-nKf" userLabel="Logo - UiImageView">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.93333333333333335" green="0.53725490196078429" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="252" id="Gwy-Zl-ddl"/>
-                                                </constraints>
-                                            </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-Zb-oQC" userLabel="RegisterContainer - UIView">
-                                                <rect key="frame" x="0.0" y="252" width="600" height="670"/>
+                                                <rect key="frame" x="0.0" y="188" width="600" height="670"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3PV-7E-X3w" userLabel="User Name - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="20" width="600" height="30"/>
@@ -1025,38 +1046,6 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="ioj-xa-0HC"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gik-b4-Gdd" userLabel="Conteiner State - View">
-                                                        <rect key="frame" x="0.0" y="459" width="600" height="50"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="395" translatesAutoresizingMaskIntoConstraints="NO" id="SVE-tH-8Yf" userLabel="State - UILabel">
-                                                                <rect key="frame" x="30" y="0.0" width="395" height="50"/>
-                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                                <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aIu-zX-nuu">
-                                                                <rect key="frame" x="455" y="11" width="130" height="29"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="130" id="vka-rU-95I"/>
-                                                                </constraints>
-                                                                <segments>
-                                                                    <segment title="Male"/>
-                                                                    <segment title="Female"/>
-                                                                </segments>
-                                                                <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </segmentedControl>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="aIu-zX-nuu" firstAttribute="leading" secondItem="SVE-tH-8Yf" secondAttribute="trailing" constant="30" id="0zl-QS-myA"/>
-                                                            <constraint firstAttribute="centerY" secondItem="aIu-zX-nuu" secondAttribute="centerY" id="S6Y-NY-xe9"/>
-                                                            <constraint firstAttribute="trailing" secondItem="aIu-zX-nuu" secondAttribute="trailing" constant="15" id="SgH-m4-WTD"/>
-                                                            <constraint firstItem="SVE-tH-8Yf" firstAttribute="top" secondItem="gik-b4-Gdd" secondAttribute="top" id="gra-FJ-v5s"/>
-                                                            <constraint firstItem="SVE-tH-8Yf" firstAttribute="leading" secondItem="gik-b4-Gdd" secondAttribute="leading" constant="30" id="jWH-XZ-foi"/>
-                                                            <constraint firstAttribute="height" constant="50" id="qVW-fk-SMA"/>
-                                                            <constraint firstAttribute="bottom" secondItem="SVE-tH-8Yf" secondAttribute="bottom" id="quE-BY-U9h"/>
-                                                        </constraints>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19c-we-xy9" userLabel="Separator - UIView">
                                                         <rect key="frame" x="15" y="509" width="570" height="1"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1064,7 +1053,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="8xr-GV-rZW"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gsq-M7-KAl" userLabel="Country - Text Field" customClass="OffsetTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gsq-M7-KAl" userLabel="Country - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="530" width="600" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="46b-ry-222"/>
@@ -1092,7 +1081,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="M2B-15-Kri"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-aK-F5h" userLabel="Mobile - Text Field" customClass="OffsetTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-aK-F5h" userLabel="Mobile - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="581" width="600" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="pcg-Nz-jUa"/>
@@ -1120,7 +1109,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="1FW-Ki-mv2"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-hI-Db6" userLabel="Email - Text Field" customClass="OffsetTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-hI-Db6" userLabel="Email - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="632" width="600" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="YAG-XS-5pV"/>
@@ -1176,6 +1165,27 @@ a new password will be sent.</string>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="3Q5-T1-Qdz"/>
                                                         </connections>
                                                     </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-Un-NrF" userLabel="State - Text Field" customClass="OffsetTextField">
+                                                        <rect key="frame" x="0.0" y="479" width="600" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="joe-bB-VxA"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="DFS-gr-7R1" id="Rzs-fC-DVy"/>
+                                                        </connections>
+                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1202,6 +1212,7 @@ a new password will be sent.</string>
                                                     <constraint firstItem="fQ4-sD-MUl" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="Dyr-me-oLm"/>
                                                     <constraint firstAttribute="trailing" secondItem="MGU-gr-4Lq" secondAttribute="trailing" constant="15" id="F8H-a4-6px"/>
                                                     <constraint firstItem="3Yz-Ib-41V" firstAttribute="top" secondItem="M1l-aZ-03r" secondAttribute="bottom" constant="20" id="GeT-WL-0Ps"/>
+                                                    <constraint firstItem="h0U-Un-NrF" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="HSx-km-8rP"/>
                                                     <constraint firstAttribute="trailing" secondItem="dke-kD-c7v" secondAttribute="trailing" constant="15" id="I0A-2g-qvq"/>
                                                     <constraint firstItem="dnA-yY-1Bp" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="I5G-Nq-0yz"/>
                                                     <constraint firstItem="gsq-M7-KAl" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="I9H-nY-EcQ"/>
@@ -1216,7 +1227,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="sJV-S3-zUD" secondAttribute="trailing" id="Kq9-6Y-j4P"/>
                                                     <constraint firstItem="gGu-Ev-1hb" firstAttribute="top" secondItem="wSf-Lo-9l2" secondAttribute="bottom" id="L0M-kX-Upk"/>
                                                     <constraint firstItem="YSb-aK-F5h" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="LOb-t9-jbi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gik-b4-Gdd" secondAttribute="trailing" id="LiE-nR-EuM"/>
+                                                    <constraint firstItem="19c-we-xy9" firstAttribute="top" secondItem="h0U-Un-NrF" secondAttribute="bottom" id="Lte-gH-uj8"/>
                                                     <constraint firstItem="gGu-Ev-1hb" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="MQH-eE-Ahb"/>
                                                     <constraint firstItem="Wfb-NY-gcP" firstAttribute="top" secondItem="JkS-R3-AU1" secondAttribute="bottom" constant="20" id="Mmd-da-y1z"/>
                                                     <constraint firstAttribute="trailing" secondItem="gsq-M7-KAl" secondAttribute="trailing" id="Ojb-Ul-su2"/>
@@ -1231,7 +1242,6 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="jtp-9O-rCR" secondAttribute="trailing" id="aJD-vE-wQe"/>
                                                     <constraint firstItem="Wfb-NY-gcP" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="bPH-fp-BTI"/>
                                                     <constraint firstItem="pOj-EG-q6p" firstAttribute="top" secondItem="wq1-hI-Db6" secondAttribute="bottom" id="bcB-LJ-p0L"/>
-                                                    <constraint firstItem="19c-we-xy9" firstAttribute="top" secondItem="gik-b4-Gdd" secondAttribute="bottom" id="bry-8s-kxE"/>
                                                     <constraint firstItem="dQS-AY-eSB" firstAttribute="top" secondItem="tuB-qO-0P0" secondAttribute="bottom" constant="20" id="cKk-yj-coi"/>
                                                     <constraint firstItem="wq1-hI-Db6" firstAttribute="top" secondItem="dke-kD-c7v" secondAttribute="bottom" constant="20" id="ckI-um-YWa"/>
                                                     <constraint firstAttribute="trailing" secondItem="fQ4-sD-MUl" secondAttribute="trailing" constant="15" id="dNc-rI-2kf"/>
@@ -1240,7 +1250,6 @@ a new password will be sent.</string>
                                                     <constraint firstItem="jtp-9O-rCR" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="f4X-T7-Akp"/>
                                                     <constraint firstItem="tuB-qO-0P0" firstAttribute="top" secondItem="WAd-Tu-LyJ" secondAttribute="bottom" id="g39-A6-fwV"/>
                                                     <constraint firstItem="nNk-fF-jDr" firstAttribute="top" secondItem="3Yz-Ib-41V" secondAttribute="bottom" id="gVo-cg-iMT"/>
-                                                    <constraint firstItem="gik-b4-Gdd" firstAttribute="top" secondItem="fQ4-sD-MUl" secondAttribute="bottom" id="h2f-65-jSW"/>
                                                     <constraint firstItem="JkS-R3-AU1" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="heG-dM-suy"/>
                                                     <constraint firstItem="c95-85-6Z1" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="iRe-Qt-ywU"/>
                                                     <constraint firstAttribute="trailing" secondItem="wSf-Lo-9l2" secondAttribute="trailing" id="kW6-ZH-cEk"/>
@@ -1254,14 +1263,15 @@ a new password will be sent.</string>
                                                     <constraint firstItem="c95-85-6Z1" firstAttribute="top" secondItem="sJV-S3-zUD" secondAttribute="bottom" id="rtV-tx-pzB"/>
                                                     <constraint firstAttribute="trailing" secondItem="dQS-AY-eSB" secondAttribute="trailing" id="sKU-p0-IJm"/>
                                                     <constraint firstItem="wSf-Lo-9l2" firstAttribute="top" secondItem="nNk-fF-jDr" secondAttribute="bottom" constant="20" id="sci-17-rnu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="h0U-Un-NrF" secondAttribute="trailing" id="uTn-Rd-kft"/>
                                                     <constraint firstAttribute="trailing" secondItem="WAd-Tu-LyJ" secondAttribute="trailing" id="xxJ-ue-Q1I"/>
+                                                    <constraint firstItem="h0U-Un-NrF" firstAttribute="top" secondItem="fQ4-sD-MUl" secondAttribute="bottom" constant="20" id="ym4-IM-czs"/>
                                                     <constraint firstAttribute="height" constant="670" id="zJ8-0a-IbO"/>
                                                     <constraint firstItem="e6b-sW-ObO" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="zLx-Fr-PvM"/>
-                                                    <constraint firstItem="gik-b4-Gdd" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="zT6-pX-2de"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1k-Vi-1fU" userLabel="Register now - UIButton">
-                                                <rect key="frame" x="15" y="1001" width="570" height="30"/>
+                                                <rect key="frame" x="15" y="937" width="570" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="xqC-D3-u4Q"/>
@@ -1275,7 +1285,7 @@ a new password will be sent.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnH-BM-6gu" userLabel="Login - Uibutton">
-                                                <rect key="frame" x="15" y="938" width="570" height="43"/>
+                                                <rect key="frame" x="15" y="874" width="570" height="43"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1289,6 +1299,14 @@ a new password will be sent.</string>
                                                     <action selector="registerButtonPress:" destination="DFS-gr-7R1" eventType="touchUpInside" id="TUc-qR-QlF"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEO-tK-nKf" userLabel="Logo - UiImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="188"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.93333333333333335" green="0.53725490196078429" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="188" id="Gwy-Zl-ddl"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1350,6 +1368,7 @@ a new password will be sent.</string>
                         <outlet property="emiratesIDTextField" destination="wSf-Lo-9l2" id="cxy-7g-WqT"/>
                         <outlet property="firstNameTextField" destination="GmP-Ga-qJi" id="gG8-Yb-PaC"/>
                         <outlet property="genderTextField" destination="WAd-Tu-LyJ" id="sdb-IU-X5g"/>
+                        <outlet property="heightLogoImageViewConstraint" destination="Gwy-Zl-ddl" id="B16-bP-AwX"/>
                         <outlet property="landlineTextField" destination="jtp-9O-rCR" id="qZP-AK-WQQ"/>
                         <outlet property="lastNameTextField" destination="3Yz-Ib-41V" id="0NE-cH-FOC"/>
                         <outlet property="loginButton" destination="dnH-BM-6gu" id="u92-fe-RS5"/>
@@ -1358,7 +1377,7 @@ a new password will be sent.</string>
                         <outlet property="passwordTextField" destination="dQS-AY-eSB" id="1qk-2t-NWf"/>
                         <outlet property="registerButton" destination="d1k-Vi-1fU" id="ZG9-fX-CR2"/>
                         <outlet property="scrollView" destination="j4D-WR-PuB" id="7ck-lR-bEj"/>
-                        <outlet property="stateLabel" destination="SVE-tH-8Yf" id="hFy-yU-1dn"/>
+                        <outlet property="stateTextField" destination="h0U-Un-NrF" id="CWD-H8-BUT"/>
                         <outlet property="userNameTextField" destination="3PV-7E-X3w" id="5fn-Eh-oy6"/>
                     </connections>
                 </viewController>
