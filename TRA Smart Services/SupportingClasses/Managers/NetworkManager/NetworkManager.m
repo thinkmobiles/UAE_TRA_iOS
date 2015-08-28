@@ -279,7 +279,6 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
             responseString = [response valueForKey:@"error"];
         }
-
         registerResponse(responseString, error);
     }];
 }

@@ -9,8 +9,9 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
-@interface RegisterViewController ()
+static CGFloat const PickerExpandedHeightValue = 150.f;
 
+@interface RegisterViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -30,8 +31,11 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UIPickerView *statePicker;
+@property (weak, nonatomic) IBOutlet UIButton *selectStateButton;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 
@@ -52,7 +56,6 @@
     [self prepareLogoImageView];
     [self updateColors];
     [self prepareDataSource];
-    
 }
 
 - (void)viewDidLayoutSubviews
@@ -109,31 +112,61 @@
     return YES;
 }
 
-#pragma mark - UIPickerViewDataSource
+#pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.pickerDataSource.count;
 }
 
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  self.pickerDataSource[row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"pickerCell"];
+    }
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedState = row;
+    return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedState = indexPath.row;
+    [self.selectStateButton setTitle:self.pickerDataSource[indexPath.row] forState:UIControlStateNormal];
+    [self hidePickerTable];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.textColor = [UIColor lightGrayColor];
+    cell.textLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
+    cell.textLabel.text = self.pickerDataSource[indexPath.row];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark - IBActions
+
+- (IBAction)selectStateButtonTapped:(id)sender
+{
+    if (self.tableView.hidden) {
+        [self.view layoutIfNeeded];
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.25 animations:^{
+            weakSelf.tableView.hidden = NO;
+            weakSelf.tableViewHeightConstraint.constant = PickerExpandedHeightValue;
+            [weakSelf.view layoutIfNeeded];
+        }];
+    } else {
+        [self hidePickerTable];
+    }
+}
 
 - (IBAction)registerButtonPress:(id)sender
 {
@@ -203,6 +236,19 @@
 
 #pragma mark - Private
 
+- (void)hidePickerTable
+{
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.tableViewHeightConstraint.constant = 0;
+        [weakSelf.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        weakSelf.tableView.hidden = YES;
+    }];
+}
+
+
 - (BOOL)isInputParametersInvalid
 {
     if (![self.userNameTextField.text isValidUserName]) {
@@ -240,7 +286,7 @@
 - (void)localizeUI
 {
     [self prepareDataSource];
-    [self.statePicker reloadAllComponents];
+//    [self.statePicker reloadAllComponents];
     
     self.title = dynamicLocalizedString(@"register.title");
     self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
@@ -257,6 +303,7 @@
     self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
+    [self.selectStateButton setTitle:dynamicLocalizedString(@"state.SelectState") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
@@ -281,7 +328,6 @@
 - (void)prepareDataSource
 {
     self.pickerDataSource = @[
-                              dynamicLocalizedString(@"state.SelectState"),
                               dynamicLocalizedString(@"state.Abu.Dhabi"),
                               dynamicLocalizedString(@"state.Ajman"),
                               dynamicLocalizedString(@"state.Dubai"),
