@@ -189,7 +189,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
                                                   mobilePhone:self.mobileTextField.text
                                                         email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
