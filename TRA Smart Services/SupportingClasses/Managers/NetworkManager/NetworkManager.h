@@ -8,6 +8,8 @@
 
 #import "AFNetworkReachabilityManager.h"
 
+static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
+
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
     ServiceTypeGetDomainAvaliability = 1,
@@ -37,6 +39,8 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 
 + (instancetype)sharedManager;
 
+- (void)cancelAllOperations;
+
 #pragma mark - Reachability
 
 - (void)startMonitoringNetwork;
@@ -56,8 +60,9 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePOSTComplianAboutServiceProvider:(NSString *)serviceProvider title:(NSString *)compliantTitle description:(NSString *)compliantDescription refNumber:(NSUInteger)number attachment:(UIImage *)compliantAttachmnet complienType:(ComplianType)type requestResult:(ResponseBlock)compliantAboutServiceProviderResponse;
 - (void)traSSNoCRMServicePOSTSendSuggestion:(NSString *)suggestionTitle description:(NSString *)suggestionDescription attachment:(UIImage *)suggestionAttachment requestResult:(ResponseBlock)suggestionResponse;
 
-- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password gender:(NSString *)gender phoneNumber:(NSString *)number requestResult:(ResponseBlock)registerResponse;
+- (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse;
 - (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
+- (void)traSSLogout:(ResponseBlock)logoutResponse;
 
 #pragma mark - Temp
 

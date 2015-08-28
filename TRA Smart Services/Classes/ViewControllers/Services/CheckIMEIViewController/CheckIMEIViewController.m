@@ -15,7 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
+@property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
 @property (strong, nonatomic) UIImage *navigationBarImage;
@@ -33,8 +35,6 @@
 {
     [super viewDidLoad];
     
-    self.reader = [[BarcodeCodeReader alloc] initWithView:self.barcodeView];
-    self.reader.delegate = self;
     [self prepareUI];
 }
 
@@ -42,18 +42,21 @@
 {
     [super viewDidLayoutSubviews];
     
-    [self.reader relayout];
-    [self drawLayers];
-    self.reader.acceptableRect = self.scannerZoneView.frame;
+    if (self.needTransparentNavigationBar) {
+        [self.reader relayout];
+        [self drawLayers];
+        self.reader.acceptableRect = self.scannerZoneView.frame;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    [self prepareReaderIfNeeded];
+    
     if (self.needTransparentNavigationBar) {
         self.navigationBarImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-        
         [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setTranslucent:YES];
         [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -62,8 +65,7 @@
     }
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self registerForKeyboardNotifications];
-    
-    [self.reader startStopReading];
+    [self updateColors];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -76,6 +78,8 @@
         [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
     }
     self.title = @" ";
+    
+    [self updateColors];
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -99,13 +103,12 @@
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                //todo
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];
-            self.resultTextField.text = @"";
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 
@@ -158,17 +161,30 @@
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.contentView.subviews) {
-        if ([subView isKindOfClass:[UIButton class]] && !subView.tag) {
+    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.checkIMEIButton.layer.cornerRadius = 8;
+    self.checkIMEIButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.checkIMEIButton.layer.borderWidth = 1;
+
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
             subView.layer.borderWidth = 1;
         }
     }
-    
     self.contentView.layer.cornerRadius = 8;
     self.contentView.layer.borderWidth = 1;
-    self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.contentView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+}
+
+- (void)updateColors
+{
+    self.resultLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    [self.cameraButton.imageView setTintColor:[[DynamicUIService service] currentApplicationColor]];
+    
+    [self prepareUI];
 }
 
 - (void)endEditing
@@ -180,6 +196,32 @@
         self.centerPositionForTextFieldConstraint.constant = 100;
         [self.view layoutIfNeeded];
     }];
+}
+
+- (void)prepareReaderIfNeeded
+{
+    if (self.needTransparentNavigationBar && self.barcodeView) {
+        if ([BarcodeCodeReader isDeviceHasBackCamera]) {
+            __weak typeof(self) weakSelf = self;
+            [BarcodeCodeReader checkPermissionForCamera:^(BOOL status) {
+                if (status) {
+                    weakSelf.reader = [[BarcodeCodeReader alloc] initWithView:weakSelf.barcodeView];
+                    weakSelf.reader.delegate = weakSelf;
+                    [weakSelf.reader startStopReading];
+                } else {
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoCameraPermissionsGranted") delegate:weakSelf];
+                }
+            }];
+        }
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:settingsURL];
 }
 
 #pragma mark - Drawing

@@ -50,23 +50,21 @@
 - (IBAction)loginButtonPressed:(id)sender
 {
     if (self.userNameTextField.text.length && self.passwordTextField.text.length) {
+        if (![self.userNameTextField.text isValidUserName]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
+            return;
+        }
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
-        
         [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:response];
             }
-            
-            weakSelf.userNameTextField.text = @"";
-            weakSelf.passwordTextField.text = @"";
-            
             [AppHelper hideLoader];
         }];
     } else {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
 }
 
@@ -108,7 +106,9 @@
 
 - (void)updateColors
 {
-    
+    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
 }
 
 - (void)prepareNavigationBarButton

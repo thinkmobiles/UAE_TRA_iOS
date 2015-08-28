@@ -13,6 +13,8 @@
 		<string>0</string>
 		<key>serviceNeedGradient</key>
 		<false/>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_check</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -25,6 +27,8 @@
 		<string>1</string>
 		<key>serviceNeedGradient</key>
 		<false/>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_mail</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -37,6 +41,8 @@
 		<string>2</string>
 		<key>serviceNeedGradient</key>
 		<true/>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_sign_on</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -49,6 +55,8 @@
 		<string>3</string>
 		<key>serviceNeedGradient</key>
 		<true/>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_spd</string>
 	</dict>
 </array>
 </plist>

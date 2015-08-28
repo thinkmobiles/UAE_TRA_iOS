@@ -19,9 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *themeBlueButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeOrangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
+@property (weak, nonatomic) IBOutlet UIButton *themeColorBlackAndWhite;
 
 @property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
 @property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
+@property (weak, nonatomic) IBOutlet UIButton *changeServerButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *languageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
@@ -44,10 +47,14 @@
 {
     [super viewDidLoad];
 
-    [self prepareSegmentsView];
-    
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
+    
+    [self prepareSegmentsView];
+    [self registerForKeyboardNotifications];
+    [self prepareUIColors];
+    
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.scrollView.contentSize.height);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,14 +66,12 @@
     
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self unregisterForKeyboardNotification];
 }
 
 #pragma mark - IBActions
@@ -74,18 +79,26 @@
 - (IBAction)selectedThemes:(id)sender
 {
     switch ([sender tag]) {
-        case 0:
+        case 0: {
             [self makeActiveColorTheme:ApplicationColorBlue];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlue];
             break;
-        case 1:
+        }
+        case 1: {
             [self makeActiveColorTheme:ApplicationColorOrange];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorOrange];
             break;
-        case 2:
+        }
+        case 2: {
             [self makeActiveColorTheme:ApplicationColorGreen];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorGreen];
             break;
+        }
+        case 3: {
+            [self makeActiveColorTheme:ApplicationColorBlackAndWhite];
+            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlackAndWhite];
+            break;
+        }
     }
     [AppHelper updateTabBarTintColor];
     [AppHelper updateNavigationBarColor];
@@ -106,6 +119,7 @@
     
     [self localizeUI];
     [AppHelper localizeTitlesOnTabBar];
+    [AppHelper updateFontsOnTabBar];
     [self updateLanguageSegmentControlPosition];
 }
 
@@ -128,23 +142,30 @@
         }
     }
     
-    [self updateSubviewForParentViewIfPossible:self.view];
     [AppHelper updateFontsOnTabBar];
     [self updateFontSizeSegmentControlPosition];
 }
 
 - (IBAction)logoutButtonPressed:(id)sender
 {
-    
+    [AppHelper showLoader];
+    [[NetworkManager sharedManager] traSSLogout:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+        [AppHelper hideLoader];
+    }];
 }
 
 - (IBAction)updateBaseURLButtonTapped:(id)sender
 {
     if (!self.baseURLLinkTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
     [[NetworkManager sharedManager] setBaseURL:self.baseURLLinkTextField.text];
-    [AppHelper alertViewWithMessage:MessageSuccess];
+    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
 }
 
 #pragma mark - SegmentViewDelegate
@@ -192,11 +213,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboadWillShow:) name:UIKeyboardWillShowNotification object:nil];
 }
 
-- (void)unregisterForKeyboardNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)keyboadWillShow:(NSNotification*)notification
 {
     if ([self.baseURLLinkTextField isFirstResponder]) {
@@ -213,27 +229,37 @@
 
 - (void)makeActiveColorTheme:(ApplicationColor)selectedColor
 {
-    self.themeBlueButton.backgroundColor = [UIColor whiteColor];
-    self.themeOrangeButton.backgroundColor = [UIColor whiteColor];
-    self.themeGreenButton.backgroundColor = [UIColor whiteColor];
+    UIImage *active = [UIImage imageNamed:@"filledCircle"];
+    UIImage *inActive = [UIImage imageNamed:@"check_disact"];
+    
+    [self.themeBlueButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeOrangeButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeGreenButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeColorBlackAndWhite setImage:inActive forState:UIControlStateNormal];
 
     [[DynamicUIService service] setColorScheme:selectedColor];
 
     switch (selectedColor) {
         case ApplicationColorDefault:
         case ApplicationColorBlue: {
-            self.themeBlueButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeBlueButton setImage:active forState:UIControlStateNormal];
             break;
         }
         case ApplicationColorOrange: {
-            self.themeOrangeButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeOrangeButton setImage:active forState:UIControlStateNormal];
             break;
         }
         case ApplicationColorGreen: {
-            self.themeGreenButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeGreenButton setImage:active forState:UIControlStateNormal];
+            break;
+        }
+        case ApplicationColorBlackAndWhite: {
+            [self.themeColorBlackAndWhite setImage:active forState:UIControlStateNormal];
             break;
         }
     }
+    
+    [self updateColors];
 }
 
 #pragma mark - UIUpdate
@@ -254,7 +280,8 @@
 
 - (void)updateColors
 {
-    
+    [self.changeServerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.logoutButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
 }
 
 - (void)updateLanguageSegmentControlPosition
@@ -301,6 +328,14 @@
                                         };
     self.textSizeSegmentControll.segmentItemsAttributes = @[bigTextattributes, smallTextAttributes];
     self.languageSegmentControl.segmentItemsAttributes = @[smallTextAttributes, smallTextAttributes];
+}
+
+- (void)prepareUIColors
+{
+    [self.themeBlueButton setTintColor:[UIColor defaultBlueColor]];
+    [self.themeGreenButton setTintColor:[UIColor defaultGreenColor]];
+    [self.themeOrangeButton setTintColor:[UIColor defaultOrangeColor]];
+    [self.themeColorBlackAndWhite setTintColor:[UIColor blackColor]];
 }
 
 @end

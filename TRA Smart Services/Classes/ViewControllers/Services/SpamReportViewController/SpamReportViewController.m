@@ -36,6 +36,13 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IABaction
 
 - (IBAction)responseSpam:(id)sender
@@ -44,47 +51,41 @@
     
     if (self.reportSegment.selectedSegmentIndex) {
         if (!self.phoneNumber.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
+            if (![self.phoneNumber.text isValidPhoneNumber]) {
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+                return;
+            }
             [AppHelper showLoader];
-            __weak typeof(self) weakSelf = self;
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
-                [weakSelf refreshControls];
             }];
         }
     } else {
         if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
+            if (![self.phoneNumber.text isValidPhoneNumber]) {
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+                return;
+            }
             [AppHelper showLoader];
-            __weak typeof(self) weakSelf = self;
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
                     [AppHelper alertViewWithMessage:error.localizedDescription];
                 } else {
-                    [AppHelper alertViewWithMessage:MessageSuccess];
+                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
                 [AppHelper hideLoader];
-                [weakSelf refreshControls];
             }];
         }
     }
-}
-
-- (void)refreshControls
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.providerType.text = @"";
-        self.notes.text = @"";
-        self.phoneNumber.text = @"";
-        self.phoneProvider.text = @"";
-    });
 }
 
 - (IBAction)didChangeReportType:(UISegmentedControl *)sender
@@ -104,11 +105,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType == UIReturnKeyNext) {
-        UITextField *nextTextField = (UITextField *)[self.view viewWithTag: (textField.tag + 1)];
-        [nextTextField becomeFirstResponder];
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 #pragma mark - Private
@@ -122,15 +131,32 @@
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+            subView.layer.borderWidth = 1;
+        }
+    }
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            subView.layer.cornerRadius = 8;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
             subView.layer.borderWidth = 1;
         }
     }
     [self prepareUIForTextView];
 }
 
+- (void)updateColors
+{
+    self.reportSegment.tintColor = [[DynamicUIService service] currentApplicationColor];
+    self.notes.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.notes.textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [self prepareUI];
+}
 
 @end

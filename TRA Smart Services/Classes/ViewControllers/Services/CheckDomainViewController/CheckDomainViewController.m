@@ -28,12 +28,19 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)avaliabilityButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];
@@ -52,7 +59,7 @@
 - (IBAction)whoIsButtonTapped:(id)sender
 {
     if (!self.domainNameTextField.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
         [self.view endEditing:YES];
@@ -68,17 +75,51 @@
     }
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+            subView.layer.borderWidth = 1;
+        }
+    }
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            subView.layer.cornerRadius = 8;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
             subView.layer.borderWidth = 1;
         }
     }
 }
+
+- (void)updateColors
+{
+    [self prepareUI];
+}
+
 
 @end

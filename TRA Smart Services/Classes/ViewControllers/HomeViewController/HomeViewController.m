@@ -11,6 +11,13 @@
 #import "CategoryCollectionViewCell.h"
 #import "AppDelegate.h"
 
+#define Mask8(x) ( (x) & 0xFF )
+#define R(x) ( Mask8(x) )
+#define G(x) ( Mask8(x >> 8 ) )
+#define B(x) ( Mask8(x >> 16) )
+#define A(x) ( Mask8(x >> 24) )
+#define RGBAMake(r, g, b, a) ( Mask8(r) | Mask8(g) << 8 | Mask8(b) << 16 | Mask8(a) << 24 )
+
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
 static CGFloat const CellSubmenuHeight = 140.f;
@@ -27,6 +34,7 @@ static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
+static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBrandNameSegue";
 
 @interface HomeViewController ()
 
@@ -205,7 +213,6 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
         } else if (contentOffsetY < minimumAllowedY / 2 && !self.isScrollintToTop) {
             [self.topView moveFakeButtonsToTop:NO];
         }
-        __weak typeof(self) weakSelf = self;
         CGFloat progress = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
         
         [self animateTopLogoWithProgress:progress];
@@ -214,11 +221,11 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
         if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
             [self.topView moveFakeButtonsToTop:YES];
-            [weakSelf.topView updateOpacityForHexagons:progress];
         } else {
             [self.topView moveFakeButtonsToTop:NO];
-            [weakSelf.topView updateOpacityForHexagons:0];
         }
+        
+        [self.topView updateOpacityForHexagons:progress];
         [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta)];
     }
     self.lastContentOffset = scrollView.contentOffset.y;
@@ -313,20 +320,15 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     self.topView.avatarView.layer.transform = transform;
 }
 
-- (void)setRTLArabicUI
-{
-    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
-}
-
-- (void)setLTREuropeUI
-{
-    [self transformTopView:CATransform3DIdentity];
-}
-
 #pragma mark - Navigations
 
 - (void)speedAccessCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
         case 7: {
@@ -346,7 +348,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             break;
         }
         default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
         }
     }
@@ -354,6 +356,11 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
         case 2: {
@@ -376,9 +383,12 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
             break;
         }
-            
+        case 3: {
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            break;
+        }
         default: {
-            [AppHelper alertViewWithMessage:MessageNotImplemented];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
         }
     }
@@ -396,7 +406,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
 }
 
-#pragma mark - Localization
+#pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
@@ -405,9 +415,31 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 
 - (void)updateColors
 {
-    self.backgroundImageView.image = [UIImage imageNamed:@"background"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"background"];
+    UIImage *movableImage = [UIImage imageNamed:@"res_polygons"];
+
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+        movableImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:movableImage];
+    }
+    
+    self.movableImageView.image = movableImage;
+    self.backgroundImageView.image = backgroundImage;
+    
     [self.topView updateUIColor];
 }
+
+- (void)setRTLArabicUI
+{
+    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
+}
+
+- (void)setLTREuropeUI
+{
+    [self transformTopView:CATransform3DIdentity];
+}
+
+#pragma mark - Configurations for Cells
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -420,29 +452,45 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        cell.itemLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        
+        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        cell.itemLogoImageView.image = serviceLogo;
     }
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
     cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
     cell.menuTitleLabel.textColor = [UIColor menuItemGrayColor];
+    cell.menuTitleLabel.tag = DeclineTagForFontUpdate;
 }
 
 - (void)configureCategoryCell:(CategoryCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     
+    NSArray *gradientColors = @[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        gradientColors = @[(id)[UIColor blackColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.5f].CGColor];
+    }
+    
     if ([[selectedServiceDetails valueForKey:@"serviceNeedGradient"] boolValue]) {
-        [cell.polygonView setGradientWithTopColors:@[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor]];
+        [cell.polygonView setGradientWithTopColors:gradientColors];
     } else {
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
         [cell setTintColorForLabel:[[DynamicUIService service] currentApplicationColor]];
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        cell.categoryLogoImageView.image = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        
+        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
+        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+            serviceLogo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:serviceLogo];
+        }
+
+        cell.categoryLogoImageView.image = serviceLogo;
         cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     }
+    
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
+    cell.categoryTitleLabel.tag = DeclineTagForFontUpdate;
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
 }
 
@@ -556,6 +604,12 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
     group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     [cell.layer addAnimation:group forKey:nil];
+    
+    BOOL shouldBeScaled = self.speedAccessCollectionView.frame.origin.y < CGRectGetMaxY(self.topView.frame);
+    
+    CATransform3D transformation = CATransform3DIdentity;
+    transformation = shouldBeScaled ? CATransform3DScale(transformation, MaxScaleFactorForSpeedAccessCell, MaxScaleFactorForSpeedAccessCell, 1) : CATransform3DIdentity;
+    cell.layer.transform = transformation;
 }
 
 - (void)animateOtherCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

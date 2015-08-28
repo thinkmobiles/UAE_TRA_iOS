@@ -6,13 +6,6 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-static NSString *const MessageNotImplemented = @"Not implemented";
-static NSString *const MessageSuccess = @"Success";
-static NSString *const MessageEmptyInputParameter = @"Please enter text in the textfield";
-static NSString *const MessageIncorrectRating = @"Incorrect rating format - shoul use only numbers";
-
-static NSString *const MessageArabicIncorrectDomainName = @"يرجى ادخال اسم نطاق صالح";
-
 @interface AppHelper : NSObject
 
 + (UITabBarController *)rootViewController;

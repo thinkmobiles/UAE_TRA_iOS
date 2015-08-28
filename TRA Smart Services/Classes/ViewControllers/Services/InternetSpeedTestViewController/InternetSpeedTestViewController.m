@@ -34,6 +34,13 @@
     self.speedChecker.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)checkInternetSpeedButtonTapped:(id)sender
@@ -52,21 +59,26 @@
         self.speedTestResult.text = [NSString stringWithFormat:@"Your speed - %.6f Mb/sec (accurate)", speed];
     }
     [self.activityIndicator stopAnimating];
-    self.checkButton.enabled = !self.checkButton.enabled;
+    self.checkButton.enabled = YES;
 }
 
 #pragma mark - Private
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
             subView.layer.borderWidth = 1;
         }
     }
 }
 
+- (void)updateColors
+{
+    [self prepareUI];
+}
 
 @end

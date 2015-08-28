@@ -8,6 +8,6 @@
 
 #import "BaseSelectImageViewController.h"
 
-@interface CompliantViewController : BaseSelectImageViewController
+@interface CompliantViewController : BaseSelectImageViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

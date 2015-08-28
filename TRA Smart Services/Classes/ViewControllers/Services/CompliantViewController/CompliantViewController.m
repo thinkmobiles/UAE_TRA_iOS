@@ -34,6 +34,13 @@
     [self.providerText becomeFirstResponder];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IABaction
 
 - (IBAction)selectImage:(id)sender
@@ -64,27 +71,17 @@
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
-        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length ||
-                                                        !self.refNumber.text.length))){
-        
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
-        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:MessageSuccess];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.providerText.text = @"";
-                weakSelf.compliantTitle.text = @"";
-                weakSelf.compliantDescriptionTextView.text = @"";
-                weakSelf.refNumber.text = @"";            
-            });
         }];
     }
 }
@@ -93,24 +90,54 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType == UIReturnKeyNext) {
-        UITextField *nextTextField = (UITextField *)[self.view viewWithTag: (textField.tag + 1)];
-        [nextTextField becomeFirstResponder];
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 #pragma mark - Private
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
             subView.layer.borderWidth = 1;
         }
     }
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            subView.layer.cornerRadius = 8;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+            subView.layer.borderWidth = 1;
+        }
+    }
+    
+    self.compliantDescriptionTextView.layer.cornerRadius = 8;
+    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.compliantDescriptionTextView.layer.borderWidth = 1;
+}
+
+- (void)updateColors
+{
+    self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.segmentProvider.tintColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [self prepareUI];
 }
 
 @end

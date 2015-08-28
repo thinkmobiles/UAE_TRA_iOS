@@ -79,6 +79,35 @@
     self.isReading = !self.isReading;
 }
 
++ (BOOL)isDeviceHasBackCamera
+{
+    BOOL deviceHasBackCamera = NO;
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    
+    for (AVCaptureDevice *device in videoDevices) {
+        if ( device.position == AVCaptureDevicePositionBack) {
+            deviceHasBackCamera = YES;
+        }
+    }
+    
+    return deviceHasBackCamera;
+}
+
++ (void)checkPermissionForCamera:(AccessGranted)status
+{
+    if ([AVCaptureDevice respondsToSelector:@selector(requestAccessForMediaType:completionHandler:)]) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    status(YES);
+                });
+            } else {
+                status(NO);
+            }
+        }];
+    }
+}
+
 #pragma mark - Private
 
 - (void)setupSession
@@ -90,28 +119,30 @@
     NSError *error;
     AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
-    if (!input) {
+    if (input) {
+        self.captureSession = [[AVCaptureSession alloc] init];
+        if ([self.captureSession canAddInput:input]) {
+            [self.captureSession addInput:input];
+        }
+        
+        AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
+        [self.captureSession addOutput:captureMetadataOutput];
+        
+        dispatch_queue_t dispatchQueue = dispatch_queue_create("com.thinkMobiles.captureQueue.barcodeReading.TRA.smart.service", DISPATCH_QUEUE_SERIAL);
+        [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
+        [captureMetadataOutput setMetadataObjectTypes: [self allowedTypes]];
+        
+        self.videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+        [self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+        [self.videoPreviewLayer setFrame:self.previewLayer.bounds];
+        
+        [self.previewLayer.layer addSublayer:self.videoPreviewLayer];
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(readerDidChangeStatusTo:)]) {
+            [self.delegate readerDidChangeStatusTo:@"Ready to start scanning"];
+        }
+    } else {
         NSLog(@"%@", [error localizedDescription]);
-    }
-    
-    self.captureSession = [[AVCaptureSession alloc] init];
-    [self.captureSession addInput:input];
-    
-    AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [self.captureSession addOutput:captureMetadataOutput];
-    
-    dispatch_queue_t dispatchQueue = dispatch_queue_create("com.thinkMobiles.captureQueue.barcodeReading.TRA.smart.service", DISPATCH_QUEUE_SERIAL);
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
-    [captureMetadataOutput setMetadataObjectTypes: [self allowedTypes]];
-    
-    self.videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    [self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [self.videoPreviewLayer setFrame:self.previewLayer.bounds];
-    
-    [self.previewLayer.layer addSublayer:self.videoPreviewLayer];
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(readerDidChangeStatusTo:)]) {
-        [self.delegate readerDidChangeStatusTo:@"Ready to start scanning"];
     }
 }
 

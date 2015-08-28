@@ -29,50 +29,80 @@
     [self prepareUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)sendButtonTapped:(id)sender
 {
     if (![self isNSStringIsValid:self.ratingTextField.text]){
-        [AppHelper alertViewWithMessage:MessageIncorrectRating];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.IncorrectRatings")];
         return;
     }
     if (!self.serviceNameTextField.text.length || !self.ratingTextField.text.length || !self.feedbackTextView.text.length) {
-        [AppHelper alertViewWithMessage:MessageEmptyInputParameter];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         return;
     }
     [AppHelper showLoader];
     [self.view endEditing:YES];
-    __weak typeof(self) weakSelf = self;
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:error.localizedDescription];
         } else {
-            [AppHelper alertViewWithMessage:MessageSuccess];
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
         }
-        
         [AppHelper hideLoader];
-        
-        weakSelf.feedbackTextView.text = @"";
-        weakSelf.serviceNameTextField.text = @"";
-        weakSelf.ratingTextField.text = @"";
     }];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Private
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
             subView.layer.borderWidth = 1;
         }
     }
-    self.feedbackTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            subView.layer.cornerRadius = 8;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+            subView.layer.borderWidth = 1;
+        }
+    }
+    self.feedbackTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
     self.feedbackTextView.layer.borderWidth = 1;
     self.feedbackTextView.layer.cornerRadius = 8;
+    self.feedbackTextView.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (BOOL)isNSStringIsValid:(NSString *)stringToCheck
@@ -82,5 +112,14 @@
     return [predicate evaluateWithObject:stringToCheck];
 }
 
+- (void)updateColors
+{
+    for (UILabel *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    [self prepareUI];
+}
 
 @end

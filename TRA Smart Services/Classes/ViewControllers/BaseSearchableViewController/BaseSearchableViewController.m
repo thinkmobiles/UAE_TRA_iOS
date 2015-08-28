@@ -65,6 +65,20 @@
     [self.searchBar endEditing:YES];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = YES;
+    UIView *view = searchBar.subviews[0];
+    for (UIView *subView in view.subviews) {
+        if ([subView isKindOfClass:NSClassFromString(@"UINavigationButton")]) {
+            UIButton *cancelButton = (UIButton*)subView;
+            cancelButton.titleLabel.minimumScaleFactor = 0.5f;
+            [cancelButton setTitle:dynamicLocalizedString(@"uiElement.cancelButton.title") forState:UIControlStateNormal];
+        }
+    }
+    searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+}
+
 #pragma mark - Animations
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
