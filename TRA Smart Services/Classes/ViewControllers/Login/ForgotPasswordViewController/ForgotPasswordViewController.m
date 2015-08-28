@@ -63,7 +63,9 @@
 
 - (void)updateColors
 {
-    
+    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.mainButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.informationLabel.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 @end

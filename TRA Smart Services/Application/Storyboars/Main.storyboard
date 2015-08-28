@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -480,7 +480,7 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="email19"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="8eC-5B-l0L" id="vnU-Lk-gOF"/>
@@ -635,7 +635,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="key163"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="fi2-it-n8E" id="Y6N-8w-wJr"/>
@@ -666,7 +666,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="fi2-it-n8E" id="Ee0-hw-kTI"/>
@@ -836,7 +836,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="65z-oE-S8y"/>
@@ -849,6 +849,27 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="TJa-Vn-Fuf"/>
                                                         </constraints>
                                                     </view>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-Tu-LyJ" userLabel="Gender - Text Field" customClass="OffsetTextField">
+                                                        <rect key="frame" x="0.0" y="71" width="600" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="mOy-98-mUm"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="gender5"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="DFS-gr-7R1" id="3Q5-T1-Qdz"/>
+                                                        </connections>
+                                                    </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-AY-eSB" userLabel="Password - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="122" width="600" height="30"/>
                                                         <constraints>
@@ -864,7 +885,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="key163"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="GvR-Dx-pHv"/>
@@ -893,7 +914,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="key163"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="x24-ph-JtN"/>
@@ -906,7 +927,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="OED-r3-Cgu"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FIrst Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-Ga-qJi" userLabel="FIrst Name - Text Field" customClass="OffsetTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-Ga-qJi" userLabel="FIrst Name - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="224" width="600" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="TXD-p6-mTY"/>
@@ -921,7 +942,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="ZI4-Wl-IGN"/>
@@ -949,7 +970,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="cr5-c0-O4z"/>
@@ -977,7 +998,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="adobe32"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="tLg-R7-Vzj"/>
@@ -1005,7 +1026,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="situation"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="4rI-98-K81"/>
@@ -1033,7 +1054,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="new-york"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="gAF-qT-lld"/>
@@ -1068,7 +1089,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="flagpole18"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="nDz-AF-fxc"/>
@@ -1096,7 +1117,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="smartphones23"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="ycs-Cv-nFf"/>
@@ -1124,7 +1145,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="email19"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="XAM-b6-DD7"/>
@@ -1144,27 +1165,6 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="Qeh-5H-34o"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-Tu-LyJ" userLabel="Gender - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="71" width="600" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="mOy-98-mUm"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="DFS-gr-7R1" id="3Q5-T1-Qdz"/>
-                                                        </connections>
-                                                    </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-Un-NrF" userLabel="State - Text Field" customClass="OffsetTextField">
                                                         <rect key="frame" x="0.0" y="479" width="600" height="30"/>
                                                         <constraints>
@@ -1180,7 +1180,7 @@ a new password will be sent.</string>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="Lock_icon"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="new-york"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="Rzs-fC-DVy"/>

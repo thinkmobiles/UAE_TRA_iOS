@@ -175,7 +175,7 @@
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
     self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
-    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emiratesID");
+    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
     self.addressTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.address");
     self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");
@@ -188,7 +188,10 @@
 
 - (void)updateColors
 {
-    
+    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.containerView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (void)prepareNavigationBar

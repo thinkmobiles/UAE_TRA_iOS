@@ -49,9 +49,9 @@
 "register.placeHolderText.gender" = "register.placeHolderText.gender";
 "register.placeHolderText.phone" = "register.placeHolderText.phone";
 "register.placeHolderText.password" = "register.placeHolderText.password";
-"register.placeHolderText.comfirmPassword" = "register.placeHolderText.comfirmPassword";
+"register.placeHolderText.confirmPassword" = "register.placeHolderText.confirmPassword";
 "register.placeHolderText.firstName" = "register.placeHolderText.firstName";
-"register.placeHolderText.emiratesID" = "register.placeHolderText.emiratesID";
+"register.placeHolderText.emirateID" = "register.placeHolderText.emirateID";
 "register.placeHolderText.lastName" = "register.placeHolderText.lastName";
 "register.placeHolderText.address" = "register.placeHolderText.address";
 "register.placeHolderText.landline" = "register.placeHolderText.landline";

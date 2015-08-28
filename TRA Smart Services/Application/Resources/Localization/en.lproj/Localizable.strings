@@ -51,7 +51,7 @@
 "register.placeHolderText.password" ="Password";
 "register.button.register" = "Register";
 "register.button.login" = "Login";
-"register.placeHolderText.comfirmPassword" = "Comfirm Password";
+"register.placeHolderText.confirmPassword" = "Comfirm Password";
 "register.placeHolderText.firstName" = "First Name";
 "register.placeHolderText.emirateID" = "Emirates ID №";
 "register.placeHolderText.lastName" = "Last Name";

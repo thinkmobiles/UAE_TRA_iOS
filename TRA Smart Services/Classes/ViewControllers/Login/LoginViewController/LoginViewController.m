@@ -108,7 +108,9 @@
 
 - (void)updateColors
 {
-    
+    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
 }
 
 - (void)prepareNavigationBarButton
