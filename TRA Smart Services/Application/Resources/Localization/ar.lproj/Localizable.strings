@@ -23,13 +23,25 @@
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
-"message.InvalidFormatUserName" = "User name or User Surname has invalid format.";
-"message.InvalidFormatIDEmirates" = "";
-"message.InvalidFormatFirstName" = "";
-"message.InvalidFormatLastName" = "";
-"message.InvalidFormatMobile" = "";
-"message.InvalidFormatEmail" = "";
-"message.InvalidFormatURL" = "";
+"message.InvalidFormatUserName" = "User credentials Invalid";
+"message.InvalidFormatIDEmirates" = "Invalid Invalid Emirates ID";
+"message.InvalidFormatFirstName" = "Invalid First Name";
+"message.InvalidFormatLastName" = "Invalid Last Name";
+"message.InvalidFormatMobile" = "Invalid mobilePhone";
+"message.InvalidFormatEmail" = "Invalid Email";
+"message.InvalidFormatURL" = "Invalid URL format";
+"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
+
+//StatesNames
+
+"state.SelectState" = "Select State";
+"state.Abu.Dhabi" = "Abu Dhabi";
+"state.Ajman" = "Ajman";
+"state.Dubai" = "Dubai";
+"state.Fujairah" = "Fujairah";
+"state.Ras" = "Ras al-Khaiman";
+"state.Sharjan" = "Sharjah";
+"state.Quwain" = "Umm al-Quwain";
 
 //TabBarMenuItems
 

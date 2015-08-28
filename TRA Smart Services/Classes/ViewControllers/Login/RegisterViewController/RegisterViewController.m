@@ -30,22 +30,19 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *stateTextField;
-
+@property (weak, nonatomic) IBOutlet UIPickerView *statePicker;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
+
+@property (strong, nonatomic) NSArray *pickerDataSource;
+@property (assign, nonatomic) NSInteger selectedState;
 
 @end
 
 @implementation RegisterViewController
 
 #pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -54,6 +51,8 @@
     [self prepareNotification];
     [self prepareLogoImageView];
     [self updateColors];
+    [self prepareDataSource];
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -85,7 +84,8 @@
             __weak typeof(self) weakSelf = self;
             [self.view layoutIfNeeded];
             [UIView animateWithDuration:0.25 animations:^{
-                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f )];
+                CGFloat offset = textField.tag == 5 ? 200.f : 50.f;
+                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + offset)];
                 [weakSelf.view layoutIfNeeded];
             }];
         }
@@ -109,6 +109,30 @@
     return YES;
 }
 
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.pickerDataSource.count;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return  self.pickerDataSource[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedState = row;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)registerButtonPress:(id)sender
@@ -119,16 +143,24 @@
     }
     if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
         
-        if ([self validationFopmatTextField]){
+        if ([self isInputParametersInvalid]){
             return;
         }
         [AppHelper showLoader];
-        [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text firstName:self.firstNameTextField.text lastName:self.lastNameTextField.text emiratesID:self.emiratesIDTextField.text state:self.stateTextField.text mobilePhone:self.mobileTextField.text email:self.emailTextField.text requestResult:^(id response, NSError *error) {
+        [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text
+                                                     password:self.passwordTextField.text
+                                                    firstName:self.firstNameTextField.text
+                                                     lastName:self.lastNameTextField.text
+                                                   emiratesID:self.emiratesIDTextField.text
+                                                        state:[NSString stringWithFormat:@"%i", (int)self.selectedState]
+                                                  mobilePhone:self.mobileTextField.text
+                                                        email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
+            [AppHelper hideLoader];
         }];
 
     } else {
@@ -171,7 +203,7 @@
 
 #pragma mark - Private
 
-- (BOOL)validationFopmatTextField
+- (BOOL)isInputParametersInvalid
 {
     if (![self.userNameTextField.text isValidUserName]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
@@ -197,11 +229,19 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
         return YES;
     }
+    if (self.selectedState <= 0) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidStateCode")];
+        return YES;
+    }
+    
     return NO;
 }
 
 - (void)localizeUI
 {
+    [self prepareDataSource];
+    [self.statePicker reloadAllComponents];
+    
     self.title = dynamicLocalizedString(@"register.title");
     self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
     self.genderTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.gender");
@@ -209,13 +249,12 @@
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
     self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
-    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
     self.addressTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.address");
     self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");
     self.countryTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.country");
     self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
-    self.stateTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.state");
+    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
 }
@@ -237,6 +276,21 @@
 - (void)prepareLogoImageView
 {
     self.heightLogoImageViewConstraint.constant = 252.f - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;  //252 - temp while no design provided
+}
+
+- (void)prepareDataSource
+{
+    self.pickerDataSource = @[
+                              dynamicLocalizedString(@"state.SelectState"),
+                              dynamicLocalizedString(@"state.Abu.Dhabi"),
+                              dynamicLocalizedString(@"state.Ajman"),
+                              dynamicLocalizedString(@"state.Dubai"),
+                              dynamicLocalizedString(@"state.Fujairah"),
+                              dynamicLocalizedString(@"state.Ras"),
+                              dynamicLocalizedString(@"state.Sharjan"),
+                              dynamicLocalizedString(@"state.Quwain")
+                              ];
+    self.selectedState = -1;
 }
 
 @end

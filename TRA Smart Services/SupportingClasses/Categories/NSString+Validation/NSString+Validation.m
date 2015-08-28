@@ -43,7 +43,7 @@
 
 - (BOOL)isValidUserName
 {
-    NSString *allowedSymbols = @"[a-zA-z]+";
+    NSString *allowedSymbols = @"[a-z0-9]+";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
     return [test evaluateWithObject:self];
 }
@@ -51,6 +51,13 @@
 - (BOOL)isValidIDEmirates
 {
     NSString *allowedSymbols = @"[0-9]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{7}[-]{1}[0-9]{1}";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:self];
+}
+
+- (BOOL)isValidStateCode
+{
+    NSString *allowedSymbols = @"[0-9]{1}";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
     return [test evaluateWithObject:self];
 }
