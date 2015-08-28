@@ -209,7 +209,7 @@
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
     self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
-    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emiratesID");
+    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
     self.addressTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.address");
     self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");

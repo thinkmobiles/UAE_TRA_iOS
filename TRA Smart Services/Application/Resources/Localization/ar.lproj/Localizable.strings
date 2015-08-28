@@ -58,7 +58,7 @@
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
-"register.placeHolderText.comfirmPassword" = "Comfirm Password";
+"register.placeHolderText.confirmPassword" = "Comfirm Password";
 "register.placeHolderText.firstName" = "First Name";
 "register.placeHolderText.emirateID" = "Emirates ID №";
 "register.placeHolderText.lastName" = "Last Name";
