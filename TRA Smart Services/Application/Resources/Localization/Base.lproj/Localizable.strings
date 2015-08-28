@@ -21,7 +21,15 @@
 "message.NoLocationEnabledOnDevice" = "message.NoLocationEnabledOnDevice";
 "message.NoInternetConnection" = "message.NoInternetConnection";
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
+"message.PasswordsNotEqual" = "message.PasswordsNotEqual";
 "message.OperationCanceledByUser" = "message.OperationCanceledByUser";
+"message.InvalidFormatUserName" = "message.InvalidFormatUserName";
+"message.InvalidFormatIDEmirates" = "message.InvalidFormatIDEmirates";
+"message.InvalidFormatFirstName" = "message.InvalidFormatFirstName";
+"message.InvalidFormatLastName" = "message.InvalidFormatLastName";
+"message.InvalidFormatMobile" = "message.InvalidFormatMobile";
+"message.InvalidFormatEmail" = "message.InvalidFormatEmail";
+"message.InvalidFormatURL" = "message.InvalidFormatURL";
 
 //TabBarMenuItems
 
@@ -48,6 +56,15 @@
 "register.placeHolderText.gender" = "register.placeHolderText.gender";
 "register.placeHolderText.phone" = "register.placeHolderText.phone";
 "register.placeHolderText.password" = "register.placeHolderText.password";
+"register.placeHolderText.confirmPassword" = "register.placeHolderText.confirmPassword";
+"register.placeHolderText.firstName" = "register.placeHolderText.firstName";
+"register.placeHolderText.emirateID" = "register.placeHolderText.emirateID";
+"register.placeHolderText.lastName" = "register.placeHolderText.lastName";
+"register.placeHolderText.address" = "register.placeHolderText.address";
+"register.placeHolderText.landline" = "register.placeHolderText.landline";
+"register.placeHolderText.country" = "register.placeHolderText.country";
+"register.placeHolderText.email" = "register.placeHolderText.email";
+"register.placeHolderText.state" = "register.placeHolderText.state";
 "register.button.register" = "register.button.register";
 "register.button.login" = "register.button.login";
 

@@ -34,6 +34,13 @@
     [self.providerText becomeFirstResponder];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IABaction
 
 - (IBAction)selectImage:(id)sender
@@ -67,6 +74,10 @@
         (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
+        if (![self.refNumber.text isValidPhoneNumber]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+            return;
+        }
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
@@ -102,10 +113,19 @@
 
 - (void)prepareUI
 {
-    for (UIView *subView in self.view.subviews) {
+    for (UIButton *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+            subView.layer.borderWidth = 1;
+        }
+    }
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            subView.layer.cornerRadius = 8;
+            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
             subView.layer.borderWidth = 1;
         }
     }
@@ -113,6 +133,15 @@
     self.compliantDescriptionTextView.layer.cornerRadius = 8;
     self.compliantDescriptionTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
     self.compliantDescriptionTextView.layer.borderWidth = 1;
+}
+
+- (void)updateColors
+{
+    self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.segmentProvider.tintColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [self prepareUI];
 }
 
 @end

@@ -21,7 +21,15 @@
 "message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
+"message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
+"message.InvalidFormatUserName" = "User name or User Surname has invalid format.";
+"message.InvalidFormatIDEmirates" = "";
+"message.InvalidFormatFirstName" = "";
+"message.InvalidFormatLastName" = "";
+"message.InvalidFormatMobile" = "";
+"message.InvalidFormatEmail" = "";
+"message.InvalidFormatURL" = "";
 
 //TabBarMenuItems
 
@@ -50,6 +58,15 @@
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
+"register.placeHolderText.confirmPassword" = "Comfirm Password";
+"register.placeHolderText.firstName" = "First Name";
+"register.placeHolderText.emirateID" = "Emirates ID №";
+"register.placeHolderText.lastName" = "Last Name";
+"register.placeHolderText.address" = "Address";
+"register.placeHolderText.landline" = "Landline";
+"register.placeHolderText.country" = "Country";
+"register.placeHolderText.email" = "Email";
+"register.placeHolderText.state" = "State";
 
 //RestorePasswordViewController
 
