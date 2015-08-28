@@ -22,6 +22,7 @@
 "message.NoInternetConnection" = "message.NoInternetConnection";
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
 "message.PasswordsNotEqual" = "message.PasswordsNotEqual";
+"message.OperationCanceledByUser" = "message.OperationCanceledByUser";
 
 //TabBarMenuItems
 

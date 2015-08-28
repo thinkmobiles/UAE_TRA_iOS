@@ -22,6 +22,7 @@
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "Incorrect DomainName";
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
+"message.OperationCanceledByUser" = "Operation canceled by user";
 
 //TabBarMenuItems
 
