@@ -23,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
 @property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
+@property (weak, nonatomic) IBOutlet UIButton *changeServerButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *languageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
@@ -45,12 +47,14 @@
 {
     [super viewDidLoad];
 
-    [self prepareSegmentsView];
-    
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
     
+    [self prepareSegmentsView];
     [self registerForKeyboardNotifications];
+    [self prepareUIColors];
+    
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.scrollView.contentSize.height);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -144,12 +148,14 @@
 
 - (IBAction)logoutButtonPressed:(id)sender
 {
+    [AppHelper showLoader];
     [[NetworkManager sharedManager] traSSLogout:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:error.localizedDescription];
         } else {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
         }
+        [AppHelper hideLoader];
     }];
 }
 
@@ -223,32 +229,37 @@
 
 - (void)makeActiveColorTheme:(ApplicationColor)selectedColor
 {
-    self.themeBlueButton.backgroundColor = [UIColor whiteColor];
-    self.themeOrangeButton.backgroundColor = [UIColor whiteColor];
-    self.themeGreenButton.backgroundColor = [UIColor whiteColor];
-    self.themeColorBlackAndWhite.backgroundColor = [UIColor whiteColor];
+    UIImage *active = [UIImage imageNamed:@"filledCircle"];
+    UIImage *inActive = [UIImage imageNamed:@"check_disact"];
+    
+    [self.themeBlueButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeOrangeButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeGreenButton setImage:inActive forState:UIControlStateNormal];
+    [self.themeColorBlackAndWhite setImage:inActive forState:UIControlStateNormal];
 
     [[DynamicUIService service] setColorScheme:selectedColor];
 
     switch (selectedColor) {
         case ApplicationColorDefault:
         case ApplicationColorBlue: {
-            self.themeBlueButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeBlueButton setImage:active forState:UIControlStateNormal];
             break;
         }
         case ApplicationColorOrange: {
-            self.themeOrangeButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeOrangeButton setImage:active forState:UIControlStateNormal];
             break;
         }
         case ApplicationColorGreen: {
-            self.themeGreenButton.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeGreenButton setImage:active forState:UIControlStateNormal];
             break;
         }
         case ApplicationColorBlackAndWhite: {
-            self.themeColorBlackAndWhite.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            [self.themeColorBlackAndWhite setImage:active forState:UIControlStateNormal];
             break;
         }
     }
+    
+    [self updateColors];
 }
 
 #pragma mark - UIUpdate
@@ -269,7 +280,8 @@
 
 - (void)updateColors
 {
-    
+    [self.changeServerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.logoutButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
 }
 
 - (void)updateLanguageSegmentControlPosition
@@ -316,6 +328,14 @@
                                         };
     self.textSizeSegmentControll.segmentItemsAttributes = @[bigTextattributes, smallTextAttributes];
     self.languageSegmentControl.segmentItemsAttributes = @[smallTextAttributes, smallTextAttributes];
+}
+
+- (void)prepareUIColors
+{
+    [self.themeBlueButton setTintColor:[UIColor defaultBlueColor]];
+    [self.themeGreenButton setTintColor:[UIColor defaultGreenColor]];
+    [self.themeOrangeButton setTintColor:[UIColor defaultOrangeColor]];
+    [self.themeColorBlackAndWhite setTintColor:[UIColor blackColor]];
 }
 
 @end

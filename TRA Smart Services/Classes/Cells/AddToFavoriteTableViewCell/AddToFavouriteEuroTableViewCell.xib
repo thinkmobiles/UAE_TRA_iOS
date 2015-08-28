@@ -52,6 +52,7 @@
                                             <constraint firstAttribute="height" constant="44" id="lE5-ni-g9Z"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="tintColor" red="0.86666666670000003" green="0.56470588239999997" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                         <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +73,7 @@
                                     <constraint firstAttribute="right" secondItem="1rN-pa-6OS" secondAttribute="right" constant="20" id="Nzk-14-CFg"/>
                                     <constraint firstItem="1rN-pa-6OS" firstAttribute="top" secondItem="2CO-rj-PUO" secondAttribute="top" constant="16" id="gA1-dA-gkw"/>
                                     <constraint firstAttribute="centerY" secondItem="LJc-me-O8w" secondAttribute="centerY" id="x5Q-Sh-Twx"/>
-                                    <constraint firstItem="1rN-pa-6OS" firstAttribute="leading" secondItem="LJc-me-O8w" secondAttribute="trailing" constant="20" id="zj5-0j-W7W"/>
+                                    <constraint firstItem="1rN-pa-6OS" firstAttribute="left" secondItem="LJc-me-O8w" secondAttribute="right" constant="20" id="zj5-0j-W7W"/>
                                 </constraints>
                             </view>
                         </subviews>

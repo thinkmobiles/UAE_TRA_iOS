@@ -129,7 +129,7 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
     if (!self.segmentDeselectedTintColor) {
         self.segmentDeselectedTintColor = [UIColor lightGrayColor];
     }
-    self.layer.cornerRadius = 3.f;
+    self.layer.cornerRadius = 5.f;
     self.selectedTag = -1;
 }
 

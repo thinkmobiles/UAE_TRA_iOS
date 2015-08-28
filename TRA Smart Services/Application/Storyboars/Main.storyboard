@@ -49,7 +49,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1176,15 +1175,15 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="OXf-If-3Gz"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-bB-4z9" userLabel="Label UserName">
-                                                        <rect key="frame" x="42" y="0.0" width="235" height="70"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-bB-4z9" userLabel="Label UserName">
+                                                        <rect key="frame" x="42" y="0.0" width="325" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-of-B8N" userLabel="Text Field UserName">
-                                                        <rect key="frame" x="285" y="0.0" width="300" height="70"/>
+                                                        <rect key="frame" x="375" y="0.0" width="210" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -1195,7 +1194,7 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e74-11-GTH" userLabel="Image View UserName">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="bCn-ap-k6v"/>
                                                             <constraint firstAttribute="width" constant="25" id="v65-Qs-d5v"/>
@@ -1212,7 +1211,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="N8i-54-VT6" secondAttribute="trailing" id="SgO-XG-g7A"/>
                                                     <constraint firstAttribute="trailing" secondItem="Z9h-of-B8N" secondAttribute="trailing" constant="15" id="VtD-Ek-BgW"/>
                                                     <constraint firstItem="e74-11-GTH" firstAttribute="leading" secondItem="KBE-WY-UTQ" secondAttribute="leading" constant="12" id="XRe-dK-vkJ"/>
-                                                    <constraint firstItem="Z9h-of-B8N" firstAttribute="width" secondItem="KBE-WY-UTQ" secondAttribute="width" multiplier="0.5" id="fDo-Bh-Tik"/>
+                                                    <constraint firstItem="Z9h-of-B8N" firstAttribute="width" secondItem="KBE-WY-UTQ" secondAttribute="width" multiplier="0.35" id="fDo-Bh-Tik"/>
                                                     <constraint firstAttribute="centerY" secondItem="e74-11-GTH" secondAttribute="centerY" id="iiN-ai-6M4"/>
                                                     <constraint firstItem="Z9h-of-B8N" firstAttribute="leading" secondItem="lz1-bB-4z9" secondAttribute="trailing" constant="8" id="pQM-Or-RmJ"/>
                                                     <constraint firstItem="N8i-54-VT6" firstAttribute="top" secondItem="lz1-bB-4z9" secondAttribute="bottom" id="sxH-Mz-Xuw"/>
@@ -1235,14 +1234,14 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ag-Oq-ODe" userLabel="Image View Email">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="OTg-Bu-VxI"/>
                                                             <constraint firstAttribute="width" constant="25" id="WQs-Y6-k9l"/>
                                                         </constraints>
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kzg-nY-RDe" userLabel="Text Field Email">
-                                                        <rect key="frame" x="285" y="0.0" width="300" height="70"/>
+                                                        <rect key="frame" x="375" y="0.0" width="210" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -1250,8 +1249,8 @@ a new password will be sent.</string>
                                                             <outlet property="delegate" destination="uFL-R4-sWm" id="kHM-ue-Dpi"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-bX-fAf" userLabel="Label Email">
-                                                        <rect key="frame" x="42" y="0.0" width="235" height="70"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-bX-fAf" userLabel="Label Email">
+                                                        <rect key="frame" x="42" y="0.0" width="325" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1266,7 +1265,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="centerY" secondItem="7ag-Oq-ODe" secondAttribute="centerY" constant="-0.5" id="L35-25-3dS"/>
                                                     <constraint firstItem="MxE-bX-fAf" firstAttribute="leading" secondItem="7ag-Oq-ODe" secondAttribute="trailing" constant="5" id="P7t-Xj-8y7"/>
                                                     <constraint firstItem="7ag-Oq-ODe" firstAttribute="leading" secondItem="Hw2-UR-0GJ" secondAttribute="leading" constant="12" id="RY1-fd-rFC"/>
-                                                    <constraint firstItem="Kzg-nY-RDe" firstAttribute="width" secondItem="Hw2-UR-0GJ" secondAttribute="width" multiplier="0.5" id="Tpg-34-9RJ"/>
+                                                    <constraint firstItem="Kzg-nY-RDe" firstAttribute="width" secondItem="Hw2-UR-0GJ" secondAttribute="width" multiplier="0.35" id="Tpg-34-9RJ"/>
                                                     <constraint firstItem="MxE-bX-fAf" firstAttribute="top" secondItem="Hw2-UR-0GJ" secondAttribute="top" id="VcB-Yy-avM"/>
                                                     <constraint firstItem="Lpq-9H-zdA" firstAttribute="leading" secondItem="Hw2-UR-0GJ" secondAttribute="leading" id="d2u-yM-aow"/>
                                                     <constraint firstItem="Lpq-9H-zdA" firstAttribute="top" secondItem="MxE-bX-fAf" secondAttribute="bottom" id="e1i-Xk-AJQ"/>
@@ -1291,14 +1290,14 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V42-WM-PHj" userLabel="Image View Languages">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="Hrm-tl-H2V"/>
                                                             <constraint firstAttribute="width" constant="25" id="yUM-Az-zyP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUF-Sj-Ju8" userLabel="Label Languages">
-                                                        <rect key="frame" x="42" y="0.0" width="74" height="70"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UUF-Sj-Ju8" userLabel="Label Languages">
+                                                        <rect key="frame" x="42" y="0.0" width="384" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1339,6 +1338,7 @@ a new password will be sent.</string>
                                                     <constraint firstItem="V42-WM-PHj" firstAttribute="leading" secondItem="qcd-OB-Qd1" secondAttribute="leading" constant="12" id="g2j-zJ-iZN"/>
                                                     <constraint firstAttribute="bottom" secondItem="VZD-Pi-bQC" secondAttribute="bottom" id="hdO-nQ-jv9"/>
                                                     <constraint firstItem="VZD-Pi-bQC" firstAttribute="top" secondItem="UUF-Sj-Ju8" secondAttribute="bottom" id="nv4-Mh-Vss"/>
+                                                    <constraint firstItem="ZUG-jV-eJH" firstAttribute="leading" secondItem="UUF-Sj-Ju8" secondAttribute="trailing" constant="16" id="qAV-ny-rng"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i66-Q7-tAH" userLabel="ViewFontSize">
@@ -1355,13 +1355,13 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80q-Y7-0H4" userLabel="Image View FontSize">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="30N-Cp-q6m"/>
                                                             <constraint firstAttribute="width" constant="25" id="zYZ-uk-PCP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlC-fu-F5C" userLabel="Label FontSize">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font size" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hlC-fu-F5C" userLabel="Label FontSize">
                                                         <rect key="frame" x="42" y="0.0" width="442" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
@@ -1420,58 +1420,58 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l6U-ah-gOD" userLabel="Image View ThemesOptions">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="NaZ-kt-SYW"/>
                                                             <constraint firstAttribute="width" constant="25" id="OAR-he-XPV"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COd-Qa-x3N" userLabel="Button Theme1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COd-Qa-x3N" userLabel="Button Theme1">
                                                         <rect key="frame" x="446" y="0.0" width="30" height="70"/>
                                                         <animations/>
-                                                        <state key="normal" title="T1">
+                                                        <state key="normal" image="check_disact">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="selectedThemes:" destination="uFL-R4-sWm" eventType="touchUpInside" id="mf7-7W-wbB"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugu-2X-2MS" userLabel="Button Theme3">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugu-2X-2MS" userLabel="Button Theme3">
                                                         <rect key="frame" x="526" y="0.0" width="30" height="70"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="1m5-jI-0Pe"/>
                                                         </constraints>
-                                                        <state key="normal" title="T3">
+                                                        <state key="normal" image="check_disact">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="selectedThemes:" destination="uFL-R4-sWm" eventType="touchUpInside" id="PaF-Dn-vvD"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Themes options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-bO-306" userLabel="Label ThemesOptions">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Themes options" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-bO-306" userLabel="Label ThemesOptions">
                                                         <rect key="frame" x="42" y="0.0" width="394" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4OI-f6-YBY" userLabel="Button Theme2">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4OI-f6-YBY" userLabel="Button Theme2">
                                                         <rect key="frame" x="486" y="0.0" width="30" height="70"/>
                                                         <animations/>
-                                                        <state key="normal" title="T2">
+                                                        <state key="normal" image="check_disact">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="selectedThemes:" destination="uFL-R4-sWm" eventType="touchUpInside" id="TYR-sv-6rE"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Q-sC-4e6" userLabel="Button Theme3">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Q-sC-4e6" userLabel="Button Theme3">
                                                         <rect key="frame" x="566" y="0.0" width="30" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="HgW-vI-lNT"/>
                                                         </constraints>
-                                                        <state key="normal" title="T4">
+                                                        <state key="normal" image="check_disact">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -1522,27 +1522,26 @@ a new password will be sent.</string>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jz7-3p-OcI" userLabel="Image View Logout">
                                                         <rect key="frame" x="12" y="23" width="25" height="25"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="EjO-ca-AWP"/>
                                                             <constraint firstAttribute="height" constant="25" id="uvW-cY-tmD"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLV-v7-F0t" userLabel="Label Logout">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KLV-v7-F0t" userLabel="Label Logout">
                                                         <rect key="frame" x="42" y="0.0" width="485" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEm-SH-0RA" userLabel="Button Logout">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEm-SH-0RA" userLabel="Button Logout">
                                                         <rect key="frame" x="535" y="0.0" width="50" height="70"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="m3v-tb-8Rk"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                        <state key="normal" title="OK">
+                                                        <state key="normal" image="check_disact">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -1571,7 +1570,7 @@ a new password will be sent.</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b18-gC-X0U" userLabel="BaseURL Change - Test - uiView">
                                                 <rect key="frame" x="0.0" y="426" width="600" height="71"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://134.249.164.53:7791" borderStyle="roundedRect" placeholder="Base URL like: http://134.249.164.53:7791" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-tn-K3P">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Base URL like: http://134.249.164.53:7791" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-tn-K3P">
                                                         <rect key="frame" x="8" y="8" width="584" height="30"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
@@ -1647,22 +1646,24 @@ a new password will be sent.</string>
                         <constraints>
                             <constraint firstItem="z6H-bS-01X" firstAttribute="top" secondItem="VHh-JC-6Jk" secondAttribute="bottom" id="GQx-aL-CzO"/>
                             <constraint firstItem="z6H-bS-01X" firstAttribute="leading" secondItem="3j4-lc-ZZB" secondAttribute="leading" id="ctl-rz-rQ7"/>
-                            <constraint firstAttribute="width" secondItem="lrP-zw-Mue" secondAttribute="width" priority="750" id="ebQ-uG-j2L"/>
+                            <constraint firstAttribute="width" secondItem="lrP-zw-Mue" secondAttribute="width" id="ebQ-uG-j2L"/>
                             <constraint firstAttribute="trailing" secondItem="z6H-bS-01X" secondAttribute="trailing" id="pCE-o2-UlQ"/>
                             <constraint firstItem="sJ2-Vl-kPR" firstAttribute="top" secondItem="z6H-bS-01X" secondAttribute="bottom" constant="1" id="rqs-JR-Uil"/>
-                            <constraint firstAttribute="height" secondItem="lrP-zw-Mue" secondAttribute="height" priority="750" id="wMa-Ep-Q3S"/>
+                            <constraint firstAttribute="height" secondItem="lrP-zw-Mue" secondAttribute="height" id="wMa-Ep-Q3S"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" title="Setting" image="ic_settings" id="cly-in-d9x"/>
                     <toolbarItems/>
                     <connections>
                         <outlet property="baseURLLinkTextField" destination="N3r-tn-K3P" id="7hv-TN-SDQ"/>
+                        <outlet property="changeServerButton" destination="Bo8-85-cYK" id="zK2-sM-pdg"/>
                         <outlet property="colorThemeLabel" destination="cRd-bO-306" id="iGp-xI-5Ec"/>
                         <outlet property="emailLabel" destination="MxE-bX-fAf" id="3gP-9r-qjy"/>
                         <outlet property="emailTextField" destination="Kzg-nY-RDe" id="ccC-rD-3fw"/>
                         <outlet property="fontSizeLabel" destination="hlC-fu-F5C" id="BVo-gr-Gf5"/>
                         <outlet property="languageLabel" destination="UUF-Sj-Ju8" id="GKw-ci-UGw"/>
                         <outlet property="languageSegmentControl" destination="ZUG-jV-eJH" id="hcs-3z-cdS"/>
+                        <outlet property="logoutButton" destination="vEm-SH-0RA" id="b1C-pp-bdz"/>
                         <outlet property="logoutLabel" destination="KLV-v7-F0t" id="CbZ-E3-RSG"/>
                         <outlet property="scrollView" destination="z6H-bS-01X" id="A4O-c9-Pji"/>
                         <outlet property="textSizeSegmentControll" destination="1B2-Mr-ekN" id="rw7-qC-8ql"/>
@@ -3371,6 +3372,7 @@ a new password will be sent.</string>
         <image name="btn_close" width="11" height="11"/>
         <image name="btn_search" width="12" height="12"/>
         <image name="camera" width="32" height="32"/>
+        <image name="check_disact" width="21" height="21"/>
         <image name="close" width="64" height="64"/>
         <image name="fav_back_orange" width="640" height="960"/>
         <image name="ic_chat" width="30" height="24"/>

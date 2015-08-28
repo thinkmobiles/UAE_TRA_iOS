@@ -52,6 +52,7 @@
                                             <constraint firstAttribute="height" constant="44" id="xcd-GS-Arj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="tintColor" red="0.8666666666666667" green="0.56470588235294117" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -63,7 +64,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="right" secondItem="qXh-7i-Xql" secondAttribute="right" constant="4" id="5cr-QE-3Xz"/>
-                                    <constraint firstItem="qXh-7i-Xql" firstAttribute="leading" secondItem="igG-Z5-rt3" secondAttribute="trailing" constant="20" id="Um3-rs-dwb"/>
+                                    <constraint firstItem="qXh-7i-Xql" firstAttribute="left" secondItem="igG-Z5-rt3" secondAttribute="right" constant="20" id="Um3-rs-dwb"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="top" secondItem="rA3-9A-PI0" secondAttribute="top" constant="16" id="lsn-oS-Dmf"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" constant="20" id="tLQ-m8-rqM"/>
                                     <constraint firstAttribute="bottom" secondItem="igG-Z5-rt3" secondAttribute="bottom" constant="16" id="v3W-xZ-U7P"/>
