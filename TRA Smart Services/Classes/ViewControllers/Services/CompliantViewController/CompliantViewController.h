@@ -10,4 +10,6 @@
 
 @interface CompliantViewController : BaseSelectImageViewController <UITextFieldDelegate, UITextViewDelegate>
 
+@property (assign, nonatomic) ComplianType type;
+
 @end

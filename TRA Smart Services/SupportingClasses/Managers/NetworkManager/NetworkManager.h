@@ -22,7 +22,9 @@ typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeCoverage = 8,
     ServiceTypeInternetSpeedTest = 9,
     ServiceTypeCompliantAboutServiceProvider = 10,
-    ServiceTypeSuggestion = 11
+    ServiceTypeSuggestion = 11,
+    ServiceTypeCompliantAboutServiceProviderEnquires = 12,
+    ServiceTypeCompliantAboutServiceProviderTRA = 13
 };
 
 typedef NS_ENUM(NSUInteger, ComplianType) {

@@ -2958,43 +2958,31 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-Gy-QYa" userLabel="Title">
-                                <rect key="frame" x="16" y="94" width="568" height="30"/>
+                                <rect key="frame" x="16" y="64" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="kpc-YD-2Eq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referens number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4a7-XT-aXS">
-                                <rect key="frame" x="16" y="190" width="568" height="30"/>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referens number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4a7-XT-aXS">
+                                <rect key="frame" x="16" y="160" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="EDI-GP-B5M"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aui-Gn-Uda">
-                                <rect key="frame" x="16" y="48" width="568" height="30"/>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aui-Gn-Uda">
+                                <rect key="frame" x="16" y="16" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9jW-oN-JHA" id="sgI-4v-OTV"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xmG-D0-Lb9">
-                                <rect key="frame" x="199" y="8" width="203" height="29"/>
-                                <segments>
-                                    <segment title="Custom"/>
-                                    <segment title="TRA"/>
-                                    <segment title="Enquires"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="segmentProvider:" destination="9jW-oN-JHA" eventType="valueChanged" id="dx9-ju-vJ5"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-oz-Osj">
-                                <rect key="frame" x="16" y="244" width="51" height="30"/>
+                                <rect key="frame" x="16" y="214" width="51" height="30"/>
                                 <state key="normal" title=" Image ">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3004,7 +2992,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqB-uh-k4b">
-                                <rect key="frame" x="180" y="244" width="240" height="30"/>
+                                <rect key="frame" x="180" y="214" width="240" height="30"/>
                                 <state key="normal" title="Compliant">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3014,7 +3002,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-hB-8Nr">
-                                <rect key="frame" x="124" y="132" width="460" height="50"/>
+                                <rect key="frame" x="124" y="102" width="460" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="596-f5-oMR"/>
@@ -3026,7 +3014,7 @@ a new password will be sent.</string>
                                 </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="cy8-1h-hFG">
-                                <rect key="frame" x="16" y="132" width="100" height="21"/>
+                                <rect key="frame" x="16" y="102" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="P6U-tt-mKs"/>
                                     <constraint firstAttribute="width" constant="100" id="uFA-B5-57o"/>
@@ -3039,22 +3027,20 @@ a new password will be sent.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pqB-uh-k4b" firstAttribute="width" secondItem="X0O-F8-uuJ" secondAttribute="width" multiplier="0.4" id="3ua-HD-sJ5"/>
-                            <constraint firstAttribute="centerX" secondItem="xmG-D0-Lb9" secondAttribute="centerX" id="4Yn-20-wpn"/>
                             <constraint firstItem="aui-Gn-Uda" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="6Mh-fZ-Fsm"/>
                             <constraint firstItem="KKT-hB-8Nr" firstAttribute="leading" secondItem="cy8-1h-hFG" secondAttribute="trailing" constant="8" id="IZC-aP-MxO"/>
                             <constraint firstAttribute="trailing" secondItem="4a7-XT-aXS" secondAttribute="trailing" constant="16" id="JPR-fP-pYQ"/>
                             <constraint firstAttribute="trailing" secondItem="KKT-hB-8Nr" secondAttribute="trailing" constant="16" id="MMh-5P-lcC"/>
-                            <constraint firstItem="NTG-Gy-QYa" firstAttribute="top" secondItem="aui-Gn-Uda" secondAttribute="bottom" constant="16" id="ObG-bd-LZe"/>
                             <constraint firstItem="NTG-Gy-QYa" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="QvG-Y3-Rza"/>
                             <constraint firstItem="KKT-hB-8Nr" firstAttribute="top" secondItem="NTG-Gy-QYa" secondAttribute="bottom" constant="8" id="V2a-E7-abw"/>
-                            <constraint firstItem="xmG-D0-Lb9" firstAttribute="top" secondItem="FDM-75-p06" secondAttribute="bottom" constant="8" id="W1z-6A-Rvn"/>
                             <constraint firstItem="h5I-oz-Osj" firstAttribute="centerY" secondItem="pqB-uh-k4b" secondAttribute="centerY" id="ZQk-4e-GSl"/>
                             <constraint firstAttribute="trailing" secondItem="aui-Gn-Uda" secondAttribute="trailing" constant="16" id="aHv-FC-QzF"/>
                             <constraint firstItem="4a7-XT-aXS" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="bIJ-t9-W3l"/>
                             <constraint firstAttribute="centerX" secondItem="pqB-uh-k4b" secondAttribute="centerX" id="dxj-Ts-0TS"/>
                             <constraint firstItem="cy8-1h-hFG" firstAttribute="top" secondItem="NTG-Gy-QYa" secondAttribute="bottom" constant="8" id="g92-QV-gl1"/>
+                            <constraint firstItem="aui-Gn-Uda" firstAttribute="top" secondItem="FDM-75-p06" secondAttribute="bottom" constant="16" id="hur-PV-RtT"/>
+                            <constraint firstItem="NTG-Gy-QYa" firstAttribute="top" secondItem="FDM-75-p06" secondAttribute="bottom" constant="64" id="hxX-JR-Tdr"/>
                             <constraint firstAttribute="trailing" secondItem="NTG-Gy-QYa" secondAttribute="trailing" constant="16" id="kz8-Lc-r6n"/>
-                            <constraint firstItem="aui-Gn-Uda" firstAttribute="top" secondItem="xmG-D0-Lb9" secondAttribute="bottom" constant="12" id="m8o-4t-VV6"/>
                             <constraint firstItem="4a7-XT-aXS" firstAttribute="top" secondItem="KKT-hB-8Nr" secondAttribute="bottom" constant="8" id="mha-lD-TK9"/>
                             <constraint firstItem="pqB-uh-k4b" firstAttribute="top" secondItem="4a7-XT-aXS" secondAttribute="bottom" constant="24" id="oE7-y9-nDU"/>
                             <constraint firstItem="h5I-oz-Osj" firstAttribute="leading" secondItem="X0O-F8-uuJ" secondAttribute="leading" constant="16" id="yEM-XN-6bu"/>
@@ -3066,8 +3052,8 @@ a new password will be sent.</string>
                         <outlet property="compliantTitle" destination="NTG-Gy-QYa" id="uEW-WH-ypT"/>
                         <outlet property="providerText" destination="aui-Gn-Uda" id="r4Q-kG-HkB"/>
                         <outlet property="refNumber" destination="4a7-XT-aXS" id="AGW-jx-bqQ"/>
-                        <outlet property="segmentProvider" destination="xmG-D0-Lb9" id="ocH-Pn-gsK"/>
                         <outlet property="selectImageButton" destination="h5I-oz-Osj" id="rDT-3X-2jJ"/>
+                        <outlet property="verticalSpaceTitleTextFieldConstraint" destination="hxX-JR-Tdr" id="5hq-pH-caz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN1-sQ-thU" userLabel="First Responder" sceneMemberID="firstResponder"/>
