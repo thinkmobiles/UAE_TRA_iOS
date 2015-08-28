@@ -49,6 +49,14 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -579,7 +587,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfV-ia-1NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="-2811"/>
+            <point key="canvasLocation" x="2738" y="-2661"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="SgW-2a-qZj">
@@ -800,11 +808,11 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="Kze-Ie-3Sv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xgR-5H-iYw" userLabel="Container - UIView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="j4D-WR-PuB">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="1080"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXG-29-8qD" userLabel="Content - UiView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
@@ -1262,7 +1270,7 @@ a new password will be sent.</string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1k-Vi-1fU" userLabel="Register now - UIButton">
-                                                <rect key="frame" x="15" y="937" width="570" height="30"/>
+                                                <rect key="frame" x="15" y="1001" width="570" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="xqC-D3-u4Q"/>
@@ -1276,7 +1284,7 @@ a new password will be sent.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnH-BM-6gu" userLabel="Login - Uibutton">
-                                                <rect key="frame" x="15" y="874" width="570" height="43"/>
+                                                <rect key="frame" x="15" y="908" width="570" height="43"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1312,9 +1320,9 @@ a new password will be sent.</string>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="HVH-yM-rwj"/>
                                             <constraint firstAttribute="trailing" secondItem="hEO-tK-nKf" secondAttribute="trailing" id="PZR-3t-7uu"/>
                                             <constraint firstAttribute="height" constant="1100" id="QE5-yX-5zV"/>
-                                            <constraint firstItem="d1k-Vi-1fU" firstAttribute="top" secondItem="dnH-BM-6gu" secondAttribute="bottom" constant="20" id="XEb-ry-Zeg"/>
+                                            <constraint firstItem="d1k-Vi-1fU" firstAttribute="top" secondItem="dnH-BM-6gu" secondAttribute="bottom" constant="50" id="XEb-ry-Zeg"/>
                                             <constraint firstAttribute="trailing" secondItem="d1k-Vi-1fU" secondAttribute="trailing" constant="15" id="bab-Ra-I6J"/>
-                                            <constraint firstItem="dnH-BM-6gu" firstAttribute="top" secondItem="X5C-Zb-oQC" secondAttribute="bottom" constant="16" id="d3i-5k-ExD"/>
+                                            <constraint firstItem="dnH-BM-6gu" firstAttribute="top" secondItem="X5C-Zb-oQC" secondAttribute="bottom" constant="50" id="d3i-5k-ExD"/>
                                             <constraint firstItem="hEO-tK-nKf" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="dl4-9f-uX8"/>
                                             <constraint firstItem="d1k-Vi-1fU" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" constant="15" id="e9r-Of-gdh"/>
                                             <constraint firstItem="dnH-BM-6gu" firstAttribute="top" secondItem="X5C-Zb-oQC" secondAttribute="bottom" constant="15" id="eFJ-cB-KD0"/>
@@ -1350,6 +1358,8 @@ a new password will be sent.</string>
                             <constraint firstItem="j4D-WR-PuB" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="x1V-YX-e3R"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1100"/>
                     <connections>
                         <outlet property="addressTextField" destination="sJV-S3-zUD" id="kOj-nU-x1U"/>
                         <outlet property="confirmPasswordTextField" destination="Wfb-NY-gcP" id="SJo-WK-5Jt"/>
@@ -1362,11 +1372,11 @@ a new password will be sent.</string>
                         <outlet property="heightLogoImageViewConstraint" destination="Gwy-Zl-ddl" id="B16-bP-AwX"/>
                         <outlet property="landlineTextField" destination="jtp-9O-rCR" id="qZP-AK-WQQ"/>
                         <outlet property="lastNameTextField" destination="3Yz-Ib-41V" id="0NE-cH-FOC"/>
-                        <outlet property="loginButton" destination="dnH-BM-6gu" id="u92-fe-RS5"/>
+                        <outlet property="loginButton" destination="d1k-Vi-1fU" id="YSm-ox-KXD"/>
                         <outlet property="logoImageView" destination="hEO-tK-nKf" id="Ogx-dK-shZ"/>
                         <outlet property="mobileTextField" destination="YSb-aK-F5h" id="MXV-KA-yGk"/>
                         <outlet property="passwordTextField" destination="dQS-AY-eSB" id="1qk-2t-NWf"/>
-                        <outlet property="registerButton" destination="d1k-Vi-1fU" id="ZG9-fX-CR2"/>
+                        <outlet property="registerButton" destination="dnH-BM-6gu" id="LN3-98-N3G"/>
                         <outlet property="scrollView" destination="j4D-WR-PuB" id="7ck-lR-bEj"/>
                         <outlet property="stateTextField" destination="h0U-Un-NrF" id="CWD-H8-BUT"/>
                         <outlet property="userNameTextField" destination="3PV-7E-X3w" id="5fn-Eh-oy6"/>
@@ -1374,7 +1384,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fli-us-670" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2787" y="-2081"/>
+            <point key="canvasLocation" x="3488" y="-2331"/>
         </scene>
         <!--Check Domain View Controller-->
         <scene sceneID="UHM-cK-24o">

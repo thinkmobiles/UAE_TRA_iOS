@@ -74,10 +74,6 @@
         (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
-        if (![self.refNumber.text isValidPhoneNumber]) {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
-            return;
-        }
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
             if (error) {
@@ -131,7 +127,7 @@
     }
     
     self.compliantDescriptionTextView.layer.cornerRadius = 8;
-    self.compliantDescriptionTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
+    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
     self.compliantDescriptionTextView.layer.borderWidth = 1;
 }
 
