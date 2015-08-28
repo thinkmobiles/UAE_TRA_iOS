@@ -24,7 +24,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string></string>
+		<string>ic_edit_hex</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -36,7 +36,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string></string>
+		<string>ic_plgn_download_hex</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -48,7 +48,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_plgn_share</string>
+		<string>ic_plgn_share_hex</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -72,7 +72,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string></string>
+		<string>ic_plgn_share_hex</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
