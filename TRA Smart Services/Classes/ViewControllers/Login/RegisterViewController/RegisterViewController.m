@@ -87,8 +87,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
             __weak typeof(self) weakSelf = self;
             [self.view layoutIfNeeded];
             [UIView animateWithDuration:0.25 animations:^{
-                CGFloat offset = textField.tag == 5 ? 200.f : 50.f;
-                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + offset)];
+                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f)];
                 [weakSelf.view layoutIfNeeded];
             }];
         }

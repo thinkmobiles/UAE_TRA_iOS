@@ -1165,15 +1165,17 @@ a new password will be sent.</string>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="Rzs-fC-DVy"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-hq-fRa">
-                                                        <rect key="frame" x="45" y="624" width="539" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-hq-fRa">
+                                                        <rect key="frame" x="0.0" y="624" width="584" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="jD5-TF-bfU"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="SelectState">
+                                                        <color key="tintColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="SelectState" image="flagpole18">
                                                             <color key="titleColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -1313,7 +1315,7 @@ a new password will be sent.</string>
                                                     <constraint firstItem="c95-85-6Z1" firstAttribute="top" secondItem="sJV-S3-zUD" secondAttribute="bottom" id="rtV-tx-pzB"/>
                                                     <constraint firstAttribute="trailing" secondItem="dQS-AY-eSB" secondAttribute="trailing" id="sKU-p0-IJm"/>
                                                     <constraint firstAttribute="trailing" secondItem="h0U-Un-NrF" secondAttribute="trailing" id="uTn-Rd-kft"/>
-                                                    <constraint firstItem="cOL-hq-fRa" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="45" id="xTa-3d-LL7"/>
+                                                    <constraint firstItem="cOL-hq-fRa" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="xTa-3d-LL7"/>
                                                     <constraint firstAttribute="trailing" secondItem="WAd-Tu-LyJ" secondAttribute="trailing" id="xxJ-ue-Q1I"/>
                                                     <constraint firstItem="h0U-Un-NrF" firstAttribute="top" secondItem="fQ4-sD-MUl" secondAttribute="bottom" constant="20" id="ym4-IM-czs"/>
                                                     <constraint firstAttribute="height" constant="850" id="zJ8-0a-IbO"/>
@@ -3692,6 +3694,7 @@ a new password will be sent.</string>
         <image name="check_disact" width="21" height="21"/>
         <image name="close" width="64" height="64"/>
         <image name="fav_back_orange" width="640" height="960"/>
+        <image name="flagpole18" width="16" height="16"/>
         <image name="ic_chat" width="30" height="24"/>
         <image name="ic_favorites" width="21" height="19"/>
         <image name="ic_home" width="22" height="18"/>
