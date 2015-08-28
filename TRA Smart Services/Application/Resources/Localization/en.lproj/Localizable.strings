@@ -24,11 +24,11 @@
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User name or User Surname has invalid format.";
-"message.InvalidFormatIDEmirates" = "Invalid Format";
-"message.InvalidFormatFirstName" = "Invalid Format";
-"message.InvalidFormatLastName" = "Invalid Format";
-"message.InvalidFormatMobile" = "Invalid Format";
-"message.InvalidFormatEmail" = "Invalid Format";
+"message.InvalidFormatIDEmirates" = "Invalid Format Emirates ID";
+"message.InvalidFormatFirstName" = "Invalid Format First Name";
+"message.InvalidFormatLastName" = "Invalid Format Last Name";
+"message.InvalidFormatMobile" = "Invalid Format Mobile Number";
+"message.InvalidFormatEmail" = "Invalid Format Email";
 "message.InvalidFormatURL" = "Invalid Format";
 
 //TabBarMenuItems

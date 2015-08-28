@@ -125,10 +125,11 @@
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text firstName:self.firstNameTextField.text lastName:self.lastNameTextField.text emiratesID:self.emiratesIDTextField.text state:self.stateTextField.text mobilePhone:self.mobileTextField.text email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
+            [AppHelper hideLoader];
         }];
 
     } else {

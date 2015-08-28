@@ -289,9 +289,15 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSLogin parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        loginResponse([responseDictionary valueForKey:@"status"], nil);
+        loginResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
-        loginResponse(nil, error);
+        NSString *responseString;
+        if (operation.responseObject) {
+            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
+            responseString = [response valueForKey:@"error"];
+        }
+        
+        loginResponse(responseString, error);
     }];
 }
 
