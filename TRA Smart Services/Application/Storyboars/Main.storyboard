@@ -372,8 +372,8 @@
                         <outlet property="seeMoreButton" destination="j45-km-Tl5" id="tb1-Xt-yX4"/>
                         <outlet property="tableView" destination="0RF-Wa-xRD" id="Tzl-v1-LNZ"/>
                         <outlet property="tableViewContentHolderView" destination="Nwp-Kv-QjK" id="cNk-Xa-ab6"/>
-                        <outlet property="tableViewVerticalSpaceConstraint" destination="qIm-Oz-e2y" id="4ie-bI-lwv"/>
                         <outlet property="topContentView" destination="HzQ-y5-eJ7" id="85c-1b-2GP"/>
+                        <outlet property="topSpaceVerticalConstraint" destination="DQV-ga-3c7" id="r8n-og-Xif"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLe-IC-Zw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
