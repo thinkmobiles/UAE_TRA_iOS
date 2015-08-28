@@ -35,6 +35,11 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 
 #pragma mark - Public
 
+- (void)cancelAllOperations
+{
+    [self.manager.operationQueue cancelAllOperations];
+}
+
 #pragma mark - NoCRMServices
 
 - (void)traSSNoCRMServiceGetDomainData:(NSString *)domainURL requestResult:(ResponseBlock)domainOwnerResponse
@@ -76,9 +81,13 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", traSSNOCRMServiceGETSearchMobileBrand, mobileBrand];
     NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        mobileBrandSearchResponse(responseDictionary, nil);
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * operation, id responseObject) {
+        if (responseObject) {
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            mobileBrandSearchResponse(responseDictionary, nil);
+        } else {
+            mobileBrandSearchResponse(@"Success", nil);
+        }
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         mobileBrandSearchResponse(nil, error);
     }];
@@ -163,7 +172,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
         NSData *imageData = UIImagePNGRepresentation(compliantAttachmnet);
         NSString *base64PhotoString = [imageData base64EncodedStringWithOptions:kNilOptions];
         base64PhotoString = [ImagePrefixBase64String stringByAppendingString:base64PhotoString];
-        if (imageData) {
+        if (base64PhotoString.length) {
             [parameters setValue:base64PhotoString forKey:@"attachment"];
         }
     }
@@ -295,7 +304,6 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
         logoutResponse(nil, error);
     }];
 }
-
 
 #pragma mark - LifeCycle
 

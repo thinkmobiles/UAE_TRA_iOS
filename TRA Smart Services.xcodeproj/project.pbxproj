@@ -28,6 +28,7 @@
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
 		934629041B8E17060017E4CD /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629031B8E17060017E4CD /* TRAService.m */; };
+		934629401B902EC00017E4CD /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9346293F1B902EC00017E4CD /* NSString+Validation.m */; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -155,6 +156,8 @@
 		934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteConverter.m; sourceTree = "<group>"; };
 		934629021B8E17060017E4CD /* TRAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAService.h; sourceTree = "<group>"; };
 		934629031B8E17060017E4CD /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
+		9346293E1B902EC00017E4CD /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		9346293F1B902EC00017E4CD /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -468,6 +471,15 @@
 				934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */,
 			);
 			path = BlackWhiteConverter;
+			sourceTree = "<group>";
+		};
+		9346293D1B902EAF0017E4CD /* NSString+Validation */ = {
+			isa = PBXGroup;
+			children = (
+				9346293E1B902EC00017E4CD /* NSString+Validation.h */,
+				9346293F1B902EC00017E4CD /* NSString+Validation.m */,
+			);
+			path = "NSString+Validation";
 			sourceTree = "<group>";
 		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
@@ -887,6 +899,7 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				9346293D1B902EAF0017E4CD /* NSString+Validation */,
 				934628F61B8D873C0017E4CD /* MBProgressHUD+CancelButton */,
 				93A436EF1B85F763009299C5 /* UIFont+AppFonts */,
 				EDAA8EF21B81EB3A00269F1A /* UIView+Snapshot */,
@@ -1362,6 +1375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934629401B902EC00017E4CD /* NSString+Validation.m in Sources */,
 				F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */,
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,

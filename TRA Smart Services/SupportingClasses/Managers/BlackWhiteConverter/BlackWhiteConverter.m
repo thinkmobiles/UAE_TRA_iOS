@@ -38,7 +38,7 @@
     inputCIImage = [CIFilter filterWithName:@"CIDotScreen" keysAndValues:kCIInputImageKey, inputCIImage, @"inputSharpness", @(0.01), nil ].outputImage;
     
     CGImageRef cgiimage = [self.ciContext createCGImage:inputCIImage fromRect:inputCIImage.extent];
-    UIImage *newImage = [UIImage imageWithCGImage:cgiimage];
+    UIImage *newImage = [UIImage imageWithCGImage:cgiimage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
     CGImageRelease(cgiimage);
     
     return newImage;

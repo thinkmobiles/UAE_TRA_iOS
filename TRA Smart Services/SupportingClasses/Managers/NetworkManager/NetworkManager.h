@@ -39,6 +39,8 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 
 + (instancetype)sharedManager;
 
+- (void)cancelAllOperations;
+
 #pragma mark - Reachability
 
 - (void)startMonitoringNetwork;

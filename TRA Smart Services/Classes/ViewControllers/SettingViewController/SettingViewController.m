@@ -144,7 +144,13 @@
 
 - (IBAction)logoutButtonPressed:(id)sender
 {
-    
+    [[NetworkManager sharedManager] traSSLogout:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+    }];
 }
 
 - (IBAction)updateBaseURLButtonTapped:(id)sender

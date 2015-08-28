@@ -11,6 +11,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_qust</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -21,6 +23,8 @@
 		<string>ic_edit</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -31,6 +35,8 @@
 		<string>ic_cloud</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -41,6 +47,8 @@
 		<string>ic_edit</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_share</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -51,6 +59,8 @@
 		<string>ic_sugg</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string>ic_plgn_lamp</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -61,6 +71,8 @@
 		<string>ic_share</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -71,6 +83,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -81,6 +95,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -91,6 +107,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -101,6 +119,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -111,6 +131,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -121,6 +143,8 @@
 		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
 	</dict>
 </array>
 </plist>
