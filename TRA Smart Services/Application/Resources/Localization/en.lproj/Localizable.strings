@@ -23,6 +23,13 @@
 "message.IncorrectDomainName" = "Incorrect DomainName";
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
+"message.InvalidFormatUserName" = "User name or User Surname has invalid format.";
+"message.InvalidFormatIDEmirates" = "Invalid Format";
+"message.InvalidFormatFirstName" = "Invalid Format";
+"message.InvalidFormatLastName" = "Invalid Format";
+"message.InvalidFormatMobile" = "Invalid Format";
+"message.InvalidFormatEmail" = "Invalid Format";
+"message.InvalidFormatURL" = "Invalid Format";
 
 //TabBarMenuItems
 

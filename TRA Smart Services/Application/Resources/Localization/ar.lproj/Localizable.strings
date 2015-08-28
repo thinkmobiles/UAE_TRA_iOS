@@ -23,6 +23,13 @@
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
+"message.InvalidFormatUserName" = "User name or User Surname has invalid format.";
+"message.InvalidFormatIDEmirates" = "";
+"message.InvalidFormatFirstName" = "";
+"message.InvalidFormatLastName" = "";
+"message.InvalidFormatMobile" = "";
+"message.InvalidFormatEmail" = "";
+"message.InvalidFormatURL" = "";
 
 //TabBarMenuItems
 

@@ -1620,7 +1620,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="width" constant="25" id="yUM-Az-zyP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUF-Sj-Ju8" userLabel="Label Languages">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Languages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUF-Sj-Ju8" userLabel="Label Languages">
                                                         <rect key="frame" x="42" y="0.0" width="74" height="70"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
@@ -2385,19 +2385,6 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="8EY-X5-ZEA" id="XB0-ll-ZhU"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56H-gX-NS3">
-                                <rect key="frame" x="150" y="54" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uZc-oh-HV8"/>
-                                </constraints>
-                                <state key="normal" title="Check IMEI">
-                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkButtonTapped:" destination="8EY-X5-ZEA" eventType="touchUpInside" id="SYj-aw-XIW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2S-xj-MFe">
                                 <rect key="frame" x="552" y="16" width="32" height="32"/>
                                 <constraints>
@@ -2414,6 +2401,19 @@ a new password will be sent.</string>
                                     <segue destination="91c-7m-CxN" kind="show" identifier="scanIMEISegue" id="d62-Th-kb8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56H-gX-NS3">
+                                <rect key="frame" x="150" y="54" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uZc-oh-HV8"/>
+                                </constraints>
+                                <state key="normal" title="Check IMEI">
+                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkButtonTapped:" destination="8EY-X5-ZEA" eventType="touchUpInside" id="SYj-aw-XIW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2428,6 +2428,8 @@ a new password will be sent.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="T2S-xj-MFe" id="SnU-lw-Wzb"/>
+                        <outlet property="checkIMEIButton" destination="56H-gX-NS3" id="j2R-KO-pIC"/>
                         <outlet property="resultTextField" destination="aEO-DV-eBj" id="j7S-aw-yBM"/>
                     </connections>
                 </viewController>
@@ -2740,7 +2742,7 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="agV-IF-JEb">
-                                <rect key="frame" x="282" y="250" width="37" height="37"/>
+                                <rect key="frame" x="282" y="168" width="37" height="37"/>
                                 <color key="color" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7At-u8-Abk">
@@ -2752,13 +2754,6 @@ a new password will be sent.</string>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="hs9-FK-GCr" userLabel="Signal power">
-                                <rect key="frame" x="14" y="84" width="572" height="31"/>
-                                <color key="minimumTrackTintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="sliderDidChnageValue:" destination="Vhn-R2-wMo" eventType="valueChanged" id="4Mo-xS-ul6"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-qb-9cc">
                                 <rect key="frame" x="150" y="122" width="300" height="30"/>
                                 <state key="normal" title="Report signal">
@@ -2770,13 +2765,20 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND8-GO-Vhl">
-                                <rect key="frame" x="16" y="295" width="568" height="30"/>
+                                <rect key="frame" x="16" y="213" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Vhn-R2-wMo" id="OQM-xd-ArR"/>
                                 </connections>
                             </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="hs9-FK-GCr" userLabel="Signal power">
+                                <rect key="frame" x="14" y="84" width="572" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="sliderDidChnageValue:" destination="Vhn-R2-wMo" eventType="valueChanged" id="4Mo-xS-ul6"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2785,7 +2787,7 @@ a new password will be sent.</string>
                             <constraint firstItem="hs9-FK-GCr" firstAttribute="top" secondItem="7At-u8-Abk" secondAttribute="bottom" constant="8" id="69j-f5-SfH"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="width" secondItem="SMr-ZX-DHO" secondAttribute="width" multiplier="0.5" id="9JF-TC-ycP"/>
                             <constraint firstAttribute="trailing" secondItem="hs9-FK-GCr" secondAttribute="trailing" constant="16" id="PXI-w8-gPh"/>
-                            <constraint firstAttribute="centerY" secondItem="agV-IF-JEb" secondAttribute="centerY" id="QrA-0j-vuw"/>
+                            <constraint firstItem="agV-IF-JEb" firstAttribute="top" secondItem="U4p-qb-9cc" secondAttribute="bottom" constant="16" id="QON-Ym-Xld"/>
                             <constraint firstAttribute="centerX" secondItem="U4p-qb-9cc" secondAttribute="centerX" id="ZUk-k9-Zdg"/>
                             <constraint firstItem="7At-u8-Abk" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="aF2-93-I1Q"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="top" secondItem="hs9-FK-GCr" secondAttribute="bottom" constant="8" id="aSO-4s-whL"/>
@@ -2806,7 +2808,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZt-8y-6ut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4246" y="-1324"/>
+            <point key="canvasLocation" x="4234" y="-1317"/>
         </scene>
         <!--Internet Speed Test View Controller-->
         <scene sceneID="hHW-CY-Kua">

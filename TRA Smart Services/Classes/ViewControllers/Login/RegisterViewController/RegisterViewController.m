@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *stateTextField;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
@@ -52,6 +53,7 @@
     
     [self prepareNotification];
     [self prepareLogoImageView];
+    [self updateColors];
 }
 
 - (void)viewDidLayoutSubviews
@@ -116,8 +118,11 @@
         return;
     }
     if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
+        
+        if ([self validationFopmatTextField]){
+            return;
+        }
         [AppHelper showLoader];
-      
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text password:self.passwordTextField.text firstName:self.firstNameTextField.text lastName:self.lastNameTextField.text emiratesID:self.emiratesIDTextField.text state:self.stateTextField.text mobilePhone:self.mobileTextField.text email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
@@ -166,6 +171,35 @@
 
 #pragma mark - Private
 
+- (BOOL)validationFopmatTextField
+{
+    if (![self.userNameTextField.text isValidUserName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
+        return YES;
+    }
+    if (![self.firstNameTextField.text isValidName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
+        return YES;
+    }
+    if (![self.lastNameTextField.text isValidName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
+        return YES;
+    }
+    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
+        return YES;
+    }
+    if (![self.mobileTextField.text isValidPhoneNumber]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+        return YES;
+    }
+    if (![self.emailTextField.text isValidEmailUseHardFilter:NO]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
+        return YES;
+    }
+    return NO;
+}
+
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"register.title");
@@ -188,7 +222,10 @@
 
 - (void)updateColors
 {
-    
+    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.view.backgroundColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (void)prepareNavigationBar

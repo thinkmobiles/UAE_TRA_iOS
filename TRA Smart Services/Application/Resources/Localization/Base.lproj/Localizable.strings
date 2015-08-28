@@ -23,6 +23,13 @@
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
 "message.PasswordsNotEqual" = "message.PasswordsNotEqual";
 "message.OperationCanceledByUser" = "message.OperationCanceledByUser";
+"message.InvalidFormatUserName" = "message.InvalidFormatUserName";
+"message.InvalidFormatIDEmirates" = "message.InvalidFormatIDEmirates";
+"message.InvalidFormatFirstName" = "message.InvalidFormatFirstName";
+"message.InvalidFormatLastName" = "message.InvalidFormatLastName";
+"message.InvalidFormatMobile" = "message.InvalidFormatMobile";
+"message.InvalidFormatEmail" = "message.InvalidFormatEmail";
+"message.InvalidFormatURL" = "message.InvalidFormatURL";
 
 //TabBarMenuItems
 

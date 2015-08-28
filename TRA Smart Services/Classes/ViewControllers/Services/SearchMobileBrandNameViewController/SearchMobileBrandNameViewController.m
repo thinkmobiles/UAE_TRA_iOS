@@ -29,6 +29,13 @@
     self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)searchButtonTapped:(id)sender
@@ -74,8 +81,19 @@
 - (void)prepareUI
 {
     self.searchButton.layer.cornerRadius = 8;
-    self.searchButton.layer.borderColor = [UIColor defaultOrangeColor].CGColor;
     self.searchButton.layer.borderWidth = 1;
+    
+    self.brandNameTextField.layer.cornerRadius = 8;
+    self.brandNameTextField.layer.borderWidth = 1;
+}
+
+- (void)updateColors
+{
+    self.brandNameTextField.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.brandNameTextField.textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [self.searchButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.searchButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }
 
 @end
