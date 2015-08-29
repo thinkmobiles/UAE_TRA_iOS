@@ -23,6 +23,9 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		932FD8291B9197D9008EFBD8 /* TRA_Smart_Services_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8281B9197D9008EFBD8 /* TRA_Smart_Services_Tests.m */; };
+		932FD82F1B919854008EFBD8 /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */; };
+		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
@@ -120,6 +123,16 @@
 		F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		932FD82A1B9197D9008EFBD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED7192741B5450D60086C6EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED71927B1B5450D60086C6EE;
+			remoteInfo = "TRA Smart Services";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellEuropeUI.xib; sourceTree = "<group>"; };
 		8467EF291B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellArabicUI.xib; sourceTree = "<group>"; };
@@ -146,6 +159,10 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart Services Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		932FD8271B9197D9008EFBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		932FD8281B9197D9008EFBD8 /* TRA_Smart_Services_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRA_Smart_Services_Tests.m; sourceTree = "<group>"; };
+		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
 		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
 		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		934628F71B8D873C0017E4CD /* MBProgressHUD+CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CancelButton.h"; sourceTree = "<group>"; };
@@ -327,6 +344,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		932FD8211B9197D9008EFBD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED7192791B5450D60086C6EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +458,24 @@
 				84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */,
 			);
 			path = BaseSelectImageViewController;
+			sourceTree = "<group>";
+		};
+		932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8281B9197D9008EFBD8 /* TRA_Smart_Services_Tests.m */,
+				932FD8311B9198AE008EFBD8 /* KeychainTest.m */,
+				932FD8261B9197D9008EFBD8 /* Supporting Files */,
+			);
+			path = "TRA Smart Services Tests";
+			sourceTree = "<group>";
+		};
+		932FD8261B9197D9008EFBD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8271B9197D9008EFBD8 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
@@ -712,6 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71927E1B5450D60086C6EE /* TRA Smart Services */,
+				932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */,
 				ED71927D1B5450D60086C6EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -720,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71927C1B5450D60086C6EE /* TRA Smart Services.app */,
+				932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1285,6 +1329,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		932FD8231B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 932FD82E1B9197D9008EFBD8 /* Build configuration list for PBXNativeTarget "TRA Smart Services Tests" */;
+			buildPhases = (
+				932FD8201B9197D9008EFBD8 /* Sources */,
+				932FD8211B9197D9008EFBD8 /* Frameworks */,
+				932FD8221B9197D9008EFBD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				932FD82B1B9197D9008EFBD8 /* PBXTargetDependency */,
+			);
+			name = "TRA Smart Services Tests";
+			productName = "TRA Smart Services Tests";
+			productReference = 932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ED71927B1B5450D60086C6EE /* TRA Smart Services */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED7192931B5450D60086C6EE /* Build configuration list for PBXNativeTarget "TRA Smart Services" */;
@@ -1311,6 +1373,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Thinkmobiles;
 				TargetAttributes = {
+					932FD8231B9197D9008EFBD8 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = ED71927B1B5450D60086C6EE;
+					};
 					ED71927B1B5450D60086C6EE = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 3C9NG3BP4F;
@@ -1332,11 +1398,19 @@
 			projectRoot = "";
 			targets = (
 				ED71927B1B5450D60086C6EE /* TRA Smart Services */,
+				932FD8231B9197D9008EFBD8 /* TRA Smart Services Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		932FD8221B9197D9008EFBD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED71927A1B5450D60086C6EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1371,6 +1445,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		932FD8201B9197D9008EFBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				932FD82F1B919854008EFBD8 /* KeychainStorage.m in Sources */,
+				932FD8291B9197D9008EFBD8 /* TRA_Smart_Services_Tests.m in Sources */,
+				932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED7192781B5450D60086C6EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1465,6 +1549,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		932FD82B1B9197D9008EFBD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED71927B1B5450D60086C6EE /* TRA Smart Services */;
+			targetProxy = 932FD82A1B9197D9008EFBD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		ED982F2C1B5D24DA00B6B644 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1479,6 +1571,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		932FD82C1B9197D9008EFBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "TRA Smart Services Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
+			};
+			name = Debug;
+		};
+		932FD82D1B9197D9008EFBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				INFOPLIST_FILE = "TRA Smart Services Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
+			};
+			name = Release;
+		};
 		ED7192911B5450D60086C6EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1598,6 +1732,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		932FD82E1B9197D9008EFBD8 /* Build configuration list for PBXNativeTarget "TRA Smart Services Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				932FD82C1B9197D9008EFBD8 /* Debug */,
+				932FD82D1B9197D9008EFBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
