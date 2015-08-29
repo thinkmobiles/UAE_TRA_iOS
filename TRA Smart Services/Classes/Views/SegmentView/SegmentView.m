@@ -45,6 +45,13 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
     [self drawElements];
 }
 
+- (void)setSegmentSelectedTintColor:(UIColor *)segmentSelectedTintColor
+{
+    _segmentSelectedTintColor = segmentSelectedTintColor;
+    
+    [self drawElements];
+}
+
 #pragma mark - Public
 
 - (void)setSegmentItemSelectedWithTag:(NSUInteger)tag
