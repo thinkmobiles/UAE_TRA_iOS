@@ -110,13 +110,13 @@
 "speedAccess.service.name.3" = "Mobile Brand1";
 "speedAccess.service.name.4" = "Feedback1";
 "speedAccess.service.name.5" = "رسائل غير مرغوبة";
-"speedAccess.service.name.6" = "Help Salim1";
+"speedAccess.service.name.6" = "Help Salim";
 "speedAccess.service.name.7" = "تحقق";
 "speedAccess.service.name.8" = "التغطية";
 "speedAccess.service.name.9" = "انترنت";
 "speedAccess.service.name.10" = "شكوى";
-"speedAccess.service.name.11" = "Suggestion";
-"speedAccess.service.name.12" = "Compliant Enquires";
+"speedAccess.service.name.11" = "اقتراح";
+"speedAccess.service.name.12" = "إستفسار المتوافقة";
 "speedAccess.service.name.13" = "Compliant TRA";
 
 //FavouriteViewController
