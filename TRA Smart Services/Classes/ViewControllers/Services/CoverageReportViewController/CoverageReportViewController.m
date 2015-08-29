@@ -118,7 +118,7 @@
                 if (error.code == -999) {
                     [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.OperationCanceledByUser")];
                 } else {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                    [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
                 }
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];

@@ -52,7 +52,7 @@
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:error.localizedDescription];
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
         } else {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
         }

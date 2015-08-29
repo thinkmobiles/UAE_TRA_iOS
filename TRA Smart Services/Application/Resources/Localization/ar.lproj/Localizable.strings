@@ -6,6 +6,11 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//API descriptors
+
+"api.message.serverError" = "Internal Server Error occured. Please try again later.";
+"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";

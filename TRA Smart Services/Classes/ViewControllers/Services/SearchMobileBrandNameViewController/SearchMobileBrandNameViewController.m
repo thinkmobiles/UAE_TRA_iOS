@@ -46,7 +46,7 @@
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByMobileBrand:self.brandNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
                 weakSelf.resultInfoTextView.text = response;
             }

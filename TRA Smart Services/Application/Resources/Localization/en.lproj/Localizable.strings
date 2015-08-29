@@ -6,6 +6,11 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//API descriptors
+
+"api.message.serverError" = "Internal Server Error occured. Please try again later.";
+"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";
@@ -14,7 +19,7 @@
 
 "message.notImplemented" = "Not implemented";
 "message.success" = "Success";
-"message.EmptyInputParameters" = "Please enter text in the text field";
+"message.EmptyInputParameters" = "Please enter text in the text field.\nAll fields should be filled with required data.";
 "message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
 "message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
 "message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
@@ -29,7 +34,7 @@
 "message.InvalidFormatLastName" = "Invalid Last Name";
 "message.InvalidFormatMobile" = "Invalid mobilePhone";
 "message.InvalidFormatEmail" = "Invalid Email";
-"message.InvalidFormatURL" = "Invalid URL format";
+"message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
 
 //StatesNames

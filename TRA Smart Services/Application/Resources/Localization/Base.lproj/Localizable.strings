@@ -6,6 +6,11 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//API descriptors
+
+"api.message.serverError" = "api.message.serverError";
+"api.message.noDataFound" = "api.message.noDataFound";
+
 //UIElements Title
 
 "uiElement.cancelButton.title" = "uiElement.cancelButton.title";

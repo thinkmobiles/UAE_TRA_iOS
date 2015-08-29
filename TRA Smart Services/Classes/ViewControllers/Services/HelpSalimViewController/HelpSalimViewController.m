@@ -51,7 +51,7 @@
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.urlToReportTextField.text notes:self.commentTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:error.localizedDescription];
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
         } else {
             [AppHelper alertViewWithMessage:response];
         }

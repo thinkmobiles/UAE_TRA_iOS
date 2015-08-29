@@ -60,7 +60,7 @@
             [AppHelper showLoader];
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                    [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
                 } else {
                     [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
@@ -78,7 +78,7 @@
             [AppHelper showLoader];
             [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
                 if (error) {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                    [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
                 } else {
                     [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
                 }
