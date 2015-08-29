@@ -10,6 +10,7 @@
 #import "MenuCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
 #import "AppDelegate.h"
+#import "CompliantViewController.h"
 
 #define Mask8(x) ( (x) & 0xFF )
 #define R(x) ( Mask8(x) )
@@ -375,6 +376,8 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
             [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
             break;
         }
+        case 12:
+        case 13:
         case 10: {
             [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
             break;
@@ -390,6 +393,25 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
         default: {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
+        }
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
+        CompliantViewController *viewController = segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [[self.menuCollectionView indexPathsForSelectedItems] firstObject];
+        NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+        
+        NSUInteger serviceID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
+        if (serviceID == 10) {
+            viewController.type = ComplianTypeCustomProvider;
+        } else if (serviceID == 12) {
+            viewController.type = ComplianTypeEnquires;
+        } else if (serviceID == 13) {
+            viewController.type = ComplianTypeTRAService;
         }
     }
 }

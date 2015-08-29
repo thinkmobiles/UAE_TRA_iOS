@@ -11,6 +11,7 @@
 - (BOOL)isValidUserName;
 - (BOOL)isValidURL;
 - (BOOL)isValidIDEmirates;
+- (BOOL)isValidStateCode;
 - (BOOL)isValidName;
 - (BOOL)isValidPhoneNumber;
 - (BOOL)isValidEmailUseHardFilter:(BOOL)filter;

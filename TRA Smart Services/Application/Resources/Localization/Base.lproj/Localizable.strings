@@ -30,6 +30,18 @@
 "message.InvalidFormatMobile" = "message.InvalidFormatMobile";
 "message.InvalidFormatEmail" = "message.InvalidFormatEmail";
 "message.InvalidFormatURL" = "message.InvalidFormatURL";
+"message.InvalidStateCode" = "message.InvalidStateCode";
+
+//StatesNames
+
+"state.SelectState" = "state.SelectState";
+"state.Abu.Dhabi" = "state.Abu.Dhabi";
+"state.Ajman" = "state.Ajman";
+"state.Ajman" = "state.Ajman";
+"state.Fujairah" = "state.Fujairah";
+"state.Ras" = "state.Ras";
+"state.Sharjan" = "state.Sharjan";
+"state.Quwain" = "state.Quwain";
 
 //TabBarMenuItems
 
@@ -104,6 +116,8 @@
 "speedAccess.service.name.9" = "speedAccess.service.name.9";
 "speedAccess.service.name.10" = "speedAccess.service.name.10";
 "speedAccess.service.name.11" = "speedAccess.service.name.11";
+"speedAccess.service.name.12" = "speedAccess.service.name.12";
+"speedAccess.service.name.13" = "speedAccess.service.name.13";
 
 //FavouriteViewController
 

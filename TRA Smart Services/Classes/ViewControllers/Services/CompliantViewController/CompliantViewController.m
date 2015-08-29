@@ -11,12 +11,12 @@
 
 @interface CompliantViewController ()
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentProvider;
 @property (weak, nonatomic) IBOutlet UITextField *providerText;
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
 @property (weak, nonatomic) IBOutlet UITextView *compliantDescriptionTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
 
 @end
 
@@ -32,6 +32,8 @@
     self.title = @"Compliant";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.providerText becomeFirstResponder];
+    
+    [self updateUIForCompliantType:self.type];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,34 +50,16 @@
     [self selectImagePickerController];
 }
 
-- (IBAction)segmentProvider:(id)sender
-{
-    switch (self.segmentProvider.selectedSegmentIndex) {
-        case 0:{
-            self.providerText.enabled = YES;
-            self.refNumber.enabled = YES;
-            break;
-        }
-        default:{
-            self.providerText.enabled = NO;
-            self.refNumber.enabled = NO;
-            self.providerText.text = @"";
-            self.refNumber.text = @"";
-            break;
-        }
-    }
-}
-
 - (IBAction)compliant:(id)sender
 {
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
-        (!self.segmentProvider.selectedSegmentIndex && (!self.providerText.text.length || !self.refNumber.text.length))){
+        (self.type == ComplianTypeCustomProvider && (!self.providerText.text.length || !self.refNumber.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:(ComplianType)self.segmentProvider.selectedSegmentIndex requestResult:^(id response, NSError *error) {
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
@@ -135,9 +119,28 @@
 {
     self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
     self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.segmentProvider.tintColor = [[DynamicUIService service] currentApplicationColor];
     
     [self prepareUI];
+}
+
+- (void)updateUIForCompliantType:(ComplianType)type
+{
+    switch (type) {
+        case ComplianTypeCustomProvider: {
+            self.providerText.hidden = NO;
+            self.refNumber.hidden = NO;
+            self.verticalSpaceTitleTextFieldConstraint.constant = 64.f;
+            break;
+        }
+        case ComplianTypeEnquires:
+        case ComplianTypeTRAService: {
+            self.verticalSpaceTitleTextFieldConstraint.constant = 16.f;
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 @end

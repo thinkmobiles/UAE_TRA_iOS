@@ -11,6 +11,7 @@
 #import "TRAService.h"
 #import "Animation.h"
 #import "ServiceInfoViewController.h"
+#import "CompliantViewController.h"
 
 static CGFloat const AnimationDuration = 0.3f;
 static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
@@ -227,8 +228,17 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
             selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"internetSpeedID"];
             break;
         }
+        case 12:
+        case 13:
         case 10: {
             selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"compliantID"];
+            if (navigationIndex == 10) {
+                ((CompliantViewController *)selectedService).type = ComplianTypeCustomProvider;
+            } else if (navigationIndex == 12) {
+                ((CompliantViewController *)selectedService).type = ComplianTypeEnquires;
+            } else if (navigationIndex == 13) {
+                ((CompliantViewController *)selectedService).type = ComplianTypeTRAService;
+            }
             break;
         }
         case 11: {

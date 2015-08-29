@@ -16,10 +16,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceVerticalConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
@@ -56,13 +57,9 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [UIView animateWithDuration:0.45 animations:^{
         CGFloat currentOffsetForContentView = weakSelf.tableViewContentHolderView.frame.origin.y;
         CGFloat distanceToMoveView = currentOffsetForContentView - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-        weakSelf.tableViewVerticalSpaceConstraint.constant = - distanceToMoveView;
-        weakSelf.topContentView.center = CGPointMake(weakSelf.topContentView.center.x, weakSelf.topContentView.center.y - weakSelf.topContentView.frame.size.height);
+        weakSelf.topSpaceVerticalConstraint.constant = - distanceToMoveView;
         [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        weakSelf.topContentView.hidden = YES;
     }];
-    
     return YES;
 }
 
@@ -82,15 +79,14 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 {
     [super searchBarCancelButtonClicked:searchBar];
     
+    searchBar.text = @"";
     [self prepareDemoDataSource];
     [self.tableView reloadData];
     
     [self.view layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.tableViewVerticalSpaceConstraint.constant = 0;
-        weakSelf.topContentView.hidden = NO;
-        weakSelf.topContentView.center = CGPointMake(weakSelf.topContentView.center.x, weakSelf.topContentView.center.y + weakSelf.topContentView.frame.size.height);
+        weakSelf.topSpaceVerticalConstraint.constant = 0;
         [weakSelf.view layoutIfNeeded];
     }];
 }

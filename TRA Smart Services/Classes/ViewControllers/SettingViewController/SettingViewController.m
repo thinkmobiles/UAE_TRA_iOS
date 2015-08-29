@@ -20,11 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *themeOrangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeColorBlackAndWhite;
+@property (weak, nonatomic) IBOutlet UIButton *changeServerButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
 @property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
-@property (weak, nonatomic) IBOutlet UIButton *changeServerButton;
-@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *languageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
@@ -36,6 +36,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLayoutGuideConstraint;
 
 @property (weak, nonatomic) IBOutlet UITextField *baseURLLinkTextField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *userUIImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *emailUIImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *languageUIImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *fontSizeUIImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *colorOptionUIImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoutUIImageView;
 
 @end
 
@@ -282,6 +289,11 @@
 {
     [self.changeServerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.logoutButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
+    
+    [self updateTintColorsForImages];
+    
+    self.languageSegmentControl.segmentSelectedTintColor = [[DynamicUIService service] currentApplicationColor];
+    self.textSizeSegmentControll.segmentSelectedTintColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (void)updateLanguageSegmentControlPosition
@@ -336,6 +348,18 @@
     [self.themeGreenButton setTintColor:[UIColor defaultGreenColor]];
     [self.themeOrangeButton setTintColor:[UIColor defaultOrangeColor]];
     [self.themeColorBlackAndWhite setTintColor:[UIColor blackColor]];
+}
+
+- (void)updateTintColorsForImages
+{
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    
+    self.logoutUIImageView.tintColor = color;
+    self.userUIImageView.tintColor = color;
+    self.emailUIImageView.tintColor = color;
+    self.languageUIImageView.tintColor = color;
+    self.fontSizeUIImageView.tintColor = color;
+    self.colorOptionUIImageView.tintColor = color;
 }
 
 @end

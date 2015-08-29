@@ -83,10 +83,14 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * operation, id responseObject) {
         if (responseObject) {
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-            mobileBrandSearchResponse(responseDictionary, nil);
+            id responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            NSString *response = @"No data found";
+            if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
+                response = responseDictionary;
+            }
+            mobileBrandSearchResponse(response, nil);
         } else {
-            mobileBrandSearchResponse(@"Success", nil);
+            mobileBrandSearchResponse(@"No data found", nil);
         }
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         mobileBrandSearchResponse(nil, error);
@@ -118,7 +122,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTSMSSPamReport parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        SMSSpamReportResponse([responseDictionary valueForKey:@"status"], nil);
+        SMSSpamReportResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         SMSSpamReportResponse(nil, error);
     }];
@@ -135,7 +139,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTSMSSPamReport parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        SMSBlockResponse([responseDictionary valueForKey:@"status"], nil);
+        SMSBlockResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         SMSBlockResponse(nil, error);
     }];
@@ -150,7 +154,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTHelpSalim parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        helpSalimReportResponse([responseDictionary valueForKey:@"status"], nil);
+        helpSalimReportResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         helpSalimReportResponse(nil, error);
     }];
@@ -195,7 +199,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        compliantAboutServiceProviderResponse([responseDictionary valueForKey:@"status"], nil);
+        compliantAboutServiceProviderResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         compliantAboutServiceProviderResponse(nil, error);
     }];
@@ -219,7 +223,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTSendSuggestin parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        suggestionResponse([responseDictionary valueForKey:@"status"], nil);
+        suggestionResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         suggestionResponse(nil, error);
     }];
@@ -245,7 +249,7 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSNOCRMServicePOSTPoorCoverage parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        poorCoverageResponse([responseDictionary valueForKey:@"status"], nil);
+        poorCoverageResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         poorCoverageResponse(nil, error);
     }];
@@ -275,7 +279,6 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
             responseString = [response valueForKey:@"error"];
         }
-
         registerResponse(responseString, error);
     }];
 }
@@ -289,17 +292,23 @@ static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
     
     [self.manager POST:traSSLogin parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        loginResponse([responseDictionary valueForKey:@"status"], nil);
+        loginResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
-        loginResponse(nil, error);
+        NSString *responseString;
+        if (operation.responseObject) {
+            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
+            responseString = [response valueForKey:@"error"];
+        }
+        
+        loginResponse(responseString, error);
     }];
 }
 
 - (void)traSSLogout:(ResponseBlock)logoutResponse
 {
-    [self.manager POST:traSSLogin parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+    [self.manager POST:traSSLogOut parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        logoutResponse([responseDictionary valueForKey:@"status"], nil);
+        logoutResponse([responseDictionary valueForKey:@"success"], nil);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         logoutResponse(nil, error);
     }];

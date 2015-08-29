@@ -57,7 +57,7 @@
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:response];
             }

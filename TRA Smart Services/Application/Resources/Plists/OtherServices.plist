@@ -76,27 +76,27 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>12</string>
 		<key>serviceName</key>
-		<string>speedAccess.service.name.-1</string>
+		<string>speedAccess.service.name.12</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string>ic_play</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string></string>
+		<string>ic_plgn_play</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>13</string>
 		<key>serviceName</key>
-		<string>speedAccess.service.name.-1</string>
+		<string>speedAccess.service.name.13</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string>ic_lock</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string></string>
+		<string>ic_plgn_lock</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
