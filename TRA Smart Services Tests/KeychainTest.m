@@ -35,18 +35,33 @@
 
 #pragma mark - Testing
 
-- (void)testSaveCredentials
+- (void)testSaveAndRetriveCredentials
 {
     NSString *password = @"password";
     NSString *userName = @"userName";
     [self.storage storePassword:password forUser:userName];
-    
     NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
     
     XCTAssertEqualObjects([storedCredentials valueForKey:KeychainStorageKeyLogin], userName, @"Stored userName incorrect");
     XCTAssertEqualObjects([storedCredentials valueForKey:KeychainStorageKeyPassword], password, @"Stored password incorrect");
 }
 
-//- (void)testRemoveStoredCredentials
+- (void)testRemoveStoredCredentials
+{
+    [self.storage removeStoredCredentials];
+    
+    NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
+    XCTAssertEqualObjects(storedCredentials, nil, @"Stored credentials not deleted");
+}
+
+- (void)testIncorrectParametersStorage
+{
+    NSString *password = @"";
+    NSString *userName = @"";
+    [self.storage removeStoredCredentials]; //clean up prev tests
+    [self.storage storePassword:password forUser:userName];
+    NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
+    XCTAssertEqualObjects(storedCredentials, nil, @"Stored incorrect parameters");
+}
 
 @end

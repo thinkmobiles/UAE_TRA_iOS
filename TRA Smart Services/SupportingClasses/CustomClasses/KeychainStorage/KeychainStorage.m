@@ -40,6 +40,8 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
 - (void)removeStoredCredentials
 {
     [self deleteStoredCredentials];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserNameKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Private
