@@ -12,6 +12,8 @@
 #import <CoreTelephony/CoreTelephonyDefines.h>
 
 static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
+static NSString *const ResponseDictionaryErrorKey = @"error";
+static NSString *const ResponseDictionarySuccessKey = @"success";
 
 @interface NetworkManager()
 
@@ -246,7 +248,7 @@ void(^PerformFailureRecognition)(AFHTTPRequestOperation * __nonnull operation, N
     NSString *responseString = dynamicLocalizedString(@"api.message.serverError");
     if (operation.responseObject) {
         NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
-        id responsedObject = [response valueForKey:@"error"];
+        id responsedObject = [response valueForKey:ResponseDictionaryErrorKey];
         if ([responsedObject isKindOfClass:[NSArray class]]){
             responseString = [(NSArray *)responsedObject firstObject];
         } else if ([responsedObject isKindOfClass:[NSString class]]){
@@ -263,7 +265,7 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
         if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
             response = responseDictionary;
         }
-        handler([response valueForKey:@"success"], nil);
+        handler([response valueForKey:ResponseDictionarySuccessKey], nil);
     } else {
         handler(dynamicLocalizedString(@"api.message.noDataFound"), nil);
     }
