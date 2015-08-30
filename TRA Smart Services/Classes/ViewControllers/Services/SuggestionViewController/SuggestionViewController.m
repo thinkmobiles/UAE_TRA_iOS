@@ -8,6 +8,7 @@
 
 #import "SuggestionViewController.h"
 #import "NetworkManager.h"
+#import "LoginViewController.h"
 
 @interface SuggestionViewController ()
 
@@ -28,7 +29,6 @@
     [self prepareUI];
     self.title = @"Send suggestion";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.suggestionTitle becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,11 +102,18 @@
 - (void)presentLoginIfNeeded
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
-        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
         viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
+        __weak typeof(self) weakSelf = self;
+        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
+            if (![NetworkManager sharedManager].isUserLoggined) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+            }
+        };
+        
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }

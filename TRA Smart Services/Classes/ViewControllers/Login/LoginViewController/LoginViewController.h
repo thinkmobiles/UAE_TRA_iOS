@@ -9,4 +9,6 @@
 
 @interface LoginViewController : BaseMembershipViewController
 
+@property (strong, nonatomic) void (^didCloseViewController)();
+
 @end

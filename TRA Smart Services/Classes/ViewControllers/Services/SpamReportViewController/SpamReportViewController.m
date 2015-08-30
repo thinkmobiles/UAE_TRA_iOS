@@ -8,6 +8,7 @@
 
 #import "SpamReportViewController.h"
 #import "NetworkManager.h"
+#import "LoginViewController.h"
 
 @interface SpamReportViewController ()
 
@@ -161,11 +162,18 @@
 - (void)presentLoginIfNeeded
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
-        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
         viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
+        __weak typeof(self) weakSelf = self;
+        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
+            if (![NetworkManager sharedManager].isUserLoggined) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+            }
+        };
+
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }

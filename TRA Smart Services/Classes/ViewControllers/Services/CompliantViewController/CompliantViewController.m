@@ -8,6 +8,7 @@
 
 #import "CompliantViewController.h"
 #import "NetworkManager.h"
+#import "LoginViewController.h"
 
 @interface CompliantViewController ()
 
@@ -31,7 +32,6 @@
     [self prepareUI];
     self.title = @"Compliant";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.providerText becomeFirstResponder];
     
     [self updateUIForCompliantType:self.type];
 }
@@ -147,11 +147,18 @@
 - (void)presentLoginIfNeeded
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
-        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
         viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
+        __weak typeof(self) weakSelf = self;
+        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
+            if (![NetworkManager sharedManager].isUserLoggined) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+            }
+        };
+        
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }
