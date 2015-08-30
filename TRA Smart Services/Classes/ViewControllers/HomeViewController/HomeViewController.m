@@ -70,6 +70,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     self.topView.enableFakeBarAnimations = YES;
     
     [AppHelper updateNavigationBarColor];
+    [self disableInteractiveGesture];
 }
 
 - (void)viewDidLayoutSubviews
@@ -110,6 +111,13 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     
     [self.topView setStartApearenceAnimationParameters];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -296,6 +304,14 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 }
 
 #pragma mark - Private
+
+- (void)disableInteractiveGesture
+{
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
 
 - (void)prepareDataSource
 {

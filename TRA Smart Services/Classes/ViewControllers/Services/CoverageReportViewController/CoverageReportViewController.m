@@ -15,9 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
+@property (weak, nonatomic) IBOutlet UIButton *detectLocationButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSignalLevel;
 
 @property (strong, nonatomic) MBProgressHUD *HUD;
+@property (assign, nonatomic) BOOL needToCaptureLocation;
 
 @end
 
@@ -30,7 +32,7 @@
     [super viewDidLoad];
     
     self.title = dynamicLocalizedString(@"coverageLevel.title");
-    self.selectedSignalLevel.text = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
     
@@ -41,20 +43,7 @@
 {
     [super viewWillAppear:animated];
     
-    if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
-        __weak typeof(self) weakSelf = self;
-        [[LocationManager sharedManager] checkLocationPermissions:^(BOOL result) {
-            if (result) {
-                [weakSelf.HUD show:YES];
-                [LocationManager sharedManager].delegate = weakSelf;
-                [[LocationManager sharedManager] startUpdatingLocation];
-            } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf];
-            }
-        }];
-    } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self];
-    }
+    [self startCapturing];
     [self updateColors];
 }
 
@@ -77,17 +66,11 @@
 
 - (void)locationDidChangedTo:(CGFloat)longtitude lat:(CGFloat)latitude
 {
-    self.reportSignalButton.userInteractionEnabled = YES;
-    [self.activityIndicator startAnimating];
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:latitude longitude:longtitude];
-    __weak typeof(self) weakSelf = self;
-    [[LocationManager sharedManager] fetchAddressWithLocation:loc completionBlock:^(NSString *address) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.addressTextField.text = address;
-            [weakSelf.activityIndicator stopAnimating];
-        });
-        [weakSelf.HUD hide:YES];
-    }];
+    [self.HUD hide:YES];
+    if (self.needToCaptureLocation) {
+        self.needToCaptureLocation = NO;
+        [self detectLocationButtonTapped:nil];
+    }
 }
 
 - (void)locationDidFailWithError:(NSError *)failError
@@ -128,6 +111,7 @@
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        [self startCapturing];
     }
 }
 
@@ -162,6 +146,24 @@
     }
 
     self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), value];
+}
+
+- (IBAction)detectLocationButtonTapped:(id)sender
+{
+    if ([LocationManager sharedManager].currentLattitude) {
+        [self.activityIndicator startAnimating];
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:[LocationManager sharedManager].currentLattitude longitude:[LocationManager sharedManager].currentLongtitude];
+        __weak typeof(self) weakSelf = self;
+        [[LocationManager sharedManager] fetchAddressWithLocation:loc completionBlock:^(NSString *address) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.addressTextField.text = address;
+                [weakSelf.activityIndicator stopAnimating];
+            });
+        }];
+    } else {
+        self.needToCaptureLocation = YES;
+        [self startCapturing];
+    }
 }
 
 - (void)MBProgressHUDCancelButtonDidPressed
@@ -212,6 +214,24 @@
     [[AppHelper rootViewController].view addSubview:self.HUD];
     self.HUD.dimBackground = YES;
     [self.HUD addCancelButtonForTarger:self andSelector:NSStringFromSelector(@selector(MBProgressHUDCancelButtonDidPressed))];
+}
+
+- (void)startCapturing
+{
+    if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
+        __weak typeof(self) weakSelf = self;
+        [[LocationManager sharedManager] checkLocationPermissions:^(BOOL result) {
+            if (result) {
+                [weakSelf.HUD show:YES];
+                [LocationManager sharedManager].delegate = weakSelf;
+                [[LocationManager sharedManager] startUpdatingLocation];
+            } else {
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf];
+            }
+        }];
+    } else {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self];
+    }
 }
 
 @end

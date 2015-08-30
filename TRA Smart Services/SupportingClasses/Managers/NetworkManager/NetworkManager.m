@@ -173,7 +173,7 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     if (latitude && longtitude) {
         [parameters setValue: @{
                                 @"latitude" : @(latitude),
-                                @"longtitude" : @(longtitude)
+                                @"longitude" : @(longtitude)
                                 }
                       forKey:@"location"];
     }
@@ -207,7 +207,13 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
                                  @"login" : username,
                                  @"pass" : password
                                  };
-    [self performPOST:traSSLogin withParameters:parameters response:loginResponse];
+    __weak typeof(self) weakSelf = self;
+    [self.manager POST:traSSLogin parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        PerformSuccessRecognition(operation, responseObject, loginResponse);
+        weakSelf.isUserLoggined = YES;
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        PerformFailureRecognition(operation, error, loginResponse);
+    }];
 }
 
 - (void)traSSLogout:(ResponseBlock)logoutResponse
@@ -265,7 +271,17 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
         if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
             response = responseDictionary;
         }
-        handler([response valueForKey:ResponseDictionarySuccessKey], nil);
+        
+        NSString *info;
+        if ([response valueForKey:ResponseDictionarySuccessKey]) {
+            info = [response valueForKey:ResponseDictionarySuccessKey];
+        } else if ([response valueForKey:@"availableStatus"]) {
+            info = [response valueForKey:@"availableStatus"];
+        } else if ([response valueForKey:@"urlData"]) {
+            info = [response valueForKey:@"urlData"];
+        }
+        
+        handler(info, nil);
     } else {
         handler(dynamicLocalizedString(@"api.message.noDataFound"), nil);
     }

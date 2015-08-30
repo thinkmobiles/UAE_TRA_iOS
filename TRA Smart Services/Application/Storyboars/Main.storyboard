@@ -2769,8 +2769,8 @@ a new password will be sent.</string>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-qb-9cc">
-                                <rect key="frame" x="150" y="122" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-qb-9cc">
+                                <rect key="frame" x="16" y="122" width="300" height="30"/>
                                 <state key="normal" title="Report signal">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2788,12 +2788,22 @@ a new password will be sent.</string>
                                 </connections>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="hs9-FK-GCr" userLabel="Signal power">
-                                <rect key="frame" x="14" y="84" width="572" height="31"/>
+                                <rect key="frame" x="73" y="84" width="454" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="sliderDidChnageValue:" destination="Vhn-R2-wMo" eventType="valueChanged" id="4Mo-xS-ul6"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be7-gt-5aM">
+                                <rect key="frame" x="332" y="122" width="252" height="30"/>
+                                <state key="normal" title="Detect location">
+                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="detectLocationButtonTapped:" destination="Vhn-R2-wMo" eventType="touchUpInside" id="qoL-kG-bOb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2801,14 +2811,18 @@ a new password will be sent.</string>
                             <constraint firstItem="ND8-GO-Vhl" firstAttribute="top" secondItem="agV-IF-JEb" secondAttribute="bottom" constant="8" id="25g-vU-s1W"/>
                             <constraint firstItem="hs9-FK-GCr" firstAttribute="top" secondItem="7At-u8-Abk" secondAttribute="bottom" constant="8" id="69j-f5-SfH"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="width" secondItem="SMr-ZX-DHO" secondAttribute="width" multiplier="0.5" id="9JF-TC-ycP"/>
-                            <constraint firstAttribute="trailing" secondItem="hs9-FK-GCr" secondAttribute="trailing" constant="16" id="PXI-w8-gPh"/>
+                            <constraint firstItem="be7-gt-5aM" firstAttribute="leading" secondItem="U4p-qb-9cc" secondAttribute="trailing" constant="16" id="JMU-21-LWI"/>
+                            <constraint firstAttribute="trailing" secondItem="be7-gt-5aM" secondAttribute="trailing" constant="16" id="KQ4-1s-zMp"/>
+                            <constraint firstItem="U4p-qb-9cc" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="KuF-VZ-b4D"/>
                             <constraint firstItem="agV-IF-JEb" firstAttribute="top" secondItem="U4p-qb-9cc" secondAttribute="bottom" constant="16" id="QON-Ym-Xld"/>
-                            <constraint firstAttribute="centerX" secondItem="U4p-qb-9cc" secondAttribute="centerX" id="ZUk-k9-Zdg"/>
+                            <constraint firstItem="hs9-FK-GCr" firstAttribute="width" secondItem="SMr-ZX-DHO" secondAttribute="width" multiplier="0.75" id="VWV-Ak-ZQh"/>
+                            <constraint firstItem="be7-gt-5aM" firstAttribute="height" secondItem="U4p-qb-9cc" secondAttribute="height" id="WDm-zt-6oD"/>
                             <constraint firstItem="7At-u8-Abk" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="aF2-93-I1Q"/>
                             <constraint firstItem="U4p-qb-9cc" firstAttribute="top" secondItem="hs9-FK-GCr" secondAttribute="bottom" constant="8" id="aSO-4s-whL"/>
                             <constraint firstItem="ND8-GO-Vhl" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leadingMargin" id="gdY-4j-92j"/>
                             <constraint firstAttribute="trailing" secondItem="7At-u8-Abk" secondAttribute="trailing" constant="16" id="jyZ-M1-oxo"/>
-                            <constraint firstItem="hs9-FK-GCr" firstAttribute="leading" secondItem="SMr-ZX-DHO" secondAttribute="leading" constant="16" id="rAm-7c-6Tf"/>
+                            <constraint firstAttribute="centerX" secondItem="hs9-FK-GCr" secondAttribute="centerX" id="kRm-WN-Su4"/>
+                            <constraint firstItem="be7-gt-5aM" firstAttribute="centerY" secondItem="U4p-qb-9cc" secondAttribute="centerY" id="r9O-gM-UY0"/>
                             <constraint firstItem="ND8-GO-Vhl" firstAttribute="trailing" secondItem="SMr-ZX-DHO" secondAttribute="trailingMargin" id="rcy-CQ-pFG"/>
                             <constraint firstAttribute="centerX" secondItem="agV-IF-JEb" secondAttribute="centerX" id="zw7-fG-n08"/>
                         </constraints>
@@ -2816,6 +2830,7 @@ a new password will be sent.</string>
                     <connections>
                         <outlet property="activityIndicator" destination="agV-IF-JEb" id="JWd-hP-6Gi"/>
                         <outlet property="addressTextField" destination="ND8-GO-Vhl" id="7zQ-BL-Gef"/>
+                        <outlet property="detectLocationButton" destination="be7-gt-5aM" id="vgN-BH-ebi"/>
                         <outlet property="reportSignalButton" destination="U4p-qb-9cc" id="m15-Ls-MAg"/>
                         <outlet property="selectedSignalLevel" destination="7At-u8-Abk" id="taI-ES-C0B"/>
                         <outlet property="signalLevelSlider" destination="hs9-FK-GCr" id="ITZ-hJ-RdF"/>

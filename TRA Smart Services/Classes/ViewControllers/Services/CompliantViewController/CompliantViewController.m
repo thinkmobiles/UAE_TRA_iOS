@@ -41,6 +41,7 @@
     [super viewWillAppear:animated];
     
     [self updateColors];
+    [self presentLoginIfNeeded];
 }
 
 #pragma mark - IABaction
@@ -140,6 +141,19 @@
             
         default:
             break;
+    }
+}
+
+- (void)presentLoginIfNeeded
+{
+    if (![NetworkManager sharedManager].isUserLoggined) {
+        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+#ifdef __IPHONE_8_0
+        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+#endif
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }
 }
 

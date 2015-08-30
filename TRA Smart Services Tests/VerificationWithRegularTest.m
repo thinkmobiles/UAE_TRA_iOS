@@ -17,11 +17,15 @@
 
 @implementation VerificationWithRegularTest
 
+#pragma mark - LifeCycle
+
 - (void)setUp
 {
     [super setUp];
 
 }
+
+#pragma mark - Testing
 
 - (void)testValidationIsEmailValid
 {

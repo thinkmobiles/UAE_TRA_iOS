@@ -38,6 +38,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
 @property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
+@property (assign, nonatomic) __block BOOL isUserLoggined;
 
 + (instancetype)sharedManager;
 

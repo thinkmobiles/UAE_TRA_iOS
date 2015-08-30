@@ -20,6 +20,8 @@
 
 @implementation BarcodeReaderTest
 
+#pragma mark - Testing
+
 - (void)testInitWithNilView
 {
     self.reader = [[BarcodeCodeReader alloc] initWithView:self.fakePlayerView];
@@ -32,7 +34,5 @@
     self.reader = [[BarcodeCodeReader alloc] initWithView:self.fakePlayerView];
     XCTAssert(self.reader);
 }
-
-
 
 @end
