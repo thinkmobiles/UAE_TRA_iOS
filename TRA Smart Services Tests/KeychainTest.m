@@ -24,7 +24,7 @@
 - (void)setUp
 {
     [super setUp];
-    
+ 
     self.storage = [[KeychainStorage alloc] init];
 }
 
@@ -34,6 +34,11 @@
 }
 
 #pragma mark - Testing
+
+- (void)testCreating
+{
+    XCTAssertNotNil(self.storage, @"Cant create storage Object");
+}
 
 - (void)testSaveAndRetriveCredentials
 {
@@ -51,7 +56,7 @@
     [self.storage removeStoredCredentials];
     
     NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
-    XCTAssertEqualObjects(storedCredentials, nil, @"Stored credentials not deleted");
+    XCTAssertNil(storedCredentials, @"Stored credentials is not deleted");
 }
 
 - (void)testIncorrectParametersStorage
@@ -62,6 +67,19 @@
     [self.storage storePassword:password forUser:userName];
     NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
     XCTAssertEqualObjects(storedCredentials, nil, @"Stored incorrect parameters");
+}
+
+- (void)testUpdateCredentials
+{
+    [self testSaveAndRetriveCredentials];
+    
+    NSString *password = @"newPassword";
+    NSString *userName = @"userName";
+    [self.storage storePassword:password forUser:userName];
+    NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
+    
+    XCTAssertEqualObjects([storedCredentials valueForKey:KeychainStorageKeyLogin], userName, @"Stored userName incorrect");
+    XCTAssertEqualObjects([storedCredentials valueForKey:KeychainStorageKeyPassword], password, @"Stored password incorrect");
 }
 
 @end
