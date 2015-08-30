@@ -31,6 +31,9 @@
 - (void)tearDown
 {
     [super tearDown];
+    
+    [self.storage removeStoredCredentials];
+    self.storage = nil;
 }
 
 #pragma mark - Testing
@@ -63,7 +66,7 @@
 {
     NSString *password = @"";
     NSString *userName = @"";
-    [self.storage removeStoredCredentials]; //clean up prev tests
+
     [self.storage storePassword:password forUser:userName];
     NSDictionary *storedCredentials = [self.storage credentialsForLoginedUser];
     XCTAssertEqualObjects(storedCredentials, nil, @"Stored incorrect parameters");

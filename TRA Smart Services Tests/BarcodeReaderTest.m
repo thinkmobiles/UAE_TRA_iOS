@@ -20,6 +20,16 @@
 
 @implementation BarcodeReaderTest
 
+#pragma mark - LifeCycle
+
+- (void)tearDown
+{
+    [super tearDown];
+    
+    self.fakePlayerView = nil;
+    self.reader = nil;
+}
+
 #pragma mark - Testing
 
 - (void)testInitWithNilView
