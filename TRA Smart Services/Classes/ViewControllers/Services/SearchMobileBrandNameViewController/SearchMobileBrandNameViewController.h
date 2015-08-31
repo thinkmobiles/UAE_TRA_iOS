@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SearchMobileBrandNameViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+#import "BaseDynamicUIViewController.h"
+
+@interface SearchMobileBrandNameViewController : BaseDynamicUIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

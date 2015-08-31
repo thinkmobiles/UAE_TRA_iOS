@@ -7,8 +7,9 @@
 //
 
 #import "BarcodeCodeReader.h"
+#import "BaseDynamicUIViewController.h"
 
-@interface CheckIMEIViewController : UIViewController <BarcodeCodeReaderDelegate, UIAlertViewDelegate>
+@interface CheckIMEIViewController : BaseDynamicUIViewController <BarcodeCodeReaderDelegate, UIAlertViewDelegate>
 
 @property (assign, nonatomic) BOOL needTransparentNavigationBar;
 

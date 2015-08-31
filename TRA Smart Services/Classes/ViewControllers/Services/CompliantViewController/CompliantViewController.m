@@ -16,8 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *compliantButton;
 @property (weak, nonatomic) IBOutlet UITextView *compliantDescriptionTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -30,7 +32,6 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    self.title = @"Compliant";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     [self updateUIForCompliantType:self.type];
@@ -40,7 +41,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
     [self presentLoginIfNeeded];
 }
 
@@ -90,6 +90,27 @@
     return YES;
 }
 
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"compliantViewController.title");
+    self.providerText.placeholder = dynamicLocalizedString(@"compliantViewController.textField.providerText");
+    self.compliantTitle.placeholder = dynamicLocalizedString(@"compliantViewController.textField.compliantTitle");
+    self.refNumber.placeholder = dynamicLocalizedString(@"compliantViewController.textField.refNumber");
+    self.descriptionLabel.text = dynamicLocalizedString(@"compliantViewController.descriptionLabel.text");
+    [self.selectImageButton setTitle:dynamicLocalizedString(@"compliantViewController.selectImageButton.title") forState:UIControlStateNormal];
+    [self.compliantButton setTitle:dynamicLocalizedString(@"compliantViewController.compliantButton.title") forState:UIControlStateNormal];
+}
+
+- (void)updateColors
+{
+    self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    
+    [self prepareUI];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
@@ -114,14 +135,6 @@
     self.compliantDescriptionTextView.layer.cornerRadius = 8;
     self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
     self.compliantDescriptionTextView.layer.borderWidth = 1;
-}
-
-- (void)updateColors
-{
-    self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
-    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    
-    [self prepareUI];
 }
 
 - (void)updateUIForCompliantType:(ComplianType)type

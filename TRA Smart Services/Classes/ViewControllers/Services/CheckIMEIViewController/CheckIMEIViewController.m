@@ -60,12 +60,9 @@
         [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setTranslucent:YES];
         [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    } else {
-        self.title = @"Check IMEI";
-    }
+    } 
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self registerForKeyboardNotifications];
-    [self updateColors];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -78,8 +75,6 @@
         [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
     }
     self.title = @" ";
-    
-    [self updateColors];
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -155,6 +150,15 @@
 {
     [self endEditing];
     return YES;
+}
+
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"checkIMEIViewController.title");
+    [self.checkIMEIButton setTitle:dynamicLocalizedString(@"checkIMEIViewController.checkIMEIButton.title") forState:UIControlStateNormal];
+    
 }
 
 #pragma mark - Private

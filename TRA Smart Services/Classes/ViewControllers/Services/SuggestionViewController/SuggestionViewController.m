@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *suggestionTitle;
 @property (weak, nonatomic) IBOutlet UITextField *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
 @end
 
@@ -27,7 +28,6 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    self.title = @"Send suggestion";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
@@ -35,7 +35,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
     [self presentLoginIfNeeded];
 }
 
@@ -72,6 +71,22 @@
     return YES;
 }
 
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"suggestionViewController.title");
+    self.suggestionTitle.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionTitle");
+    self.suggectionDescription.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionDescription");
+    [self.selectImageButton setTitle:dynamicLocalizedString(@"suggestionViewController.selectImageButton.title") forState:UIControlStateNormal];
+    [self.sendSuggestionButton setTitle:dynamicLocalizedString(@"suggestionViewController.sendSuggestionButton.title") forState:UIControlStateNormal];
+}
+
+- (void)updateColors
+{
+    [self prepareUI];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
@@ -92,11 +107,6 @@
             subView.layer.borderWidth = 1;
         }
     }
-}
-
-- (void)updateColors
-{
-    [self prepareUI];
 }
 
 - (void)presentLoginIfNeeded

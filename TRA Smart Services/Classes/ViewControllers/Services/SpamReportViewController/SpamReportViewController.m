@@ -31,7 +31,6 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    self.title = @"SMS Spam Report";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
@@ -39,7 +38,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
     [self presentLoginIfNeeded];
 }
 
@@ -120,6 +118,28 @@
     return YES;
 }
 
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"spamReportViewControler.title");
+    self.phoneProvider.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneProvider");
+    self.phoneNumber.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneNumber");
+    self.providerType.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.providerType");
+    [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
+    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex0.title") forSegmentAtIndex:0];
+    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex1.title") forSegmentAtIndex:1];
+}
+
+- (void)updateColors
+{
+    self.reportSegment.tintColor = [[DynamicUIService service] currentApplicationColor];
+    self.notes.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.notes.textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [self prepareUI];
+}
+
 #pragma mark - Private
 
 - (void)prepareUIForTextView
@@ -148,15 +168,6 @@
         }
     }
     [self prepareUIForTextView];
-}
-
-- (void)updateColors
-{
-    self.reportSegment.tintColor = [[DynamicUIService service] currentApplicationColor];
-    self.notes.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.notes.textColor = [[DynamicUIService service] currentApplicationColor];
-    
-    [self prepareUI];
 }
 
 - (void)presentLoginIfNeeded

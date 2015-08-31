@@ -31,8 +31,6 @@
 {
     [super viewDidLoad];
     
-    self.title = dynamicLocalizedString(@"coverageLevel.title");
-    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
     
@@ -44,7 +42,6 @@
     [super viewWillAppear:animated];
     
     [self startCapturing];
-    [self updateColors];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -174,6 +171,29 @@
     [self.activityIndicator stopAnimating];
 }
 
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
+    [self.reportSignalButton setTitle:dynamicLocalizedString(@"coverageReport.reportSignalButton.title") forState:UIControlStateNormal];
+    [self.detectLocationButton setTitle:dynamicLocalizedString(@"coverageReport.detectLocationButton.title") forState:UIControlStateNormal];
+    self.addressTextField.placeholder = dynamicLocalizedString(@"coverageReport.addressTextField");
+}
+
+- (void)updateColors
+{
+    for (UILabel *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
+    self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
+    [self prepareUI];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
@@ -194,18 +214,6 @@
             subView.layer.borderWidth = 1;
         }
     }
-}
-
-- (void)updateColors
-{
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
-    self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
-    [self prepareUI];
 }
 
 - (void)prepareHUD

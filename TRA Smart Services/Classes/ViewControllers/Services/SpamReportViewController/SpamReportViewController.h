@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SpamReportViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+#import "BaseDynamicUIViewController.h"
+
+@interface SpamReportViewController : BaseDynamicUIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

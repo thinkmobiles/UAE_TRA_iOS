@@ -27,18 +27,10 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    self.title = @"Speed Test Demo";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.speedChecker = [[InternetSpeedChecker alloc] init];
     self.speedChecker.delegate = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
 }
 
 #pragma mark - IBActions
@@ -54,12 +46,31 @@
 - (void)speedCheckerDidCalculateSpeed:(CGFloat)speed testMethod:(SpeedTestType)method
 {
     if (!method) {
-        self.speedTestResult.text = [NSString stringWithFormat:@"Your speed - %.6f Mb/sec", speed];
+        self.speedTestResult.text = [NSString stringWithFormat:dynamicLocalizedString(@"InternetSpeedTestViewController.speedTestResult.text"), speed];
     } else {
-        self.speedTestResult.text = [NSString stringWithFormat:@"Your speed - %.6f Mb/sec (accurate)", speed];
+        self.speedTestResult.text = [NSString stringWithFormat:dynamicLocalizedString(@"InternetSpeedTestViewController.speedTestResult.text.accurate"), speed];
     }
     [self.activityIndicator stopAnimating];
     self.checkButton.enabled = YES;
+}
+
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"internetSpeedTestViewController.title");
+    [self.checkButton setTitle:dynamicLocalizedString(@"internetSpeedTestViewController.checkButton.title") forState:UIControlStateNormal];
+}
+
+- (void)updateColors
+{
+    for (UILabel *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
+    [self prepareUI];
 }
 
 #pragma mark - Private
@@ -74,11 +85,7 @@
             subView.layer.borderWidth = 1;
         }
     }
-}
-
-- (void)updateColors
-{
-    [self prepareUI];
+    
 }
 
 @end

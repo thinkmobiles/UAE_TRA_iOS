@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface HelpSalimViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+#import "BaseDynamicUIViewController.h"
+
+@interface HelpSalimViewController : BaseDynamicUIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

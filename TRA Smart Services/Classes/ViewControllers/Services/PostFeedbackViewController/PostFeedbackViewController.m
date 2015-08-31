@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *serviceNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ratingTextField;
 @property (weak, nonatomic) IBOutlet UITextView *feedbackTextView;
+@property (weak, nonatomic) IBOutlet UILabel *feedbackLabel;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @end
 
@@ -24,16 +26,8 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Post Feedback";
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareUI];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
 }
 
 #pragma mark - IBActions
@@ -79,6 +73,27 @@
     return YES;
 }
 
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"postFeedbackViewController.title");
+    self.serviceNameTextField.placeholder = dynamicLocalizedString(@"postFeedbackViewController.serviceNameTextField");
+    self.ratingTextField.placeholder = dynamicLocalizedString(@"postFeedbackViewController.ratingTextField");
+    self.feedbackLabel.text = dynamicLocalizedString(@"postFeedbackViewController.feedbackLabel.text");
+    [self.sendButton setTitle:dynamicLocalizedString(@"postFeedbackViewController.sendButton.title")forState:UIControlStateNormal];
+}
+
+- (void)updateColors
+{
+    for (UILabel *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    [self prepareUI];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
@@ -110,16 +125,6 @@
     NSString *stricterFilterString = @"^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
     return [predicate evaluateWithObject:stringToCheck];
-}
-
-- (void)updateColors
-{
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    [self prepareUI];
 }
 
 @end
