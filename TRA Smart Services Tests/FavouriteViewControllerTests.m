@@ -13,9 +13,14 @@
 #include <objc/runtime.h>
 #import "FavouriteViewController.h"
 
+@interface FavouriteViewController()
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
 @interface FavouriteViewControllerTests : XCTestCase
 
-@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) FavouriteViewController *favViewController;
 
 @end
@@ -29,28 +34,23 @@
     [super setUp];
     
     self.favViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle bundleForClass:NSClassFromString(@"FavouriteViewController")]] instantiateViewControllerWithIdentifier:@"favViewControllerID"];
-    objc_property_t tableView = class_getProperty([self.favViewController class], "tableView");
-    self.tableView = (__bridge UITableView *)(tableView);
 }
 
 - (void)tearDown
 {
     [super tearDown];
     
-    self.tableView = nil;
     self.favViewController = nil;
 }
 
 #pragma mark - Tests
 
-#pragma mark - PropertiesTest
+#pragma mark - Properties
 
 - (void)testFavouriteViewControllerHasAPropertyTableView
 {
     objc_property_t tableView = class_getProperty([self.favViewController class], "tableView");
-    self.tableView = (__bridge UITableView *)(tableView);
-    
-    XCTAssert(self.tableView != nil);
+    XCTAssert(tableView != NULL);
 }
 
 - (void)testFavouriteViewControllerHasAPropertyDataSource
@@ -101,5 +101,20 @@
     XCTAssert(dataSource != NULL);
 }
 
+#pragma mark - Functionality
+
+- (void)testDelegate
+{
+    self.favViewController.tableView.delegate = self.favViewController;
+    [self.favViewController viewDidLoad];
+    XCTAssertEqualObjects(self.favViewController.tableView.delegate, self.favViewController);
+}
+
+- (void)testDataSource
+{
+    self.favViewController.tableView.dataSource = self.favViewController;
+    [self.favViewController viewDidLoad];
+    XCTAssertEqualObjects(self.favViewController.tableView.dataSource, self.favViewController);
+}
 
 @end
