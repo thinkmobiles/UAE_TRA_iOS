@@ -95,7 +95,7 @@
         <!--Favourite View Controller-->
         <scene sceneID="hfd-DE-eJz">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VHI-KM-fqJ" customClass="FavouriteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favViewControllerID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHI-KM-fqJ" customClass="FavouriteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mU0-5s-Q0l"/>
                         <viewControllerLayoutGuide type="bottom" id="m3D-g6-6Pe"/>

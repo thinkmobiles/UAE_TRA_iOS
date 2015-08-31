@@ -26,6 +26,7 @@
 		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
 		932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */; };
 		932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */; };
+		932FD8D61B944674008EFBD8 /* FavouriteViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */; };
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
@@ -164,6 +165,7 @@
 		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
 		932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationWithRegularTest.m; sourceTree = "<group>"; };
 		932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReaderTest.m; sourceTree = "<group>"; };
+		932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewControllerTests.m; sourceTree = "<group>"; };
 		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
 		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		934628F71B8D873C0017E4CD /* MBProgressHUD+CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CancelButton.h"; sourceTree = "<group>"; };
@@ -464,10 +466,11 @@
 		932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
 			isa = PBXGroup;
 			children = (
+				932FD8261B9197D9008EFBD8 /* Supporting Files */,
 				932FD8311B9198AE008EFBD8 /* KeychainTest.m */,
 				932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */,
 				932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */,
-				932FD8261B9197D9008EFBD8 /* Supporting Files */,
+				932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */,
 			);
 			path = "TRA Smart Services Tests";
 			sourceTree = "<group>";
@@ -1451,6 +1454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932FD8D61B944674008EFBD8 /* FavouriteViewControllerTests.m in Sources */,
 				932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */,
 				932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */,
 				932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */,
