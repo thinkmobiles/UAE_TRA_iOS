@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
@@ -62,7 +62,6 @@
         [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     } 
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -70,7 +69,7 @@
     [super viewWillDisappear:animated];
     
     [self.reader startStopReading];
-    [self unregisterForKeyboardNotification];
+
     if (self.needTransparentNavigationBar) {
         [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
     }
@@ -117,33 +116,6 @@
     }
 }
 
-#pragma mark - Keyboard
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboadWillShow:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)unregisterForKeyboardNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)keyboadWillShow:(NSNotification*)notification
-{
-    CGRect screen = [UIScreen mainScreen].bounds;
-    CGRect keyboard = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    
-    if (CGRectGetMaxY(self.contentView.frame) > (CGRectGetHeight(screen) - CGRectGetHeight(keyboard))) {
-        CGPoint offset = CGPointMake(0.f,  CGRectGetMaxY(screen) - (CGRectGetHeight(keyboard) + CGRectGetMaxY(self.contentView.frame)));
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.25f animations:^{
-            self.centerPositionForTextFieldConstraint.constant += offset.y;
-            [self.view layoutIfNeeded];
-        }];
-    }
-}
-
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -158,29 +130,6 @@
 {
     self.title = dynamicLocalizedString(@"checkIMEIViewController.title");
     [self.checkIMEIButton setTitle:dynamicLocalizedString(@"checkIMEIViewController.checkIMEIButton.title") forState:UIControlStateNormal];
-    
-}
-
-#pragma mark - Private
-
-- (void)prepareUI
-{
-    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.checkIMEIButton.layer.cornerRadius = 8;
-    self.checkIMEIButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.checkIMEIButton.layer.borderWidth = 1;
-
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    self.contentView.layer.cornerRadius = 8;
-    self.contentView.layer.borderWidth = 1;
-    self.contentView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }
 
 - (void)updateColors
@@ -191,15 +140,25 @@
     [self prepareUI];
 }
 
+#pragma mark - Private
+
+- (void)prepareUI
+{
+    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
+    [AppHelper setStyleForLayer:self.contentView.layer];
+    
+    for (UITextField *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            [AppHelper setStyleForLayer:subView.layer];
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+}
+
 - (void)endEditing
 {
     [self.view endEditing:YES];
-    [self.view layoutIfNeeded];
-    
-    [UIView animateWithDuration:0.25f animations:^{
-        self.centerPositionForTextFieldConstraint.constant = 100;
-        [self.view layoutIfNeeded];
-    }];
 }
 
 - (void)prepareReaderIfNeeded

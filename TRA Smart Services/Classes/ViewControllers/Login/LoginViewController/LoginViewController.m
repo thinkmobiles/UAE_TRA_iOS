@@ -55,11 +55,15 @@
             return;
         }
         [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:response];
+//                if (weakSelf.shouldAutoCloseAfterLogin) {
+//                    [weakSelf closeButtonPressed];
+//                }
             }
             [AppHelper hideLoader];
         }];

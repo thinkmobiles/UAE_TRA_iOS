@@ -26,6 +26,7 @@
 		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
 		932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */; };
 		932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */; };
+		932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */; };
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
@@ -164,6 +165,8 @@
 		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
 		932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationWithRegularTest.m; sourceTree = "<group>"; };
 		932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReaderTest.m; sourceTree = "<group>"; };
+		932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseServiceViewController.h; sourceTree = "<group>"; };
+		932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServiceViewController.m; sourceTree = "<group>"; };
 		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
 		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		934628F71B8D873C0017E4CD /* MBProgressHUD+CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CancelButton.h"; sourceTree = "<group>"; };
@@ -480,6 +483,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */,
+				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
+			);
+			path = BaseServiceViewController;
+			sourceTree = "<group>";
+		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +677,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
@@ -1532,6 +1545,7 @@
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
+				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,

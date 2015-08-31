@@ -7,7 +7,6 @@
 //
 
 #import "BarcodeCodeReader.h"
-#import "BaseDynamicUIViewController.h"
 
 @interface CheckIMEIViewController : BaseDynamicUIViewController <BarcodeCodeReaderDelegate, UIAlertViewDelegate>
 

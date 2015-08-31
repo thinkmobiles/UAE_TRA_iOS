@@ -25,7 +25,6 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
 }
 

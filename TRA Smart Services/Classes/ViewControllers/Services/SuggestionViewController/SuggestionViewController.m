@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
     
-    [self prepareUI];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
@@ -84,30 +83,24 @@
 
 - (void)updateColors
 {
-    [self prepareUI];
+    for (UILabel *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    for (UIView *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[UIButton class]]) {
+            [AppHelper setStyleForLayer:subView.layer];
+            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+        } else if ([subView isKindOfClass:[UITextField class]]) {
+            [AppHelper setStyleForLayer:subView.layer];
+            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+    
 }
 
 #pragma mark - Private
-
-- (void)prepareUI
-{
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-}
 
 - (void)presentLoginIfNeeded
 {

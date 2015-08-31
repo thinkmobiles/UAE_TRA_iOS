@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self prepareUI];
 }
 
 #pragma mark - IBActions
@@ -91,32 +90,16 @@
             subView.textColor = [[DynamicUIService service] currentApplicationColor];
         }
     }
-    [self prepareUI];
-}
-
-#pragma mark - Private
-
-- (void)prepareUI
-{
-    for (UIButton *subView in self.view.subviews) {
+    for (UIView *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
+            [AppHelper setStyleForLayer:subView.layer];
+            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+        } else if ([subView isKindOfClass:[UITextField class]]) {
+            [AppHelper setStyleForLayer:subView.layer];
+            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
         }
     }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    self.commentTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.commentTextView.layer.borderWidth = 1;
-    self.commentTextView.layer.cornerRadius = 8;
+    [AppHelper setStyleForLayer:self.commentTextView.layer];
     self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 

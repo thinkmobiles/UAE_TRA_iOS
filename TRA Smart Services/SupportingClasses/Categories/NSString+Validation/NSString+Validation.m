@@ -62,6 +62,13 @@
     return [test evaluateWithObject:self];
 }
 
+- (BOOL)isValidRating
+{
+    NSString *allowedSymbols = @"[0-5]{1}";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:self];
+}
+
 - (BOOL)textIsValidPasswordFormat
 {
     NSString *stricterFilterString = @"(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$";

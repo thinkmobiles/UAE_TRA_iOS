@@ -25,7 +25,6 @@
 {
     [super viewDidLoad];
     
-    [self prepareUI];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
@@ -100,27 +99,14 @@
 
 - (void)updateColors
 {
-    [self prepareUI];
-}
-
-#pragma mark - Private
-
-- (void)prepareUI
-{
-    for (UIButton *subView in self.view.subviews) {
+    for (UIView *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
+            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+        } else if ([subView isKindOfClass:[UITextField class]]) {
+            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
         }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
+        if (![subView isKindOfClass:[UITextView class]]) {
+            [AppHelper setStyleForLayer:subView.layer];
         }
     }
 }

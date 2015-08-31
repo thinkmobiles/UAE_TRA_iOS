@@ -14,6 +14,7 @@
 - (BOOL)isValidStateCode;
 - (BOOL)isValidName;
 - (BOOL)isValidPhoneNumber;
+- (BOOL)isValidRating;
 - (BOOL)isValidEmailUseHardFilter:(BOOL)filter;
 
 @end

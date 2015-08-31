@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import "BaseDynamicUIViewController.h"
-
 @interface BaseSelectImageViewController : BaseDynamicUIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIImage *selectImage;
