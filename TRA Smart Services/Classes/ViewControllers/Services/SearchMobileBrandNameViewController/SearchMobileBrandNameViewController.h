@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SearchMobileBrandNameViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface SearchMobileBrandNameViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

@@ -31,11 +31,6 @@
 {
     [super viewDidLoad];
     
-    self.title = dynamicLocalizedString(@"coverageLevel.title");
-    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self prepareUI];
-    
     [self prepareHUD];
 }
 
@@ -44,7 +39,6 @@
     [super viewWillAppear:animated];
     
     [self startCapturing];
-    [self updateColors];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -174,39 +168,26 @@
     [self.activityIndicator stopAnimating];
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
+    self.title = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
+    [self.reportSignalButton setTitle:dynamicLocalizedString(@"coverageReport.reportSignalButton.title") forState:UIControlStateNormal];
+    [self.detectLocationButton setTitle:dynamicLocalizedString(@"coverageReport.detectLocationButton.title") forState:UIControlStateNormal];
+    self.addressTextField.placeholder = dynamicLocalizedString(@"coverageReport.addressTextField");
 }
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
+    [super updateColors];
+    
     self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
     self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
-    [self prepareUI];
 }
+
+#pragma mark - Private
 
 - (void)prepareHUD
 {

@@ -65,6 +65,9 @@
 "login.button.forgotPassword" = "Forgot the password";
 "login.button.registerButton" = "Register now";
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.picker.genre.male" = "Male";
+"login.picker.genre.female" = "Female";
+"login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
 
@@ -160,6 +163,9 @@
 "coverageReport.strong" = "Strong";
 "coverageReport.veryStrong" = "Very Strong";
 "coverageLevel.title" = "Coverage Level";
+"coverageReport.reportSignalButton.title" = "Report signal";
+"coverageReport.detectLocationButton.title" = "Detect location";
+"coverageReport.addressTextField" = "Address";
 
 //InfoHubViewController
 
@@ -179,3 +185,67 @@
 //SearchMobileBrandNameViewController
 
 "searchMobileBrandNameViewController.title" = "Search Mobile Brand";
+"searchMobileBrandNameViewController.searchButton" = "Search brand name";
+
+//SuggestionViewController
+
+"suggestionViewController.title" = "Send suggestion";
+"suggestionViewController.textField.suggestionTitle" = "Title";
+"suggestionViewController.textField.suggestionDescription" = "Description";
+"suggestionViewController.selectImageButton.title" = "Image";
+"suggestionViewController.sendSuggestionButton.title" = "Send suggestion";
+
+//CompliantViewController
+
+"compliantViewController.title" = "Compliant";
+"compliantViewController.textField.providerText" = "Provider";
+"compliantViewController.textField.compliantTitle" = "Title";
+"compliantViewController.textField.refNumber" = "Referens number";
+"compliantViewController.descriptionLabel.text" = "Description";
+"compliantViewController.selectImageButton.title" = "Image";
+"compliantViewController.compliantButton.title" = "Compliant";
+
+//SpamReportViewControler
+
+"spamReportViewControler.title" = "SMS Spam Report";
+"spamReportViewControler.textField.phoneProvider" = "Provider number";
+"spamReportViewControler.textField.phoneNumber" = "Phone number";
+"spamReportViewControler.textField.providerType" = "Provider type";
+"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
+"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
+"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+
+//"InternetSpeedTestViewController
+
+"internetSpeedTestViewController.title" = "Speed Test Demo";
+"internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
+"InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
+
+
+//HelpSalimViewController
+
+"helpSalimViewController.title" = "Help Salim Service";
+"helpSalimViewController.urlToReportTextField" = "URL to report";
+"helpSalimViewController.commentLabel.text" = "Comment";
+"helpSalimViewController.reportURLButton.title" = "Report URL";
+
+//PostFeedbackViewController
+
+"postFeedbackViewController.title" = "Post Feedback";
+"postFeedbackViewController.serviceNameTextField" = "Servise";
+"postFeedbackViewController.ratingTextField" = "Rating";
+"postFeedbackViewController.feedbackLabel.text" = "Feedback";
+"postFeedbackViewController.sendButton.title" = "Send";
+
+//CheckDomainViewController
+
+"checkDomainViewController.title" = "Domain check";
+"checkDomainViewController.domainNameTextField" = "Domain name (i.e. tra.gov.ae)";
+"checkDomainViewController.avaliabilityButton.title" = "Avaliability";
+"checkDomainViewController.whoISButton.title" = "Who is?";
+
+//CheckIMEIViewController
+
+"checkIMEIViewController.title" = "Check IMEI";
+"checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";

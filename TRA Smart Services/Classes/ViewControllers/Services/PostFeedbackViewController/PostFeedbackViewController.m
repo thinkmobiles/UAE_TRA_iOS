@@ -13,34 +13,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *serviceNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ratingTextField;
 @property (weak, nonatomic) IBOutlet UITextView *feedbackTextView;
+@property (weak, nonatomic) IBOutlet UILabel *feedbackLabel;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @end
 
 @implementation PostFeedbackViewController
 
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.title = @"Post Feedback";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self prepareUI];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
-}
-
 #pragma mark - IBActions
 
 - (IBAction)sendButtonTapped:(id)sender
 {
-    if (![self isNSStringIsValid:self.ratingTextField.text]){
+    if (![self.ratingTextField.text isValidRating]){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.IncorrectRatings")];
         return;
     }
@@ -79,47 +63,23 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    self.feedbackTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.feedbackTextView.layer.borderWidth = 1;
-    self.feedbackTextView.layer.cornerRadius = 8;
-    self.feedbackTextView.textColor = [[DynamicUIService service] currentApplicationColor];
-}
-
-- (BOOL)isNSStringIsValid:(NSString *)stringToCheck
-{
-    NSString *stricterFilterString = @"^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$";
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
-    return [predicate evaluateWithObject:stringToCheck];
+    self.title = dynamicLocalizedString(@"postFeedbackViewController.title");
+    self.serviceNameTextField.placeholder = dynamicLocalizedString(@"postFeedbackViewController.serviceNameTextField");
+    self.ratingTextField.placeholder = dynamicLocalizedString(@"postFeedbackViewController.ratingTextField");
+    self.feedbackLabel.text = dynamicLocalizedString(@"postFeedbackViewController.feedbackLabel.text");
+    [self.sendButton setTitle:dynamicLocalizedString(@"postFeedbackViewController.sendButton.title")forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    [self prepareUI];
+    [super updateColors];
+    
+    [AppHelper setStyleForLayer:self.feedbackTextView.layer];
+    self.feedbackTextView.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 @end

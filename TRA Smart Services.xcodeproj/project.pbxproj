@@ -483,6 +483,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */,
+				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
+			);
+			path = BaseServiceViewController;
+			sourceTree = "<group>";
+		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +677,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
@@ -1536,6 +1546,7 @@
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
+				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,

@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface HelpSalimViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface HelpSalimViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

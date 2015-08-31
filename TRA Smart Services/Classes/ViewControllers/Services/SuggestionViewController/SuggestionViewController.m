@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *suggestionTitle;
 @property (weak, nonatomic) IBOutlet UITextField *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
 @end
 
@@ -22,20 +23,10 @@
 
 #pragma mark - Life Cicle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self prepareUI];
-    self.title = @"Send suggestion";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
     [self presentLoginIfNeeded];
 }
 
@@ -72,51 +63,20 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
+    self.title = dynamicLocalizedString(@"suggestionViewController.title");
+    self.suggestionTitle.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionTitle");
+    self.suggectionDescription.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionDescription");
+    [self.selectImageButton setTitle:dynamicLocalizedString(@"suggestionViewController.selectImageButton.title") forState:UIControlStateNormal];
+    [self.sendSuggestionButton setTitle:dynamicLocalizedString(@"suggestionViewController.sendSuggestionButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    [self prepareUI];
-}
-
-- (void)presentLoginIfNeeded
-{
-    if (![NetworkManager sharedManager].isUserLoggined) {
-        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
-        __weak typeof(self) weakSelf = self;
-        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
-            if (![NetworkManager sharedManager].isUserLoggined) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-            }
-        };
-        
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:viewController animated:NO completion:nil];
-    }
+    [super updateColors];
 }
 
 @end

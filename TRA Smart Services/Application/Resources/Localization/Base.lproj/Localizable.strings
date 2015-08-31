@@ -65,6 +65,9 @@
 "login.button.forgotPassword" = "login.button.forgotPassword";
 "login.button.registerButton" = "login.button.registerButton";
 "login.restore_password.message" = "login.restore_password.message";
+"login.picker.genre.male" = "login.picker.genre.male";
+"login.picker.genre.female" = "login.picker.genre.female";
+"login.picker.genre.undefined" = "login.picker.genre.undefined";
 
 //RegisterViewController
 
@@ -160,6 +163,9 @@
 "coverageReport.strong" = "coverageReport.strong";
 "coverageReport.veryStrong" = "coverageReport.veryStrong";
 "coverageLevel.title" = "coverageLevel.title";
+"coverageReport.reportSignalButton.title" = "coverageReport.reportSignalButton.title";
+"coverageReport.detectLocationButton.title" = "coverageReport.detectLocationButton.title";
+"coverageReport.addressTextField" = "coverageReport.addressTextField";
 
 //InfoHubViewController
 
@@ -179,3 +185,66 @@
 //SearchMobileBrandNameViewController
 
 "searchMobileBrandNameViewController.title" = "searchMobileBrandNameViewController.title";
+"searchMobileBrandNameViewController.searchButton" = "searchMobileBrandNameViewController.searchButton";
+
+//SuggestionViewController
+
+"suggestionViewController.title" = "suggestionViewController.title";
+"suggestionViewController.textField.suggestionTitle" = "suggestionViewController.textField.suggestionTitle";
+"suggestionViewController.textField.suggestionDescription" = "suggestionViewController.textField.suggestionDescription";
+"suggestionViewController.selectImageButton.title" = "suggestionViewController.selectImageButton.title";
+"suggestionViewController.sendSuggestionButton.title" = "suggestionViewController.sendSuggestionButton.title";
+
+//CompliantViewController
+
+"compliantViewController.title" = "compliantViewController.title";
+"compliantViewController.textField.providerText" = "compliantViewController.textField.providerText";
+"compliantViewController.textField.compliantTitle" = "compliantViewController.textField.compliantTitle";
+"compliantViewController.textField.refNumber" = "compliantViewController.textField.refNumber";
+"compliantViewController.descriptionLabel.text" = "compliantViewController.descriptionLabel.text";
+"compliantViewController.selectImageButton.title" = "compliantViewController.selectImageButton.title";
+"compliantViewController.compliantButton.title" = "compliantViewController.compliantButton.title";
+
+//SpamReportViewControler
+
+"spamReportViewControler.title" = "spamReportViewControler.title";
+"spamReportViewControler.textField.phoneProvider" = "spamReportViewControler.textField.phoneProvider";
+"spamReportViewControler.textField.phoneNumber" = "spamReportViewControler.textField.phoneNumber";
+"spamReportViewControler.textField.providerType" = "spamReportViewControler.textField.providerType";
+"spamReportViewControler.reportButton.title" = "spamReportViewControler.reportButton.title";
+"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex0.title";
+"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex1.title";
+
+//"InternetSpeedTestViewController
+
+"internetSpeedTestViewController.title" = "internetSpeedTestViewController.title";
+"internetSpeedTestViewController.checkButton.title" = "internetSpeedTestViewController.checkButton.title";
+"InternetSpeedTestViewController.speedTestResult.text" = "InternetSpeedTestViewController.speedTestResult.text";
+"InternetSpeedTestViewController.speedTestResult.text.accurate" = "InternetSpeedTestViewController.speedTestResult.text.accurate";
+
+//HelpSalimViewController
+
+"helpSalimViewController.title" = "helpSalimViewController.title";
+"helpSalimViewController.urlToReportTextField" = "helpSalimViewController.urlToReportTextField";
+"helpSalimViewController.commentLabel.text" = "helpSalimViewController.commentLabel.text";
+"helpSalimViewController.reportURLButton.title" = "helpSalimViewController.reportURLButton.title";
+
+//PostFeedbackViewController
+
+"postFeedbackViewController.title" = "postFeedbackViewController.title";
+"postFeedbackViewController.serviceNameTextField" = "postFeedbackViewController.serviceNameTextField";
+"postFeedbackViewController.ratingTextField" = "postFeedbackViewController.ratingTextField";
+"postFeedbackViewController.feedbackLabel.text" = "postFeedbackViewController.feedbackLabel.text";
+"postFeedbackViewController.sendButton.title" = "postFeedbackViewController.sendButton.title";
+
+//CheckDomainViewController
+
+"checkDomainViewController.title" = "checkDomainViewController.title";
+"checkDomainViewController.domainNameTextField" = "checkDomainViewController.domainNameTextField";
+"checkDomainViewController.avaliabilityButton.title" = "checkDomainViewController.avaliabilityButton.title";
+"checkDomainViewController.whoISButton.title" = "checkDomainViewController.whoISButton.title";
+
+//CheckIMEIViewController
+
+"checkIMEIViewController.title" = "checkIMEIViewController.title";
+"checkIMEIViewController.checkIMEIButton.title" = "checkIMEIViewController.checkIMEIButton.title";

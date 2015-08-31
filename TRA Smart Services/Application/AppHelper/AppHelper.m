@@ -247,4 +247,14 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     return formattedDate;
 }
 
+#pragma mark - UI Customizations
+
++ (void)setStyleForLayer:(CALayer *)layer
+{
+    layer.cornerRadius = 8;
+    layer.borderWidth = 1;
+    layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+}
+
+
 @end

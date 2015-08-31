@@ -7,6 +7,6 @@
 //
 #import "LocationManager.h"
 
-@interface CoverageReportViewController : UIViewController <LocationManagerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface CoverageReportViewController : BaseServiceViewController <LocationManagerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @end

@@ -16,8 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *compliantButton;
 @property (weak, nonatomic) IBOutlet UITextView *compliantDescriptionTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -29,10 +31,6 @@
 {
     [super viewDidLoad];
     
-    [self prepareUI];
-    self.title = @"Compliant";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
     [self updateUIForCompliantType:self.type];
 }
 
@@ -40,7 +38,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
     [self presentLoginIfNeeded];
 }
 
@@ -90,39 +87,29 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    
-    self.compliantDescriptionTextView.layer.cornerRadius = 8;
-    self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.compliantDescriptionTextView.layer.borderWidth = 1;
+    self.title = dynamicLocalizedString(@"compliantViewController.title");
+    self.providerText.placeholder = dynamicLocalizedString(@"compliantViewController.textField.providerText");
+    self.compliantTitle.placeholder = dynamicLocalizedString(@"compliantViewController.textField.compliantTitle");
+    self.refNumber.placeholder = dynamicLocalizedString(@"compliantViewController.textField.refNumber");
+    self.descriptionLabel.text = dynamicLocalizedString(@"compliantViewController.descriptionLabel.text");
+    [self.selectImageButton setTitle:dynamicLocalizedString(@"compliantViewController.selectImageButton.title") forState:UIControlStateNormal];
+    [self.compliantButton setTitle:dynamicLocalizedString(@"compliantViewController.compliantButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
+    [super updateColors];
+    
     self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
     self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    
-    [self prepareUI];
+    [AppHelper setStyleForLayer:self.compliantDescriptionTextView.layer];
 }
+
+#pragma mark - Private
 
 - (void)updateUIForCompliantType:(ComplianType)type
 {
@@ -141,26 +128,6 @@
             
         default:
             break;
-    }
-}
-
-- (void)presentLoginIfNeeded
-{
-    if (![NetworkManager sharedManager].isUserLoggined) {
-        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
-        __weak typeof(self) weakSelf = self;
-        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
-            if (![NetworkManager sharedManager].isUserLoggined) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-            }
-        };
-        
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }
 }
 

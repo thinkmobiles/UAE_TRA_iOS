@@ -7,6 +7,6 @@
 //
 #import "InternetSpeedChecker.h"
 
-@interface InternetSpeedTestViewController : UIViewController <InternetSpeedCheckerDelegate>
+@interface InternetSpeedTestViewController : BaseServiceViewController <InternetSpeedCheckerDelegate>
 
 @end

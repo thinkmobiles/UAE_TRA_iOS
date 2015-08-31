@@ -12,28 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *domainNameTextField;
 @property (weak, nonatomic) IBOutlet UITextView *informationTextView;
+@property (weak, nonatomic) IBOutlet UIButton *avaliabilityButton;
+@property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 
 @end
 
 @implementation CheckDomainViewController
-
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self prepareUI];
-    self.title = @"Domain check";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
-}
 
 #pragma mark - IBActions
 
@@ -94,32 +78,19 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
+    self.title = dynamicLocalizedString(@"checkDomainViewController.title");
+    self.domainNameTextField.placeholder = dynamicLocalizedString(@"checkDomainViewController.domainNameTextField");
+    [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
+    [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    [self prepareUI];
+    [super updateColors];
 }
-
 
 @end
