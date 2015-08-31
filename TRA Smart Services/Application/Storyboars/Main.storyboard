@@ -1087,7 +1087,7 @@ a new password will be sent.</string>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
                                                                 <real key="value" value="15"/>
@@ -3631,7 +3631,7 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="s8m-33-967" id="VmM-3q-6Vt"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-Rr-urp" userLabel="Result - UiTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-Rr-urp" userLabel="Result - UiTextView">
                                 <rect key="frame" x="8" y="104" width="584" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

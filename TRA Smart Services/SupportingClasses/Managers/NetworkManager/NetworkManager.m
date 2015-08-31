@@ -266,22 +266,21 @@ void(^PerformFailureRecognition)(AFHTTPRequestOperation * __nonnull operation, N
 
 void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject, ResponseBlock handler) = ^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject, ResponseBlock handler) {
     if (responseObject) {
-        id responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        NSString *response = dynamicLocalizedString(@"api.message.noDataFound");
-        if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
-            response = responseDictionary;
+        id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        NSString *info = dynamicLocalizedString(@"api.message.noDataFound");
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *responseDictionary = value;
+            if ([responseDictionary valueForKey:ResponseDictionarySuccessKey]) {
+                info = [responseDictionary valueForKey:ResponseDictionarySuccessKey];
+            } else if ([responseDictionary valueForKey:@"availableStatus"]) {
+                info = [responseDictionary valueForKey:@"availableStatus"];
+            } else if ([responseDictionary valueForKey:@"urlData"]) {
+                info = [responseDictionary valueForKey:@"urlData"];
+            }
+            handler(info, nil);
+        } else if ([value isKindOfClass:[NSArray class]]){
+            handler(info, nil);
         }
-        
-        NSString *info;
-        if ([response valueForKey:ResponseDictionarySuccessKey]) {
-            info = [response valueForKey:ResponseDictionarySuccessKey];
-        } else if ([response valueForKey:@"availableStatus"]) {
-            info = [response valueForKey:@"availableStatus"];
-        } else if ([response valueForKey:@"urlData"]) {
-            info = [response valueForKey:@"urlData"];
-        }
-        
-        handler(info, nil);
     } else {
         handler(dynamicLocalizedString(@"api.message.noDataFound"), nil);
     }
