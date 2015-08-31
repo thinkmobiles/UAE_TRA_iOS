@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
@@ -30,13 +29,6 @@
 @implementation CheckIMEIViewController
 
 #pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self prepareUI];
-}
 
 - (void)viewDidLayoutSubviews
 {
@@ -92,7 +84,7 @@
 {
     if (self.resultTextField.text.length) {
         [AppHelper showLoader];
-        [self endEditing];
+        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
@@ -120,7 +112,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self endEditing];
+    [self.view endEditing:YES];
     return YES;
 }
 
@@ -134,32 +126,17 @@
 
 - (void)updateColors
 {
+    [super updateColors];
+
     self.resultLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     [self.cameraButton.imageView setTintColor:[[DynamicUIService service] currentApplicationColor]];
     
-    [self prepareUI];
-}
-
-#pragma mark - Private
-
-- (void)prepareUI
-{
     [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
     [AppHelper setStyleForLayer:self.contentView.layer];
-    
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
 }
 
-- (void)endEditing
-{
-    [self.view endEditing:YES];
-}
+#pragma mark - Private
 
 - (void)prepareReaderIfNeeded
 {

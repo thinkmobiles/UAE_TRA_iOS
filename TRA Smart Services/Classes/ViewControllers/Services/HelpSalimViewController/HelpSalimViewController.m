@@ -19,15 +19,6 @@
 
 @implementation HelpSalimViewController
 
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
-
 #pragma mark - IBActions
 
 - (IBAction)reportURlButtonTapped:(id)sender
@@ -85,20 +76,8 @@
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    for (UIView *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
+    [super updateColors];
+    
     [AppHelper setStyleForLayer:self.commentTextView.layer];
     self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
 }

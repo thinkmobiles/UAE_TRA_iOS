@@ -8,4 +8,8 @@
 
 @interface BaseServiceViewController : BaseDynamicUIViewController
 
+- (void)presentLoginIfNeeded;
+
+- (void)updateColors;
+
 @end

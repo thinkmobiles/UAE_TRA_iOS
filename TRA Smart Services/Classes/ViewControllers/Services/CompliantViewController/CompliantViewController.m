@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self updateUIForCompliantType:self.type];
 }
 
@@ -103,24 +102,10 @@
 
 - (void)updateColors
 {
+    [super updateColors];
+    
     self.compliantDescriptionTextView.textColor = [[DynamicUIService service] currentApplicationColor];
     self.compliantDescriptionTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    for (UIView *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    
     [AppHelper setStyleForLayer:self.compliantDescriptionTextView.layer];
 }
 
@@ -143,26 +128,6 @@
             
         default:
             break;
-    }
-}
-
-- (void)presentLoginIfNeeded
-{
-    if (![NetworkManager sharedManager].isUserLoggined) {
-        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
-        __weak typeof(self) weakSelf = self;
-        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
-            if (![NetworkManager sharedManager].isUserLoggined) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-            }
-        };
-        
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:viewController animated:NO completion:nil];
     }
 }
 

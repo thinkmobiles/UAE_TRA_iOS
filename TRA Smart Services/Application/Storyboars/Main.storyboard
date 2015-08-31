@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -730,8 +730,7 @@ a new password will be sent.</string>
                                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="registerButtonPressed:" destination="fi2-it-n8E" eventType="touchUpInside" id="lLE-v0-NoU"/>
-                                                    <segue destination="DFS-gr-7R1" kind="show" id="Z47-c0-pb2"/>
+                                                    <segue destination="DFS-gr-7R1" kind="show" id="FJw-Xs-0Pc"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tra-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-4j-L9P" userLabel="Logo - UIImageView">
@@ -790,7 +789,7 @@ a new password will be sent.</string>
                         <outlet property="logoImageView" destination="Va7-4j-L9P" id="PWs-4J-ld2"/>
                         <outlet property="mainButton" destination="Y05-2b-1sR" id="RNe-yz-sBy"/>
                         <outlet property="passwordTextField" destination="Pl6-tf-1Vn" id="TqV-DY-FXj"/>
-                        <outlet property="registerButton" destination="Aym-JJ-oX2" id="aEr-Kc-sNS"/>
+                        <outlet property="registerButton" destination="Aym-JJ-oX2" id="qBs-gc-jkF"/>
                         <outlet property="scrollView" destination="B7l-er-Z2T" id="5HO-QW-g4U"/>
                         <outlet property="userNameTextField" destination="foW-ja-t6E" id="Psi-rs-N8h"/>
                     </connections>
@@ -2549,6 +2548,7 @@ a new password will be sent.</string>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barcodeView" destination="772-Rq-o7n" id="12l-rQ-aVQ"/>
+                        <outlet property="checkIMEIButton" destination="V3Q-8E-xvT" id="yyY-rR-pER"/>
                         <outlet property="contentView" destination="yzA-9Q-2T6" id="56f-ip-NPS"/>
                         <outlet property="resultLabel" destination="XGa-On-k9Z" id="5ri-oM-dRe"/>
                         <outlet property="resultTextField" destination="wVH-kR-kfR" id="uGk-Ge-ERk"/>

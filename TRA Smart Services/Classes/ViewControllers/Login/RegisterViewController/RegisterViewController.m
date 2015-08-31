@@ -42,6 +42,9 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 @property (strong, nonatomic) NSArray *pickerDataSource;
 @property (assign, nonatomic) NSInteger selectedState;
 
+@property (strong, nonatomic) NSArray *pickerGenreDataSource;
+@property (strong, nonatomic) UIPickerView *genrePicker;
+
 @end
 
 @implementation RegisterViewController
@@ -56,6 +59,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     [self prepareLogoImageView];
     [self updateColors];
     [self prepareDataSource];
+    [self configureGenreTextFieldInputView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -109,6 +113,30 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 {
     self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height;
     return YES;
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.pickerGenreDataSource.count;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return (NSString *)self.pickerGenreDataSource[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.genderTextField.text = self.pickerGenreDataSource[row];
 }
 
 #pragma mark - UITableViewDataSource
@@ -285,7 +313,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 - (void)localizeUI
 {
     [self prepareDataSource];
-//    [self.statePicker reloadAllComponents];
+    [self preparePickerDataSource];
     
     self.title = dynamicLocalizedString(@"register.title");
     self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
@@ -314,6 +342,16 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     self.view.backgroundColor = [[DynamicUIService service] currentApplicationColor];
 }
 
+- (void)preparePickerDataSource
+{
+    self.pickerGenreDataSource = @[
+                                   dynamicLocalizedString(@"login.picker.genre.undefined"),
+                                   dynamicLocalizedString(@"login.picker.genre.male"),
+                                   dynamicLocalizedString(@"login.picker.genre.female")
+                                   ];
+    [self.genrePicker reloadAllComponents];
+}
+
 - (void)prepareNavigationBar
 {
     self.title = dynamicLocalizedString(@"register.title");
@@ -336,6 +374,14 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
                               dynamicLocalizedString(@"state.Quwain")
                               ];
     self.selectedState = -1;
+}
+
+- (void)configureGenreTextFieldInputView
+{
+    self.genrePicker = [[UIPickerView alloc] init];
+    self.genrePicker.delegate = self;
+    self.genrePicker.dataSource = self;
+    self.genderTextField.inputView = self.genrePicker;
 }
 
 @end

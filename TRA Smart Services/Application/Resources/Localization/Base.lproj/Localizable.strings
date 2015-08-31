@@ -65,6 +65,9 @@
 "login.button.forgotPassword" = "login.button.forgotPassword";
 "login.button.registerButton" = "login.button.registerButton";
 "login.restore_password.message" = "login.restore_password.message";
+"login.picker.genre.male" = "login.picker.genre.male";
+"login.picker.genre.female" = "login.picker.genre.female";
+"login.picker.genre.undefined" = "login.picker.genre.undefined";
 
 //RegisterViewController
 

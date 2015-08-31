@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface CheckDomainViewController : BaseDynamicUIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface CheckDomainViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

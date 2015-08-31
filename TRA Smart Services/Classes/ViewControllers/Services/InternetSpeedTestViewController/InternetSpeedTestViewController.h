@@ -7,6 +7,6 @@
 //
 #import "InternetSpeedChecker.h"
 
-@interface InternetSpeedTestViewController : BaseDynamicUIViewController <InternetSpeedCheckerDelegate>
+@interface InternetSpeedTestViewController : BaseServiceViewController <InternetSpeedCheckerDelegate>
 
 @end

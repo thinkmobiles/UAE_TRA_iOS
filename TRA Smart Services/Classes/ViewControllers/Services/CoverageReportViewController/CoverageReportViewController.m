@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self prepareHUD];
 }
 
@@ -182,20 +181,8 @@
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    for (UIView *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
+    [super updateColors];
+    
     self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
     self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
 }

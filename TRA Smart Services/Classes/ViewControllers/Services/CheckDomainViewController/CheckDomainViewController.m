@@ -19,15 +19,6 @@
 
 @implementation CheckDomainViewController
 
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
-
 #pragma mark - IBActions
 
 - (IBAction)avaliabilityButtonTapped:(id)sender
@@ -99,16 +90,7 @@
 
 - (void)updateColors
 {
-    for (UIView *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-        if (![subView isKindOfClass:[UITextView class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-        }
-    }
+    [super updateColors];
 }
 
 @end

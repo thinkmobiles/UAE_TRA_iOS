@@ -65,6 +65,9 @@
 "login.button.forgotPassword" = "نسيت كلمة المرور";
 "login.button.registerButton" = "تسجيل";
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.picker.genre.male" = "Male";
+"login.picker.genre.female" = "Female";
+"login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
 
