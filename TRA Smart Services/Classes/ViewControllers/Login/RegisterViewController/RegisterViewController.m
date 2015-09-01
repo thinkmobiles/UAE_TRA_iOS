@@ -9,8 +9,6 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const PickerExpandedHeightValue = 150.f;
-
 @interface RegisterViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -31,19 +29,17 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 @property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UIButton *selectStateButton;
+@property (weak, nonatomic) IBOutlet OffsetTextField *selectStateTextField;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 
-@property (strong, nonatomic) NSArray *pickerDataSource;
 @property (assign, nonatomic) NSInteger selectedState;
-
 @property (strong, nonatomic) NSArray *pickerGenreDataSource;
+@property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
 @property (strong, nonatomic) UIPickerView *genrePicker;
+@property (strong, nonatomic) UIPickerView *selectStatePicker;
 
 @end
 
@@ -55,11 +51,13 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 {
     [super viewWillAppear:animated];
     
+    self.selectedState = -1;
     [self prepareNotification];
     [self prepareLogoImageView];
     [self updateColors];
-    [self prepareDataSource];
-    [self configureGenreTextFieldInputView];
+    
+    [self configureSelectStateTextFieldInputView];
+    [self configureGenderTextFieldInputView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -124,76 +122,42 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return self.pickerGenreDataSource.count;
+    NSInteger pickerRowsInComponent = 0;
+    if (pickerView == self.genrePicker) {
+        pickerRowsInComponent = self.pickerGenreDataSource.count;
+    }
+    if (pickerView == self.selectStatePicker) {
+        pickerRowsInComponent = self.pickerSelectStateDataSource.count;
+    }
+    return pickerRowsInComponent;
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return (NSString *)self.pickerGenreDataSource[row];
+    NSString *pickerTitle = @"";
+    if (pickerView == self.genrePicker) {
+        pickerTitle = (NSString *)self.pickerGenreDataSource[row];
+    }
+    if (pickerView == self.selectStatePicker) {
+        pickerTitle = (NSString *)self.pickerSelectStateDataSource[row];
+    }
+    return pickerTitle;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.genderTextField.text = self.pickerGenreDataSource[row];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.pickerDataSource.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell" forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"pickerCell"];
+    if (pickerView == self.genrePicker) {
+         self.genderTextField.text = self.pickerGenreDataSource[row];
     }
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.selectedState = indexPath.row;
-    [self.selectStateButton setTitle:self.pickerDataSource[indexPath.row] forState:UIControlStateNormal];
-    [self hidePickerTable];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
-    cell.textLabel.text = self.pickerDataSource[indexPath.row];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (pickerView == self.selectStatePicker) {
+        self.selectStateTextField.text = self.pickerSelectStateDataSource[row];
+        self.selectedState = row;
+    }
 }
 
 #pragma mark - IBActions
-
-- (IBAction)selectStateButtonTapped:(id)sender
-{
-    if (self.tableView.hidden) {
-        [self.view layoutIfNeeded];
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:0.25 animations:^{
-            weakSelf.tableView.hidden = NO;
-            weakSelf.tableViewHeightConstraint.constant = PickerExpandedHeightValue;
-            [weakSelf.view layoutIfNeeded];
-        }];
-    } else {
-        [self hidePickerTable];
-    }
-}
 
 - (IBAction)registerButtonPress:(id)sender
 {
@@ -201,7 +165,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
+    if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
             return;
@@ -263,19 +227,6 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 
 #pragma mark - Private
 
-- (void)hidePickerTable
-{
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.tableViewHeightConstraint.constant = 0;
-        [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        weakSelf.tableView.hidden = YES;
-    }];
-}
-
-
 - (BOOL)isInputParametersInvalid
 {
     if (![self.userNameTextField.text isValidUserName]) {
@@ -312,7 +263,6 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 
 - (void)localizeUI
 {
-    [self prepareDataSource];
     [self preparePickerDataSource];
     
     self.title = dynamicLocalizedString(@"register.title");
@@ -328,9 +278,9 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     self.countryTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.country");
     self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
     self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
+    self.selectStateTextField.placeholder = dynamicLocalizedString(@"state.SelectState");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
-    [self.selectStateButton setTitle:dynamicLocalizedString(@"state.SelectState") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
@@ -349,6 +299,16 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
                                    dynamicLocalizedString(@"login.picker.genre.male"),
                                    dynamicLocalizedString(@"login.picker.genre.female")
                                    ];
+    self.pickerSelectStateDataSource = @[
+                                         dynamicLocalizedString(@"state.Abu.Dhabi"),
+                                         dynamicLocalizedString(@"state.Ajman"),
+                                         dynamicLocalizedString(@"state.Dubai"),
+                                         dynamicLocalizedString(@"state.Fujairah"),
+                                         dynamicLocalizedString(@"state.Ras"),
+                                         dynamicLocalizedString(@"state.Sharjan"),
+                                         dynamicLocalizedString(@"state.Quwain")
+                                         ];
+    [self.selectStatePicker reloadAllComponents];
     [self.genrePicker reloadAllComponents];
 }
 
@@ -362,26 +322,21 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     self.heightLogoImageViewConstraint.constant = 252.f - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;  //252 - temp while no design provided
 }
 
-- (void)prepareDataSource
-{
-    self.pickerDataSource = @[
-                              dynamicLocalizedString(@"state.Abu.Dhabi"),
-                              dynamicLocalizedString(@"state.Ajman"),
-                              dynamicLocalizedString(@"state.Dubai"),
-                              dynamicLocalizedString(@"state.Fujairah"),
-                              dynamicLocalizedString(@"state.Ras"),
-                              dynamicLocalizedString(@"state.Sharjan"),
-                              dynamicLocalizedString(@"state.Quwain")
-                              ];
-    self.selectedState = -1;
-}
-
-- (void)configureGenreTextFieldInputView
+- (void)configureGenderTextFieldInputView
 {
     self.genrePicker = [[UIPickerView alloc] init];
     self.genrePicker.delegate = self;
     self.genrePicker.dataSource = self;
     self.genderTextField.inputView = self.genrePicker;
 }
+
+- (void)configureSelectStateTextFieldInputView
+{
+    self.selectStatePicker = [[UIPickerView alloc] init];
+    self.selectStatePicker.delegate = self;
+    self.selectStatePicker.dataSource = self;
+    self.selectStateTextField.inputView = self.selectStatePicker;
+}
+
 
 @end
