@@ -80,7 +80,7 @@
 "register.button.login" = "Login";
 "register.placeHolderText.confirmPassword" = "Confirm password";
 "register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID №";
+"register.placeHolderText.emirateID" = "Emirates ID";
 "register.placeHolderText.lastName" = "Last Name";
 "register.placeHolderText.address" = "Address";
 "register.placeHolderText.landline" = "Landline";
@@ -170,7 +170,7 @@
 
 //InfoHubViewController
 
-"infoHub.title" = "Info Hub;
+"infoHub.title" = "Info Hub";
 "announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
 "transactions.label.text" = "Transactions";
@@ -242,9 +242,9 @@
 //CheckDomainViewController
 
 "checkDomainViewController.title" = "Domain check";
-"checkDomainViewController.domainNameTextField" = "Domain name (i.e. tra.gov.ae)";
-"checkDomainViewController.avaliabilityButton.title" = "Avaliability";
-"checkDomainViewController.whoISButton.title" = "Who is?";
+"checkDomainViewController.domainNameTextField" = "Insert Domain name here";
+"checkDomainViewController.avaliabilityButton.title" = "AVALIABILITY";
+"checkDomainViewController.whoISButton.title" = "WHO IS?";
 
 //CheckIMEIViewController
 

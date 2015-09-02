@@ -65,7 +65,7 @@
             [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
         } else if ([subView isKindOfClass:[UITextField class]]) {
             [AppHelper setStyleForLayer:subView.layer];
-            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
+//            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
         }
     }
 }

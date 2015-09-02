@@ -251,7 +251,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)setStyleForLayer:(CALayer *)layer
 {
-    layer.cornerRadius = 8;
+    layer.cornerRadius = 3;
     layer.borderWidth = 1;
     layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }

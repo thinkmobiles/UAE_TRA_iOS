@@ -40,6 +40,8 @@
     [self localizeUI];
     [self updateColors];
     
+    [self setNeedsUpdateFont];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -107,10 +109,8 @@
 - (void)updateFontSizeForView:(UIView *)view
 {
     if ([view respondsToSelector:@selector(setFont:)] && view.tag != DeclineTagForFontUpdate) {
-        
         CGFloat smallMultiplier = 0.9f;
         CGFloat bigMultiplier = 1.1f;
-        
         CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
         
         if ([DynamicUIService service].fontSize) {
@@ -118,12 +118,13 @@
             NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
             UIFont *font = [UIFont fontWithName:fontName size:fontSize];
 
-            if (![fontName containsString:LatoFontPrefix]) {
-                font = [UIFont latoRegularWithSize:fontSize];
-            }
             if ([DynamicUIService service].language == LanguageTypeArabic) {
-                if (![fontName containsString:DroidFontPrefix]) {
-                    font = [UIFont droidKufiRegularFontForSize:fontSize];
+                if (![font.fontName containsString:DroidFontPrefix]) {
+                    font = [UIFont droidKufiRegularFontForSize:currentFontSize];
+                }
+            } else {
+                if (![font.fontName containsString:LatoFontPrefix]) {
+                    font = [UIFont latoRegularWithSize:currentFontSize];
                 }
             }
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -136,25 +137,21 @@
 - (void)updateFontForView:(UIView *)view
 {
     if ([view respondsToSelector:@selector(setFont:)] && view.tag != DeclineTagForFontUpdate) {
-        
         CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
+        UIFont *font = (UIFont *)[view valueForKey:@"font"];
         
-        if ([DynamicUIService service].fontSize) {
-            NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
-            
-            UIFont *font = [UIFont fontWithName:fontName size:currentFontSize];
-            if (![fontName containsString:LatoFontPrefix]) {
+        if ([DynamicUIService service].language == LanguageTypeArabic) {
+            if (![font.fontName containsString:DroidFontPrefix]) {
+                font = [UIFont droidKufiRegularFontForSize:currentFontSize];
+            }
+        } else {
+            if (![font.fontName containsString:LatoFontPrefix]) {
                 font = [UIFont latoRegularWithSize:currentFontSize];
             }
-
-            if ([DynamicUIService service].language == LanguageTypeArabic) {
-                if (![fontName containsString:DroidFontPrefix]) {
-                    font = [UIFont droidKufiRegularFontForSize:currentFontSize];
-                }
-            }
-            
-            [view setValue:font forKey:@"font"];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [view setValue:font forKey:@"font"];
+        });
     }
 }
 

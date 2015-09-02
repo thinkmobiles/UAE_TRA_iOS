@@ -57,6 +57,10 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -798,6 +802,24 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="1928" y="-2081"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="qFP-cL-M9C">
+            <objects>
+                <viewController id="Fc5-6G-4AA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WgY-EC-c2e"/>
+                        <viewControllerLayoutGuide type="bottom" id="zju-kg-KiM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cAj-Ua-J7L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owD-BK-MJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1928" y="-1324"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="MrG-Im-pdn">
             <objects>
@@ -1392,7 +1414,11 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdg-PU-pvo" userLabel="Avaliability - Button">
-                                <rect key="frame" x="150" y="66" width="300" height="30"/>
+                                <rect key="frame" x="16" y="72" width="277" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TVd-3X-R4U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <state key="normal" title="Avaliability">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1411,8 +1437,35 @@ a new password will be sent.</string>
                                     <action selector="avaliabilityButtonTapped:" destination="dey-3G-9KT" eventType="touchUpInside" id="ENN-Oh-CoH"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io0-nF-Zay" userLabel="Information - UITextView">
+                                <rect key="frame" x="16" y="291" width="568" height="188"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain name(i.e. tra.gov.ae)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField">
+                                <rect key="frame" x="16" y="16" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oOv-GM-CrL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
+                                </connections>
+                            </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-ye-h72" userLabel="DomainAvaliability - UILabel">
+                                <rect key="frame" x="16" y="128" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pVL-IL-TbU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-mA-hdv" userLabel="WhoIS - Button">
-                                <rect key="frame" x="150" y="104" width="300" height="30"/>
+                                <rect key="frame" x="307" y="72" width="277" height="40"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <state key="normal" title="Who is?">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1420,43 +1473,30 @@ a new password will be sent.</string>
                                     <action selector="whoIsButtonTapped:" destination="dey-3G-9KT" eventType="touchUpInside" id="Jgt-M3-tVY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io0-nF-Zay" userLabel="Information - UITextView">
-                                <rect key="frame" x="16" y="142" width="568" height="337"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Domain name(i.e. tra.gov.ae)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField">
-                                <rect key="frame" x="16" y="16" width="568" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="oOv-GM-CrL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rwy-ye-h72" firstAttribute="top" secondItem="7NQ-mA-hdv" secondAttribute="bottom" constant="16" id="3Rp-VR-aE7"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="fGv-Ef-FpK" secondAttribute="bottom" constant="16" id="5cP-hS-t3r"/>
-                            <constraint firstItem="7NQ-mA-hdv" firstAttribute="width" secondItem="Qdg-PU-pvo" secondAttribute="width" id="7qc-v7-YjM"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="7rx-01-cKy"/>
-                            <constraint firstItem="7NQ-mA-hdv" firstAttribute="top" secondItem="Qdg-PU-pvo" secondAttribute="bottom" constant="8" id="BpD-2b-uGg"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="9Ek-1z-ZkY"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="width" secondItem="7NQ-mA-hdv" secondAttribute="width" id="A6d-KM-M8T"/>
+                            <constraint firstItem="rwy-ye-h72" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="AzX-lm-cHu"/>
                             <constraint firstAttribute="trailing" secondItem="Io0-nF-Zay" secondAttribute="trailing" constant="16" id="DPH-dN-TPj"/>
                             <constraint firstAttribute="trailing" secondItem="4ku-jV-87Q" secondAttribute="trailing" constant="16" id="EBI-JX-1gR"/>
                             <constraint firstItem="Io0-nF-Zay" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="I83-pE-mF8"/>
-                            <constraint firstItem="7NQ-mA-hdv" firstAttribute="centerX" secondItem="IiL-L5-7N3" secondAttribute="centerX" id="Kdb-qI-XQ5"/>
-                            <constraint firstItem="Io0-nF-Zay" firstAttribute="top" secondItem="7NQ-mA-hdv" secondAttribute="bottom" constant="8" id="Ow5-BM-jfb"/>
-                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="20" id="Prh-IO-2RJ"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="OZa-xz-yM1"/>
+                            <constraint firstAttribute="trailing" secondItem="rwy-ye-h72" secondAttribute="trailing" constant="16" id="PRA-Pa-BW9"/>
                             <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="Io0-nF-Zay" secondAttribute="bottom" constant="8" id="apl-IX-LVZ"/>
-                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="width" secondItem="IiL-L5-7N3" secondAttribute="width" multiplier="0.5" id="d1v-Sm-EoW"/>
-                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerX" secondItem="IiL-L5-7N3" secondAttribute="centerX" id="wrH-Me-cSu"/>
+                            <constraint firstAttribute="trailing" secondItem="7NQ-mA-hdv" secondAttribute="trailing" constant="16" id="eZI-k3-PeA"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="height" secondItem="7NQ-mA-hdv" secondAttribute="height" id="kNY-vo-Ca2"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerY" secondItem="7NQ-mA-hdv" secondAttribute="centerY" id="oip-6Q-OlT"/>
+                            <constraint firstItem="7NQ-mA-hdv" firstAttribute="leading" secondItem="Qdg-PU-pvo" secondAttribute="trailing" constant="15" id="uC7-H8-p6T"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avaliabilityButton" destination="Qdg-PU-pvo" id="uLC-Zn-1Uq"/>
+                        <outlet property="domainAvaliabilityLabel" destination="rwy-ye-h72" id="LgD-IX-xtr"/>
                         <outlet property="domainNameTextField" destination="4ku-jV-87Q" id="rfk-84-lEH"/>
                         <outlet property="informationTextView" destination="Io0-nF-Zay" id="3co-TF-rNQ"/>
                         <outlet property="whoISButton" destination="7NQ-mA-hdv" id="nkf-US-jIz"/>
@@ -1464,7 +1504,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9J-C0-Our" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="-1324"/>
+            <point key="canvasLocation" x="1123" y="-1324"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="OK6-Jb-1Mm">

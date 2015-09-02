@@ -239,7 +239,7 @@
 //CheckDomainViewController
 
 "checkDomainViewController.title" = "التحقق من نطاق";
-"checkDomainViewController.domainNameTextField" = "اسم النطاق (i.e. tra.gov.ae)";
+"checkDomainViewController.domainNameTextField" = "اسم النطاق";
 "checkDomainViewController.avaliabilityButton.title" = "تحقق من توفر النطاق";
 "checkDomainViewController.whoISButton.title" = "تفاصيل النطاق";
 
