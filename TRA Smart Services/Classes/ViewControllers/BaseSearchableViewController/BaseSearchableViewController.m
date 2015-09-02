@@ -130,6 +130,7 @@
 - (void)localizeUI
 {
     //dummy
+    self.searchanbeleViewControllerTitle.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
 }
 
 - (void)updateColors

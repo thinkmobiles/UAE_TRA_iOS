@@ -202,6 +202,8 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)localizeUI
 {
+    [super localizeUI];
+    
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
     self.announcementsLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];

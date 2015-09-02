@@ -39,7 +39,6 @@
     
     [self localizeUI];
     [self updateColors];
-    
     [self setNeedsUpdateFont];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];

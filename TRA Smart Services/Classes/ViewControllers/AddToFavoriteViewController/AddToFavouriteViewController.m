@@ -189,6 +189,8 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 - (void)localizeUI
 {
+    [super localizeUI];
+
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
 }
 
