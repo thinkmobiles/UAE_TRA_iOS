@@ -803,22 +803,22 @@ a new password will be sent.</string>
             <point key="canvasLocation" x="1928" y="-2081"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="qFP-cL-M9C">
+        <scene sceneID="VTP-1x-Vdx">
             <objects>
-                <viewController id="Fc5-6G-4AA" sceneMemberID="viewController">
+                <viewController id="eXa-ks-gHM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WgY-EC-c2e"/>
-                        <viewControllerLayoutGuide type="bottom" id="zju-kg-KiM"/>
+                        <viewControllerLayoutGuide type="top" id="bJl-cD-Mqc"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3q-Vl-Q4z"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cAj-Ua-J7L">
+                    <view key="view" contentMode="scaleToFill" id="Crr-qF-Rwk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="owD-BK-MJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJ4-aE-bOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="-1324"/>
+            <point key="canvasLocation" x="309" y="-1324"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="MrG-Im-pdn">
@@ -1504,7 +1504,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9J-C0-Our" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="-1324"/>
+            <point key="canvasLocation" x="-361" y="-1324"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="OK6-Jb-1Mm">
