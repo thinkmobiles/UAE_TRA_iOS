@@ -18,27 +18,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
 @property (weak, nonatomic) IBOutlet OffsetTextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *genderTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *confirmPasswordTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emiratesIDTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *addressTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *landlineTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *selectStateTextField;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaseRegisterConteinerUIView;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 
 @property (assign, nonatomic) NSInteger selectedState;
-@property (strong, nonatomic) NSArray *pickerGenreDataSource;
 @property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
-@property (strong, nonatomic) UIPickerView *genrePicker;
 @property (strong, nonatomic) UIPickerView *selectStatePicker;
 
 @end
@@ -53,11 +47,10 @@
     
     self.selectedState = -1;
     [self prepareNotification];
-    [self prepareLogoImageView];
+    [self prepareRegisterConteinerUIView];
     [self updateColors];
     
     [self configureSelectStateTextFieldInputView];
-    [self configureGenderTextFieldInputView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -123,9 +116,6 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     NSInteger pickerRowsInComponent = 0;
-    if (pickerView == self.genrePicker) {
-        pickerRowsInComponent = self.pickerGenreDataSource.count;
-    }
     if (pickerView == self.selectStatePicker) {
         pickerRowsInComponent = self.pickerSelectStateDataSource.count;
     }
@@ -137,9 +127,6 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *pickerTitle = @"";
-    if (pickerView == self.genrePicker) {
-        pickerTitle = (NSString *)self.pickerGenreDataSource[row];
-    }
     if (pickerView == self.selectStatePicker) {
         pickerTitle = (NSString *)self.pickerSelectStateDataSource[row];
     }
@@ -148,12 +135,26 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (pickerView == self.genrePicker) {
-         self.genderTextField.text = self.pickerGenreDataSource[row];
-    }
     if (pickerView == self.selectStatePicker) {
         self.selectStateTextField.text = self.pickerSelectStateDataSource[row];
         self.selectedState = row;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y >= 0) {
+        if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
+            CGRect logoImageFrame = self.logoImageView.frame;
+            logoImageFrame.origin.y = - scrollView.contentOffset.y;
+            self.logoImageView.frame = logoImageFrame;
+        }
+    } else {
+        CGRect logoImageFrame = self.logoImageView.frame;
+        logoImageFrame.origin.y = 0;
+        self.logoImageView.frame = logoImageFrame;
     }
 }
 
@@ -165,7 +166,7 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
+    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
             return;
@@ -267,15 +268,11 @@
     
     self.title = dynamicLocalizedString(@"register.title");
     self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
-    self.genderTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.gender");
     self.mobileTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.phone");
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
     self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
     self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
-    self.addressTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.address");
-    self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");
-    self.countryTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.country");
     self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
     self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
     self.selectStateTextField.placeholder = dynamicLocalizedString(@"state.SelectState");
@@ -289,16 +286,10 @@
     [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.view.backgroundColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 - (void)preparePickerDataSource
 {
-    self.pickerGenreDataSource = @[
-                                   dynamicLocalizedString(@"login.picker.genre.undefined"),
-                                   dynamicLocalizedString(@"login.picker.genre.male"),
-                                   dynamicLocalizedString(@"login.picker.genre.female")
-                                   ];
     self.pickerSelectStateDataSource = @[
                                          dynamicLocalizedString(@"state.Abu.Dhabi"),
                                          dynamicLocalizedString(@"state.Ajman"),
@@ -309,7 +300,6 @@
                                          dynamicLocalizedString(@"state.Quwain")
                                          ];
     [self.selectStatePicker reloadAllComponents];
-    [self.genrePicker reloadAllComponents];
 }
 
 - (void)prepareNavigationBar
@@ -317,17 +307,9 @@
     self.title = dynamicLocalizedString(@"register.title");
 }
 
-- (void)prepareLogoImageView
+- (void)prepareRegisterConteinerUIView
 {
-    self.heightLogoImageViewConstraint.constant = 252.f - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;  //252 - temp while no design provided
-}
-
-- (void)configureGenderTextFieldInputView
-{
-    self.genrePicker = [[UIPickerView alloc] init];
-    self.genrePicker.delegate = self;
-    self.genrePicker.dataSource = self;
-    self.genderTextField.inputView = self.genrePicker;
+    self.verticalSpaseRegisterConteinerUIView.constant = self.logoImageView.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;
 }
 
 - (void)configureSelectStateTextFieldInputView
