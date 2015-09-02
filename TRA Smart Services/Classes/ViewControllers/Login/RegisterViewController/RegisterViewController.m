@@ -79,22 +79,12 @@
         CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - 216.f - 110.f;
         
         if (offsetTextField  > lineEventScroll) {
-            __weak typeof(self) weakSelf = self;
-            [self.view layoutIfNeeded];
-            [UIView animateWithDuration:0.25 animations:^{
-                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f)];
-                [weakSelf.view layoutIfNeeded];
-            }];
+            [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f) animated:YES];
         }
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
         CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
-        __weak typeof(self) weakSelf = self;
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.5 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
-            [weakSelf.view layoutIfNeeded];
-        }];
+        [self.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
         return YES;
     }
     return NO;
@@ -217,12 +207,8 @@
     CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.logoImageView.frame.size.height - self.scrollView.contentOffset.y - keyboardHeight;
         CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - keyboardHeight - 110.f;
         if (lineEventScroll < self.offSetTextFildY + self.logoImageView.frame.size.height - 50.f) {
-        __weak typeof(self) weakSelf = self;
-        [weakSelf.view layoutIfNeeded];
-        [UIView animateWithDuration:0.25 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 50.f)];
-            [weakSelf.view layoutIfNeeded];
-        }];
+        [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 50.f) animated:YES];
+
     }
 }
 
