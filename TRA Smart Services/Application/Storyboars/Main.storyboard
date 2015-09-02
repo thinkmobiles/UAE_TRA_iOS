@@ -1413,8 +1413,46 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfd-3M-8p2" userLabel="TopHolder - UiView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="184"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRc-3q-Ont" userLabel="Service View - UIView" customClass="ServiceView">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="nqQ-F7-fb8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aRc-3q-Ont" secondAttribute="bottom" id="SVn-n6-t1x"/>
+                                    <constraint firstAttribute="trailing" secondItem="aRc-3q-Ont" secondAttribute="trailing" id="Trq-v1-wqe"/>
+                                    <constraint firstItem="aRc-3q-Ont" firstAttribute="leading" secondItem="yfd-3M-8p2" secondAttribute="leading" id="dIP-VT-vCh"/>
+                                    <constraint firstAttribute="height" constant="184" id="e9R-Im-KLz"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trimmedBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5Tn-dv-Oy0" userLabel="Background - ImageView">
+                                <rect key="frame" x="0.0" y="184" width="600" height="303"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain name(i.e. tra.gov.ae)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField" customClass="LeftInsetTextField">
+                                <rect key="frame" x="16" y="200" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oOv-GM-CrL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdg-PU-pvo" userLabel="Avaliability - Button">
-                                <rect key="frame" x="16" y="72" width="277" height="40"/>
+                                <rect key="frame" x="16" y="256" width="277" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TVd-3X-R4U"/>
                                 </constraints>
@@ -1437,34 +1475,8 @@ a new password will be sent.</string>
                                     <action selector="avaliabilityButtonTapped:" destination="dey-3G-9KT" eventType="touchUpInside" id="ENN-Oh-CoH"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io0-nF-Zay" userLabel="Information - UITextView">
-                                <rect key="frame" x="16" y="291" width="568" height="188"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain name(i.e. tra.gov.ae)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField">
-                                <rect key="frame" x="16" y="16" width="568" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="oOv-GM-CrL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
-                                </connections>
-                            </textField>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-ye-h72" userLabel="DomainAvaliability - UILabel">
-                                <rect key="frame" x="16" y="128" width="568" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pVL-IL-TbU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-mA-hdv" userLabel="WhoIS - Button">
-                                <rect key="frame" x="307" y="72" width="277" height="40"/>
+                                <rect key="frame" x="307" y="256" width="277" height="40"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <state key="normal" title="Who is?">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1473,32 +1485,67 @@ a new password will be sent.</string>
                                     <action selector="whoIsButtonTapped:" destination="dey-3G-9KT" eventType="touchUpInside" id="Jgt-M3-tVY"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-ye-h72" userLabel="DomainAvaliability - UILabel">
+                                <rect key="frame" x="16" y="256" width="568" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pVL-IL-TbU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JO-ml-ohe" userLabel="Domain data - UIScrollView">
+                                <rect key="frame" x="0.0" y="184" width="600" height="178"/>
+                            </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-Ma-dXQ" userLabel="Rating View - UIView" customClass="RatingView">
+                                <rect key="frame" x="188" y="362" width="225" height="125"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="Dux-aq-LqT"/>
+                                    <constraint firstAttribute="height" constant="125" id="aJb-qn-Fj8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rwy-ye-h72" firstAttribute="top" secondItem="7NQ-mA-hdv" secondAttribute="bottom" constant="16" id="3Rp-VR-aE7"/>
-                            <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="fGv-Ef-FpK" secondAttribute="bottom" constant="16" id="5cP-hS-t3r"/>
+                            <constraint firstAttribute="trailing" secondItem="4JO-ml-ohe" secondAttribute="trailing" id="0iC-Da-zgi"/>
+                            <constraint firstAttribute="centerX" secondItem="mL5-Ma-dXQ" secondAttribute="centerX" id="319-YR-Zgp"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="7rx-01-cKy"/>
+                            <constraint firstItem="4JO-ml-ohe" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="8Z7-6c-6XQ"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="9Ek-1z-ZkY"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="width" secondItem="7NQ-mA-hdv" secondAttribute="width" id="A6d-KM-M8T"/>
                             <constraint firstItem="rwy-ye-h72" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="AzX-lm-cHu"/>
-                            <constraint firstAttribute="trailing" secondItem="Io0-nF-Zay" secondAttribute="trailing" constant="16" id="DPH-dN-TPj"/>
                             <constraint firstAttribute="trailing" secondItem="4ku-jV-87Q" secondAttribute="trailing" constant="16" id="EBI-JX-1gR"/>
-                            <constraint firstItem="Io0-nF-Zay" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="I83-pE-mF8"/>
-                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="OZa-xz-yM1"/>
+                            <constraint firstItem="yfd-3M-8p2" firstAttribute="top" secondItem="IiL-L5-7N3" secondAttribute="top" id="HSF-36-Y1o"/>
+                            <constraint firstItem="yfd-3M-8p2" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="Hdw-sC-ajM"/>
+                            <constraint firstAttribute="trailing" secondItem="5Tn-dv-Oy0" secondAttribute="trailing" id="Oeh-B9-qDi"/>
                             <constraint firstAttribute="trailing" secondItem="rwy-ye-h72" secondAttribute="trailing" constant="16" id="PRA-Pa-BW9"/>
-                            <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="Io0-nF-Zay" secondAttribute="bottom" constant="8" id="apl-IX-LVZ"/>
+                            <constraint firstAttribute="trailing" secondItem="yfd-3M-8p2" secondAttribute="trailing" id="SQU-2P-tC8"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="YFY-Bg-kM4"/>
                             <constraint firstAttribute="trailing" secondItem="7NQ-mA-hdv" secondAttribute="trailing" constant="16" id="eZI-k3-PeA"/>
+                            <constraint firstItem="4JO-ml-ohe" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="iIX-ue-xvO"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="height" secondItem="7NQ-mA-hdv" secondAttribute="height" id="kNY-vo-Ca2"/>
+                            <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" constant="16" id="m0n-4a-gnN"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerY" secondItem="7NQ-mA-hdv" secondAttribute="centerY" id="oip-6Q-OlT"/>
+                            <constraint firstItem="5Tn-dv-Oy0" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="oqF-TX-Kdu"/>
+                            <constraint firstItem="mL5-Ma-dXQ" firstAttribute="top" secondItem="4JO-ml-ohe" secondAttribute="bottom" id="q1o-n0-Ahv"/>
+                            <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="mL5-Ma-dXQ" secondAttribute="bottom" id="swZ-9e-8vS"/>
+                            <constraint firstItem="5Tn-dv-Oy0" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="tGm-wB-ewM"/>
                             <constraint firstItem="7NQ-mA-hdv" firstAttribute="leading" secondItem="Qdg-PU-pvo" secondAttribute="trailing" constant="15" id="uC7-H8-p6T"/>
+                            <constraint firstItem="rwy-ye-h72" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="ynv-ja-w0H"/>
+                            <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="5Tn-dv-Oy0" secondAttribute="bottom" id="zN5-yo-6iG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avaliabilityButton" destination="Qdg-PU-pvo" id="uLC-Zn-1Uq"/>
+                        <outlet property="backgroundImageView" destination="5Tn-dv-Oy0" id="eMX-Ju-f2O"/>
                         <outlet property="domainAvaliabilityLabel" destination="rwy-ye-h72" id="LgD-IX-xtr"/>
+                        <outlet property="domainDataScrollView" destination="4JO-ml-ohe" id="j7q-Da-faM"/>
                         <outlet property="domainNameTextField" destination="4ku-jV-87Q" id="rfk-84-lEH"/>
-                        <outlet property="informationTextView" destination="Io0-nF-Zay" id="3co-TF-rNQ"/>
+                        <outlet property="ratingView" destination="mL5-Ma-dXQ" id="KCt-yv-2bL"/>
+                        <outlet property="serviceView" destination="aRc-3q-Ont" id="4V0-uo-OYE"/>
+                        <outlet property="topHolderView" destination="yfd-3M-8p2" id="X5r-fY-10Z"/>
                         <outlet property="whoISButton" destination="7NQ-mA-hdv" id="nkf-US-jIz"/>
                     </connections>
                 </viewController>
@@ -3772,6 +3819,7 @@ a new password will be sent.</string>
         <image name="res_polygons" width="320" height="375"/>
         <image name="resize11" width="16" height="16"/>
         <image name="tra-logo" width="205" height="95"/>
+        <image name="trimmedBackground" width="320" height="335"/>
         <image name="user146" width="16" height="16"/>
         <image name="web38" width="16" height="16"/>
     </resources>

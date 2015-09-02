@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface ServiceView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *serviceName;

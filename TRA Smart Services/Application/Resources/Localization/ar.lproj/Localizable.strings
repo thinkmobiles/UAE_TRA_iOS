@@ -242,6 +242,8 @@
 "checkDomainViewController.domainNameTextField" = "اسم النطاق";
 "checkDomainViewController.avaliabilityButton.title" = "تحقق من توفر النطاق";
 "checkDomainViewController.whoISButton.title" = "تفاصيل النطاق";
+"checkDomainViewController.domainTitleForView" = "Domain Check Service";
+"checkDomainViewController.chooseRating" = "Choose Rating";
 
 //CheckIMEIViewController
 

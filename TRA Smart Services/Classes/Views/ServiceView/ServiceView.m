@@ -18,7 +18,7 @@
     if (self) {
         NSArray *nibsArray = [[NSBundle mainBundle] loadNibNamed:@"ServiceView" owner:self options:nil];
         UIView *view = [nibsArray firstObject];
-        
+
         view.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:view];
         [self addConstraintsForView:view];

@@ -244,6 +244,8 @@
 "checkDomainViewController.domainNameTextField" = "checkDomainViewController.domainNameTextField";
 "checkDomainViewController.avaliabilityButton.title" = "checkDomainViewController.avaliabilityButton.title";
 "checkDomainViewController.whoISButton.title" = "checkDomainViewController.whoISButton.title";
+"checkDomainViewController.domainTitleForView" = "checkDomainViewController.domainTitleForView";
+"checkDomainViewController.chooseRating" = "checkDomainViewController.chooseRating";
 
 //CheckIMEIViewController
 
