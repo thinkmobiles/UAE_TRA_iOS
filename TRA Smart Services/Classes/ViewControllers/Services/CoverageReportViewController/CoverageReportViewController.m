@@ -77,9 +77,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    [[UIApplication sharedApplication] openURL:settingsURL];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (!buttonIndex) {
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - IbAction
@@ -207,11 +209,11 @@
                 [LocationManager sharedManager].delegate = weakSelf;
                 [[LocationManager sharedManager] startUpdatingLocation];
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
             }
         }];
     } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
     }
 }
 

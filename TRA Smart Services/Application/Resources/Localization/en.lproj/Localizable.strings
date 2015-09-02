@@ -166,6 +166,7 @@
 "coverageReport.reportSignalButton.title" = "Report signal";
 "coverageReport.detectLocationButton.title" = "Detect location";
 "coverageReport.addressTextField" = "Address";
+"coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
 
