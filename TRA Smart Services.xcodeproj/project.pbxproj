@@ -123,6 +123,10 @@
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
 		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
 		F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */; };
+		F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCC1B96EE7900891246 /* RatingView.m */; };
+		F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCF1B96EE9100891246 /* ServiceView.m */; };
+		F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F15CD11B96EEC300891246 /* RatingView.xib */; };
+		F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F15CD31B971D6300891246 /* ServiceView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +351,12 @@
 		F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteTableViewCell.m; sourceTree = "<group>"; };
 		F177854D1B8DE23800D96B1E /* AddToFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteViewController.h; sourceTree = "<group>"; };
 		F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteViewController.m; sourceTree = "<group>"; };
+		F1F15CCB1B96EE7900891246 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
+		F1F15CCC1B96EE7900891246 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
+		F1F15CCE1B96EE9100891246 /* ServiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceView.h; sourceTree = "<group>"; };
+		F1F15CCF1B96EE9100891246 /* ServiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceView.m; sourceTree = "<group>"; };
+		F1F15CD11B96EEC300891246 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		F1F15CD31B971D6300891246 /* ServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1254,6 +1264,8 @@
 		EDEC9DED1B6A338B00334503 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F1F15CC91B96EE4E00891246 /* RatingView */,
+				F1F15CCA1B96EE4E00891246 /* ServiceView */,
 				EDEC9DEE1B6A339A00334503 /* HexagonView */,
 				ED6537291B6FFDAF00A50CBC /* SegmentView */,
 				ED7D9F1A1B6B9EC400C20402 /* HomeTopBarView */,
@@ -1342,6 +1354,26 @@
 				F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */,
 			);
 			path = AddToFavoriteViewController;
+			sourceTree = "<group>";
+		};
+		F1F15CC91B96EE4E00891246 /* RatingView */ = {
+			isa = PBXGroup;
+			children = (
+				F1F15CCB1B96EE7900891246 /* RatingView.h */,
+				F1F15CCC1B96EE7900891246 /* RatingView.m */,
+				F1F15CD11B96EEC300891246 /* RatingView.xib */,
+			);
+			path = RatingView;
+			sourceTree = "<group>";
+		};
+		F1F15CCA1B96EE4E00891246 /* ServiceView */ = {
+			isa = PBXGroup;
+			children = (
+				F1F15CCE1B96EE9100891246 /* ServiceView.h */,
+				F1F15CCF1B96EE9100891246 /* ServiceView.m */,
+				F1F15CD31B971D6300891246 /* ServiceView.xib */,
+			);
+			path = ServiceView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1434,12 +1466,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
+				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
 				93A436F41B860EAA009299C5 /* FavouriteEuroTableViewCell.xib in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				847A84811B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib in Resources */,
+				F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */,
 				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
@@ -1522,6 +1556,7 @@
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
 				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
+				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
@@ -1535,6 +1570,7 @@
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
+				F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
@@ -1729,7 +1765,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fcb704-15b9-4c6b-b4ce-6da309e8715e";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 			};
 			name = Debug;
 		};
@@ -1747,7 +1783,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fcb704-15b9-4c6b-b4ce-6da309e8715e";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 			};
 			name = Release;
 		};
