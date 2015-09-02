@@ -129,7 +129,7 @@
 
 //FavouriteViewController
 
-"favourite.title" = "FAVORITES";
+"favourite.title" = "Favourites";
 "favourite.button.addFav.title" = "ADD A SERVICE";
 "favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";
 
@@ -166,21 +166,22 @@
 "coverageReport.reportSignalButton.title" = "Report signal";
 "coverageReport.detectLocationButton.title" = "Detect location";
 "coverageReport.addressTextField" = "Address";
+"coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
 
-"infoHub.title" = "INFO HUB";
-"announcements.label.text" = "ANNOUNCEMENTS";
+"infoHub.title" = "Info Hub;
+"announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
-"transactions.label.text" = "TRANSACTIONS";
+"transactions.label.text" = "Transactions";
 
 //AnnoucementsViewController
 
-"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+"annoucements.title" = "info Hub Announcements";
 
 //DetailsViewController
 
-"details.title" = "INFO HUB DETAILS";
+"details.title" = "Info Hub Details";
 
 //SearchMobileBrandNameViewController
 

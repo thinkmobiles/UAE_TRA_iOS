@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
+static NSString *const LatoFontPrefix = @"Lato";
+static NSString *const DroidFontPrefix = @"Droid";
+
 @interface UIFont (AppFonts)
 
 + (UIFont *)droidKufiBoldFontForSize:(CGFloat)size;

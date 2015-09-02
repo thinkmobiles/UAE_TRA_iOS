@@ -118,11 +118,13 @@
             NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
             UIFont *font = [UIFont fontWithName:fontName size:fontSize];
 
-            if (![fontName containsString:@"Lato"]) {
+            if (![fontName containsString:LatoFontPrefix]) {
                 font = [UIFont latoRegularWithSize:fontSize];
             }
             if ([DynamicUIService service].language == LanguageTypeArabic) {
-                font = [UIFont droidKufiRegularFontForSize:fontSize];
+                if (![fontName containsString:DroidFontPrefix]) {
+                    font = [UIFont droidKufiRegularFontForSize:fontSize];
+                }
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [view setValue:font forKey:@"font"];
@@ -141,12 +143,14 @@
             NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
             
             UIFont *font = [UIFont fontWithName:fontName size:currentFontSize];
-            if (![fontName containsString:@"Lato"]) {
+            if (![fontName containsString:LatoFontPrefix]) {
                 font = [UIFont latoRegularWithSize:currentFontSize];
             }
 
             if ([DynamicUIService service].language == LanguageTypeArabic) {
-                font = [UIFont droidKufiRegularFontForSize:currentFontSize];
+                if (![fontName containsString:DroidFontPrefix]) {
+                    font = [UIFont droidKufiRegularFontForSize:currentFontSize];
+                }
             }
             
             [view setValue:font forKey:@"font"];
