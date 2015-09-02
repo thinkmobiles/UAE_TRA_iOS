@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet OffsetTextField *selectStateTextField;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaseRegisterConteinerUIView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollLogoImage;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 
@@ -137,14 +138,10 @@
 {
     if (scrollView.contentOffset.y >= 0) {
         if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
-            CGRect logoImageFrame = self.logoImageView.frame;
-            logoImageFrame.origin.y = - scrollView.contentOffset.y;
-            self.logoImageView.frame = logoImageFrame;
+            [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
         }
     } else {
-        CGRect logoImageFrame = self.logoImageView.frame;
-        logoImageFrame.origin.y = 0;
-        self.logoImageView.frame = logoImageFrame;
+        [self.scrollLogoImage setContentOffset:CGPointMake(0, 0)];
     }
 }
 

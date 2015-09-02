@@ -806,14 +806,26 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tra-logo" translatesAutoresizingMaskIntoConstraints="NO" id="hEO-tK-nKf" userLabel="Logo - UiImageView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-GE-GK3" userLabel="LogoImage - Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.93333333333333335" green="0.53725490196078429" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tra-logo" translatesAutoresizingMaskIntoConstraints="NO" id="hEO-tK-nKf" userLabel="Logo - UiImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.53725490196078429" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="252" id="vWK-fq-C30"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="252" id="vWK-fq-C30"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEO-tK-nKf" secondAttribute="trailing" id="8hR-wd-ccc"/>
+                                    <constraint firstAttribute="height" constant="252" id="aDs-xJ-Pgg"/>
+                                    <constraint firstAttribute="bottom" secondItem="hEO-tK-nKf" secondAttribute="bottom" id="bnJ-Bm-4sM"/>
+                                    <constraint firstItem="hEO-tK-nKf" firstAttribute="top" secondItem="jFz-GE-GK3" secondAttribute="top" id="dxa-Df-HyY"/>
+                                    <constraint firstItem="hEO-tK-nKf" firstAttribute="leading" secondItem="jFz-GE-GK3" secondAttribute="leading" id="fiL-rh-foo"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="j4D-WR-PuB">
                                 <rect key="frame" x="0.0" y="20" width="600" height="800"/>
                                 <subviews>
@@ -1202,14 +1214,15 @@ a new password will be sent.</string>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hEO-tK-nKf" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="9rv-1K-9Yt"/>
-                            <constraint firstAttribute="trailing" secondItem="hEO-tK-nKf" secondAttribute="trailing" id="Ibw-nC-Tbj"/>
+                            <constraint firstAttribute="width" secondItem="hEO-tK-nKf" secondAttribute="width" id="AqC-HO-ce3"/>
+                            <constraint firstAttribute="trailing" secondItem="jFz-GE-GK3" secondAttribute="trailing" id="GUY-xL-aWl"/>
                             <constraint firstItem="oXG-29-8qD" firstAttribute="width" relation="greaterThanOrEqual" secondItem="xgR-5H-iYw" secondAttribute="width" id="JLx-FK-lsX"/>
                             <constraint firstItem="j4D-WR-PuB" firstAttribute="top" secondItem="ll7-If-qOI" secondAttribute="bottom" id="Sg4-E3-i4w"/>
                             <constraint firstAttribute="trailing" secondItem="j4D-WR-PuB" secondAttribute="trailing" id="VMX-W9-qVJ"/>
                             <constraint firstItem="Kze-Ie-3Sv" firstAttribute="top" secondItem="j4D-WR-PuB" secondAttribute="bottom" id="WOO-V2-AlK"/>
-                            <constraint firstItem="hEO-tK-nKf" firstAttribute="top" secondItem="xgR-5H-iYw" secondAttribute="topMargin" id="duo-PH-u9t"/>
                             <constraint firstItem="oXG-29-8qD" firstAttribute="width" secondItem="xgR-5H-iYw" secondAttribute="width" id="gLU-dg-ims"/>
+                            <constraint firstItem="jFz-GE-GK3" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="pyh-k0-YeY"/>
+                            <constraint firstItem="jFz-GE-GK3" firstAttribute="top" secondItem="xgR-5H-iYw" secondAttribute="topMargin" id="wXp-7e-39t"/>
                             <constraint firstItem="j4D-WR-PuB" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="x1V-YX-e3R"/>
                         </constraints>
                     </view>
@@ -1227,6 +1240,7 @@ a new password will be sent.</string>
                         <outlet property="mobileTextField" destination="YSb-aK-F5h" id="MXV-KA-yGk"/>
                         <outlet property="passwordTextField" destination="dQS-AY-eSB" id="1qk-2t-NWf"/>
                         <outlet property="registerButton" destination="dnH-BM-6gu" id="LN3-98-N3G"/>
+                        <outlet property="scrollLogoImage" destination="jFz-GE-GK3" id="Smq-Y7-X3G"/>
                         <outlet property="scrollView" destination="j4D-WR-PuB" id="7ck-lR-bEj"/>
                         <outlet property="selectStateTextField" destination="gsq-M7-KAl" id="d9v-jp-PKb"/>
                         <outlet property="userNameTextField" destination="3PV-7E-X3w" id="5fn-Eh-oy6"/>
