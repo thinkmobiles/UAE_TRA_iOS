@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollLogoImage;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
+@property (assign, nonatomic) CGFloat keyboardHeight;
 
 @property (assign, nonatomic) NSInteger selectedState;
 @property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
@@ -76,11 +77,14 @@
 
     if (textField.returnKeyType == UIReturnKeyNext) {
         CGFloat offsetTextField = textField.frame.origin.y + self.verticalSpaseRegisterConteinerUIView.constant;
-        
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - 216.f - 120.f;
+        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
         
         if (offsetTextField  > lineEventScroll) {
             [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f) animated:YES];
+        }
+        CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
+        if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
+            [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
         }
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
@@ -200,12 +204,11 @@
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat keyboardHeight = keyboardRect.size.height;
-    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - keyboardHeight;
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - keyboardHeight - 120.f;
-        if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
+    self.keyboardHeight = keyboardRect.size.height;
+    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
+    CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
+    if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
         [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
-
     }
 }
 
