@@ -13,6 +13,6 @@
 @property (copy, nonatomic) NSString *domainName;
 @property (copy, nonatomic) NSString *response;
 
-@property (strong, nonatomic) NSDictionary *result;
+@property (strong, nonatomic) NSArray *result;
 
 @end

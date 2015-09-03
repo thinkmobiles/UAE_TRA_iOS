@@ -10,8 +10,12 @@
         <mutableArray key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -802,24 +806,6 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="1928" y="-2081"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="VTP-1x-Vdx">
-            <objects>
-                <viewController id="eXa-ks-gHM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bJl-cD-Mqc"/>
-                        <viewControllerLayoutGuide type="bottom" id="t3q-Vl-Q4z"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Crr-qF-Rwk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nJ4-aE-bOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="309" y="-1324"/>
-        </scene>
         <!--Register View Controller-->
         <scene sceneID="MrG-Im-pdn">
             <objects>
@@ -1410,7 +1396,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="Ltd-9H-2wx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IiL-L5-7N3" userLabel="Content - UiView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfd-3M-8p2" userLabel="TopHolder - UiView">
@@ -1495,9 +1481,96 @@ a new password will be sent.</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JO-ml-ohe" userLabel="Domain data - UIScrollView">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Xy-6i-Ze5" userLabel="DomainInfo - UITableView">
                                 <rect key="frame" x="0.0" y="184" width="600" height="178"/>
-                            </scrollView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="flatResultTableViewCellIdentifier" rowHeight="25" id="jdb-ge-Bbo" customClass="DomainInfoTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jdb-ge-Bbo" id="bFy-Mb-Cqn">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLI-ID-tMY" userLabel="Type - UILabel">
+                                                    <rect key="frame" x="20" y="4" width="272" height="17"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                                    <color key="textColor" red="0.27058823529411763" green="0.33333333333333331" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVA-OD-Xjo" userLabel="Value - UILabel">
+                                                    <rect key="frame" x="308" y="4" width="272" height="17"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VVA-OD-Xjo" secondAttribute="trailing" constant="20" id="Aok-Dj-0n3"/>
+                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="leading" secondItem="NLI-ID-tMY" secondAttribute="trailing" constant="16" id="Iwo-A1-m36"/>
+                                                <constraint firstItem="NLI-ID-tMY" firstAttribute="leading" secondItem="bFy-Mb-Cqn" secondAttribute="leading" constant="20" id="LdI-0j-reE"/>
+                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="centerY" secondItem="NLI-ID-tMY" secondAttribute="centerY" id="R0F-pH-xls"/>
+                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="height" secondItem="NLI-ID-tMY" secondAttribute="height" id="aOY-Mk-uYy"/>
+                                                <constraint firstItem="NLI-ID-tMY" firstAttribute="top" secondItem="bFy-Mb-Cqn" secondAttribute="top" constant="4" id="bxw-YN-jkS"/>
+                                                <constraint firstAttribute="bottom" secondItem="NLI-ID-tMY" secondAttribute="bottom" constant="4" id="iRo-xo-Qjq"/>
+                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="width" secondItem="NLI-ID-tMY" secondAttribute="width" id="zH1-XE-5Xx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="typeLabel" destination="NLI-ID-tMY" id="Jru-fJ-Ghg"/>
+                                            <outlet property="valueLabel" destination="VVA-OD-Xjo" id="Upu-PK-IFT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailedResultTableViewCellIdentifier" rowHeight="75" id="CIV-u8-uLJ" customClass="DomainInfoTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CIV-u8-uLJ" id="ctw-k1-IQp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujs-eG-Qin" userLabel="Type - UILabel">
+                                                    <rect key="frame" x="20" y="8" width="560" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                                    <color key="textColor" red="0.27058823529999998" green="0.33333333329999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Pu5-OQ-mdM" userLabel="Value - UIlabel">
+                                                    <rect key="frame" x="20" y="37" width="560" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="eSd-Z8-UuJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ujs-eG-Qin" firstAttribute="leading" secondItem="ctw-k1-IQp" secondAttribute="leading" constant="20" id="Aj2-9M-bXg"/>
+                                                <constraint firstItem="Pu5-OQ-mdM" firstAttribute="leading" secondItem="ctw-k1-IQp" secondAttribute="leading" constant="20" id="HZn-NY-fFU"/>
+                                                <constraint firstItem="Pu5-OQ-mdM" firstAttribute="top" secondItem="ujs-eG-Qin" secondAttribute="bottom" constant="8" id="Mis-11-0B6"/>
+                                                <constraint firstItem="ujs-eG-Qin" firstAttribute="top" secondItem="ctw-k1-IQp" secondAttribute="top" constant="8" id="U4Y-qM-2cs"/>
+                                                <constraint firstAttribute="trailing" secondItem="ujs-eG-Qin" secondAttribute="trailing" constant="20" id="UDT-BD-ceJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pu5-OQ-mdM" secondAttribute="bottom" constant="8" id="VH4-CX-rd3"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pu5-OQ-mdM" secondAttribute="trailing" constant="20" id="hOT-3H-PAb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="typeLabel" destination="ujs-eG-Qin" id="vwq-Go-YVt"/>
+                                            <outlet property="valueLabel" destination="Pu5-OQ-mdM" id="eZo-aU-Iqn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dey-3G-9KT" id="p9R-4j-yqd"/>
+                                    <outlet property="delegate" destination="dey-3G-9KT" id="ZTG-bh-xAi"/>
+                                </connections>
+                            </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-Ma-dXQ" userLabel="Rating View - UIView" customClass="RatingView">
                                 <rect key="frame" x="188" y="362" width="225" height="125"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1509,27 +1582,27 @@ a new password will be sent.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4JO-ml-ohe" secondAttribute="trailing" id="0iC-Da-zgi"/>
+                            <constraint firstItem="8Xy-6i-Ze5" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="1nh-7H-vah"/>
                             <constraint firstAttribute="centerX" secondItem="mL5-Ma-dXQ" secondAttribute="centerX" id="319-YR-Zgp"/>
+                            <constraint firstAttribute="trailing" secondItem="8Xy-6i-Ze5" secondAttribute="trailing" id="40o-ze-JHS"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="7rx-01-cKy"/>
-                            <constraint firstItem="4JO-ml-ohe" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="8Z7-6c-6XQ"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="9Ek-1z-ZkY"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="width" secondItem="7NQ-mA-hdv" secondAttribute="width" id="A6d-KM-M8T"/>
                             <constraint firstItem="rwy-ye-h72" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="AzX-lm-cHu"/>
                             <constraint firstAttribute="trailing" secondItem="4ku-jV-87Q" secondAttribute="trailing" constant="16" id="EBI-JX-1gR"/>
                             <constraint firstItem="yfd-3M-8p2" firstAttribute="top" secondItem="IiL-L5-7N3" secondAttribute="top" id="HSF-36-Y1o"/>
                             <constraint firstItem="yfd-3M-8p2" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="Hdw-sC-ajM"/>
+                            <constraint firstItem="8Xy-6i-Ze5" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="N1m-dV-FXd"/>
                             <constraint firstAttribute="trailing" secondItem="5Tn-dv-Oy0" secondAttribute="trailing" id="Oeh-B9-qDi"/>
                             <constraint firstAttribute="trailing" secondItem="rwy-ye-h72" secondAttribute="trailing" constant="16" id="PRA-Pa-BW9"/>
                             <constraint firstAttribute="trailing" secondItem="yfd-3M-8p2" secondAttribute="trailing" id="SQU-2P-tC8"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="YFY-Bg-kM4"/>
                             <constraint firstAttribute="trailing" secondItem="7NQ-mA-hdv" secondAttribute="trailing" constant="16" id="eZI-k3-PeA"/>
-                            <constraint firstItem="4JO-ml-ohe" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="iIX-ue-xvO"/>
+                            <constraint firstItem="mL5-Ma-dXQ" firstAttribute="top" secondItem="8Xy-6i-Ze5" secondAttribute="bottom" id="jxJ-FD-Jit"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="height" secondItem="7NQ-mA-hdv" secondAttribute="height" id="kNY-vo-Ca2"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" constant="16" id="m0n-4a-gnN"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerY" secondItem="7NQ-mA-hdv" secondAttribute="centerY" id="oip-6Q-OlT"/>
                             <constraint firstItem="5Tn-dv-Oy0" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="oqF-TX-Kdu"/>
-                            <constraint firstItem="mL5-Ma-dXQ" firstAttribute="top" secondItem="4JO-ml-ohe" secondAttribute="bottom" id="q1o-n0-Ahv"/>
                             <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="mL5-Ma-dXQ" secondAttribute="bottom" id="swZ-9e-8vS"/>
                             <constraint firstItem="5Tn-dv-Oy0" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="tGm-wB-ewM"/>
                             <constraint firstItem="7NQ-mA-hdv" firstAttribute="leading" secondItem="Qdg-PU-pvo" secondAttribute="trailing" constant="15" id="uC7-H8-p6T"/>
@@ -1541,10 +1614,10 @@ a new password will be sent.</string>
                         <outlet property="avaliabilityButton" destination="Qdg-PU-pvo" id="uLC-Zn-1Uq"/>
                         <outlet property="backgroundImageView" destination="5Tn-dv-Oy0" id="eMX-Ju-f2O"/>
                         <outlet property="domainAvaliabilityLabel" destination="rwy-ye-h72" id="LgD-IX-xtr"/>
-                        <outlet property="domainDataScrollView" destination="4JO-ml-ohe" id="j7q-Da-faM"/>
                         <outlet property="domainNameTextField" destination="4ku-jV-87Q" id="rfk-84-lEH"/>
                         <outlet property="ratingView" destination="mL5-Ma-dXQ" id="KCt-yv-2bL"/>
                         <outlet property="serviceView" destination="aRc-3q-Ont" id="4V0-uo-OYE"/>
+                        <outlet property="tableView" destination="8Xy-6i-Ze5" id="z9Z-uZ-Ez3"/>
                         <outlet property="topHolderView" destination="yfd-3M-8p2" id="X5r-fY-10Z"/>
                         <outlet property="whoISButton" destination="7NQ-mA-hdv" id="nkf-US-jIz"/>
                     </connections>
