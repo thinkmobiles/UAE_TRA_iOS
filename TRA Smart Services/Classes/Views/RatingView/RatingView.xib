@@ -64,11 +64,11 @@
             <constraints>
                 <constraint firstItem="5K6-kS-8Tl" firstAttribute="top" secondItem="WAU-MV-mze" secondAttribute="bottom" constant="20" id="4Yc-xH-7ez"/>
                 <constraint firstItem="WAU-MV-mze" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Zi-Xt-qUm"/>
-                <constraint firstItem="EkZ-9S-ftT" firstAttribute="leading" secondItem="5K6-kS-8Tl" secondAttribute="trailing" constant="43" id="Eef-3e-FGa"/>
-                <constraint firstItem="WAU-MV-mze" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="I3q-cJ-fkG"/>
+                <constraint firstItem="EkZ-9S-ftT" firstAttribute="left" secondItem="5K6-kS-8Tl" secondAttribute="right" constant="43" id="Eef-3e-FGa"/>
+                <constraint firstItem="WAU-MV-mze" firstAttribute="left" secondItem="iN0-l3-epB" secondAttribute="left" constant="8" id="I3q-cJ-fkG"/>
                 <constraint firstAttribute="centerY" secondItem="5K6-kS-8Tl" secondAttribute="centerY" id="QtO-71-kP9"/>
-                <constraint firstAttribute="trailing" secondItem="WAU-MV-mze" secondAttribute="trailing" constant="8" id="X15-l1-bnZ"/>
-                <constraint firstItem="5K6-kS-8Tl" firstAttribute="leading" secondItem="S7e-1s-XSE" secondAttribute="trailing" constant="43" id="fWC-bn-71T"/>
+                <constraint firstAttribute="right" secondItem="WAU-MV-mze" secondAttribute="right" constant="8" id="X15-l1-bnZ"/>
+                <constraint firstItem="5K6-kS-8Tl" firstAttribute="left" secondItem="S7e-1s-XSE" secondAttribute="right" constant="43" id="fWC-bn-71T"/>
                 <constraint firstAttribute="centerY" secondItem="EkZ-9S-ftT" secondAttribute="centerY" constant="-1" id="gVy-lQ-N9u"/>
                 <constraint firstAttribute="centerY" secondItem="S7e-1s-XSE" secondAttribute="centerY" constant="2" id="hGu-8K-5qy"/>
                 <constraint firstAttribute="centerX" secondItem="5K6-kS-8Tl" secondAttribute="centerX" id="xhh-T1-zJ4"/>

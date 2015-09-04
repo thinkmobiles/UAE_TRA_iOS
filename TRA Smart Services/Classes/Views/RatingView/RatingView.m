@@ -52,15 +52,15 @@
                                                        multiplier:1.0
                                                          constant:0],
                            [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeLeading
+                                                        attribute:NSLayoutAttributeLeft
                                                         relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeLeading
+                                                           toItem:self attribute:NSLayoutAttributeLeft
                                                        multiplier:1.0
                                                          constant:0],
                            [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeTrailing
+                                                        attribute:NSLayoutAttributeRight
                                                         relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeTrailing
+                                                           toItem:self attribute:NSLayoutAttributeRight
                                                        multiplier:1.0
                                                          constant:0]
                            ]];

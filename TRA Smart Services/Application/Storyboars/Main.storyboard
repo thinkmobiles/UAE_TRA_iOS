@@ -61,10 +61,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1338,7 +1334,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-mA-hdv" userLabel="WhoIS - Button">
-                                <rect key="frame" x="307" y="256" width="277" height="40"/>
+                                <rect key="frame" x="308" y="256" width="277" height="40"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <state key="normal" title="Who is?">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1378,15 +1374,15 @@ a new password will be sent.</string>
                                                     <rect key="frame" x="308" y="4" width="272" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="VVA-OD-Xjo" secondAttribute="trailing" constant="20" id="Aok-Dj-0n3"/>
-                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="leading" secondItem="NLI-ID-tMY" secondAttribute="trailing" constant="16" id="Iwo-A1-m36"/>
-                                                <constraint firstItem="NLI-ID-tMY" firstAttribute="leading" secondItem="bFy-Mb-Cqn" secondAttribute="leading" constant="20" id="LdI-0j-reE"/>
+                                                <constraint firstAttribute="right" secondItem="VVA-OD-Xjo" secondAttribute="right" constant="20" id="Aok-Dj-0n3"/>
+                                                <constraint firstItem="VVA-OD-Xjo" firstAttribute="left" secondItem="NLI-ID-tMY" secondAttribute="right" constant="16" id="Iwo-A1-m36"/>
+                                                <constraint firstItem="NLI-ID-tMY" firstAttribute="left" secondItem="bFy-Mb-Cqn" secondAttribute="left" constant="20" id="LdI-0j-reE"/>
                                                 <constraint firstItem="VVA-OD-Xjo" firstAttribute="centerY" secondItem="NLI-ID-tMY" secondAttribute="centerY" id="R0F-pH-xls"/>
                                                 <constraint firstItem="VVA-OD-Xjo" firstAttribute="height" secondItem="NLI-ID-tMY" secondAttribute="height" id="aOY-Mk-uYy"/>
                                                 <constraint firstItem="NLI-ID-tMY" firstAttribute="top" secondItem="bFy-Mb-Cqn" secondAttribute="top" constant="4" id="bxw-YN-jkS"/>
@@ -1420,19 +1416,19 @@ a new password will be sent.</string>
                                                         <constraint firstAttribute="height" constant="30" id="eSd-Z8-UuJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="ujs-eG-Qin" firstAttribute="leading" secondItem="ctw-k1-IQp" secondAttribute="leading" constant="20" id="Aj2-9M-bXg"/>
-                                                <constraint firstItem="Pu5-OQ-mdM" firstAttribute="leading" secondItem="ctw-k1-IQp" secondAttribute="leading" constant="20" id="HZn-NY-fFU"/>
+                                                <constraint firstItem="ujs-eG-Qin" firstAttribute="left" secondItem="ctw-k1-IQp" secondAttribute="left" constant="20" id="Aj2-9M-bXg"/>
+                                                <constraint firstItem="Pu5-OQ-mdM" firstAttribute="left" secondItem="ctw-k1-IQp" secondAttribute="left" constant="20" id="HZn-NY-fFU"/>
                                                 <constraint firstItem="Pu5-OQ-mdM" firstAttribute="top" secondItem="ujs-eG-Qin" secondAttribute="bottom" constant="8" id="Mis-11-0B6"/>
                                                 <constraint firstItem="ujs-eG-Qin" firstAttribute="top" secondItem="ctw-k1-IQp" secondAttribute="top" constant="8" id="U4Y-qM-2cs"/>
-                                                <constraint firstAttribute="trailing" secondItem="ujs-eG-Qin" secondAttribute="trailing" constant="20" id="UDT-BD-ceJ"/>
+                                                <constraint firstAttribute="right" secondItem="ujs-eG-Qin" secondAttribute="right" constant="20" id="UDT-BD-ceJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="Pu5-OQ-mdM" secondAttribute="bottom" constant="8" id="VH4-CX-rd3"/>
-                                                <constraint firstAttribute="trailing" secondItem="Pu5-OQ-mdM" secondAttribute="trailing" constant="20" id="hOT-3H-PAb"/>
+                                                <constraint firstAttribute="right" secondItem="Pu5-OQ-mdM" secondAttribute="right" constant="20" id="hOT-3H-PAb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1458,20 +1454,20 @@ a new password will be sent.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8Xy-6i-Ze5" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="1nh-7H-vah"/>
+                            <constraint firstItem="8Xy-6i-Ze5" firstAttribute="left" secondItem="IiL-L5-7N3" secondAttribute="left" id="1nh-7H-vah"/>
                             <constraint firstAttribute="centerX" secondItem="mL5-Ma-dXQ" secondAttribute="centerX" id="319-YR-Zgp"/>
-                            <constraint firstAttribute="trailing" secondItem="8Xy-6i-Ze5" secondAttribute="trailing" id="40o-ze-JHS"/>
+                            <constraint firstAttribute="right" secondItem="8Xy-6i-Ze5" secondAttribute="right" id="40o-ze-JHS"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="7rx-01-cKy"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="9Ek-1z-ZkY"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="width" secondItem="7NQ-mA-hdv" secondAttribute="width" id="A6d-KM-M8T"/>
-                            <constraint firstItem="rwy-ye-h72" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="AzX-lm-cHu"/>
+                            <constraint firstItem="rwy-ye-h72" firstAttribute="left" secondItem="IiL-L5-7N3" secondAttribute="left" constant="16" id="AzX-lm-cHu"/>
                             <constraint firstAttribute="trailing" secondItem="4ku-jV-87Q" secondAttribute="trailing" constant="16" id="EBI-JX-1gR"/>
                             <constraint firstItem="yfd-3M-8p2" firstAttribute="top" secondItem="IiL-L5-7N3" secondAttribute="top" id="HSF-36-Y1o"/>
-                            <constraint firstItem="yfd-3M-8p2" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="Hdw-sC-ajM"/>
+                            <constraint firstItem="yfd-3M-8p2" firstAttribute="left" secondItem="IiL-L5-7N3" secondAttribute="left" id="Hdw-sC-ajM"/>
                             <constraint firstItem="8Xy-6i-Ze5" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="N1m-dV-FXd"/>
                             <constraint firstAttribute="trailing" secondItem="5Tn-dv-Oy0" secondAttribute="trailing" id="Oeh-B9-qDi"/>
-                            <constraint firstAttribute="trailing" secondItem="rwy-ye-h72" secondAttribute="trailing" constant="16" id="PRA-Pa-BW9"/>
-                            <constraint firstAttribute="trailing" secondItem="yfd-3M-8p2" secondAttribute="trailing" id="SQU-2P-tC8"/>
+                            <constraint firstAttribute="right" secondItem="rwy-ye-h72" secondAttribute="right" constant="16" id="PRA-Pa-BW9"/>
+                            <constraint firstAttribute="right" secondItem="yfd-3M-8p2" secondAttribute="right" id="SQU-2P-tC8"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="YFY-Bg-kM4"/>
                             <constraint firstAttribute="trailing" secondItem="7NQ-mA-hdv" secondAttribute="trailing" constant="16" id="eZI-k3-PeA"/>
                             <constraint firstItem="mL5-Ma-dXQ" firstAttribute="top" secondItem="8Xy-6i-Ze5" secondAttribute="bottom" id="jxJ-FD-Jit"/>

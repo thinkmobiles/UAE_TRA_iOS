@@ -56,15 +56,18 @@ static NSString *const keyOrder = @"order";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    self.response = nil;
-    self.result = nil;
-    self.domainAvaliabilityLabel.hidden = YES;
-    self.ratingView.hidden = YES;
-    self.domainNameTextField.text = @"";
+
+    if (!self.response) {
+        self.domainAvaliabilityLabel.hidden = YES;
+        self.ratingView.hidden = YES;
+        self.domainNameTextField.text = @"";
+    }
+    if (!self.result) {
+        self.ratingView.hidden = YES;
+        self.tableView.hidden = YES;
+    }
 
     [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
-
 }
 
 #pragma mark - IBActions
@@ -196,7 +199,16 @@ static NSString *const keyOrder = @"order";
 
 - (void)ratingChanged:(NSInteger)rating
 {
-    
+    [AppHelper showLoader];
+
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:@"Rating" forSerivce:ServiceNameDomainCheck withRating:rating requestResult:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+        [AppHelper hideLoader];
+    }];
 }
 
 #pragma mark - SuperclassMethods

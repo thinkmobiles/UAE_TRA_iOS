@@ -10,6 +10,8 @@
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
 
+static NSString *const ServiceNameDomainCheck = @"Check Domain Service";
+
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
     ServiceTypeGetDomainAvaliability = 1,
