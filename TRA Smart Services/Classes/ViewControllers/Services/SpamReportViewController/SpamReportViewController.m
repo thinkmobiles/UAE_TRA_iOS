@@ -38,7 +38,7 @@
 - (IBAction)responseSpam:(id)sender
 {
     [self.view endEditing:YES];
-    if (!self.reportSegment.selectedSegmentIndex) {
+    if (self.reportSegment.selectedSegmentIndex) {
         if (!self.phoneNumber.text.length || !self.notes.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {

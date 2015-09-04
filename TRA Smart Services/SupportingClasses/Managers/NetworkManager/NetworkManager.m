@@ -95,7 +95,7 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
                                  @"providerType": providerType,
                                  @"description": note
                                  };
-    [self performPOST:traSSNOCRMServicePOSTSMSSPamReport withParameters:parameters response:SMSBlockResponse];
+    [self performPOST:traSSNOCRMServicePOSTSMSBlock withParameters:parameters response:SMSBlockResponse];
 }
 
 - (void)traSSNoCRMServicePOSTHelpSalim:(NSString *)urlAddress notes:(NSString *)comment requestResult:(ResponseBlock)helpSalimReportResponse

@@ -1793,7 +1793,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "44f44b91-6655-40b9-a5a7-8b9985b2e363";
 			};
 			name = Debug;
 		};
@@ -1811,7 +1811,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "44f44b91-6655-40b9-a5a7-8b9985b2e363";
 			};
 			name = Release;
 		};
