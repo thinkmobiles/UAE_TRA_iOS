@@ -36,7 +36,7 @@
 
 - (BOOL)isValidURL
 {
-    NSString *allowedSymbols = @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
+    NSString *allowedSymbols = @"((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
     return [test evaluateWithObject:self];
 }
