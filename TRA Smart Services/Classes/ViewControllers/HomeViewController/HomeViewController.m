@@ -11,6 +11,7 @@
 #import "CategoryCollectionViewCell.h"
 #import "AppDelegate.h"
 #import "CompliantViewController.h"
+#import "LoginViewController.h"
 
 #define Mask8(x) ( (x) & 0xFF )
 #define R(x) ( Mask8(x) )
@@ -201,13 +202,11 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView == self.menuCollectionView && !self.stopAnimate) {
+    if (scrollView == self.menuCollectionView && !self.stopAnimate && !scrollView.decelerating) {
         [self detectScrollDirectioninScrollView:scrollView];
-        
         CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
         CGFloat contentOffsetY = scrollView.contentOffset.y;
         CGFloat delta = self.lastContentOffset - contentOffsetY;
-        
         if(contentOffsetY < minimumAllowedY && contentOffsetY >= 0 ) {
             if (ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant + delta) > minimumAllowedY ||
                 (self.speedAccessCollectionViewTopSpaceConstraint.constant + delta > 0)) {
@@ -217,24 +216,12 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
             [self.speedAccessCollectionView setContentOffset:CGPointZero animated:YES];
             [self.view layoutIfNeeded];
         }
-        if (contentOffsetY > minimumAllowedY / 2 && self.isScrollintToTop) {
-            [self.topView moveFakeButtonsToTop:YES];
-        } else if (contentOffsetY < minimumAllowedY / 2 && !self.isScrollintToTop) {
-            [self.topView moveFakeButtonsToTop:NO];
-        }
         CGFloat progress = -self.speedAccessCollectionViewTopSpaceConstraint.constant / minimumAllowedY;
-        
         [self animateTopLogoWithProgress:progress];
         [self animateSpeedAcceesCollectionViewCellWithScaleFactor:progress];
-        [self.topView updatedPositionForBottomWireForMovingProgress:progress];
-
-        if (self.speedAccessCollectionViewTopSpaceConstraint.constant < - minimumAllowedY / 2) {
-            [self.topView moveFakeButtonsToTop:YES];
-        } else {
-            [self.topView moveFakeButtonsToTop:NO];
-        }
-        
-        [self.topView updateOpacityForHexagons:progress];
+        [self.topView animateBottomWireMovingWithProgress:progress];
+        [self.topView animateFakeButtonsLayerMovingWithProgress:progress];
+        [self.topView animateOpacityChangesForBottomLayers:progress];
         [self.scrollView setContentOffset:CGPointMake(0, - 0.01f * delta)];
     }
     self.lastContentOffset = scrollView.contentOffset.y;
@@ -245,7 +232,6 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     if (scrollView == self.menuCollectionView) {
         self.stopAnimate = YES;
         CGFloat minimumAllowedY = ([UIScreen mainScreen].bounds.size.height * TopViewHeightMultiplierValue) / 2;
-        
         CGFloat constantValue = 0;
         if (self.isScrollintToTop) {
             constantValue = minimumAllowedY;
@@ -253,25 +239,20 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
         if (constantValue == ABS(self.speedAccessCollectionViewTopSpaceConstraint.constant)) {
             self.stopAnimate = NO;
         } else {
-            if (!self.topView.isFakeButtonsOnTop && self.isScrollintToTop) {
-                [self.topView moveFakeButtonsToTop:YES];
-            } else if (self.topView.isFakeButtonsOnTop && !self.isScrollintToTop) {
-                [self.topView moveFakeButtonsToTop:NO];
-            }
             [self.view layoutIfNeeded];
             __weak typeof(self) weakSelf = self;
             [UIView animateWithDuration:0.2 animations:^{
                 weakSelf.speedAccessCollectionViewTopSpaceConstraint.constant = - constantValue;
-                [weakSelf.topView updateOpacityForHexagons:constantValue ? 1 : 0];
+                [weakSelf.topView animateOpacityChangesForBottomLayers:constantValue ? 1 : 0];
                 [weakSelf.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 weakSelf.stopAnimate = NO;
             }];
         }
-        
         [self.topView scaleLogo:!self.isScrollintToTop];
         [self speedAcceesCollectionViewCellScale:!self.isScrollintToTop];
-        [self.topView moveBottomHexagonWireToTop:self.isScrollintToTop];
+        [self.topView animateBottomElementsMovingToTop:self.isScrollintToTop];
+        [self.topView animateFakeButtonsLayerMovingToTop:self.isScrollintToTop];
     }
 }
 
@@ -294,13 +275,16 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-    viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+    navController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
-    viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
+    LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
+    loginViewController.shouldAutoCloseAfterLogin = YES;
+    
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self.navigationController presentViewController:viewController animated:NO completion:nil];
+    [self.navigationController presentViewController:navController animated:NO completion:nil];
 }
 
 #pragma mark - Private
@@ -578,7 +562,7 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
     CGFloat scalePercent = progress == 1 ? progress : 1 - (1 - LogoScaleMinValue) * progress;
     
     if (scalePercent < 1 && scalePercent) {
-        [self.topView scaleLogoFor:scalePercent];
+        [self.topView animateLogoScaling:scalePercent];
     }
 }
 

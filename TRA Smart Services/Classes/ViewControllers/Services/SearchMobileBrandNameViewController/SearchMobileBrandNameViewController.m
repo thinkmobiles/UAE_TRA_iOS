@@ -40,7 +40,11 @@
             if (error) {
                 [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                weakSelf.resultInfoTextView.text = response;
+                NSString *string = @"";
+                for (NSDictionary *dic in response) {
+                    string = [string stringByAppendingString:[NSString stringWithFormat:@"response - %@ \n", dic]];
+                }
+                weakSelf.resultInfoTextView.text = string;
             }
             [AppHelper hideLoader];
         }];

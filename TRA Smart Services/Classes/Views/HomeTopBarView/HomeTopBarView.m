@@ -31,6 +31,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
 @property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
+@property (assign, nonatomic) BOOL isFakeButtonsOnTop;
 @property (assign, nonatomic) __block BOOL isAppearenceAnimationCompleted;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
@@ -156,32 +157,13 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
 }
 
-- (void)updateOpacityForHexagons:(CGFloat)opacityLevel
+- (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel
 {
     if (self.isAppearenceAnimationCompleted) {
         CGFloat opacity = (1 - opacityLevel);
         self.bottomLeftHexagonLayer.opacity = opacity;
         self.bottomMidHexagonLayer.opacity = opacity;
         self.bottomRightHexagonLayer.opacity = opacity;
-    }
-}
-
-- (void)moveFakeButtonsToTop:(BOOL)moveToTop
-{
-    if (self.enableFakeBarAnimations && [self enebleAnimation:moveToTop]) {
-        self.isFakeButtonsOnTop = moveToTop;
-        self.enableFakeBarAnimations = NO;
-        self.disableFakeButtonLayersDrawing = YES;
-        CGPoint endAnimValueInformationLayer = [self calculateEndPositionForInformationLayerWithMInizizedLayout:moveToTop];
-        CGPoint endAnimValueNotificationLayer = [self calculateEndPositionForNotificationLayerWithMInizizedLayout:moveToTop];
-        
-        CABasicAnimation *animationInformationLayer = [self animationPositionStart:self.informationLayer.position positionEnd:endAnimValueInformationLayer];
-        self.informationLayer.position = endAnimValueInformationLayer;
-        [self.informationLayer addAnimation:animationInformationLayer forKey:@"animationInformationLayer"];
-        
-        CABasicAnimation *animationNotificationLayer = [self animationPositionStart:self.notificationLayer.position positionEnd:endAnimValueNotificationLayer];
-        self.notificationLayer.position = endAnimValueNotificationLayer;
-        [self.notificationLayer addAnimation:animationNotificationLayer forKey:@"animationNotificationLayer"];
     }
 }
 
@@ -197,14 +179,14 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.avatarImageLayer.transform = transformation;
 }
 
-- (void)scaleLogoFor:(CGFloat)scale
+- (void)animateLogoScaling:(CGFloat)scale
 {
     CATransform3D transformation = CATransform3DIdentity;
     transformation = CATransform3DScale(transformation, scale, scale, 1);
     self.avatarImageLayer.transform = transformation;
 }
 
-- (void)moveBottomHexagonWireToTop:(BOOL)toTop
+- (void)animateBottomElementsMovingToTop:(BOOL)toTop
 {
     [self moveBottomLeftHexagonToTop:toTop];
     [self moveLayer:self.bottomMidHexagonLayer toTop:toTop];
@@ -213,7 +195,16 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.isBottomHexagonWireOnTop = toTop;
 }
 
-- (void)updatedPositionForBottomWireForMovingProgress:(CGFloat)progress
+- (void)animateFakeButtonsLayerMovingToTop:(BOOL)toTop
+{
+    [self moveNotificationLayerToTop:toTop];
+    [self moveInformationLayerToStartPosition:toTop];
+    self.isFakeButtonsOnTop = toTop;
+    self.enableFakeBarAnimations = NO;
+    self.disableFakeButtonLayersDrawing = YES;
+}
+
+- (void)animateBottomWireMovingWithProgress:(CGFloat)progress
 {
     CGSize hexagonSize = [self hexagonOnWireSize];
     CGFloat maximumXOffset = hexagonSize.width * 0.5f;
@@ -229,6 +220,27 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.bottomMidHexagonLayer.position = rightMovePoint;
     self.bottomRightHexagonLayer.position = rightMovePoint;
     self.bottomAllwaysVisibleHexagonLayer.position = rightMovePoint;
+}
+
+- (void)animateFakeButtonsLayerMovingWithProgress:(CGFloat)progress
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    CGFloat maximumXOffset = hexagonSize.width * 0.5f;
+    CGFloat maximumYOffset = hexagonSize.height * 0.75f;
+    CGFloat currentXOffset = maximumXOffset * progress;
+    CGFloat currentYOffset = maximumYOffset * progress;
+
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGRect notificationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.75f, hexagonSize.width, hexagonSize.height);
+    CGPoint startNotificationPosition = CGPointMake(CGRectGetMidX(notificationLayerRect) , CGRectGetMidY(notificationLayerRect) );
+    
+    CGPoint notificationMovePoint = CGPointMake(startNotificationPosition.x - currentXOffset, startNotificationPosition.y - currentYOffset);
+    self.notificationLayer.position = notificationMovePoint;
+    
+    CGRect informationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset, topOffset, hexagonSize.width, hexagonSize.height);
+    CGPoint startInformationLayerPosition = CGPointMake(CGRectGetMidX(informationLayerRect) , CGRectGetMidY(informationLayerRect));
+    CGPoint informationMovePoint = CGPointMake(startInformationLayerPosition.x - currentXOffset * 2, startInformationLayerPosition.y);
+    self.informationLayer.position = informationMovePoint;
 }
 
 - (void)animateTopViewApearence
@@ -263,7 +275,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         weakSelf.bottomAllwaysVisibleHexagonLayer.opacity = 1.f;
         [weakSelf.bottomAllwaysVisibleHexagonLayer addAnimation:pathAnimation forKey:nil];
     });
-
     
     CGFloat delayForRightBottomPart = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -479,7 +490,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [resultPath moveToPoint:CGPointMake(hexagonSize.width / 2, topOffset + hexagonSize.height * 0.25f + hexagonSize.height * 0.75f)];
     
     NSMutableArray *paths = [[NSMutableArray alloc] init];
-    for (int i = 3; i < ElementsInRowCount - 1; i++) {
+    for (int i = 3; i < ElementsInRowCount - 2; i++) {
         UIBezierPath *hexagonPath = [UIBezierPath bezierPath];
         [hexagonPath moveToPoint:CGPointMake(hexagonSize.width + hexagonSize.width * i, topOffset + hexagonSize.height * 0.75f)];
         
@@ -532,7 +543,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.informationLayer = [self layerWithImage:self.informationButtonImage inRect:informationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.informationLayer];
-    
     [self addHexagonBorderForLayer:self.informationLayer];
 
     [self.layer insertSublayer:self.informationLayer below:self.hexagonicalTopLayer];
@@ -549,7 +559,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.searchLayer = [self layerWithImage:self.searchButtonImage inRect:searchLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.searchLayer];
-
     [self addHexagonBorderForLayer:self.searchLayer];
     
     [self.layer insertSublayer:self.searchLayer below:self.hexagonicalTopLayer];
@@ -625,6 +634,44 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     fadeAnimation.removedOnCompletion = YES;
     
     return fadeAnimation;
+}
+
+- (void)moveInformationLayerToStartPosition:(BOOL)startPosition
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGRect informationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset, topOffset, hexagonSize.width, hexagonSize.height);
+    CGPoint startInformationLayerPosition = CGPointMake(CGRectGetMidX(informationLayerRect) , CGRectGetMidY(informationLayerRect));
+    
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:self.informationLayer.position];
+    if (startPosition) {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(startInformationLayerPosition.x - hexagonSize.width, startInformationLayerPosition.y)];
+    } else {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:startInformationLayerPosition];
+    }
+    positionAnimation.duration = 0.25f;
+    [self.informationLayer addAnimation:positionAnimation forKey:nil];
+    self.informationLayer.position = [positionAnimation.toValue CGPointValue];
+}
+
+- (void)moveNotificationLayerToTop:(BOOL)top
+{
+    CGSize hexagonSize = [self hexagonOnWireSize];
+    CGFloat topOffset = self.bounds.size.height * 0.12f;
+    CGRect notificationLayerRect = CGRectMake(hexagonSize.width * 6 - LeftOffset + hexagonSize.width / 2, topOffset + hexagonSize.height * 0.75f, hexagonSize.width, hexagonSize.height);
+    CGPoint startNotificationPosition = CGPointMake(CGRectGetMidX(notificationLayerRect) , CGRectGetMidY(notificationLayerRect) );
+
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:self.notificationLayer.position];
+    if (top) {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(startNotificationPosition.x - hexagonSize.width * 0.5f, startNotificationPosition.y - hexagonSize.height * 0.75f)];
+    } else {
+        positionAnimation.toValue = [NSValue valueWithCGPoint:startNotificationPosition];
+    }
+    positionAnimation.duration = 0.25f;
+    [self.notificationLayer addAnimation:positionAnimation forKey:nil];
+    self.notificationLayer.position = [positionAnimation.toValue CGPointValue];
 }
 
 - (void)moveBottomLeftHexagonToTop:(BOOL)top
