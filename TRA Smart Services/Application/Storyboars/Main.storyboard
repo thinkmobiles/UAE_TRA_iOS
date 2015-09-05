@@ -3108,9 +3108,9 @@ a new password will be sent.</string>
                         <outlet property="compliantDescriptionTextView" destination="KKT-hB-8Nr" id="nUm-aT-6Wq"/>
                         <outlet property="compliantTitle" destination="NTG-Gy-QYa" id="uEW-WH-ypT"/>
                         <outlet property="descriptionLabel" destination="cy8-1h-hFG" id="Wqt-zf-iL3"/>
-                        <outlet property="providerText" destination="aui-Gn-Uda" id="r4Q-kG-HkB"/>
                         <outlet property="refNumber" destination="4a7-XT-aXS" id="AGW-jx-bqQ"/>
                         <outlet property="selectImageButton" destination="h5I-oz-Osj" id="rDT-3X-2jJ"/>
+                        <outlet property="selectProviderTextField" destination="aui-Gn-Uda" id="WJh-f8-YGi"/>
                         <outlet property="verticalSpaceTitleTextFieldConstraint" destination="hxX-JR-Tdr" id="5hq-pH-caz"/>
                     </connections>
                 </viewController>

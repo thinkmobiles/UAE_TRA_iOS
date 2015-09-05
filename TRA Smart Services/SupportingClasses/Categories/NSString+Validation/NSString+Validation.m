@@ -22,7 +22,7 @@
 
 - (BOOL)isValidPhoneNumber
 {
-    NSString *allowedSymbols = @"[0-9]{5,}";
+    NSString *allowedSymbols = @"[0-9]{4,}";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
     return [test evaluateWithObject:self];
 }

@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *reportSegment;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 
+@property (strong, nonatomic) UIPickerView *selectProviderPicker;
+@property (strong, nonatomic) NSArray *pickerSelectProviderDataSource;
+
 @end
 
 @implementation SpamReportViewController
@@ -31,6 +34,8 @@
     [super viewWillAppear:animated];
     
     [self presentLoginIfNeeded];
+    [self preparePickerDataSource];
+    [self configureSelectProviderTextFieldInputView];
 }
 
 #pragma mark - IBAction
@@ -63,10 +68,12 @@
         self.providerType.enabled = NO;
         self.phoneProvider.enabled = NO;
         [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
+        [self clearUp];
     } else {
         self.providerType.enabled = YES;
         self.phoneProvider.enabled = YES;
         [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
+        [self clearUp];
     }
 }
 
@@ -87,6 +94,40 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    NSInteger pickerRowsInComponent = 0;
+    if (pickerView == self.selectProviderPicker) {
+        pickerRowsInComponent = self.pickerSelectProviderDataSource.count;
+    }
+    return pickerRowsInComponent;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *pickerTitle = @"";
+    if (pickerView == self.selectProviderPicker) {
+        pickerTitle = (NSString *)self.pickerSelectProviderDataSource[row];
+    }
+    return pickerTitle;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView == self.selectProviderPicker) {
+        self.providerType.text = self.pickerSelectProviderDataSource[row];
+    }
 }
 
 #pragma mark - SuperclassMethods
@@ -116,7 +157,7 @@
 
 - (void)POSTSpamReport
 {
-    if (![self.phoneNumber.text isValidPhoneNumber]) {
+    if (![self.phoneNumber.text isValidPhoneNumber] && ![self.phoneProvider.text isValidPhoneNumber]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         return;
     }
@@ -142,6 +183,33 @@
         }
         [AppHelper hideLoader];
     }];
+}
+
+#pragma mark - Private
+
+- (void)preparePickerDataSource
+{
+    self.pickerSelectProviderDataSource = @[
+                                            dynamicLocalizedString(@"providerType.Du"),
+                                            dynamicLocalizedString(@"providerType.Etisalat"),
+                                            ];
+    [self.selectProviderPicker reloadAllComponents];
+}
+
+- (void)configureSelectProviderTextFieldInputView
+{
+    self.selectProviderPicker = [[UIPickerView alloc] init];
+    self.selectProviderPicker.delegate = self;
+    self.selectProviderPicker.dataSource = self;
+    self.providerType.inputView = self.selectProviderPicker;
+}
+
+- (void)clearUp
+{
+    self.providerType.text = @"";
+    self.phoneNumber.text = @"";
+    self.phoneProvider.text = @"";
+    self.notes.text = @"";
 }
 
 @end
