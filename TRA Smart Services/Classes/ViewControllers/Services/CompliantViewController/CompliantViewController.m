@@ -12,7 +12,7 @@
 
 @interface CompliantViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *providerText;
+@property (weak, nonatomic) IBOutlet UITextField *selectProviderTextField;
 @property (weak, nonatomic) IBOutlet UITextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet UITextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *compliantDescriptionTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (strong, nonatomic) UIPickerView *selectProviderPicker;
+@property (strong, nonatomic) NSArray *pickerSelectProviderDataSource;
 
 @end
 
@@ -32,6 +35,8 @@
     [super viewDidLoad];
     
     [self updateUIForCompliantType:self.type];
+    [self configureSelectProviderTextFieldInputView];
+    [self preparePickerDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,11 +58,11 @@
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitle.text.length ||
-        (self.type == ComplianTypeCustomProvider && (!self.providerText.text.length || !self.refNumber.text.length))){
+        (self.type == ComplianTypeCustomProvider && (!self.selectProviderTextField.text.length || !self.refNumber.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.providerText.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.selectProviderTextField.text title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
@@ -87,12 +92,46 @@
     return YES;
 }
 
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    NSInteger pickerRowsInComponent = 0;
+    if (pickerView == self.selectProviderPicker) {
+        pickerRowsInComponent = self.pickerSelectProviderDataSource.count;
+    }
+    return pickerRowsInComponent;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *pickerTitle = @"";
+    if (pickerView == self.selectProviderPicker) {
+        pickerTitle = (NSString *)self.pickerSelectProviderDataSource[row];
+    }
+    return pickerTitle;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView == self.selectProviderPicker) {
+        self.selectProviderTextField.text = self.pickerSelectProviderDataSource[row];
+    }
+}
+
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"compliantViewController.title");
-    self.providerText.placeholder = dynamicLocalizedString(@"compliantViewController.textField.providerText");
+    self.selectProviderTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.providerText");
     self.compliantTitle.placeholder = dynamicLocalizedString(@"compliantViewController.textField.compliantTitle");
     self.refNumber.placeholder = dynamicLocalizedString(@"compliantViewController.textField.refNumber");
     self.descriptionLabel.text = dynamicLocalizedString(@"compliantViewController.descriptionLabel.text");
@@ -115,7 +154,7 @@
 {
     switch (type) {
         case ComplianTypeCustomProvider: {
-            self.providerText.hidden = NO;
+            self.selectProviderTextField.hidden = NO;
             self.refNumber.hidden = NO;
             self.verticalSpaceTitleTextFieldConstraint.constant = 64.f;
             break;
@@ -129,6 +168,23 @@
         default:
             break;
     }
+}
+
+- (void)preparePickerDataSource
+{
+    self.pickerSelectProviderDataSource = @[
+                                         dynamicLocalizedString(@"providerType.Du"),
+                                         dynamicLocalizedString(@"providerType.Etisalat"),
+                                         dynamicLocalizedString(@"providerType.Yahsat")                                         ];
+    [self.selectProviderPicker reloadAllComponents];
+}
+
+- (void)configureSelectProviderTextFieldInputView
+{
+    self.selectProviderPicker = [[UIPickerView alloc] init];
+    self.selectProviderPicker.delegate = self;
+    self.selectProviderPicker.dataSource = self;
+    self.selectProviderTextField.inputView = self.selectProviderPicker;
 }
 
 @end

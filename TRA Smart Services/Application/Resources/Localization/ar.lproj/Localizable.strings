@@ -48,6 +48,12 @@
 "state.Sharjan" = "Sharjah";
 "state.Quwain" = "Umm al-Quwain";
 
+//ProviderType
+
+"providerType.Du" = "Du";
+"providerType.Etisalat" = "Etisalat";
+"providerType.Yahsat" = "Yahsat";
+
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "الرئيسية";

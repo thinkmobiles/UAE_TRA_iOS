@@ -48,6 +48,12 @@
 "state.Sharjan" = "state.Sharjan";
 "state.Quwain" = "state.Quwain";
 
+//ProviderType
+
+"providerType.Du" = "providerType.Du";
+"providerType.Etisalat" = "providerType.Etisalat";
+"providerType.Yahsat" = "providerType.Yahsat";
+
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "tabBarMenu_item_1";
