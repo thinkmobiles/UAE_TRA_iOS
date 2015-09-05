@@ -606,6 +606,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)localizeUI
 {
+    [super localizeUI];
+    
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
     self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");

@@ -77,6 +77,24 @@
     return [UIColor colorWithRealRed:158 green:158 blue:158 alpha:1.0f];
 }
 
+#pragma mark - Services
+
++ (UIColor *)lightGrayBorderColor
+{
+    return [UIColor colorWithRealRed:192 green:192 blue:192 alpha:1.0f];
+}
+
++ (UIColor *)lightGreenTextColor
+{
+    return [UIColor colorWithRealRed:42 green:171 blue:93 alpha:1.0f];
+}
+
++ (UIColor *)redTextColor
+{
+    return [UIColor colorWithRealRed:229 green:1 blue:28 alpha:1.0f];
+}
+
+
 #pragma mark - Private
 
 + (UIColor *)colorWithRealRed:(int)red green:(int)green blue:(int)blue alpha:(float)alpha

@@ -14,12 +14,12 @@
 
 + (UIFont *)droidKufiBoldFontForSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"Droid Arabic Kufi Bold" size:size];
+    return [UIFont fontWithName:@"DroidArabicKufi-Bold" size:size];
 }
 
 + (UIFont *)droidKufiRegularFontForSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"Droid Arabic Kufi" size:size];
+    return [UIFont fontWithName:@"DroidArabicKufi" size:size];
 }
 
 + (UIFont *)latoRegularWithSize:(CGFloat)size

@@ -6,6 +6,11 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//API descriptors
+
+"api.message.serverError" = "Internal Server Error occured. Please try again later.";
+"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";
@@ -43,6 +48,12 @@
 "state.Sharjan" = "Sharjah";
 "state.Quwain" = "Umm al-Quwain";
 
+//ProviderType
+
+"providerType.Du" = "Du";
+"providerType.Etisalat" = "Etisalat";
+"providerType.Yahsat" = "Yahsat";
+
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "الرئيسية";
@@ -60,6 +71,9 @@
 "login.button.forgotPassword" = "نسيت كلمة المرور";
 "login.button.registerButton" = "تسجيل";
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.picker.genre.male" = "Male";
+"login.picker.genre.female" = "Female";
+"login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
 
@@ -72,7 +86,7 @@
 "register.button.login" = "تسجيل الدخول";
 "register.placeHolderText.confirmPassword" = "Comfirm Password";
 "register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID №";
+"register.placeHolderText.emirateID" = "Emirates ID";
 "register.placeHolderText.lastName" = "Last Name";
 "register.placeHolderText.address" = "Address";
 "register.placeHolderText.landline" = "Landline";
@@ -155,6 +169,10 @@
 "coverageReport.strong" = "قوية";
 "coverageReport.veryStrong" = "قوية جداً";
 "coverageLevel.title" = "قوة التغطية";
+"coverageReport.reportSignalButton.title" = "Report signal";
+"coverageReport.detectLocationButton.title" = "Detect location";
+"coverageReport.addressTextField" = "Address";
+"coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
 
@@ -174,3 +192,66 @@
 //SearchMobileBrandNameViewController
 
 "searchMobileBrandNameViewController.title" = "Search Mobile Brand";
+"searchMobileBrandNameViewController.searchButton" = "Search brand name";
+
+//SuggestionViewController
+
+"suggestionViewController.title" = "Send suggestion";
+"suggestionViewController.textField.suggestionTitle" = "Title";
+"suggestionViewController.textField.suggestionDescription" = "شرح";
+"suggestionViewController.selectImageButton.title" = "Image";
+"suggestionViewController.sendSuggestionButton.title" = "Send suggestion";
+
+//CompliantViewController
+
+"compliantViewController.title" = "شكوى";
+"compliantViewController.textField.providerText" = "Provider";
+"compliantViewController.textField.compliantTitle" = "عنوان الشكوى";
+"compliantViewController.textField.refNumber" = "Referens number";
+"compliantViewController.descriptionLabel.text" = "شرح";
+"compliantViewController.selectImageButton.title" = "Image";
+"compliantViewController.compliantButton.title" = "شكوى";
+
+//SpamReportViewControler
+
+"spamReportViewControler.title" = "SMS Spam Report";
+"spamReportViewControler.textField.phoneProvider" = "Provider number";
+"spamReportViewControler.textField.phoneNumber" = "Phone number";
+"spamReportViewControler.textField.providerType" = "Provider type";
+"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
+"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
+"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+
+//"InternetSpeedTestViewController
+
+"internetSpeedTestViewController.title" = "Speed Test Demo";
+"internetSpeedTestViewController.checkButton.title" = "Check Speed";
+
+//HelpSalimViewController
+
+"helpSalimViewController.title" = "Help Salim Service";
+"helpSalimViewController.urlToReportTextField" = "URL to report";
+"helpSalimViewController.commentLabel.text" = "Comment";
+"helpSalimViewController.reportURLButton.title" = "Report URL";
+
+//PostFeedbackViewController
+
+"postFeedbackViewController.title" = "Post Feedback";
+"postFeedbackViewController.serviceNameTextField" = "Servise";
+"postFeedbackViewController.ratingTextField" = "Rating";
+"postFeedbackViewController.feedbackLabel.text" = "Feedback";
+"postFeedbackViewController.sendButton.title" = "Send";
+
+//CheckDomainViewController
+
+"checkDomainViewController.title" = "التحقق من نطاق";
+"checkDomainViewController.domainNameTextField" = "اسم النطاق";
+"checkDomainViewController.avaliabilityButton.title" = "تحقق من توفر النطاق";
+"checkDomainViewController.whoISButton.title" = "تفاصيل النطاق";
+"checkDomainViewController.domainTitleForView" = "Domain Check Service";
+"checkDomainViewController.chooseRating" = "Choose Rating";
+
+//CheckIMEIViewController
+
+"checkIMEIViewController.title" = "Check IMEI";
+"checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";

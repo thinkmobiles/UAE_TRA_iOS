@@ -15,9 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
+@property (weak, nonatomic) IBOutlet UIButton *detectLocationButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSignalLevel;
 
 @property (strong, nonatomic) MBProgressHUD *HUD;
+@property (assign, nonatomic) BOOL needToCaptureLocation;
 
 @end
 
@@ -29,11 +31,6 @@
 {
     [super viewDidLoad];
     
-    self.title = dynamicLocalizedString(@"coverageLevel.title");
-    self.selectedSignalLevel.text = dynamicLocalizedString(@"coverageLevel.title");
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self prepareUI];
-    
     [self prepareHUD];
 }
 
@@ -41,21 +38,7 @@
 {
     [super viewWillAppear:animated];
     
-    if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
-        __weak typeof(self) weakSelf = self;
-        [[LocationManager sharedManager] checkLocationPermissions:^(BOOL result) {
-            if (result) {
-                [weakSelf.HUD show:YES];
-                [LocationManager sharedManager].delegate = weakSelf;
-                [[LocationManager sharedManager] startUpdatingLocation];
-            } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf];
-            }
-        }];
-    } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self];
-    }
-    [self updateColors];
+    [self startCapturing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -77,17 +60,11 @@
 
 - (void)locationDidChangedTo:(CGFloat)longtitude lat:(CGFloat)latitude
 {
-    self.reportSignalButton.userInteractionEnabled = YES;
-    [self.activityIndicator startAnimating];
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:latitude longitude:longtitude];
-    __weak typeof(self) weakSelf = self;
-    [[LocationManager sharedManager] fetchAddressWithLocation:loc completionBlock:^(NSString *address) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.addressTextField.text = address;
-            [weakSelf.activityIndicator stopAnimating];
-        });
-        [weakSelf.HUD hide:YES];
-    }];
+    [self.HUD hide:YES];
+    if (self.needToCaptureLocation) {
+        self.needToCaptureLocation = NO;
+        [self detectLocationButtonTapped:nil];
+    }
 }
 
 - (void)locationDidFailWithError:(NSError *)failError
@@ -100,9 +77,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    [[UIApplication sharedApplication] openURL:settingsURL];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (!buttonIndex) {
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - IbAction
@@ -118,7 +97,7 @@
                 if (error.code == -999) {
                     [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.OperationCanceledByUser")];
                 } else {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
+                    [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
                 }
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
@@ -128,6 +107,7 @@
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        [self startCapturing];
     }
 }
 
@@ -164,6 +144,24 @@
     self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), value];
 }
 
+- (IBAction)detectLocationButtonTapped:(id)sender
+{
+    if ([LocationManager sharedManager].currentLattitude) {
+        [self.activityIndicator startAnimating];
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:[LocationManager sharedManager].currentLattitude longitude:[LocationManager sharedManager].currentLongtitude];
+        __weak typeof(self) weakSelf = self;
+        [[LocationManager sharedManager] fetchAddressWithLocation:loc completionBlock:^(NSString *address) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.addressTextField.text = address;
+                [weakSelf.activityIndicator stopAnimating];
+            });
+        }];
+    } else {
+        self.needToCaptureLocation = YES;
+        [self startCapturing];
+    }
+}
+
 - (void)MBProgressHUDCancelButtonDidPressed
 {
     [self.HUD hide:YES];
@@ -172,39 +170,26 @@
     [self.activityIndicator stopAnimating];
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
+    self.title = dynamicLocalizedString(@"coverageLevel.title");
+    self.selectedSignalLevel.text = [NSString stringWithFormat:@"%@ - %@", dynamicLocalizedString(@"coverageLevel.title"), dynamicLocalizedString(@"coverageReport.very_weak")];
+    [self.reportSignalButton setTitle:dynamicLocalizedString(@"coverageReport.reportSignalButton.title") forState:UIControlStateNormal];
+    [self.detectLocationButton setTitle:dynamicLocalizedString(@"coverageReport.detectLocationButton.title") forState:UIControlStateNormal];
+    self.addressTextField.placeholder = dynamicLocalizedString(@"coverageReport.addressTextField");
 }
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
+    [super updateColors];
+    
     self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
     self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
-    [self prepareUI];
 }
+
+#pragma mark - Private
 
 - (void)prepareHUD
 {
@@ -212,6 +197,24 @@
     [[AppHelper rootViewController].view addSubview:self.HUD];
     self.HUD.dimBackground = YES;
     [self.HUD addCancelButtonForTarger:self andSelector:NSStringFromSelector(@selector(MBProgressHUDCancelButtonDidPressed))];
+}
+
+- (void)startCapturing
+{
+    if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
+        __weak typeof(self) weakSelf = self;
+        [[LocationManager sharedManager] checkLocationPermissions:^(BOOL result) {
+            if (result) {
+                [weakSelf.HUD show:YES];
+                [LocationManager sharedManager].delegate = weakSelf;
+                [[LocationManager sharedManager] startUpdatingLocation];
+            } else {
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationPermissionGranted") delegate:weakSelf otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
+            }
+        }];
+    } else {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
+    }
 }
 
 @end

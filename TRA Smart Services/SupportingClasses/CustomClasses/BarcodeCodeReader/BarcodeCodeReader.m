@@ -26,12 +26,16 @@
 {
     self = [super init];
     if (self) {
-        self.previewLayer = viewPreview;
-        self.isReading = NO;
-#if !TARGET_IPHONE_SIMULATOR
-        [self setupSession];
-#endif
-        [self prepareScanningIndicatorView];
+        if (viewPreview) {
+            self.previewLayer = viewPreview;
+            self.isReading = NO;
+    #if !TARGET_IPHONE_SIMULATOR
+            [self setupSession];
+    #endif
+            [self prepareScanningIndicatorView];
+        } else {
+            return nil;
+        }
     }
     return self;
 }

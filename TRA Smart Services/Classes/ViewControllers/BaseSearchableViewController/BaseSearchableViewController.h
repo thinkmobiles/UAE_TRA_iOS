@@ -10,4 +10,6 @@
 
 @property (strong, nonatomic) UILabel *searchanbeleViewControllerTitle;
 
+- (void)localizeUI;
+
 @end

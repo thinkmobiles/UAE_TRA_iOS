@@ -23,7 +23,14 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
+		932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */; };
+		932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */; };
+		932FD8D61B944674008EFBD8 /* FavouriteViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */; };
+		932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */; };
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
+		9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3241B974ED50066329C /* LeftInsetTextField.m */; };
+		9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3281B9818070066329C /* DomainInfoTableViewCell.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
@@ -118,7 +125,21 @@
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
 		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
 		F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */; };
+		F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCC1B96EE7900891246 /* RatingView.m */; };
+		F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCF1B96EE9100891246 /* ServiceView.m */; };
+		F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F15CD11B96EEC300891246 /* RatingView.xib */; };
+		F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F15CD31B971D6300891246 /* ServiceView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		932FD82A1B9197D9008EFBD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED7192741B5450D60086C6EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED71927B1B5450D60086C6EE;
+			remoteInfo = "TRA Smart Services";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellEuropeUI.xib; sourceTree = "<group>"; };
@@ -146,8 +167,20 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart Services Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		932FD8271B9197D9008EFBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
+		932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationWithRegularTest.m; sourceTree = "<group>"; };
+		932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReaderTest.m; sourceTree = "<group>"; };
+		932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewControllerTests.m; sourceTree = "<group>"; };
+		932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseServiceViewController.h; sourceTree = "<group>"; };
+		932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServiceViewController.m; sourceTree = "<group>"; };
 		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
 		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
+		9343E3231B974ED50066329C /* LeftInsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftInsetTextField.h; sourceTree = "<group>"; };
+		9343E3241B974ED50066329C /* LeftInsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftInsetTextField.m; sourceTree = "<group>"; };
+		9343E3271B9818070066329C /* DomainInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomainInfoTableViewCell.h; sourceTree = "<group>"; };
+		9343E3281B9818070066329C /* DomainInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomainInfoTableViewCell.m; sourceTree = "<group>"; };
 		934628F71B8D873C0017E4CD /* MBProgressHUD+CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CancelButton.h"; sourceTree = "<group>"; };
 		934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CancelButton.m"; sourceTree = "<group>"; };
 		934628FB1B8D884F0017E4CD /* CAGradientRadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAGradientRadialLayer.h; sourceTree = "<group>"; };
@@ -324,9 +357,22 @@
 		F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteTableViewCell.m; sourceTree = "<group>"; };
 		F177854D1B8DE23800D96B1E /* AddToFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteViewController.h; sourceTree = "<group>"; };
 		F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteViewController.m; sourceTree = "<group>"; };
+		F1F15CCB1B96EE7900891246 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
+		F1F15CCC1B96EE7900891246 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
+		F1F15CCE1B96EE9100891246 /* ServiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceView.h; sourceTree = "<group>"; };
+		F1F15CCF1B96EE9100891246 /* ServiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceView.m; sourceTree = "<group>"; };
+		F1F15CD11B96EEC300891246 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		F1F15CD31B971D6300891246 /* ServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		932FD8211B9197D9008EFBD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED7192791B5450D60086C6EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +482,35 @@
 			path = BaseSelectImageViewController;
 			sourceTree = "<group>";
 		};
+		932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8261B9197D9008EFBD8 /* Supporting Files */,
+				932FD8311B9198AE008EFBD8 /* KeychainTest.m */,
+				932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */,
+				932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */,
+				932FD8D51B944674008EFBD8 /* FavouriteViewControllerTests.m */,
+			);
+			path = "TRA Smart Services Tests";
+			sourceTree = "<group>";
+		};
+		932FD8261B9197D9008EFBD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8271B9197D9008EFBD8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */,
+				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
+			);
+			path = BaseServiceViewController;
+			sourceTree = "<group>";
+		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +518,24 @@
 				9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */,
 			);
 			path = SearchMobileBrandNameViewController;
+			sourceTree = "<group>";
+		};
+		9343E3221B974ECB0066329C /* LeftInsetTextField */ = {
+			isa = PBXGroup;
+			children = (
+				9343E3231B974ED50066329C /* LeftInsetTextField.h */,
+				9343E3241B974ED50066329C /* LeftInsetTextField.m */,
+			);
+			path = LeftInsetTextField;
+			sourceTree = "<group>";
+		};
+		9343E3261B9817F20066329C /* DomainInfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9343E3271B9818070066329C /* DomainInfoTableViewCell.h */,
+				9343E3281B9818070066329C /* DomainInfoTableViewCell.m */,
+			);
+			path = DomainInfoTableViewCell;
 			sourceTree = "<group>";
 		};
 		934628F61B8D873C0017E4CD /* MBProgressHUD+CancelButton */ = {
@@ -621,8 +714,9 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
+				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
 				EDFEE7161B7DE32F0062CB64 /* SpamReportViewController */,
@@ -712,6 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71927E1B5450D60086C6EE /* TRA Smart Services */,
+				932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */,
 				ED71927D1B5450D60086C6EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -720,6 +815,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71927C1B5450D60086C6EE /* TRA Smart Services.app */,
+				932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -916,6 +1012,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				9343E3221B974ECB0066329C /* LeftInsetTextField */,
 				93A436EB1B85D185009299C5 /* PushNoAnimationSegue */,
 				ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */,
 				ED2369C71B71E8D200F0F882 /* InternetSpeedChecker */,
@@ -1168,6 +1265,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9343E3261B9817F20066329C /* DomainInfoTableViewCell */,
 				F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */,
 				93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */,
 				EDAA8EEE1B81DB5300269F1A /* FavouriteTableViewCell */,
@@ -1192,6 +1290,8 @@
 		EDEC9DED1B6A338B00334503 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F1F15CC91B96EE4E00891246 /* RatingView */,
+				F1F15CCA1B96EE4E00891246 /* ServiceView */,
 				EDEC9DEE1B6A339A00334503 /* HexagonView */,
 				ED6537291B6FFDAF00A50CBC /* SegmentView */,
 				ED7D9F1A1B6B9EC400C20402 /* HomeTopBarView */,
@@ -1282,9 +1382,47 @@
 			path = AddToFavoriteViewController;
 			sourceTree = "<group>";
 		};
+		F1F15CC91B96EE4E00891246 /* RatingView */ = {
+			isa = PBXGroup;
+			children = (
+				F1F15CCB1B96EE7900891246 /* RatingView.h */,
+				F1F15CCC1B96EE7900891246 /* RatingView.m */,
+				F1F15CD11B96EEC300891246 /* RatingView.xib */,
+			);
+			path = RatingView;
+			sourceTree = "<group>";
+		};
+		F1F15CCA1B96EE4E00891246 /* ServiceView */ = {
+			isa = PBXGroup;
+			children = (
+				F1F15CCE1B96EE9100891246 /* ServiceView.h */,
+				F1F15CCF1B96EE9100891246 /* ServiceView.m */,
+				F1F15CD31B971D6300891246 /* ServiceView.xib */,
+			);
+			path = ServiceView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		932FD8231B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 932FD82E1B9197D9008EFBD8 /* Build configuration list for PBXNativeTarget "TRA Smart Services Tests" */;
+			buildPhases = (
+				932FD8201B9197D9008EFBD8 /* Sources */,
+				932FD8211B9197D9008EFBD8 /* Frameworks */,
+				932FD8221B9197D9008EFBD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				932FD82B1B9197D9008EFBD8 /* PBXTargetDependency */,
+			);
+			name = "TRA Smart Services Tests";
+			productName = "TRA Smart Services Tests";
+			productReference = 932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ED71927B1B5450D60086C6EE /* TRA Smart Services */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED7192931B5450D60086C6EE /* Build configuration list for PBXNativeTarget "TRA Smart Services" */;
@@ -1311,6 +1449,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Thinkmobiles;
 				TargetAttributes = {
+					932FD8231B9197D9008EFBD8 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = ED71927B1B5450D60086C6EE;
+					};
 					ED71927B1B5450D60086C6EE = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 3C9NG3BP4F;
@@ -1332,22 +1474,32 @@
 			projectRoot = "";
 			targets = (
 				ED71927B1B5450D60086C6EE /* TRA Smart Services */,
+				932FD8231B9197D9008EFBD8 /* TRA Smart Services Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		932FD8221B9197D9008EFBD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED71927A1B5450D60086C6EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
+				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
 				93A436F41B860EAA009299C5 /* FavouriteEuroTableViewCell.xib in Resources */,
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				847A84811B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib in Resources */,
+				F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */,
 				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
@@ -1371,6 +1523,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		932FD8201B9197D9008EFBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				932FD8D61B944674008EFBD8 /* FavouriteViewControllerTests.m in Sources */,
+				932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */,
+				932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */,
+				932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED7192781B5450D60086C6EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1390,6 +1553,7 @@
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
+				9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */,
 				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
 				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
@@ -1419,6 +1583,7 @@
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
 				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
+				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
@@ -1432,6 +1597,7 @@
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
+				F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
@@ -1446,6 +1612,7 @@
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
+				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
 				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
@@ -1455,6 +1622,7 @@
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
+				9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */,
 				934629041B8E17060017E4CD /* TRAService.m in Sources */,
 				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
@@ -1464,6 +1632,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		932FD82B1B9197D9008EFBD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED71927B1B5450D60086C6EE /* TRA Smart Services */;
+			targetProxy = 932FD82A1B9197D9008EFBD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ED982F2C1B5D24DA00B6B644 /* Localizable.strings */ = {
@@ -1479,6 +1655,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		932FD82C1B9197D9008EFBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "TRA Smart Services Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
+			};
+			name = Debug;
+		};
+		932FD82D1B9197D9008EFBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "TRA Smart Services Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
+			};
+			name = Release;
+		};
 		ED7192911B5450D60086C6EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1569,12 +1787,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fcb704-15b9-4c6b-b4ce-6da309e8715e";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 			};
 			name = Debug;
 		};
@@ -1586,18 +1805,28 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "TRA Smart Services/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92fcb704-15b9-4c6b-b4ce-6da309e8715e";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		932FD82E1B9197D9008EFBD8 /* Build configuration list for PBXNativeTarget "TRA Smart Services Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				932FD82C1B9197D9008EFBD8 /* Debug */,
+				932FD82D1B9197D9008EFBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

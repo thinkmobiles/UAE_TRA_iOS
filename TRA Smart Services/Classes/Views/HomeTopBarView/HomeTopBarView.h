@@ -31,26 +31,24 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 @property (assign, nonatomic) NSUInteger notificationsCount;
 @property (copy, nonatomic) NSString *userInitials;
 
-@property (assign, nonatomic) BOOL isFakeButtonsOnTop;
 @property (assign, nonatomic) BOOL isBottomHexagonWireOnTop;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
 @property (assign, nonatomic) BOOL enableFakeBarAnimations;
 
 - (void)reverseLayers;
-
-- (void)updateOpacityForHexagons:(CGFloat)opacityLevel;
-
-- (void)moveBottomHexagonWireToTop:(BOOL)toTop;
-- (void)updatedPositionForBottomWireForMovingProgress:(CGFloat)progress;
-
-- (void)moveFakeButtonsToTop:(BOOL)moveToTop;
-
-- (void)scaleLogo:(BOOL)scale;
-- (void)scaleLogoFor:(CGFloat)scale;
-
-- (void)animateTopViewApearence;
 - (void)setStartApearenceAnimationParameters;
+
 - (void)updateUIColor;
+
+- (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel;
+- (void)animateBottomWireMovingWithProgress:(CGFloat)progress;
+- (void)animateFakeButtonsLayerMovingWithProgress:(CGFloat)progress;
+- (void)animateTopViewApearence;
+- (void)animateLogoScaling:(CGFloat)scale;
+
+- (void)animateBottomElementsMovingToTop:(BOOL)toTop;
+- (void)animateFakeButtonsLayerMovingToTop:(BOOL)toTop;
+- (void)scaleLogo:(BOOL)scale;
 
 @end

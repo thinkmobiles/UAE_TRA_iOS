@@ -25,15 +25,7 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
 }
 
 #pragma mark - IBActions
@@ -46,9 +38,13 @@
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByMobileBrand:self.brandNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                weakSelf.resultInfoTextView.text = response;
+                NSString *string = @"";
+                for (NSDictionary *dic in response) {
+                    string = [string stringByAppendingString:[NSString stringWithFormat:@"response - %@ \n", dic]];
+                }
+                weakSelf.resultInfoTextView.text = string;
             }
             [AppHelper hideLoader];
         }];
@@ -76,15 +72,12 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    self.searchButton.layer.cornerRadius = 8;
-    self.searchButton.layer.borderWidth = 1;
-    
-    self.brandNameTextField.layer.cornerRadius = 8;
-    self.brandNameTextField.layer.borderWidth = 1;
+    self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
+    [self.searchButton setTitle:dynamicLocalizedString(@"searchMobileBrandNameViewController.searchButton") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
@@ -94,6 +87,17 @@
     
     [self.searchButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     self.searchButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+}
+
+#pragma mark - Private
+
+- (void)prepareUI
+{
+    self.searchButton.layer.cornerRadius = 8;
+    self.searchButton.layer.borderWidth = 1;
+    
+    self.brandNameTextField.layer.cornerRadius = 8;
+    self.brandNameTextField.layer.borderWidth = 1;
 }
 
 @end

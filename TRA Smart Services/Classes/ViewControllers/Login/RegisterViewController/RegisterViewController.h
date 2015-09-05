@@ -8,6 +8,6 @@
 
 #import "BaseMembershipViewController.h"
 
-@interface RegisterViewController : BaseDynamicUIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface RegisterViewController : BaseDynamicUIViewController <UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate>
 
 @end

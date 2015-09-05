@@ -34,4 +34,10 @@
 
 + (UIColor *)lightGrayTextColor;
 
+#pragma mark - Services
+
++ (UIColor *)lightGrayBorderColor;
++ (UIColor *)redTextColor;
++ (UIColor *)lightGreenTextColor;
+
 @end

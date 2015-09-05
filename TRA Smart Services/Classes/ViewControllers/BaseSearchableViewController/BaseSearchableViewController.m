@@ -122,6 +122,7 @@
         self.searchanbeleViewControllerTitle.textAlignment = NSTextAlignmentCenter;
         self.searchanbeleViewControllerTitle.minimumScaleFactor = 0.8f;
         self.searchanbeleViewControllerTitle.numberOfLines = 0;
+        self.searchanbeleViewControllerTitle.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     }
     [self.titleView addSubview: self.searchanbeleViewControllerTitle];
 }
@@ -129,6 +130,7 @@
 - (void)localizeUI
 {
     //dummy
+    self.searchanbeleViewControllerTitle.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
 }
 
 - (void)updateColors

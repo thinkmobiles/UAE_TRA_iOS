@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewVerticalSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -203,8 +202,11 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)localizeUI
 {
+    [super localizeUI];
+    
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
+    self.announcementsLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 

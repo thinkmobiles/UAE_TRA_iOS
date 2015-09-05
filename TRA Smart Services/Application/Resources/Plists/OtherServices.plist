@@ -16,18 +16,6 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>4</string>
-		<key>serviceName</key>
-		<string>speedAccess.service.name.4</string>
-		<key>serviceLogo</key>
-		<string>ic_edit</string>
-		<key>serviceOrder</key>
-		<string>0</string>
-		<key>serviceDisplayLogo</key>
-		<string>ic_edit_hex</string>
-	</dict>
-	<dict>
-		<key>serviceID</key>
 		<string>2</string>
 		<key>serviceName</key>
 		<string>speedAccess.service.name.2</string>

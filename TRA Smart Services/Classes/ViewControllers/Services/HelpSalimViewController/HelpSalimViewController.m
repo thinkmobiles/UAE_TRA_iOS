@@ -12,28 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *urlToReportTextField;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet UIButton *reportURLButton;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 @end
 
 @implementation HelpSalimViewController
-
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.title = @"Help Salim Service";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self prepareUI];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateColors];
-}
 
 #pragma mark - IBActions
 
@@ -51,7 +35,7 @@
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.urlToReportTextField.text notes:self.commentTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:error.localizedDescription];
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
         } else {
             [AppHelper alertViewWithMessage:response];
         }
@@ -80,40 +64,22 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    self.commentTextView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.commentTextView.layer.borderWidth = 1;
-    self.commentTextView.layer.cornerRadius = 8;
-    self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.title = dynamicLocalizedString(@"helpSalimViewController.title");
+    self.urlToReportTextField.placeholder = dynamicLocalizedString(@"helpSalimViewController.urlToReportTextField");
+    self.commentLabel.text = dynamicLocalizedString(@"helpSalimViewController.commentLabel.text");
+    [self.reportURLButton setTitle:dynamicLocalizedString(@"helpSalimViewController.reportURLButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    [self prepareUI];
+    [super updateColors];
+    
+    [AppHelper setStyleForLayer:self.commentTextView.layer];
+    self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
 }
 
 @end

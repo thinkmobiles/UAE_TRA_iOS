@@ -37,4 +37,6 @@
 + (NSString *)detailedDateStringFrom:(NSDate *)date;
 + (NSString *)compactDateStringFrom:(NSDate *)date;
 
++ (void)setStyleForLayer:(CALayer *)layer;
+
 @end

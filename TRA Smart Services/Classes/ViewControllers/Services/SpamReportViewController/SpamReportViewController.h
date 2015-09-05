@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SpamReportViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface SpamReportViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end

@@ -9,8 +9,6 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const PickerExpandedHeightValue = 150.f;
-
 @interface RegisterViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -20,27 +18,24 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
 @property (weak, nonatomic) IBOutlet OffsetTextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *genderTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *confirmPasswordTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emiratesIDTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *addressTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *landlineTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UIButton *selectStateButton;
+@property (weak, nonatomic) IBOutlet OffsetTextField *selectStateTextField;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightLogoImageViewConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaseRegisterConteinerUIView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollLogoImage;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
+@property (assign, nonatomic) CGFloat keyboardHeight;
 
-@property (strong, nonatomic) NSArray *pickerDataSource;
 @property (assign, nonatomic) NSInteger selectedState;
+@property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
+@property (strong, nonatomic) UIPickerView *selectStatePicker;
 
 @end
 
@@ -52,10 +47,12 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 {
     [super viewWillAppear:animated];
     
+    self.selectedState = -1;
     [self prepareNotification];
-    [self prepareLogoImageView];
+    [self prepareRegisterConteinerUIView];
     [self updateColors];
-    [self prepareDataSource];
+    
+    [self configureSelectStateTextFieldInputView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -79,27 +76,20 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     [TextFieldNavigator findNextTextFieldFromCurrent:textField];
 
     if (textField.returnKeyType == UIReturnKeyNext) {
-        CGFloat offsetTextField = textField.frame.origin.y + self.logoImageView.frame.size.height;
-        
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - 216.f - 110.f;
+        CGFloat offsetTextField = textField.frame.origin.y + self.verticalSpaseRegisterConteinerUIView.constant;
+        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
         
         if (offsetTextField  > lineEventScroll) {
-            __weak typeof(self) weakSelf = self;
-            [self.view layoutIfNeeded];
-            [UIView animateWithDuration:0.25 animations:^{
-                [weakSelf.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f)];
-                [weakSelf.view layoutIfNeeded];
-            }];
+            [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f) animated:YES];
+        }
+        CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
+        if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
+            [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
         }
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
         CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
-        __weak typeof(self) weakSelf = self;
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.5 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY )];
-            [weakSelf.view layoutIfNeeded];
-        }];
+        [self.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
         return YES;
     }
     return NO;
@@ -111,61 +101,60 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     return YES;
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    return self.pickerDataSource.count;
+    [self vizibleTextFieldChangeKeyboard];
+    return YES;
+}
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell" forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"pickerCell"];
+    NSInteger pickerRowsInComponent = 0;
+    if (pickerView == self.selectStatePicker) {
+        pickerRowsInComponent = self.pickerSelectStateDataSource.count;
     }
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
+    return pickerRowsInComponent;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UIPickerViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return 44;
+    NSString *pickerTitle = @"";
+    if (pickerView == self.selectStatePicker) {
+        pickerTitle = (NSString *)self.pickerSelectStateDataSource[row];
+    }
+    return pickerTitle;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.selectedState = indexPath.row;
-    [self.selectStateButton setTitle:self.pickerDataSource[indexPath.row] forState:UIControlStateNormal];
-    [self hidePickerTable];
+    if (pickerView == self.selectStatePicker) {
+        self.selectStateTextField.text = self.pickerSelectStateDataSource[row];
+        self.selectedState = row;
+    }
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
-    cell.textLabel.text = self.pickerDataSource[indexPath.row];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (scrollView.contentOffset.y >= 0) {
+        if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
+            [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
+        }
+    } else {
+        [self.scrollLogoImage setContentOffset:CGPointMake(0, 0)];
+    }
 }
 
 #pragma mark - IBActions
-
-- (IBAction)selectStateButtonTapped:(id)sender
-{
-    if (self.tableView.hidden) {
-        [self.view layoutIfNeeded];
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:0.25 animations:^{
-            weakSelf.tableView.hidden = NO;
-            weakSelf.tableViewHeightConstraint.constant = PickerExpandedHeightValue;
-            [weakSelf.view layoutIfNeeded];
-        }];
-    } else {
-        [self hidePickerTable];
-    }
-}
 
 - (IBAction)registerButtonPress:(id)sender
 {
@@ -173,7 +162,7 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    if (self.userNameTextField.text.length && self.genderTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.addressTextField.text.length && self.landlineTextField.text.length && self.countryTextField.text.length && self.emailTextField.text.length) {
+    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
             return;
@@ -220,33 +209,20 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat keyboardHeight = keyboardRect.size.height;
-    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.logoImageView.frame.size.height - self.scrollView.contentOffset.y - keyboardHeight;
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - keyboardHeight - 110.f;
-        if (lineEventScroll < self.offSetTextFildY + self.logoImageView.frame.size.height - 50.f) {
-        __weak typeof(self) weakSelf = self;
-        [weakSelf.view layoutIfNeeded];
-        [UIView animateWithDuration:0.25 animations:^{
-            [weakSelf.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 50.f)];
-            [weakSelf.view layoutIfNeeded];
-        }];
-    }
+    self.keyboardHeight = keyboardRect.size.height;
+    [self vizibleTextFieldChangeKeyboard];
 }
 
 #pragma mark - Private
 
-- (void)hidePickerTable
+- (void) vizibleTextFieldChangeKeyboard
 {
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.tableViewHeightConstraint.constant = 0;
-        [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        weakSelf.tableView.hidden = YES;
-    }];
+    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
+    CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
+    if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
+        [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
+    }
 }
-
 
 - (BOOL)isInputParametersInvalid
 {
@@ -284,25 +260,20 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
 
 - (void)localizeUI
 {
-    [self prepareDataSource];
-//    [self.statePicker reloadAllComponents];
+    [self preparePickerDataSource];
     
     self.title = dynamicLocalizedString(@"register.title");
     self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
-    self.genderTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.gender");
     self.mobileTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.phone");
     self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
     self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
     self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
     self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
-    self.addressTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.address");
-    self.landlineTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.landline");
-    self.countryTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.country");
     self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
     self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
+    self.selectStateTextField.placeholder = dynamicLocalizedString(@"state.SelectState");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
-    [self.selectStateButton setTitle:dynamicLocalizedString(@"state.SelectState") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
@@ -311,7 +282,20 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.view.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+}
+
+- (void)preparePickerDataSource
+{
+    self.pickerSelectStateDataSource = @[
+                                         dynamicLocalizedString(@"state.Abu.Dhabi"),
+                                         dynamicLocalizedString(@"state.Ajman"),
+                                         dynamicLocalizedString(@"state.Dubai"),
+                                         dynamicLocalizedString(@"state.Fujairah"),
+                                         dynamicLocalizedString(@"state.Ras"),
+                                         dynamicLocalizedString(@"state.Sharjan"),
+                                         dynamicLocalizedString(@"state.Quwain")
+                                         ];
+    [self.selectStatePicker reloadAllComponents];
 }
 
 - (void)prepareNavigationBar
@@ -319,23 +303,18 @@ static CGFloat const PickerExpandedHeightValue = 150.f;
     self.title = dynamicLocalizedString(@"register.title");
 }
 
-- (void)prepareLogoImageView
+- (void)prepareRegisterConteinerUIView
 {
-    self.heightLogoImageViewConstraint.constant = 252.f - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;  //252 - temp while no design provided
+    self.verticalSpaseRegisterConteinerUIView.constant = self.logoImageView.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;
 }
 
-- (void)prepareDataSource
+- (void)configureSelectStateTextFieldInputView
 {
-    self.pickerDataSource = @[
-                              dynamicLocalizedString(@"state.Abu.Dhabi"),
-                              dynamicLocalizedString(@"state.Ajman"),
-                              dynamicLocalizedString(@"state.Dubai"),
-                              dynamicLocalizedString(@"state.Fujairah"),
-                              dynamicLocalizedString(@"state.Ras"),
-                              dynamicLocalizedString(@"state.Sharjan"),
-                              dynamicLocalizedString(@"state.Quwain")
-                              ];
-    self.selectedState = -1;
+    self.selectStatePicker = [[UIPickerView alloc] init];
+    self.selectStatePicker.delegate = self;
+    self.selectStatePicker.dataSource = self;
+    self.selectStateTextField.inputView = self.selectStatePicker;
 }
+
 
 @end

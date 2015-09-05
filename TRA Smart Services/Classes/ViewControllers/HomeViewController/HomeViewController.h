@@ -8,7 +8,7 @@
 
 #import "HomeTopBarView.h"
 
-@interface HomeViewController : BaseDynamicUIViewController <UICollectionViewDataSource, UICollectionViewDelegate, HomeTopBarViewDelegate, UIScrollViewDelegate>
+@interface HomeViewController : BaseDynamicUIViewController <UICollectionViewDataSource, UICollectionViewDelegate, HomeTopBarViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @end
 

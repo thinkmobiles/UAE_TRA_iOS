@@ -8,6 +8,7 @@
 
 #import "SpamReportViewController.h"
 #import "NetworkManager.h"
+#import "LoginViewController.h"
 
 @interface SpamReportViewController ()
 
@@ -19,53 +20,34 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *reportSegment;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 
+@property (strong, nonatomic) UIPickerView *selectProviderPicker;
+@property (strong, nonatomic) NSArray *pickerSelectProviderDataSource;
+
 @end
 
 @implementation SpamReportViewController
 
 #pragma mark - Life Cicle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    [self.phoneProvider becomeFirstResponder];
-    
-    [self prepareUI];
-    self.title = @"SMS Spam Report";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
+    [self presentLoginIfNeeded];
+    [self preparePickerDataSource];
+    [self configureSelectProviderTextFieldInputView];
 }
 
-#pragma mark - IABaction
+#pragma mark - IBAction
 
 - (IBAction)responseSpam:(id)sender
 {
     [self.view endEditing:YES];
-    
     if (self.reportSegment.selectedSegmentIndex) {
         if (!self.phoneNumber.text.length || !self.notes.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
-            if (![self.phoneNumber.text isValidPhoneNumber]) {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
-                return;
-            }
-            [AppHelper showLoader];
-            [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
-                if (error) {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
-                } else {
-                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-                }
-                [AppHelper hideLoader];
-            }];
+            [self POSTSpamReport];
         }
     } else {
         if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
@@ -75,15 +57,7 @@
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
                 return;
             }
-            [AppHelper showLoader];
-            [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
-                if (error) {
-                    [AppHelper alertViewWithMessage:error.localizedDescription];
-                } else {
-                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-                }
-                [AppHelper hideLoader];
-            }];
+            [self POSTSMSBlock];
         }
     }
 }
@@ -94,10 +68,12 @@
         self.providerType.enabled = NO;
         self.phoneProvider.enabled = NO;
         [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
+        [self clearUp];
     } else {
         self.providerType.enabled = YES;
         self.phoneProvider.enabled = YES;
         [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
+        [self clearUp];
     }
 }
 
@@ -120,43 +96,120 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - UIPickerViewDataSource
 
-- (void)prepareUIForTextView
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    self.notes.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.notes.layer.cornerRadius = 8;
-    self.notes.layer.borderWidth = 1;
+    return 1;
 }
 
-- (void)prepareUI
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
+    NSInteger pickerRowsInComponent = 0;
+    if (pickerView == self.selectProviderPicker) {
+        pickerRowsInComponent = self.pickerSelectProviderDataSource.count;
     }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
+    return pickerRowsInComponent;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *pickerTitle = @"";
+    if (pickerView == self.selectProviderPicker) {
+        pickerTitle = (NSString *)self.pickerSelectProviderDataSource[row];
     }
-    [self prepareUIForTextView];
+    return pickerTitle;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView == self.selectProviderPicker) {
+        self.providerType.text = self.pickerSelectProviderDataSource[row];
+    }
+}
+
+#pragma mark - SuperclassMethods
+
+- (void)localizeUI
+{
+    self.title = dynamicLocalizedString(@"spamReportViewControler.title");
+    self.phoneProvider.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneProvider");
+    self.phoneNumber.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneNumber");
+    self.providerType.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.providerType");
+    [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
+    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex0.title") forSegmentAtIndex:0];
+    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex1.title") forSegmentAtIndex:1];
 }
 
 - (void)updateColors
 {
+    [super updateColors];
+    
     self.reportSegment.tintColor = [[DynamicUIService service] currentApplicationColor];
     self.notes.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
     self.notes.textColor = [[DynamicUIService service] currentApplicationColor];
-    
-    [self prepareUI];
+    [AppHelper setStyleForLayer:self.notes.layer];
+}
+
+#pragma mark - Networking
+
+- (void)POSTSpamReport
+{
+    if (![self.phoneNumber.text isValidPhoneNumber] && ![self.phoneProvider.text isValidPhoneNumber]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+        return;
+    }
+    [AppHelper showLoader];
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+        [AppHelper hideLoader];
+    }];
+}
+
+- (void)POSTSMSBlock
+{
+    [AppHelper showLoader];
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+        [AppHelper hideLoader];
+    }];
+}
+
+#pragma mark - Private
+
+- (void)preparePickerDataSource
+{
+    self.pickerSelectProviderDataSource = @[
+                                            dynamicLocalizedString(@"providerType.Du"),
+                                            dynamicLocalizedString(@"providerType.Etisalat"),
+                                            ];
+    [self.selectProviderPicker reloadAllComponents];
+}
+
+- (void)configureSelectProviderTextFieldInputView
+{
+    self.selectProviderPicker = [[UIPickerView alloc] init];
+    self.selectProviderPicker.delegate = self;
+    self.selectProviderPicker.dataSource = self;
+    self.providerType.inputView = self.selectProviderPicker;
+}
+
+- (void)clearUp
+{
+    self.providerType.text = @"";
+    self.phoneNumber.text = @"";
+    self.phoneProvider.text = @"";
+    self.notes.text = @"";
 }
 
 @end

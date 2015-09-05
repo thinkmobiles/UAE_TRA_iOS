@@ -104,6 +104,8 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (void)localizeUI
 {
+    [super localizeUI];
+    
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"annoucements.title");
 }
 

@@ -8,12 +8,14 @@
 
 #import "SuggestionViewController.h"
 #import "NetworkManager.h"
+#import "LoginViewController.h"
 
 @interface SuggestionViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *suggestionTitle;
 @property (weak, nonatomic) IBOutlet UITextField *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
 @end
 
@@ -21,21 +23,11 @@
 
 #pragma mark - Life Cicle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self prepareUI];
-    self.title = @"Send suggestion";
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.suggestionTitle becomeFirstResponder];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self updateColors];
+    [self presentLoginIfNeeded];
 }
 
 #pragma mark - IABaction
@@ -54,7 +46,7 @@
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTSendSuggestion:self.suggestionTitle.text description:self.suggectionDescription.text attachment:self.selectImage requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
@@ -71,31 +63,20 @@
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    for (UIButton *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            [subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
+    self.title = dynamicLocalizedString(@"suggestionViewController.title");
+    self.suggestionTitle.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionTitle");
+    self.suggectionDescription.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionDescription");
+    [self.selectImageButton setTitle:dynamicLocalizedString(@"suggestionViewController.selectImageButton.title") forState:UIControlStateNormal];
+    [self.sendSuggestionButton setTitle:dynamicLocalizedString(@"suggestionViewController.sendSuggestionButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    [self prepareUI];
+    [super updateColors];
 }
 
 @end

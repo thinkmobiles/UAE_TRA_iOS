@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface PostFeedbackViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface PostFeedbackViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @end

@@ -55,11 +55,16 @@
             return;
         }
         [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:response];
+                if (weakSelf.shouldAutoCloseAfterLogin) {
+                    weakSelf.didCloseViewController = nil;
+                    [weakSelf closeButtonPressed];
+                }
             }
             [AppHelper hideLoader];
         }];
@@ -68,16 +73,14 @@
     }
 }
 
-- (IBAction)registerButtonPressed:(id)sender
-{
-    
-}
-
 - (void)closeButtonPressed
 {
     self.navigationController.navigationBar.hidden = YES;
     [self.view.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"dismissView"];
     self.view.layer.opacity = 0.0f;
+    if (self.didCloseViewController) {
+        self.didCloseViewController();
+    }
 }
 
 #pragma mark - Animations
@@ -121,6 +124,10 @@
     [super prepareNavigationBar];
     [self prepareNavigationBarButton];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
+                                                                      }];
 }
 
 @end

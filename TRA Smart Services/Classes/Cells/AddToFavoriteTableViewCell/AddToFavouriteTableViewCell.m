@@ -8,8 +8,13 @@
 
 #import "AddToFavouriteTableViewCell.h"
 
-static NSString *const FavIconNameActive = @"check_act";
-static NSString *const FavIconNameInActive = @"check_disact";
+static NSString *const FavIconNameActiveOrange = @"check_act";
+static NSString *const FavIconNameInActiveOrange = @"check_disact";
+static NSString *const FavIconNameActiveBlue = @"check_blue_act";
+static NSString *const FavIconNameInActiveBlue = @"check_blue";
+static NSString *const FavIconNameActiveGreen = @"check_green_act";
+static NSString *const FavIconNameInActiveGreen = @"check_green";
+
 
 @interface AddToFavouriteTableViewCell()
 
@@ -69,16 +74,25 @@ static NSString *const FavIconNameInActive = @"check_disact";
 - (void)setServiceFavourite:(BOOL)isFavourite
 {
     if (isFavourite) {
-        UIImage *activeIcon = [UIImage imageNamed:FavIconNameActive];
+        UIImage *activeIcon = [UIImage imageNamed:FavIconNameActiveOrange];
         if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
             activeIcon = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:activeIcon];
+        } else if ([DynamicUIService service].colorScheme == ApplicationColorGreen) {
+            activeIcon = [UIImage imageNamed:FavIconNameActiveGreen];
+        } else if ([DynamicUIService service].colorScheme == ApplicationColorBlue) {
+            activeIcon = [UIImage imageNamed:FavIconNameActiveBlue];
         }
         [self.favoriteButton setImage:activeIcon forState:UIControlStateNormal];
     } else {
-        UIImage *inActiveIcon = [UIImage imageNamed:FavIconNameInActive];
+        UIImage *inActiveIcon = [UIImage imageNamed:FavIconNameInActiveOrange];
         if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
             inActiveIcon = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:inActiveIcon];
+        } else if ([DynamicUIService service].colorScheme == ApplicationColorGreen) {
+            inActiveIcon = [UIImage imageNamed:FavIconNameInActiveGreen];
+        } else if ([DynamicUIService service].colorScheme == ApplicationColorBlue) {
+            inActiveIcon = [UIImage imageNamed:FavIconNameInActiveBlue];
         }
+
         [self.favoriteButton setImage:inActiveIcon forState:UIControlStateNormal];
     }
 }

@@ -6,6 +6,11 @@
   Copyright © 2015 Thinkmobiles. All rights reserved.
 */
 
+//API descriptors
+
+"api.message.serverError" = "Internal Server Error occured. Please try again later.";
+"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";
@@ -14,7 +19,7 @@
 
 "message.notImplemented" = "Not implemented";
 "message.success" = "Success";
-"message.EmptyInputParameters" = "Please enter text in the text field";
+"message.EmptyInputParameters" = "Please enter text in the text field.\nAll fields should be filled with required data.";
 "message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
 "message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
 "message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
@@ -29,7 +34,7 @@
 "message.InvalidFormatLastName" = "Invalid Last Name";
 "message.InvalidFormatMobile" = "Invalid mobilePhone";
 "message.InvalidFormatEmail" = "Invalid Email";
-"message.InvalidFormatURL" = "Invalid URL format";
+"message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
 
 //StatesNames
@@ -42,6 +47,12 @@
 "state.Ras" = "Ras al-Khaiman";
 "state.Sharjan" = "Sharjah";
 "state.Quwain" = "Umm al-Quwain";
+
+//ProviderType
+
+"providerType.Du" = "Du";
+"providerType.Etisalat" = "Etisalat";
+"providerType.Yahsat" = "Yahsat";
 
 //TabBarMenuItems
 
@@ -60,6 +71,9 @@
 "login.button.forgotPassword" = "Forgot the password";
 "login.button.registerButton" = "Register now";
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.picker.genre.male" = "Male";
+"login.picker.genre.female" = "Female";
+"login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
 
@@ -70,9 +84,9 @@
 "register.placeHolderText.password" ="Password";
 "register.button.register" = "Register";
 "register.button.login" = "Login";
-"register.placeHolderText.confirmPassword" = "Comfirm Password";
+"register.placeHolderText.confirmPassword" = "Confirm password";
 "register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID №";
+"register.placeHolderText.emirateID" = "Emirates ID";
 "register.placeHolderText.lastName" = "Last Name";
 "register.placeHolderText.address" = "Address";
 "register.placeHolderText.landline" = "Landline";
@@ -121,7 +135,7 @@
 
 //FavouriteViewController
 
-"favourite.title" = "FAVORITES";
+"favourite.title" = "Favourites";
 "favourite.button.addFav.title" = "ADD A SERVICE";
 "favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";
 
@@ -155,22 +169,92 @@
 "coverageReport.strong" = "Strong";
 "coverageReport.veryStrong" = "Very Strong";
 "coverageLevel.title" = "Coverage Level";
+"coverageReport.reportSignalButton.title" = "Report signal";
+"coverageReport.detectLocationButton.title" = "Detect location";
+"coverageReport.addressTextField" = "Address";
+"coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
 
-"infoHub.title" = "INFO HUB";
-"announcements.label.text" = "ANNOUNCEMENTS";
+"infoHub.title" = "Info Hub";
+"announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
-"transactions.label.text" = "TRANSACTIONS";
+"transactions.label.text" = "Transactions";
 
 //AnnoucementsViewController
 
-"annoucements.title" = "INFO HUB ANNOUNCEMENTS";
+"annoucements.title" = "info Hub Announcements";
 
 //DetailsViewController
 
-"details.title" = "INFO HUB DETAILS";
+"details.title" = "Info Hub Details";
 
 //SearchMobileBrandNameViewController
 
 "searchMobileBrandNameViewController.title" = "Search Mobile Brand";
+"searchMobileBrandNameViewController.searchButton" = "Search brand name";
+
+//SuggestionViewController
+
+"suggestionViewController.title" = "Send suggestion";
+"suggestionViewController.textField.suggestionTitle" = "Title";
+"suggestionViewController.textField.suggestionDescription" = "Description";
+"suggestionViewController.selectImageButton.title" = "Image";
+"suggestionViewController.sendSuggestionButton.title" = "Send suggestion";
+
+//CompliantViewController
+
+"compliantViewController.title" = "Compliant";
+"compliantViewController.textField.providerText" = "Provider";
+"compliantViewController.textField.compliantTitle" = "Title";
+"compliantViewController.textField.refNumber" = "Referens number";
+"compliantViewController.descriptionLabel.text" = "Description";
+"compliantViewController.selectImageButton.title" = "Image";
+"compliantViewController.compliantButton.title" = "Compliant";
+
+//SpamReportViewControler
+
+"spamReportViewControler.title" = "SMS Spam Report";
+"spamReportViewControler.textField.phoneProvider" = "Provider number";
+"spamReportViewControler.textField.phoneNumber" = "Phone number";
+"spamReportViewControler.textField.providerType" = "Provider type";
+"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
+"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
+"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+
+//"InternetSpeedTestViewController
+
+"internetSpeedTestViewController.title" = "Speed Test Demo";
+"internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
+"InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
+
+
+//HelpSalimViewController
+
+"helpSalimViewController.title" = "Help Salim Service";
+"helpSalimViewController.urlToReportTextField" = "URL to report";
+"helpSalimViewController.commentLabel.text" = "Comment";
+"helpSalimViewController.reportURLButton.title" = "Report URL";
+
+//PostFeedbackViewController
+
+"postFeedbackViewController.title" = "Post Feedback";
+"postFeedbackViewController.serviceNameTextField" = "Servise";
+"postFeedbackViewController.ratingTextField" = "Rating";
+"postFeedbackViewController.feedbackLabel.text" = "Feedback";
+"postFeedbackViewController.sendButton.title" = "Send";
+
+//CheckDomainViewController
+
+"checkDomainViewController.title" = "Domain check";
+"checkDomainViewController.domainNameTextField" = "Insert Domain name here";
+"checkDomainViewController.avaliabilityButton.title" = "AVALIABILITY";
+"checkDomainViewController.whoISButton.title" = "WHO IS?";
+"checkDomainViewController.domainTitleForView" = "Domain Check Service";
+"checkDomainViewController.chooseRating" = "Choose Rating";
+
+//CheckIMEIViewController
+
+"checkIMEIViewController.title" = "Check IMEI";
+"checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";

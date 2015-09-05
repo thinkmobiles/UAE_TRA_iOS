@@ -10,6 +10,8 @@
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
 
+static NSString *const ServiceNameDomainCheck = @"Check Domain Service";
+
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
     ServiceTypeGetDomainAvaliability = 1,
@@ -38,6 +40,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
 @property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
+@property (assign, nonatomic) __block BOOL isUserLoggined;
 
 + (instancetype)sharedManager;
 

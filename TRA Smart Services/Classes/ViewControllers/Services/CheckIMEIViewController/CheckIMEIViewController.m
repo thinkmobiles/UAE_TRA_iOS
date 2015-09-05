@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerPositionForTextFieldConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
@@ -30,13 +29,6 @@
 @implementation CheckIMEIViewController
 
 #pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self prepareUI];
-}
 
 - (void)viewDidLayoutSubviews
 {
@@ -60,12 +52,8 @@
         [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setTranslucent:YES];
         [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    } else {
-        self.title = @"Check IMEI";
-    }
+    } 
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self registerForKeyboardNotifications];
-    [self updateColors];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -73,13 +61,11 @@
     [super viewWillDisappear:animated];
     
     [self.reader startStopReading];
-    [self unregisterForKeyboardNotification];
+
     if (self.needTransparentNavigationBar) {
         [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
     }
     self.title = @" ";
-    
-    [self updateColors];
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -98,10 +84,10 @@
 {
     if (self.resultTextField.text.length) {
         [AppHelper showLoader];
-        [self endEditing];
+        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:error.localizedDescription];
+                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
@@ -122,81 +108,35 @@
     }
 }
 
-#pragma mark - Keyboard
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboadWillShow:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)unregisterForKeyboardNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)keyboadWillShow:(NSNotification*)notification
-{
-    CGRect screen = [UIScreen mainScreen].bounds;
-    CGRect keyboard = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    
-    if (CGRectGetMaxY(self.contentView.frame) > (CGRectGetHeight(screen) - CGRectGetHeight(keyboard))) {
-        CGPoint offset = CGPointMake(0.f,  CGRectGetMaxY(screen) - (CGRectGetHeight(keyboard) + CGRectGetMaxY(self.contentView.frame)));
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.25f animations:^{
-            self.centerPositionForTextFieldConstraint.constant += offset.y;
-            [self.view layoutIfNeeded];
-        }];
-    }
-}
-
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self endEditing];
+    [self.view endEditing:YES];
     return YES;
 }
 
-#pragma mark - Private
+#pragma mark - SuperclassMethods
 
-- (void)prepareUI
+- (void)localizeUI
 {
-    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.checkIMEIButton.layer.cornerRadius = 8;
-    self.checkIMEIButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.checkIMEIButton.layer.borderWidth = 1;
-
-    for (UITextField *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            subView.layer.cornerRadius = 8;
-            subView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-            subView.layer.borderWidth = 1;
-        }
-    }
-    self.contentView.layer.cornerRadius = 8;
-    self.contentView.layer.borderWidth = 1;
-    self.contentView.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    self.title = dynamicLocalizedString(@"checkIMEIViewController.title");
+    [self.checkIMEIButton setTitle:dynamicLocalizedString(@"checkIMEIViewController.checkIMEIButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
+    [super updateColors];
+
     self.resultLabel.textColor = [[DynamicUIService service] currentApplicationColor];
     [self.cameraButton.imageView setTintColor:[[DynamicUIService service] currentApplicationColor]];
     
-    [self prepareUI];
+    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
+    [AppHelper setStyleForLayer:self.contentView.layer];
 }
 
-- (void)endEditing
-{
-    [self.view endEditing:YES];
-    [self.view layoutIfNeeded];
-    
-    [UIView animateWithDuration:0.25f animations:^{
-        self.centerPositionForTextFieldConstraint.constant = 100;
-        [self.view layoutIfNeeded];
-    }];
-}
+#pragma mark - Private
 
 - (void)prepareReaderIfNeeded
 {
