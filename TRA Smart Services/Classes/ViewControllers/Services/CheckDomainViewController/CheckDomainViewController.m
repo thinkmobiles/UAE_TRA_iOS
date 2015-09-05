@@ -295,13 +295,14 @@ static NSString *const keyOrder = @"order";
     NSInteger i = 0;
     for (NSString *string in values) {
  
-        
         if (string.length) {
             
             NSArray *keyValueData = [string componentsSeparatedByString:@":"];
             NSString *value = [(NSString *)[keyValueData lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             key = [(NSString *)[keyValueData firstObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            
+            if ([key isEqualToString:@"No Data Found"]) {
+                key = @"Result";
+            }
             NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
             [innerDictionary setValue:@(i) forKey:keyOrder];
             [innerDictionary setValue:key forKey:Keykey];

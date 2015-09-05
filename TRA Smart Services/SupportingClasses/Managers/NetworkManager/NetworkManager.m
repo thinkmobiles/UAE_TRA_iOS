@@ -277,10 +277,9 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
             } else if ([responseDictionary valueForKey:@"urlData"]) {
                 info = [responseDictionary valueForKey:@"urlData"];
             }
+            handler(info, nil);
         } else if ([value isKindOfClass:[NSArray class]]) {
             handler(value, nil);
-        } else  {
-            handler(info, nil);
         }
     } else {
         handler(dynamicLocalizedString(@"api.message.noDataFound"), nil);
