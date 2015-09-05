@@ -101,6 +101,11 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self vizibleTextFieldChangeKeyboard];
+    return YES;
+}
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -205,14 +210,19 @@
 {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.keyboardHeight = keyboardRect.size.height;
+    [self vizibleTextFieldChangeKeyboard];
+}
+
+#pragma mark - Private
+
+- (void) vizibleTextFieldChangeKeyboard
+{
     CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
     CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
     if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
         [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
     }
 }
-
-#pragma mark - Private
 
 - (BOOL)isInputParametersInvalid
 {
