@@ -133,6 +133,12 @@
 "speedAccess.service.name.12" = "إستفسار المتوافقة";
 "speedAccess.service.name.13" = "Compliant TRA";
 
+//NotificationsViewController
+
+"notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
+"notificationsViewController.noNotificationsMessage" = "You have no Notifications";
+"notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
+
 //FavouriteViewController
 
 "favourite.title" = "المفضلة";

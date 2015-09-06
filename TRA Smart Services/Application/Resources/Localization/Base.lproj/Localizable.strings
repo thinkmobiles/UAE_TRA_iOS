@@ -133,6 +133,12 @@
 "speedAccess.service.name.12" = "speedAccess.service.name.12";
 "speedAccess.service.name.13" = "speedAccess.service.name.13";
 
+//NotificationsViewController
+
+"notificationsViewController.NotificationPlaceHolderlabel" = "notificationsViewController.NotificationPlaceHolderlabel";
+"notificationsViewController.noNotificationsMessage" = "notificationsViewController.noNotificationsMessage";
+"notificationsViewController.NotificationsMessage" = "notificationsViewController.NotificationsMessage";
+
 //FavouriteViewController
 
 "favourite.title" = "favourite.title";

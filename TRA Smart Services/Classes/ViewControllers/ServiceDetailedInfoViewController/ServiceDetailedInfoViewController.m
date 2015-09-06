@@ -79,7 +79,7 @@
 
 - (void)updateColors
 {
-    self.backgroundView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.backgroundView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.9f];
 }
 
 #pragma mark - Private
