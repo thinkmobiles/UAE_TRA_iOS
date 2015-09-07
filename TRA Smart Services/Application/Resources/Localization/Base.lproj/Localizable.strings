@@ -263,3 +263,7 @@
 
 "checkIMEIViewController.title" = "checkIMEIViewController.title";
 "checkIMEIViewController.checkIMEIButton.title" = "checkIMEIViewController.checkIMEIButton.title";
+
+//UserProfileViewController
+
+"userProfile.title" = "userProfile.title";

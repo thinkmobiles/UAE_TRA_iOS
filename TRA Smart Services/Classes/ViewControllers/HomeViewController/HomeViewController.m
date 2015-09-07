@@ -13,6 +13,7 @@
 #import "CompliantViewController.h"
 #import "LoginViewController.h"
 #import "NotificationViewController.h"
+#import "UserProfileViewController.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -270,14 +271,36 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-    navController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self.topView setStartApearenceAnimationParameters];
+
+#warning TO uncomment
+    UINavigationController *navController;
+    __weak typeof(self) weakSelf = self;
+    if ([NetworkManager sharedManager].isUserLoggined) {
+        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"userProfileNavigationControlIerID"];
+        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
-    navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
-    LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
-    loginViewController.shouldAutoCloseAfterLogin = YES;
+    UserProfileViewController *userProfileViewController = (UserProfileViewController *)navController.topViewController;
+    userProfileViewController.didDismissed = ^() {
+        [weakSelf.topView animateTopViewApearence];
+    };
     
+    } else {
+        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
+#ifdef __IPHONE_8_0
+        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+#endif
+        LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
+        loginViewController.shouldAutoCloseAfterLogin = YES;
+    
+    loginViewController.didDismissed = ^() {
+        [weakSelf.topView animateTopViewApearence];
+    };
+
+    }
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentViewController:navController animated:NO completion:nil];
 }

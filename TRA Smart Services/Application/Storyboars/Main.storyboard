@@ -2388,6 +2388,48 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="238" y="499"/>
         </scene>
+        <!--User Profile View Controller-->
+        <scene sceneID="DfG-5Z-QY5">
+            <objects>
+                <viewController id="9qw-gE-WN4" customClass="UserProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hWv-Vk-k7n"/>
+                        <viewControllerLayoutGuide type="bottom" id="R3h-bG-dBA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pek-Pl-suH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="pub-al-gOK" userLabel="Background - UIIMageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pub-al-gOK" secondAttribute="trailing" id="3Ap-a7-2NC"/>
+                            <constraint firstItem="pub-al-gOK" firstAttribute="top" secondItem="pek-Pl-suH" secondAttribute="top" id="Fhe-8O-DS1"/>
+                            <constraint firstItem="pub-al-gOK" firstAttribute="leading" secondItem="pek-Pl-suH" secondAttribute="leading" id="L0M-Rm-5ZX"/>
+                            <constraint firstItem="R3h-bG-dBA" firstAttribute="top" secondItem="pub-al-gOK" secondAttribute="bottom" id="cvd-Tp-xN8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ack-4t-xPf">
+                        <barButtonItem key="backBarButtonItem" title=" " id="dh4-bC-L4K"/>
+                        <barButtonItem key="leftBarButtonItem" image="btn_close" id="rfA-lA-jX5" userLabel="Close - UiBarButtonItem">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="9qw-gE-WN4" id="g8u-53-YkR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="pub-al-gOK" id="GT3-bx-IgP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5C-3i-PsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1935" y="-3429"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZgZ-u0-uVH">
             <objects>
@@ -4065,6 +4107,28 @@ a new password will be sent.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMF-H9-ZWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4254" y="475"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NA6-EB-syE">
+            <objects>
+                <navigationController storyboardIdentifier="userProfileNavigationControlIerID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dVF-iZ-qtK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8xF-QH-3Rn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9qw-gE-WN4" kind="relationship" relationship="rootViewController" id="m9i-1W-dW5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asd-vv-XXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1123" y="-3429"/>
         </scene>
     </scenes>
     <resources>

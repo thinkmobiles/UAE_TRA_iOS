@@ -263,3 +263,7 @@
 
 "checkIMEIViewController.title" = "Check IMEI";
 "checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";
+
+//UserProfileViewController
+
+"userProfile.title" = "User Profile";

@@ -45,6 +45,15 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if (self.didDismissed) {
+        self.didDismissed();
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)loginButtonPressed:(id)sender
