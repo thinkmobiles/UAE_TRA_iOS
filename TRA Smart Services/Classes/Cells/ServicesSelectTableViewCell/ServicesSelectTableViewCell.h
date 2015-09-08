@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
+static NSString *const selectProviderCellIdentifier = @"selectProviderCell";
+
 @interface ServicesSelectTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *selectProviderLabel;

@@ -6,47 +6,22 @@
 //  Copyright (c) 2015 Roma. All rights reserved.
 //
 
-#import "UIPlaceholderTextView.h"
+#import "PlaceholderTextView.h"
 
-@interface UIPlaceholderTextView ()
+@interface PlaceholderTextView ()
 
 @property (strong, nonatomic) UILabel *placeHolderLabel;
 
 @end
 
-@implementation UIPlaceholderTextView
+@implementation PlaceholderTextView
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    if (!self.placeholder) {
-        self.placeholder = @"";
-    }
-    if (!self.placeholderColor) {
-        self.placeholderColor = [UIColor lightGrayColor];
-    }
-    if (!self.insetValue) {
-        self.insetValue = 0;
-    }
-    [self insetContentText];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
-}
-
-- (void)setupView
-{
-    self.tintColor = [UIColor lightGrayColor];
-    self.textColor = [UIColor blackColor];
-}
+#pragma mark - Life Cycle
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if ( self ) {
+    if (self) {
         self.placeholder = @"";
         self.placeholderColor = [UIColor lightGrayColor];
         self.insetValue = 0;
@@ -55,24 +30,48 @@
     return self;
 }
 
-- (void)textChanged:(NSNotification *)notification
+- (void)awakeFromNib
 {
-    if(!self.placeholder.length) {
-        return;
+    [super awakeFromNib];
+    
+    if (!self.placeholder.length) {
+        self.placeholder = @"";
     }
-        if(!self.text.length) {
-            [[self viewWithTag:999] setHidden:NO];
-        } else {
-            [[self viewWithTag:999] setHidden:YES];
-        }
+    if (!self.placeholderColor) {
+        self.placeholderColor = [UIColor lightGrayColor];
+    }
+    [self insetContentText];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Custom Accessors
 
 - (void)setText:(NSString *)text
 {
     [super setText:text];
     [self textChanged:nil];
-
 }
+
+#pragma mark - Notification
+
+- (void)textChanged:(NSNotification *)notification
+{
+    if(!self.placeholder.length) {
+        return;
+    }
+    if(!self.text.length) {
+        [[self viewWithTag:999] setHidden:NO];
+    } else {
+        [[self viewWithTag:999] setHidden:YES];
+    }
+}
+
+#pragma mark - Overwriten
 
 - (void)drawRect:(CGRect)rect
 {

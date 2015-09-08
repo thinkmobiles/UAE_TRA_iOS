@@ -49,8 +49,8 @@
 		93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437051B8AF64E009299C5 /* Lato-Bold.ttf */; };
 		93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437061B8AF64E009299C5 /* Lato-Light.ttf */; };
 		93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437071B8AF64E009299C5 /* Lato-Regular.ttf */; };
+		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
-		E081E2B11B9DD7B000D80250 /* UIPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E081E2B01B9DD7B000D80250 /* UIPlaceholderTextView.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -210,10 +210,10 @@
 		93A437051B8AF64E009299C5 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		93A437061B8AF64E009299C5 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		93A437071B8AF64E009299C5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
 		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
-		E081E2AF1B9DD7B000D80250 /* UIPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceholderTextView.h; sourceTree = "<group>"; };
-		E081E2B01B9DD7B000D80250 /* UIPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceholderTextView.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -630,6 +630,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */,
+				E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */,
+			);
+			path = PlaceholderTextView;
+			sourceTree = "<group>";
+		};
 		E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,15 +646,6 @@
 				E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */,
 			);
 			path = ServicesSelectTableViewCell;
-			sourceTree = "<group>";
-		};
-		E081E2AE1B9DD7B000D80250 /* UIPlaceholderTextView */ = {
-			isa = PBXGroup;
-			children = (
-				E081E2AF1B9DD7B000D80250 /* UIPlaceholderTextView.h */,
-				E081E2B01B9DD7B000D80250 /* UIPlaceholderTextView.m */,
-			);
-			path = UIPlaceholderTextView;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -1036,7 +1036,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E081E2AE1B9DD7B000D80250 /* UIPlaceholderTextView */,
+				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
 				9343E3221B974ECB0066329C /* LeftInsetTextField */,
 				93A436EB1B85D185009299C5 /* PushNoAnimationSegue */,
 				ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */,
@@ -1596,6 +1596,7 @@
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
+				E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */,
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
@@ -1609,7 +1610,6 @@
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
 				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
-				E081E2B11B9DD7B000D80250 /* UIPlaceholderTextView.m in Sources */,
 				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,

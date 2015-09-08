@@ -11,25 +11,26 @@
 #import "LoginViewController.h"
 #import "ServiceView.h"
 #import "LeftInsetTextField.h"
-#import "UIPlaceholderTextView.h"
+#import "PlaceholderTextView.h"
 #import "ServicesSelectTableViewCell.h"
 
-static NSString *const selectProviderCellIdentifier = @"selectProviderCell";
 static NSString *const providerCellIdentifier = @"compliantProviderCell";
 static CGFloat const heightSelectTableViewCell = 40;
 static CGFloat const verticalSpaceDescriptionConstraintCompliantCustomServise = 134.f;
 static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
+static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 @interface CompliantViewController ()
 
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *compliantTitle;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *refNumber;
 @property (weak, nonatomic) IBOutlet UIButton *compliantButton;
-@property (weak, nonatomic) IBOutlet UIPlaceholderTextView *compliantDescriptionTextView;
+@property (weak, nonatomic) IBOutlet PlaceholderTextView *compliantDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet ServiceView *serviceView;
 @property (weak, nonatomic) IBOutlet UIView *topHolderView;
@@ -58,17 +59,19 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
     
     [self presentLoginIfNeeded];
     
+    [self prepareNotification];
     [self prepareTopView];
     [self updateNavigationControllerBar];
     self.heightTableViewConstraint.constant = heightSelectTableViewCell;
     self.navigationBarBackgroundImage = self.navigationController.navigationBar.backIndicatorImage;
-    [self addButtonTitleTextField];
+    [self addAttachButtonTitleTextField];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
+    [self removeNotifications];
     [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
 }
 
@@ -103,7 +106,14 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!indexPath.row) {
+    if (indexPath.row) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:providerCellIdentifier];
+        cell.textLabel.text = self.selectProviderDataSource[indexPath.row];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        [self configureCell:cell];
+        return cell;
+    } else {
         ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellIdentifier forIndexPath:indexPath];
         cell.selectProviderLabel.textColor = [UIColor whiteColor];
         if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
@@ -118,24 +128,7 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
         }
         [self configureCell:cell];
         return cell;
-    } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:providerCellIdentifier];
-        cell.textLabel.text = self.selectProviderDataSource[indexPath.row];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        [self configureCell:cell];
-        return cell;
     }
-}
-
-- (void)configureCell:(UITableViewCell *)cell
-{
-    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.size.height + 1, cell.frame.size.width, cell.frame.size.height)];
-    selectedView.backgroundColor = [UIColor clearColor];
-    UIView *separatovView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height, cell.bounds.size.width, 0.5f)];
-    separatovView.backgroundColor = [UIColor grayBorderTextFieldTextColor];
-    [selectedView addSubview:separatovView];
-    [cell setSelectedBackgroundView:selectedView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -154,6 +147,7 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
 {
     if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
         [self animationSelectTableView:YES];
+        [self.compliantTitle resignFirstResponder];
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
@@ -164,7 +158,7 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
     }
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -185,6 +179,12 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self scrollingToVizibleView:textField];
+    return YES;
+}
+
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -192,6 +192,12 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
         [textView resignFirstResponder];
         return NO;
     }
+    return YES;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    [self scrollingToVizibleView:textView];
     return YES;
 }
 
@@ -215,6 +221,27 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
     [AppHelper setStyleGrayColorForLayer:self.compliantDescriptionTextView.layer];
     [AppHelper setStyleGrayColorForLayer:self.selectTableView.layer];
     self.selectTableView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+}
+#pragma mark - Keyboard
+
+- (void)prepareNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDissappear:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)removeNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardDissappear:(NSNotification *)notification
+{
+    __weak typeof(self) weakSelf = self;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.2 animations:^{
+        [weakSelf.scrollView setContentOffset:CGPointZero];
+        [weakSelf.view layoutIfNeeded];
+    }];
 }
 
 #pragma mark - Private
@@ -269,24 +296,39 @@ static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
         weakSelf.heightTableViewConstraint.constant = heightTableView;
-        weakSelf.verticalSpaceDescriptionConstraint.constant = verticalSpaceDescriptionConstraintCompliantCustomServise + heightTableView - heightSelectTableViewCell;
         [weakSelf.view layoutIfNeeded];
     }];
     [self.selectTableView reloadData];
 }
 
-- (void)addButtonTitleTextField
+- (void)addAttachButtonTitleTextField
 {
     UIButton *attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [attachButton setImage:[UIImage imageNamed:@"attach11"] forState:UIControlStateNormal];
     [attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
     attachButton.backgroundColor = [UIColor clearColor];
     attachButton.tintColor = [[DynamicUIService service] currentApplicationColor];
-    [attachButton setFrame:CGRectMake(0,0, 40, 40)];
+    [attachButton setFrame:CGRectMake(0, 0, self.compliantTitle.frame.size.height, self.compliantTitle.frame.size.height)];
     attachButton.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0);
     attachButton.layer.borderWidth = 0;
     self.compliantTitle.rightView = attachButton;
     self.compliantTitle.rightViewMode = UITextFieldViewModeAlways;
+}
+
+- (void)scrollingToVizibleView:(UIView *)view
+{
+    [self.scrollView setContentOffset:CGPointMake(0, view.frame.origin.y - verticalSpaceTitleConstraint) animated:YES];
+
+}
+
+- (void)configureCell:(UITableViewCell *)cell
+{
+    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.size.height + 1, cell.frame.size.width, cell.frame.size.height)];
+    selectedView.backgroundColor = [UIColor clearColor];
+    UIView *separatovView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height, cell.bounds.size.width, 0.5f)];
+    separatovView.backgroundColor = [UIColor grayBorderTextFieldTextColor];
+    [selectedView addSubview:separatovView];
+    [cell setSelectedBackgroundView:selectedView];
 }
 
 @end
