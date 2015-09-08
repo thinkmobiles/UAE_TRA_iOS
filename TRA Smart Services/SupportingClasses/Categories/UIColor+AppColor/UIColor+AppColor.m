@@ -94,6 +94,11 @@
     return [UIColor colorWithRealRed:229 green:1 blue:28 alpha:1.0f];
 }
 
++ (UIColor *)grayBorderTextFieldTextColor
+{
+    return [UIColor colorWithRealRed:179 green:179 blue:179 alpha:1.0f];
+}
+
 
 #pragma mark - Private
 

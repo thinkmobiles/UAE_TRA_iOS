@@ -19,5 +19,6 @@ static NSString *const CloseButtonImageName = @"btn_close";
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 - (void)prepareNavigationBar;
+- (void)returnKeyDone;
 
 @end

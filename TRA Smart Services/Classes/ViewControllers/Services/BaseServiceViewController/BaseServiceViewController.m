@@ -54,18 +54,23 @@
 
 - (void)updateColors
 {
-    for (UILabel *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
-        }
-    }
-    for (UIView *subView in self.view.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
-//            ((UITextField *)subView).textColor = [[DynamicUIService service] currentApplicationColor];
+    [self updateSubviewColor:self.view];
+}
+
+- (void)updateSubviewColor:(UIView *)mainView
+{
+    NSArray *subViews = mainView.subviews;
+    if (subViews.count) {
+        for (UIView * subView in subViews) {
+            if ([subView isKindOfClass:[UIButton class]]) {
+                [AppHelper setStyleForLayer:subView.layer];
+                [(UIButton *)subView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                subView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            } else if ([subView isKindOfClass:[UITextField class]]) {
+                [AppHelper setStyleGrayColorForLayer:subView.layer];
+                [(UITextField *)subView setValue:[UIColor grayBorderTextFieldTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+            }
+            [self updateSubviewColor:subView ];
         }
     }
 }

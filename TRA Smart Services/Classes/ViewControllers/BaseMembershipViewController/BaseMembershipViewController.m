@@ -57,6 +57,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             weakSelf.scrollView.contentOffset = CGPointZero;
         }];
+        [self returnKeyDone];
         return YES;
     }
     return NO;
@@ -71,6 +72,11 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+- (void)returnKeyDone
+{
+    
 }
 
 #pragma mark - Private

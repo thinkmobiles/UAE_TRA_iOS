@@ -10,6 +10,7 @@
 #import "Animation.h"
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
+#import "TextFieldNavigator.h"
 
 @interface LoginViewController ()
 
@@ -43,6 +44,13 @@
         self.view.layer.opacity = 1.0f;
         self.isViewControllerPresented = YES;
     }
+}
+
+#pragma mark - Superclass Methods
+
+- (void) returnKeyDone
+{
+    [self loginButtonPressed:nil];
 }
 
 #pragma mark - IBActions

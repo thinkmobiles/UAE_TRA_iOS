@@ -8,7 +8,7 @@
 
 #import "BaseSelectImageViewController.h"
 
-@interface CompliantViewController : BaseSelectImageViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CompliantViewController : BaseSelectImageViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) ComplianType type;
 
