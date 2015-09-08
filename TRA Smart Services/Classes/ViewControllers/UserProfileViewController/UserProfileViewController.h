@@ -10,7 +10,4 @@
 
 @interface UserProfileViewController : BaseMembershipViewController
 
-@property (strong, nonatomic) void (^didDismissed)();
-
-
 @end

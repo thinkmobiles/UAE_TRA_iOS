@@ -7,7 +7,6 @@
 //
 
 #import "UserProfileViewController.h"
-#import "Animation.h"
 
 @interface UserProfileViewController ()
 
@@ -23,43 +22,7 @@
 {
     [super viewDidLoad];
     
-    [self prepareNavigationBar];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.view.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.0f delegate:nil] forKey:nil];
-    self.view.layer.opacity = 1.0f;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    if (self.didDismissed) {
-        self.didDismissed();
-    }
-}
-
-#pragma mark - IBActions
-
-- (IBAction)closeButtonTapped:(id)sender
-{
-    self.navigationController.navigationBar.hidden = YES;
-    [self.view.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"dismissView"];
-    self.view.layer.opacity = 0.0f;
-}
-
-#pragma mark - Animations
-
-- (void)animationDidStop:(nonnull CAAnimation *)anim finished:(BOOL)flag
-{
-    if (anim == [self.view.layer animationForKey:@"dismissView"]) {
-        [self.view.layer removeAllAnimations];
-        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-    }
+    //[self prepareNavigationBar];
 }
 
 #pragma mark - Superclass methods

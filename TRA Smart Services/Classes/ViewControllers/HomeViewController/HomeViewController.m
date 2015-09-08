@@ -277,16 +277,16 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
     UINavigationController *navController;
     __weak typeof(self) weakSelf = self;
     if ([NetworkManager sharedManager].isUserLoggined) {
-        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"userProfileNavigationControlIerID"];
-        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
-    UserProfileViewController *userProfileViewController = (UserProfileViewController *)navController.topViewController;
-    userProfileViewController.didDismissed = ^() {
-        [weakSelf.topView animateTopViewApearence];
-    };
-    
+        [self performSegueWithIdentifier:@"UserProfileSegue" sender:self];
+//        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"userProfileNavigationControlIerID"];
+//        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//#ifdef __IPHONE_8_0
+//        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//#endif
+//    UserProfileViewController *userProfileViewController = (UserProfileViewController *)navController.topViewController;
+//    userProfileViewController.didDismissed = ^() {
+//        [weakSelf.topView animateTopViewApearence];
+//    };
     } else {
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         navController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -299,10 +299,11 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
     loginViewController.didDismissed = ^() {
         [weakSelf.topView animateTopViewApearence];
     };
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self.navigationController presentViewController:navController animated:NO completion:nil];
 
     }
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self.navigationController presentViewController:navController animated:NO completion:nil];
+    
 }
 
 #pragma mark - Private
