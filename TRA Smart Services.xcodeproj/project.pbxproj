@@ -23,6 +23,9 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */; };
+		932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */; };
+		932C8DB41BA01A3B003107E2 /* UserProfile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DB31BA01A3B003107E2 /* UserProfile.plist */; };
 		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
 		932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */; };
 		932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */; };
@@ -170,6 +173,10 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		932C8DB01BA00C35003107E2 /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
+		932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
+		932C8DB31BA01A3B003107E2 /* UserProfile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserProfile.plist; sourceTree = "<group>"; };
 		932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart Services Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932FD8271B9197D9008EFBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
@@ -489,6 +496,15 @@
 				84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */,
 			);
 			path = BaseSelectImageViewController;
+			sourceTree = "<group>";
+		};
+		932C8DAF1BA00C20003107E2 /* UserProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				932C8DB01BA00C35003107E2 /* UserProfileTableViewCell.h */,
+				932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */,
+			);
+			path = UserProfileTableViewCell;
 			sourceTree = "<group>";
 		};
 		932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
@@ -1026,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				847A847A1B8701B700BB1D80 /* Main.storyboard */,
+				932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */,
 			);
 			path = Storyboars;
 			sourceTree = "<group>";
@@ -1093,6 +1110,7 @@
 				EDA5497F1B7B4E9B00440216 /* SpeedAccessServices.plist */,
 				EDA549811B7B514F00440216 /* OtherServices.plist */,
 				93A436E51B85BC08009299C5 /* ServiceInfoList.plist */,
+				932C8DB31BA01A3B003107E2 /* UserProfile.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -1303,6 +1321,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				932C8DAF1BA00C20003107E2 /* UserProfileTableViewCell */,
 				93CFCC0A1B9CB4D4004A1A8F /* NotificationsTableViewCell */,
 				9343E3261B9817F20066329C /* DomainInfoTableViewCell */,
 				F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */,
@@ -1532,6 +1551,7 @@
 			files = (
 				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
 				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
+				932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
@@ -1552,6 +1572,7 @@
 				ED7D9F1F1B6B9EC400C20402 /* HomeTopBarView.xib in Resources */,
 				847A847B1B8701B700BB1D80 /* Main.storyboard in Resources */,
 				F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */,
+				932C8DB41BA01A3B003107E2 /* UserProfile.plist in Resources */,
 				8467EF281B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib in Resources */,
 				847A847D1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib in Resources */,
 				F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */,
@@ -1613,6 +1634,7 @@
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
+				932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */,
 				93A436F21B85F778009299C5 /* UIFont+AppFonts.m in Sources */,
 				EDAA8F021B83C18F00269F1A /* ServiceInfoViewController.m in Sources */,
 				EDAA8F051B84D2FA00269F1A /* FavouriteTableViewCell.m in Sources */,
@@ -1825,7 +1847,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
@@ -1843,7 +1864,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";

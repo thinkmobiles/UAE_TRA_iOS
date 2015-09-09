@@ -267,3 +267,7 @@
 //UserProfileViewController
 
 "userProfile.title" = "userProfile.title";
+"userProfile.EditProfile" = "userProfile.EditProfile";
+"userProfile.changePassword" = "userProfile.changePassword";
+"userProfile.resetPassword" = "userProfile.resetPassword";
+"userProfile.logoutFromAccount" = "userProfile.logoutFromAccount";

@@ -10,6 +10,7 @@
 #import "Animation.h"
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
+#import "KeychainStorage.h"
 
 @interface LoginViewController ()
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
+@property (strong, nonatomic) KeychainStorage *storage;
 @property (assign, nonatomic) BOOL isViewControllerPresented;
 
 @end
@@ -31,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.storage = [[KeychainStorage alloc] init];
     [self prepareNavigationBar];
 }
 
@@ -69,6 +73,8 @@
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
+                [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
+                
                 [AppHelper alertViewWithMessage:response];
                 if (weakSelf.shouldAutoCloseAfterLogin) {
                     weakSelf.didCloseViewController = nil;

@@ -33,6 +33,7 @@ static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
 static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBrandNameSegue";
 static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationSegue";
+static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 
 @interface HomeViewController ()
 
@@ -277,16 +278,7 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
     UINavigationController *navController;
     __weak typeof(self) weakSelf = self;
     if ([NetworkManager sharedManager].isUserLoggined) {
-        [self performSegueWithIdentifier:@"UserProfileSegue" sender:self];
-//        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"userProfileNavigationControlIerID"];
-//        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
-//#ifdef __IPHONE_8_0
-//        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//#endif
-//    UserProfileViewController *userProfileViewController = (UserProfileViewController *)navController.topViewController;
-//    userProfileViewController.didDismissed = ^() {
-//        [weakSelf.topView animateTopViewApearence];
-//    };
+        [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
     } else {
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         navController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -301,9 +293,7 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
     };
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self.navigationController presentViewController:navController animated:NO completion:nil];
-
     }
-    
 }
 
 #pragma mark - Private
@@ -419,27 +409,46 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
-        CompliantViewController *viewController = segue.destinationViewController;
-        NSIndexPath *indexPath = [[self.menuCollectionView indexPathsForSelectedItems] firstObject];
-        NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-        
-        NSUInteger serviceID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
-        if (serviceID == 10) {
-            viewController.type = ComplianTypeCustomProvider;
-        } else if (serviceID == 12) {
-            viewController.type = ComplianTypeEnquires;
-        } else if (serviceID == 13) {
-            viewController.type = ComplianTypeTRAService;
-        }
+        [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
-        NotificationViewController *notificationViewController = segue.destinationViewController;
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-        [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        notificationViewController.fakeBackground = image;
+        [self prepareNotificationViewControllerWithSegue:segue];
+    } else if ([segue.identifier isEqualToString:HomeToUserProfileSegueIdentifier]) {
+        [self prepareUserProfileViewControllerWithSegue:segue];
+    }
+}
+
+- (void)prepareUserProfileViewControllerWithSegue:(UIStoryboardSegue *)segue
+{
+    UserProfileViewController *userProfileViewController = segue.destinationViewController;
+    __weak typeof(self) weakSelf = self;
+    userProfileViewController.didDismissed = ^() {
+        [weakSelf.topView animateTopViewApearence];
+    };
+}
+
+- (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
+{
+    NotificationViewController *notificationViewController = segue.destinationViewController;
+    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    notificationViewController.fakeBackground = image;
+}
+
+- (void)prepareCompliantViewControllerWithSegue:(UIStoryboardSegue *)segue
+{
+    CompliantViewController *viewController = segue.destinationViewController;
+    NSIndexPath *indexPath = [[self.menuCollectionView indexPathsForSelectedItems] firstObject];
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    NSUInteger serviceID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
+    if (serviceID == 10) {
+        viewController.type = ComplianTypeCustomProvider;
+    } else if (serviceID == 12) {
+        viewController.type = ComplianTypeEnquires;
+    } else if (serviceID == 13) {
+        viewController.type = ComplianTypeTRAService;
     }
 }
 

@@ -20,4 +20,7 @@ static NSString *const CloseButtonImageName = @"btn_close";
 
 - (void)prepareNavigationBar;
 
+- (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color;
+- (void)addHexagoneOnView:(UIView *)view;
+
 @end

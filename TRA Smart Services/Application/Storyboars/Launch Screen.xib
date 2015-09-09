@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_back" translatesAutoresizingMaskIntoConstraints="NO" id="Bq3-qa-HKO" userLabel="Background - UIIMageView">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="nec-GQ-W75" userLabel="Logo - UIImageView">
+                    <rect key="frame" x="48" y="110" width="384" height="96"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nec-GQ-W75" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="110" id="3t5-HA-StR"/>
+                <constraint firstItem="Bq3-qa-HKO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="53J-kz-B5s"/>
+                <constraint firstItem="Bq3-qa-HKO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DfQ-cL-PFO"/>
+                <constraint firstAttribute="bottom" secondItem="Bq3-qa-HKO" secondAttribute="bottom" id="MY2-fh-vn8"/>
+                <constraint firstItem="nec-GQ-W75" firstAttribute="height" secondItem="Bq3-qa-HKO" secondAttribute="height" multiplier="0.2" id="QvW-3o-I9E"/>
+                <constraint firstItem="nec-GQ-W75" firstAttribute="width" secondItem="Bq3-qa-HKO" secondAttribute="width" multiplier="0.8" id="VBG-NF-IxL"/>
+                <constraint firstAttribute="centerX" secondItem="nec-GQ-W75" secondAttribute="centerX" id="ZDB-0h-RG4"/>
+                <constraint firstAttribute="trailing" secondItem="Bq3-qa-HKO" secondAttribute="trailing" id="yGa-BQ-zmc"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="404" y="445"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="launch_back" width="320" height="568"/>
+        <image name="launch_logo" width="248" height="115"/>
+    </resources>
+</document>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>userProfile.EditProfile</string>
+		<key>imageName</key>
+		<string>ic_user_prof</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>userProfile.changePassword</string>
+		<key>imageName</key>
+		<string>ic_lock_profile</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>userProfile.resetPassword</string>
+		<key>imageName</key>
+		<string>ic_lock_profile</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>userProfile.logoutFromAccount</string>
+		<key>imageName</key>
+		<string>ic_logout</string>
+	</dict>
+</array>
+</plist>
