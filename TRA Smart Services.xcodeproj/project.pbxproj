@@ -26,6 +26,9 @@
 		932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */; };
 		932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */; };
 		932C8DB41BA01A3B003107E2 /* UserProfile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DB31BA01A3B003107E2 /* UserProfile.plist */; };
+		932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DB71BA0312B003107E2 /* UserProfileActionView.m */; };
+		932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DB91BA03136003107E2 /* UserProfileActionView.xib */; };
+		932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DBD1BA036D8003107E2 /* BaseXibView.m */; };
 		932FD8321B9198AE008EFBD8 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8311B9198AE008EFBD8 /* KeychainTest.m */; };
 		932FD8621B92FE79008EFBD8 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8611B92FE79008EFBD8 /* VerificationWithRegularTest.m */; };
 		932FD8641B9306FB008EFBD8 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8631B9306FB008EFBD8 /* BarcodeReaderTest.m */; };
@@ -177,6 +180,11 @@
 		932C8DB01BA00C35003107E2 /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
 		932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
 		932C8DB31BA01A3B003107E2 /* UserProfile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserProfile.plist; sourceTree = "<group>"; };
+		932C8DB61BA0312B003107E2 /* UserProfileActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileActionView.h; sourceTree = "<group>"; };
+		932C8DB71BA0312B003107E2 /* UserProfileActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileActionView.m; sourceTree = "<group>"; };
+		932C8DB91BA03136003107E2 /* UserProfileActionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileActionView.xib; sourceTree = "<group>"; };
+		932C8DBC1BA036D8003107E2 /* BaseXibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseXibView.h; sourceTree = "<group>"; };
+		932C8DBD1BA036D8003107E2 /* BaseXibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseXibView.m; sourceTree = "<group>"; };
 		932FD8241B9197D9008EFBD8 /* TRA Smart Services Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart Services Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932FD8271B9197D9008EFBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932FD8311B9198AE008EFBD8 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
@@ -507,6 +515,25 @@
 			path = UserProfileTableViewCell;
 			sourceTree = "<group>";
 		};
+		932C8DB51BA03110003107E2 /* UserProfileActionView */ = {
+			isa = PBXGroup;
+			children = (
+				932C8DB61BA0312B003107E2 /* UserProfileActionView.h */,
+				932C8DB71BA0312B003107E2 /* UserProfileActionView.m */,
+				932C8DB91BA03136003107E2 /* UserProfileActionView.xib */,
+			);
+			path = UserProfileActionView;
+			sourceTree = "<group>";
+		};
+		932C8DBB1BA036C5003107E2 /* BaseXibView */ = {
+			isa = PBXGroup;
+			children = (
+				932C8DBC1BA036D8003107E2 /* BaseXibView.h */,
+				932C8DBD1BA036D8003107E2 /* BaseXibView.m */,
+			);
+			path = BaseXibView;
+			sourceTree = "<group>";
+		};
 		932FD8251B9197D9008EFBD8 /* TRA Smart Services Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,7 +560,8 @@
 				932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */,
 				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
 			);
-			path = BaseServiceViewController;
+			name = BaseServiceViewController;
+			path = ../../../Classes/ViewControllers/Services/BaseServiceViewController;
 			sourceTree = "<group>";
 		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
@@ -639,6 +667,7 @@
 		93A436F91B8620F6009299C5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				93A437041B8AF64E009299C5 /* Lato-Black.ttf */,
 				93A437051B8AF64E009299C5 /* Lato-Bold.ttf */,
 				93A437061B8AF64E009299C5 /* Lato-Light.ttf */,
@@ -766,7 +795,6 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
@@ -1348,6 +1376,8 @@
 		EDEC9DED1B6A338B00334503 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				932C8DBB1BA036C5003107E2 /* BaseXibView */,
+				932C8DB51BA03110003107E2 /* UserProfileActionView */,
 				F1F15CC91B96EE4E00891246 /* RatingView */,
 				F1F15CCA1B96EE4E00891246 /* ServiceView */,
 				EDEC9DEE1B6A339A00334503 /* HexagonView */,
@@ -1551,6 +1581,7 @@
 			files = (
 				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
 				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
+				932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */,
 				932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
@@ -1631,6 +1662,7 @@
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
+				932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */,
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
@@ -1675,6 +1707,7 @@
 				93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
+				932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,

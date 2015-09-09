@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface ServiceView : UIView
+#import "BaseXibView.h"
+
+@interface ServiceView : BaseXibView
 
 @property (weak, nonatomic) IBOutlet UILabel *serviceName;
 @property (weak, nonatomic) IBOutlet UIImageView *serviceImage;

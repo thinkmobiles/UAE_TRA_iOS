@@ -271,3 +271,9 @@
 "userProfile.changePassword" = "Change Password";
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "Logout from your Account";
+
+//UserProfileActionView
+
+"userProfileActionView.cancel" = "CANCEL";
+"userProfileActionView.reset" = "RESET";
+"userProfileActionView.save" = "SAVE CHANGES";

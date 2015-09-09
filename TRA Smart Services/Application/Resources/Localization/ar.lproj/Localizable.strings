@@ -269,3 +269,9 @@
 "userProfile.changePassword" = "Change Password";
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "تسجيل الخروج";
+
+//UserProfileActionView
+
+"userProfileActionView.cancel" = "Cancel";
+"userProfileActionView.reset" = "Reset";
+"userProfileActionView.save" = "Save";

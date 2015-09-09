@@ -44,15 +44,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder];
-    if (self) {
-        NSArray *nibsArray = [[NSBundle mainBundle] loadNibNamed:@"HomeTopBarView" owner:self options:nil];
-        UIView *view = [nibsArray firstObject];
-        
-        view.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:view];
-        [self addConstraintsForView:view];
-    }
+    self = [super initWithCoder:coder nibName:@"HomeTopBarView"];
     return self;
 }
 
@@ -784,37 +776,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
              NSFontAttributeName : [UIFont boldSystemFontOfSize:24.f],
              NSForegroundColorAttributeName : [UIColor whiteColor]
              };
-}
-
-#pragma mark - Constraints
-
-- (void)addConstraintsForView:(UIView *)view
-{
-    [self addConstraints:@[[NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeBottom
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeBottom
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeTop
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeTop
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeLeading
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeLeading
-                                                       multiplier:1.0
-                                                         constant:0],
-                           [NSLayoutConstraint constraintWithItem:view
-                                                        attribute:NSLayoutAttributeTrailing
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:self attribute:NSLayoutAttributeTrailing
-                                                       multiplier:1.0
-                                                         constant:0]
-                           ]];
 }
 
 @end
