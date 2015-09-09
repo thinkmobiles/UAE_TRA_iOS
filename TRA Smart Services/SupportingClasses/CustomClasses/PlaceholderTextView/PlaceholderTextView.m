@@ -18,18 +18,6 @@
 
 #pragma mark - Life Cycle
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.placeholder = @"";
-        self.placeholderColor = [UIColor lightGrayColor];
-        self.insetValue = 0;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
-    }
-    return self;
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -65,9 +53,9 @@
         return;
     }
     if(!self.text.length) {
-        [[self viewWithTag:999] setHidden:NO];
+        [self.placeHolderLabel setHidden:NO];
     } else {
-        [[self viewWithTag:999] setHidden:YES];
+        [self.placeHolderLabel setHidden:YES];
     }
 }
 
@@ -76,21 +64,12 @@
 - (void)drawRect:(CGRect)rect
 {
     if( self.placeholder.length ) {
-        if (!self.placeHolderLabel) {
-            self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.insetValue + 5,8,self.bounds.size.width - 21,0)];
-            self.placeHolderLabel.lineBreakMode = NSLineBreakByWordWrapping;
-            self.placeHolderLabel.numberOfLines = 0;
-            self.placeHolderLabel.font = self.font;
-            self.placeHolderLabel.backgroundColor = [UIColor clearColor];
-            self.placeHolderLabel.textColor = self.placeholderColor;
-            self.placeHolderLabel.tag = 999;
-            [self addSubview:self.placeHolderLabel];
-        }
-        self.placeHolderLabel.text = self.placeholder;
-        [self.placeHolderLabel sizeToFit];
-        [self sendSubviewToBack:self.placeHolderLabel];
+        [self.placeHolderLabel removeFromSuperview];
+        self.placeHolderLabel = nil;
+        
+        [self setupPlaceHolderLabel];
         if (!self.text.length) {
-            [[self viewWithTag:999] setAlpha:1];
+            [self.placeHolderLabel setHidden:NO];
         }
     }
     [super drawRect:rect];
@@ -104,6 +83,20 @@
     contentText.left = self.insetValue;
     contentText.right = self.insetValue;
     self.textContainerInset = contentText;
+}
+
+- (void)setupPlaceHolderLabel
+{
+    self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.insetValue + 5,8,self.bounds.size.width - 2 * (self.insetValue + 5), self.font.lineHeight)];
+    self.placeHolderLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.placeHolderLabel.numberOfLines = 0;
+    self.placeHolderLabel.font = self.font;
+    self.placeHolderLabel.textAlignment = self.textAlignment;
+    self.placeHolderLabel.backgroundColor = [UIColor clearColor];
+    self.placeHolderLabel.textColor = self.placeholderColor;
+    [self addSubview:self.placeHolderLabel];
+    self.placeHolderLabel.text = self.placeholder;
+    [self sendSubviewToBack:self.placeHolderLabel];
 }
 
 @end

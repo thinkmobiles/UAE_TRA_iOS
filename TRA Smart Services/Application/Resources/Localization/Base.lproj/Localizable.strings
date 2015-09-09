@@ -50,6 +50,7 @@
 
 //ProviderType
 
+"providerType.selectProvider.text" = "providerType.selectProvider.text";
 "providerType.Du" = "providerType.Du";
 "providerType.Etisalat" = "providerType.Etisalat";
 "providerType.Yahsat" = "providerType.Yahsat";
@@ -205,12 +206,12 @@
 //CompliantViewController
 
 "compliantViewController.title" = "compliantViewController.title";
-"compliantViewController.textField.providerText" = "compliantViewController.textField.providerText";
-"compliantViewController.textField.compliantTitle" = "compliantViewController.textField.compliantTitle";
-"compliantViewController.textField.refNumber" = "compliantViewController.textField.refNumber";
-"compliantViewController.descriptionLabel.text" = "compliantViewController.descriptionLabel.text";
-"compliantViewController.selectImageButton.title" = "compliantViewController.selectImageButton.title";
-"compliantViewController.compliantButton.title" = "compliantViewController.compliantButton.title";
+"compliantViewController.textField.placeholder" = "compliantViewController.textField.placeholder";
+"compliantViewController.description.placeholder" = "compliantViewController.description.placeholder";
+"compliantViewController.compliantServiceProviderLabel" = "compliantViewController.compliantServiceProviderLabel";
+"compliantViewController.compliantTitleLabel" = "compliantViewController.compliantTitleLabel";
+"compliantViewController.compliantReterenceNumberLabel" = "compliantViewController.compliantReterenceNumberLabel";
+"compliantViewController.compliantSendBarButtonItem.title" = "compliantViewController.compliantSendBarButtonItem.title";
 
 //SpamReportViewControler
 

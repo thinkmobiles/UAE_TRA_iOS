@@ -68,7 +68,6 @@
                 subView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
             } else if ([subView isKindOfClass:[UITextField class]]) {
                 [AppHelper setStyleGrayColorForLayer:subView.layer];
-                [(UITextField *)subView setValue:[UIColor grayBorderTextFieldTextColor] forKeyPath:@"_placeholderLabel.textColor"];
             }
             [self updateSubviewColor:subView ];
         }

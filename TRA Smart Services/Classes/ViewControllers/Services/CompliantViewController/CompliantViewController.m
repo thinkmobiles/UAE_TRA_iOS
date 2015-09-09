@@ -15,20 +15,25 @@
 #import "ServicesSelectTableViewCell.h"
 
 static NSString *const providerCellIdentifier = @"compliantProviderCell";
-static CGFloat const heightSelectTableViewCell = 40;
-static CGFloat const verticalSpaceDescriptionConstraintCompliantCustomServise = 134.f;
-static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 18.f;
-static CGFloat const verticalSpaceTitleConstraint = 33.f;
+static CGFloat const heightSelectTableViewCell = 33.f;
+static CGFloat const verticalSpaceDescriptionConstraintCompliantCustomServise = 168.f;
+static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 22.f;
+static CGFloat const verticalSpaceTitleConteinerConstraint = 18.f;
+static CGFloat const heightContenerConstraint = 55.f;
 
 @interface CompliantViewController ()
 
-@property (weak, nonatomic) IBOutlet LeftInsetTextField *compliantTitle;
-@property (weak, nonatomic) IBOutlet LeftInsetTextField *refNumber;
-@property (weak, nonatomic) IBOutlet UIButton *compliantButton;
+@property (weak, nonatomic) IBOutlet UITextField *compliantTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *referenceNumberTextField;
+@property (weak, nonatomic) IBOutlet UILabel *compliantTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *compliantReterenceNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *compliantServicePoviderLabel;
 @property (weak, nonatomic) IBOutlet PlaceholderTextView *compliantDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceTitleTextFieldConstraint;
+@property (weak, nonatomic) IBOutlet UIView *conteinerReferenceNumberView;
+@property (weak, nonatomic) IBOutlet UIView *conteinerServiceProviderView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConteinerSelectedProviderConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -57,7 +62,7 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 {
     [super viewWillAppear:animated];
     
-    [self presentLoginIfNeeded];
+//    [self presentLoginIfNeeded];
     
     [self prepareNotification];
     [self prepareTopView];
@@ -65,6 +70,7 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
     self.heightTableViewConstraint.constant = heightSelectTableViewCell;
     self.navigationBarBackgroundImage = self.navigationController.navigationBar.backIndicatorImage;
     [self addAttachButtonTitleTextField];
+    [self addSendButtonToNavigationBar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,16 +88,16 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
     [self selectImagePickerController];
 }
 
-- (IBAction)compliant:(id)sender
+- (IBAction)compliantSend:(id)sender
 {
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
-        !self.compliantTitle.text.length ||
-        (self.type == ComplianTypeCustomProvider && (!self.selectProvider.length || !self.refNumber.text.length))){
+        !self.compliantTitleTextField.text.length ||
+        (self.type == ComplianTypeCustomProvider && (!self.selectProvider.length || !self.referenceNumberTextField.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.selectProvider title:self.compliantTitle.text description:self.compliantDescriptionTextView.text refNumber:[self.refNumber.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.selectProvider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
@@ -106,16 +112,18 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:providerCellIdentifier];
-        cell.textLabel.text = self.selectProviderDataSource[indexPath.row];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        [self configureCell:cell];
-        return cell;
+    NSString *identifierCell;
+    if ([DynamicUIService service].language == LanguageTypeArabic){
+        identifierCell = selectProviderCellArabicUIIdentifier;
     } else {
-        ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellIdentifier forIndexPath:indexPath];
-        cell.selectProviderLabel.textColor = [UIColor whiteColor];
+        identifierCell = selectProviderCellEuropeUIIdentifier;
+    }
+    ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
+    if (indexPath.row) {
+        cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
+        cell.selectProviderLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    } else {
+        cell.selectProviderImage.tintColor = [[DynamicUIService service] currentApplicationColor];
         if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
             cell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
         } else {
@@ -123,12 +131,14 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
         }
         if (self.selectProvider.length) {
             cell.selectProviderLabel.text = self.selectProvider;
+            cell.selectProviderLabel.textColor = [UIColor blackColor];
         } else {
             cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
+            cell.selectProviderLabel.textColor = [UIColor grayBorderTextFieldTextColor];
         }
-        [self configureCell:cell];
-        return cell;
     }
+    [self configureCell:cell];
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -145,13 +155,15 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.compliantTitleTextField resignFirstResponder];
+    [self.referenceNumberTextField resignFirstResponder];
+    [self.compliantDescriptionTextView resignFirstResponder];
+
     if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
         [self animationSelectTableView:YES];
-        [self.compliantTitle resignFirstResponder];
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
-            
             self.selectProvider = self.selectProviderDataSource[indexPath.row];
             [self.selectTableView reloadData];
         }
@@ -179,12 +191,6 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    [self scrollingToVizibleView:textField];
-    return YES;
-}
-
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -197,7 +203,13 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    [self scrollingToVizibleView:textView];
+    CGFloat deltaOffset;
+    if (IS_IPHONE_5) {
+        deltaOffset = 5.f;
+    } else {
+        deltaOffset = verticalSpaceTitleConteinerConstraint + heightContenerConstraint + verticalSpaceDescriptionConstraintCompliantServise;
+    }
+    [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - deltaOffset) animated:YES];
     return YES;
 }
 
@@ -206,22 +218,52 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"compliantViewController.title");
-    self.compliantTitle.placeholder = dynamicLocalizedString(@"compliantViewController.textField.compliantTitle");
-    self.refNumber.placeholder = dynamicLocalizedString(@"compliantViewController.textField.refNumber");
-    self.compliantDescriptionTextView.placeholder = dynamicLocalizedString(@"compliantViewController.descriptionLabel.text");
-    [self.compliantButton setTitle:dynamicLocalizedString(@"compliantViewController.compliantButton.title") forState:UIControlStateNormal];
+    self.compliantTitleTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
+    self.referenceNumberTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
+    self.compliantDescriptionTextView.placeholder = dynamicLocalizedString(@"compliantViewController.description.placeholder");
+    self.compliantTitleLabel.text = dynamicLocalizedString(@"compliantViewController.compliantTitleLabel");
+    self.compliantReterenceNumberLabel.text = dynamicLocalizedString(@"compliantViewController.compliantReterenceNumberLabel");
+    self.compliantServicePoviderLabel.text = dynamicLocalizedString(@"compliantViewController.compliantServiceProviderLabel");
+    
     [self prepareSelectProviderDataSource];
     [self.selectTableView reloadData];
 }
 
 - (void)updateColors
 {
-    [super updateColors];
+
     
     [AppHelper setStyleGrayColorForLayer:self.compliantDescriptionTextView.layer];
-    [AppHelper setStyleGrayColorForLayer:self.selectTableView.layer];
-    self.selectTableView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    [self.selectTableView reloadData];
 }
+
+- (void)setRTLArabicUI
+{
+    [super setRTLArabicUI];
+    
+    self.compliantTitleLabel.textAlignment = NSTextAlignmentRight;
+    self.compliantTitleTextField.textAlignment = NSTextAlignmentRight;
+    self.compliantReterenceNumberLabel.textAlignment = NSTextAlignmentRight;
+    self.referenceNumberTextField.textAlignment = NSTextAlignmentRight;
+    self.compliantServicePoviderLabel.textAlignment = NSTextAlignmentRight;
+    self.compliantDescriptionTextView.textAlignment = NSTextAlignmentRight;
+    [self.compliantDescriptionTextView setNeedsDisplay];
+}
+
+- (void)setLTREuropeUI
+{
+    [super setLTREuropeUI];
+    
+    self.compliantTitleLabel.textAlignment = NSTextAlignmentLeft;
+    self.compliantTitleTextField.textAlignment = NSTextAlignmentLeft;
+    self.compliantReterenceNumberLabel.textAlignment = NSTextAlignmentLeft;
+    self.referenceNumberTextField.textAlignment = NSTextAlignmentLeft;
+    self.compliantServicePoviderLabel.textAlignment = NSTextAlignmentLeft;
+    self.compliantDescriptionTextView.textAlignment = NSTextAlignmentLeft;
+    [self.compliantDescriptionTextView setNeedsDisplay];
+}
+
+
 #pragma mark - Keyboard
 
 - (void)prepareNotification
@@ -231,7 +273,7 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 - (void)removeNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)keyboardDissappear:(NSNotification *)notification
@@ -250,8 +292,8 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 {
     switch (type) {
         case ComplianTypeCustomProvider: {
-            self.selectTableView.hidden = NO;
-            self.refNumber.hidden = NO;
+            self.conteinerReferenceNumberView.hidden = NO;
+            self.conteinerServiceProviderView.hidden = NO;
             self.verticalSpaceDescriptionConstraint.constant = verticalSpaceDescriptionConstraintCompliantCustomServise;
             break;
         }
@@ -267,7 +309,7 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 
 - (void)prepareSelectProviderDataSource
 {
-    self.selectProviderDataSource = @[dynamicLocalizedString(@"compliantViewController.textField.providerText"),
+    self.selectProviderDataSource = @[dynamicLocalizedString(@"providerType.selectProvider.text"),
                                       dynamicLocalizedString(@"providerType.Du"),
                                       dynamicLocalizedString(@"providerType.Etisalat"),
                                       dynamicLocalizedString(@"providerType.Yahsat")];
@@ -296,6 +338,8 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
         weakSelf.heightTableViewConstraint.constant = heightTableView;
+        weakSelf.heightConteinerSelectedProviderConstraint.constant = heightTableView + 22.f;
+        weakSelf.verticalSpaceDescriptionConstraint.constant = heightTableView + verticalSpaceDescriptionConstraintCompliantCustomServise - heightSelectTableViewCell;
         [weakSelf.view layoutIfNeeded];
     }];
     [self.selectTableView reloadData];
@@ -304,31 +348,45 @@ static CGFloat const verticalSpaceTitleConstraint = 33.f;
 - (void)addAttachButtonTitleTextField
 {
     UIButton *attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [attachButton setImage:[UIImage imageNamed:@"attach11"] forState:UIControlStateNormal];
+    UIImage *buttonAttachImage = [UIImage imageNamed:@"btn_attach"];
+    [attachButton setImage:buttonAttachImage forState:UIControlStateNormal];
     [attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
     attachButton.backgroundColor = [UIColor clearColor];
     attachButton.tintColor = [[DynamicUIService service] currentApplicationColor];
-    [attachButton setFrame:CGRectMake(0, 0, self.compliantTitle.frame.size.height, self.compliantTitle.frame.size.height)];
-    attachButton.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0);
-    attachButton.layer.borderWidth = 0;
-    self.compliantTitle.rightView = attachButton;
-    self.compliantTitle.rightViewMode = UITextFieldViewModeAlways;
-}
+    [attachButton setFrame:CGRectMake(0, 0, self.compliantTitleTextField.frame.size.height, self.compliantTitleTextField.frame.size.height)];
 
-- (void)scrollingToVizibleView:(UIView *)view
-{
-    [self.scrollView setContentOffset:CGPointMake(0, view.frame.origin.y - verticalSpaceTitleConstraint) animated:YES];
-
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - buttonAttachImage.size.width)];
+        self.compliantTitleTextField.leftView = attachButton;
+        self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
+        self.compliantTitleTextField.rightView = nil;
+    } else {
+        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - buttonAttachImage.size.width, 0, 0)];
+        self.compliantTitleTextField.rightView = attachButton;
+        self.compliantTitleTextField.rightViewMode = UITextFieldViewModeAlways;
+        self.compliantTitleTextField.leftView = nil;
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell
 {
     UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.size.height + 1, cell.frame.size.width, cell.frame.size.height)];
     selectedView.backgroundColor = [UIColor clearColor];
-    UIView *separatovView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height, cell.bounds.size.width, 0.5f)];
-    separatovView.backgroundColor = [UIColor grayBorderTextFieldTextColor];
-    [selectedView addSubview:separatovView];
     [cell setSelectedBackgroundView:selectedView];
+}
+
+- (void)addSendButtonToNavigationBar
+{
+    UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") style:UIBarButtonItemStyleDone target:self action:@selector(compliantSend:)];
+    UIFont *font;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        font = [UIFont droidKufiBoldFontForSize:14];
+    } else {
+        font = [UIFont latoBoldWithSize:14];
+   }
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName:font};
+    [sendBarButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = sendBarButtonItem;
 }
 
 @end

@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-static NSString *const selectProviderCellIdentifier = @"selectProviderCell";
+static NSString *const selectProviderCellEuropeUIIdentifier = @"selectProviderCellEuropeUI";
+static NSString *const selectProviderCellArabicUIIdentifier = @"selectProviderCellArabicUI";
 
 @interface ServicesSelectTableViewCell : UITableViewCell
 

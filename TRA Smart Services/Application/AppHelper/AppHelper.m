@@ -259,7 +259,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)setStyleGrayColorForLayer:(CALayer *)layer
 {
-    layer.cornerRadius = 3;
+    layer.cornerRadius = 0;
     layer.borderWidth = 1;
     layer.borderColor = [UIColor grayBorderTextFieldTextColor].CGColor;
 }
