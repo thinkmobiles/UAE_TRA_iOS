@@ -272,6 +272,10 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
+#warning temp
+    [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
+    return;
+    
     [self.topView setStartApearenceAnimationParameters];
 
     __weak typeof(self) weakSelf = self;

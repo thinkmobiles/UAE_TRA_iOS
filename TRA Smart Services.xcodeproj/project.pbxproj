@@ -37,6 +37,7 @@
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3241B974ED50066329C /* LeftInsetTextField.m */; };
 		9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3281B9818070066329C /* DomainInfoTableViewCell.m */; };
+		9343E77A1BA1590700FAEBA1 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E7791BA1590700FAEBA1 /* EditUserProfileViewController.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
 		934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628FC1B8D884F0017E4CD /* CAGradientRadialLayer.m */; };
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
@@ -55,11 +56,11 @@
 		93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437051B8AF64E009299C5 /* Lato-Bold.ttf */; };
 		93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437061B8AF64E009299C5 /* Lato-Light.ttf */; };
 		93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437071B8AF64E009299C5 /* Lato-Regular.ttf */; };
-		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
-		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
 		93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */; };
 		93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */; };
 		93CFCC4F1B9D8597004A1A8F /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC4E1B9D8597004A1A8F /* UserProfileViewController.m */; };
+		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
+		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -201,6 +202,8 @@
 		9343E3241B974ED50066329C /* LeftInsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftInsetTextField.m; sourceTree = "<group>"; };
 		9343E3271B9818070066329C /* DomainInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomainInfoTableViewCell.h; sourceTree = "<group>"; };
 		9343E3281B9818070066329C /* DomainInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomainInfoTableViewCell.m; sourceTree = "<group>"; };
+		9343E7781BA1590700FAEBA1 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
+		9343E7791BA1590700FAEBA1 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
 		934628F71B8D873C0017E4CD /* MBProgressHUD+CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CancelButton.h"; sourceTree = "<group>"; };
 		934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CancelButton.m"; sourceTree = "<group>"; };
 		934628FB1B8D884F0017E4CD /* CAGradientRadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAGradientRadialLayer.h; sourceTree = "<group>"; };
@@ -228,16 +231,16 @@
 		93A437051B8AF64E009299C5 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		93A437061B8AF64E009299C5 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		93A437071B8AF64E009299C5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
-		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
-		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
-		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
 		93CFCC071B9CA21A004A1A8F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		93CFCC0B1B9CB4E9004A1A8F /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
 		93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
 		93CFCC4D1B9D8597004A1A8F /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		93CFCC4E1B9D8597004A1A8F /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
+		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -596,6 +599,15 @@
 			path = DomainInfoTableViewCell;
 			sourceTree = "<group>";
 		};
+		9343E7771BA158F800FAEBA1 /* EditUserProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9343E7781BA1590700FAEBA1 /* EditUserProfileViewController.h */,
+				9343E7791BA1590700FAEBA1 /* EditUserProfileViewController.m */,
+			);
+			path = EditUserProfileViewController;
+			sourceTree = "<group>";
+		};
 		934628F61B8D873C0017E4CD /* MBProgressHUD+CancelButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,25 +712,6 @@
 			path = NotificationsTableViewCell;
 			sourceTree = "<group>";
 		};
-E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
-isa = PBXGroup;
-children = (
-E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */,
-E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */,
-);
-path = PlaceholderTextView;
-sourceTree = "<group>";
-};
-E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */ = {
-isa = PBXGroup;
-children = (
-E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */,
-E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */,
-);
-path = ServicesSelectTableViewCell;
-sourceTree = "<group>";
-};
-
 		93CFCC4C1B9D8579004A1A8F /* UserProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +719,24 @@ sourceTree = "<group>";
 				93CFCC4E1B9D8597004A1A8F /* UserProfileViewController.m */,
 			);
 			path = UserProfileViewController;
+			sourceTree = "<group>";
+		};
+		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */,
+				E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */,
+			);
+			path = PlaceholderTextView;
+			sourceTree = "<group>";
+		};
+		E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */,
+				E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */,
+			);
+			path = ServicesSelectTableViewCell;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -959,6 +970,7 @@ sourceTree = "<group>";
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9343E7771BA158F800FAEBA1 /* EditUserProfileViewController */,
 				93CFCC4C1B9D8579004A1A8F /* UserProfileViewController */,
 				93CFCC061B9CA1AF004A1A8F /* NotificationsViewController */,
 				F177854C1B8DE23800D96B1E /* AddToFavoriteViewController */,
@@ -1678,6 +1690,7 @@ sourceTree = "<group>";
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */,
+				9343E77A1BA1590700FAEBA1 /* EditUserProfileViewController.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
 				847D03E61B832AF400B0768C /* AnnoucementsViewController.m in Sources */,
