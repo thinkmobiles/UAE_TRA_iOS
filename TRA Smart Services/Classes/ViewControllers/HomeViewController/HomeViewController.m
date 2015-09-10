@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "NotificationViewController.h"
 #import "UserProfileViewController.h"
+#import "HomeSearchViewController.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -34,6 +35,7 @@ static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque
 static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBrandNameSegue";
 static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationSegue";
 static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
+static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue";
 
 @interface HomeViewController ()
 
@@ -267,7 +269,7 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 
 - (void)topBarSearchButtonDidPressedInView:(HomeTopBarView *)parentView
 {
-    NSLog(@"3");
+    [self performSegueWithIdentifier:HomeToHomeSearchSegueIdentifier sender:self];
 }
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
@@ -315,6 +317,17 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
         [self reverseDataSource];
     }
 }
+
+- (UIImage *)setupFakeBackground
+{
+    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 
 #pragma mark - Notifications
 
@@ -414,6 +427,8 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
         [self prepareNotificationViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToUserProfileSegueIdentifier]) {
         [self prepareUserProfileViewControllerWithSegue:segue];
+    } else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
+        [self prepareHomeSearchViewControllerWithSegue:segue];
     }
 }
 
@@ -426,15 +441,16 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
     };
 }
 
+- (void)prepareHomeSearchViewControllerWithSegue:(UIStoryboardSegue *)segue
+{
+    HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
+    homeSearchViewController.fakeBackground = [self setupFakeBackground];
+}
+
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
     NotificationViewController *notificationViewController = segue.destinationViewController;
-    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    notificationViewController.fakeBackground = image;
+    notificationViewController.fakeBackground = [self setupFakeBackground];
 }
 
 - (void)prepareCompliantViewControllerWithSegue:(UIStoryboardSegue *)segue

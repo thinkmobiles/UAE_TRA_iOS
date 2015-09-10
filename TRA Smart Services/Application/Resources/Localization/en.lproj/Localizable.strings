@@ -277,3 +277,8 @@
 "userProfileActionView.cancel" = "CANCEL";
 "userProfileActionView.reset" = "RESET";
 "userProfileActionView.save" = "SAVE CHANGES";
+
+//HomeSearchViewController
+
+"homeSearchViewController.homeSearchLabel.text" = "ARE YOU LOOKING FOR:";
+"homeSearchViewController.homeSearchTextField.placeholder" = "Search";

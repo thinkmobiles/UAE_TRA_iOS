@@ -37,6 +37,8 @@
     [self updateUIForCompliantType:self.type];
     [self configureSelectProviderTextFieldInputView];
     [self preparePickerDataSource];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
