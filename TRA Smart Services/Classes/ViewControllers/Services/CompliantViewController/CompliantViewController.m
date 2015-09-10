@@ -41,7 +41,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 @property (weak, nonatomic) IBOutlet UIView *topHolderView;
 @property (strong, nonatomic) UIImage *navigationBarBackgroundImage;
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
-@property (strong, nonatomic) NSString *selectProvider;
+@property (strong, nonatomic) NSString *selectedProvider;
 
 @end
 
@@ -55,7 +55,7 @@ static CGFloat const heightContenerConstraint = 55.f;
     
     [self updateUIForCompliantType:self.type];
     [self prepareSelectProviderDataSource];
-    self.selectProvider = @"";
+    self.selectedProvider = @"";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,11 +93,12 @@ static CGFloat const heightContenerConstraint = 55.f;
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitleTextField.text.length ||
-        (self.type == ComplianTypeCustomProvider && (!self.selectProvider.length || !self.referenceNumberTextField.text.length))){
+        (self.type == ComplianTypeCustomProvider && (!self.selectedProvider.length || !self.referenceNumberTextField.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         [AppHelper showLoader];
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:self.selectProvider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
+        NSString *provider = [[[self.selectedProvider componentsSeparatedByString:@" "] firstObject] lowercaseString];
+        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
             } else {
@@ -129,8 +130,8 @@ static CGFloat const heightContenerConstraint = 55.f;
         } else {
             cell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
         }
-        if (self.selectProvider.length) {
-            cell.selectProviderLabel.text = self.selectProvider;
+        if (self.selectedProvider.length) {
+            cell.selectProviderLabel.text = self.selectedProvider;
             cell.selectProviderLabel.textColor = [UIColor blackColor];
         } else {
             cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
@@ -164,7 +165,7 @@ static CGFloat const heightContenerConstraint = 55.f;
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
-            self.selectProvider = self.selectProviderDataSource[indexPath.row];
+            self.selectedProvider = self.selectProviderDataSource[indexPath.row];
             [self.selectTableView reloadData];
         }
     }

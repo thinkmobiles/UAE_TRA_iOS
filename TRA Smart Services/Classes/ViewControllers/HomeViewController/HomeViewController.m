@@ -274,10 +274,10 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-#warning temp
-    [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
-    return;
-    
+//#warning temp
+//    [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
+//    return;
+//    
     [self.topView setStartApearenceAnimationParameters];
 
     __weak typeof(self) weakSelf = self;

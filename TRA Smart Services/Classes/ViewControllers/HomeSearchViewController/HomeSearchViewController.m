@@ -35,12 +35,8 @@ static CGFloat heightTableViewCell = 35.f;
     [super viewDidLoad];
     
     [self prepareNotification];
-    if (self.fakeBackground) {
-        self.fakeBackgroundImageView.image = self.fakeBackground;
-    }
+    [self prepareUI];
     [self prepareDataSource];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,6 +107,11 @@ static CGFloat heightTableViewCell = 35.f;
     return headerView;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)closeButtonTapped:(id)sender
@@ -147,10 +148,6 @@ static CGFloat heightTableViewCell = 35.f;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 35)];
     self.homeSearchLabel.textAlignment = NSTextAlignmentLeft;
     self.homeSearchTextField.textAlignment = NSTextAlignmentLeft;
-    
-  //  self.conteinerSearchView.layer.transform = CATransform3DIdentity;
-//    self.homeSearchLabel.layer.transform = CATransform3DIdentity;
-//    self.homeSearchTextField.layer.transform = CATransform3DIdentity;
 }
 
 #pragma mark - KeyboardNotification
@@ -182,6 +179,18 @@ static CGFloat heightTableViewCell = 35.f;
 {
     self.developmentDataSource = @[@"Bulgaria, Sofia", @"Croatia, Zagreb", @"France, Paris", @"Hungary, Budapest", @"Italy, Rome", @"Poland, Warsaw", @"Slovakia, Bratislava", @"Great Britain, London", @"Macedonia, Skopje", @"Switzerland, Bern"];
     self.filteredDataSource = [[NSArray alloc] initWithArray: self.developmentDataSource];
+}
+
+- (void)prepareUI
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    [self.homeSearchTextField setTintColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    if (self.fakeBackground) {
+        self.fakeBackgroundImageView.image = self.fakeBackground;
+    }
 }
 
 @end
