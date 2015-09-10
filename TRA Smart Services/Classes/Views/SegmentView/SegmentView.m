@@ -98,7 +98,7 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
         } else  if ([[self.segmentItems firstObject] isKindOfClass:[UIImage class]]) {
             [segmentPart setImage:self.segmentItems[i] forState:UIControlStateNormal];
         }
-        [segmentPart addTarget:self action:@selector(segmentControllDidPressed:) forControlEvents:UIControlEventTouchDown];
+        [segmentPart addTarget:self action:@selector(segmentControllDidPressed:) forControlEvents:UIControlEventTouchUpInside];
         [segmentPart setTitleColor:self.segmentSelectedTintColor forState:UIControlStateNormal];
         [segmentPart setTitleColor:self.segmentDeselectedTintColor forState:UIControlStateSelected];
         

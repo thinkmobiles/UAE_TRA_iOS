@@ -560,8 +560,7 @@
 				932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */,
 				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
 			);
-			name = BaseServiceViewController;
-			path = ../../../Classes/ViewControllers/Services/BaseServiceViewController;
+			path = BaseServiceViewController;
 			sourceTree = "<group>";
 		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
@@ -667,7 +666,6 @@
 		93A436F91B8620F6009299C5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				93A437041B8AF64E009299C5 /* Lato-Black.ttf */,
 				93A437051B8AF64E009299C5 /* Lato-Bold.ttf */,
 				93A437061B8AF64E009299C5 /* Lato-Light.ttf */,
@@ -795,6 +793,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,

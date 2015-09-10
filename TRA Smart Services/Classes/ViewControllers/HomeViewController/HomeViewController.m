@@ -274,23 +274,21 @@ static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 {
     [self.topView setStartApearenceAnimationParameters];
 
-#warning TO uncomment
-    UINavigationController *navController;
     __weak typeof(self) weakSelf = self;
     if ([NetworkManager sharedManager].isUserLoggined) {
         [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
     } else {
-        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         navController.modalPresentationStyle = UIModalPresentationCurrentContext;
 #ifdef __IPHONE_8_0
         navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 #endif
         LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
         loginViewController.shouldAutoCloseAfterLogin = YES;
-    
-    loginViewController.didDismissed = ^() {
-        [weakSelf.topView animateTopViewApearence];
-    };
+        
+        loginViewController.didDismissed = ^() {
+            [weakSelf.topView animateTopViewApearence];
+        };
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self.navigationController presentViewController:navController animated:NO completion:nil];
     }
