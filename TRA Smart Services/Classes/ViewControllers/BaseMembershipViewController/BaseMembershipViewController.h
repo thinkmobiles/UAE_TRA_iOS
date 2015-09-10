@@ -19,6 +19,7 @@ static NSString *const CloseButtonImageName = @"btn_close";
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 - (void)prepareNavigationBar;
+- (void)returnKeyDone;
 
 - (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color;
 - (void)addHexagoneOnView:(UIView *)view;

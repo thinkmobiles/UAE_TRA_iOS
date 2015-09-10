@@ -57,6 +57,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             weakSelf.scrollView.contentOffset = CGPointZero;
         }];
+        [self returnKeyDone];
         return YES;
     }
     return NO;

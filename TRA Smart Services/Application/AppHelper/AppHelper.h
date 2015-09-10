@@ -38,5 +38,6 @@
 + (NSString *)compactDateStringFrom:(NSDate *)date;
 
 + (void)setStyleForLayer:(CALayer *)layer;
++ (void)setStyleGrayColorForLayer:(CALayer *)layer;
 
 @end

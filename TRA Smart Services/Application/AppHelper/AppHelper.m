@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
 #import "DynamicUIService.h"
+#import "UIColor+AppColor.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
 
@@ -256,5 +257,11 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }
 
++ (void)setStyleGrayColorForLayer:(CALayer *)layer
+{
+    layer.cornerRadius = 0;
+    layer.borderWidth = 1;
+    layer.borderColor = [UIColor grayBorderTextFieldTextColor].CGColor;
+}
 
 @end

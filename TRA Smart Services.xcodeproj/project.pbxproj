@@ -1094,6 +1094,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
 				9343E3221B974ECB0066329C /* LeftInsetTextField */,
 				93A436EB1B85D185009299C5 /* PushNoAnimationSegue */,
 				ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */,
@@ -1681,6 +1682,7 @@
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
 				847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */,
+				E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */,
 				ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
 				ED2084D91B5E734000779CBD /* AFURLConnectionOperation.m in Sources */,
