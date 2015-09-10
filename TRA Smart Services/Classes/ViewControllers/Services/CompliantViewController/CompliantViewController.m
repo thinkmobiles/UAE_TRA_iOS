@@ -62,7 +62,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     [super viewWillAppear:animated];
     
-//    [self presentLoginIfNeeded];
+    [self presentLoginIfNeeded];
     
     [self prepareNotification];
     [self prepareTopView];

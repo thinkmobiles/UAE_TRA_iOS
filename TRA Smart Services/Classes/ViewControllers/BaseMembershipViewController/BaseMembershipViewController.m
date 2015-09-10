@@ -74,6 +74,11 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
+- (void)returnKeyDone
+{
+    
+}
+
 - (void)addHexagoneOnView:(UIView *)view
 {
     CAShapeLayer *maskLayer = [CAShapeLayer layer];

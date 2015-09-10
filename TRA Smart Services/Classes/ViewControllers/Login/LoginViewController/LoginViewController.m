@@ -10,6 +10,7 @@
 #import "Animation.h"
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
+#import "TextFieldNavigator.h"
 #import "KeychainStorage.h"
 
 @interface LoginViewController ()
@@ -56,6 +57,13 @@
     if (self.didDismissed) {
         self.didDismissed();
     }
+}
+
+#pragma mark - Superclass Methods
+
+- (void)returnKeyDone
+{
+    [self loginButtonPressed:nil];
 }
 
 #pragma mark - IBActions

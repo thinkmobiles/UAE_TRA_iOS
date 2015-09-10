@@ -55,6 +55,8 @@
 		93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437051B8AF64E009299C5 /* Lato-Bold.ttf */; };
 		93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437061B8AF64E009299C5 /* Lato-Light.ttf */; };
 		93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437071B8AF64E009299C5 /* Lato-Regular.ttf */; };
+		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
+		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
 		93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */; };
 		93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */; };
 		93CFCC4F1B9D8597004A1A8F /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC4E1B9D8597004A1A8F /* UserProfileViewController.m */; };
@@ -226,6 +228,10 @@
 		93A437051B8AF64E009299C5 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		93A437061B8AF64E009299C5 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		93A437071B8AF64E009299C5 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
+		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
 		93CFCC071B9CA21A004A1A8F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		93CFCC0B1B9CB4E9004A1A8F /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
@@ -694,6 +700,25 @@
 			path = NotificationsTableViewCell;
 			sourceTree = "<group>";
 		};
+E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
+isa = PBXGroup;
+children = (
+E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */,
+E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */,
+);
+path = PlaceholderTextView;
+sourceTree = "<group>";
+};
+E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */ = {
+isa = PBXGroup;
+children = (
+E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */,
+E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */,
+);
+path = ServicesSelectTableViewCell;
+sourceTree = "<group>";
+};
+
 		93CFCC4C1B9D8579004A1A8F /* UserProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1349,6 +1374,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */,
 				932C8DAF1BA00C20003107E2 /* UserProfileTableViewCell */,
 				93CFCC0A1B9CB4D4004A1A8F /* NotificationsTableViewCell */,
 				9343E3261B9817F20066329C /* DomainInfoTableViewCell */,
@@ -1662,6 +1688,7 @@
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
+				E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */,
 				932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */,
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
