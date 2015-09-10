@@ -1679,6 +1679,7 @@
 				93CFCC4F1B9D8597004A1A8F /* UserProfileViewController.m in Sources */,
 				EDAA8F081B84DAE800269F1A /* UIView+Snapshot.m in Sources */,
 				ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */,
+				E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */,
 				ED982F321B5D24DA00B6B644 /* AppDelegate.m in Sources */,
 				ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */,
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
