@@ -66,6 +66,7 @@ static CGFloat heightTableViewCell = 35.f;
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeSearchCellIdentifier];
     
+
     cell.textLabel.text = self.filteredDataSource[indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
@@ -74,6 +75,9 @@ static CGFloat heightTableViewCell = 35.f;
     } else {
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
         cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
+    }
+    if (self.homeSearchTextField.text.length) {
+        [self highlightingSearchText:cell.textLabel];
     }
     return cell;
 }
@@ -191,6 +195,15 @@ static CGFloat heightTableViewCell = 35.f;
     if (self.fakeBackground) {
         self.fakeBackgroundImageView.image = self.fakeBackground;
     }
+}
+
+- (void)highlightingSearchText:(UILabel *)label
+{
+    NSDictionary *attribs = @{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName:label.font };
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text attributes:attribs];
+    NSRange searchTextRange = [label.text rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch];
+    [attributedText setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} range:searchTextRange];
+    label.attributedText = attributedText;
 }
 
 @end
