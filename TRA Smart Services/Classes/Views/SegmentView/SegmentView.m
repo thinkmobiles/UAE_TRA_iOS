@@ -7,8 +7,7 @@
 //
 
 #import "SegmentView.h"
-
-static CGFloat const SegmentSeparatorWidth = 1.f;
+#import "UIImage+DrawText.h"
 
 @interface SegmentView()
 
@@ -77,13 +76,15 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
     }
     
     CGSize rectSize = self.bounds.size;
-    CGSize elementSize = CGSizeMake(((rectSize.width - self.segmentViewElementsCount * SegmentSeparatorWidth)/ self.segmentViewElementsCount), rectSize.height);
+    CGSize elementSize = CGSizeMake(((rectSize.width - self.segmentViewElementsCount * self.segmentSeparatorWidth)/ self.segmentViewElementsCount), rectSize.height);
     
     for (int i = 0; i < self.segmentViewElementsCount; i++) {
-        UIButton *segmentPart = [[UIButton alloc] initWithFrame:CGRectMake((elementSize.width + SegmentSeparatorWidth) * i, 0, elementSize.width, elementSize.height)];
+        UIButton *segmentPart = [[UIButton alloc] initWithFrame:CGRectMake((elementSize.width + self.segmentSeparatorWidth) * i, 0, elementSize.width, elementSize.height)];
         if ([[self.segmentItems firstObject] isKindOfClass:[NSString class]]) {
             if (self.segmentItemsAttributes.count) {
                 NSMutableDictionary *normalAttributes = [self.segmentItemsAttributes[i] mutableCopy];
+
+                
                 [normalAttributes setValue:self.segmentSelectedTintColor forKey:NSForegroundColorAttributeName];
                 NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:self.segmentItems[i] attributes:normalAttributes];
                 [segmentPart setAttributedTitle:attributedTitle forState:UIControlStateNormal];
@@ -95,12 +96,16 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
             } else {
                 [segmentPart setTitle:self.segmentItems[i] forState:UIControlStateNormal];
             }
+            
         } else  if ([[self.segmentItems firstObject] isKindOfClass:[UIImage class]]) {
             [segmentPart setImage:self.segmentItems[i] forState:UIControlStateNormal];
         }
         [segmentPart addTarget:self action:@selector(segmentControllDidPressed:) forControlEvents:UIControlEventTouchUpInside];
         [segmentPart setTitleColor:self.segmentSelectedTintColor forState:UIControlStateNormal];
         [segmentPart setTitleColor:self.segmentDeselectedTintColor forState:UIControlStateSelected];
+ 
+        [segmentPart setBackgroundImage:[UIImage imageWithColor:self.segmentSelectedBacrgroundColor inRect:CGRectMake(0, 0, 1, 1)] forState:UIControlStateNormal];
+        [segmentPart setBackgroundImage:[UIImage imageWithColor:[UIColor grayBorderTextFieldTextColor] inRect:CGRectMake(0, 0, 1, 1)] forState:UIControlStateSelected];
         
         segmentPart.tag = i;
         
@@ -111,7 +116,7 @@ static CGFloat const SegmentSeparatorWidth = 1.f;
         [self addSubview:segmentPart];
         
         if (i != self.segmentViewElementsCount - 1) {
-            UIView *segmentSeparatorView = [[UIView alloc] initWithFrame:CGRectMake((elementSize.width * (i + 1) + SegmentSeparatorWidth * i), (elementSize.height * 0.5f) / 2, SegmentSeparatorWidth, elementSize.height * 0.5f)];
+            UIView *segmentSeparatorView = [[UIView alloc] initWithFrame:CGRectMake((elementSize.width * (i + 1) + self.segmentSeparatorWidth * i), (elementSize.height * 0.5f) / 2, self.segmentSeparatorWidth, elementSize.height * 0.5f)];
             segmentSeparatorView.backgroundColor = self.segmentSeparatorColor;
             
             [self addSubview:segmentSeparatorView];
