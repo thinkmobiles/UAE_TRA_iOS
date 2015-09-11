@@ -19,7 +19,16 @@
 
 - (void)localizeUI
 {
-    
+//    @[
+//      dynamicLocalizedString(@"state.Abu.Dhabi"),
+//      dynamicLocalizedString(@"state.Ajman"),
+//      dynamicLocalizedString(@"state.Dubai"),
+//      dynamicLocalizedString(@"state.Fujairah"),
+//      dynamicLocalizedString(@"state.Ras"),
+//      dynamicLocalizedString(@"state.Sharjan"),
+//      dynamicLocalizedString(@"state.Quwain")
+//      ];
+
 }
 
 - (void)updateColors
