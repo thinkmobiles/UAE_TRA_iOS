@@ -66,7 +66,6 @@ static CGFloat heightTableViewCell = 35.f;
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeSearchCellIdentifier];
     
-
     cell.textLabel.text = self.filteredDataSource[indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
