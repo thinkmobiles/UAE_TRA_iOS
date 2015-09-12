@@ -95,6 +95,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -3071,7 +3072,7 @@ a new password will be sent.</string>
                                                         <constraint firstAttribute="centerY" secondItem="wxv-u5-ZdP" secondAttribute="centerY" id="TEa-i7-dQA"/>
                                                         <constraint firstItem="fQC-s0-q2L" firstAttribute="left" secondItem="Afv-l8-ZWG" secondAttribute="left" constant="30" id="bwr-lU-sir"/>
                                                         <constraint firstItem="fQC-s0-q2L" firstAttribute="top" secondItem="HaR-YU-GFc" secondAttribute="bottom" id="egO-dt-UJL"/>
-                                                        <constraint firstItem="HaR-YU-GFc" firstAttribute="leading" secondItem="wxv-u5-ZdP" secondAttribute="trailing" constant="15" id="jI7-TJ-ui2"/>
+                                                        <constraint firstItem="HaR-YU-GFc" firstAttribute="left" secondItem="wxv-u5-ZdP" secondAttribute="right" constant="15" id="jI7-TJ-ui2"/>
                                                         <constraint firstItem="wxv-u5-ZdP" firstAttribute="left" secondItem="Afv-l8-ZWG" secondAttribute="left" constant="30" id="mGN-Zm-wPc"/>
                                                         <constraint firstItem="HaR-YU-GFc" firstAttribute="top" secondItem="Afv-l8-ZWG" secondAttribute="top" id="olr-EF-63X"/>
                                                     </constraints>
@@ -3171,9 +3172,9 @@ a new password will be sent.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SbT-co-pr6" secondAttribute="trailing" id="082-fC-KXR"/>
+                            <constraint firstAttribute="right" secondItem="SbT-co-pr6" secondAttribute="right" id="082-fC-KXR"/>
                             <constraint firstAttribute="trailing" secondItem="pub-al-gOK" secondAttribute="trailing" id="3Ap-a7-2NC"/>
-                            <constraint firstItem="SbT-co-pr6" firstAttribute="leading" secondItem="pek-Pl-suH" secondAttribute="leading" id="641-I8-svM"/>
+                            <constraint firstItem="SbT-co-pr6" firstAttribute="left" secondItem="pek-Pl-suH" secondAttribute="left" id="641-I8-svM"/>
                             <constraint firstItem="pub-al-gOK" firstAttribute="top" secondItem="pek-Pl-suH" secondAttribute="top" id="Fhe-8O-DS1"/>
                             <constraint firstItem="pub-al-gOK" firstAttribute="leading" secondItem="pek-Pl-suH" secondAttribute="leading" id="L0M-Rm-5ZX"/>
                             <constraint firstItem="SbT-co-pr6" firstAttribute="top" secondItem="gvC-vM-ixz" secondAttribute="bottom" constant="30" id="O65-uA-KT2"/>
