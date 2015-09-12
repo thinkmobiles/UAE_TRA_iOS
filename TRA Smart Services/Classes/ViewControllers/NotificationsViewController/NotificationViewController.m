@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 
-@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 
@@ -55,7 +55,7 @@
 
 #pragma mark - CustomAccessors
 
-- (void)setDataSource:(NSArray *)dataSource
+- (void)setDataSource:(NSMutableArray *)dataSource
 {
     _dataSource = dataSource;
     if (self.dataSource.count) {
@@ -102,7 +102,14 @@
 
 - (void)notificationCellRemoveButtonDidTappedInCell:(NotificationsTableViewCell *)cell
 {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
+    [self.tableView beginUpdates];
+
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                     withRowAnimation:UITableViewRowAnimationFade];
+    [self.dataSource removeObjectAtIndex:indexPath.row];
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Private
@@ -117,7 +124,7 @@
 
 - (void)prepareDataSource
 {
-    self.dataSource = @[@"", @"", @"", @""];
+    self.dataSource = [@[@"", @"", @"", @""] mutableCopy];
 }
 
 #pragma mark - SuperclassMethods

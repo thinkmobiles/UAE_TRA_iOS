@@ -9,6 +9,9 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
+static CGFloat const HeightForToolbars = 44.f;
+static CGFloat const HeightTextFieldAndSeparator = 50.f;
+
 @interface RegisterViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -77,14 +80,14 @@
 
     if (textField.returnKeyType == UIReturnKeyNext) {
         CGFloat offsetTextField = textField.frame.origin.y + self.verticalSpaseRegisterConteinerUIView.constant;
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
-        
+        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
+
         if (offsetTextField  > lineEventScroll) {
-            [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + 50.f) animated:YES];
+            [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + HeightTextFieldAndSeparator) animated:YES];
         }
         CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
-        if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
-            [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
+        if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - HeightTextFieldAndSeparator) {
+            [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
         }
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
@@ -97,7 +100,11 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height;
+    CGFloat selectegStateTextField = 0;
+    if (textField.tag == 8) {
+        selectegStateTextField = 2 * HeightTextFieldAndSeparator;
+    }
+    self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height + selectegStateTextField;
     return YES;
 }
 
@@ -194,6 +201,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)doneFilteringButtonTapped
+{
+    [self.selectStateTextField resignFirstResponder];
+    CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
+    [self.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
+}
+
 #pragma mark - Keyboard
 
 - (void)prepareNotification
@@ -218,9 +232,9 @@
 - (void) vizibleTextFieldChangeKeyboard
 {
     CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
-    CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 120.f;
-    if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - 50.f) {
-        [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + 60.f) animated:YES];
+    CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
+    if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - HeightTextFieldAndSeparator) {
+        [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
     }
 }
 
@@ -314,7 +328,19 @@
     self.selectStatePicker.delegate = self;
     self.selectStatePicker.dataSource = self;
     self.selectStateTextField.inputView = self.selectStatePicker;
-}
 
+    self.selectStatePicker.backgroundColor = [UIColor clearColor];
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HeightForToolbars)];
+    toolBar.backgroundColor = [UIColor clearColor];
+    toolBar.tintColor = [[DynamicUIService service] currentApplicationColor];
+    
+    UIBarButtonItem *barItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneFilteringButtonTapped)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    [toolBar setItems:@[flexibleSpace, barItemDone]];
+    
+    self.selectStateTextField.inputAccessoryView = toolBar;
+}
 
 @end
