@@ -20,10 +20,12 @@ IB_DESIGNABLE
 @property (weak, nonatomic) id <SegmentViewDelegate> delegate;
 
 @property (assign, nonatomic) IBInspectable NSUInteger segmentViewElementsCount;
+@property (assign, nonatomic) IBInspectable NSUInteger segmentSeparatorWidth;
 @property (strong, nonatomic) IBInspectable UIColor *segmentSeparatorColor;
 @property (strong, nonatomic) IBInspectable UIColor *segmentSelectedTintColor;
 @property (strong, nonatomic) IBInspectable UIColor *segmentDeselectedTintColor;
 @property (assign, nonatomic) IBInspectable NSUInteger segmentTag;
+@property (strong, nonatomic) UIColor *segmentSelectedBacrgroundColor;
 
 /** name of segmentItems or images*/
 @property (strong, nonatomic) NSArray *segmentItems;

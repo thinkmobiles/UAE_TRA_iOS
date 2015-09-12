@@ -764,7 +764,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)prepareLogImageWithInitials
 {
     if (!self.logoImage && self.userInitials.length) {
-        UIImage *logoImage = [UIImage imageWithColor:[UIColor grayColor] inRect:self.avatarView.bounds];
+        UIImage *logoImage = [UIImage imageWithColor:[UIColor clearColor] inRect:self.avatarView.bounds];
         CGSize textSize = [self.userInitials sizeWithAttributes:[self textAttributes]];
         self.logoImage = [logoImage drawText:self.userInitials atPoint:CGPointMake(logoImage.size.width / 2 - textSize.width / 2, logoImage.size.height / 2 - textSize.height / 2) withAttributes:[self textAttributes]];
     }

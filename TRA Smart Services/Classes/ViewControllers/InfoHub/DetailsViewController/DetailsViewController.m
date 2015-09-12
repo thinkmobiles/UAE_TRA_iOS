@@ -39,7 +39,7 @@
 
 - (void)localizeUI
 {
-    [self setTitleForDetailsScreen:dynamicLocalizedString(@"details.title")];
+    [self setPrepareTitleLabel:dynamicLocalizedString(@"details.title")];
 }
 
 - (void)updateColors
@@ -80,13 +80,15 @@
 
 #pragma mark - Private
 
-- (void)setTitleForDetailsScreen:(NSString *)title
+- (void)setPrepareTitleLabel:(NSString *)title
 {
-    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
-    titleView = [[UILabel alloc] init];
+    UILabel *titleView = [[UILabel alloc] init];
     titleView.backgroundColor = [UIColor clearColor];
     titleView.textColor = [UIColor whiteColor];
     titleView.text = title;
+    titleView.textAlignment = NSTextAlignmentCenter;
+    
+    titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     self.navigationItem.titleView = titleView;
     [titleView sizeToFit];
 }

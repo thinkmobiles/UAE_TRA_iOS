@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cancelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveChangesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 

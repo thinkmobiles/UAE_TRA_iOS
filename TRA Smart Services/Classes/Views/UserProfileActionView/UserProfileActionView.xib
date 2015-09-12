@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="cancelLabel" destination="3gv-nB-JQg" id="Qfp-iL-hC2"/>
                 <outlet property="resetLabel" destination="Iyh-b0-q6k" id="RVs-gB-WWq"/>
+                <outlet property="saveButton" destination="OTh-z9-7Oj" id="D7B-hd-lpU"/>
                 <outlet property="saveChangesLabel" destination="Fe4-It-etH" id="cku-7F-fKl"/>
             </connections>
         </placeholder>
@@ -72,7 +73,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3gv-nB-JQg" firstAttribute="left" secondItem="dwn-2Z-fO4" secondAttribute="left" id="3kE-XM-Vnh"/>
                 <constraint firstAttribute="bottom" secondItem="Fe4-It-etH" secondAttribute="bottom" id="4Ba-YD-IHh"/>
