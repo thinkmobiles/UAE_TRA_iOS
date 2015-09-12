@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface EditUserProfileViewController : BaseDynamicUIViewController
+#import "UserProfileActionView.h"
+
+@interface EditUserProfileViewController : BaseDynamicUIViewController <UITextFieldDelegate, UserProfileActionViewDelegate>
 
 @end

@@ -282,3 +282,13 @@
 
 "homeSearchViewController.homeSearchLabel.text" = "ARE YOU LOOKING FOR:";
 "homeSearchViewController.homeSearchTextField.placeholder" = "Search";
+
+//EditUserProfileViewController
+
+"editUserProfileViewController.emiratesLabel" = "EMIRATE";
+"editUserProfileViewController.contactnumberLabel" = "CONTACT NUMBER";
+"editUserProfileViewController.firstNameLabel" = "FIRST NAME";
+"editUserProfileViewController.lastNameLabel" = "LAST NAME";
+"editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
+"editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
+"editUserProfileViewController.dataSource.0element" = "Tap to select";

@@ -15,6 +15,7 @@
 #import "ServicesSelectTableViewCell.h"
 
 static NSString *const providerCellIdentifier = @"compliantProviderCell";
+
 static CGFloat const heightSelectTableViewCell = 33.f;
 static CGFloat const verticalSpaceDescriptionConstraintCompliantCustomServise = 168.f;
 static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 22.f;
@@ -23,22 +24,27 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 @interface CompliantViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *compliantTitleTextField;
-@property (weak, nonatomic) IBOutlet UITextField *referenceNumberTextField;
+@property (weak, nonatomic) IBOutlet UIView *conteinerReferenceNumberView;
+@property (weak, nonatomic) IBOutlet UIView *conteinerServiceProviderView;
+@property (weak, nonatomic) IBOutlet UIView *topHolderView;
+
 @property (weak, nonatomic) IBOutlet UILabel *compliantTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compliantReterenceNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compliantServicePoviderLabel;
-@property (weak, nonatomic) IBOutlet PlaceholderTextView *compliantDescriptionTextView;
+
+@property (weak, nonatomic) IBOutlet UITextField *compliantTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *referenceNumberTextField;
+
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
-@property (weak, nonatomic) IBOutlet UIView *conteinerReferenceNumberView;
-@property (weak, nonatomic) IBOutlet UIView *conteinerServiceProviderView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConteinerSelectedProviderConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet ServiceView *serviceView;
-@property (weak, nonatomic) IBOutlet UIView *topHolderView;
+@property (weak, nonatomic) IBOutlet PlaceholderTextView *compliantDescriptionTextView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConteinerSelectedProviderConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
+
 @property (strong, nonatomic) UIImage *navigationBarBackgroundImage;
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
 @property (strong, nonatomic) NSString *selectedProvider;
@@ -232,8 +238,6 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)updateColors
 {
-
-    
     [AppHelper setStyleGrayColorForLayer:self.compliantDescriptionTextView.layer];
     [self.selectTableView reloadData];
 }

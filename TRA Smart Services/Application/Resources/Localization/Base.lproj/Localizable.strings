@@ -229,7 +229,7 @@
 "spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex0.title";
 "spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex1.title";
 
-//"InternetSpeedTestViewController
+//InternetSpeedTestViewController
 
 "internetSpeedTestViewController.title" = "internetSpeedTestViewController.title";
 "internetSpeedTestViewController.checkButton.title" = "internetSpeedTestViewController.checkButton.title";
@@ -283,3 +283,13 @@
 
 "homeSearchViewController.homeSearchLabel.text" = "homeSearchViewController.homeSearchLabel.text";
 "homeSearchViewController.homeSearchTextField.placeholder" = "homeSearchViewController.homeSearchTextField.placeholder";
+
+//EditUserProfileViewController
+
+"editUserProfileViewController.emiratesLabel" = "";
+"editUserProfileViewController.contactnumberLabel" = "";
+"editUserProfileViewController.firstNameLabel" = "";
+"editUserProfileViewController.lastNameLabel" = "";
+"editUserProfileViewController.streetAddressLabel" = "";
+"editUserProfileViewController.changePhotoButtonTitle" = "";
+"editUserProfileViewController.dataSource.0element" = "";

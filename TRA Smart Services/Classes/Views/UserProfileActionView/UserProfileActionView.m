@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cancelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveChangesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -31,8 +32,25 @@
 - (void)localizeUI
 {
     self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.cancel");
-    self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.reset");
-    self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.save");
+    self.resetLabel.text = dynamicLocalizedString(@"userProfileActionView.reset");
+    self.saveChangesLabel.text = dynamicLocalizedString(@"userProfileActionView.save");
+}
+
+- (void)setRTLStyle
+{
+    self.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.saveChangesLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.resetLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.cancelLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.saveButton.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+}
+
+- (void)setLTRStyle
+{
+    self.layer.transform = CATransform3DIdentity;
+    self.saveChangesLabel.layer.transform = CATransform3DIdentity;
+    self.resetLabel.layer.transform = CATransform3DIdentity;
+    self.cancelLabel.layer.transform = CATransform3DIdentity;
 }
 
 #pragma mark - Action
