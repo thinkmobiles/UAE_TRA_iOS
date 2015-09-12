@@ -15,6 +15,7 @@
 #import "NotificationViewController.h"
 #import "UserProfileViewController.h"
 #import "HomeSearchViewController.h"
+#import "KeychainStorage.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -274,10 +275,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-#warning temp
-    [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
-    return;
-    
     [self.topView setStartApearenceAnimationParameters];
 
     __weak typeof(self) weakSelf = self;
@@ -475,8 +472,9 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
+    
     self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
-    self.topView.userInitials = @"gK";
+    
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
