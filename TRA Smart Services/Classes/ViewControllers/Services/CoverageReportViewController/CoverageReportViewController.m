@@ -146,6 +146,10 @@
 
 - (IBAction)detectLocationButtonTapped:(id)sender
 {
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
     if ([LocationManager sharedManager].currentLattitude) {
         [self.activityIndicator startAnimating];
         CLLocation *loc = [[CLLocation alloc] initWithLatitude:[LocationManager sharedManager].currentLattitude longitude:[LocationManager sharedManager].currentLongtitude];
