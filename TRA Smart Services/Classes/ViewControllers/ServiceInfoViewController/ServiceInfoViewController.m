@@ -45,7 +45,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     [super viewWillAppear:animated];
     
     [self reverseDataSourceIfNeeded];
-    [self animatAappearence];
+    [self animateAppearence];
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -106,19 +106,10 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideView"];
-    self.backgroundView.layer.opacity = 0.f;
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 #pragma mark - Animations
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (anim == [self.backgroundView.layer animationForKey:@"hideView"]) {
-        [self.backgroundView.layer removeAllAnimations];
-        [self.navigationController popViewControllerAnimated:NO];
-    }
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -146,7 +137,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 
 - (void)updateColors
 {
-    self.backgroundView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.backgroundView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.9f];
 }
 
 #pragma mark - Private
@@ -166,7 +157,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     }
 }
 
-- (void)animatAappearence
+- (void)animateAppearence
 {
     if (!self.isControllerPresented) {
         [self.backgroundView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];

@@ -17,4 +17,6 @@ static NSString *const KeychainStorageKeyPassword = @"KeychainStorageKeyPassword
 - (void)removeStoredCredentials;
 - (NSDictionary *)credentialsForLoginedUser;
 
++ (NSString *)userName;
+
 @end

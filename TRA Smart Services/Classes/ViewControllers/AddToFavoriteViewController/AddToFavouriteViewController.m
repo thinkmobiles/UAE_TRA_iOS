@@ -84,6 +84,12 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self addRemoveFavoriteService:indexPath];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *serviceTitle = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;

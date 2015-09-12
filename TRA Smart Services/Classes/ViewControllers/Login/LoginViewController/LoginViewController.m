@@ -10,6 +10,8 @@
 #import "Animation.h"
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
+#import "TextFieldNavigator.h"
+#import "KeychainStorage.h"
 
 @interface LoginViewController ()
 
@@ -20,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
+@property (strong, nonatomic) KeychainStorage *storage;
 @property (assign, nonatomic) BOOL isViewControllerPresented;
 
 @end
@@ -31,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.storage = [[KeychainStorage alloc] init];
     [self prepareNavigationBar];
 }
 
@@ -43,6 +48,22 @@
         self.view.layer.opacity = 1.0f;
         self.isViewControllerPresented = YES;
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if (self.didDismissed) {
+        self.didDismissed();
+    }
+}
+
+#pragma mark - Superclass Methods
+
+- (void)returnKeyDone
+{
+    [self loginButtonPressed:nil];
 }
 
 #pragma mark - IBActions
@@ -60,6 +81,8 @@
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
+                [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
+                
                 [AppHelper alertViewWithMessage:response];
                 if (weakSelf.shouldAutoCloseAfterLogin) {
                     weakSelf.didCloseViewController = nil;

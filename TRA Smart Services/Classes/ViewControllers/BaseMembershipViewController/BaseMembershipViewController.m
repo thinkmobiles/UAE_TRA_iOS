@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self prepareNotification];
 
     [self prepareNavigationBar];
     [self prepareUIElements];
@@ -29,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self prepareNotification];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -40,10 +42,8 @@
     self.scrollView.contentSize = [UIScreen mainScreen].bounds.size;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)dealloc
 {
-    [super viewWillDisappear:animated];
-    
     [self removeNotifications];
 }
 
@@ -57,6 +57,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             weakSelf.scrollView.contentOffset = CGPointZero;
         }];
+        [self returnKeyDone];
         return YES;
     }
     return NO;
@@ -71,6 +72,31 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+- (void)returnKeyDone
+{
+    
+}
+
+- (void)addHexagoneOnView:(UIView *)view
+{
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = view.layer.bounds;
+    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
+    view.layer.mask = maskLayer;
+}
+
+- (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color
+{
+    CAShapeLayer *borderlayer = [CAShapeLayer layer];
+    borderlayer.fillColor = [UIColor clearColor].CGColor;
+    borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
+    borderlayer.lineWidth = 3.f;
+    borderlayer.frame = layer.bounds;
+    borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
+    
+    [layer addSublayer:borderlayer];
 }
 
 #pragma mark - Private

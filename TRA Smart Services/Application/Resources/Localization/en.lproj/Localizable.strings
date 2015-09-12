@@ -50,9 +50,10 @@
 
 //ProviderType
 
-"providerType.Du" = "Du";
-"providerType.Etisalat" = "Etisalat";
-"providerType.Yahsat" = "Yahsat";
+"providerType.selectProvider.text" = "Tap to select";
+"providerType.Du" = "Du Service Provider";
+"providerType.Etisalat" = "Etisalat Service Provider";
+"providerType.Yahsat" = "Yahsat Service Provider";
 
 //TabBarMenuItems
 
@@ -103,12 +104,18 @@
 
 //SettingsViewController
 
-"settings.textfield.username" = "Username";
-"settings.textfield.email" = "E-mail";
-"settings.label.language" = "Language";
-"settings.label.fontsize" = "Font size";
-"settings.label.themeOption" = "Color";
-"settings.label.logout" = "Logout";
+"settings.title" = "Settings";
+"settings.label.language" = "Language Preference";
+"settings.label.fontsize" = "Font Size Display";
+"settings.label.colorImpaired" = "Color Impaired";
+"settings.label.screenLockNotificationTitle" = "Screen Lock Notification";
+"settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
+"settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
+"settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
+"settings.label.colorThemeTitle" = "Color Theme";
+"settings.label.colorThemeDetails" = "Change color theme for app";
+"settings.label.aboutTRATitle" = "About TRA";
+"settings.label.aboutTRADetails" = "Read mare about TRA";
 "settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
@@ -132,6 +139,12 @@
 "speedAccess.service.name.11" = "Suggestion";
 "speedAccess.service.name.12" = "Compliant Enquires";
 "speedAccess.service.name.13" = "Compliant TRA";
+
+//NotificationsViewController
+
+"notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
+"notificationsViewController.noNotificationsMessage" = "You have no Notifications";
+"notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
 
 //FavouriteViewController
 
@@ -205,12 +218,12 @@
 //CompliantViewController
 
 "compliantViewController.title" = "Compliant";
-"compliantViewController.textField.providerText" = "Provider";
-"compliantViewController.textField.compliantTitle" = "Title";
-"compliantViewController.textField.refNumber" = "Referens number";
-"compliantViewController.descriptionLabel.text" = "Description";
-"compliantViewController.selectImageButton.title" = "Image";
-"compliantViewController.compliantButton.title" = "Compliant";
+"compliantViewController.textField.placeholder" = "Enter here";
+"compliantViewController.description.placeholder" = "Description";
+"compliantViewController.compliantTitleLabel" = "COMPLAINT TITLE";
+"compliantViewController.compliantReterenceNumberLabel" = "REFERENCE NUMBER";
+"compliantViewController.compliantServiceProviderLabel" = "SERVICE PROVIDER";
+"compliantViewController.compliantSendBarButtonItem.title" = "Send";
 
 //SpamReportViewControler
 
@@ -228,7 +241,6 @@
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
 "InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
-
 
 //HelpSalimViewController
 
@@ -258,3 +270,49 @@
 
 "checkIMEIViewController.title" = "Check IMEI";
 "checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";
+
+//UserProfileViewController
+
+"userProfile.title" = "User Profile";
+"userProfile.EditProfile" = "Edit Profile";
+"userProfile.changePassword" = "Change Password";
+"userProfile.resetPassword" = "Reset Password";
+"userProfile.logoutFromAccount" = "Logout from your Account";
+
+//ResetPasswordViewController
+
+"resetPassword.info" = "To reset your password, please type your email in the field below and a temporary password will by send to you.";
+"resetPassword.email" = "EMAIL";
+"resetPassword.placeHolder.email" = "Email";
+"resetPassword.retypeEmail" = "RETYPE YOUR EMAIL";
+"resetPassword.placeHolder.retypeEmail" = "Retype your email";
+
+//ChangePasswordViewController
+
+"changePassword.oldPassword" = "OLD PASSWORD";
+"changePassword.placeHolder.oldPassword" = "Old Password";
+"changePassword.password" = "NEW PASSWORD";
+"changePassword.placeHolder.password" = "New Password";
+"changePassword.retypePassword" = "RETYPE NEW PASSWORD";
+"changePassword.placeHolder.retypePassword" = "Retype New PAssword";
+
+//UserProfileActionView
+
+"userProfileActionView.cancel" = "CANCEL";
+"userProfileActionView.reset" = "RESET";
+"userProfileActionView.save" = "SAVE CHANGES";
+
+//HomeSearchViewController
+
+"homeSearchViewController.homeSearchLabel.text" = "ARE YOU LOOKING FOR:";
+"homeSearchViewController.homeSearchTextField.placeholder" = "Search";
+
+//EditUserProfileViewController
+
+"editUserProfileViewController.emiratesLabel" = "EMIRATE";
+"editUserProfileViewController.contactnumberLabel" = "CONTACT NUMBER";
+"editUserProfileViewController.firstNameLabel" = "FIRST NAME";
+"editUserProfileViewController.lastNameLabel" = "LAST NAME";
+"editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
+"editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
+"editUserProfileViewController.dataSource.0element" = "Tap to select";

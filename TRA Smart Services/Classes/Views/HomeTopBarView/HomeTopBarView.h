@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+#import "BaseXibView.h"
+
 @class HomeTopBarView;
 
 static CGFloat const LogoScaleMinValue = 0.85f;
@@ -20,7 +22,7 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 
 @end
 
-@interface HomeTopBarView : UIView
+@interface HomeTopBarView : BaseXibView
 
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 

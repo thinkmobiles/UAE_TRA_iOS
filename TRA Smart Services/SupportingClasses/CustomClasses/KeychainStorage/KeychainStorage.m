@@ -44,6 +44,15 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (NSString *)userName
+{
+    NSString *name = @"";
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:UserNameKey]) {
+        name = [[NSUserDefaults standardUserDefaults] objectForKey:UserNameKey];
+    }
+    return name;
+}
+
 #pragma mark - Private
 
 #pragma mark - UserDefaults

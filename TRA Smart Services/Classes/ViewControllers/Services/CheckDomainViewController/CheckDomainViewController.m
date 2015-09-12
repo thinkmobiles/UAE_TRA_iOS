@@ -229,7 +229,7 @@ static NSString *const keyOrder = @"order";
     
     self.ratingView.chooseRating.textColor = [[DynamicUIService service] currentApplicationColor];
     
-    UIImage *background = [UIImage imageNamed:@"trimmedBackground"];
+    UIImage *background = [UIImage imageNamed:@"serviceBackground"];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
         background = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:background];
     }

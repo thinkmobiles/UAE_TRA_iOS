@@ -10,6 +10,7 @@
 @interface LoginViewController : BaseMembershipViewController
 
 @property (strong, nonatomic) void (^didCloseViewController)();
+@property (strong, nonatomic) void (^didDismissed)();
 @property (assign, nonatomic) BOOL shouldAutoCloseAfterLogin;
 
 @end

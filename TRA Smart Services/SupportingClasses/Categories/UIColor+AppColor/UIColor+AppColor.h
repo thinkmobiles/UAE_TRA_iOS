@@ -39,5 +39,6 @@
 + (UIColor *)lightGrayBorderColor;
 + (UIColor *)redTextColor;
 + (UIColor *)lightGreenTextColor;
++ (UIColor *)grayBorderTextFieldTextColor;
 
 @end
