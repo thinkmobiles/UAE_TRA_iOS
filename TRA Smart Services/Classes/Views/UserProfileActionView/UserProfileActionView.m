@@ -31,8 +31,8 @@
 - (void)localizeUI
 {
     self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.cancel");
-    self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.reset");
-    self.cancelLabel.text = dynamicLocalizedString(@"userProfileActionView.save");
+    self.resetLabel.text = dynamicLocalizedString(@"userProfileActionView.reset");
+    self.saveChangesLabel.text = dynamicLocalizedString(@"userProfileActionView.save");
 }
 
 #pragma mark - Action

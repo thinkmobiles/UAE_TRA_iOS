@@ -272,6 +272,23 @@
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "تسجيل الخروج";
 
+//ResetPasswordViewController
+
+"resetPassword.info" = "To reset your password, please type your email in the field below and a temporary password will by send to you.";
+"resetPassword.email" = "EMAIL";
+"resetPassword.placeHolder.email" = "Email";
+"resetPassword.retypeEmail" = "RETYPE YOUR EMAIL";
+"resetPassword.placeHolder.retypeEmail" = "Retype your email";
+
+//ChangePasswordViewController
+
+"changePassword.oldPassword" = "OLD PASSWORD";
+"changePassword.placeHolder.oldPassword" = "Old Password";
+"changePassword.password" = "NEW PASSWORD";
+"changePassword.placeHolder.password" = "New Password";
+"changePassword.retypePassword" = "RETYPE NEW PASSWORD";
+"changePassword.placeHolder.retypePassword" = "Retype New PAssword";
+
 //UserProfileActionView
 
 "userProfileActionView.cancel" = "Cancel";

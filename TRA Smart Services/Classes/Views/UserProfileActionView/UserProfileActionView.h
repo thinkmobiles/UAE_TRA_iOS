@@ -21,4 +21,6 @@
 
 @property (weak, nonatomic) id <UserProfileActionViewDelegate> delegate;
 
+- (void)localizeUI;
+
 @end

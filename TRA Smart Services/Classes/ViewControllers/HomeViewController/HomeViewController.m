@@ -274,10 +274,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)topBarLogoImageDidTouched:(HomeTopBarView *)parentView
 {
-//#warning temp
-//    [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
-//    return;
-//    
     [self.topView setStartApearenceAnimationParameters];
 
     __weak typeof(self) weakSelf = self;
@@ -427,20 +423,9 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
         [self prepareNotificationViewControllerWithSegue:segue];
-    } else if ([segue.identifier isEqualToString:HomeToUserProfileSegueIdentifier]) {
-        [self prepareUserProfileViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
         [self prepareHomeSearchViewControllerWithSegue:segue];
     }
-}
-
-- (void)prepareUserProfileViewControllerWithSegue:(UIStoryboardSegue *)segue
-{
-    UserProfileViewController *userProfileViewController = segue.destinationViewController;
-    __weak typeof(self) weakSelf = self;
-    userProfileViewController.didDismissed = ^() {
-        [weakSelf.topView animateTopViewApearence];
-    };
 }
 
 - (void)prepareHomeSearchViewControllerWithSegue:(UIStoryboardSegue *)segue

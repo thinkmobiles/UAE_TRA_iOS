@@ -71,7 +71,9 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    [self performSegueWithIdentifier:@"EditUserProfileSegue" sender:self];
+    NSDictionary *dict = self.dataSource[indexPath.row];
+    NSString *seque = [dict valueForKey:@"seque"];
+    [self performSegueWithIdentifier:seque sender:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self prepareNotification];
 
     [self prepareNavigationBar];
     [self prepareUIElements];
@@ -29,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self prepareNotification];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -40,10 +42,8 @@
     self.scrollView.contentSize = [UIScreen mainScreen].bounds.size;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)dealloc
 {
-    [super viewWillDisappear:animated];
-    
     [self removeNotifications];
 }
 

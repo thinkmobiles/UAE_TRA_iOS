@@ -273,6 +273,23 @@
 "userProfile.resetPassword" = "userProfile.resetPassword";
 "userProfile.logoutFromAccount" = "userProfile.logoutFromAccount";
 
+//ResetPasswordViewController
+
+"resetPassword.info" = "resetPassword.info";
+"resetPassword.email" = "resetPassword.email";
+"resetPassword.placeHolder.email" = "resetPassword.placeHolder.email";
+"resetPassword.retypeEmail" = "resetPassword.retypeEmail";
+"resetPassword.placeHolder.retypeEmail" = "resetPassword.placeHolder.retypeEmail";
+
+//ChangePasswordViewController
+
+"changePassword.oldPassword" = "changePassword.oldPassword";
+"changePassword.placeHolder.oldPassword" = "changePassword.placeHolder.oldPassword";
+"changePassword.password" = "changePassword.password";
+"changePassword.placeHolder.password" = "changePassword.placeHolder.password";
+"changePassword.retypePassword" = "changePassword.retypePassword";
+"changePassword.placeHolder.retypePassword" = "changePassword.placeHolder.retypePassword";
+
 //UserProfileActionView
 
 "userProfileActionView.cancel" = "userProfileActionView.cancel";

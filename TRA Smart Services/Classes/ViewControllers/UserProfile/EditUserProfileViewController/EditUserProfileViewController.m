@@ -14,7 +14,6 @@
 
 @implementation EditUserProfileViewController
 
-
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
