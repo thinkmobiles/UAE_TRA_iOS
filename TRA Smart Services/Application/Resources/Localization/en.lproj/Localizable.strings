@@ -104,12 +104,18 @@
 
 //SettingsViewController
 
-"settings.textfield.username" = "Username";
-"settings.textfield.email" = "E-mail";
-"settings.label.language" = "Language";
-"settings.label.fontsize" = "Font size";
-"settings.label.themeOption" = "Color";
-"settings.label.logout" = "Logout";
+"settings.title" = "Settings";
+"settings.label.language" = "Language Preference";
+"settings.label.fontsize" = "Font Size Display";
+"settings.label.colorImpaired" = "Color Impaired";
+"settings.label.screenLockNotificationTitle" = "Screen Lock Notification";
+"settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
+"settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
+"settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
+"settings.label.colorThemeTitle" = "Color Theme";
+"settings.label.colorThemeDetails" = "Change color theme for app";
+"settings.label.aboutTRATitle" = "About TRA";
+"settings.label.aboutTRADetails" = "Read mare about TRA";
 "settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
