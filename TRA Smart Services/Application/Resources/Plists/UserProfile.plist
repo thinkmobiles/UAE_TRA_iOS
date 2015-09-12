@@ -32,7 +32,7 @@
 		<key>imageName</key>
 		<string>ic_logout</string>
 		<key>seque</key>
-		<string>EditUserProfileSegue</string>
+		<string></string>
 	</dict>
 </array>
 </plist>

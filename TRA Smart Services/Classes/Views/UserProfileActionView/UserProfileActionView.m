@@ -36,6 +36,23 @@
     self.saveChangesLabel.text = dynamicLocalizedString(@"userProfileActionView.save");
 }
 
+- (void)setRTLStyle
+{
+    self.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.saveChangesLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.resetLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.cancelLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.saveButton.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+}
+
+- (void)setLTRStyle
+{
+    self.layer.transform = CATransform3DIdentity;
+    self.saveChangesLabel.layer.transform = CATransform3DIdentity;
+    self.resetLabel.layer.transform = CATransform3DIdentity;
+    self.cancelLabel.layer.transform = CATransform3DIdentity;
+}
+
 #pragma mark - Action
 
 - (IBAction)cancelButtonTapped:(id)sender

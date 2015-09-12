@@ -102,6 +102,15 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -710,8 +719,8 @@
                                                         <color key="textColor" red="0.70980392156862748" green="0.71372549019607845" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqv-Px-3ke" userLabel="FirstName - UITextField">
-                                                        <rect key="frame" x="30" y="12" width="540" height="26"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqv-Px-3ke" userLabel="FirstName - UITextField">
+                                                        <rect key="frame" x="30" y="13" width="540" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="A7n-dq-QvL"/>
                                                         </constraints>
@@ -721,15 +730,15 @@
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="Hzw-nb-24h"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-CC-DZx" userLabel="FirstNameSeparator - UIView">
-                                                        <rect key="frame" x="30" y="38" width="540" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-CC-DZx" userLabel="FirstNameSeparator - UIView">
+                                                        <rect key="frame" x="30" y="39" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470588235294" green="0.81568627450980391" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="0Nc-ya-MhZ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LAST NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-Zb-moy" userLabel="LastName - UILabel">
-                                                        <rect key="frame" x="30" y="54" width="540" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-Zb-moy" userLabel="LastName - UILabel">
+                                                        <rect key="frame" x="30" y="55" width="540" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="8rj-HT-KSg"/>
                                                         </constraints>
@@ -737,8 +746,8 @@
                                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-be-ChU" userLabel="LastName - UITextField">
-                                                        <rect key="frame" x="30" y="70" width="540" height="26"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-be-ChU" userLabel="LastName - UITextField">
+                                                        <rect key="frame" x="30" y="71" width="540" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="aS3-ss-Wi8"/>
                                                         </constraints>
@@ -748,15 +757,24 @@
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="eiV-BY-a3V"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PeD-Od-con" userLabel="LastNameSeparator - UIView">
-                                                        <rect key="frame" x="30" y="96" width="540" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PeD-Od-con" userLabel="LastNameSeparator - UIView">
+                                                        <rect key="frame" x="30" y="97" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="eEq-nL-Itt"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1iS-g8-2oM" userLabel="StreetAddress - UITextField">
-                                                        <rect key="frame" x="30" y="128" width="540" height="26"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREET ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="HJx-Mu-hRB" userLabel="StreetAddress - UILabel">
+                                                        <rect key="frame" x="30" y="113" width="540" height="12"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="12" id="Dbv-s8-3A1"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
+                                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1iS-g8-2oM" userLabel="StreetAddress - UITextField">
+                                                        <rect key="frame" x="30" y="129" width="540" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="PmY-m6-Z4G"/>
                                                         </constraints>
@@ -766,15 +784,15 @@
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="5gi-Cv-x6I"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-ky-Fi5" userLabel="StreetAddress Separator - UIView">
-                                                        <rect key="frame" x="30" y="154" width="540" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-ky-Fi5" userLabel="StreetAddress Separator - UIView">
+                                                        <rect key="frame" x="30" y="155" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="fmg-zu-utr"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMIRATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="qaL-T6-8oV" userLabel="Emirate - UILabel">
-                                                        <rect key="frame" x="30" y="170" width="540" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMIRATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="qaL-T6-8oV" userLabel="Emirate - UILabel">
+                                                        <rect key="frame" x="30" y="171" width="540" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="kSp-aS-fcC"/>
                                                         </constraints>
@@ -782,22 +800,15 @@
                                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BnW-BV-ANV" userLabel="Emirate - Table View">
-                                                        <rect key="frame" x="30" y="186" width="540" height="26"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="83V-nk-TFw"/>
-                                                        </constraints>
-                                                    </tableView>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlf-Tl-wL0" userLabel="Emirate Separator - UIView">
-                                                        <rect key="frame" x="30" y="212" width="540" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlf-Tl-wL0" userLabel="Emirate Separator - UIView">
+                                                        <rect key="frame" x="30" y="213" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="4aF-1g-b3g"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CONTACT NUMBER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="DYo-x1-Fm5" userLabel="ContactNumber  - UILabel">
-                                                        <rect key="frame" x="30" y="228" width="540" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT NUMBER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="DYo-x1-Fm5" userLabel="ContactNumber  - UILabel">
+                                                        <rect key="frame" x="30" y="229" width="540" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="Rkc-2H-X0a"/>
                                                         </constraints>
@@ -805,8 +816,8 @@
                                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-x9-Ujr" userLabel="ContactNumber - UITextField">
-                                                        <rect key="frame" x="30" y="244" width="540" height="26"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-x9-Ujr" userLabel="ContactNumber - UITextField">
+                                                        <rect key="frame" x="30" y="245" width="540" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="rot-JV-689"/>
                                                         </constraints>
@@ -816,15 +827,16 @@
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="0m0-Aq-wXB"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-ti-F6f" userLabel="Emirate Separator - UIView">
-                                                        <rect key="frame" x="30" y="270" width="540" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-ti-F6f" userLabel="Emirate Separator - UIView">
+                                                        <rect key="frame" x="30" y="271" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="hQq-Xp-dEr"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="STREET ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="HJx-Mu-hRB" userLabel="StreetAddress - UILabel">
-                                                        <rect key="frame" x="30" y="112" width="540" height="12"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BnW-BV-ANV" userLabel="Emirate - Table View">
+                                                        <rect key="frame" x="30" y="187" width="540" height="26"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="83V-nk-TFw"/>
                                                         </constraints>
@@ -991,7 +1003,7 @@
                         <constraints>
                             <constraint firstAttribute="right" secondItem="H3q-Zy-3nN" secondAttribute="right" id="5ci-T9-QsE"/>
                             <constraint firstItem="PnK-LY-21l" firstAttribute="top" secondItem="iqu-A0-CDX" secondAttribute="bottom" id="G7Q-QT-Hx3"/>
-                            <constraint firstItem="iqu-A0-CDX" firstAttribute="top" secondItem="fJT-3g-iAd" secondAttribute="bottom" id="McI-Gd-ECz"/>
+                            <constraint firstItem="iqu-A0-CDX" firstAttribute="top" secondItem="WDw-bW-3ua" secondAttribute="top" id="S3H-uN-ggG"/>
                             <constraint firstItem="iqu-A0-CDX" firstAttribute="left" secondItem="WDw-bW-3ua" secondAttribute="left" id="WSb-HK-pgK"/>
                             <constraint firstItem="PnK-LY-21l" firstAttribute="top" secondItem="H3q-Zy-3nN" secondAttribute="bottom" id="aLd-Eh-YKs"/>
                             <constraint firstItem="H3q-Zy-3nN" firstAttribute="left" secondItem="WDw-bW-3ua" secondAttribute="left" id="cVU-se-8El"/>
@@ -3199,7 +3211,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5C-3i-PsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="-4071"/>
+            <point key="canvasLocation" x="1935" y="-3394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZgZ-u0-uVH">
@@ -5101,179 +5113,24 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="4254" y="475"/>
         </scene>
-        <!--Reset Password View Controller-->
-        <scene sceneID="wTY-8W-8Ig">
+        <!--Setting-->
+        <scene sceneID="kTn-lK-TF7">
             <objects>
-                <viewController id="anJ-hX-kHd" customClass="ResetPasswordViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z4D-oh-jD4"/>
-                        <viewControllerLayoutGuide type="bottom" id="eOR-uz-uDM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p81-Te-gtp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="fsN-Pi-fGc" userLabel="Background - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zao-7U-F9a" userLabel="Logo Container - UIView">
-                                <rect key="frame" x="175" y="25" width="250" height="95"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndt-SV-479" userLabel="Logo - UiIMageView">
-                                        <rect key="frame" x="92" y="0.0" width="67" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="67" id="2qk-Ob-oJJ"/>
-                                            <constraint firstAttribute="height" constant="75" id="CV6-xH-deM"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-94-kAK">
-                                        <rect key="frame" x="0.0" y="79" width="250" height="16"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="1aF-MW-PpU"/>
-                                    <constraint firstItem="ndt-SV-479" firstAttribute="top" secondItem="Zao-7U-F9a" secondAttribute="top" id="78j-YB-xIl"/>
-                                    <constraint firstAttribute="bottom" secondItem="GkP-94-kAK" secondAttribute="bottom" id="ABt-sV-fJ1"/>
-                                    <constraint firstItem="GkP-94-kAK" firstAttribute="top" secondItem="ndt-SV-479" secondAttribute="bottom" constant="4" id="UOq-Fl-fvw"/>
-                                    <constraint firstAttribute="centerX" secondItem="ndt-SV-479" secondAttribute="centerX" id="nBR-Sb-IWX"/>
-                                    <constraint firstItem="GkP-94-kAK" firstAttribute="leading" secondItem="Zao-7U-F9a" secondAttribute="leading" id="qsv-nX-ACh"/>
-                                    <constraint firstAttribute="trailing" secondItem="GkP-94-kAK" secondAttribute="trailing" id="uxQ-c0-bxc"/>
-                                    <constraint firstAttribute="height" constant="95" id="xLp-Tk-dxb"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TT-t6-aGe" userLabel="TextFieldContainer">
-                                <rect key="frame" x="0.0" y="130" width="600" height="170"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To reset your password, please type your email in the field below and a temporary password will by send to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-6S-px6">
-                                        <rect key="frame" x="30" y="8" width="540" height="11"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
-                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-yK-QQ9" userLabel="Email - UILabel">
-                                        <rect key="frame" x="30" y="39" width="540" height="9"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
-                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0N3-AX-ILZ" userLabel="Email - UITextField">
-                                        <rect key="frame" x="30" y="52" width="540" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="NiF-Re-e67"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="anJ-hX-kHd" id="nKM-D7-CDN"/>
-                                        </connections>
-                                    </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-mc-P4d" userLabel="EmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="78" width="540" height="1"/>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="86k-dR-y42"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE YOUR EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-9B-Oya" userLabel="RetypeEmail - UILabel">
-                                        <rect key="frame" x="30" y="94" width="540" height="12"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="12" id="zLj-Gn-W9x"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
-                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM1-jR-3O2" userLabel="RetypeEmail - UITextField">
-                                        <rect key="frame" x="30" y="110" width="540" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="gdL-mI-JQY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="anJ-hX-kHd" id="o7d-z3-UFL"/>
-                                        </connections>
-                                    </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-tR-6cj" userLabel="RetypeEmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="136" width="540" height="1"/>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="gxh-Xi-3hq"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="right" secondItem="YV1-yK-QQ9" secondAttribute="right" constant="30" id="3ie-vQ-XC0"/>
-                                    <constraint firstAttribute="right" secondItem="0N3-AX-ILZ" secondAttribute="right" constant="30" id="A1p-sK-c34"/>
-                                    <constraint firstItem="cm6-tR-6cj" firstAttribute="top" secondItem="oM1-jR-3O2" secondAttribute="bottom" id="Aqc-Mf-IWl"/>
-                                    <constraint firstItem="yJX-6S-px6" firstAttribute="top" secondItem="0TT-t6-aGe" secondAttribute="top" constant="8" id="BpG-U6-w97"/>
-                                    <constraint firstItem="tY9-9B-Oya" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="E2S-4H-wLt"/>
-                                    <constraint firstItem="0N3-AX-ILZ" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="H6V-kq-8dB"/>
-                                    <constraint firstItem="tY9-9B-Oya" firstAttribute="top" secondItem="k2i-mc-P4d" secondAttribute="bottom" constant="15" id="I43-8r-0Np"/>
-                                    <constraint firstItem="YV1-yK-QQ9" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="LqJ-am-Z6r"/>
-                                    <constraint firstAttribute="right" secondItem="cm6-tR-6cj" secondAttribute="right" constant="30" id="Md4-y4-bJk"/>
-                                    <constraint firstAttribute="right" secondItem="tY9-9B-Oya" secondAttribute="right" constant="30" id="Oqs-jc-rCM"/>
-                                    <constraint firstItem="YV1-yK-QQ9" firstAttribute="top" secondItem="yJX-6S-px6" secondAttribute="bottom" constant="20" id="Syv-eD-Wfl"/>
-                                    <constraint firstItem="oM1-jR-3O2" firstAttribute="top" secondItem="tY9-9B-Oya" secondAttribute="bottom" constant="4" id="Xln-70-emL"/>
-                                    <constraint firstItem="cm6-tR-6cj" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="YIQ-Xl-gA6"/>
-                                    <constraint firstAttribute="right" secondItem="oM1-jR-3O2" secondAttribute="right" constant="30" id="Z2Q-oU-DGb"/>
-                                    <constraint firstAttribute="right" secondItem="k2i-mc-P4d" secondAttribute="right" constant="30" id="fuE-Nc-NSa"/>
-                                    <constraint firstItem="k2i-mc-P4d" firstAttribute="top" secondItem="0N3-AX-ILZ" secondAttribute="bottom" id="hyc-ha-ik9"/>
-                                    <constraint firstAttribute="height" constant="170" id="iC0-us-8Ci"/>
-                                    <constraint firstItem="k2i-mc-P4d" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="mGO-1n-9vP"/>
-                                    <constraint firstAttribute="trailing" secondItem="yJX-6S-px6" secondAttribute="trailing" constant="30" id="nOu-hm-TsE"/>
-                                    <constraint firstItem="yJX-6S-px6" firstAttribute="leading" secondItem="0TT-t6-aGe" secondAttribute="leading" constant="30" id="qnI-8x-O4B"/>
-                                    <constraint firstItem="0N3-AX-ILZ" firstAttribute="top" secondItem="YV1-yK-QQ9" secondAttribute="bottom" constant="4" id="wMk-2L-RjN"/>
-                                    <constraint firstItem="oM1-jR-3O2" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="yRN-Tm-i8a"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ9-4x-RLF" customClass="UserProfileActionView">
-                                <rect key="frame" x="185" y="427" width="230" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="7uh-td-YbD"/>
-                                    <constraint firstAttribute="width" constant="230" id="rd4-bU-zts"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="eOR-uz-uDM" firstAttribute="top" secondItem="mZ9-4x-RLF" secondAttribute="bottom" constant="20" id="BgX-Yb-lSI"/>
-                            <constraint firstItem="fsN-Pi-fGc" firstAttribute="top" secondItem="Z4D-oh-jD4" secondAttribute="bottom" id="G1M-o6-dV2"/>
-                            <constraint firstItem="fsN-Pi-fGc" firstAttribute="left" secondItem="p81-Te-gtp" secondAttribute="left" id="GuE-OB-puJ"/>
-                            <constraint firstAttribute="centerX" secondItem="Zao-7U-F9a" secondAttribute="centerX" id="H0j-Kw-l1j"/>
-                            <constraint firstAttribute="centerX" secondItem="mZ9-4x-RLF" secondAttribute="centerX" id="Ivv-JW-pkb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0TT-t6-aGe" secondAttribute="trailing" constant="-16" id="MmT-Se-7aw"/>
-                            <constraint firstItem="0TT-t6-aGe" firstAttribute="leading" secondItem="p81-Te-gtp" secondAttribute="leadingMargin" constant="-16" id="OFB-uw-oNZ"/>
-                            <constraint firstItem="Zao-7U-F9a" firstAttribute="top" secondItem="Z4D-oh-jD4" secondAttribute="bottom" constant="25" id="T5M-RY-HMb"/>
-                            <constraint firstAttribute="right" secondItem="fsN-Pi-fGc" secondAttribute="right" id="TRr-Uc-MDo"/>
-                            <constraint firstItem="0TT-t6-aGe" firstAttribute="top" secondItem="Zao-7U-F9a" secondAttribute="bottom" constant="10" id="mvX-7i-DgW"/>
-                            <constraint firstItem="eOR-uz-uDM" firstAttribute="top" secondItem="fsN-Pi-fGc" secondAttribute="bottom" id="vD1-YC-hfM"/>
-                        </constraints>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="620"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wsa-rP-hfE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="4" title="Setting" image="ic_settings" id="cly-in-d9x"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i1N-5n-GEn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="actionView" destination="mZ9-4x-RLF" id="EMV-Gs-YrG"/>
-                        <outlet property="backgroundImageView" destination="fsN-Pi-fGc" id="YIQ-BZ-WMr"/>
-                        <outlet property="emailLabel" destination="YV1-yK-QQ9" id="GoR-D8-Ybe"/>
-                        <outlet property="emailTextField" destination="0N3-AX-ILZ" id="IRU-Xn-sX5"/>
-                        <outlet property="infoLabel" destination="yJX-6S-px6" id="pMz-Tw-lRP"/>
-                        <outlet property="resetLabel" destination="GkP-94-kAK" id="j4r-ig-3Y3"/>
-                        <outlet property="retypeEmailLabel" destination="tY9-9B-Oya" id="446-UR-s5v"/>
-                        <outlet property="retypeEmailTextField" destination="oM1-jR-3O2" id="beY-px-ZQM"/>
-                        <outlet property="userLogoImageView" destination="ndt-SV-479" id="TXq-o8-05D"/>
+                        <segue destination="uFL-R4-sWm" kind="relationship" relationship="rootViewController" id="Hud-KH-uyT"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AZB-Ph-a5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mC0-Gd-BOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="-4071"/>
+            <point key="canvasLocation" x="1123" y="2415"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="BpD-w5-vhn">
@@ -5502,6 +5359,180 @@ a new password will be sent.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imL-Iy-s6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2726" y="-4798"/>
+        </scene>
+        <!--Reset Password View Controller-->
+        <scene sceneID="wTY-8W-8Ig">
+            <objects>
+                <viewController id="anJ-hX-kHd" customClass="ResetPasswordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z4D-oh-jD4"/>
+                        <viewControllerLayoutGuide type="bottom" id="eOR-uz-uDM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p81-Te-gtp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="fsN-Pi-fGc" userLabel="Background - UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zao-7U-F9a" userLabel="Logo Container - UIView">
+                                <rect key="frame" x="175" y="25" width="250" height="95"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndt-SV-479" userLabel="Logo - UiIMageView">
+                                        <rect key="frame" x="92" y="0.0" width="67" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="67" id="2qk-Ob-oJJ"/>
+                                            <constraint firstAttribute="height" constant="75" id="CV6-xH-deM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-94-kAK">
+                                        <rect key="frame" x="0.0" y="79" width="250" height="16"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="1aF-MW-PpU"/>
+                                    <constraint firstItem="ndt-SV-479" firstAttribute="top" secondItem="Zao-7U-F9a" secondAttribute="top" id="78j-YB-xIl"/>
+                                    <constraint firstAttribute="bottom" secondItem="GkP-94-kAK" secondAttribute="bottom" id="ABt-sV-fJ1"/>
+                                    <constraint firstItem="GkP-94-kAK" firstAttribute="top" secondItem="ndt-SV-479" secondAttribute="bottom" constant="4" id="UOq-Fl-fvw"/>
+                                    <constraint firstAttribute="centerX" secondItem="ndt-SV-479" secondAttribute="centerX" id="nBR-Sb-IWX"/>
+                                    <constraint firstItem="GkP-94-kAK" firstAttribute="leading" secondItem="Zao-7U-F9a" secondAttribute="leading" id="qsv-nX-ACh"/>
+                                    <constraint firstAttribute="trailing" secondItem="GkP-94-kAK" secondAttribute="trailing" id="uxQ-c0-bxc"/>
+                                    <constraint firstAttribute="height" constant="95" id="xLp-Tk-dxb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TT-t6-aGe" userLabel="TextFieldContainer">
+                                <rect key="frame" x="0.0" y="130" width="600" height="170"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To reset your password, please type your email in the field below and a temporary password will by send to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-6S-px6">
+                                        <rect key="frame" x="30" y="8" width="540" height="11"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
+                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-yK-QQ9" userLabel="Email - UILabel">
+                                        <rect key="frame" x="30" y="39" width="540" height="9"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
+                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0N3-AX-ILZ" userLabel="Email - UITextField">
+                                        <rect key="frame" x="30" y="52" width="540" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="NiF-Re-e67"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="anJ-hX-kHd" id="nKM-D7-CDN"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-mc-P4d" userLabel="EmailSeparator - UIView">
+                                        <rect key="frame" x="30" y="78" width="540" height="1"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="86k-dR-y42"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE YOUR EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-9B-Oya" userLabel="RetypeEmail - UILabel">
+                                        <rect key="frame" x="30" y="94" width="540" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="zLj-Gn-W9x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
+                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM1-jR-3O2" userLabel="RetypeEmail - UITextField">
+                                        <rect key="frame" x="30" y="110" width="540" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="gdL-mI-JQY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="anJ-hX-kHd" id="o7d-z3-UFL"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-tR-6cj" userLabel="RetypeEmailSeparator - UIView">
+                                        <rect key="frame" x="30" y="136" width="540" height="1"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="gxh-Xi-3hq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="right" secondItem="YV1-yK-QQ9" secondAttribute="right" constant="30" id="3ie-vQ-XC0"/>
+                                    <constraint firstAttribute="right" secondItem="0N3-AX-ILZ" secondAttribute="right" constant="30" id="A1p-sK-c34"/>
+                                    <constraint firstItem="cm6-tR-6cj" firstAttribute="top" secondItem="oM1-jR-3O2" secondAttribute="bottom" id="Aqc-Mf-IWl"/>
+                                    <constraint firstItem="yJX-6S-px6" firstAttribute="top" secondItem="0TT-t6-aGe" secondAttribute="top" constant="8" id="BpG-U6-w97"/>
+                                    <constraint firstItem="tY9-9B-Oya" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="E2S-4H-wLt"/>
+                                    <constraint firstItem="0N3-AX-ILZ" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="H6V-kq-8dB"/>
+                                    <constraint firstItem="tY9-9B-Oya" firstAttribute="top" secondItem="k2i-mc-P4d" secondAttribute="bottom" constant="15" id="I43-8r-0Np"/>
+                                    <constraint firstItem="YV1-yK-QQ9" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="LqJ-am-Z6r"/>
+                                    <constraint firstAttribute="right" secondItem="cm6-tR-6cj" secondAttribute="right" constant="30" id="Md4-y4-bJk"/>
+                                    <constraint firstAttribute="right" secondItem="tY9-9B-Oya" secondAttribute="right" constant="30" id="Oqs-jc-rCM"/>
+                                    <constraint firstItem="YV1-yK-QQ9" firstAttribute="top" secondItem="yJX-6S-px6" secondAttribute="bottom" constant="20" id="Syv-eD-Wfl"/>
+                                    <constraint firstItem="oM1-jR-3O2" firstAttribute="top" secondItem="tY9-9B-Oya" secondAttribute="bottom" constant="4" id="Xln-70-emL"/>
+                                    <constraint firstItem="cm6-tR-6cj" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="YIQ-Xl-gA6"/>
+                                    <constraint firstAttribute="right" secondItem="oM1-jR-3O2" secondAttribute="right" constant="30" id="Z2Q-oU-DGb"/>
+                                    <constraint firstAttribute="right" secondItem="k2i-mc-P4d" secondAttribute="right" constant="30" id="fuE-Nc-NSa"/>
+                                    <constraint firstItem="k2i-mc-P4d" firstAttribute="top" secondItem="0N3-AX-ILZ" secondAttribute="bottom" id="hyc-ha-ik9"/>
+                                    <constraint firstAttribute="height" constant="170" id="iC0-us-8Ci"/>
+                                    <constraint firstItem="k2i-mc-P4d" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="mGO-1n-9vP"/>
+                                    <constraint firstAttribute="trailing" secondItem="yJX-6S-px6" secondAttribute="trailing" constant="30" id="nOu-hm-TsE"/>
+                                    <constraint firstItem="yJX-6S-px6" firstAttribute="leading" secondItem="0TT-t6-aGe" secondAttribute="leading" constant="30" id="qnI-8x-O4B"/>
+                                    <constraint firstItem="0N3-AX-ILZ" firstAttribute="top" secondItem="YV1-yK-QQ9" secondAttribute="bottom" constant="4" id="wMk-2L-RjN"/>
+                                    <constraint firstItem="oM1-jR-3O2" firstAttribute="left" secondItem="0TT-t6-aGe" secondAttribute="left" constant="30" id="yRN-Tm-i8a"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ9-4x-RLF" customClass="UserProfileActionView">
+                                <rect key="frame" x="185" y="427" width="230" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7uh-td-YbD"/>
+                                    <constraint firstAttribute="width" constant="230" id="rd4-bU-zts"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eOR-uz-uDM" firstAttribute="top" secondItem="mZ9-4x-RLF" secondAttribute="bottom" constant="20" id="BgX-Yb-lSI"/>
+                            <constraint firstItem="fsN-Pi-fGc" firstAttribute="top" secondItem="Z4D-oh-jD4" secondAttribute="bottom" id="G1M-o6-dV2"/>
+                            <constraint firstItem="fsN-Pi-fGc" firstAttribute="left" secondItem="p81-Te-gtp" secondAttribute="left" id="GuE-OB-puJ"/>
+                            <constraint firstAttribute="centerX" secondItem="Zao-7U-F9a" secondAttribute="centerX" id="H0j-Kw-l1j"/>
+                            <constraint firstAttribute="centerX" secondItem="mZ9-4x-RLF" secondAttribute="centerX" id="Ivv-JW-pkb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0TT-t6-aGe" secondAttribute="trailing" constant="-16" id="MmT-Se-7aw"/>
+                            <constraint firstItem="0TT-t6-aGe" firstAttribute="leading" secondItem="p81-Te-gtp" secondAttribute="leadingMargin" constant="-16" id="OFB-uw-oNZ"/>
+                            <constraint firstItem="Zao-7U-F9a" firstAttribute="top" secondItem="Z4D-oh-jD4" secondAttribute="bottom" constant="25" id="T5M-RY-HMb"/>
+                            <constraint firstAttribute="right" secondItem="fsN-Pi-fGc" secondAttribute="right" id="TRr-Uc-MDo"/>
+                            <constraint firstItem="0TT-t6-aGe" firstAttribute="top" secondItem="Zao-7U-F9a" secondAttribute="bottom" constant="10" id="mvX-7i-DgW"/>
+                            <constraint firstItem="eOR-uz-uDM" firstAttribute="top" secondItem="fsN-Pi-fGc" secondAttribute="bottom" id="vD1-YC-hfM"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="620"/>
+                    <connections>
+                        <outlet property="actionView" destination="mZ9-4x-RLF" id="EMV-Gs-YrG"/>
+                        <outlet property="backgroundImageView" destination="fsN-Pi-fGc" id="YIQ-BZ-WMr"/>
+                        <outlet property="emailLabel" destination="YV1-yK-QQ9" id="GoR-D8-Ybe"/>
+                        <outlet property="emailTextField" destination="0N3-AX-ILZ" id="IRU-Xn-sX5"/>
+                        <outlet property="infoLabel" destination="yJX-6S-px6" id="pMz-Tw-lRP"/>
+                        <outlet property="resetLabel" destination="GkP-94-kAK" id="j4r-ig-3Y3"/>
+                        <outlet property="retypeEmailLabel" destination="tY9-9B-Oya" id="446-UR-s5v"/>
+                        <outlet property="retypeEmailTextField" destination="oM1-jR-3O2" id="beY-px-ZQM"/>
+                        <outlet property="userLogoImageView" destination="ndt-SV-479" id="TXq-o8-05D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZB-Ph-a5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2738" y="-4071"/>
         </scene>
     </scenes>
     <resources>

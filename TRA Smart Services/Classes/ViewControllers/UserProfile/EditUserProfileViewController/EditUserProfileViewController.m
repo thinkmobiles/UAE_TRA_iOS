@@ -48,12 +48,228 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 @implementation EditUserProfileViewController
 
+#pragma mark - LifeCycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self prepareUI];
+    [self fillData];
+    [self prepareNotification];
+}
+
+- (void)dealloc
+{
+    [self removeNotifications];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)changePhotoButtonTapped:(id)sender
+{
+    
+}
+
+#pragma mark - UserProfileActionViewDelegate
+
+- (void)buttonCancelDidTapped
+{
+    [self fillData];
+}
+
+- (void)buttonResetDidTapped
+{
+    self.firstNmaeTextfield.text = @"";
+    self.lastNameTextField.text = @"";
+    self.streetAddressTextfield.text = @"";
+    self.selectedEmirate = @"";
+    self.contactNumberTextfield.text = @"";
+    
+    [self.tableView reloadData];
+}
+
+- (void)buttonSaveDidTapped
+{
+    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataSource.count - 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ServicesSelectTableViewCell *selectionCell;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier forIndexPath:indexPath];
+    } else {
+        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier forIndexPath:indexPath];
+    }
+    [self configureCell:selectionCell atIndexPath:indexPath];
+    return selectionCell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return DefaultHeightForTableView * 1.5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return DefaultHeightForTableView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    [self.view endEditing:YES];
+    
+    self.selectedEmirate = self.dataSource[indexPath.row + 1];
+    [self.tableView reloadData];
+    
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableViewHeightConstraint.constant = DefaultHeightForTableView;
+        [weakSelf.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [weakSelf.tableView reloadData];
+    }];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    ServicesSelectTableViewCell *selectionCell;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier];
+    } else {
+        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier];
+    }
+    selectionCell.selectProviderImage.tintColor = [[DynamicUIService service] currentApplicationColor];
+    selectionCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
+    
+    if (self.selectedEmirate.length) {
+        selectionCell.selectProviderLabel.text = self.selectedEmirate;
+        selectionCell.selectProviderLabel.textColor = [UIColor blackColor];
+    } else {
+        selectionCell.selectProviderLabel.text = [self.dataSource firstObject];
+        selectionCell.selectProviderLabel.textColor = [UIColor grayBorderTextFieldTextColor];
+    }
+    selectionCell.contentView.backgroundColor = [UIColor clearColor];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hederClicked)];
+    tapGesture.cancelsTouchesInView = NO;
+    [selectionCell.contentView addGestureRecognizer:tapGesture];
+    
+    self.headerCell = selectionCell;
+    
+    return selectionCell;
+}
+
+- (void)hederClicked
+{
+    [self.view endEditing:YES];
+    
+    NSInteger value = DefaultHeightForTableView;
+    
+    if (self.tableViewHeightConstraint.constant == DefaultHeightForTableView) {
+        value *= 4;
+        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
+    } else {
+        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
+    }
+    
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableViewHeightConstraint.constant = value;
+        [weakSelf.view layoutIfNeeded];
+    }];
+}
+
+- (void)configureCell:(ServicesSelectTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    cell.selectProviderLabel.text = self.dataSource[indexPath.row + 1];
+    cell.selectProviderLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.textFieldTouchPoint = [textField convertPoint:textField.center toView:self.view];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [TextFieldNavigator findNextTextFieldFromCurrent:textField];
+    if (textField.returnKeyType == UIReturnKeyDone) {
+        __weak typeof(self) weakSelf = self;
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:0.25 animations:^{
+            weakSelf.scrollView.contentOffset = CGPointZero;
+            [weakSelf.view layoutIfNeeded];
+        }];
+        return YES;
+    } else if (textField.returnKeyType == UIReturnKeyNext){
+        __weak typeof(self) weakSelf = self;
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:0.25 animations:^{
+            CGFloat deltaSpace = textField.tag == 2 ? 80.f : 40.f;
+            CGFloat yOffset = weakSelf.scrollView.contentOffset.y + deltaSpace;
+            weakSelf.scrollView.contentOffset = CGPointMake(0, yOffset);
+            [weakSelf.view layoutIfNeeded];
+        }];
+    }
+    return NO;
+}
+
+#pragma mark - Keyboard
+
+- (void)prepareNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)removeNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWillAppear:(NSNotification *)notification
+{
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = keyboardRect.size.height;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    CGFloat touchInViewY = self.textFieldTouchPoint.y;
+    CGFloat keyboardOriginY = screenHeight - keyboardHeight;
+    
+    if (touchInViewY > keyboardOriginY) {
+        CGFloat offsetY = keyboardOriginY - touchInViewY;
+        
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.25 animations:^{
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, - offsetY / 2)];
+            [weakSelf.view layoutIfNeeded];
+        }];
+    }
+}
+
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"userProfile.title");
-
+    [self.userActionView localizeUI];
+    
     self.emiratesLabel.text = dynamicLocalizedString(@"editUserProfileViewController.emiratesLabel");
     self.contactNumberLabel.text = dynamicLocalizedString(@"editUserProfileViewController.contactnumberLabel");
     self.firstNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.firstNameLabel");
@@ -78,7 +294,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (void)setRTLArabicUI
 {
     [self updateUIaligment:NSTextAlignmentRight];
-
+    
     [self.userActionView setRTLStyle];
 }
 

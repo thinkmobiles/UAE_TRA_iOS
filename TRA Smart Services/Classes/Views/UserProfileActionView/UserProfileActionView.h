@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) id <UserProfileActionViewDelegate> delegate;
 
+- (void)setLTRStyle;
+- (void)setRTLStyle;
 - (void)localizeUI;
 
 @end

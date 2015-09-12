@@ -79,11 +79,15 @@
 - (void)setRTLArabicUI
 {
     [self updateUI:NSTextAlignmentRight];
+    
+    [self.actionView setRTLStyle];
 }
 
 - (void)setLTREuropeUI
 {
     [self updateUI:NSTextAlignmentLeft];
+    
+    [self.actionView setLTRStyle];
 }
 
 #pragma mark - Private Metods
