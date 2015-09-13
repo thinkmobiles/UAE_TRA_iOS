@@ -8,6 +8,8 @@
 
 static CGFloat const DeclineTagForFontUpdate = 2000;
 
+static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";
+
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView fontSizeInclude:(BOOL)includeFontSizeChange;

@@ -54,8 +54,10 @@
 {
     [super viewDidDisappear:animated];
     
-    if (self.didDismissed) {
-        self.didDismissed();
+    if (self.navigationController.viewControllers.count == 1) {
+        if (self.didDismissed) {
+            self.didDismissed();
+        }
     }
 }
 

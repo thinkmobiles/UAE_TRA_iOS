@@ -13,6 +13,7 @@
 #import "UIColor+AppColor.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
+static CGFloat const MinimumTabBarFontSize = 10.f;
 
 @implementation AppHelper
 
@@ -99,8 +100,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 + (void)performResetupTabBar
 {
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
-    CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
+    CGFloat fontSize = [AppHelper fontSizeForTabBar];
     UIFont *font = [UIFont latoRegularWithSize:fontSize];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         font = [UIFont droidKufiRegularFontForSize:fontSize];
@@ -143,9 +143,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)updateFontsOnTabBar
 {
-    CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
-    
+    CGFloat fontSize = [AppHelper fontSizeForTabBar];
     UIFont *font = [UIFont latoRegularWithSize:fontSize];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         font = [UIFont droidKufiRegularFontForSize:fontSize];
@@ -163,6 +161,18 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
     }
+}
+
++ (CGFloat)fontSizeForTabBar
+{
+    CGFloat fontSize = [DynamicUIService service].fontSize;
+    
+    if (fontSize) {
+        fontSize = fontSize == 2 ? MaximumTabBarFontSize : MinimumTabBarFontSize;
+    } else {
+        fontSize = 12.f;
+    }
+    return fontSize;
 }
 
 + (void)prepareTabBarGradient

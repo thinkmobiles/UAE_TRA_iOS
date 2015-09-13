@@ -23,6 +23,7 @@
 		84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2B1B7DEBE100177B5B /* CompliantViewController.m */; };
 		84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E2F1B7E132D00177B5B /* SuggestionViewController.m */; };
 		84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */; };
+		930E177F1BA581F800295263 /* RoundSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 930E177E1BA581F800295263 /* RoundSlider.m */; };
 		932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */; };
 		932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */; };
 		932C8DB41BA01A3B003107E2 /* UserProfile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DB31BA01A3B003107E2 /* UserProfile.plist */; };
@@ -182,6 +183,8 @@
 		84869E2F1B7E132D00177B5B /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		84869E321B7E1D6F00177B5B /* BaseSelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSelectImageViewController.h; sourceTree = "<group>"; };
 		84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSelectImageViewController.m; sourceTree = "<group>"; };
+		930E177D1BA581F800295263 /* RoundSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundSlider.h; sourceTree = "<group>"; };
+		930E177E1BA581F800295263 /* RoundSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundSlider.m; sourceTree = "<group>"; };
 		932C8DAD1B9F4AD3003107E2 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		932C8DB01BA00C35003107E2 /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
 		932C8DB11BA00C35003107E2 /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
@@ -522,6 +525,15 @@
 				84869E331B7E1D6F00177B5B /* BaseSelectImageViewController.m */,
 			);
 			path = BaseSelectImageViewController;
+			sourceTree = "<group>";
+		};
+		930E177C1BA581EA00295263 /* RoundSlider */ = {
+			isa = PBXGroup;
+			children = (
+				930E177D1BA581F800295263 /* RoundSlider.h */,
+				930E177E1BA581F800295263 /* RoundSlider.m */,
+			);
+			path = RoundSlider;
 			sourceTree = "<group>";
 		};
 		932C8DAF1BA00C20003107E2 /* UserProfileTableViewCell */ = {
@@ -970,19 +982,19 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F1A889BC1BA2BB1E007EDEF7 /* UserProfile */,
 				E00A812B1BA0574800502423 /* HomeSearchViewController */,
 				93CFCC061B9CA1AF004A1A8F /* NotificationsViewController */,
 				F177854C1B8DE23800D96B1E /* AddToFavoriteViewController */,
 				93A436E71B85CD86009299C5 /* ServiceDetailedInfoViewController */,
 				EDAA8EF91B831C5800269F1A /* ServiceInfoViewController */,
-				84709EAB1B82F292008F3D14 /* InfoHub */,
 				EDAA8EA01B7E3F3A00269F1A /* FavouriteViewController */,
 				ED7D9F241B6CD87100C20402 /* SettingViewController */,
 				EDEC9DE41B6A335300334503 /* HomeViewController */,
 				ED7D9F281B6CEFB900C20402 /* BaseDynamicUIViewController */,
 				EDD3E58F1B5DA94F00405367 /* BaseMembershipViewController */,
 				EDAA8EA81B81AB1A00269F1A /* BaseSearchableViewController */,
+				F1A889BC1BA2BB1E007EDEF7 /* UserProfile */,
+				84709EAB1B82F292008F3D14 /* InfoHub */,
 				EDC04F8F1B70E3490071BADA /* Login */,
 				ED3D98231B7CD6A4000DEEB8 /* Services */,
 			);
@@ -1131,6 +1143,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				930E177C1BA581EA00295263 /* RoundSlider */,
 				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
 				9343E3221B974ECB0066329C /* LeftInsetTextField */,
 				93A436EB1B85D185009299C5 /* PushNoAnimationSegue */,
@@ -1751,6 +1764,7 @@
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
+				930E177F1BA581F800295263 /* RoundSlider.m in Sources */,
 				E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */,
 				932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */,
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,

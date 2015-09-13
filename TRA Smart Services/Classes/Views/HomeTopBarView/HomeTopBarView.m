@@ -316,7 +316,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.backgroundColor = color;
     self.searchLayer.backgroundColor = color;
     self.notificationLayer.backgroundColor = color;
-    self.avatarImageLayer.backgroundColor = color;
+    self.avatarImageLayer.backgroundColor = [DynamicUIService service].currentApplicationColor == [UIColor blackColor] ? color : [UIColor itemGradientTopColor].CGColor;
 }
 
 #pragma mark - AnimationDelegate
@@ -410,6 +410,12 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self.avatarImageLayer removeFromSuperlayer];
     
     self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
+    if ([DynamicUIService service].currentApplicationColor == [UIColor blackColor]) {
+        self.avatarImageLayer.backgroundColor = [UIColor blackColor].CGColor;
+    } else {
+        self.avatarImageLayer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
+    }
+    
     [self addHexagoneMaskForLayer:self.avatarImageLayer];
     
     self.borderLogoLayer = [CAShapeLayer layer];

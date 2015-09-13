@@ -18,6 +18,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerButtonColorThemeView;
+@property (weak, nonatomic) IBOutlet UIView *containerSliderView;
 
 @property (weak, nonatomic) IBOutlet UISwitch *screenLockNotificationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *appTutorialScreensSwitch;
@@ -27,7 +28,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
 
 @property (weak, nonatomic) IBOutlet SegmentView *languageSegmentControl;
-@property (weak, nonatomic) IBOutlet SegmentView *textSizeSegmentControll;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
 @property (weak, nonatomic) IBOutlet UILabel *languageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *colorImpairedLabel;
@@ -41,6 +42,9 @@ static CGFloat const optionScaleSwitch = 0.55;
 @property (weak, nonatomic) IBOutlet UILabel *aboutTRATitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aboutTRADetailsLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *leftFontSizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *centerFontSizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightFontSizeLabel;
 
 @end
 
@@ -51,25 +55,23 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
     
     [self prepareSegmentsView];
     [self prepareUISwitchSettingViewController];
-
     [self prepareNavigationBar];
- 
-    [self.themeColorBlackAndWhiteSwitch addTarget:self action:@selector(selectThemeColorBlackAndWhiteSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self prepareFontSizeSlider];
+    [self updateFontSizeSliderColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    [self updateLanguageSegmentControlPosition];
-    [self updateFontSizeSegmentControlPosition];
     
+    [self updateLanguageSegmentControlPosition];
+    [self updateFontSizeControl];
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
 }
 
@@ -104,10 +106,9 @@ static CGFloat const optionScaleSwitch = 0.55;
         case 0: {
             if ([DynamicUIService service].language == LanguageTypeEnglish) {
                 [self transformAnimationConteinerView];
-            } 
+            }
             [[DynamicUIService service] setLanguage:LanguageTypeArabic];
             break;
-            
         }
         case 1: {
             if ([DynamicUIService service].language == LanguageTypeArabic) {
@@ -123,40 +124,43 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self updateLanguageSegmentControlPosition];
 }
 
-- (void)textSizeSegmentControlPressed:(NSUInteger)index
+- (IBAction)sliderDidChangeValue:(UISlider *)sender
 {
-    switch (index) {
+    sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
+    
+    switch ((int)sender.value) {
         case 0: {
-            if ([DynamicUIService service].fontSize == ApplicationFontBig) {
-                return;
-            }
-            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
-            break;
-        }
-        case 1: {
             if ([DynamicUIService service].fontSize == ApplicationFontSmall) {
                 return;
             }
             [[DynamicUIService service] saveCurrentFontSize:ApplicationFontSmall];
             break;
         }
+        case 1: {
+            if ([DynamicUIService service].fontSize == ApplicationFontUndefined) {
+                return;
+            }
+            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontUndefined];
+            break;
+        }
+        case 2: {
+            if ([DynamicUIService service].fontSize == ApplicationFontBig) {
+                return;
+            }
+            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
+            break;
+        }
     }
-    
     [AppHelper updateFontsOnTabBar];
-    [self updateFontSizeSegmentControlPosition];
 }
 
 #pragma mark - SegmentViewDelegate
 
- - (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
+- (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
 {
     switch (segment.segmentTag) {
         case 1: {
             [self languageSegmentControllerPressed:item];
-            break;
-        }
-        case 2: {
-            [self textSizeSegmentControlPressed:item];
             break;
         }
     }
@@ -166,6 +170,8 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)prepareUISwitchSettingViewController
 {
+    [self.themeColorBlackAndWhiteSwitch addTarget:self action:@selector(selectThemeColorBlackAndWhiteSwitch:) forControlEvents:UIControlEventValueChanged];
+
     [self prepareUISwitch:self.themeColorBlackAndWhiteSwitch];
     [self prepareUISwitch:self.appTutorialScreensSwitch];
     [self prepareUISwitch:self.screenLockNotificationSwitch];
@@ -184,7 +190,6 @@ static CGFloat const optionScaleSwitch = 0.55;
     
     self.conteinerButtonColorThemeView.layer.transform = animCATransform3D;
     self.languageSegmentControl.layer.transform = animCATransform3D;
-    self.textSizeSegmentControll.layer.transform = animCATransform3D;
     
     self.languageLabel.layer.transform = animCATransform3D;
     self.fontSizeLabel.layer.transform = animCATransform3D;
@@ -197,6 +202,10 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.colorThemeDetailsLabel.layer.transform = animCATransform3D;
     self.aboutTRATitleLabel.layer.transform = animCATransform3D;
     self.aboutTRADetailsLabel.layer.transform = animCATransform3D;
+    self.leftFontSizeLabel.layer.transform = animCATransform3D;
+    self.centerFontSizeLabel.layer.transform = animCATransform3D;
+    self.rightFontSizeLabel.layer.transform = animCATransform3D;
+    self.slider.layer.transform = animCATransform3D;
 }
 
 - (void)setTextAligmentLabelSettingViewController:(NSTextAlignment)textAlignment
@@ -212,6 +221,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.colorThemeDetailsLabel.textAlignment = textAlignment;
     self.aboutTRATitleLabel.textAlignment = textAlignment;
     self.aboutTRADetailsLabel.textAlignment = textAlignment;
+    self.rightFontSizeLabel.textAlignment = textAlignment == NSTextAlignmentLeft ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    self.leftFontSizeLabel.textAlignment = textAlignment;
 }
 
 - (void)transformAnimationConteinerView
@@ -258,9 +269,9 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self.themeOrangeButton setImage:[UIImage imageNamed:@"btn_theme_rng"] forState:UIControlStateNormal];
     [self.themeGreenButton setImage:[UIImage imageNamed:@"btn_theme_grn"] forState:UIControlStateNormal];
     self.themeColorBlackAndWhiteSwitch.on = NO;
-
+    
     [[DynamicUIService service] setColorScheme:selectedColor];
-
+    
     switch (selectedColor) {
         case ApplicationColorDefault:
         case ApplicationColorBlue: {
@@ -297,7 +308,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     titleView.textColor = [UIColor whiteColor];
     titleView.text = title;
     titleView.textAlignment = NSTextAlignmentCenter;
-
+    
     titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     self.navigationItem.titleView = titleView;
     [titleView sizeToFit];
@@ -307,6 +318,10 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)localizeUI
 {
+    self.leftFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.small");
+    self.centerFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.normal");
+    self.rightFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.large");
+    
     [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
     self.languageLabel.text = dynamicLocalizedString(@"settings.label.language");
     self.fontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize");
@@ -321,7 +336,6 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.aboutTRADetailsLabel.text = dynamicLocalizedString(@"settings.label.aboutTRADetails");
     
     self.languageSegmentControl.segmentItems = @[dynamicLocalizedString(@"settings.switchControl.language.arabic"), dynamicLocalizedString(@"setting.switchControl.language.english")];
-    self.textSizeSegmentControll.segmentItems = @[dynamicLocalizedString(@"setting.switchControl.textSize.big"), dynamicLocalizedString(@"setting.switchControl.textSize.small")];
 }
 
 - (void)updateColors
@@ -332,8 +346,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     
     self.languageSegmentControl.segmentSelectedBacrgroundColor = [[DynamicUIService service] currentApplicationColor];
     [self.languageSegmentControl setNeedsLayout];
-    self.textSizeSegmentControll.segmentSelectedBacrgroundColor = [[DynamicUIService service] currentApplicationColor];
-    [self.textSizeSegmentControll setNeedsLayout];
+    [self updateFontSizeSliderColor];
 }
 
 - (void)setRTLArabicUI
@@ -354,7 +367,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
     self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
     self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
-
+    
     [self setTextAligmentLabelSettingViewController:NSTextAlignmentLeft];
 }
 
@@ -375,17 +388,19 @@ static CGFloat const optionScaleSwitch = 0.55;
     }
 }
 
-- (void)updateFontSizeSegmentControlPosition
+- (void)updateFontSizeControl
 {
     switch ([DynamicUIService service].fontSize) {
-        case ApplicationFontUndefined:
+        case ApplicationFontUndefined: {
+            [self.slider setValue:1];
+            break;
+        }
         case ApplicationFontSmall: {
-            [self.textSizeSegmentControll setSegmentItemSelectedWithTag:0];
+            [self.slider setValue:0];
             break;
         }
         case ApplicationFontBig: {
-            [self.textSizeSegmentControll setSegmentItemSelectedWithTag:1];
-
+            [self.slider setValue:2];
             break;
         }
     }
@@ -394,16 +409,6 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (void)prepareSegmentsView
 {
     self.languageSegmentControl.delegate = self;
-    self.textSizeSegmentControll.delegate = self;
-    
-    NSDictionary *smallTextAttributes = @{
-                                         NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:14.f]
-                                         };
-    NSDictionary *bigTextattributes = @{
-                                        NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:22.f]
-                                        };
-    
-    self.textSizeSegmentControll.segmentItemsAttributes = @[bigTextattributes, smallTextAttributes];
     self.languageSegmentControl.segmentItemsAttributes = @[@{NSFontAttributeName : [UIFont droidKufiBoldFontForSize:12]}, @{NSFontAttributeName : [UIFont latoBoldWithSize:12]}];
 }
 
@@ -418,6 +423,40 @@ static CGFloat const optionScaleSwitch = 0.55;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger result = (NSInteger) [userDefaults integerForKey:@"currentNumberColorTheme"];
     return result;
+}
+
+#pragma mark - Slider Setup
+
+- (void)prepareFontSizeSlider
+{
+    UIImage *img = [UIImage imageNamed:@"filled13-2"];
+    [self.slider setThumbImage:img forState:UIControlStateNormal];
+    [self.slider setThumbImage:img forState:UIControlStateSelected];
+    [self.slider setThumbImage:img forState:UIControlStateHighlighted];
+}
+
+- (void)updateFontSizeSliderColor
+{
+    UIImage *currentSliderMaximumImage = self.slider.currentMaximumTrackImage;
+    
+    CGRect rect = CGRectMake(0, 0, currentSliderMaximumImage.size.width, currentSliderMaximumImage.size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    [[[DynamicUIService service] currentApplicationColor] setFill];
+    UIRectFill(rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.slider setMaximumTrackImage:image forState:UIControlStateNormal];
+    
+    [self.slider setMinimumTrackImage:image forState:UIControlStateNormal];
+    
+    [[UISlider appearance] setTintColor:[UIColor itemGradientTopColor]];
+    
+    for (UIView *point in self.containerSliderView.subviews) {
+        if (![point isKindOfClass:[UISlider class]]) {
+            point.layer.cornerRadius = point.frame.size.height / 2;
+            point.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
 }
 
 @end

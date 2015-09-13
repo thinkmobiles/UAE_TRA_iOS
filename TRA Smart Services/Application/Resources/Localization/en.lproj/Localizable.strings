@@ -120,6 +120,9 @@
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
+"settings.label.fontsize.description.small" = "Small";
+"settings.label.fontsize.description.normal" = "Normal";
+"settings.label.fontsize.description.large" = "Large";
 
 //HomeViewController
 
