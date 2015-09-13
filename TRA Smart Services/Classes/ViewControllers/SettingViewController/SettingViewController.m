@@ -15,6 +15,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 @interface SettingViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerButtonColorThemeView;
@@ -350,6 +351,13 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self.languageSegmentControl setNeedsLayout];
     [self updateFontSizeSliderColor];
     [self updateColorForDescriptioveTextSize];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
+    
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI

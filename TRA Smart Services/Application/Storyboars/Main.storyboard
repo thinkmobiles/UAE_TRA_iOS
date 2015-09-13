@@ -3041,6 +3041,7 @@ a new password will be sent.</string>
                         <outlet property="appTutorialScreensDetailsLabel" destination="swu-r2-GUR" id="UfW-T3-uXj"/>
                         <outlet property="appTutorialScreensSwitch" destination="qim-lJ-VYi" id="x1w-2l-oHA"/>
                         <outlet property="appTutorialScreensTitleLabel" destination="onN-b4-2Wf" id="QhK-2v-NZ5"/>
+                        <outlet property="backgroundImageView" destination="tXa-bT-8gl" id="JwB-MQ-gb6"/>
                         <outlet property="centerFontSizeLabel" destination="HR8-Rn-POy" id="aFs-sG-qTC"/>
                         <outlet property="colorImpairedLabel" destination="pje-RE-oKV" id="TQY-AD-e2t"/>
                         <outlet property="colorThemeDetailsLabel" destination="ToP-LQ-197" id="4kZ-F7-kOd"/>

@@ -109,7 +109,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     NSDictionary *parameters = @{ NSFontAttributeName : font,
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor == [UIColor blackColor] ? [UIColor blackColor] : [UIColor itemGradientTopColor];
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -132,7 +132,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     }
     
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor == [UIColor blackColor] ? [UIColor blackColor] : [UIColor itemGradientTopColor];
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -153,7 +153,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
 
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor == [UIColor blackColor] ? [UIColor blackColor] : [UIColor itemGradientTopColor];
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -202,7 +202,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
 + (void)updateTabBarTintColor
 {
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor == [UIColor blackColor] ? [UIColor blackColor] : [UIColor itemGradientTopColor];
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
 }
 
 #pragma mark - NavigationBar Configuration
