@@ -109,28 +109,21 @@
 - (void)updateFontSizeForView:(UIView *)view
 {
     if ([view respondsToSelector:@selector(setFont:)] && view.tag != DeclineTagForFontUpdate) {
-        CGFloat smallMultiplier = 0.9f;
-        CGFloat normalMultiplier = 1.1f;
+        CGFloat smallMultiplier = -1.5;
+        CGFloat normalMultiplier = +1.5;
         CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
         
         ApplicationFont prevFontSize = [[[NSUserDefaults standardUserDefaults] valueForKey:PreviousFontSizeKey] integerValue];
         
         CGFloat fontSize = currentFontSize;
         if (prevFontSize == ApplicationFontBig && [DynamicUIService service].fontSize == ApplicationFontUndefined) {
-            fontSize = currentFontSize * smallMultiplier;
+            fontSize = currentFontSize + smallMultiplier;
         } else if (prevFontSize == ApplicationFontUndefined && [DynamicUIService service].fontSize == ApplicationFontSmall) {
-            fontSize = currentFontSize * smallMultiplier;
+            fontSize = currentFontSize + smallMultiplier;
         } else if (prevFontSize == ApplicationFontSmall && [DynamicUIService service].fontSize == ApplicationFontUndefined) {
-            fontSize = currentFontSize * normalMultiplier;
+            fontSize = currentFontSize + normalMultiplier;
         } else if (prevFontSize == ApplicationFontUndefined && [DynamicUIService service].fontSize == ApplicationFontBig) {
-            fontSize = currentFontSize * normalMultiplier;
-        }
-        
-        //in case of multiply change of font font will be scaled out or in to infinite value - cant save all defaults font size for all items so added temp min max value
-        if (fontSize < 8.) {
-            fontSize = 8.f;
-        } else if (fontSize > 16.) {
-            fontSize = 16.f;
+            fontSize = currentFontSize + normalMultiplier;
         }
         
         NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;

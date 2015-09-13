@@ -41,4 +41,8 @@
 + (UIColor *)lightGreenTextColor;
 + (UIColor *)grayBorderTextFieldTextColor;
 
+#pragma mark - Settings
+
++ (UIColor *)lightGraySettingTextColor;
+
 @end

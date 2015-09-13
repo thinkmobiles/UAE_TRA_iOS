@@ -99,8 +99,12 @@
     return [UIColor colorWithRealRed:179 green:179 blue:179 alpha:1.0f];
 }
 
+#pragma mark - Settings
 
-
++ (UIColor *)lightGraySettingTextColor
+{
+    return [UIColor colorWithRealRed:146 green:147 blue:148 alpha:1.0f];
+}
 
 #pragma mark - Private
 

@@ -70,6 +70,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 {
     [super viewWillAppear:animated];
     
+    [self updateColorForDescriptioveTextSize];
     [self updateLanguageSegmentControlPosition];
     [self updateFontSizeControl];
     [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
@@ -127,7 +128,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (IBAction)sliderDidChangeValue:(UISlider *)sender
 {
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
-    
+
     switch ((int)sender.value) {
         case 0: {
             if ([DynamicUIService service].fontSize == ApplicationFontSmall) {
@@ -152,6 +153,7 @@ static CGFloat const optionScaleSwitch = 0.55;
         }
     }
     [AppHelper updateFontsOnTabBar];
+    [self updateColorForDescriptioveTextSize];
 }
 
 #pragma mark - SegmentViewDelegate
@@ -347,6 +349,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.languageSegmentControl.segmentSelectedBacrgroundColor = [[DynamicUIService service] currentApplicationColor];
     [self.languageSegmentControl setNeedsLayout];
     [self updateFontSizeSliderColor];
+    [self updateColorForDescriptioveTextSize];
 }
 
 - (void)setRTLArabicUI
@@ -455,6 +458,30 @@ static CGFloat const optionScaleSwitch = 0.55;
         if (![point isKindOfClass:[UISlider class]]) {
             point.layer.cornerRadius = point.frame.size.height / 2;
             point.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+        }
+    }
+}
+
+- (void)updateColorForDescriptioveTextSize
+{
+    UIColor *textColor = [[DynamicUIService service] currentApplicationColor];
+    
+    self.rightFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
+    self.leftFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
+    self.centerFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
+    
+    switch ([DynamicUIService service].fontSize) {
+        case ApplicationFontUndefined: {
+            self.centerFontSizeLabel.textColor = textColor;
+            break;
+        }
+        case ApplicationFontSmall: {
+            self.leftFontSizeLabel.textColor = textColor;
+            break;
+        }
+        case ApplicationFontBig: {
+            self.rightFontSizeLabel.textColor = textColor;
+            break;
         }
     }
 }
