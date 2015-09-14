@@ -53,6 +53,13 @@ static CGFloat heightTableViewCell = 35.f;
     self.navigationController.navigationBar.hidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.homeSearchTextField becomeFirstResponder];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

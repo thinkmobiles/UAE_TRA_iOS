@@ -32,7 +32,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
 
-
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
@@ -57,6 +56,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     
     [self registerNibs];
     [self saveFavoriteListToDBIfNeeded];
+    self.headerAddServiceView.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,6 +65,15 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
  
     [self fetchFavouriteList];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.dataSource.count) {
+        self.headerAddServiceView.hidden = NO;
+    }
 }
 
 #pragma mark - Custom Accessors

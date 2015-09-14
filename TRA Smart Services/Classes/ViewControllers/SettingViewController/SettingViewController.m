@@ -257,10 +257,20 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)transformAnimationConteinerView
 {
-    CAKeyframeAnimation * transformAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    transformAnim.values = @[[NSValue valueWithCATransform3D : [DynamicUIService service].language == LanguageTypeArabic ? CATransform3DMakeScale(-1, 1, 1) : CATransform3DIdentity],
-                             [NSValue valueWithCATransform3D : [DynamicUIService service].language == LanguageTypeArabic ? CATransform3DIdentity : CATransform3DMakeScale(-1, 1, 1)]];
-    transformAnim.duration = 0.4;
+    CATransform3D rotationAndPerspectiveTransform = self.conteinerView.layer.transform;
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        rotationAndPerspectiveTransform.m34 = 1.0 / 500.0;
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, -1.0f, 0.0f);
+    } else {
+        rotationAndPerspectiveTransform.m34 = 1.0 / -500.0;
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -45 * M_PI , 0.0f, -1.0f, 0.0f);
+    }
+    
+    CABasicAnimation *transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
+    transformAnim.fromValue = [NSValue valueWithCATransform3D:self.conteinerView.layer.transform];
+    transformAnim.toValue = [NSValue valueWithCATransform3D:rotationAndPerspectiveTransform];
+    transformAnim.duration = .4f;
+    
     [self.conteinerView.layer addAnimation:transformAnim forKey:@"transformView"];
 }
 
