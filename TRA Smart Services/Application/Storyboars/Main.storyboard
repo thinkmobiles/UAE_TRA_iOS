@@ -291,7 +291,7 @@
                     <connections>
                         <outlet property="actionDescriptionLabel" destination="lgB-7D-JdL" id="36l-e5-5JI"/>
                         <outlet property="addFavouriteButton" destination="doX-zm-C5K" id="mh1-vG-njK"/>
-                        <outlet property="addServiceHiederButton" destination="Bpm-D3-5i1" id="5x7-ZI-Bot"/>
+                        <outlet property="addServiceHiddenButton" destination="Bpm-D3-5i1" id="Efo-VN-ZKY"/>
                         <outlet property="backgroundImageView" destination="j1e-2z-EqT" id="G0d-b5-PKo"/>
                         <outlet property="headerAddServiceView" destination="7XU-Bi-e2g" id="S1w-Xg-6Zf"/>
                         <outlet property="informationLabel" destination="uBq-Kr-a20" id="WIs-eN-hf9"/>

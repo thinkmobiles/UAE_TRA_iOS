@@ -26,7 +26,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *placeHolderView;
 @property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
-@property (weak, nonatomic) IBOutlet UIButton *addServiceHiederButton;
+@property (weak, nonatomic) IBOutlet UIButton *addServiceHiddenButton;
 @property (weak, nonatomic) IBOutlet UIView *headerAddServiceView;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -275,12 +275,18 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (void)showPlaceHolderIfNeeded
 {
     if (self.dataSource.count) {
-        self.placeHolderView.hidden = YES;
         self.tableView.hidden = NO;
-        self.addServiceHiederButton.hidden = NO;
+        self.headerAddServiceView.hidden = NO;
+        self.headerAddServiceView.layer.opacity = 1.0f;
+        
+        self.placeHolderView.hidden = YES;
     } else {
+        self.tableView.hidden = YES;
+        
+        self.headerAddServiceView.layer.opacity = 0.0f;
+        [self.headerAddServiceView.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"keyAnimationHidePlaceHolder"];
         self.placeHolderView.hidden = NO;
-        [self.headerAddServiceView.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"keyAnimationPleceHolderIFNeeded"];
+        self.placeHolderView.layer.opacity = 1.0f;
         [self.placeHolderView.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.f delegate:nil] forKey:nil];
     }
 }
@@ -605,10 +611,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     if (anim == [self.arcDeleteZoneLayer animationForKey:@"disapearAnimation"]) {
         [self.arcDeleteZoneLayer removeAllAnimations];
         [self removeDeleteZone];
-    }
-    if (anim == [self.headerAddServiceView.layer animationForKey:@"keyAnimationPleceHolderIFNeeded"] ) {
-        self.tableView.hidden = YES;
-        self.addServiceHiederButton.hidden = YES;
+    } else if (anim == [self.headerAddServiceView.layer animationForKey:@"keyAnimationHidePlaceHolder"] ) {
+        self.headerAddServiceView.hidden = YES;
+    } else if (anim == [self.placeHolderView.layer animationForKey:@"hidePlaceHolder"]) {
+        self.placeHolderView.hidden = YES;
     }
 }
 
@@ -621,14 +627,14 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
     self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
-    [self.addServiceHiederButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
+    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
-    [self.addServiceHiederButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
+    [self.addServiceHiddenButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
