@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "DynamicUIService.h"
 #import "UIColor+AppColor.h"
+#import "UIImage+DrawText.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
 static CGFloat const MinimumTabBarFontSize = 10.f;
@@ -212,8 +213,10 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
     for (UINavigationController *viewController in tabBarController.viewControllers) {
         if ([viewController isKindOfClass:[UINavigationController class]]) {
-            viewController.navigationBar.barTintColor = [DynamicUIService service].currentApplicationColor;
-            viewController.navigationBar.translucent = NO;
+            UIColor *uiColor = [[DynamicUIService service].currentApplicationColor colorWithAlphaComponent:0.8f];
+            UIImage *backgroundImage = [UIImage imageWithColor:uiColor inRect:CGRectMake(0, 0, 1, 1)];
+            [viewController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+            viewController.navigationBar.barTintColor = [UIColor whiteColor];
         }
     }
 }

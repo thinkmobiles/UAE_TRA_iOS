@@ -497,7 +497,7 @@
         <!--Home Search View Controller-->
         <scene sceneID="zOe-hB-tx9">
             <objects>
-                <viewController id="2Yn-1j-Blg" customClass="HomeSearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeSearchViewController" id="2Yn-1j-Blg" customClass="HomeSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ARm-03-HlW"/>
                         <viewControllerLayoutGuide type="bottom" id="QBG-7A-aNE"/>

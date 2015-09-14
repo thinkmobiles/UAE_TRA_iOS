@@ -182,7 +182,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     if ([segue.identifier isEqualToString:ServiceInfoListSegueIdentifier]) {
         ServiceInfoViewController *serviceInfoController = segue.destinationViewController;
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+        serviceInfoController.hidesBottomBarWhenPushed = YES;
+
+        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
         [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

@@ -132,7 +132,7 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)updateColors
 {
-    self.conteinerView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.conteinerView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.95];
 }
 
 - (void)setRTLArabicUI
