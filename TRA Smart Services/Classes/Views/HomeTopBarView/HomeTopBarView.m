@@ -245,6 +245,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
     __weak typeof(self) weakSelf = self;
     CGFloat delayForTopDrawing = 0.05;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
         [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];

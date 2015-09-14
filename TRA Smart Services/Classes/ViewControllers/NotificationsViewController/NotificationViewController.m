@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *informableLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
+@property (weak, nonatomic) IBOutlet UIButton *clearAllButton;
+@property (weak, nonatomic) IBOutlet UIView *topBarView;
+@property (weak, nonatomic) IBOutlet UIView *conteinerClearAllButtonView;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 
@@ -60,8 +63,10 @@
     _dataSource = dataSource;
     if (self.dataSource.count) {
         self.placeHolderNotificationLabel.hidden = YES;
+        self.conteinerClearAllButtonView.hidden = NO;
     } else {
         self.placeHolderNotificationLabel.hidden = NO;
+        self.conteinerClearAllButtonView.hidden = YES;
     }
 }
 
@@ -70,6 +75,23 @@
 - (IBAction)closeButtonTapped:(id)sender
 {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (IBAction)tappedClearAllButton:(id)sender
+{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for(int i = 0; i < [self.dataSource count]; i++) {
+        NSIndexPath *anIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [indexPaths addObject:anIndexPath];
+    }
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [self.dataSource removeAllObjects];
+    [self.tableView endUpdates];
+    
+    [self displayNotificationsData];
+    self.placeHolderNotificationLabel.hidden = NO;
+    self.conteinerClearAllButtonView.hidden = YES;
 }
 
 #pragma mark - UITableViewDataSource
@@ -105,11 +127,11 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
     [self.tableView beginUpdates];
-
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                      withRowAnimation:UITableViewRowAnimationFade];
     [self.dataSource removeObjectAtIndex:indexPath.row];
     [self.tableView endUpdates];
+    [self displayNotificationsData];
 }
 
 #pragma mark - Private
@@ -127,6 +149,14 @@
     self.dataSource = [@[@"", @"", @"", @""] mutableCopy];
 }
 
+- (void)transformUILayer:(CATransform3D)animCATransform3D
+{
+    self.topBarView.layer.transform = animCATransform3D;
+    self.conteinerClearAllButtonView.layer.transform = animCATransform3D;
+    self.clearAllButton.layer.transform = animCATransform3D;
+    self.informableLabel.layer.transform = animCATransform3D;
+}
+
 #pragma mark - SuperclassMethods
 
 - (void)updateColors
@@ -138,6 +168,7 @@
 {
     self.placeHolderNotificationLabel.text = dynamicLocalizedString(@"notificationsViewController.NotificationPlaceHolderlabel");
     [self displayNotificationsData];
+    [self.clearAllButton setTitle:dynamicLocalizedString(@"notificationsViewController.clearAllButton.title") forState:UIControlStateNormal];
 }
 
 - (void)displayNotificationsData
@@ -147,6 +178,20 @@
     } else {
         self.informableLabel.text = dynamicLocalizedString(@"notificationsViewController.noNotificationsMessage");
     }
+}
+
+- (void)setRTLArabicUI
+{
+    [self transformUILayer:CATransform3DMakeScale(-1, 1, 1)];
+    
+    self.informableLabel.textAlignment = NSTextAlignmentLeft;
+}
+
+- (void)setLTREuropeUI
+{
+    [self transformUILayer:CATransform3DIdentity];
+    
+    self.informableLabel.textAlignment = NSTextAlignmentRight;
 }
 
 @end
