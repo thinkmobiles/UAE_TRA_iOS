@@ -10,6 +10,7 @@
     </entity>
     <fetchRequest name="AllService" entity="TRAService"/>
     <fetchRequest name="FavouriteService" entity="TRAService" predicateString="serviceIsFavorite == 1"/>
+    <fetchRequest name="FavouriteServiceAll" entity="TRAService"/>
     <elements>
         <element name="TRAService" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
