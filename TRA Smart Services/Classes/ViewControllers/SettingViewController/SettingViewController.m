@@ -269,9 +269,42 @@ static CGFloat const optionScaleSwitch = 0.55;
     CABasicAnimation *transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnim.fromValue = [NSValue valueWithCATransform3D:self.conteinerView.layer.transform];
     transformAnim.toValue = [NSValue valueWithCATransform3D:rotationAndPerspectiveTransform];
-    transformAnim.duration = .4f;
+//    transformAnim.duration = .4f;
     
-    [self.conteinerView.layer addAnimation:transformAnim forKey:@"transformView"];
+    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    
+    CATransform3D startScale = CATransform3DScale (CATransform3DIdentity, 1, 1, 0);
+    CATransform3D midScale = CATransform3DScale (CATransform3DIdentity, 0.8, 0.8, 0);
+    CATransform3D endScale = CATransform3DScale (CATransform3DIdentity, 1, 1, 0);
+    
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        startScale =  self.conteinerView.layer.transform;
+    }
+    
+    scaleAnimation.values = @[
+                        [NSValue valueWithCATransform3D:startScale],
+                             [NSValue valueWithCATransform3D:midScale],
+                             [NSValue valueWithCATransform3D:endScale],
+                        ];
+    
+    scaleAnimation.keyTimes = @[[NSNumber numberWithFloat:0.0f],
+                      [NSNumber numberWithFloat:0.5f],
+                      [NSNumber numberWithFloat:0.9f]
+                       ];
+    
+    scaleAnimation.timingFunctions = @[
+                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                 ];
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    scaleAnimation.removedOnCompletion = NO;
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.animations = @[transformAnim, scaleAnimation];
+    group.duration = 2.4f;
+    
+    
+    [self.conteinerView.layer addAnimation:group forKey:@"transformView"];
 }
 
 - (void)selectColorTheme:(NSInteger)numberTheme
