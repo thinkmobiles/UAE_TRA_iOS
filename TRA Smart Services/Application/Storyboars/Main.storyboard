@@ -1131,7 +1131,7 @@
                                                     </view>
                                                 </subviews>
                                                 <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="ru4-f9-x0u" firstAttribute="top" secondItem="pss-aI-z5r" secondAttribute="bottom" id="7XR-33-jnd"/>
                                                     <constraint firstItem="ru4-f9-x0u" firstAttribute="leading" secondItem="Rnj-ut-UHs" secondAttribute="leading" constant="15" id="8PN-gb-686"/>
