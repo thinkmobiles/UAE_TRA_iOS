@@ -45,6 +45,7 @@
     self.searchBar.barTintColor = [UIColor whiteColor];
     self.searchBar.tintColor = [DynamicUIService service].currentApplicationColor;
     
+    
     self.searchBar.layer.opacity = 1.f;
     CGRect titleRect = CGRectMake(0, 0, self.searchBar.bounds.size.width, self.titleView.bounds.size.height);
     self.titleView.bounds = titleRect;
@@ -107,6 +108,7 @@
 - (void)prepareNavigationBar
 {
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
     CGRect titleRect = CGRectMake(self.navigationController.navigationBar.bounds.origin.x, self.navigationController.navigationBar.bounds.origin.y, self.navigationController.navigationBar.bounds.size.width / 2, self.navigationController.navigationBar.bounds.size.height);
     UIView *titleView = [[UIView alloc] initWithFrame:titleRect];
     self.titleView = titleView;

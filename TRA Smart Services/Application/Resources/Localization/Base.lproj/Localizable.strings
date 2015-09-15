@@ -321,3 +321,7 @@
 "editUserProfileViewController.streetAddressLabel" = "";
 "editUserProfileViewController.changePhotoButtonTitle" = "";
 "editUserProfileViewController.dataSource.0element" = "";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "homeSearchResultViewController.title";

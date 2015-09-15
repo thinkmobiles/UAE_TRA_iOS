@@ -90,8 +90,6 @@
     [self.tableView endUpdates];
     
     [self displayNotificationsData];
-    self.placeHolderNotificationLabel.hidden = NO;
-    self.conteinerClearAllButtonView.hidden = YES;
 }
 
 #pragma mark - UITableViewDataSource
@@ -157,6 +155,27 @@
     self.informableLabel.layer.transform = animCATransform3D;
 }
 
+- (void)showPlaceHolderIfNeeded
+{
+    if (self.dataSource.count) {
+        self.placeHolderNotificationLabel.hidden = YES;
+        self.conteinerClearAllButtonView.hidden = NO;
+    } else {
+        self.placeHolderNotificationLabel.hidden = NO;
+        [self.placeHolderNotificationLabel.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.0f delegate:nil] forKey:nil];
+        [self.conteinerClearAllButtonView.layer addAnimation:[Animation fadeAnimFromValue:1.0f to:0.0f delegate:self] forKey:@"keyAnimationPlaceHolder"];
+    }
+}
+
+#pragma mark - Animation
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (anim == [self.conteinerClearAllButtonView.layer animationForKey:@"keyAnimationPlaceHolder"] ) {
+        self.conteinerClearAllButtonView.hidden = YES;
+    }
+}
+
 #pragma mark - SuperclassMethods
 
 - (void)updateColors
@@ -173,6 +192,7 @@
 
 - (void)displayNotificationsData
 {
+    [self showPlaceHolderIfNeeded];
     if (self.dataSource.count) {
         self.informableLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"notificationsViewController.NotificationsMessage"), (int)self.dataSource.count];
     } else {

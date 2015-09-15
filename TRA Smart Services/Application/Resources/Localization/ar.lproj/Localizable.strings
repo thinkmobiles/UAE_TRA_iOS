@@ -318,3 +318,7 @@
 "editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
 "editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
 "editUserProfileViewController.dataSource.0element" = "Tap to select";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "Search Result";
