@@ -118,6 +118,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1472,13 +1474,16 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ec8-cA-VqL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-GE-GK3" userLabel="LogoImage - Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="hEO-tK-nKf" userLabel="Logo - UiImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.93333333333333335" green="0.53725490196078429" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="252" id="vWK-fq-C30"/>
                                         </constraints>
@@ -1784,7 +1789,7 @@ a new password will be sent.</string>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="GmP-Ga-qJi" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="0Ii-zW-JoI"/>
                                                     <constraint firstItem="3Yz-Ib-41V" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="12d-tR-udR"/>
@@ -1883,10 +1888,14 @@ a new password will be sent.</string>
                             <constraint firstAttribute="width" secondItem="hEO-tK-nKf" secondAttribute="width" id="AqC-HO-ce3"/>
                             <constraint firstAttribute="trailing" secondItem="jFz-GE-GK3" secondAttribute="trailing" id="GUY-xL-aWl"/>
                             <constraint firstItem="oXG-29-8qD" firstAttribute="width" relation="greaterThanOrEqual" secondItem="xgR-5H-iYw" secondAttribute="width" id="JLx-FK-lsX"/>
+                            <constraint firstItem="ec8-cA-VqL" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="KWT-eD-9UE"/>
                             <constraint firstItem="j4D-WR-PuB" firstAttribute="top" secondItem="ll7-If-qOI" secondAttribute="bottom" id="Sg4-E3-i4w"/>
                             <constraint firstAttribute="trailing" secondItem="j4D-WR-PuB" secondAttribute="trailing" id="VMX-W9-qVJ"/>
                             <constraint firstItem="Kze-Ie-3Sv" firstAttribute="top" secondItem="j4D-WR-PuB" secondAttribute="bottom" id="WOO-V2-AlK"/>
+                            <constraint firstItem="Kze-Ie-3Sv" firstAttribute="top" secondItem="ec8-cA-VqL" secondAttribute="bottom" id="aUh-Nl-mVk"/>
+                            <constraint firstAttribute="trailing" secondItem="ec8-cA-VqL" secondAttribute="trailing" id="aXk-Lk-Zgb"/>
                             <constraint firstItem="oXG-29-8qD" firstAttribute="width" secondItem="xgR-5H-iYw" secondAttribute="width" id="gLU-dg-ims"/>
+                            <constraint firstItem="ec8-cA-VqL" firstAttribute="top" secondItem="xgR-5H-iYw" secondAttribute="top" id="jh6-t0-96F"/>
                             <constraint firstItem="jFz-GE-GK3" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="pyh-k0-YeY"/>
                             <constraint firstItem="jFz-GE-GK3" firstAttribute="top" secondItem="xgR-5H-iYw" secondAttribute="topMargin" id="wXp-7e-39t"/>
                             <constraint firstItem="j4D-WR-PuB" firstAttribute="leading" secondItem="xgR-5H-iYw" secondAttribute="leading" id="x1V-YX-e3R"/>
@@ -2294,11 +2303,11 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-Me-cSU" userLabel="Logo - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="247"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT A WAY TO REGISTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0c-id-XMz" userLabel="RegisterInformation - UILAbel">
-                                <rect key="frame" x="16" y="255" width="568" height="21"/>
+                                <rect key="frame" x="16" y="268" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BtD-rt-d1s"/>
                                 </constraints>
@@ -2306,8 +2315,8 @@ a new password will be sent.</string>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgR-2V-T9b" userLabel="EmiratesID - UIButton">
-                                <rect key="frame" x="30" y="304" width="253" height="294"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgR-2V-T9b" userLabel="EmiratesID - UIButton">
+                                <rect key="frame" x="30" y="317" width="252" height="293"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YgR-2V-T9b" secondAttribute="height" multiplier="0.86:1" id="aHh-b2-WDg"/>
                                 </constraints>
@@ -2318,8 +2327,8 @@ a new password will be sent.</string>
                                     <segue destination="DFS-gr-7R1" kind="show" id="W8a-QO-dAo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgv-hp-74U" userLabel="FillForm - UIButton">
-                                <rect key="frame" x="318" y="304" width="252" height="294"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgv-hp-74U" userLabel="FillForm - UIButton">
+                                <rect key="frame" x="318" y="317" width="252" height="294"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tgv-hp-74U" secondAttribute="height" multiplier="0.86:1" id="Tcu-LW-Brp"/>
                                 </constraints>
@@ -2330,19 +2339,19 @@ a new password will be sent.</string>
                                     <segue destination="DFS-gr-7R1" kind="show" id="fWX-0G-qd7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirates ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-eZ-AB6" userLabel="EmiratesID - UILabel">
-                                <rect key="frame" x="31" y="605" width="249" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirates ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-eZ-AB6" userLabel="EmiratesID - UILabel">
+                                <rect key="frame" x="31" y="618" width="249" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Sxh-mp-89b"/>
+                                    <constraint firstAttribute="height" constant="50" id="Sxh-mp-89b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fil-up Form" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-hv-0rk" userLabel="Fil-upForm - UILabel">
-                                <rect key="frame" x="320" y="605" width="249" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fil-up Form" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-hv-0rk" userLabel="Fil-upForm - UILabel">
+                                <rect key="frame" x="320" y="618" width="249" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="rf6-zi-UEl"/>
+                                    <constraint firstAttribute="height" constant="50" id="rf6-zi-UEl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2369,8 +2378,8 @@ a new password will be sent.</string>
                             <constraint firstAttribute="trailing" secondItem="ejo-Me-cSU" secondAttribute="trailing" id="f7E-Iv-RdS"/>
                             <constraint firstItem="d21-jD-gxV" firstAttribute="top" secondItem="DoR-Io-M2W" secondAttribute="bottom" id="fKQ-sT-Hja"/>
                             <constraint firstItem="YgR-2V-T9b" firstAttribute="top" secondItem="I0c-id-XMz" secondAttribute="bottom" constant="28" id="g1M-v5-D4L"/>
-                            <constraint firstItem="ejo-Me-cSU" firstAttribute="height" secondItem="DoR-Io-M2W" secondAttribute="height" multiplier="0.38:1" id="h3y-xX-dDt"/>
-                            <constraint firstItem="Tgv-hp-74U" firstAttribute="leading" secondItem="YgR-2V-T9b" secondAttribute="trailing" constant="35" id="iHT-2o-LxH"/>
+                            <constraint firstItem="ejo-Me-cSU" firstAttribute="height" secondItem="DoR-Io-M2W" secondAttribute="height" multiplier="0.4:1" id="h3y-xX-dDt"/>
+                            <constraint firstItem="Tgv-hp-74U" firstAttribute="leading" secondItem="YgR-2V-T9b" secondAttribute="trailing" constant="36" id="iHT-2o-LxH"/>
                             <constraint firstItem="Tgv-hp-74U" firstAttribute="width" secondItem="YgR-2V-T9b" secondAttribute="width" id="khA-im-lkh"/>
                             <constraint firstItem="I0c-id-XMz" firstAttribute="leading" secondItem="c0D-RS-68W" secondAttribute="leadingMargin" id="phT-5G-BQk"/>
                             <constraint firstItem="I0c-id-XMz" firstAttribute="top" secondItem="ejo-Me-cSU" secondAttribute="bottom" constant="8" id="sUh-BO-aTX"/>

@@ -34,8 +34,8 @@
 - (void)updateColors
 {
     UIColor *color = [[DynamicUIService service] currentApplicationColor];
-    [self.emiratesIDButton setTitleColor:color forState:UIControlStateNormal];
-    [self.fillFormButton setTitleColor:color forState:UIControlStateNormal];
+    [self.emiratesIDButton setTintColor:color];
+    [self.fillFormButton setTintColor:color];
     [self.registerInformation setTextColor:color];
     [self.emiratesIDLabel setTextColor:color];
     [self.fillFormLabel setTextColor:color];

@@ -58,13 +58,6 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
     [self configureSelectStateTextFieldInputView];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    [self prepareNavigationBar];
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -292,7 +285,6 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
     [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
@@ -310,11 +302,6 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
                                          dynamicLocalizedString(@"state.Quwain")
                                          ];
     [self.selectStatePicker reloadAllComponents];
-}
-
-- (void)prepareNavigationBar
-{
-    self.title = dynamicLocalizedString(@"register.title");
 }
 
 - (void)prepareRegisterConteinerUIView
