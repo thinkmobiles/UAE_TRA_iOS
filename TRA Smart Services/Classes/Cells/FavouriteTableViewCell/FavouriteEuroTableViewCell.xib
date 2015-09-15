@@ -21,10 +21,10 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHc-FB-KgR" id="oYM-bV-Tnh">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-sh-wjH" userLabel="EuropeanUI">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-sh-wjH" userLabel="EuropeanUI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-aq-sdp" userLabel="ImageHolder - UiView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-aq-sdp" userLabel="ImageHolder - UiView">
                                 <rect key="frame" x="235" y="0.0" width="85" height="88"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-8c-QqX" userLabel="Logo - UiIMageView">
@@ -43,16 +43,16 @@
                                     <constraint firstAttribute="centerY" secondItem="2Yd-8c-QqX" secondAttribute="centerY" id="bIK-Od-W7k"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
                                 <rect key="frame" x="0.0" y="0.0" width="235" height="88"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
                                         <rect key="frame" x="20" y="16" width="195" height="33"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
                                         <rect key="frame" x="20" y="53" width="98" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="lE5-ni-g9Z"/>
@@ -70,7 +70,7 @@
                                             <action selector="serviceInfoButtonTapped:" destination="dHc-FB-KgR" eventType="touchUpInside" id="uQf-6h-PHo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
                                         <rect key="frame" x="118" y="41" width="98" height="50"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>

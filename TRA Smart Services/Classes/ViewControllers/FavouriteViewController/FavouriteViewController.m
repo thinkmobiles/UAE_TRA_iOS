@@ -31,6 +31,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addServiceHiddenImageView;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -57,7 +58,11 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [self registerNibs];
     [self saveFavoriteListToDBIfNeeded];
     self.headerAddServiceView.hidden = YES;
+    
+    [AppHelper addHexagoneOnView:self.addServiceHiddenImageView];
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -65,7 +70,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
  
     [self fetchFavouriteList];
     [self.tableView reloadData];
-    [self prepareAddServiceHiddenButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -280,19 +284,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteEuroTableViewCell" bundle:nil] forCellReuseIdentifier:FavouriteEuroCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteArabicTableViewCell" bundle:nil ] forCellReuseIdentifier:FavouriteArabicCellIdentifier];
-}
-
-- (void)prepareAddServiceHiddenButton
-{
-    if ([DynamicUIService service].language == LanguageTypeArabic){
-        [self.addServiceHiddenButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, -5.0, 0.0, 5.0)];
-        [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)];
-    } else {
-        [self.addServiceHiddenButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 110.0, 0.0, -110.0)];
-        [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -30.0, 0.0, 30.0)];
-    }
-    [self.addServiceHiddenButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
 }
 
 #pragma mark - UICustomization
@@ -648,7 +639,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (void)localizeUI
 {
     [super localizeUI];
-    
+    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
     self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
@@ -663,10 +654,18 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
+    [self.addServiceHiddenButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    self.addServiceHiddenImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    
+    [AppHelper addHexagonBorderForLayer:self.addServiceHiddenImageView.layer color:[[DynamicUIService service] currentApplicationColor]];
 }
 
 - (void)setRTLArabicUI
 {
+    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 20.0, 0.0, -20.0)];
+    self.addServiceHiddenButton.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.headerAddServiceView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+
     [super setRTLArabicUI];
     [self fetchFavouriteList];
     [self.tableView reloadData];
@@ -674,6 +673,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)setLTREuropeUI
 {
+    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -20.0, 0.0, 20.0)];
+    self.addServiceHiddenButton.layer.transform = CATransform3DIdentity;
+    self.headerAddServiceView.layer.transform = CATransform3DIdentity;
+    
     [super setLTREuropeUI];
     [self fetchFavouriteList];
     [self.tableView reloadData];

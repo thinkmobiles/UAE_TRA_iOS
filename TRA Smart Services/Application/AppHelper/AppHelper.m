@@ -243,6 +243,26 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     return hexagonPath;
 }
 
++ (void)addHexagoneOnView:(UIView *)view
+{
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = view.layer.bounds;
+    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
+    view.layer.mask = maskLayer;
+}
+
++ (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color
+{
+    CAShapeLayer *borderlayer = [CAShapeLayer layer];
+    borderlayer.fillColor = [UIColor clearColor].CGColor;
+    borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
+    borderlayer.lineWidth = 2.f;
+    borderlayer.frame = layer.bounds;
+    borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
+    
+    [layer addSublayer:borderlayer];
+}
+
 #pragma mark - Date
 
 + (NSString *)detailedDateStringFrom:(NSDate *)date
