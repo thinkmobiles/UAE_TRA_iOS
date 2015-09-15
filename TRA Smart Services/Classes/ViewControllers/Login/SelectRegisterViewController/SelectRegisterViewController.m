@@ -39,6 +39,12 @@
     [self.registerInformation setTextColor:color];
     [self.emiratesIDLabel setTextColor:color];
     [self.fillFormLabel setTextColor:color];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImage.image = backgroundImage;
 }
 
 @end

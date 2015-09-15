@@ -1082,6 +1082,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DUi-2u-g8e" userLabel="BackgroundImage - UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3Y-TC-ey9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
@@ -1091,7 +1094,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="3ja-1g-Evu" userLabel="Logo - UIImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.52941176469999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-ut-UHs" userLabel="DataContainer - UIView">
                                                 <rect key="frame" x="0.0" y="338" width="600" height="60"/>
@@ -1204,15 +1207,19 @@ a new password will be sent.</string>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="x3Y-TC-ey9" secondAttribute="trailing" id="7If-Q6-Wwf"/>
                             <constraint firstItem="fmw-ht-QFZ" firstAttribute="top" secondItem="x3Y-TC-ey9" secondAttribute="bottom" id="7Iv-J3-Le8"/>
+                            <constraint firstItem="DUi-2u-g8e" firstAttribute="top" secondItem="2rA-oW-tge" secondAttribute="top" id="J4s-70-7zQ"/>
+                            <constraint firstItem="DUi-2u-g8e" firstAttribute="leading" secondItem="2rA-oW-tge" secondAttribute="leading" id="Wbz-5W-fJF"/>
+                            <constraint firstAttribute="trailing" secondItem="DUi-2u-g8e" secondAttribute="trailing" id="XLn-Dk-IzA"/>
                             <constraint firstItem="x3Y-TC-ey9" firstAttribute="top" secondItem="2rA-oW-tge" secondAttribute="top" id="Y4F-s9-ho0"/>
+                            <constraint firstItem="fmw-ht-QFZ" firstAttribute="top" secondItem="DUi-2u-g8e" secondAttribute="bottom" id="b3M-Qk-O4G"/>
                             <constraint firstItem="x3Y-TC-ey9" firstAttribute="leading" secondItem="2rA-oW-tge" secondAttribute="leading" id="f5q-MW-kVf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Jd-xE-nKh"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="DUi-2u-g8e" id="ZZX-Cp-wZZ"/>
                         <outlet property="containerView" destination="Rnj-ut-UHs" id="fIS-Aa-3Ol"/>
                         <outlet property="informationLabel" destination="mml-LX-nFK" id="0gO-gM-ype"/>
-                        <outlet property="logoImageView" destination="3ja-1g-Evu" id="TRf-Hb-1dX"/>
                         <outlet property="mainButton" destination="KY6-1e-LCs" id="07D-PR-VJs"/>
                         <outlet property="scrollView" destination="x3Y-TC-ey9" id="UuN-3b-LAo"/>
                         <outlet property="userEmailTextField" destination="pss-aI-z5r" id="j5M-5h-grh"/>
@@ -1234,15 +1241,15 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="en8-gj-PUs" userLabel="BackgroundImage - UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-er-Z2T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzO-GQ-2aE" userLabel="Content - UiView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="en8-gj-PUs" userLabel="BackgroundImage - UIImageView">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                            </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-4j-L9P" userLabel="Logo - UIImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
                                                 <animations/>
@@ -1403,7 +1410,6 @@ a new password will be sent.</string>
                                         <animations/>
                                         <constraints>
                                             <constraint firstItem="Rv4-jf-6gs" firstAttribute="top" secondItem="Va7-4j-L9P" secondAttribute="bottom" id="1ZN-cA-aUm"/>
-                                            <constraint firstItem="en8-gj-PUs" firstAttribute="leading" secondItem="UzO-GQ-2aE" secondAttribute="leading" id="9NJ-Lx-eEH"/>
                                             <constraint firstItem="Va7-4j-L9P" firstAttribute="height" secondItem="UzO-GQ-2aE" secondAttribute="height" multiplier="0.38" id="Bqt-Tj-Lt4"/>
                                             <constraint firstAttribute="height" constant="600" id="ILB-dt-qHR"/>
                                             <constraint firstAttribute="trailing" secondItem="Rv4-jf-6gs" secondAttribute="trailing" id="IOa-G4-efg"/>
@@ -1415,9 +1421,6 @@ a new password will be sent.</string>
                                             <constraint firstItem="Va7-4j-L9P" firstAttribute="leading" secondItem="UzO-GQ-2aE" secondAttribute="leading" id="bHn-UL-F43"/>
                                             <constraint firstAttribute="trailing" secondItem="X5d-8g-gkV" secondAttribute="trailing" id="eMZ-yt-V20"/>
                                             <constraint firstItem="Va7-4j-L9P" firstAttribute="top" secondItem="UzO-GQ-2aE" secondAttribute="top" id="grS-pR-kOa"/>
-                                            <constraint firstAttribute="trailing" secondItem="en8-gj-PUs" secondAttribute="trailing" id="iXM-gT-3OO"/>
-                                            <constraint firstItem="en8-gj-PUs" firstAttribute="top" secondItem="UzO-GQ-2aE" secondAttribute="top" id="tPO-v7-Xw1"/>
-                                            <constraint firstAttribute="bottom" secondItem="en8-gj-PUs" secondAttribute="bottom" id="wM1-un-Sej"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1435,7 +1438,11 @@ a new password will be sent.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="B7l-er-Z2T" firstAttribute="leading" secondItem="Vzv-hW-EZo" secondAttribute="leading" id="1d6-2g-CHK"/>
+                            <constraint firstItem="en8-gj-PUs" firstAttribute="leading" secondItem="Vzv-hW-EZo" secondAttribute="leading" id="6YG-AN-vzD"/>
+                            <constraint firstItem="en8-gj-PUs" firstAttribute="top" secondItem="Vzv-hW-EZo" secondAttribute="top" id="Fbj-Fs-z0O"/>
+                            <constraint firstItem="dPk-rw-Pn9" firstAttribute="top" secondItem="en8-gj-PUs" secondAttribute="bottom" id="LVQ-88-TdQ"/>
                             <constraint firstItem="dPk-rw-Pn9" firstAttribute="top" secondItem="B7l-er-Z2T" secondAttribute="bottom" id="SOe-J2-ip9"/>
+                            <constraint firstAttribute="trailing" secondItem="en8-gj-PUs" secondAttribute="trailing" id="SkG-Fi-Yde"/>
                             <constraint firstItem="B7l-er-Z2T" firstAttribute="top" secondItem="Vzv-hW-EZo" secondAttribute="top" id="bzU-3h-nlG"/>
                             <constraint firstAttribute="trailing" secondItem="B7l-er-Z2T" secondAttribute="trailing" id="fxj-gJ-PGW"/>
                         </constraints>
@@ -1443,11 +1450,11 @@ a new password will be sent.</string>
                     <navigationItem key="navigationItem" title=" " id="iQE-cp-SzW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="en8-gj-PUs" id="re8-Y3-WZb"/>
                         <outlet property="containerView" destination="Rv4-jf-6gs" id="eM4-BE-RK3"/>
                         <outlet property="forgotPasswordButton" destination="Za2-1G-4Gb" id="0bp-Dk-hkb"/>
                         <outlet property="loginButton" destination="Y05-2b-1sR" id="f8M-MD-Cqe"/>
                         <outlet property="loginSeparator" destination="zyd-mc-u74" id="3Qe-xk-40d"/>
-                        <outlet property="logoImageView" destination="Va7-4j-L9P" id="PWs-4J-ld2"/>
                         <outlet property="mainButton" destination="Y05-2b-1sR" id="RNe-yz-sBy"/>
                         <outlet property="passwordSeparator" destination="okW-bQ-chg" id="bek-LP-5tR"/>
                         <outlet property="passwordTextField" destination="Pl6-tf-1Vn" id="TqV-DY-FXj"/>
@@ -1474,7 +1481,7 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ec8-cA-VqL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ec8-cA-VqL" userLabel="Background - UIImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-GE-GK3" userLabel="LogoImage - Scroll View">
@@ -1904,6 +1911,7 @@ a new password will be sent.</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="820"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="ec8-cA-VqL" id="waq-Bn-Tfa"/>
                         <outlet property="confirmPasswordTextField" destination="Wfb-NY-gcP" id="SJo-WK-5Jt"/>
                         <outlet property="containerView" destination="xgR-5H-iYw" id="bQB-GD-eb2"/>
                         <outlet property="emailTextField" destination="WAd-Tu-LyJ" id="MRo-AC-6uC"/>

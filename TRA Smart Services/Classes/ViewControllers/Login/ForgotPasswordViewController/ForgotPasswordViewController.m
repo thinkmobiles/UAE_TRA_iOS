@@ -11,7 +11,7 @@
 
 @interface ForgotPasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet OffsetTextField *userEmailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 
@@ -63,9 +63,13 @@
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
     [self.mainButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     self.informationLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 @end

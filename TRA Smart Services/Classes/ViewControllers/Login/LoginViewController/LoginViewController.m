@@ -15,7 +15,7 @@
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -181,6 +181,12 @@
     self.passwordSeparator.backgroundColor = color;
     self.loginSeparator.backgroundColor = color;
     self.verticalSeparator.backgroundColor = color;
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setLTREuropeUI
