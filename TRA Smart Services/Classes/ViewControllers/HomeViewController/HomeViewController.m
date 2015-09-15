@@ -56,6 +56,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
 @property (assign, nonatomic) BOOL isFirstTimeLoaded;
+@property (assign, nonatomic) NSInteger selectedServiceIDHomeSearchViewController;
 
 @end
 
@@ -66,6 +67,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.selectedServiceIDHomeSearchViewController = - 1;
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
@@ -357,7 +360,26 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
     
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)sevriceSwitchPerformSegue:(NSInteger) serviceID
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    switch (serviceID) {
         case 7: {
             [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
             break;
@@ -374,22 +396,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
             break;
         }
-        default: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-            break;
-        }
-    }
-}
-
-- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (![NetworkManager sharedManager].networkStatus) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
-        return;
-    }
-    
-    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+            
         case 2: {
             [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
             break;
@@ -423,14 +430,14 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
         [self prepareNotificationViewControllerWithSegue:segue];
-    }
-    else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
+    } else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
         [self prepareHomeSearchViewControllerWithSegue:segue];
     }
 }
@@ -441,6 +448,11 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
     homeSearchViewController.fakeBackground = img;
     homeSearchViewController.hidesBottomBarWhenPushed = YES;
+
+    __weak typeof(self) weakSelf = self;
+    homeSearchViewController.selectedServiceIDHomeSearch = ^(NSInteger selectedServiseID){
+        [weakSelf sevriceSwitchPerformSegue:selectedServiseID];
+    };
 }
 
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue

@@ -65,6 +65,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
  
     [self fetchFavouriteList];
     [self.tableView reloadData];
+    [self prepareAddServiceHiddenButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -279,6 +280,19 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteEuroTableViewCell" bundle:nil] forCellReuseIdentifier:FavouriteEuroCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"FavouriteArabicTableViewCell" bundle:nil ] forCellReuseIdentifier:FavouriteArabicCellIdentifier];
+}
+
+- (void)prepareAddServiceHiddenButton
+{
+    if ([DynamicUIService service].language == LanguageTypeArabic){
+        [self.addServiceHiddenButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, -5.0, 0.0, 5.0)];
+        [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)];
+    } else {
+        [self.addServiceHiddenButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 110.0, 0.0, -110.0)];
+        [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -30.0, 0.0, 30.0)];
+    }
+    [self.addServiceHiddenButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
 }
 
 #pragma mark - UICustomization
@@ -638,15 +652,12 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
     self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
-    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
-    [self.addServiceHiddenButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
-    
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
