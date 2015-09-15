@@ -133,6 +133,7 @@
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		EDFEE7191B7DE32F0062CB64 /* SpamReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */; };
+		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
 		F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */; };
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
 		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
@@ -388,6 +389,8 @@
 		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
 		EDFEE7171B7DE32F0062CB64 /* SpamReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamReportViewController.h; sourceTree = "<group>"; };
 		EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamReportViewController.m; sourceTree = "<group>"; };
+		F166B7461BA893C50001DD88 /* SelectRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRegisterViewController.h; sourceTree = "<group>"; };
+		F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRegisterViewController.m; sourceTree = "<group>"; };
 		F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
 		F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteEuroTableViewCell.xib; sourceTree = "<group>"; };
 		F17785471B8DB8A400D96B1E /* AddToFavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteTableViewCell.h; sourceTree = "<group>"; };
@@ -1299,6 +1302,7 @@
 		EDC04F8F1B70E3490071BADA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F166B7451BA88AE50001DD88 /* SelectRegisterViewController */,
 				EDC04F901B70E35B0071BADA /* ForgotPasswordViewController */,
 				EDC04F931B70E35B0071BADA /* LoginViewController */,
 				EDC04F961B70E35B0071BADA /* RegisterViewController */,
@@ -1499,6 +1503,15 @@
 				EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */,
 			);
 			path = SpamReportViewController;
+			sourceTree = "<group>";
+		};
+		F166B7451BA88AE50001DD88 /* SelectRegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F166B7461BA893C50001DD88 /* SelectRegisterViewController.h */,
+				F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */,
+			);
+			path = SelectRegisterViewController;
 			sourceTree = "<group>";
 		};
 		F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */ = {
@@ -1756,6 +1769,7 @@
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
 				847D03E61B832AF400B0768C /* AnnoucementsViewController.m in Sources */,
+				F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */,
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
 				84709EB71B82F393008F3D14 /* InfoHubTableViewCell.m in Sources */,
 				F1A889CC1BA31D82007EDEF7 /* ChangePasswordViewController.m in Sources */,

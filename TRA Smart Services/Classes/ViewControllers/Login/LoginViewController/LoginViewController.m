@@ -16,11 +16,16 @@
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-@property (weak, nonatomic) IBOutlet OffsetTextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIView *userNameSeparator;
+@property (weak, nonatomic) IBOutlet UIView *passwordSeparator;
+@property (weak, nonatomic) IBOutlet UIView *loginSeparator;
+@property (weak, nonatomic) IBOutlet UIView *verticalSeparator;
+
 
 @property (strong, nonatomic) KeychainStorage *storage;
 @property (assign, nonatomic) BOOL isViewControllerPresented;
@@ -120,6 +125,32 @@
 
 #pragma mark - Private
 
+- (void)updateUI:(NSTextAlignment)textAlignment
+{
+    [self configureTextField:self.userNameTextField withImageName:@"ic_user_login"];
+    [self configureTextField:self.passwordTextField withImageName:@"ic_pass"];
+    
+    self.userNameTextField.textAlignment = textAlignment;
+    self.passwordTextField.textAlignment = textAlignment;
+}
+
+- (void)configureTextField:(LeftInsetTextField *)textField withImageName:(NSString *)imageName
+{
+    UIImage *leftImage = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
+    [imageView setImage:leftImage];
+    imageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    textField.rightView = nil;
+    textField.leftView = nil;
+    if ([DynamicUIService service].language != LanguageTypeArabic) {
+        textField.leftViewMode = UITextFieldViewModeAlways;
+        textField.leftView = imageView;
+    } else {
+        textField.rightViewMode = UITextFieldViewModeAlways;
+        textField.rightView = imageView;
+    }
+}
+
 #pragma mark - UI
 
 - (void)localizeUI
@@ -134,9 +165,32 @@
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
-    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    [self.loginButton setBackgroundColor:color];
+    [self.registerButton setTitleColor:color forState:UIControlStateNormal];
+    [self.forgotPasswordButton setTitleColor:color forState:UIControlStateNormal];
+    
+    [self.userNameTextField.leftView setTintColor:color];
+    [self.userNameTextField.rightView setTintColor:color];
+    self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:dynamicLocalizedString(@"login.placeHolderText.username") attributes:@{NSForegroundColorAttributeName: color}];
+    self.userNameTextField.textColor = color;
+    self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:dynamicLocalizedString(@"login.placeHolderText.password") attributes:@{NSForegroundColorAttributeName: color}];
+    self.passwordTextField.textColor = color;
+    
+    self.userNameSeparator.backgroundColor = color;
+    self.passwordSeparator.backgroundColor = color;
+    self.loginSeparator.backgroundColor = color;
+    self.verticalSeparator.backgroundColor = color;
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUI:NSTextAlignmentLeft];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUI:NSTextAlignmentRight];
 }
 
 - (void)prepareNavigationBarButton

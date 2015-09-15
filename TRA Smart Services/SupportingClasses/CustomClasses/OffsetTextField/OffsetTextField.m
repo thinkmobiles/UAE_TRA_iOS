@@ -11,22 +11,6 @@
 
 @implementation OffsetTextField
 
-#pragma mark - LifeCycle
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    if (self.leftImageName.length) {
-        UIImage *leftImage = [UIImage imageNamed:self.leftImageName];
-        self.leftViewMode = UITextFieldViewModeAlways;
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
-        imageView.tintColor = [UIColor lightGrayColor];
-        self.leftView = imageView;//[[UIImageView alloc] initWithImage:leftImage];
-    }
-    self.minimumFontSize = 12.f;
-}
-
 #pragma mark - Public
 
 - (void)setPlaceholderColor:(UIColor *)placholderColor withPlacholderText:(NSString *)text
@@ -37,6 +21,17 @@
             self.placeholder = text;
         }
         self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    }
+}
+
+- (void)setLeftImage
+{
+    if (self.leftImageName.length) {
+        UIImage *leftImage = [UIImage imageNamed:self.leftImageName];
+        self.leftViewMode = UITextFieldViewModeAlways;
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
+        imageView.tintColor = [UIColor lightGrayColor];
+        self.leftView = imageView;
     }
 }
 

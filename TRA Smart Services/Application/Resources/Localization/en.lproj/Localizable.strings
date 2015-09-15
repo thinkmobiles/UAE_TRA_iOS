@@ -68,9 +68,10 @@
 "login.title" = "Login";
 "login.placeHolderText.username" = "Username";
 "login.placeHolderText.password" = "Password";
-"login.button.login" = "Login";
-"login.button.forgotPassword" = "Forgot the password";
-"login.button.registerButton" = "Register now";
+"login.button.login" = "LOGIN";
+"login.button.forgotPassword" = "Password?";
+"login.button.registerButton" = "Register";
+
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
 "login.picker.genre.male" = "Male";
 "login.picker.genre.female" = "Female";
@@ -94,6 +95,11 @@
 "register.placeHolderText.country" = "Country";
 "register.placeHolderText.email" = "Email";
 "register.placeHolderText.state" = "State";
+
+//SelectRegisterViewController
+"register.label.registerInfo" = "SELECT A WAY TO REGISTER";
+"register.label.emiratesID" = "Emirates ID\nVerification";
+"register.label.fillForm" = "Fill-up Form\n(Manual)";
 
 //RestorePasswordViewController
 

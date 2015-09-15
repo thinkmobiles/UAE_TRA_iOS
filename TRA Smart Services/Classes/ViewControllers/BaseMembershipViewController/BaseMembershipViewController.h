@@ -9,6 +9,7 @@
 #import "UINavigationController+Transparent.h"
 #import "UINavigationController+TopButton.h"
 #import "OffsetTextField.h"
+#import "LeftInsetTextField.h"
 
 static NSString *const CloseButtonImageName = @"btn_close";
 

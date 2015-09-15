@@ -71,10 +71,16 @@
 "login.button.login" = "login.button.login";
 "login.button.forgotPassword" = "login.button.forgotPassword";
 "login.button.registerButton" = "login.button.registerButton";
+
 "login.restore_password.message" = "login.restore_password.message";
 "login.picker.genre.male" = "login.picker.genre.male";
 "login.picker.genre.female" = "login.picker.genre.female";
 "login.picker.genre.undefined" = "login.picker.genre.undefined";
+
+//SelectRegisterViewController
+"register.label.registerInfo" = "register.label.registerInfo";
+"register.label.emiratesID" = "register.label.emiratesID";
+"register.label.fillForm" = "register.label.fillForm";
 
 //RegisterViewController
 
