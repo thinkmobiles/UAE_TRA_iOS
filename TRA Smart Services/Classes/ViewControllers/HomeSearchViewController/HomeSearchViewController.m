@@ -69,6 +69,13 @@ static CGFloat HeightTableViewCell = 35.f;
 //    [self closeButtonTapped:nil];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)dealloc
 {
     [self removeNotifications];

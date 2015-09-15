@@ -449,9 +449,14 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     homeSearchViewController.fakeBackground = img;
     homeSearchViewController.hidesBottomBarWhenPushed = YES;
 
+#warning TBD
     __weak typeof(self) weakSelf = self;
     homeSearchViewController.selectedServiceIDHomeSearch = ^(NSInteger selectedServiseID){
-        [weakSelf sevriceSwitchPerformSegue:selectedServiseID];
+        weakSelf.navigationController.navigationBar.hidden = NO;
+        [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        [UIView performWithoutAnimation:^{
+            [weakSelf sevriceSwitchPerformSegue:selectedServiseID];
+        }];
     };
 }
 
