@@ -251,12 +251,12 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     view.layer.mask = maskLayer;
 }
 
-+ (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color
++ (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color width:(CGFloat) width
 {
     CAShapeLayer *borderlayer = [CAShapeLayer layer];
     borderlayer.fillColor = [UIColor clearColor].CGColor;
     borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
-    borderlayer.lineWidth = 2.f;
+    borderlayer.lineWidth = width;
     borderlayer.frame = layer.bounds;
     borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
     

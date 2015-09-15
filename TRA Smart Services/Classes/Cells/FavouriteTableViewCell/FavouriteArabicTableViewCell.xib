@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -23,38 +22,50 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-LU-jTg" userLabel="ArabicUI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWn-QB-F6B" userLabel="ImageHolder - UiView">
-                                <rect key="frame" x="0.0" y="0.0" width="85" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="87"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j7o-8B-ZoJ" userLabel="Logo - UiIMageView">
-                                        <rect key="frame" x="18" y="16" width="49" height="57"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYW-sN-BSU" userLabel="Hexagon Background - View">
+                                        <rect key="frame" x="18" y="16" width="49" height="56"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j7o-8B-ZoJ" userLabel="Logo - UiIMageView">
+                                                <rect key="frame" x="9" y="12" width="31" height="31"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="j7o-8B-ZoJ" secondAttribute="height" id="nRg-As-YqT"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="j7o-8B-ZoJ" secondAttribute="height" multiplier="49:57" id="nRg-As-YqT"/>
+                                            <constraint firstAttribute="width" secondItem="KYW-sN-BSU" secondAttribute="height" multiplier="49:57" id="5NZ-RB-Qy7"/>
+                                            <constraint firstItem="j7o-8B-ZoJ" firstAttribute="width" secondItem="KYW-sN-BSU" secondAttribute="width" multiplier="0.65" id="Pwy-oy-zJc"/>
+                                            <constraint firstAttribute="centerX" secondItem="j7o-8B-ZoJ" secondAttribute="centerX" id="RYu-bW-RwR"/>
+                                            <constraint firstAttribute="centerY" secondItem="j7o-8B-ZoJ" secondAttribute="centerY" id="eXQ-mE-WMJ"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="Bik-Fp-epi"/>
-                                    <constraint firstAttribute="centerY" secondItem="j7o-8B-ZoJ" secondAttribute="centerY" id="Fd0-MH-hfj"/>
-                                    <constraint firstAttribute="centerX" secondItem="j7o-8B-ZoJ" secondAttribute="centerX" id="edu-yU-jYs"/>
-                                    <constraint firstItem="j7o-8B-ZoJ" firstAttribute="width" secondItem="jWn-QB-F6B" secondAttribute="width" multiplier="0.57" id="psj-R7-LVr"/>
+                                    <constraint firstAttribute="centerX" secondItem="KYW-sN-BSU" secondAttribute="centerX" id="EHu-JV-oIj"/>
+                                    <constraint firstAttribute="centerY" secondItem="KYW-sN-BSU" secondAttribute="centerY" id="Hun-6P-riH"/>
+                                    <constraint firstItem="KYW-sN-BSU" firstAttribute="width" secondItem="jWn-QB-F6B" secondAttribute="width" multiplier="0.57" id="JZ6-8o-ofW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-9A-PI0" userLabel="Data- UiView">
-                                <rect key="frame" x="85" y="0.0" width="235" height="88"/>
+                                <rect key="frame" x="85" y="0.0" width="235" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
-                                        <rect key="frame" x="20" y="16" width="195" height="27"/>
+                                        <rect key="frame" x="20" y="16" width="195" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-xu-65g" userLabel="Remove - UIButton">
-                                        <rect key="frame" x="0.0" y="35" width="108" height="50"/>
+                                        <rect key="frame" x="0.0" y="34" width="108" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="C2Z-QU-xKl"/>
                                         </constraints>
@@ -64,7 +75,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
-                                        <rect key="frame" x="108" y="47" width="108" height="25"/>
+                                        <rect key="frame" x="108" y="46" width="107" height="25"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <state key="normal" image="ic_info_sml">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,6 +124,7 @@
                 <outlet property="backgroundView" destination="bX8-y9-9gB" id="PYm-mp-rTY"/>
                 <outlet property="favourieDescriptionLabel" destination="igG-Z5-rt3" id="8tK-wI-kl1"/>
                 <outlet property="favouriteServiceLogoImageView" destination="j7o-8B-ZoJ" id="bVi-of-zZ0"/>
+                <outlet property="hexagonBackgroundView" destination="KYW-sN-BSU" id="nVJ-9R-ULL"/>
                 <outlet property="removeArabicButton" destination="kS9-xu-65g" id="xWI-rk-Equ"/>
                 <outlet property="serviceInfoArabicButton" destination="qXh-7i-Xql" id="XmX-nL-PMm"/>
             </connections>

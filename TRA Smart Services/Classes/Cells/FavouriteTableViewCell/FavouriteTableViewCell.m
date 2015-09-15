@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *serviceInfoArabicButton;
+@property (weak, nonatomic) IBOutlet UIView *hexagonBackgroundView;
 
 @end
 
@@ -28,6 +29,7 @@
     [self localizeAndPrepareButtons];
     self.backgroundColor = [UIColor clearColor];
     [self addGestureRecognizer];
+    [self.favouriteServiceLogoImageView setContentMode:UIViewContentModeScaleAspectFit];
 }
 
 - (void)prepareForReuse
@@ -76,7 +78,10 @@
 {
     _logoImage = logoImage;
     _favouriteServiceLogoImageView.image = logoImage;
-    [self addHexagoneOnView:self.favouriteServiceLogoImageView];
+    
+    [AppHelper addHexagoneOnView:self.hexagonBackgroundView];
+    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor ] width:3.0f];
+    
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText
@@ -133,14 +138,6 @@
         self.serviceInfoArabicButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - infoSize.width - spacing);
         self.serviceInfoArabicButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, infoImageWidth + spacing);
     }
-}
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
 }
 
 #pragma mark - Gestures

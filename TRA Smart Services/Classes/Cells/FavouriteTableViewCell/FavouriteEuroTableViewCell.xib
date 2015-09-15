@@ -21,39 +21,51 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHc-FB-KgR" id="oYM-bV-Tnh">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-sh-wjH" userLabel="EuropeanUI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-sh-wjH" userLabel="EuropeanUI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-aq-sdp" userLabel="ImageHolder - UiView">
-                                <rect key="frame" x="235" y="0.0" width="85" height="88"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-aq-sdp" userLabel="ImageHolder - UiView">
+                                <rect key="frame" x="235" y="0.0" width="85" height="87"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-8c-QqX" userLabel="Logo - UiIMageView">
-                                        <rect key="frame" x="18" y="16" width="49" height="57"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVk-qm-4XX" userLabel="Hexagon Background - View">
+                                        <rect key="frame" x="18" y="15" width="49" height="57"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-8c-QqX" userLabel="Logo - UiIMageView">
+                                                <rect key="frame" x="9" y="13" width="32" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="2Yd-8c-QqX" secondAttribute="height" multiplier="1:1" id="NhW-2N-v97"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="2Yd-8c-QqX" secondAttribute="height" multiplier="49:57" id="J74-VZ-ttQ"/>
+                                            <constraint firstAttribute="centerX" secondItem="2Yd-8c-QqX" secondAttribute="centerX" id="DTS-kA-eWx"/>
+                                            <constraint firstAttribute="width" secondItem="RVk-qm-4XX" secondAttribute="height" multiplier="49:57" id="DtQ-0B-c1B"/>
+                                            <constraint firstAttribute="centerY" secondItem="2Yd-8c-QqX" secondAttribute="centerY" id="JbE-lS-5Gz"/>
+                                            <constraint firstItem="2Yd-8c-QqX" firstAttribute="width" secondItem="RVk-qm-4XX" secondAttribute="width" multiplier="0.65" id="KhH-Vu-ESW"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2Yd-8c-QqX" firstAttribute="width" secondItem="aKH-aq-sdp" secondAttribute="width" multiplier="0.57" id="Mip-nw-Lyf"/>
+                                    <constraint firstItem="RVk-qm-4XX" firstAttribute="width" secondItem="aKH-aq-sdp" secondAttribute="width" multiplier="0.57" id="Geh-La-tWJ"/>
                                     <constraint firstAttribute="width" constant="85" id="Nye-VF-D3S"/>
-                                    <constraint firstAttribute="centerX" secondItem="2Yd-8c-QqX" secondAttribute="centerX" id="bI9-dh-PlO"/>
-                                    <constraint firstAttribute="centerY" secondItem="2Yd-8c-QqX" secondAttribute="centerY" id="bIK-Od-W7k"/>
+                                    <constraint firstAttribute="centerY" secondItem="RVk-qm-4XX" secondAttribute="centerY" id="fcw-6N-vYe"/>
+                                    <constraint firstAttribute="centerX" secondItem="RVk-qm-4XX" secondAttribute="centerX" id="smC-UD-K4n"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
-                                <rect key="frame" x="0.0" y="0.0" width="235" height="88"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
+                                <rect key="frame" x="0.0" y="0.0" width="235" height="87"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
-                                        <rect key="frame" x="20" y="16" width="195" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
+                                        <rect key="frame" x="20" y="16" width="195" height="32"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
-                                        <rect key="frame" x="20" y="53" width="98" height="25"/>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
+                                        <rect key="frame" x="20" y="52" width="98" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="lE5-ni-g9Z"/>
                                         </constraints>
@@ -70,8 +82,8 @@
                                             <action selector="serviceInfoButtonTapped:" destination="dHc-FB-KgR" eventType="touchUpInside" id="uQf-6h-PHo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
-                                        <rect key="frame" x="118" y="41" width="98" height="50"/>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
+                                        <rect key="frame" x="118" y="40" width="97" height="50"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                         <state key="normal" image="ic_remove_dctv">
@@ -119,10 +131,11 @@
                 <outlet property="backgroundView" destination="oYM-bV-Tnh" id="Jcv-kv-NFJ"/>
                 <outlet property="favourieDescriptionLabel" destination="1rN-pa-6OS" id="hQe-B7-Hft"/>
                 <outlet property="favouriteServiceLogoImageView" destination="2Yd-8c-QqX" id="ycT-xr-hnV"/>
+                <outlet property="hexagonBackgroundView" destination="RVk-qm-4XX" id="IJ7-U0-B16"/>
                 <outlet property="removeButton" destination="UzV-HI-82j" id="VVc-5J-Dpe"/>
                 <outlet property="serviceInfoButton" destination="LJc-me-O8w" id="kNL-lg-oKj"/>
             </connections>
-            <point key="canvasLocation" x="480.5" y="431"/>
+            <point key="canvasLocation" x="480" y="431"/>
         </tableViewCell>
     </objects>
     <resources>

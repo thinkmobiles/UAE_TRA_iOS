@@ -341,6 +341,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
                 service.serviceIsFavorite = @(NO);
                 service.serviceName = [dic valueForKey:@"serviceName"];
                 if ([dic valueForKey:@"serviceDisplayLogo"]) {
+                
                     service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceDisplayLogo"]], 1.0);
                 }
                 service.serviceDescription = @"No decription provided";
@@ -657,7 +658,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [self.addServiceHiddenButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
     self.addServiceHiddenImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     
-    [AppHelper addHexagonBorderForLayer:self.addServiceHiddenImageView.layer color:[[DynamicUIService service] currentApplicationColor]];
+    [AppHelper addHexagonBorderForLayer:self.addServiceHiddenImageView.layer color:[[DynamicUIService service] currentApplicationColor] width:2.0f];
 }
 
 - (void)setRTLArabicUI

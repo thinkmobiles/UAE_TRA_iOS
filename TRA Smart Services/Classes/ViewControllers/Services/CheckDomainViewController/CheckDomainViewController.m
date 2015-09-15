@@ -32,8 +32,6 @@ static NSString *const keyOrder = @"order";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) UIImage *navigationBarBackgroundImage;
-
 @end
 
 @implementation CheckDomainViewController
@@ -49,8 +47,6 @@ static NSString *const keyOrder = @"order";
     [self updateNavigationControllerBar];
     [self prepareUI];
     [self displayDataIfNeeded];
-    
-    self.navigationBarBackgroundImage = self.navigationController.navigationBar.backIndicatorImage;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,7 +63,7 @@ static NSString *const keyOrder = @"order";
         self.tableView.hidden = YES;
     }
 
-    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - IBActions
