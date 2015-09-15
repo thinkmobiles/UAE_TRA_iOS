@@ -282,13 +282,9 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
     } else {
         UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
         navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
         LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
         loginViewController.shouldAutoCloseAfterLogin = YES;
-        
         loginViewController.didDismissed = ^() {
             [weakSelf.topView animateTopViewApearence];
         };
@@ -327,6 +323,15 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     return image;
 }
 
+- (UIImage *)setupFullScreenFakeBackground
+{
+    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 #pragma mark - Notifications
 
@@ -424,21 +429,26 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
         [self prepareNotificationViewControllerWithSegue:segue];
-    } else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
+    }
+    else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
         [self prepareHomeSearchViewControllerWithSegue:segue];
     }
 }
 
 - (void)prepareHomeSearchViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
+    UIImage *img = [self setupFullScreenFakeBackground];
     HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
-    homeSearchViewController.fakeBackground = [self setupFakeBackground];
+    homeSearchViewController.fakeBackground = img;
+    homeSearchViewController.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
+    UIImage *img = [self setupFullScreenFakeBackground];
     NotificationViewController *notificationViewController = segue.destinationViewController;
-    notificationViewController.fakeBackground = [self setupFakeBackground];
+    notificationViewController.fakeBackground = img;
+    notificationViewController.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)prepareCompliantViewControllerWithSegue:(UIStoryboardSegue *)segue

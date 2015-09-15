@@ -155,6 +155,7 @@
 "notificationsViewController.NotificationPlaceHolderlabel" = "notificationsViewController.NotificationPlaceHolderlabel";
 "notificationsViewController.noNotificationsMessage" = "notificationsViewController.noNotificationsMessage";
 "notificationsViewController.NotificationsMessage" = "notificationsViewController.NotificationsMessage";
+"notificationsViewController.clearAllButton.title" = "notificationsViewController.clearAllButton.title";
 
 //FavouriteViewController
 

@@ -157,6 +157,28 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self updateColorForDescriptioveTextSize];
 }
 
+- (void)selctedSliderValueFont:(UITapGestureRecognizer *)gesture
+{
+    UIView *view = gesture.view;
+    CGPoint tapPoint = [gesture locationInView:view];
+    
+    CGFloat sliderWidth = self.slider.frame.size.width;
+    NSInteger selecteValue = -1;
+    if (tapPoint.x < sliderWidth / 3) {
+        selecteValue = 0;
+    } else if (tapPoint.x > sliderWidth/ 3 && tapPoint.x < (sliderWidth / 3)*2) {
+        selecteValue = 1;
+    } else {
+        selecteValue = 2;
+    }
+    
+    if (selecteValue >= 0 && [view isKindOfClass:[UISlider class]]) {
+        [self.slider setValue:selecteValue];
+        
+        [self sliderDidChangeValue:(UISlider *)view];
+    }
+}
+
 #pragma mark - SegmentViewDelegate
 
 - (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
@@ -170,6 +192,11 @@ static CGFloat const optionScaleSwitch = 0.55;
 }
 
 #pragma mark - Private
+
+- (void)selctedSliderValueFont
+{
+    
+}
 
 - (void)prepareUISwitchSettingViewController
 {
@@ -230,10 +257,20 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)transformAnimationConteinerView
 {
-    CAKeyframeAnimation * transformAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    transformAnim.values = @[[NSValue valueWithCATransform3D : [DynamicUIService service].language == LanguageTypeArabic ? CATransform3DMakeScale(-1, 1, 1) : CATransform3DIdentity],
-                             [NSValue valueWithCATransform3D : [DynamicUIService service].language == LanguageTypeArabic ? CATransform3DIdentity : CATransform3DMakeScale(-1, 1, 1)]];
-    transformAnim.duration = 0.4;
+    CATransform3D rotationAndPerspectiveTransform = self.conteinerView.layer.transform;
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        rotationAndPerspectiveTransform.m34 = 1.0 / 500.0;
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, -1.0f, 0.0f);
+    } else {
+        rotationAndPerspectiveTransform.m34 = 1.0 / -500.0;
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -45 * M_PI , 0.0f, -1.0f, 0.0f);
+    }
+    
+    CABasicAnimation *transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
+    transformAnim.fromValue = [NSValue valueWithCATransform3D:self.conteinerView.layer.transform];
+    transformAnim.toValue = [NSValue valueWithCATransform3D:rotationAndPerspectiveTransform];
+    transformAnim.duration = .4f;
+    
     [self.conteinerView.layer addAnimation:transformAnim forKey:@"transformView"];
 }
 
@@ -243,7 +280,6 @@ static CGFloat const optionScaleSwitch = 0.55;
         case 0: {
             [self makeActiveColorTheme:ApplicationColorBlue];
             [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlue];
-            
             break;
         }
         case 1: {
@@ -266,11 +302,23 @@ static CGFloat const optionScaleSwitch = 0.55;
     [AppHelper updateNavigationBarColor];
 }
 
+- (void)buttonColorThemeEnable:(BOOL)enabled
+{
+    self.themeBlueButton.enabled = enabled;
+    self.themeGreenButton.enabled = enabled;
+    self.themeOrangeButton.enabled = enabled;
+    UIImage *themeBlueButtonImage = [[UIImage imageNamed:@"btn_theme_bl"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
+    UIImage *themeOrangeButtonImage = [[UIImage imageNamed:@"btn_theme_rng"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
+    UIImage *themeGreenButtonImage = [[UIImage imageNamed:@"btn_theme_grn"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
+    
+    [self.themeBlueButton setImage:themeBlueButtonImage forState:UIControlStateNormal];
+    [self.themeOrangeButton setImage:themeOrangeButtonImage forState:UIControlStateNormal];
+    [self.themeGreenButton setImage:themeGreenButtonImage forState:UIControlStateNormal];
+}
+
 - (void)makeActiveColorTheme:(ApplicationColor)selectedColor
 {
-    [self.themeBlueButton setImage:[UIImage imageNamed:@"btn_theme_bl"] forState:UIControlStateNormal];
-    [self.themeOrangeButton setImage:[UIImage imageNamed:@"btn_theme_rng"] forState:UIControlStateNormal];
-    [self.themeGreenButton setImage:[UIImage imageNamed:@"btn_theme_grn"] forState:UIControlStateNormal];
+    [self buttonColorThemeEnable:YES];
     self.themeColorBlackAndWhiteSwitch.on = NO;
     
     [[DynamicUIService service] setColorScheme:selectedColor];
@@ -291,6 +339,7 @@ static CGFloat const optionScaleSwitch = 0.55;
         }
         case ApplicationColorBlackAndWhite: {
             self.themeColorBlackAndWhiteSwitch.on = YES;
+            [self buttonColorThemeEnable:NO];
             break;
         }
     }
@@ -444,6 +493,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self.slider setThumbImage:img forState:UIControlStateNormal];
     [self.slider setThumbImage:img forState:UIControlStateSelected];
     [self.slider setThumbImage:img forState:UIControlStateHighlighted];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selctedSliderValueFont:)];
+    [self.slider addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)updateFontSizeSliderColor

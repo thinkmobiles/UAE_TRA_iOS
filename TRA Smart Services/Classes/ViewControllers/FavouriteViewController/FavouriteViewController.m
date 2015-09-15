@@ -17,6 +17,7 @@ static CGFloat const AnimationDuration = 0.3f;
 static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
 static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
+
 static NSString *const ServiceInfoListSegueIdentifier = @"serviceInfoListSegue";
 static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
@@ -25,6 +26,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *placeHolderView;
 @property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *addServiceHiddenButton;
+@property (weak, nonatomic) IBOutlet UIView *headerAddServiceView;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
@@ -53,6 +56,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     
     [self registerNibs];
     [self saveFavoriteListToDBIfNeeded];
+    self.headerAddServiceView.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +65,15 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
  
     [self fetchFavouriteList];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.dataSource.count) {
+        self.headerAddServiceView.hidden = NO;
+    }
 }
 
 #pragma mark - Custom Accessors
@@ -143,7 +156,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
-    cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
+    cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
     cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
     cell.delegate = self;
@@ -182,7 +195,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 {
     if ([segue.identifier isEqualToString:ServiceInfoListSegueIdentifier]) {
         ServiceInfoViewController *serviceInfoController = segue.destinationViewController;
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+        serviceInfoController.hidesBottomBarWhenPushed = YES;
+
+        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
         [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -271,11 +286,19 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (void)showPlaceHolderIfNeeded
 {
     if (self.dataSource.count) {
-        self.placeHolderView.hidden = YES;
         self.tableView.hidden = NO;
+        self.headerAddServiceView.hidden = NO;
+        self.headerAddServiceView.layer.opacity = 1.0f;
+        
+        self.placeHolderView.hidden = YES;
     } else {
-        self.placeHolderView.hidden = NO;
         self.tableView.hidden = YES;
+        
+        self.headerAddServiceView.layer.opacity = 0.0f;
+        [self.headerAddServiceView.layer addAnimation:[Animation fadeAnimFromValue:1.f to:0.0f delegate:self] forKey:@"keyAnimationHidePlaceHolder"];
+        self.placeHolderView.hidden = NO;
+        self.placeHolderView.layer.opacity = 1.0f;
+        [self.placeHolderView.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.f delegate:nil] forKey:nil];
     }
 }
 
@@ -451,7 +474,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     
     CGFloat heightOfScreen = [UIScreen mainScreen].bounds.size.height;
     CGFloat heightOfBottomDeletePart = heightOfScreen * 0.165;
-    CGFloat startY = heightOfScreen - heightOfBottomDeletePart - ((UITabBarController *)[AppHelper rootViewController]).tabBar.frame.size.height;
+    CGFloat startY = heightOfScreen - heightOfBottomDeletePart - ((UITabBarController *)[AppHelper rootViewController]).tabBar.frame.size.height - self.headerAddServiceView.frame.size.height;
     CGFloat arcHeight = 35.f;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat arcRadius = arcHeight / 2 + (width * width)/ (8 * arcHeight);
@@ -599,6 +622,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     if (anim == [self.arcDeleteZoneLayer animationForKey:@"disapearAnimation"]) {
         [self.arcDeleteZoneLayer removeAllAnimations];
         [self removeDeleteZone];
+    } else if (anim == [self.headerAddServiceView.layer animationForKey:@"keyAnimationHidePlaceHolder"] ) {
+        self.headerAddServiceView.hidden = YES;
+    } else if (anim == [self.placeHolderView.layer animationForKey:@"hidePlaceHolder"]) {
+        self.placeHolderView.hidden = YES;
     }
 }
 
@@ -611,12 +638,14 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"favourite.title");
     self.informationLabel.text = dynamicLocalizedString(@"favourite.notification");
     self.actionDescriptionLabel.text = dynamicLocalizedString(@"favourite.button.addFav.title");
+    [self.addServiceHiddenButton setTitle:dynamicLocalizedString(@"favourite.button.addFav.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
     [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    [self.addServiceHiddenButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {

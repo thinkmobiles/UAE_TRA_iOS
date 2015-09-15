@@ -8,6 +8,8 @@
 
 #import "HomeSearchViewController.h"
 #import "Animation.h"
+#import "TRAService.h"
+#import "AppDelegate.h"
 
 static NSString *const homeSearchCellIdentifier = @"homeSearchCell";
 static CGFloat heightTableViewCell = 35.f;
@@ -21,7 +23,10 @@ static CGFloat heightTableViewCell = 35.f;
 @property (weak, nonatomic) IBOutlet UIImageView *fakeBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 
-@property (strong, nonatomic) NSArray *developmentDataSource;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+
+@property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
 
 @end
@@ -36,6 +41,7 @@ static CGFloat heightTableViewCell = 35.f;
     
     [self prepareNotification];
     [self prepareUI];
+    [self saveFavoriteListToDBIfNeeded];
     [self prepareDataSource];
 }
 
@@ -45,6 +51,13 @@ static CGFloat heightTableViewCell = 35.f;
     
     [self.conteinerView.layer addAnimation:[Animation fadeAnimFromValue:0.f to:1.0f delegate:nil] forKey:nil];
     self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.homeSearchTextField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -60,13 +73,30 @@ static CGFloat heightTableViewCell = 35.f;
     [self removeNotifications];
 }
 
+#pragma mark - Custom Accessors
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeSearchCellIdentifier];
     
-    cell.textLabel.text = self.filteredDataSource[indexPath.row];
+    cell.textLabel.text = dynamicLocalizedString(((TRAService *)self.filteredDataSource[indexPath.row]).serviceName);
     cell.textLabel.textColor = [UIColor whiteColor];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         cell.textLabel.textAlignment = NSTextAlignmentRight;
@@ -132,7 +162,7 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)updateColors
 {
-    self.conteinerView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.conteinerView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.95];
 }
 
 - (void)setRTLArabicUI
@@ -167,21 +197,73 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)textFieldDidChangeText:(id)sender
 {
-    if(self.homeSearchTextField.text.length) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", self.homeSearchTextField.text];
-        self.filteredDataSource = [self.developmentDataSource filteredArrayUsingPredicate:predicate];
+    if (self.homeSearchTextField.text.length) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
+            NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
+            BOOL containsString = [localizedServiceName rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch].location !=NSNotFound;
+            return containsString;
+        }];
+        [self fetchFavouriteList];
+        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:predicate] mutableCopy];
+        
+        self.dataSource = self.filteredDataSource;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-        self.filteredDataSource = [[NSArray alloc] initWithArray: self.developmentDataSource];
+        self.filteredDataSource = [[NSArray alloc] init];
     }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - CoreData
+
+- (void)fetchFavouriteList
+{
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"FavouriteServiceAll"];
+    NSError *error;
+    self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (error) {
+        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+    }
+}
+
+- (void)saveFavoriteListToDBIfNeeded
+{
+    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
+    NSError *error;
+    NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (error) {
+        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+    }
+    
+    if (!data.count) {
+        NSArray *speedAccessServices = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
+        NSMutableArray *otherServices = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist" ]];
+        [otherServices addObjectsFromArray:speedAccessServices];
+        
+        for (NSDictionary *dic in otherServices) {
+            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) { //temp while not all data avaliable
+                NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
+                TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
+                
+                service.serviceIsFavorite = @(NO);
+                service.serviceName = [dic valueForKey:@"serviceName"];
+                if ([dic valueForKey:@"serviceDisplayLogo"]) {
+                    service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceDisplayLogo"]], 1.0);
+                }
+                service.serviceDescription = @"No decription provided";
+                service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
+            }
+        }
+    }
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - Private
 
 - (void)prepareDataSource
 {
-    self.developmentDataSource = @[@"Bulgaria, Sofia", @"Croatia, Zagreb", @"France, Paris", @"Hungary, Budapest", @"Italy, Rome", @"Poland, Warsaw", @"Slovakia, Bratislava", @"Great Britain, London", @"Macedonia, Skopje", @"Switzerland, Bern"];
-    self.filteredDataSource = [[NSArray alloc] initWithArray: self.developmentDataSource];
+    [self fetchFavouriteList];
+    self.filteredDataSource = [[NSArray alloc] init];
 }
 
 - (void)prepareUI

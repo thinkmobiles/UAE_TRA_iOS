@@ -154,6 +154,7 @@
 "notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
 "notificationsViewController.noNotificationsMessage" = "You have no Notifications";
 "notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
+"notificationsViewController.clearAllButton.title" = "Clear All";
 
 //FavouriteViewController
 

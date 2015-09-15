@@ -114,7 +114,8 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:ServiceDetailsSegueIdentifier]) {
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
+        
+        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
         [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -124,6 +125,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
         
         ServiceDetailedInfoViewController *serviceInfoController = segue.destinationViewController;
         serviceInfoController.fakeBackground = image;
+        serviceInfoController.hidesBottomBarWhenPushed = YES;
         serviceInfoController.dataSource = dataSource;
     }
 }
