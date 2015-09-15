@@ -193,10 +193,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 #pragma mark - Private
 
-- (void)selctedSliderValueFont
-{
-    
-}
+#pragma mark - UIPreparation
 
 - (void)prepareUISwitchSettingViewController
 {
@@ -213,6 +210,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     prepareSwitch.layer.cornerRadius = 16.0f;
     prepareSwitch.tintColor = [UIColor grayBorderTextFieldTextColor];
 }
+
+#pragma mark - UITransform / Animations
 
 - (void)transformUILayer:(CATransform3D)animCATransform3D
 {
@@ -257,10 +256,15 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)transformAnimationConteinerView
 {
+    [self.conteinerView.layer addAnimation:[self transformAnimation] forKey:@"transformView"];
+}
+
+- (CAAnimation *)transformAnimation
+{
     CATransform3D rotationAndPerspectiveTransform = self.conteinerView.layer.transform;
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
         rotationAndPerspectiveTransform.m34 = 1.0 / 500.0;
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, -1.0f, 0.0f);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, 1.0f, 0.0f);
     } else {
         rotationAndPerspectiveTransform.m34 = 1.0 / -500.0;
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -45 * M_PI , 0.0f, -1.0f, 0.0f);
@@ -269,42 +273,45 @@ static CGFloat const optionScaleSwitch = 0.55;
     CABasicAnimation *transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnim.fromValue = [NSValue valueWithCATransform3D:self.conteinerView.layer.transform];
     transformAnim.toValue = [NSValue valueWithCATransform3D:rotationAndPerspectiveTransform];
-//    transformAnim.duration = .4f;
     
     CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-    
-    CATransform3D startScale = CATransform3DScale (CATransform3DIdentity, 1, 1, 0);
-    CATransform3D midScale = CATransform3DScale (CATransform3DIdentity, 0.8, 0.8, 0);
-    CATransform3D endScale = CATransform3DScale (CATransform3DIdentity, 1, 1, 0);
-    
+    CATransform3D startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
+    CATransform3D midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0, 0);
+    CATransform3D endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        startScale =  self.conteinerView.layer.transform;
+        startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
+        midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0.8, 0.8);
+        endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
     }
-    
     scaleAnimation.values = @[
-                        [NSValue valueWithCATransform3D:startScale],
-                             [NSValue valueWithCATransform3D:midScale],
-                             [NSValue valueWithCATransform3D:endScale],
-                        ];
-    
+                              [NSValue valueWithCATransform3D:startScale],
+                              [NSValue valueWithCATransform3D:midScale],
+                              [NSValue valueWithCATransform3D:endScale],
+                              ];
     scaleAnimation.keyTimes = @[[NSNumber numberWithFloat:0.0f],
-                      [NSNumber numberWithFloat:0.5f],
-                      [NSNumber numberWithFloat:0.9f]
-                       ];
-    
+                                [NSNumber numberWithFloat:0.5f],
+                                [NSNumber numberWithFloat:0.9f]
+                                ];
     scaleAnimation.timingFunctions = @[
                                        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                 ];
+                                       ];
     scaleAnimation.fillMode = kCAFillModeForwards;
     scaleAnimation.removedOnCompletion = NO;
     
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.animations = @[transformAnim, scaleAnimation];
-    group.duration = 2.4f;
+    group.duration = 0.6f;
     
-    
-    [self.conteinerView.layer addAnimation:group forKey:@"transformView"];
+    return group;
+}
+
+#pragma mark - Controls
+
+- (void)prepareSegmentsView
+{
+    self.languageSegmentControl.delegate = self;
+    self.languageSegmentControl.segmentItemsAttributes = @[@{NSFontAttributeName : [UIFont droidKufiBoldFontForSize:12]}, @{NSFontAttributeName : [UIFont latoBoldWithSize:12]}];
 }
 
 - (void)selectColorTheme:(NSInteger)numberTheme
@@ -379,6 +386,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     
     [self updateColors];
 }
+
+#pragma mark - NavigationBar
 
 - (void)prepareNavigationBar
 {
@@ -497,12 +506,6 @@ static CGFloat const optionScaleSwitch = 0.55;
             break;
         }
     }
-}
-
-- (void)prepareSegmentsView
-{
-    self.languageSegmentControl.delegate = self;
-    self.languageSegmentControl.segmentItemsAttributes = @[@{NSFontAttributeName : [UIFont droidKufiBoldFontForSize:12]}, @{NSFontAttributeName : [UIFont latoBoldWithSize:12]}];
 }
 
 - (void)setCurrentColorThemaUserDefaults:(NSInteger)currentNumberColorTheme
