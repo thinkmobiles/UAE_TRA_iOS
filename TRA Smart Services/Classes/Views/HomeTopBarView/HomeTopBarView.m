@@ -290,7 +290,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
         pathAnimation.delegate = self;
-        pathAnimation.removedOnCompletion = NO;
         [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
     });
 }

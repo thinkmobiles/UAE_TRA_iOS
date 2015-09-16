@@ -120,6 +120,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1252,7 +1253,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfV-ia-1NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="-2661"/>
+            <point key="canvasLocation" x="2738" y="-2691"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="SgW-2a-qZj">
@@ -1503,11 +1504,11 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="Kze-Ie-3Sv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xgR-5H-iYw" userLabel="Container - UIView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ec8-cA-VqL" userLabel="Background - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="820"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-GE-GK3" userLabel="LogoImage - Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
@@ -1530,248 +1531,216 @@ a new password will be sent.</string>
                                 </constraints>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="j4D-WR-PuB">
-                                <rect key="frame" x="0.0" y="20" width="600" height="800"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXG-29-8qD" userLabel="Content - UiView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="980"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-Zb-oQC" userLabel="RegisterContainer - UIView">
                                                 <rect key="frame" x="0.0" y="188" width="600" height="850"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6b-sW-ObO" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="50" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6b-sW-ObO" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="70" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="TJa-Vn-Fuf"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-Tu-LyJ" userLabel="Email - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="71" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-Tu-LyJ" userLabel="Email - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="91" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="mOy-98-mUm"/>
+                                                            <constraint firstAttribute="height" constant="50" id="mOy-98-mUm"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="email19"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="3Q5-T1-Qdz"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-AY-eSB" userLabel="Password - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="122" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-AY-eSB" userLabel="Password - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="162" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="2xZ-NP-6Jg"/>
+                                                            <constraint firstAttribute="height" constant="50" id="2xZ-NP-6Jg"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="key163"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="GvR-Dx-pHv"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkS-R3-AU1" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="152" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkS-R3-AU1" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="212" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="1Oq-Pz-Hnq"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="QYz-wq-ikx"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-NY-gcP" userLabel="Confirm Password - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="173" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-NY-gcP" userLabel="Confirm Password - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="233" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="VrY-iU-3sz"/>
+                                                            <constraint firstAttribute="height" constant="50" id="VrY-iU-3sz"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="key163"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="x24-ph-JtN"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGU-gr-4Lq" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="203" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGU-gr-4Lq" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="283" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="OED-r3-Cgu"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-Ga-qJi" userLabel="FIrst Name - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="224" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-Ga-qJi" userLabel="FIrst Name - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="304" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="TXD-p6-mTY"/>
+                                                            <constraint firstAttribute="height" constant="50" id="TXD-p6-mTY"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="ZI4-Wl-IGN"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1l-aZ-03r" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="254" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1l-aZ-03r" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="354" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="3zm-u0-oOc"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Yz-Ib-41V" userLabel="Last Name - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="275" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Yz-Ib-41V" userLabel="Last Name - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="375" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="Mzr-dq-8Vo"/>
+                                                            <constraint firstAttribute="height" constant="50" id="Mzr-dq-8Vo"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="cr5-c0-O4z"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNk-fF-jDr" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="305" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNk-fF-jDr" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="425" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="cf9-Sm-TLl"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19c-we-xy9" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="356" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19c-we-xy9" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="496" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="8xr-GV-rZW"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gsq-M7-KAl" userLabel="State - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="377" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gsq-M7-KAl" userLabel="State - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="517" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="46b-ry-222"/>
+                                                            <constraint firstAttribute="height" constant="50" id="46b-ry-222"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="flagpole18"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="nDz-AF-fxc"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnA-yY-1Bp" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="407" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnA-yY-1Bp" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="567" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="M2B-15-Kri"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-aK-F5h" userLabel="Mobile - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="428" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-aK-F5h" userLabel="Mobile - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="588" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="pcg-Nz-jUa"/>
+                                                            <constraint firstAttribute="height" constant="50" id="pcg-Nz-jUa"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="smartphones23"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="ycs-Cv-nFf"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-kD-c7v" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="458" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-kD-c7v" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="638" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="1FW-Ki-mv2"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuB-qO-0P0" userLabel="Separator - UIView">
-                                                        <rect key="frame" x="15" y="101" width="570" height="1"/>
-                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <view tag="77" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuB-qO-0P0" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="141" width="570" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Qeh-5H-34o"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emirates ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-Un-NrF" userLabel="ID - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="326" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emirates ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-Un-NrF" userLabel="ID - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="446" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="joe-bB-VxA"/>
+                                                            <constraint firstAttribute="height" constant="50" id="joe-bB-VxA"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="adobe32"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="Rzs-fC-DVy"/>
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnH-BM-6gu" userLabel="Register - Uibutton">
-                                                        <rect key="frame" x="16" y="483" width="568" height="43"/>
+                                                        <rect key="frame" x="16" y="663" width="568" height="43"/>
                                                         <animations/>
                                                         <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -1779,14 +1748,14 @@ a new password will be sent.</string>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                         <state key="normal" title="Register">
-                                                            <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="registerButtonPress:" destination="DFS-gr-7R1" eventType="touchUpInside" id="TUc-qR-QlF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1k-Vi-1fU" userLabel="Login now - UIButton">
-                                                        <rect key="frame" x="16" y="550" width="568" height="30"/>
+                                                        <rect key="frame" x="16" y="730" width="568" height="30"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="xqC-D3-u4Q"/>
@@ -1799,22 +1768,18 @@ a new password will be sent.</string>
                                                             <action selector="loginButtonPress:" destination="DFS-gr-7R1" eventType="touchUpInside" id="qbE-qH-rkj"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3PV-7E-X3w" userLabel="User Name - Text Field" customClass="OffsetTextField">
-                                                        <rect key="frame" x="0.0" y="20" width="600" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3PV-7E-X3w" userLabel="User Name - Text Field" customClass="LeftInsetTextField">
+                                                        <rect key="frame" x="15" y="20" width="570" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="bvd-M9-ekz"/>
+                                                            <constraint firstAttribute="height" constant="50" id="bvd-M9-ekz"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftViewOffcet">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="leftImageName" value="user146"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="65z-oE-S8y"/>
@@ -1823,14 +1788,14 @@ a new password will be sent.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="GmP-Ga-qJi" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="0Ii-zW-JoI"/>
-                                                    <constraint firstItem="3Yz-Ib-41V" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="12d-tR-udR"/>
+                                                    <constraint firstItem="GmP-Ga-qJi" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="0Ii-zW-JoI"/>
+                                                    <constraint firstItem="3Yz-Ib-41V" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="12d-tR-udR"/>
                                                     <constraint firstItem="tuB-qO-0P0" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="21j-za-MSE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GmP-Ga-qJi" secondAttribute="trailing" id="44z-TF-HD8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GmP-Ga-qJi" secondAttribute="trailing" constant="15" id="44z-TF-HD8"/>
                                                     <constraint firstItem="dnH-BM-6gu" firstAttribute="top" secondItem="dke-kD-c7v" secondAttribute="bottom" constant="24" id="45d-v9-Eqg"/>
                                                     <constraint firstAttribute="trailing" secondItem="19c-we-xy9" secondAttribute="trailing" constant="15" id="4Gn-PA-zwI"/>
-                                                    <constraint firstItem="WAd-Tu-LyJ" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="5AR-Ln-2vG"/>
-                                                    <constraint firstAttribute="trailing" secondItem="3PV-7E-X3w" secondAttribute="trailing" id="5ce-83-ogp"/>
+                                                    <constraint firstItem="WAd-Tu-LyJ" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="5AR-Ln-2vG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3PV-7E-X3w" secondAttribute="trailing" constant="15" id="5ce-83-ogp"/>
                                                     <constraint firstItem="d1k-Vi-1fU" firstAttribute="width" secondItem="dnH-BM-6gu" secondAttribute="width" id="6CC-LZ-ThL"/>
                                                     <constraint firstItem="dnH-BM-6gu" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="16" id="728-66-eut"/>
                                                     <constraint firstItem="YSb-aK-F5h" firstAttribute="top" secondItem="dnA-yY-1Bp" secondAttribute="bottom" constant="20" id="7kH-uN-gnj"/>
@@ -1844,26 +1809,26 @@ a new password will be sent.</string>
                                                     <constraint firstItem="h0U-Un-NrF" firstAttribute="top" secondItem="nNk-fF-jDr" secondAttribute="bottom" constant="20" id="Dc2-PO-rfM"/>
                                                     <constraint firstAttribute="trailing" secondItem="MGU-gr-4Lq" secondAttribute="trailing" constant="15" id="F8H-a4-6px"/>
                                                     <constraint firstItem="3Yz-Ib-41V" firstAttribute="top" secondItem="M1l-aZ-03r" secondAttribute="bottom" constant="20" id="GeT-WL-0Ps"/>
-                                                    <constraint firstItem="h0U-Un-NrF" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="HSx-km-8rP"/>
+                                                    <constraint firstItem="h0U-Un-NrF" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="HSx-km-8rP"/>
                                                     <constraint firstAttribute="trailing" secondItem="dke-kD-c7v" secondAttribute="trailing" constant="15" id="I0A-2g-qvq"/>
                                                     <constraint firstItem="dnA-yY-1Bp" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="I5G-Nq-0yz"/>
-                                                    <constraint firstItem="gsq-M7-KAl" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="I9H-nY-EcQ"/>
+                                                    <constraint firstItem="gsq-M7-KAl" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="I9H-nY-EcQ"/>
                                                     <constraint firstItem="WAd-Tu-LyJ" firstAttribute="top" secondItem="e6b-sW-ObO" secondAttribute="bottom" constant="20" id="IOj-f9-vI4"/>
                                                     <constraint firstItem="MGU-gr-4Lq" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="IS0-ch-8T4"/>
                                                     <constraint firstAttribute="trailing" secondItem="dnA-yY-1Bp" secondAttribute="trailing" constant="15" id="IoS-0q-ZYT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YSb-aK-F5h" secondAttribute="trailing" id="KM4-j7-6gi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YSb-aK-F5h" secondAttribute="trailing" constant="15" id="KM4-j7-6gi"/>
                                                     <constraint firstItem="JkS-R3-AU1" firstAttribute="top" secondItem="dQS-AY-eSB" secondAttribute="bottom" id="KoG-uN-TP7"/>
-                                                    <constraint firstItem="YSb-aK-F5h" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="LOb-t9-jbi"/>
+                                                    <constraint firstItem="YSb-aK-F5h" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="LOb-t9-jbi"/>
                                                     <constraint firstItem="19c-we-xy9" firstAttribute="top" secondItem="h0U-Un-NrF" secondAttribute="bottom" id="Lte-gH-uj8"/>
                                                     <constraint firstItem="Wfb-NY-gcP" firstAttribute="top" secondItem="JkS-R3-AU1" secondAttribute="bottom" constant="20" id="Mmd-da-y1z"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gsq-M7-KAl" secondAttribute="trailing" id="Ojb-Ul-su2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="3Yz-Ib-41V" secondAttribute="trailing" id="QFV-9S-PPH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gsq-M7-KAl" secondAttribute="trailing" constant="15" id="Ojb-Ul-su2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3Yz-Ib-41V" secondAttribute="trailing" constant="15" id="QFV-9S-PPH"/>
                                                     <constraint firstAttribute="trailing" secondItem="M1l-aZ-03r" secondAttribute="trailing" constant="15" id="SDz-Fa-emk"/>
                                                     <constraint firstItem="19c-we-xy9" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="TQi-dL-KY8"/>
                                                     <constraint firstItem="M1l-aZ-03r" firstAttribute="top" secondItem="GmP-Ga-qJi" secondAttribute="bottom" id="Tp7-eM-wpP"/>
-                                                    <constraint firstItem="dQS-AY-eSB" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="UGA-d7-bL2"/>
+                                                    <constraint firstItem="dQS-AY-eSB" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="UGA-d7-bL2"/>
                                                     <constraint firstAttribute="trailing" secondItem="JkS-R3-AU1" secondAttribute="trailing" constant="15" id="Z5l-v7-cVz"/>
-                                                    <constraint firstItem="Wfb-NY-gcP" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="bPH-fp-BTI"/>
+                                                    <constraint firstItem="Wfb-NY-gcP" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="bPH-fp-BTI"/>
                                                     <constraint firstItem="dQS-AY-eSB" firstAttribute="top" secondItem="tuB-qO-0P0" secondAttribute="bottom" constant="20" id="cKk-yj-coi"/>
                                                     <constraint firstItem="d1k-Vi-1fU" firstAttribute="top" secondItem="dnH-BM-6gu" secondAttribute="bottom" constant="24" id="dA0-Jj-qJZ"/>
                                                     <constraint firstItem="M1l-aZ-03r" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="dfa-bt-QSE"/>
@@ -1877,11 +1842,11 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="nNk-fF-jDr" secondAttribute="trailing" constant="15" id="kpW-da-TqD"/>
                                                     <constraint firstItem="MGU-gr-4Lq" firstAttribute="top" secondItem="Wfb-NY-gcP" secondAttribute="bottom" id="p8w-1b-bz1"/>
                                                     <constraint firstAttribute="trailing" secondItem="tuB-qO-0P0" secondAttribute="trailing" constant="15" id="pp6-Ck-rMW"/>
-                                                    <constraint firstItem="3PV-7E-X3w" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" id="qW1-Md-vaB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Wfb-NY-gcP" secondAttribute="trailing" id="rsN-Yb-H0M"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dQS-AY-eSB" secondAttribute="trailing" id="sKU-p0-IJm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="h0U-Un-NrF" secondAttribute="trailing" id="uTn-Rd-kft"/>
-                                                    <constraint firstAttribute="trailing" secondItem="WAd-Tu-LyJ" secondAttribute="trailing" id="xxJ-ue-Q1I"/>
+                                                    <constraint firstItem="3PV-7E-X3w" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="qW1-Md-vaB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Wfb-NY-gcP" secondAttribute="trailing" constant="15" id="rsN-Yb-H0M"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dQS-AY-eSB" secondAttribute="trailing" constant="15" id="sKU-p0-IJm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="h0U-Un-NrF" secondAttribute="trailing" constant="15" id="uTn-Rd-kft"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WAd-Tu-LyJ" secondAttribute="trailing" constant="15" id="xxJ-ue-Q1I"/>
                                                     <constraint firstAttribute="height" constant="850" id="zJ8-0a-IbO"/>
                                                     <constraint firstItem="e6b-sW-ObO" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="zLx-Fr-PvM"/>
                                                 </constraints>
@@ -1894,7 +1859,7 @@ a new password will be sent.</string>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="7c1-tW-sCx"/>
                                             <constraint firstAttribute="trailing" secondItem="X5C-Zb-oQC" secondAttribute="trailing" id="Eyw-uF-ala"/>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="HVH-yM-rwj"/>
-                                            <constraint firstAttribute="height" constant="800" id="QE5-yX-5zV"/>
+                                            <constraint firstAttribute="height" constant="980" id="QE5-yX-5zV"/>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="top" secondItem="oXG-29-8qD" secondAttribute="top" constant="188" id="tLc-4M-ZXp"/>
                                             <constraint firstAttribute="centerX" secondItem="X5C-Zb-oQC" secondAttribute="centerX" id="zDc-70-zeI"/>
                                         </constraints>
@@ -1934,22 +1899,24 @@ a new password will be sent.</string>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="820"/>
+                    <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="ec8-cA-VqL" id="waq-Bn-Tfa"/>
                         <outlet property="confirmPasswordTextField" destination="Wfb-NY-gcP" id="SJo-WK-5Jt"/>
-                        <outlet property="containerView" destination="xgR-5H-iYw" id="bQB-GD-eb2"/>
                         <outlet property="emailTextField" destination="WAd-Tu-LyJ" id="MRo-AC-6uC"/>
                         <outlet property="emiratesIDTextField" destination="h0U-Un-NrF" id="K2c-KY-c9H"/>
                         <outlet property="firstNameTextField" destination="GmP-Ga-qJi" id="gG8-Yb-PaC"/>
                         <outlet property="lastNameTextField" destination="3Yz-Ib-41V" id="0NE-cH-FOC"/>
                         <outlet property="loginButton" destination="d1k-Vi-1fU" id="YSm-ox-KXD"/>
                         <outlet property="logoImageView" destination="hEO-tK-nKf" id="Ogx-dK-shZ"/>
+                        <outlet property="mainButton" destination="dnH-BM-6gu" id="JU6-Xz-71k"/>
+                        <outlet property="mainContainerView" destination="xgR-5H-iYw" id="IaL-Gh-RA1"/>
                         <outlet property="mobileTextField" destination="YSb-aK-F5h" id="MXV-KA-yGk"/>
                         <outlet property="passwordTextField" destination="dQS-AY-eSB" id="1qk-2t-NWf"/>
                         <outlet property="registerButton" destination="dnH-BM-6gu" id="LN3-98-N3G"/>
+                        <outlet property="registerContainer" destination="X5C-Zb-oQC" id="k7o-jX-w7V"/>
+                        <outlet property="registerScrollView" destination="j4D-WR-PuB" id="fcw-bf-cLt"/>
                         <outlet property="scrollLogoImage" destination="jFz-GE-GK3" id="Smq-Y7-X3G"/>
-                        <outlet property="scrollView" destination="j4D-WR-PuB" id="7ck-lR-bEj"/>
                         <outlet property="selectStateTextField" destination="gsq-M7-KAl" id="d9v-jp-PKb"/>
                         <outlet property="userNameTextField" destination="3PV-7E-X3w" id="5fn-Eh-oy6"/>
                         <outlet property="verticalSpaseRegisterConteinerUIView" destination="tLc-4M-ZXp" id="6Et-mF-6Bs"/>
@@ -1957,7 +1924,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fli-us-670" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3470" y="-2708"/>
+            <point key="canvasLocation" x="3488" y="-2491"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="tBS-d1-EZy">
@@ -2515,7 +2482,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByK-45-7OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="-1994"/>
+            <point key="canvasLocation" x="2738" y="-1994"/>
         </scene>
         <!--Check Domain View Controller-->
         <scene sceneID="UHM-cK-24o">

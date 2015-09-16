@@ -24,6 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
+                                                                      }];
 }
 
 - (void)viewDidLayoutSubviews

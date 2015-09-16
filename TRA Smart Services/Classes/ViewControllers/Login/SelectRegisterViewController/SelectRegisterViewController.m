@@ -21,11 +21,17 @@
 
 @implementation SelectRegisterViewController
 
-- (void)viewDidLoad
+#pragma mark - LifeCycle
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
+                                                                      }];
 }
 
 #pragma mark - UI

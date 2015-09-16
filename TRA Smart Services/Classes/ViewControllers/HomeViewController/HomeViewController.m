@@ -114,7 +114,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     [self.speedAccessDataSource removeAllObjects];
     [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     
-    [self.topView setStartApearenceAnimationParameters];
+    [self.topView performSelector:@selector(setStartApearenceAnimationParameters) withObject:nil afterDelay:1.0f];
 }
 
 #pragma mark - UIGestureRecognizerDelegate

@@ -65,6 +65,23 @@
 
 #pragma mark - Public
 
+- (void)configureTextField:(LeftInsetTextField *)textField withImageName:(NSString *)imageName
+{
+    UIImage *leftImage = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
+    [imageView setImage:leftImage];
+    imageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    textField.rightView = nil;
+    textField.leftView = nil;
+    if ([DynamicUIService service].language != LanguageTypeArabic) {
+        textField.leftViewMode = UITextFieldViewModeAlways;
+        textField.leftView = imageView;
+    } else {
+        textField.rightViewMode = UITextFieldViewModeAlways;
+        textField.rightView = imageView;
+    }
+}
+
 - (void)prepareNavigationBar
 {
     [self.navigationController presentTransparentNavigationBarAnimated:NO];
