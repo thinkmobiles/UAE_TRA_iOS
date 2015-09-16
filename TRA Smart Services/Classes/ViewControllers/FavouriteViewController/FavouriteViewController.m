@@ -174,7 +174,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     if (searchText.length) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
             NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
-            BOOL containsString = [localizedServiceName rangeOfString:searchText].location !=NSNotFound;
+            BOOL containsString = [[localizedServiceName uppercaseString] rangeOfString:[searchText uppercaseString]].location !=NSNotFound;
             return containsString;
         }];
         [self fetchFavouriteList];
