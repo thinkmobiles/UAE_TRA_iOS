@@ -124,8 +124,11 @@
             fontSize = currentFontSize + normalMultiplier;
         } else if (prevFontSize == ApplicationFontUndefined && [DynamicUIService service].fontSize == ApplicationFontBig) {
             fontSize = currentFontSize + normalMultiplier;
+        } else if (prevFontSize == ApplicationFontSmall && [DynamicUIService service].fontSize == ApplicationFontBig) {
+            fontSize = currentFontSize + 2 * normalMultiplier;
+        } else if (prevFontSize == ApplicationFontBig && [DynamicUIService service].fontSize == ApplicationFontSmall) {
+            fontSize = currentFontSize + 2 * smallMultiplier;
         }
-        
         NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
         UIFont *font = [UIFont fontWithName:fontName size:fontSize];
         

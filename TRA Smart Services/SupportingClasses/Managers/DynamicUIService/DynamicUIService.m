@@ -224,6 +224,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 {
     ApplicationFont savedFont = ApplicationFontSmall;
     NSUInteger fontSize = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentFontSize] integerValue];
+
     if (fontSize) {
         if (fontSize == ApplicationFontBig) {
             savedFont = ApplicationFontBig;

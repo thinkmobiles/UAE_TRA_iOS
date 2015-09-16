@@ -131,7 +131,6 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (IBAction)sliderDidChangeValue:(UISlider *)sender
 {
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
-
     switch ((int)sender.value) {
         case 0: {
             if ([DynamicUIService service].fontSize == ApplicationFontSmall) {

@@ -881,7 +881,7 @@
                                                             <constraint firstAttribute="height" constant="26" id="rot-JV-689"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="0m0-Aq-wXB"/>
                                                         </connections>
@@ -893,7 +893,7 @@
                                                             <constraint firstAttribute="height" constant="1" id="hQq-Xp-dEr"/>
                                                         </constraints>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BnW-BV-ANV" userLabel="Emirate - Table View">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BnW-BV-ANV" userLabel="Emirate - Table View">
                                                         <rect key="frame" x="30" y="187" width="540" height="26"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
