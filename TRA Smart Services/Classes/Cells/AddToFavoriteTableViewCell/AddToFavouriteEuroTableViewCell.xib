@@ -20,20 +20,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKH-aq-sdp" userLabel="ImageHolder - UiView">
                                 <rect key="frame" x="450" y="0.0" width="85" height="87"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-8c-QqX" userLabel="Logo - UiIMageView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5T6-s1-f5M" userLabel="Hexagon Background - View">
                                         <rect key="frame" x="18" y="15" width="49" height="57"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-8c-QqX" userLabel="Logo - UiIMageView">
+                                                <rect key="frame" x="9" y="13" width="31" height="31"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="2Yd-8c-QqX" secondAttribute="height" id="J74-VZ-ttQ"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="2Yd-8c-QqX" secondAttribute="height" multiplier="49:57" id="J74-VZ-ttQ"/>
+                                            <constraint firstAttribute="centerX" secondItem="2Yd-8c-QqX" secondAttribute="centerX" id="QB0-QJ-FdG"/>
+                                            <constraint firstItem="2Yd-8c-QqX" firstAttribute="width" secondItem="5T6-s1-f5M" secondAttribute="width" multiplier="0.65" id="UpM-xW-SWE"/>
+                                            <constraint firstAttribute="centerY" secondItem="2Yd-8c-QqX" secondAttribute="centerY" id="bNG-Ur-4U6"/>
+                                            <constraint firstAttribute="width" secondItem="5T6-s1-f5M" secondAttribute="height" multiplier="49:57" id="yuS-er-d8Z"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2Yd-8c-QqX" firstAttribute="width" secondItem="aKH-aq-sdp" secondAttribute="width" multiplier="0.57" id="Mip-nw-Lyf"/>
                                     <constraint firstAttribute="width" constant="85" id="Nye-VF-D3S"/>
-                                    <constraint firstAttribute="centerX" secondItem="2Yd-8c-QqX" secondAttribute="centerX" id="bI9-dh-PlO"/>
-                                    <constraint firstAttribute="centerY" secondItem="2Yd-8c-QqX" secondAttribute="centerY" id="bIK-Od-W7k"/>
+                                    <constraint firstAttribute="centerY" secondItem="5T6-s1-f5M" secondAttribute="centerY" id="fpE-jA-56l"/>
+                                    <constraint firstAttribute="centerX" secondItem="5T6-s1-f5M" secondAttribute="centerX" id="t2a-Ha-KS4"/>
+                                    <constraint firstItem="5T6-s1-f5M" firstAttribute="width" secondItem="aKH-aq-sdp" secondAttribute="width" multiplier="0.57" id="zMW-xE-ffg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
@@ -101,6 +113,7 @@
                 <outlet property="favoriteButton" destination="LJc-me-O8w" id="8La-4i-sVH"/>
                 <outlet property="favourieDescriptionLabel" destination="1rN-pa-6OS" id="ioP-49-BbP"/>
                 <outlet property="favouriteServiceLogoImageView" destination="2Yd-8c-QqX" id="8ZX-y4-8d3"/>
+                <outlet property="hexagonBackgroundView" destination="5T6-s1-f5M" id="Gv7-hc-wMy"/>
             </connections>
             <point key="canvasLocation" x="480.5" y="431"/>
         </tableViewCell>

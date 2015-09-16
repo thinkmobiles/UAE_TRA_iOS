@@ -13,6 +13,7 @@
 #import "LeftInsetTextField.h"
 #import "PlaceholderTextView.h"
 #import "ServicesSelectTableViewCell.h"
+#import "UIImage+DrawText.h"
 
 static NSString *const providerCellIdentifier = @"compliantProviderCell";
 
@@ -45,7 +46,6 @@ static CGFloat const heightContenerConstraint = 55.f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConteinerSelectedProviderConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
 
-@property (strong, nonatomic) UIImage *navigationBarBackgroundImage;
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
 @property (strong, nonatomic) NSString *selectedProvider;
 
@@ -74,7 +74,6 @@ static CGFloat const heightContenerConstraint = 55.f;
     [self prepareTopView];
     [self updateNavigationControllerBar];
     self.heightTableViewConstraint.constant = heightSelectTableViewCell;
-    self.navigationBarBackgroundImage = self.navigationController.navigationBar.backIndicatorImage;
     [self addAttachButtonTitleTextField];
     [self addSendButtonToNavigationBar];
 }
@@ -84,7 +83,7 @@ static CGFloat const heightContenerConstraint = 55.f;
     [super viewWillDisappear:animated];
     
     [self removeNotifications];
-    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - IABaction

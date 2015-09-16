@@ -33,6 +33,8 @@
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view;
 + (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect;
++ (void)addHexagoneOnView:(UIView *)view;
++ (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color width:(CGFloat) width;
 
 + (NSString *)detailedDateStringFrom:(NSDate *)date;
 + (NSString *)compactDateStringFrom:(NSDate *)date;

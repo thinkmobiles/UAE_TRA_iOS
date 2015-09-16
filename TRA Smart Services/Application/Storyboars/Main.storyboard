@@ -228,29 +228,53 @@
                                     <constraint firstItem="uBq-Kr-a20" firstAttribute="leading" secondItem="Xeg-pG-xt6" secondAttribute="leading" constant="16" id="zzd-fL-cYG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7XU-Bi-e2g" userLabel="Header Add Servise - View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7XU-Bi-e2g" userLabel="Header Add Servise - UIView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpm-D3-5i1">
-                                        <rect key="frame" x="200" y="23" width="200" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Hz-w7-Y2j" userLabel="Conteiner UI ADD - View">
+                                        <rect key="frame" x="225" y="23" width="150" height="40"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_add_serv" translatesAutoresizingMaskIntoConstraints="NO" id="DPJ-Td-7La" userLabel="Add - Image View">
+                                                <rect key="frame" x="122" y="5" width="28" height="31"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="5jz-Nh-dEH"/>
+                                                    <constraint firstAttribute="width" constant="28" id="WV0-AW-myN"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpm-D3-5i1">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="4zE-fU-lxr"/>
+                                                    <constraint firstAttribute="width" constant="150" id="dv6-ro-ynL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="5" maxY="0.0"/>
+                                                <state key="normal" title="ADD A SERVICE">
+                                                    <color key="titleColor" red="0.96078431369999995" green="0.66666666669999997" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addFavouriteButtonPress:" destination="VHI-KM-fqJ" eventType="touchUpInside" id="cut-C1-xdl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="4zE-fU-lxr"/>
-                                            <constraint firstAttribute="width" constant="200" id="dv6-ro-ynL"/>
+                                            <constraint firstAttribute="right" secondItem="DPJ-Td-7La" secondAttribute="right" id="1iu-85-95o"/>
+                                            <constraint firstAttribute="centerY" secondItem="DPJ-Td-7La" secondAttribute="centerY" id="4RX-Zc-PgZ"/>
+                                            <constraint firstItem="Bpm-D3-5i1" firstAttribute="top" secondItem="0Hz-w7-Y2j" secondAttribute="top" id="Qlj-8L-4Dj"/>
+                                            <constraint firstAttribute="right" secondItem="Bpm-D3-5i1" secondAttribute="right" id="RYU-zb-GFU" userLabel="Horizontal Space - View - ADD A SERVICE"/>
+                                            <constraint firstItem="Bpm-D3-5i1" firstAttribute="left" secondItem="0Hz-w7-Y2j" secondAttribute="left" id="aCF-Vo-RGK"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bpm-D3-5i1" secondAttribute="bottom" id="vDc-ds-qMf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                        <state key="normal" title="ADD A SERVICE">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addFavouriteButtonPress:" destination="VHI-KM-fqJ" eventType="touchUpInside" id="cut-C1-xdl"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Bpm-D3-5i1" secondAttribute="centerX" id="3GX-sf-LkV"/>
-                                    <constraint firstAttribute="centerY" secondItem="Bpm-D3-5i1" secondAttribute="centerY" id="lKX-hQ-8xR"/>
+                                    <constraint firstAttribute="centerX" secondItem="0Hz-w7-Y2j" secondAttribute="centerX" id="kGg-r5-zWG"/>
                                     <constraint firstAttribute="height" constant="85" id="tDU-A1-uTg"/>
+                                    <constraint firstAttribute="centerY" secondItem="0Hz-w7-Y2j" secondAttribute="centerY" id="xsg-GU-nTS"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WIv-F5-QDv" userLabel="Favourite - UITableViewCell">
@@ -265,7 +289,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7XU-Bi-e2g" secondAttribute="trailing" id="1GK-ln-hOI"/>
+                            <constraint firstAttribute="right" secondItem="7XU-Bi-e2g" secondAttribute="right" id="1GK-ln-hOI"/>
                             <constraint firstItem="m3D-g6-6Pe" firstAttribute="top" secondItem="WIv-F5-QDv" secondAttribute="bottom" id="2bW-ql-9pE"/>
                             <constraint firstItem="j1e-2z-EqT" firstAttribute="top" secondItem="MTw-6b-74T" secondAttribute="top" id="4pb-S9-vF3"/>
                             <constraint firstAttribute="trailing" secondItem="Xeg-pG-xt6" secondAttribute="trailing" id="6ec-nQ-7jp"/>
@@ -278,7 +302,7 @@
                             <constraint firstAttribute="right" secondItem="WIv-F5-QDv" secondAttribute="right" id="edH-c5-5W8"/>
                             <constraint firstItem="WIv-F5-QDv" firstAttribute="left" secondItem="MTw-6b-74T" secondAttribute="left" id="f41-Ct-VaZ"/>
                             <constraint firstItem="Xeg-pG-xt6" firstAttribute="top" secondItem="mU0-5s-Q0l" secondAttribute="bottom" id="lmH-k8-sZj"/>
-                            <constraint firstItem="7XU-Bi-e2g" firstAttribute="leading" secondItem="MTw-6b-74T" secondAttribute="leading" id="oVL-VN-zPF"/>
+                            <constraint firstItem="7XU-Bi-e2g" firstAttribute="left" secondItem="MTw-6b-74T" secondAttribute="left" id="oVL-VN-zPF"/>
                             <constraint firstItem="m3D-g6-6Pe" firstAttribute="top" secondItem="j1e-2z-EqT" secondAttribute="bottom" id="xF3-yH-WeE"/>
                         </constraints>
                     </view>
@@ -296,6 +320,7 @@
                         <outlet property="actionDescriptionLabel" destination="lgB-7D-JdL" id="36l-e5-5JI"/>
                         <outlet property="addFavouriteButton" destination="doX-zm-C5K" id="mh1-vG-njK"/>
                         <outlet property="addServiceHiddenButton" destination="Bpm-D3-5i1" id="Efo-VN-ZKY"/>
+                        <outlet property="addServiceHiddenImageView" destination="DPJ-Td-7La" id="0zG-6f-nMi"/>
                         <outlet property="backgroundImageView" destination="j1e-2z-EqT" id="G0d-b5-PKo"/>
                         <outlet property="headerAddServiceView" destination="7XU-Bi-e2g" id="S1w-Xg-6Zf"/>
                         <outlet property="informationLabel" destination="uBq-Kr-a20" id="WIs-eN-hf9"/>
@@ -677,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZ1-ZO-DSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="-1317"/>
+            <point key="canvasLocation" x="238" y="-1324"/>
         </scene>
         <!--Edit User Profile View Controller-->
         <scene sceneID="Pyt-zW-V83">
@@ -2293,7 +2318,90 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsM-dK-AZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="-1317"/>
+            <point key="canvasLocation" x="238" y="-2081"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="rIH-Lj-IL7">
+            <objects>
+                <viewController id="n41-9a-J3X" customClass="HomeSearchResultViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qj6-gF-wq7"/>
+                        <viewControllerLayoutGuide type="bottom" id="JUC-XE-25Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zlY-Zo-k7e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="upz-D8-x9l">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeSearchResultCell" rowHeight="85" id="8s4-a0-fdt" customClass="HomeSearchResultTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8s4-a0-fdt" id="Yuo-YQ-nR6">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right237" translatesAutoresizingMaskIntoConstraints="NO" id="TOY-Ab-cLd">
+                                                    <rect key="frame" x="573" y="37" width="12" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="CzC-6y-4id"/>
+                                                        <constraint firstAttribute="width" constant="12" id="ana-pU-E2G"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-yn-gYt">
+                                                    <rect key="frame" x="25" y="0.0" width="533" height="85"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="rlw-yn-gYt" secondAttribute="bottom" id="959-OD-sdd"/>
+                                                <constraint firstItem="rlw-yn-gYt" firstAttribute="centerY" secondItem="TOY-Ab-cLd" secondAttribute="centerY" id="IRR-03-cRd"/>
+                                                <constraint firstAttribute="right" secondItem="TOY-Ab-cLd" secondAttribute="right" constant="15" id="Jdl-xY-9tO"/>
+                                                <constraint firstItem="rlw-yn-gYt" firstAttribute="top" secondItem="Yuo-YQ-nR6" secondAttribute="top" id="PnH-xy-QSd"/>
+                                                <constraint firstItem="TOY-Ab-cLd" firstAttribute="left" secondItem="rlw-yn-gYt" secondAttribute="right" constant="15" id="nhi-L2-5Hi"/>
+                                                <constraint firstItem="rlw-yn-gYt" firstAttribute="left" secondItem="Yuo-YQ-nR6" secondAttribute="left" constant="25" id="sVM-uH-9el"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="customAccessoryImageView" destination="TOY-Ab-cLd" id="ZGK-Fe-HNQ"/>
+                                            <outlet property="serviceNameLabel" destination="rlw-yn-gYt" id="iyG-f0-0Fu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="n41-9a-J3X" id="xVv-hC-Z3C"/>
+                                    <outlet property="delegate" destination="n41-9a-J3X" id="Jtd-Kp-kbt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="upz-D8-x9l" secondAttribute="bottom" id="Y68-rQ-EIw"/>
+                            <constraint firstItem="upz-D8-x9l" firstAttribute="leading" secondItem="zlY-Zo-k7e" secondAttribute="leading" id="bGm-Ui-lte"/>
+                            <constraint firstAttribute="trailing" secondItem="upz-D8-x9l" secondAttribute="trailing" id="lfd-zg-h23"/>
+                            <constraint firstItem="upz-D8-x9l" firstAttribute="top" secondItem="Qj6-gF-wq7" secondAttribute="bottom" id="zl5-Js-WHY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="QmC-Mp-yPb">
+                        <barButtonItem key="leftBarButtonItem" image="btn_close" id="1P0-oU-7L5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="n41-9a-J3X" id="LFv-KN-TnS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="closeBarButton" destination="1P0-oU-7L5" id="wD8-t8-b3m"/>
+                        <outlet property="tableView" destination="upz-D8-x9l" id="xLz-vy-QgA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2L-bj-zZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="-588"/>
         </scene>
         <!--Select Register View Controller-->
         <scene sceneID="GzO-s6-i6A">
@@ -2776,7 +2884,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="1" id="7eU-rX-yMj"/>
                                                         </constraints>
                                                     </view>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jxA-su-MkR" userLabel="Screen Lock Notification - Switch">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jxA-su-MkR" userLabel="Screen Lock Notification - Switch">
                                                         <rect key="frame" x="521" y="13" width="51" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="49" id="vwQ-KK-z5C"/>
@@ -3202,9 +3310,19 @@ a new password will be sent.</string>
                                                             <constraint firstItem="3wn-Hj-48S" firstAttribute="top" secondItem="EXL-bu-jvs" secondAttribute="top" id="kx0-c9-tDN"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPs-Tr-AII" userLabel="AboutTRA - UIButton">
+                                                        <rect key="frame" x="25" y="0.0" width="550" height="57"/>
+                                                        <state key="normal">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="aboutTRAButtonTapped:" destination="uFL-R4-sWm" eventType="touchUpInside" id="QpM-Hl-BoN"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="uPs-Tr-AII" firstAttribute="top" secondItem="BsZ-2L-xD8" secondAttribute="top" id="KiO-Mb-zd5"/>
                                                     <constraint firstAttribute="right" secondItem="5lt-Cy-1cG" secondAttribute="right" constant="18" id="L10-yc-6SA"/>
                                                     <constraint firstItem="EXL-bu-jvs" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="25" id="SNf-x6-EdP"/>
                                                     <constraint firstItem="5lt-Cy-1cG" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="15" id="X6d-yD-LMG"/>
@@ -3212,6 +3330,9 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="right" secondItem="EXL-bu-jvs" secondAttribute="right" constant="25" id="Zo1-LF-Kzl"/>
                                                     <constraint firstAttribute="bottom" secondItem="5lt-Cy-1cG" secondAttribute="bottom" id="aih-su-NTo"/>
                                                     <constraint firstAttribute="height" constant="58" id="h8V-Eu-oFh"/>
+                                                    <constraint firstItem="uPs-Tr-AII" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="25" id="kbh-bp-ttt"/>
+                                                    <constraint firstItem="5lt-Cy-1cG" firstAttribute="top" secondItem="uPs-Tr-AII" secondAttribute="bottom" id="tLa-jP-KBA"/>
+                                                    <constraint firstAttribute="right" secondItem="uPs-Tr-AII" secondAttribute="right" constant="25" id="tof-l1-QiV"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -5147,7 +5268,7 @@ a new password will be sent.</string>
         <!--Details View Controller-->
         <scene sceneID="Va4-iQ-bbV">
             <objects>
-                <viewController id="j00-Gg-DDr" customClass="DetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailsViewContrrollerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j00-Gg-DDr" customClass="DetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kdX-Vb-U6X"/>
                         <viewControllerLayoutGuide type="bottom" id="8FF-Zr-RM8"/>
@@ -5290,7 +5411,7 @@ a new password will be sent.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXu-Qu-l58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="255"/>
+            <point key="canvasLocation" x="1088" y="255"/>
         </scene>
         <!--Info Hub-->
         <scene sceneID="2Nc-SB-XwR">
@@ -5446,7 +5567,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMF-H9-ZWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4254" y="475"/>
+            <point key="canvasLocation" x="4297" y="466"/>
         </scene>
         <!--Setting-->
         <scene sceneID="kTn-lK-TF7">
@@ -5896,6 +6017,7 @@ a new password will be sent.</string>
         <image name="res_img_bg" width="320" height="568"/>
         <image name="res_img_logo" width="260" height="118"/>
         <image name="res_polygons" width="320" height="375"/>
+        <image name="right237" width="16" height="16"/>
         <image name="serviceBackground" width="320" height="335"/>
         <image name="shevron" width="16" height="16"/>
         <image name="trimmedBackground" width="320" height="335"/>

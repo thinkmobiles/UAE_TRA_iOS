@@ -111,6 +111,7 @@
 //SettingsViewController
 
 "settings.title" = "Settings";
+"settings.title.aboutTra" = "عن الهيئة";
 "settings.label.language" = "اللغة";
 "settings.label.fontsize" = "حجم الخط";
 "settings.label.colorImpaired" = "Color Impaired";
@@ -120,7 +121,7 @@
 "settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
 "settings.label.colorThemeTitle" = "Color Theme";
 "settings.label.colorThemeDetails" = "Change color theme for app";
-"settings.label.aboutTRATitle" = "About TRA";
+"settings.label.aboutTRATitle" = "عن الهيئة";
 "settings.label.aboutTRADetails" = "Read mare about TRA";
 "settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
@@ -324,3 +325,7 @@
 "editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
 "editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
 "editUserProfileViewController.dataSource.0element" = "Tap to select";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "Search Result";

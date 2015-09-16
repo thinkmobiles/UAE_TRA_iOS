@@ -111,6 +111,7 @@
 //SettingsViewController
 
 "settings.title" = "Settings";
+"settings.title.aboutTra" = "About TRA";
 "settings.label.language" = "Language Preference";
 "settings.label.fontsize" = "Font Size Display";
 "settings.label.colorImpaired" = "Color Impaired";
@@ -326,3 +327,7 @@
 "editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
 "editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
 "editUserProfileViewController.dataSource.0element" = "Tap to select";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "Search Result";

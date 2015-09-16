@@ -56,6 +56,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
 @property (assign, nonatomic) BOOL isFirstTimeLoaded;
+@property (assign, nonatomic) NSInteger selectedServiceIDHomeSearchViewController;
 
 @end
 
@@ -66,6 +67,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.selectedServiceIDHomeSearchViewController = - 1;
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
@@ -357,7 +360,47 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
     
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)sevriceSwitchPerformSegue:(NSInteger) serviceID
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    switch (serviceID) {
+        case 2: {
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            break;
+        }
+        case 3: {
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            break;
+        }
+        case 5: {
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
+            break;
+        }
+        case 6: {
+            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            break;
+        }
+
         case 7: {
             [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
             break;
@@ -370,38 +413,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
             break;
         }
-        case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-        default: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-            break;
-        }
-    }
-}
-
-- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (![NetworkManager sharedManager].networkStatus) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
-        return;
-    }
-    
-    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-        case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
-            break;
-        }
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
-            break;
-        }
         case 12:
         case 13:
         case 10: {
@@ -412,10 +423,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
             break;
         }
-        case 3: {
-            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
-            break;
-        }
         default: {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
@@ -423,14 +430,14 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
         [self prepareNotificationViewControllerWithSegue:segue];
-    }
-    else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
+    } else if ([segue.identifier isEqualToString:HomeToHomeSearchSegueIdentifier]) {
         [self prepareHomeSearchViewControllerWithSegue:segue];
     }
 }
@@ -441,6 +448,15 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
     homeSearchViewController.fakeBackground = img;
     homeSearchViewController.hidesBottomBarWhenPushed = YES;
+
+    __weak typeof(self) weakSelf = self;
+    homeSearchViewController.didSelectService = ^(NSInteger selectedServiseID){
+        weakSelf.navigationController.navigationBar.hidden = NO;
+        [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        [UIView performWithoutAnimation:^{
+            [weakSelf sevriceSwitchPerformSegue:selectedServiseID];
+        }];
+    };
 }
 
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
@@ -471,9 +487,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    
     self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
-    
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];

@@ -11,5 +11,6 @@
 @interface HomeSearchViewController : BaseDynamicUIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UIImage *fakeBackground;
+@property (strong, nonatomic) void (^didSelectService)(NSInteger selectedServiseID);
 
 @end

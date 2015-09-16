@@ -10,9 +10,10 @@
 #import "Animation.h"
 #import "TRAService.h"
 #import "AppDelegate.h"
+#import "HomeSearchResultViewController.h"
 
-static NSString *const homeSearchCellIdentifier = @"homeSearchCell";
-static CGFloat heightTableViewCell = 35.f;
+static NSString *const HomeSearchCellIdentifier = @"homeSearchCell";
+static CGFloat HeightTableViewCell = 35.f;
 
 @interface HomeSearchViewController ()
 
@@ -65,7 +66,14 @@ static CGFloat heightTableViewCell = 35.f;
     [super viewWillDisappear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [self closeButtonTapped:nil];
+//    [self closeButtonTapped:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)dealloc
@@ -94,7 +102,7 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeSearchCellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeSearchCellIdentifier];
     
     cell.textLabel.text = dynamicLocalizedString(((TRAService *)self.filteredDataSource[indexPath.row]).serviceName);
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -113,7 +121,7 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return heightTableViewCell;
+    return HeightTableViewCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,8 +150,16 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.didSelectService) {
+        TRAService *selectedService = self.filteredDataSource[indexPath.row];
+        self.didSelectService([selectedService.serviceInternalID integerValue]);
+    }
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+#pragma mark - Navigation
+
 
 #pragma mark - IBActions
 

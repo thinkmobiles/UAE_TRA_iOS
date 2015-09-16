@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "RTLController.h"
 #import "UIImage+DrawText.h"
+#import "DetailsViewController.h"
 
 static NSInteger const themeColorBlackAndWhite = 3;
 static CGFloat const optionScaleSwitch = 0.55;
@@ -60,6 +61,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
     
+    [self prepareNavigationController];
     [self prepareSegmentsView];
     [self prepareUISwitchSettingViewController];
     [self prepareNavigationBar];
@@ -179,6 +181,25 @@ static CGFloat const optionScaleSwitch = 0.55;
     }
 }
 
+- (IBAction)aboutTRAButtonTapped:(id)sender
+{
+    DetailsViewController *detailedInforViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsViewContrrollerID"];
+    
+    NSURL *url;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        url = [[NSBundle mainBundle] URLForResource:@"AboutAr" withExtension:@"rtf"];
+    } else {
+        url = [[NSBundle mainBundle] URLForResource:@"AboutEn" withExtension:@"rtf"];
+    }
+    NSError *error = nil;
+    NSAttributedString *dataString = [[NSAttributedString alloc] initWithFileURL:url options:nil documentAttributes:NULL error:&error];
+    
+    detailedInforViewController.contentText = dataString;
+    detailedInforViewController.titleText = dynamicLocalizedString(@"settings.title.aboutTra");
+
+    [self.navigationController pushViewController:detailedInforViewController animated:YES];
+}
+
 #pragma mark - SegmentViewDelegate
 
 - (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
@@ -193,10 +214,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 #pragma mark - Private
 
-- (void)selctedSliderValueFont
-{
-    
-}
+#pragma mark - UIPreparation
 
 - (void)prepareUISwitchSettingViewController
 {
@@ -213,6 +231,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     prepareSwitch.layer.cornerRadius = 16.0f;
     prepareSwitch.tintColor = [UIColor grayBorderTextFieldTextColor];
 }
+
+#pragma mark - UITransform / Animations
 
 - (void)transformUILayer:(CATransform3D)animCATransform3D
 {
@@ -257,10 +277,15 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)transformAnimationConteinerView
 {
+    [self.conteinerView.layer addAnimation:[self transformAnimation] forKey:@"transformView"];
+}
+
+- (CAAnimation *)transformAnimation
+{
     CATransform3D rotationAndPerspectiveTransform = self.conteinerView.layer.transform;
     if ([DynamicUIService service].language == LanguageTypeArabic ) {
         rotationAndPerspectiveTransform.m34 = 1.0 / 500.0;
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, -1.0f, 0.0f);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, 1.0f, 0.0f);
     } else {
         rotationAndPerspectiveTransform.m34 = 1.0 / -500.0;
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -45 * M_PI , 0.0f, -1.0f, 0.0f);
@@ -269,9 +294,45 @@ static CGFloat const optionScaleSwitch = 0.55;
     CABasicAnimation *transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnim.fromValue = [NSValue valueWithCATransform3D:self.conteinerView.layer.transform];
     transformAnim.toValue = [NSValue valueWithCATransform3D:rotationAndPerspectiveTransform];
-    transformAnim.duration = .4f;
     
-    [self.conteinerView.layer addAnimation:transformAnim forKey:@"transformView"];
+    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    CATransform3D startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
+    CATransform3D midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0, 0);
+    CATransform3D endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
+    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+        startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
+        midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0.8, 0.8);
+        endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
+    }
+    scaleAnimation.values = @[
+                              [NSValue valueWithCATransform3D:startScale],
+                              [NSValue valueWithCATransform3D:midScale],
+                              [NSValue valueWithCATransform3D:endScale],
+                              ];
+    scaleAnimation.keyTimes = @[[NSNumber numberWithFloat:0.0f],
+                                [NSNumber numberWithFloat:0.5f],
+                                [NSNumber numberWithFloat:0.9f]
+                                ];
+    scaleAnimation.timingFunctions = @[
+                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                       ];
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    scaleAnimation.removedOnCompletion = NO;
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.animations = @[transformAnim, scaleAnimation];
+    group.duration = 0.6f;
+    
+    return group;
+}
+
+#pragma mark - Controls
+
+- (void)prepareSegmentsView
+{
+    self.languageSegmentControl.delegate = self;
+    self.languageSegmentControl.segmentItemsAttributes = @[@{NSFontAttributeName : [UIFont droidKufiBoldFontForSize:12]}, @{NSFontAttributeName : [UIFont latoBoldWithSize:12]}];
 }
 
 - (void)selectColorTheme:(NSInteger)numberTheme
@@ -345,6 +406,13 @@ static CGFloat const optionScaleSwitch = 0.55;
     }
     
     [self updateColors];
+}
+
+#pragma mark - NavigationBar
+
+- (void)prepareNavigationController
+{
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)prepareNavigationBar
@@ -464,12 +532,6 @@ static CGFloat const optionScaleSwitch = 0.55;
             break;
         }
     }
-}
-
-- (void)prepareSegmentsView
-{
-    self.languageSegmentControl.delegate = self;
-    self.languageSegmentControl.segmentItemsAttributes = @[@{NSFontAttributeName : [UIFont droidKufiBoldFontForSize:12]}, @{NSFontAttributeName : [UIFont latoBoldWithSize:12]}];
 }
 
 - (void)setCurrentColorThemaUserDefaults:(NSInteger)currentNumberColorTheme
