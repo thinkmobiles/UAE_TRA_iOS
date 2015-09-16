@@ -320,8 +320,8 @@ static NSInteger const SeparatorTag = 77;
 
 - (void)updateColors
 {
-    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-//    [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    [self.loginButton setTitleColor:color forState:UIControlStateNormal];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
@@ -331,7 +331,7 @@ static NSInteger const SeparatorTag = 77;
     
     for (UIView *separator in self.registerContainer.subviews) {
         if (separator.tag == SeparatorTag) {
-            separator.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            separator.backgroundColor = color;
         }
     }
     
@@ -346,6 +346,16 @@ static NSInteger const SeparatorTag = 77;
     self.emailTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.email")];
     self.emiratesIDTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.emirateID")];
     self.selectStateTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"state.SelectState")];
+    
+    self.userNameTextField.textColor = color;
+    self.mobileTextField.textColor = color;
+    self.passwordTextField.textColor = color;
+    self.confirmPasswordTextField.textColor = color;
+    self.firstNameTextField.textColor = color;
+    self.lastNameTextField.textColor = color;
+    self.emailTextField.textColor = color;
+    self.emiratesIDTextField.textColor = color;
+    self.selectStateTextField.textColor = color;
 }
 
 - (void)preparePickerDataSource
