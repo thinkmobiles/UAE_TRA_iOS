@@ -255,7 +255,6 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.leftFontSizeLabel.layer.transform = animCATransform3D;
     self.centerFontSizeLabel.layer.transform = animCATransform3D;
     self.rightFontSizeLabel.layer.transform = animCATransform3D;
-    self.slider.layer.transform = animCATransform3D;
 }
 
 - (void)setTextAligmentLabelSettingViewController:(NSTextAlignment)textAlignment
