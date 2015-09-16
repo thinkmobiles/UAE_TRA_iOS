@@ -423,15 +423,10 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)setPrepareTitleLabel:(NSString *)title
 {
-    UILabel *titleView = [[UILabel alloc] init];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.textColor = [UIColor whiteColor];
-    titleView.text = title;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    
-    titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
-    self.navigationItem.titleView = titleView;
-    [titleView sizeToFit];
+    self.title = title;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
 #pragma mark - Superclass Methods
