@@ -105,6 +105,7 @@
 //SettingsViewController
 
 "settings.title" = "settings.title";
+"settings.title.aboutTra" = "settings.title.aboutTra";
 "settings.label.language" = "settings.label.language";
 "settings.label.fontsize" = "settings.label.fontsize";
 "settings.label.colorImpaired" = "settings.label.colorImpaired";

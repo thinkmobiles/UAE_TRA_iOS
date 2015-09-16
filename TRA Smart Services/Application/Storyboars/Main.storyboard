@@ -2303,7 +2303,7 @@ a new password will be sent.</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-yn-gYt">
                                                     <rect key="frame" x="25" y="0.0" width="533" height="85"/>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -3147,9 +3147,19 @@ a new password will be sent.</string>
                                                             <constraint firstItem="3wn-Hj-48S" firstAttribute="top" secondItem="EXL-bu-jvs" secondAttribute="top" id="kx0-c9-tDN"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPs-Tr-AII" userLabel="AboutTRA - UIButton">
+                                                        <rect key="frame" x="25" y="0.0" width="550" height="57"/>
+                                                        <state key="normal">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="aboutTRAButtonTapped:" destination="uFL-R4-sWm" eventType="touchUpInside" id="QpM-Hl-BoN"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="uPs-Tr-AII" firstAttribute="top" secondItem="BsZ-2L-xD8" secondAttribute="top" id="KiO-Mb-zd5"/>
                                                     <constraint firstAttribute="right" secondItem="5lt-Cy-1cG" secondAttribute="right" constant="18" id="L10-yc-6SA"/>
                                                     <constraint firstItem="EXL-bu-jvs" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="25" id="SNf-x6-EdP"/>
                                                     <constraint firstItem="5lt-Cy-1cG" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="15" id="X6d-yD-LMG"/>
@@ -3157,6 +3167,9 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="right" secondItem="EXL-bu-jvs" secondAttribute="right" constant="25" id="Zo1-LF-Kzl"/>
                                                     <constraint firstAttribute="bottom" secondItem="5lt-Cy-1cG" secondAttribute="bottom" id="aih-su-NTo"/>
                                                     <constraint firstAttribute="height" constant="58" id="h8V-Eu-oFh"/>
+                                                    <constraint firstItem="uPs-Tr-AII" firstAttribute="left" secondItem="BsZ-2L-xD8" secondAttribute="left" constant="25" id="kbh-bp-ttt"/>
+                                                    <constraint firstItem="5lt-Cy-1cG" firstAttribute="top" secondItem="uPs-Tr-AII" secondAttribute="bottom" id="tLa-jP-KBA"/>
+                                                    <constraint firstAttribute="right" secondItem="uPs-Tr-AII" secondAttribute="right" constant="25" id="tof-l1-QiV"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -5092,7 +5105,7 @@ a new password will be sent.</string>
         <!--Details View Controller-->
         <scene sceneID="Va4-iQ-bbV">
             <objects>
-                <viewController id="j00-Gg-DDr" customClass="DetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailsViewContrrollerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j00-Gg-DDr" customClass="DetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kdX-Vb-U6X"/>
                         <viewControllerLayoutGuide type="bottom" id="8FF-Zr-RM8"/>

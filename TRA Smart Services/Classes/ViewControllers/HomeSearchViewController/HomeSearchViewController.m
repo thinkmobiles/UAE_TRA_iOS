@@ -150,8 +150,9 @@ static CGFloat HeightTableViewCell = 35.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedServiceIDHomeSearch) {
-        self.selectedServiceIDHomeSearch([[self.filteredDataSource[indexPath.row] valueForKey:@"serviceInternalID"] integerValue]);
+    if (self.didSelectService) {
+        TRAService *selectedService = self.filteredDataSource[indexPath.row];
+        self.didSelectService([selectedService.serviceInternalID integerValue]);
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];

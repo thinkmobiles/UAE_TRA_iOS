@@ -57,6 +57,8 @@
 		93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A437071B8AF64E009299C5 /* Lato-Regular.ttf */; };
 		93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */; };
 		93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */; };
+		93D10A751BA93B4500CCEB22 /* AboutEn.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A741BA93B4500CCEB22 /* AboutEn.rtf */; };
+		93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A761BA93B5600CCEB22 /* AboutAr.rtf */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
 		E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */; };
@@ -240,6 +242,8 @@
 		93CFCC081B9CA21A004A1A8F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		93CFCC0B1B9CB4E9004A1A8F /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
 		93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
+		93D10A741BA93B4500CCEB22 /* AboutEn.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutEn.rtf; sourceTree = "<group>"; };
+		93D10A761BA93B5600CCEB22 /* AboutAr.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutAr.rtf; sourceTree = "<group>"; };
 		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
@@ -730,6 +734,15 @@
 			path = NotificationsTableViewCell;
 			sourceTree = "<group>";
 		};
+		93D10A731BA93B2C00CCEB22 /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				93D10A741BA93B4500CCEB22 /* AboutEn.rtf */,
+				93D10A761BA93B5600CCEB22 /* AboutAr.rtf */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
 		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,6 +1128,7 @@
 		ED982F281B5D24DA00B6B644 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93D10A731BA93B2C00CCEB22 /* Texts */,
 				93A436F91B8620F6009299C5 /* Fonts */,
 				ED982F451B5D337500B6B644 /* Plists */,
 				ED982F291B5D24DA00B6B644 /* Images */,
@@ -1708,6 +1722,7 @@
 				932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */,
 				932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
+				93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */,
 				EDA549801B7B4E9B00440216 /* SpeedAccessServices.plist in Resources */,
 				93A436FC1B86211F009299C5 /* DroidKufi-Bold.ttf in Resources */,
 				93A436F41B860EAA009299C5 /* FavouriteEuroTableViewCell.xib in Resources */,
@@ -1716,6 +1731,7 @@
 				F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */,
+				93D10A751BA93B4500CCEB22 /* AboutEn.rtf in Resources */,
 				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
 				93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */,

@@ -380,6 +380,27 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         return;
     }
     switch (serviceID) {
+        case 2: {
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            break;
+        }
+        case 3: {
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            break;
+        }
+        case 5: {
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
+            break;
+        }
+        case 6: {
+            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            break;
+        }
+
         case 7: {
             [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
             break;
@@ -392,23 +413,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
             break;
         }
-        case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-            
-        case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
-            break;
-        }
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
-            break;
-        }
         case 12:
         case 13:
         case 10: {
@@ -417,10 +421,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         }
         case 11: {
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
-            break;
-        }
-        case 3: {
-            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
             break;
         }
         default: {
@@ -449,9 +449,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     homeSearchViewController.fakeBackground = img;
     homeSearchViewController.hidesBottomBarWhenPushed = YES;
 
-#warning TBD
     __weak typeof(self) weakSelf = self;
-    homeSearchViewController.selectedServiceIDHomeSearch = ^(NSInteger selectedServiseID){
+    homeSearchViewController.didSelectService = ^(NSInteger selectedServiseID){
         weakSelf.navigationController.navigationBar.hidden = NO;
         [weakSelf.navigationController popToRootViewControllerAnimated:NO];
         [UIView performWithoutAnimation:^{
@@ -488,9 +487,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    
     self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
-    
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];

@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "RTLController.h"
 #import "UIImage+DrawText.h"
+#import "DetailsViewController.h"
 
 static NSInteger const themeColorBlackAndWhite = 3;
 static CGFloat const optionScaleSwitch = 0.55;
@@ -60,6 +61,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     RTLController *rtl = [[RTLController alloc] init];
     [rtl disableRTLForView:self.view];
     
+    [self prepareNavigationController];
     [self prepareSegmentsView];
     [self prepareUISwitchSettingViewController];
     [self prepareNavigationBar];
@@ -177,6 +179,25 @@ static CGFloat const optionScaleSwitch = 0.55;
         
         [self sliderDidChangeValue:(UISlider *)view];
     }
+}
+
+- (IBAction)aboutTRAButtonTapped:(id)sender
+{
+    DetailsViewController *detailedInforViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsViewContrrollerID"];
+    
+    NSURL *url;
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        url = [[NSBundle mainBundle] URLForResource:@"AboutAr" withExtension:@"rtf"];
+    } else {
+        url = [[NSBundle mainBundle] URLForResource:@"AboutEn" withExtension:@"rtf"];
+    }
+    NSError *error = nil;
+    NSAttributedString *dataString = [[NSAttributedString alloc] initWithFileURL:url options:nil documentAttributes:NULL error:&error];
+    
+    detailedInforViewController.contentText = dataString;
+    detailedInforViewController.titleText = dynamicLocalizedString(@"settings.title.aboutTra");
+
+    [self.navigationController pushViewController:detailedInforViewController animated:YES];
 }
 
 #pragma mark - SegmentViewDelegate
@@ -388,6 +409,11 @@ static CGFloat const optionScaleSwitch = 0.55;
 }
 
 #pragma mark - NavigationBar
+
+- (void)prepareNavigationController
+{
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
+}
 
 - (void)prepareNavigationBar
 {
