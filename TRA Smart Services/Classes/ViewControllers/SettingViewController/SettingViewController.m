@@ -276,7 +276,21 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)transformAnimationConteinerView
 {
-    [self.conteinerView.layer addAnimation:[self transformAnimation] forKey:@"transformView"];
+    UIView *protectionView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    protectionView.tag = 101;
+    [self.view addSubview:protectionView];
+    CAAnimation *anim = [self transformAnimation];
+    anim.delegate = self;
+    anim.removedOnCompletion = NO;
+    [self.conteinerView.layer addAnimation:anim forKey:@"transformView"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (anim == [self.conteinerView.layer animationForKey:@"transformView"]) {
+        [self.conteinerView.layer removeAllAnimations];
+        [[self.view viewWithTag:101] removeFromSuperview];
+    }
 }
 
 - (CAAnimation *)transformAnimation
