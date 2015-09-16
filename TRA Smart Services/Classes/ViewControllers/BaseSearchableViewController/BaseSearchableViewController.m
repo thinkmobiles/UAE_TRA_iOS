@@ -74,6 +74,7 @@
         if ([subView isKindOfClass:NSClassFromString(@"UINavigationButton")]) {
             UIButton *cancelButton = (UIButton*)subView;
             cancelButton.titleLabel.minimumScaleFactor = 0.5f;
+            [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [cancelButton setTitle:dynamicLocalizedString(@"uiElement.cancelButton.title") forState:UIControlStateNormal];
         }
     }
