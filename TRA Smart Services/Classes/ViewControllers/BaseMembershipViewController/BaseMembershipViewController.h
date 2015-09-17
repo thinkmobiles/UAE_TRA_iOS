@@ -22,8 +22,6 @@ static NSString *const CloseButtonImageName = @"btn_close";
 - (void)prepareNavigationBar;
 - (void)returnKeyDone;
 
-- (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color;
-- (void)addHexagoneOnView:(UIView *)view;
 - (void)configureTextField:(LeftInsetTextField *)textField withImageName:(NSString *)imageName;
 
 @end
