@@ -65,6 +65,10 @@
 		E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07082F31BA7FB7F0057F134 /* Main.storyboard */; };
 		E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */; };
 		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
+		E0FEF6C81BAB0A21005810D4 /* ServiceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */; };
+		E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */; };
+		E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */; };
+		E0FEF6CF1BAB0A33005810D4 /* ServiseSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -256,6 +260,12 @@
 		E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchResultTableViewCell.m; sourceTree = "<group>"; };
 		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
 		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
+		E0FEF6C51BAB0A21005810D4 /* ServiceHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHeaderView.h; sourceTree = "<group>"; };
+		E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHeaderView.m; sourceTree = "<group>"; };
+		E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHeaderView.xib; sourceTree = "<group>"; };
+		E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
+		E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
+		E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiseSelectionView.xib; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -789,6 +799,26 @@
 				E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */,
 			);
 			path = ServicesSelectTableViewCell;
+			sourceTree = "<group>";
+		};
+		E0FEF6C41BAB0A21005810D4 /* ServiceHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEF6C51BAB0A21005810D4 /* ServiceHeaderView.h */,
+				E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */,
+				E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */,
+			);
+			path = ServiceHeaderView;
+			sourceTree = "<group>";
+		};
+		E0FEF6CA1BAB0A33005810D4 /* ServiceSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */,
+				E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */,
+				E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */,
+			);
+			path = ServiceSelectionView;
 			sourceTree = "<group>";
 		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
@@ -1472,6 +1502,8 @@
 			isa = PBXGroup;
 			children = (
 				932C8DBB1BA036C5003107E2 /* BaseXibView */,
+				E0FEF6C41BAB0A21005810D4 /* ServiceHeaderView */,
+				E0FEF6CA1BAB0A33005810D4 /* ServiceSelectionView */,
 				932C8DB51BA03110003107E2 /* UserProfileActionView */,
 				F1F15CC91B96EE4E00891246 /* RatingView */,
 				F1F15CCA1B96EE4E00891246 /* ServiceView */,
@@ -1733,6 +1765,7 @@
 				93A4370A1B8AF64E009299C5 /* Lato-Light.ttf in Resources */,
 				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
 				932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */,
+				E0FEF6CF1BAB0A33005810D4 /* ServiseSelectionView.xib in Resources */,
 				932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */,
@@ -1757,6 +1790,7 @@
 				F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */,
 				932C8DB41BA01A3B003107E2 /* UserProfile.plist in Resources */,
 				E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */,
+				E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */,
 				8467EF281B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib in Resources */,
 				847A847D1B8729E600BB1D80 /* InfoHubTableViewCellEuropeUI.xib in Resources */,
 				F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */,
@@ -1817,6 +1851,7 @@
 				F1A889CC1BA31D82007EDEF7 /* ChangePasswordViewController.m in Sources */,
 				ED2084EF1B5E738600779CBD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */,
+				E0FEF6C81BAB0A21005810D4 /* ServiceHeaderView.m in Sources */,
 				ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */,
 				934628FD1B8D884F0017E4CD /* CAGradientRadialLayer.m in Sources */,
 				ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */,
@@ -1884,6 +1919,7 @@
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
 				9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */,
 				934629041B8E17060017E4CD /* TRAService.m in Sources */,
+				E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */,
 				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,

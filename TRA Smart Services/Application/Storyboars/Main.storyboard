@@ -881,7 +881,7 @@
                                                             <constraint firstAttribute="height" constant="26" id="rot-JV-689"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="0m0-Aq-wXB"/>
                                                         </connections>
@@ -4700,7 +4700,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="33" id="Zob-wc-OQd"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="9jW-oN-JHA" id="tWc-Bd-kyR"/>
                                                         </connections>
