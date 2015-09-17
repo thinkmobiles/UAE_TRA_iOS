@@ -112,6 +112,9 @@ static NSInteger const SeparatorTag = 77;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     [self vizibleTextFieldChangeKeyboard];
+    if (textField.tag == 7) {
+        return NO;
+    }
     return YES;
 }
 #pragma mark - UIPickerViewDataSource
