@@ -299,7 +299,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
         
         CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSLog(@"done");
             weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
             pathAnimation.delegate = self;
             [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
