@@ -45,6 +45,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (strong, nonatomic) CALayer *contentFakeIconLayer;
 @property (strong, nonatomic) CALayer *shadowFakeIconLayer;
 
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
 @end
 
 @implementation FavouriteViewController
@@ -207,7 +209,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
         [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-
+        serviceInfoController.selectedServiceID = [((TRAService *)self.dataSource[self.selectedIndexPath.row]).serviceInternalID integerValue];
         serviceInfoController.fakeBackground = image;
     }
 }
@@ -357,6 +359,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)favouriteServiceInfoButtonDidPressedInCell:(FavouriteTableViewCell *)cell
 {
+    self.selectedIndexPath = [self.tableView indexPathForCell:cell];
     [self performSegueWithIdentifier:ServiceInfoListSegueIdentifier sender:self];
 }
 

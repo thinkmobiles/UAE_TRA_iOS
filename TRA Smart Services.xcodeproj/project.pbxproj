@@ -61,6 +61,7 @@
 		93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A761BA93B5600CCEB22 /* AboutAr.rtf */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
+		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; settings = {ASSET_TAGS = (); }; };
 		E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */; };
 		E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07082F31BA7FB7F0057F134 /* Main.storyboard */; };
 		E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */; };
@@ -254,6 +255,7 @@
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
 		E00A812D1BA0577A00502423 /* HomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
+		E06B05251BABEC6E00365A3A /* ServiceDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceDescription.plist; sourceTree = "<group>"; };
 		E07082F01BA7F96A0057F134 /* HomeSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchResultViewController.h; sourceTree = "<group>"; };
 		E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchResultViewController.m; sourceTree = "<group>"; };
 		E07082F31BA7FB7F0057F134 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1274,6 +1276,7 @@
 				EDA549811B7B514F00440216 /* OtherServices.plist */,
 				93A436E51B85BC08009299C5 /* ServiceInfoList.plist */,
 				932C8DB31BA01A3B003107E2 /* UserProfile.plist */,
+				E06B05251BABEC6E00365A3A /* ServiceDescription.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -1788,6 +1791,7 @@
 				EDA549821B7B514F00440216 /* OtherServices.plist in Resources */,
 				847A84811B8743FC00BB1D80 /* InfoHubCollectionViewCellEuropeUI.xib in Resources */,
 				F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */,
+				E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */,
 				ED982F341B5D24DA00B6B644 /* Assets.xcassets in Resources */,
 				93A437091B8AF64E009299C5 /* Lato-Bold.ttf in Resources */,
 				93D10A751BA93B4500CCEB22 /* AboutEn.rtf in Resources */,
@@ -2043,7 +2047,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2081,7 +2085,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2093,7 +2097,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2102,7 +2106,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "a89017ef-2045-43e7-93e4-a23a93e685a1";
 			};
 			name = Debug;
 		};
@@ -2110,7 +2114,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2119,7 +2123,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinkmobiles.TRA-Smart-Services";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "a89017ef-2045-43e7-93e4-a23a93e685a1";
 			};
 			name = Release;
 		};

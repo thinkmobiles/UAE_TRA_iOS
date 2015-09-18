@@ -4309,23 +4309,21 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="width" secondItem="qiU-yu-9mv" secondAttribute="height" multiplier="6:5" id="IRy-5d-pWl"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muP-dF-MLW">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-wc-b98">
                                                 <rect key="frame" x="20" y="138" width="560" height="382"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="qiU-yu-9mv" secondAttribute="centerX" id="DAa-87-4hc"/>
-                                            <constraint firstItem="muP-dF-MLW" firstAttribute="top" secondItem="qiU-yu-9mv" secondAttribute="bottom" constant="20" id="UCf-DD-h4c"/>
-                                            <constraint firstAttribute="trailing" secondItem="muP-dF-MLW" secondAttribute="trailing" constant="20" id="V3B-hB-zj7"/>
+                                            <constraint firstAttribute="bottom" secondItem="yLL-wc-b98" secondAttribute="bottom" constant="20" id="EM5-CZ-7MN"/>
                                             <constraint firstItem="qiU-yu-9mv" firstAttribute="top" secondItem="wiU-Li-deR" secondAttribute="top" constant="16" id="Y1D-DL-LjM"/>
-                                            <constraint firstItem="muP-dF-MLW" firstAttribute="leading" secondItem="wiU-Li-deR" secondAttribute="leading" constant="20" id="dwM-5u-UD2"/>
-                                            <constraint firstAttribute="bottom" secondItem="muP-dF-MLW" secondAttribute="bottom" constant="20" id="ftA-wJ-pIE"/>
+                                            <constraint firstItem="yLL-wc-b98" firstAttribute="top" secondItem="qiU-yu-9mv" secondAttribute="bottom" constant="20" id="gDM-gx-xjd"/>
+                                            <constraint firstAttribute="trailing" secondItem="yLL-wc-b98" secondAttribute="trailing" constant="20" id="qHO-Ux-wYz"/>
+                                            <constraint firstItem="yLL-wc-b98" firstAttribute="leading" secondItem="wiU-Li-deR" secondAttribute="leading" constant="20" id="vKP-oU-mA3"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -4355,7 +4353,7 @@ a new password will be sent.</string>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="MvO-ma-Cyd" id="5pi-Cl-iyE"/>
-                        <outlet property="descriptionTextView" destination="muP-dF-MLW" id="38L-KA-Ohv"/>
+                        <outlet property="descriptionTextView" destination="yLL-wc-b98" id="H4P-PR-cfh"/>
                         <outlet property="fakeBackgroundImageView" destination="Pra-pJ-EID" id="bh4-mr-gfe"/>
                         <outlet property="logoImageView" destination="qiU-yu-9mv" id="JDU-Xw-cQB"/>
                     </connections>

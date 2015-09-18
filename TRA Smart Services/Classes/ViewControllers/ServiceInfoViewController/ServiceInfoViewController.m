@@ -25,6 +25,8 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 @property (strong, nonatomic) NSArray *dataSource;
 @property (assign, nonatomic) BOOL isControllerPresented;
 
+@property (strong, nonatomic) NSDictionary *currentServiceLocalizedDataSource;
+
 @end
 
 @implementation ServiceInfoViewController
@@ -45,6 +47,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     [super viewWillAppear:animated];
     
     [self reverseDataSourceIfNeeded];
+    [self prepareDataSource];
     [self animateAppearence];
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -123,10 +126,13 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
         
         NSDictionary *dataSource = self.dataSource[((NSIndexPath *)[[self.collectionView indexPathsForSelectedItems] firstObject]).row];
         
+        NSString *detailsText = [self.currentServiceLocalizedDataSource valueForKey:[dataSource valueForKey:@"serviceKeyName"]];
+        
         ServiceDetailedInfoViewController *serviceInfoController = segue.destinationViewController;
         serviceInfoController.fakeBackground = image;
         serviceInfoController.hidesBottomBarWhenPushed = YES;
         serviceInfoController.dataSource = dataSource;
+        serviceInfoController.detailedInfoText = detailsText;
     }
 }
 
@@ -167,6 +173,13 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     } else {
         [self.collectionView reloadData];
     }
+}
+
+- (void)prepareDataSource
+{
+    NSArray *serviceDescription = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceDescription" ofType:@"plist"]];
+    NSDictionary *currentLanguagePlistServices = [DynamicUIService service].language == LanguageTypeArabic ? serviceDescription[1] : serviceDescription[0];
+    self.currentServiceLocalizedDataSource = [currentLanguagePlistServices valueForKey:[NSString stringWithFormat:@"%ld", self.selectedServiceID]];
 }
 
 @end

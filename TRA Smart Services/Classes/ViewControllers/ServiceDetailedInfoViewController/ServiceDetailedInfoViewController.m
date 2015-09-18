@@ -39,10 +39,7 @@
     self.navigationController.navigationBar.hidden = YES;
 
     [self configureViewController];
-
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        self.descriptionTextView.textAlignment = NSTextAlignmentRight;
-    }
+    [self configureDescriptionTextView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,7 +71,7 @@
 
 - (void)localizeUI
 {
-    self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
+
 }
 
 - (void)updateColors
@@ -87,8 +84,20 @@
 - (void)configureViewController
 {
     self.logoImageView.image = [UIImage imageNamed:[self.dataSource valueForKey:@"serviceInfoItemBigLogoName"]];
-    self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
-    self.descriptionTextView.textColor = [UIColor whiteColor];
+}
+
+- (void)configureDescriptionTextView
+{
+    if (self.detailedInfoText && ![self.detailedInfoText isEqualToString:@""]) {
+        self.descriptionTextView.text = self.detailedInfoText;
+    } else {
+        self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
+    }
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        self.descriptionTextView.textAlignment = NSTextAlignmentRight;
+    } else {
+        self.descriptionTextView.textAlignment = NSTextAlignmentLeft;
+    }
 }
 
 @end

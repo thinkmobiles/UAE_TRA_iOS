@@ -106,35 +106,26 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)languageSegmentControllerPressed:(NSUInteger)index
 {
-    LanguageType languageTypeCurrent = LanguageTypeDefault;
     switch (index) {
         case 0: {
             if ([DynamicUIService service].language == LanguageTypeEnglish) {
                 [self transformAnimationConteinerView];
-            } else {
-                return;
             }
-            languageTypeCurrent = LanguageTypeArabic;
+            [[DynamicUIService service] setLanguage:LanguageTypeArabic];
             break;
         }
         case 1: {
             if ([DynamicUIService service].language == LanguageTypeArabic) {
                 [self transformAnimationConteinerView];
-            } else {
-                return;
             }
-            languageTypeCurrent = LanguageTypeEnglish;
+            [[DynamicUIService service] setLanguage:LanguageTypeEnglish];
             break;
         }
     }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [[DynamicUIService service] setLanguage:languageTypeCurrent];
     [self localizeUI];
     [AppHelper localizeTitlesOnTabBar];
     [AppHelper updateFontsOnTabBar];
     [self updateLanguageSegmentControlPosition];
-    });
 }
 
 - (IBAction)sliderDidChangeValue:(UISlider *)sender
@@ -539,14 +530,12 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)setCurrentColorThemaUserDefaults:(NSInteger)currentNumberColorTheme
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setInteger:currentNumberColorTheme forKey:@"currentNumberColorTheme"];
+    [[NSUserDefaults standardUserDefaults] setInteger:currentNumberColorTheme forKey:@"currentNumberColorTheme"];
 }
 
 - (NSInteger)currentColorThemaUserDefaults
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger result = (NSInteger) [userDefaults integerForKey:@"currentNumberColorTheme"];
+    NSInteger result = (NSInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"currentNumberColorTheme"];
     return result;
 }
 
