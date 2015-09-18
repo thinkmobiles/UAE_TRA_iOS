@@ -6,7 +6,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>http://134.249.164.53:7791</key>
+			<key>134.249.164.53:7791</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
@@ -15,7 +15,7 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-			<key>http://mobws.tra.gov.ae</key>
+			<key>mobws.tra.gov.ae</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
