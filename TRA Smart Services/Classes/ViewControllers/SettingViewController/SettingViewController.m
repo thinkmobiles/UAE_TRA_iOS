@@ -106,26 +106,35 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)languageSegmentControllerPressed:(NSUInteger)index
 {
+    LanguageType languageTypeCurrent = LanguageTypeDefault;
     switch (index) {
         case 0: {
             if ([DynamicUIService service].language == LanguageTypeEnglish) {
                 [self transformAnimationConteinerView];
+            } else {
+                return;
             }
-            [[DynamicUIService service] setLanguage:LanguageTypeArabic];
+            languageTypeCurrent = LanguageTypeArabic;
             break;
         }
         case 1: {
             if ([DynamicUIService service].language == LanguageTypeArabic) {
                 [self transformAnimationConteinerView];
+            } else {
+                return;
             }
-            [[DynamicUIService service] setLanguage:LanguageTypeEnglish];
+            languageTypeCurrent = LanguageTypeEnglish;
             break;
         }
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [[DynamicUIService service] setLanguage:languageTypeCurrent];
     [self localizeUI];
     [AppHelper localizeTitlesOnTabBar];
     [AppHelper updateFontsOnTabBar];
     [self updateLanguageSegmentControlPosition];
+    });
 }
 
 - (IBAction)sliderDidChangeValue:(UISlider *)sender

@@ -69,6 +69,7 @@
 		E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */; };
 		E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */; };
 		E0FEF6CF1BAB0A33005810D4 /* ServiseSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */; };
+		E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -266,6 +267,8 @@
 		E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
 		E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
 		E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiseSelectionView.xib; sourceTree = "<group>"; };
+		E0FEF6D11BAB0E14005810D4 /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
+		E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -821,6 +824,15 @@
 			path = ServiceSelectionView;
 			sourceTree = "<group>";
 		};
+		E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E0FEF6D11BAB0E14005810D4 /* VerificationIMEIViewController.h */,
+				E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */,
+			);
+			path = VerificationIMEIViewController;
+			sourceTree = "<group>";
+		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +935,7 @@
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
 				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
+				E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1823,6 +1836,7 @@
 				84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */,
 				F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
+				E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
 				93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */,
