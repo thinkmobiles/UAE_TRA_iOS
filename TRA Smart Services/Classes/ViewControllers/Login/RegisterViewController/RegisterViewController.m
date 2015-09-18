@@ -205,8 +205,7 @@ static NSInteger const SeparatorTag = 77;
 - (void)doneFilteringButtonTapped
 {
     [self.selectStateTextField resignFirstResponder];
-    CGFloat offsetForScrollViewY = self.registerScrollView.contentSize.height - self.registerScrollView.frame.size.height;
-    [self.registerScrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
+    [self.mobileTextField becomeFirstResponder];
 }
 
 #pragma mark - Keyboard

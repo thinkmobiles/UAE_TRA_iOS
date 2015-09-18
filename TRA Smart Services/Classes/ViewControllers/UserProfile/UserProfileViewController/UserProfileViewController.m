@@ -113,7 +113,7 @@
     }
     self.backgroundImageView.image = backgroundImage;
 
-    [super addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor]];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 #pragma mark - Private
@@ -127,7 +127,7 @@
 {
     self.userNameLabel.text = [[KeychainStorage userName] capitalizedString];
     self.userLogoImageView.image = [UIImage imageNamed:@"test"];
-    [super addHexagoneOnView:self.userLogoImageView];
+    [AppHelper addHexagoneOnView:self.userLogoImageView];
 }
 
 - (void)prepareNavigationBar

@@ -288,7 +288,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
-    [self addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor]];
+    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 - (void)setRTLArabicUI
@@ -355,18 +355,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     maskLayer.frame = view.layer.bounds;
     maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
     view.layer.mask = maskLayer;
-}
-
-- (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color
-{
-    CAShapeLayer *borderlayer = [CAShapeLayer layer];
-    borderlayer.fillColor = [UIColor clearColor].CGColor;
-    borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
-    borderlayer.lineWidth = 3.f;
-    borderlayer.frame = layer.bounds;
-    borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
-    
-    [layer addSublayer:borderlayer];
 }
 
 @end

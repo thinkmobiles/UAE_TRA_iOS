@@ -63,7 +63,7 @@
     }
     self.backgroundImageView.image = backgroundImage;
     
-    [super addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor]];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 - (void)prepareNavigationBar
@@ -96,7 +96,7 @@
 {
     self.title = dynamicLocalizedString(@"userProfile.title");
     self.userLogoImageView.image = [UIImage imageNamed:@"test"];
-    [super addHexagoneOnView:self.userLogoImageView];
+    [AppHelper addHexagoneOnView:self.userLogoImageView];
 }
 
 - (void)updateUI:(NSTextAlignment)textAlignment

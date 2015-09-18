@@ -69,6 +69,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     [super viewDidLoad];
     
     self.selectedServiceIDHomeSearchViewController = - 1;
+    self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
@@ -114,6 +115,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     [self.speedAccessDataSource removeAllObjects];
     [self.speedAccessCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     
+    [self.topView stopAllOperations];
     [self.topView setStartApearenceAnimationParameters];
 }
 

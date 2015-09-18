@@ -36,6 +36,8 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
+@property (strong, nonatomic) NSOperationQueue *animOperationQueue;
+
 @end
 
 @implementation HomeTopBarView
@@ -235,63 +237,73 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.position = informationMovePoint;
 }
 
+- (void)stopAllOperations
+{
+    [self.animOperationQueue cancelAllOperations];
+    self.isAppearenceAnimationCompleted = YES;
+}
+
 - (void)animateTopViewApearence
 {
-    CGFloat AnimationTimeForLine = 0.3f;
+    CGFloat AnimationTimeForLine = 0.15f;
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.duration = AnimationTimeForLine;
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-
+    
     __weak typeof(self) weakSelf = self;
     CGFloat delayForTopDrawing = 0.05;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
-        [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];
-        weakSelf.hexagonicalTopLayer.opacity = 1.0f;
-        weakSelf.avatarImageLayer.opacity = 1.f;
-    });
-    
-    CGFloat delayForInfoDrawing = self.isFakeButtonsOnTop ? AnimationTimeForLine * (5. / 8.) : AnimationTimeForLine * (6. / 8.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.informationLayer.opacity = 1.f;
-    });
-    
-    CGFloat delayForSearchDrawing = AnimationTimeForLine * (7. / 8.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForSearchDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.searchLayer.opacity = 1.f;
-    });
-    
-    CGFloat delayForMostRightBottomPart = AnimationTimeForLine;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMostRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.bottomAllwaysVisibleHexagonLayer.opacity = 1.f;
-        [weakSelf.bottomAllwaysVisibleHexagonLayer addAnimation:pathAnimation forKey:nil];
-    });
-    
-    CGFloat delayForRightBottomPart = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.bottomRightHexagonLayer.opacity = 1.f;
-        [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
-    });
-    
-    CGFloat delayForNotificationLayer = self.isFakeButtonsOnTop ? AnimationTimeForLine * (6. / 8.) : AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.notificationLayer.opacity = 1.f;
-    });
-
-    CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.bottomMidHexagonLayer.opacity = 1.f;
-        [weakSelf.bottomMidHexagonLayer addAnimation:pathAnimation forKey:nil];
-    });
-    
-    CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
-        pathAnimation.delegate = self;
-        [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
-    });
+    self.animOperationQueue = [[NSOperationQueue alloc] init];
+    self.animOperationQueue.maxConcurrentOperationCount = 1;
+    [self.animOperationQueue addOperationWithBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
+            [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];
+            weakSelf.hexagonicalTopLayer.opacity = 1.0f;
+            weakSelf.avatarImageLayer.opacity = 1.f;
+        });
+        
+        CGFloat delayForInfoDrawing = self.isFakeButtonsOnTop ? AnimationTimeForLine * (5. / 8.) : AnimationTimeForLine * (6. / 8.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.informationLayer.opacity = 1.f;
+        });
+        
+        CGFloat delayForSearchDrawing = AnimationTimeForLine * (7. / 8.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForSearchDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.searchLayer.opacity = 1.f;
+        });
+        
+        CGFloat delayForMostRightBottomPart = AnimationTimeForLine;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMostRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.bottomAllwaysVisibleHexagonLayer.opacity = 1.f;
+            [weakSelf.bottomAllwaysVisibleHexagonLayer addAnimation:pathAnimation forKey:nil];
+        });
+        
+        CGFloat delayForRightBottomPart = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.bottomRightHexagonLayer.opacity = 1.f;
+            [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
+        });
+        
+        CGFloat delayForNotificationLayer = self.isFakeButtonsOnTop ? AnimationTimeForLine * (6. / 8.) : AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.notificationLayer.opacity = 1.f;
+        });
+        
+        CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.bottomMidHexagonLayer.opacity = 1.f;
+            [weakSelf.bottomMidHexagonLayer addAnimation:pathAnimation forKey:nil];
+        });
+        
+        CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
+            pathAnimation.delegate = self;
+            [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
+        });
+    }];
 }
 
 - (void)setStartApearenceAnimationParameters
@@ -299,6 +311,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.opacity = 0.f;
     self.searchLayer.opacity = 0.f;
     self.notificationLayer.opacity = 0.f;
+    
     self.bottomRightHexagonLayer.opacity = 0.f;
     self.bottomMidHexagonLayer.opacity = 0.f;
     self.bottomLeftHexagonLayer.opacity = 0.f;
