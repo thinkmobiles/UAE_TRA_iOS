@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -137,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
-                                <rect key="frame" x="187" y="265" width="227" height="21"/>
+                                <rect key="frame" x="188" y="265" width="225" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -559,7 +560,7 @@
                         <viewControllerLayoutGuide type="bottom" id="QBG-7A-aNE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JOr-e3-iCe">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fc5-9h-1sM" userLabel="FakeBackground - UIIMageView">
@@ -577,12 +578,14 @@
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeSearchCell" textLabel="r0F-g9-flV" style="IBUITableViewCellStyleDefault" id="Oci-QO-asg">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -901,9 +904,10 @@
                                                         </constraints>
                                                         <prototypes>
                                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellEuropeUI" id="nx6-VZ-keo" userLabel="EuropeUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="33" y="118" width="534" height="40"/>
+                                                                <rect key="frame" x="0.0" y="22" width="540" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nx6-VZ-keo" id="dbb-Y6-hBa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tuQ-0d-2ew" userLabel="Select - Image View">
@@ -940,9 +944,10 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellArabicUI" id="OMC-VN-Voi" userLabel="ArabicUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="33" y="118" width="534" height="40"/>
+                                                                <rect key="frame" x="0.0" y="66" width="540" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OMC-VN-Voi" id="iGV-CD-cNM">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-6l-1tN" userLabel="Select - Image View">
@@ -2039,9 +2044,10 @@ a new password will be sent.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCellEurope" rowHeight="95" id="fGW-EM-fIu" customClass="NotificationsTableViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <rect key="frame" x="0.0" y="22" width="600" height="95"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGW-EM-fIu" id="0sw-fa-uP6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dh-nF-opw" userLabel="Container - UIView">
@@ -2137,9 +2143,10 @@ a new password will be sent.</string>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCellArabic" rowHeight="95" id="u1H-gi-cQS" customClass="NotificationsTableViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <rect key="frame" x="0.0" y="117" width="600" height="95"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u1H-gi-cQS" id="pA7-Yx-NLf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSK-E7-1rf" userLabel="Container - UIView">
@@ -2304,9 +2311,10 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeSearchResultCell" rowHeight="85" id="8s4-a0-fdt" customClass="HomeSearchResultTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8s4-a0-fdt" id="Yuo-YQ-nR6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right237" translatesAutoresizingMaskIntoConstraints="NO" id="TOY-Ab-cLd">
@@ -2390,7 +2398,7 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT A WAY TO REGISTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0c-id-XMz" userLabel="RegisterInformation - UILAbel">
-                                <rect key="frame" x="16" y="268" width="568" height="21"/>
+                                <rect key="frame" x="20" y="268" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BtD-rt-d1s"/>
                                 </constraints>
@@ -2423,7 +2431,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirates ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-eZ-AB6" userLabel="EmiratesID - UILabel">
-                                <rect key="frame" x="31" y="618" width="249" height="50"/>
+                                <rect key="frame" x="35" y="618" width="245" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Sxh-mp-89b"/>
                                 </constraints>
@@ -2432,7 +2440,7 @@ a new password will be sent.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fil-up Form" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-hv-0rk" userLabel="Fil-upForm - UILabel">
-                                <rect key="frame" x="320" y="618" width="249" height="50"/>
+                                <rect key="frame" x="320" y="618" width="245" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rf6-zi-UEl"/>
                                 </constraints>
@@ -2583,9 +2591,10 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="flatResultTableViewCellIdentifier" rowHeight="25" id="jdb-ge-Bbo" customClass="DomainInfoTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jdb-ge-Bbo" id="bFy-Mb-Cqn">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLI-ID-tMY" userLabel="Type - UILabel">
@@ -2622,9 +2631,10 @@ a new password will be sent.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailedResultTableViewCellIdentifier" rowHeight="75" id="CIV-u8-uLJ" customClass="DomainInfoTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="47" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CIV-u8-uLJ" id="ctw-k1-IQp">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujs-eG-Qin" userLabel="Type - UILabel">
@@ -3423,7 +3433,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="R3h-bG-dBA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pek-Pl-suH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="pub-al-gOK" userLabel="Background - UIIMageView">
@@ -3464,9 +3474,10 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="europianUserProfileCell" rowHeight="50" id="Kbr-cn-tzD" customClass="UserProfileTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kbr-cn-tzD" id="wre-cM-TdN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afv-l8-ZWG" userLabel="Container - UIView">
@@ -3533,9 +3544,10 @@ a new password will be sent.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="arabicUserProfileCell" rowHeight="50" id="UTv-P3-Pyy" customClass="UserProfileTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UTv-P3-Pyy" id="qk7-PJ-Y0e">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7A-DK-6Yq" userLabel="Container - UIView">
@@ -3665,7 +3677,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="ie3-Q5-Cy9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q1j-1t-85u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-Bg-wVf" userLabel="ContentView">
@@ -3811,7 +3823,7 @@ a new password will be sent.</string>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="XP6-rA-Ago" customClass="CategoryCollectionViewCell">
-                                                <rect key="frame" x="5" y="11" width="90" height="110"/>
+                                                <rect key="frame" x="5" y="4" width="90" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="110"/>
@@ -3988,7 +4000,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="ljP-gJ-ehm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rXf-xI-ix2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-DV-eBj" userLabel="IMEI - TextField">
@@ -4060,7 +4072,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="ycq-bj-JWG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2h2-mm-xIB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="772-Rq-o7n" userLabel="BarcodeReaderView">
@@ -4263,7 +4275,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="Qsf-MT-PW1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2OD-Kt-iGO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Service" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fvw-bR-NLM">
@@ -4354,7 +4366,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="pSd-kN-qYz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SMr-ZX-DHO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="agV-IF-JEb">
@@ -4381,7 +4393,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND8-GO-Vhl">
-                                <rect key="frame" x="16" y="213" width="568" height="30"/>
+                                <rect key="frame" x="20" y="213" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -4450,7 +4462,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="Dkl-MC-02B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6HI-cz-map">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOn-cB-BR9" userLabel="Result - label">
@@ -4508,7 +4520,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="L8g-N7-vCI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I5A-gx-krg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL to report" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-YV-Aig">
@@ -4748,9 +4760,10 @@ a new password will be sent.</string>
                                                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <prototypes>
                                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellEuropeUI" id="Nym-mY-0bz" userLabel="EuropeUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="0.0" y="0.0" width="564" height="44"/>
+                                                                <rect key="frame" x="0.0" y="22" width="534" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nym-mY-0bz" id="iu5-d9-BnI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="534" height="40"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxq-R8-KDO" userLabel="Select - Image View">
@@ -4787,9 +4800,10 @@ a new password will be sent.</string>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellArabicUI" id="vj8-5I-e5t" userLabel="ArabicUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="0.0" y="0.0" width="564" height="44"/>
+                                                                <rect key="frame" x="0.0" y="62" width="534" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vj8-5I-e5t" id="3zX-Em-2HS">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="534" height="40"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qx6-Hv-Fga" userLabel="Select - Image View">
@@ -4923,7 +4937,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="H12-nI-23z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Oyd-8j-Png">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6D5-Qo-oCu">
@@ -5021,7 +5035,7 @@ a new password will be sent.</string>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="serviceInfoCell" id="0vM-PL-n2L" customClass="ServiceInfoCollectionViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="158"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="144" height="158"/>
@@ -5133,7 +5147,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="3sm-6D-lco"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XQv-fE-Ye2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
@@ -5413,7 +5427,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="6NQ-Hb-UlE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gZN-D6-NDL" userLabel="Content - UiView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uB9-Ex-EoQ" userLabel="Avaliability - Button">
@@ -5564,7 +5578,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="95B-9u-Wt4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uXL-sH-5Za">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="H8U-JV-y79" userLabel="Background - UIImageView">
@@ -5792,7 +5806,7 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="eOR-uz-uDM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="p81-Te-gtp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_back_orange" translatesAutoresizingMaskIntoConstraints="NO" id="fsN-Pi-fGc" userLabel="Background - UIImageView">
@@ -5829,22 +5843,22 @@ a new password will be sent.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TT-t6-aGe" userLabel="TextFieldContainer">
-                                <rect key="frame" x="0.0" y="130" width="600" height="170"/>
+                                <rect key="frame" x="4" y="130" width="592" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To reset your password, please type your email in the field below and a temporary password will by send to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-6S-px6">
-                                        <rect key="frame" x="30" y="8" width="540" height="11"/>
+                                        <rect key="frame" x="30" y="8" width="532" height="11"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-yK-QQ9" userLabel="Email - UILabel">
-                                        <rect key="frame" x="30" y="39" width="540" height="9"/>
+                                        <rect key="frame" x="30" y="39" width="532" height="9"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0N3-AX-ILZ" userLabel="Email - UITextField">
-                                        <rect key="frame" x="30" y="52" width="540" height="26"/>
+                                        <rect key="frame" x="30" y="52" width="532" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="NiF-Re-e67"/>
                                         </constraints>
@@ -5855,14 +5869,14 @@ a new password will be sent.</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-mc-P4d" userLabel="EmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="78" width="540" height="1"/>
+                                        <rect key="frame" x="30" y="78" width="532" height="1"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="86k-dR-y42"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE YOUR EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-9B-Oya" userLabel="RetypeEmail - UILabel">
-                                        <rect key="frame" x="30" y="94" width="540" height="12"/>
+                                        <rect key="frame" x="30" y="94" width="532" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="zLj-Gn-W9x"/>
                                         </constraints>
@@ -5871,7 +5885,7 @@ a new password will be sent.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM1-jR-3O2" userLabel="RetypeEmail - UITextField">
-                                        <rect key="frame" x="30" y="110" width="540" height="26"/>
+                                        <rect key="frame" x="30" y="110" width="532" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="gdL-mI-JQY"/>
                                         </constraints>
@@ -5882,7 +5896,7 @@ a new password will be sent.</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-tR-6cj" userLabel="RetypeEmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="136" width="540" height="1"/>
+                                        <rect key="frame" x="30" y="136" width="532" height="1"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="gxh-Xi-3hq"/>
