@@ -62,6 +62,8 @@
 		93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A931BAD913E00CCEB22 /* AligmentLabel.m */; };
 		93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A971BAD93B300CCEB22 /* AligmentTextField.m */; };
 		93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */; };
+		93D10A9E1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */; };
+		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
 		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; };
@@ -260,6 +262,9 @@
 		93D10A971BAD93B300CCEB22 /* AligmentTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AligmentTextField.m; sourceTree = "<group>"; };
 		93D10A9A1BAD9A8800CCEB22 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceViewControllersIdentifiers.plist; sourceTree = "<group>"; };
+		93D10A9F1BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FavouriteViewController+DeleteAction.h"; sourceTree = "<group>"; };
+		93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FavouriteViewController+DeleteAction.m"; sourceTree = "<group>"; };
 		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
@@ -1315,6 +1320,7 @@
 				93A436E51B85BC08009299C5 /* ServiceInfoList.plist */,
 				932C8DB31BA01A3B003107E2 /* UserProfile.plist */,
 				E06B05251BABEC6E00365A3A /* ServiceDescription.plist */,
+				93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -1363,6 +1369,8 @@
 			children = (
 				EDAA8EA11B7E3F4700269F1A /* FavouriteViewController.h */,
 				EDAA8EA21B7E3F4700269F1A /* FavouriteViewController.m */,
+				93D10A9F1BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.h */,
+				93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */,
 			);
 			path = FavouriteViewController;
 			sourceTree = "<group>";
@@ -1837,6 +1845,7 @@
 				93A436F81B861455009299C5 /* FavouriteArabicTableViewCell.xib in Resources */,
 				ED982F351B5D24DA00B6B644 /* Localizable.strings in Resources */,
 				93A4370B1B8AF64E009299C5 /* Lato-Regular.ttf in Resources */,
+				93D10A9E1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist in Resources */,
 				93A436FD1B862123009299C5 /* DroidKufi-Regular.ttf in Resources */,
 				93A437081B8AF64E009299C5 /* Lato-Black.ttf in Resources */,
 				847A84831B87441200BB1D80 /* InfoHubCollectionViewCellArabicUI.xib in Resources */,
@@ -1961,6 +1970,7 @@
 				93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
+				93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */,
 				932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
 				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,

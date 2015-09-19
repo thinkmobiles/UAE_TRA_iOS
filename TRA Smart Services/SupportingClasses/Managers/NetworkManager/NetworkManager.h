@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, ServiceType) {
 };
 
 typedef NS_ENUM(NSUInteger, ComplianType) {
-    ComplianTypeCustomProvider,
+    ComplianTypeCustomProvider = 0,
     ComplianTypeTRAService,
     ComplianTypeEnquires
 };

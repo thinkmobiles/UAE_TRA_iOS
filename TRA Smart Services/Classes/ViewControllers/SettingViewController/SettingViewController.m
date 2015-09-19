@@ -486,7 +486,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)setRTLArabicUI
 {
-    [self transformUILayer:CATransform3DMakeScale(-1, 1, 1)];
+    [self transformUILayer:TRANFORM_3D_SCALE];
     
     self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(- optionScaleSwitch, optionScaleSwitch, 1);
     self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(- optionScaleSwitch, optionScaleSwitch, 1);

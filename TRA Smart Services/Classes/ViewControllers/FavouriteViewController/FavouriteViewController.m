@@ -12,8 +12,8 @@
 #import "Animation.h"
 #import "ServiceInfoViewController.h"
 #import "CompliantViewController.h"
+#import "FavouriteViewController+DeleteAction.h"
 
-static CGFloat const AnimationDuration = 0.3f;
 static CGFloat const DefaultOffsetForElementConstraintInCell = 20.f;
 static CGFloat const SummOfVerticalOffsetsForCell = 85.f;
 
@@ -23,7 +23,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 @interface FavouriteViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *placeHolderView;
 @property (weak, nonatomic) IBOutlet UIButton *addFavouriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *addServiceHiddenButton;
@@ -37,10 +36,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
 
 @property (assign, nonatomic) BOOL removeProcessIsActive;
-
-@property (strong, nonatomic) CALayer *arcDeleteZoneLayer;
-@property (strong, nonatomic) CALayer *contentFakeIconLayer;
-@property (strong, nonatomic) CALayer *shadowFakeIconLayer;
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
@@ -86,6 +81,11 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [self showPlaceHolderIfNeeded];
 }
 
+- (CGFloat)headerHeight
+{
+    return self.headerAddServiceView.frame.size.height;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)addFavouriteButtonPress:(id)sender
@@ -102,12 +102,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FavouriteTableViewCell *cell;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteArabicCellIdentifier forIndexPath:indexPath];
-    } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteEuroCellIdentifier forIndexPath:indexPath];
-    }
+    NSString *cellIdentifier = self.dynamicService.language == LanguageTypeArabic ? FavouriteArabicCellIdentifier : FavouriteEuroCellIdentifier;
+    FavouriteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -117,7 +113,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *serviceTitle = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
-    NSDictionary *attributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:12]};
+    UIFont *font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:12.f] : [UIFont latoRegularWithSize:12.f];
+    NSDictionary *attributes = @{ NSFontAttributeName :font };
 
     CGSize textSize = [serviceTitle sizeWithAttributes:attributes];
     CGFloat widthOfViewWithImage = 85.f;
@@ -143,8 +140,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIColor *pairCellColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.1f];
     cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
-    cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
+    TRAService *traService = (TRAService *)self.dataSource[indexPath.row];
+
+    cell.logoImage = [UIImage imageWithData:traService.serviceIcon];
+    cell.descriptionText = dynamicLocalizedString(traService.serviceName);
     cell.delegate = self;
 }
 
@@ -182,75 +181,27 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     if ([segue.identifier isEqualToString:ServiceInfoListSegueIdentifier]) {
         ServiceInfoViewController *serviceInfoController = segue.destinationViewController;
         serviceInfoController.hidesBottomBarWhenPushed = YES;
-
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-        [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
         serviceInfoController.selectedServiceID = [((TRAService *)self.dataSource[self.selectedIndexPath.row]).serviceInternalID integerValue];
-        serviceInfoController.fakeBackground = image;
+        serviceInfoController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
     }
 }
 
 - (void)performNavigationToServiceWithIndex:(NSUInteger)navigationIndex
 {
-    UIViewController *selectedService;
-    switch (navigationIndex) {
-        case 2: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"checkIMEIID"];
-            break;
-        }
-        case 3: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileBrandID"];
-            break;
-        }
-        case 4: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"feedbackID"];
-            break;
-        }
-        case 5: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"spamReportID"];
-            break;
-        }
-        case 6: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"helpSalimID"];
-            break;
-        }
-        case 7: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
-            break;
-        }
-        case 8: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"coverageID"];
-            break;
-        }
-        case 9: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"internetSpeedID"];
-            break;
-        }
-        case 12:
-        case 13:
-        case 10: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"compliantID"];
-            if (navigationIndex == 10) {
-                ((CompliantViewController *)selectedService).type = ComplianTypeCustomProvider;
-            } else if (navigationIndex == 12) {
-                ((CompliantViewController *)selectedService).type = ComplianTypeEnquires;
-            } else if (navigationIndex == 13) {
-                ((CompliantViewController *)selectedService).type = ComplianTypeTRAService;
-            }
-            break;
-        }
-        case 11: {
-            selectedService = [self.storyboard instantiateViewControllerWithIdentifier:@"suggestionID"];
-            break;
-        }
-        default:
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-            break;
+    NSArray *serviceIdentifiers = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceViewControllersIdentifiers" ofType:@"plist"]];
+    
+    UIViewController *selectedService = [self.storyboard instantiateViewControllerWithIdentifier:serviceIdentifiers[navigationIndex]];
+    if (navigationIndex == 10) {
+        ((CompliantViewController *)selectedService).type = ComplianTypeCustomProvider;
+    } else if (navigationIndex == 12) {
+        ((CompliantViewController *)selectedService).type = ComplianTypeEnquires;
+    } else if (navigationIndex == 13) {
+        ((CompliantViewController *)selectedService).type = ComplianTypeTRAService;
     }
-    [self.navigationController pushViewController:selectedService animated:YES];
+
+    if (selectedService) {
+        [self.navigationController pushViewController:selectedService animated:YES];
+    }
 }
 
 #pragma mark - Private
@@ -327,7 +278,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
             snapshotView.alpha = 0.f;
             [self.tableView addSubview:snapshotView];
             
-            [self drawDeleteArea];
+            [self drawDeleteAreaOnTable:self.tableView];
             
             [UIView animateWithDuration:0.25f animations:^{
                 center.y = location.y;
@@ -406,162 +357,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     return isInRemoveArea;
 }
 
-#pragma mark - Drawings
-
-- (UIColor *)currentDeleteAreaColor
-{
-    UIColor *deleteAreaColor = [[UIColor redColor] colorWithAlphaComponent:0.8f];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        deleteAreaColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.8f];
-    }
-    return deleteAreaColor;
-}
-
-- (void)drawDeleteArea
-{
-    [self prepareArcLayer];
-    
-    CGFloat heightOfScreen = [UIScreen mainScreen].bounds.size.height;
-    CGFloat heightOfBottomDeletePart = heightOfScreen * 0.165;
-    CGFloat startY = heightOfScreen - heightOfBottomDeletePart - ((UITabBarController *)[AppHelper rootViewController]).tabBar.frame.size.height - self.headerAddServiceView.frame.size.height;
-    CGFloat arcHeight = 35.f;
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat arcRadius = arcHeight / 2 + (width * width)/ (8 * arcHeight);
-    
-    UIBezierPath *arcBezierPath = [UIBezierPath bezierPath];
-    [arcBezierPath moveToPoint:CGPointMake(0, startY)];
-    [arcBezierPath addArcWithCenter:CGPointMake(width / 2, startY + arcRadius - heightOfBottomDeletePart) radius:arcRadius startAngle:0 endAngle:180 clockwise:YES];
-    
-    [self applyMaskToArcLayerWithPath:arcBezierPath];
-    
-    self.contentFakeIconLayer = [CALayer layer];
-    CGFloat contentHeight = 50.f;
-    CGFloat contentWidth = 44.f;
-    self.contentFakeIconLayer.backgroundColor = [self currentDeleteAreaColor].CGColor;
-    CGRect contentLayerRect = CGRectMake(width / 2 - contentWidth / 2, startY - heightOfBottomDeletePart / 2 , contentWidth, contentHeight);
-    self.contentFakeIconLayer.frame = contentLayerRect;
-    
-    CGRect centerRect = CGRectMake(contentLayerRect.size.width * 0.25, contentLayerRect.size.height * 0.25, contentLayerRect.size.width * 0.5, contentLayerRect.size.height * 0.5);
-    CALayer *imageLayer = [CALayer layer];
-    imageLayer.frame = centerRect;
-    imageLayer.backgroundColor = [UIColor clearColor].CGColor;
-    imageLayer.contents =(__bridge id __nullable)([UIImage imageNamed:@"ic_remove_red"]).CGImage;
-    imageLayer.contentsGravity = kCAGravityResizeAspect;
-    
-    [self.contentFakeIconLayer addSublayer:imageLayer];
-    
-    CAShapeLayer *hexMaskLayer = [CAShapeLayer layer];
-    hexMaskLayer.frame = self.contentFakeIconLayer.bounds;
-    hexMaskLayer.path = [AppHelper hexagonPathForRect:self.contentFakeIconLayer.bounds].CGPath;
-    self.contentFakeIconLayer.mask = hexMaskLayer;
-    
-    [self addShadowForContentLayerInRect:contentLayerRect];
-    
-    [self.arcDeleteZoneLayer addSublayer:self.contentFakeIconLayer];
-    [self.arcDeleteZoneLayer insertSublayer:self.shadowFakeIconLayer below:self.contentFakeIconLayer];
-    [self.tableView.layer addSublayer:self.arcDeleteZoneLayer];
-    
-    [self animateDeleteZoneAppearence];
-}
-
-- (void)prepareArcLayer
-{
-    self.arcDeleteZoneLayer = [CALayer layer];
-    self.arcDeleteZoneLayer.frame = self.tableView.bounds;
-    self.arcDeleteZoneLayer.backgroundColor = [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
-    self.arcDeleteZoneLayer.masksToBounds = YES;
-}
-
-- (void)applyMaskToArcLayerWithPath:(UIBezierPath *)arcBezierPath
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = self.arcDeleteZoneLayer.bounds;
-    maskLayer.path = arcBezierPath.CGPath;
-    maskLayer.shouldRasterize = YES;
-    maskLayer.rasterizationScale = [UIScreen mainScreen].scale * 2.;
-    maskLayer.contentsScale = [UIScreen mainScreen].scale;
-    self.arcDeleteZoneLayer.mask = maskLayer;
-}
-
-- (void)addShadowForContentLayerInRect:(CGRect)contentLayerRect
-{
-    CGFloat shadowOffset = 5.f;
-    CGRect shadowRect = CGRectMake(contentLayerRect.origin.x - shadowOffset, contentLayerRect.origin.y - shadowOffset, contentLayerRect.size.width + shadowOffset * 2, contentLayerRect.size.height + shadowOffset * 2);
-    self.shadowFakeIconLayer = [CALayer layer];
-    self.shadowFakeIconLayer.frame = shadowRect;
-    [self.shadowFakeIconLayer setShadowPath:[AppHelper hexagonPathForRect:self.shadowFakeIconLayer.bounds].CGPath];
-    [self.shadowFakeIconLayer setShadowOffset:CGSizeMake(0, 0)];
-    [self.shadowFakeIconLayer setShadowRadius:5.f];
-    [self.shadowFakeIconLayer setShadowOpacity:0.2f];
-}
-
-- (void)animateDeleteZoneAppearence
-{
-    CGPoint endPoint = self.arcDeleteZoneLayer.position;
-    self.arcDeleteZoneLayer.position = CGPointMake(self.arcDeleteZoneLayer.position.x, self.arcDeleteZoneLayer.position.y + self.arcDeleteZoneLayer.bounds.size.height / 2);
-    
-    CABasicAnimation *positionAmimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    positionAmimation.fromValue = [NSValue valueWithCGPoint:self.arcDeleteZoneLayer.position];
-    positionAmimation.toValue = [NSValue valueWithCGPoint:endPoint];
-    positionAmimation.duration = AnimationDuration / 2;
-    
-    CGPoint endPointForDeleteIcon = self.shadowFakeIconLayer.position;
-    CGPoint startPoint = CGPointMake(self.arcDeleteZoneLayer.position.x, self.arcDeleteZoneLayer.position.y + self.arcDeleteZoneLayer.bounds.size.height);
-    CGPoint midPoint = CGPointMake(endPointForDeleteIcon.x, endPointForDeleteIcon.y - 40); //40 offset
-    
-    self.shadowFakeIconLayer.position = startPoint;
-    self.contentFakeIconLayer.position = startPoint;
-    
-    CAKeyframeAnimation * springAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    springAnim.values = @[
-                          [NSValue valueWithCGPoint:startPoint],
-                          [NSValue valueWithCGPoint:midPoint],
-                          [NSValue valueWithCGPoint:endPointForDeleteIcon]
-                          ];
-    springAnim.duration = AnimationDuration;
-    springAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    
-    [self.arcDeleteZoneLayer addAnimation:positionAmimation forKey:nil];
-    [self.shadowFakeIconLayer addAnimation:springAnim forKey:nil];
-    [self.contentFakeIconLayer addAnimation:springAnim forKey:nil];
-    
-    self.arcDeleteZoneLayer.position = endPoint;
-    self.shadowFakeIconLayer.position = endPointForDeleteIcon;
-    self.contentFakeIconLayer.position = endPointForDeleteIcon;
-}
-
-- (void)selectDeleteZone:(BOOL)select
-{
-    self.shadowFakeIconLayer.shadowOpacity = select ? 0.02f : 0.2f;
-    self.contentFakeIconLayer.opacity = select ? 0.5 : 1.0;
-    self.arcDeleteZoneLayer.backgroundColor = select ? [[self currentDeleteAreaColor] colorWithAlphaComponent:0.7f].CGColor : [[self currentDeleteAreaColor] colorWithAlphaComponent:0.3f].CGColor;
-}
-
-- (void)animateDeleteZoneDisapearing
-{
-    CGPoint startPoint = CGPointMake(self.arcDeleteZoneLayer.position.x, self.arcDeleteZoneLayer.position.y);
-    CGPoint midPoint = CGPointMake(startPoint.x, startPoint.y + 10);
-    CGPoint endPoint = CGPointMake(self.arcDeleteZoneLayer.position.x, self.arcDeleteZoneLayer.position.y + self.arcDeleteZoneLayer.frame.size.height / 2);
-    
-    CAKeyframeAnimation *disappearAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    disappearAnimation.values = @[
-                          [NSValue valueWithCGPoint:startPoint],
-                          [NSValue valueWithCGPoint:midPoint],
-                          [NSValue valueWithCGPoint:endPoint]
-                          ];
-    disappearAnimation.duration = AnimationDuration / 2;
-    disappearAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    disappearAnimation.delegate = self;
-    disappearAnimation.removedOnCompletion = NO;
-    [self.arcDeleteZoneLayer addAnimation:disappearAnimation forKey:@"disapearAnimation"];
-    self.arcDeleteZoneLayer.opacity = 0.;
-}
-
-- (void)removeDeleteZone
-{
-    [self.arcDeleteZoneLayer removeFromSuperlayer];
-}
-
 #pragma mark - Animation
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -578,6 +373,15 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
 }
 
+- (void)performActionForUpdateUIWithTransform:(CATransform3D)transform
+{
+    self.addServiceHiddenButton.layer.transform = transform;
+    self.headerAddServiceView.layer.transform = transform;
+    
+    [self fetchFavouriteList];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
@@ -591,13 +395,11 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)updateColors
 {
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
+    
     [self.addFavouriteButton setTintColor:[self.dynamicService currentApplicationColor]];
     self.actionDescriptionLabel.textColor = [self.dynamicService currentApplicationColor];
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+
     [self.addServiceHiddenButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     self.addServiceHiddenImageView.tintColor = [self.dynamicService currentApplicationColor];
     
@@ -606,24 +408,18 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)setRTLArabicUI
 {
-    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 20.0, 0.0, -20.0)];
-    self.addServiceHiddenButton.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.headerAddServiceView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-
     [super setRTLArabicUI];
-    [self fetchFavouriteList];
-    [self.tableView reloadData];
+    
+    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 20.0, 0.0, -20.0)];
+    [self performActionForUpdateUIWithTransform:TRANFORM_3D_SCALE];
 }
 
 - (void)setLTREuropeUI
 {
-    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -20.0, 0.0, 20.0)];
-    self.addServiceHiddenButton.layer.transform = CATransform3DIdentity;
-    self.headerAddServiceView.layer.transform = CATransform3DIdentity;
-    
     [super setLTREuropeUI];
-    [self fetchFavouriteList];
-    [self.tableView reloadData];
+    
+    [self.addServiceHiddenButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -20.0, 0.0, 20.0)];
+    [self performActionForUpdateUIWithTransform:CATransform3DIdentity];
 }
 
 @end

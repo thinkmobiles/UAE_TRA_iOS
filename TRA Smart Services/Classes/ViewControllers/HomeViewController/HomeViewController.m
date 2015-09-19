@@ -519,7 +519,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)setRTLArabicUI
 {
-    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
+    [self transformTopView:TRANFORM_3D_SCALE];
 }
 
 - (void)setLTREuropeUI
