@@ -63,7 +63,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
         cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
     }
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell.annocementsDescriptionLabel.text = @"الخيل والليل والبيداء تعرفني والسيف والرمح والقرطاس و القلمصحبت في الفلوات الوحش منفردا حتى تعجب مني القور و الأكم        يا من يعز علينا ان نفارقهم وجداننا كل شيء بعدكم عدم ما كان أخلقنا منكم بتكرمة لو ان أمركم من أمرنا أمم إن كان سركم ما قال حاسدنا فما لجرح إذا أرضاكم ألم و بيننا لو رعيتم ذاك معرفة غن المعارف في اهل النهى ذمم";
         cell.annocementsDateLabel.text = @"قصيدة ابو الطيب المتنبي";
     } else {
@@ -72,7 +72,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
     }
     
     UIImage *logo = [UIImage imageNamed:@"test"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.annoucementLogoImage = logo;
@@ -112,7 +112,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
 - (void)updateColors
 {
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -122,7 +122,7 @@ static CGFloat const DefaultCellOffset = 24.0f;
 
 - (NSString *)cellUIIdentifier
 {
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic ) {
         return AnnoucementsTableViewCellArabicIdentifier;
     }
     return AnnoucementsTableViewCellEuropeIdentifier;

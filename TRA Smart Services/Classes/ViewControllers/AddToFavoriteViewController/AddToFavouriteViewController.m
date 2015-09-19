@@ -16,7 +16,6 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 @interface AddToFavouriteViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
@@ -52,12 +51,8 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddToFavouriteTableViewCell *cell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:AddToFavouriteArabicCellIdentifier forIndexPath:indexPath];
-    } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:AddToFavouriteEuroCellIdentifier forIndexPath:indexPath];
-    }
+    NSString *cellIdentifier = self.dynamicService.language == LanguageTypeArabic ? AddToFavouriteArabicCellIdentifier : AddToFavouriteEuroCellIdentifier;
+    AddToFavouriteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -73,7 +68,8 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *serviceTitle = ((TRAService *)self.dataSource[indexPath.row]).serviceDescription;
-    NSDictionary *attributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:12]};
+    UIFont *font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:12.f] : [UIFont latoRegularWithSize:12.f];
+    NSDictionary *attributes = @{ NSFontAttributeName :font };
 
     CGSize textSize = [serviceTitle sizeWithAttributes:attributes];
     CGFloat widthOfViewWithImage = 85.f;
@@ -88,14 +84,16 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 - (void)configureCell:(AddToFavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    UIColor *pairCellColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.1f];
     cell.backgroundColor = indexPath.row % 2 ? pairCellColor : [UIColor clearColor];
-    cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
-    cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
+    
+    TRAService *traService = (TRAService *)self.dataSource[indexPath.row];
+    cell.logoImage = [UIImage imageWithData:traService.serviceIcon];
+    cell.descriptionText = dynamicLocalizedString(traService.serviceName);
     cell.indexPath = indexPath;
     cell.delegate = self;
     
-    BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
+    BOOL isFavourite = [traService.serviceIsFavorite boolValue];
     [cell setServiceFavourite:isFavourite];
 }
 
@@ -106,7 +104,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
     if (searchText.length) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
             NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
-            BOOL containsString = [[localizedServiceName uppercaseString] rangeOfString:[searchText uppercaseString]].location !=NSNotFound;
+            BOOL containsString = [[localizedServiceName uppercaseString] rangeOfString:[searchText uppercaseString]].location != NSNotFound;
             return containsString;
         }];
         [self fetchServiceList];
@@ -157,7 +155,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
     [[CoreDataManager sharedManager] saveContext];
 
     AddToFavouriteTableViewCell *cell = (AddToFavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
+    BOOL isFavourite = [selectedService.serviceIsFavorite boolValue];
     [cell setServiceFavourite:isFavourite];
 }
 
@@ -172,11 +170,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 
 - (void)setRTLArabicUI

@@ -148,7 +148,7 @@
 
 - (void)updateColors
 {
-    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [self.loginButton setBackgroundColor:color];
     [self.registerButton setTitleColor:color forState:UIControlStateNormal];
     [self.forgotPasswordButton setTitleColor:color forState:UIControlStateNormal];
@@ -166,7 +166,7 @@
     self.verticalSeparator.backgroundColor = color;
     
     UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -193,7 +193,7 @@
     [self prepareNavigationBarButton];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }

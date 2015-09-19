@@ -61,7 +61,7 @@ static NSInteger const SeparatorTag = 77;
     [self configureSelectStateTextFieldInputView];
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }
@@ -322,11 +322,11 @@ static NSInteger const SeparatorTag = 77;
 
 - (void)updateColors
 {
-    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [self.loginButton setTitleColor:color forState:UIControlStateNormal];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -337,7 +337,7 @@ static NSInteger const SeparatorTag = 77;
         }
     }
     
-    [self.registerButton setBackgroundColor:[[DynamicUIService service] currentApplicationColor]];
+    [self.registerButton setBackgroundColor:[self.dynamicService currentApplicationColor]];
     
     self.userNameTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeholderText.username")];
     self.mobileTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.phone")];
@@ -376,7 +376,7 @@ static NSInteger const SeparatorTag = 77;
 
 - (NSAttributedString *)placeholderWithString:(NSString *)string
 {
-    NSDictionary *attributes = @{NSForegroundColorAttributeName:[[DynamicUIService service] currentApplicationColor]};
+    NSDictionary *attributes = @{NSForegroundColorAttributeName:[self.dynamicService currentApplicationColor]};
     return [[NSAttributedString alloc] initWithString:string attributes:attributes];
 }
 
@@ -396,7 +396,7 @@ static NSInteger const SeparatorTag = 77;
     
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HeightForToolbars)];
     toolBar.backgroundColor = [UIColor clearColor];
-    toolBar.tintColor = [[DynamicUIService service] currentApplicationColor];
+    toolBar.tintColor = [self.dynamicService currentApplicationColor];
     
     UIBarButtonItem *barItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneFilteringButtonTapped)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];

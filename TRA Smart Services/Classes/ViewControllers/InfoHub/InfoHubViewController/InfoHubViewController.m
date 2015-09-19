@@ -103,7 +103,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     
     UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.previewLogoImage = logo;
@@ -114,7 +114,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     }
     cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
     }
 
@@ -157,10 +157,10 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
    
     cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
-    cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    cell.infoHubTransactionTitleLabel.textColor = [self.dynamicService currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.infoHubTransactionImageView.image = logo;
@@ -179,7 +179,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(DefaultCellOffset, 0, tableView.frame.size.width - DefaultCellOffset * 2, SectionHeaderHeight)];
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
-    headerLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
+    headerLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight);
@@ -189,7 +189,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [headerView.layer addSublayer:headerGradient];
     [headerView addSubview:headerLabel];
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         headerLabel.textAlignment = NSTextAlignmentRight;
     } else {
         headerLabel.textAlignment = NSTextAlignmentLeft;
@@ -206,7 +206,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
-    self.announcementsLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
+    self.announcementsLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 
@@ -216,7 +216,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [self.collectionView reloadData];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -254,7 +254,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (NSString *)tableViewCellUIIdentifier
 {
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic ) {
         return InfoHubTableViewCellArabicIdentifier;
     }
     return InfoHubTableViewCellEuropeIdentifier;
@@ -262,7 +262,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (NSString *)collectionViewCellUIIdentifier
 {
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic ) {
         return InfoHubCollectionViewCellArabicIdentifier;
     }
     return InfoHubCollectionViewCellEuropeIdentifier;

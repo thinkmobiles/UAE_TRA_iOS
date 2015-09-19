@@ -29,7 +29,7 @@
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }
@@ -46,7 +46,7 @@
 
 - (void)updateColors
 {
-    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [self.emiratesIDButton setTintColor:color];
     [self.fillFormButton setTintColor:color];
     [self.registerInformation setTextColor:color];
@@ -54,7 +54,7 @@
     [self.fillFormLabel setTextColor:color];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImage.image = backgroundImage;

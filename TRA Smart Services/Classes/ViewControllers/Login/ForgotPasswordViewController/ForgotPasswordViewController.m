@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }
@@ -68,10 +68,10 @@
 
 - (void)updateColors
 {
-    [self.mainButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.informationLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    [self.mainButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
+    self.informationLabel.textColor = [self.dynamicService currentApplicationColor];
     UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;

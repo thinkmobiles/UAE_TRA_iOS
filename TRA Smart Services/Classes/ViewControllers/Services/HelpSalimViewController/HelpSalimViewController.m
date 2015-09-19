@@ -79,7 +79,7 @@
     [super updateColors];
     
     [AppHelper setStyleForLayer:self.commentTextView.layer];
-    self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.commentTextView.textColor = [self.dynamicService currentApplicationColor];
 }
 
 @end

@@ -76,7 +76,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self updateColorForDescriptioveTextSize];
     [self updateLanguageSegmentControlPosition];
     [self updateFontSizeControl];
-    [self makeActiveColorTheme:[DynamicUIService service].colorScheme];
+    [self makeActiveColorTheme:self.dynamicService.colorScheme];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -108,17 +108,17 @@ static CGFloat const optionScaleSwitch = 0.55;
 {
     switch (index) {
         case 0: {
-            if ([DynamicUIService service].language == LanguageTypeEnglish) {
+            if (self.dynamicService.language == LanguageTypeEnglish) {
                 [self transformAnimationConteinerView];
             }
-            [[DynamicUIService service] setLanguage:LanguageTypeArabic];
+            [self.dynamicService setLanguage:LanguageTypeArabic];
             break;
         }
         case 1: {
-            if ([DynamicUIService service].language == LanguageTypeArabic) {
+            if (self.dynamicService.language == LanguageTypeArabic) {
                 [self transformAnimationConteinerView];
             }
-            [[DynamicUIService service] setLanguage:LanguageTypeEnglish];
+            [self.dynamicService setLanguage:LanguageTypeEnglish];
             break;
         }
     }
@@ -133,24 +133,24 @@ static CGFloat const optionScaleSwitch = 0.55;
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
     switch ((int)sender.value) {
         case 0: {
-            if ([DynamicUIService service].fontSize == ApplicationFontSmall) {
+            if (self.dynamicService.fontSize == ApplicationFontSmall) {
                 return;
             }
-            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontSmall];
+            [self.dynamicService saveCurrentFontSize:ApplicationFontSmall];
             break;
         }
         case 1: {
-            if ([DynamicUIService service].fontSize == ApplicationFontUndefined) {
+            if (self.dynamicService.fontSize == ApplicationFontUndefined) {
                 return;
             }
-            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontUndefined];
+            [self.dynamicService saveCurrentFontSize:ApplicationFontUndefined];
             break;
         }
         case 2: {
-            if ([DynamicUIService service].fontSize == ApplicationFontBig) {
+            if (self.dynamicService.fontSize == ApplicationFontBig) {
                 return;
             }
-            [[DynamicUIService service] saveCurrentFontSize:ApplicationFontBig];
+            [self.dynamicService saveCurrentFontSize:ApplicationFontBig];
             break;
         }
     }
@@ -185,7 +185,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     DetailsViewController *detailedInforViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsViewContrrollerID"];
     
     NSURL *url;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         url = [[NSBundle mainBundle] URLForResource:@"AboutAr" withExtension:@"rtf"];
     } else {
         url = [[NSBundle mainBundle] URLForResource:@"AboutEn" withExtension:@"rtf"];
@@ -295,7 +295,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (CAAnimation *)transformAnimation
 {
     CATransform3D rotationAndPerspectiveTransform = self.conteinerView.layer.transform;
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic ) {
         rotationAndPerspectiveTransform.m34 = 1.0 / 500.0;
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform,  45 * M_PI , 0.0f, 1.0f, 0.0f);
     } else {
@@ -311,7 +311,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     CATransform3D startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
     CATransform3D midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0, 0);
     CATransform3D endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic ) {
         startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
         midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0.8, 0.8);
         endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
@@ -352,22 +352,22 @@ static CGFloat const optionScaleSwitch = 0.55;
     switch (numberTheme) {
         case 0: {
             [self makeActiveColorTheme:ApplicationColorBlue];
-            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlue];
+            [self.dynamicService saveCurrentColorScheme:ApplicationColorBlue];
             break;
         }
         case 1: {
             [self makeActiveColorTheme:ApplicationColorOrange];
-            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorOrange];
+            [self.dynamicService saveCurrentColorScheme:ApplicationColorOrange];
             break;
         }
         case 2: {
             [self makeActiveColorTheme:ApplicationColorGreen];
-            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorGreen];
+            [self.dynamicService saveCurrentColorScheme:ApplicationColorGreen];
             break;
         }
         case 3: {
             [self makeActiveColorTheme:ApplicationColorBlackAndWhite];
-            [[DynamicUIService service] saveCurrentColorScheme:ApplicationColorBlackAndWhite];
+            [self.dynamicService saveCurrentColorScheme:ApplicationColorBlackAndWhite];
             break;
         }
     }
@@ -394,7 +394,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self buttonColorThemeEnable:YES];
     self.themeColorBlackAndWhiteSwitch.on = NO;
     
-    [[DynamicUIService service] setColorScheme:selectedColor];
+    [self.dynamicService setColorScheme:selectedColor];
     
     switch (selectedColor) {
         case ApplicationColorDefault:
@@ -437,7 +437,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 {
     self.title = title;
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
@@ -467,18 +467,18 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)updateColors
 {
-    self.screenLockNotificationSwitch.onTintColor = [[DynamicUIService service] currentApplicationColor];
-    self.appTutorialScreensSwitch.onTintColor = [[DynamicUIService service] currentApplicationColor];
-    self.themeColorBlackAndWhiteSwitch.onTintColor = [[DynamicUIService service] currentApplicationColor];
+    self.screenLockNotificationSwitch.onTintColor = [self.dynamicService currentApplicationColor];
+    self.appTutorialScreensSwitch.onTintColor = [self.dynamicService currentApplicationColor];
+    self.themeColorBlackAndWhiteSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     
-    self.languageSegmentControl.segmentSelectedBacrgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.languageSegmentControl.segmentSelectedBacrgroundColor = [self.dynamicService currentApplicationColor];
     [self.languageSegmentControl setNeedsLayout];
     [self updateFontSizeSliderColor];
     [self updateColorForDescriptioveTextSize];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
     
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -510,7 +510,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)updateLanguageSegmentControlPosition
 {
-    switch ([DynamicUIService service].language) {
+    switch (self.dynamicService.language) {
         case LanguageTypeDefault:
         case LanguageTypeArabic : {
             [self.languageSegmentControl setSegmentItemSelectedWithTag:1];
@@ -525,7 +525,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)updateFontSizeControl
 {
-    switch ([DynamicUIService service].fontSize) {
+    switch (self.dynamicService.fontSize) {
         case ApplicationFontUndefined: {
             [self.slider setValue:1];
             break;
@@ -570,7 +570,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     
     CGRect rect = CGRectMake(0, 0, currentSliderMaximumImage.size.width, currentSliderMaximumImage.size.height);
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    [[[DynamicUIService service] currentApplicationColor] setFill];
+    [[self.dynamicService currentApplicationColor] setFill];
     UIRectFill(rect);
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -583,20 +583,20 @@ static CGFloat const optionScaleSwitch = 0.55;
     for (UIView *point in self.containerSliderView.subviews) {
         if (![point isKindOfClass:[UISlider class]]) {
             point.layer.cornerRadius = point.frame.size.height / 2;
-            point.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+            point.backgroundColor = [self.dynamicService currentApplicationColor];
         }
     }
 }
 
 - (void)updateColorForDescriptioveTextSize
 {
-    UIColor *textColor = [[DynamicUIService service] currentApplicationColor];
+    UIColor *textColor = [self.dynamicService currentApplicationColor];
     
     self.rightFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
     self.leftFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
     self.centerFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
     
-    switch ([DynamicUIService service].fontSize) {
+    switch (self.dynamicService.fontSize) {
         case ApplicationFontUndefined: {
             self.centerFontSizeLabel.textColor = textColor;
             break;

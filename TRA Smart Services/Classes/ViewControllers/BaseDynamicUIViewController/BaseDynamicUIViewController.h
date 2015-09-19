@@ -14,9 +14,13 @@ static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";
 
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @property (strong, nonatomic) DynamicUIService *dynamicService;
 
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView fontSizeInclude:(BOOL)includeFontSizeChange;
+- (void)updateBackgroundImageNamed:(NSString *)imageName;
+
 - (void)localizeUI;
 - (void)updateColors;
 

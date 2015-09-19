@@ -72,9 +72,9 @@
 {
     self.conteinerServiseHeaderView.serviceHeaderLabel.text = dynamicLocalizedString(@"checkIMEIViewController.serviceHeaderLabel");
     self.conteinerServiseHeaderView.serviceHeaderLabel.textColor = [UIColor blackColor];
-    self.conteinerServiseHeaderView.serviceHeaderLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:16] : [UIFont latoRegularWithSize:16];
+    self.conteinerServiseHeaderView.serviceHeaderLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:16] : [UIFont latoRegularWithSize:16];
     self.conteinerServiseHeaderView.serviceHeaderImageView.image = [UIImage imageNamed:@"ic_edit_hex"];
-    self.conteinerServiseHeaderView.serviceHeaderImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    self.conteinerServiseHeaderView.serviceHeaderImageView.tintColor = [self.dynamicService currentApplicationColor];
 }
 
 @end

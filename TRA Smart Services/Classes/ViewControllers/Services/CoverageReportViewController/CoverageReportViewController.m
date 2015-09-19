@@ -189,8 +189,8 @@
 {
     [super updateColors];
     
-    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
-    self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
+    self.activityIndicator.color = [self.dynamicService currentApplicationColor];
+    self.signalLevelSlider.minimumTrackTintColor = [self.dynamicService currentApplicationColor];
 }
 
 #pragma mark - Private

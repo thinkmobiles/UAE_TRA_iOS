@@ -104,7 +104,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ServicesSelectTableViewCell *selectionCell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier forIndexPath:indexPath];
     } else {
         selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier forIndexPath:indexPath];
@@ -147,12 +147,12 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     ServicesSelectTableViewCell *selectionCell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier];
     } else {
         selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier];
     }
-    selectionCell.selectProviderImage.tintColor = [[DynamicUIService service] currentApplicationColor];
+    selectionCell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
     selectionCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
     
     if (self.selectedEmirate.length) {
@@ -197,7 +197,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (void)configureCell:(ServicesSelectTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectProviderLabel.text = self.dataSource[indexPath.row + 1];
-    cell.selectProviderLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -284,7 +284,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (void)updateColors
 {
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;

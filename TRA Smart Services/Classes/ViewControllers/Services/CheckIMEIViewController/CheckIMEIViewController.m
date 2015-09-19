@@ -128,10 +128,10 @@
 {
     [super updateColors];
 
-    self.resultLabel.textColor = [[DynamicUIService service] currentApplicationColor];
-    [self.cameraButton.imageView setTintColor:[[DynamicUIService service] currentApplicationColor]];
+    self.resultLabel.textColor = [self.dynamicService currentApplicationColor];
+    [self.cameraButton.imageView setTintColor:[self.dynamicService currentApplicationColor]];
     
-    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.checkIMEIButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
     [AppHelper setStyleForLayer:self.contentView.layer];
 }

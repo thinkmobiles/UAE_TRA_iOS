@@ -48,15 +48,15 @@
 
 - (void)updateColors
 {
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         self.authorLabel.textColor = [UIColor lightGrayTextColor];
-        self.sourceLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+        self.sourceLabel.textColor = [self.dynamicService currentApplicationColor];
     } else {
-        self.authorLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+        self.authorLabel.textColor = [self.dynamicService currentApplicationColor];
         self.sourceLabel.textColor = [UIColor lightGrayTextColor];
     }
     
-    self.titleImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.titleImageView.backgroundColor = [self.dynamicService currentApplicationColor];
 }
 
 - (void)setLTREuropeUI
@@ -94,7 +94,7 @@
     titleView.text = title;
     titleView.textAlignment = NSTextAlignmentCenter;
     
-    titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
+    titleView.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     self.navigationItem.titleView = titleView;
     [titleView sizeToFit];
 }
@@ -107,17 +107,17 @@
 
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.paragraphSpacing = 24.f;
-    style.alignment = [DynamicUIService service].language == LanguageTypeArabic ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    style.alignment = self.dynamicService.language == LanguageTypeArabic ? NSTextAlignmentRight : NSTextAlignmentLeft;
     
     NSAttributedString *text = [[NSAttributedString alloc] initWithString:self.contentText.length ? [self.contentText string] : content attributes:@{
-                                                                                               NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:12.f] : [UIFont latoRegularWithSize:12.f],
+                                                                                               NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:12.f] : [UIFont latoRegularWithSize:12.f],
                                                                                                NSParagraphStyleAttributeName : style} ];
     self.descriptionTextView.attributedText = text;
 
     self.sourceLabel.text = self.sourceText;
     self.authorLabel.text = self.aboutText;
     UIImage *logo = self.logoImage ? self.logoImage : [UIImage imageNamed:@"demo"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
 

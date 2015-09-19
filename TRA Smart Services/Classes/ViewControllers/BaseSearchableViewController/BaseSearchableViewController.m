@@ -43,7 +43,7 @@
     CGFloat offset = 20.f;
     self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2.25, navBarRect.size.height); //2.25 - appox dimension
     self.searchBar.barTintColor = [UIColor whiteColor];
-    self.searchBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    self.searchBar.tintColor = self.dynamicService.currentApplicationColor;
     
     
     self.searchBar.layer.opacity = 1.f;
@@ -125,7 +125,7 @@
         self.searchanbeleViewControllerTitle.textAlignment = NSTextAlignmentCenter;
         self.searchanbeleViewControllerTitle.minimumScaleFactor = 0.8f;
         self.searchanbeleViewControllerTitle.numberOfLines = 0;
-        self.searchanbeleViewControllerTitle.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
+        self.searchanbeleViewControllerTitle.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     }
     [self.titleView addSubview: self.searchanbeleViewControllerTitle];
 }
@@ -133,7 +133,7 @@
 - (void)localizeUI
 {
     //dummy
-    self.searchanbeleViewControllerTitle.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
+    self.searchanbeleViewControllerTitle.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
 }
 
 - (void)updateColors

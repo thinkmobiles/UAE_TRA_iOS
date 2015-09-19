@@ -80,7 +80,7 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
     titleView.text = title;
     titleView.textAlignment = NSTextAlignmentCenter;
     
-    titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
+    titleView.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     self.navigationItem.titleView = titleView;
     [titleView sizeToFit];
 }
@@ -90,10 +90,10 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
 - (void)configureCell:(HomeSearchResultTableViewCell *)cell atIndexPath:(NSIndexPath *) indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    UIColor *pairCellColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.1f];
     cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
     cell.serviceNameLabel.text = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell.serviceNameLabel.textAlignment = NSTextAlignmentRight;
     } else {
         cell.serviceNameLabel.textAlignment = NSTextAlignmentLeft;

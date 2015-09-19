@@ -70,10 +70,10 @@
     UIImage *leftImage = [UIImage imageNamed:imageName];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
     [imageView setImage:leftImage];
-    imageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    imageView.tintColor = [self.dynamicService currentApplicationColor];
     textField.rightView = nil;
     textField.leftView = nil;
-    if ([DynamicUIService service].language != LanguageTypeArabic) {
+    if (self.dynamicService.language != LanguageTypeArabic) {
         textField.leftViewMode = UITextFieldViewModeAlways;
         textField.leftView = imageView;
     } else {

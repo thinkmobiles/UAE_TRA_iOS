@@ -201,10 +201,13 @@ static CGFloat const HeightTableViewCell = 35.f;
 
 - (void)highlightingSearchText:(UILabel *)label
 {
-    NSDictionary *attribs = @{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName:label.font };
+    NSDictionary *attribs = @{
+                              NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.5],
+                              NSFontAttributeName : label.font
+                              };
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text attributes:attribs];
     NSRange searchTextRange = [label.text rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch];
-    [attributedText setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} range:searchTextRange];
+    [attributedText setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} range:searchTextRange];
     label.attributedText = attributedText;
 }
 

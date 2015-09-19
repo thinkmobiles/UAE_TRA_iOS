@@ -44,4 +44,6 @@
 + (void)setStyleForLayer:(CALayer *)layer;
 + (void)setStyleGrayColorForLayer:(CALayer *)layer;
 
++ (UIImage *)snapshotForView:(UIView *)view;
+
 @end

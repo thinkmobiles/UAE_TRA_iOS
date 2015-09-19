@@ -23,7 +23,7 @@
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }
@@ -56,13 +56,13 @@
 {
     for (UILabel *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+            subView.textColor = [self.dynamicService currentApplicationColor];
         }
     }
     for (UIView *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+            [(UIButton *)subView setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
         } else if ([subView isKindOfClass:[UITextField class]]) {
             [AppHelper setStyleForLayer:subView.layer];
         }

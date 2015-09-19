@@ -37,7 +37,7 @@
     }
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    [self prepareDataSource]; //temp
+//    [self prepareDataSource]; //temp
     [self showPlaceHolderIfNeededAnimated:NO];
 }
 
@@ -98,7 +98,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NotificationsTableViewCell *cell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell = [tableView dequeueReusableCellWithIdentifier:NotificationsTableViewCellArabicIdentifier forIndexPath:indexPath];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:NotificationsTableViewCellEuropeIdentifier forIndexPath:indexPath];
@@ -121,10 +121,10 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
     [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                     withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [self.dataSource removeObjectAtIndex:indexPath.row];
     [self.tableView endUpdates];
+    
     [self showActiveNotificationStatus];
     [self showPlaceHolderIfNeededAnimated:YES];
 }
@@ -170,29 +170,6 @@
     }
 }
 
-#pragma mark - Animation
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (anim == [self.conteinerClearAllButtonView.layer animationForKey:@"keyAnimationPlaceHolder"] ) {
-        self.conteinerClearAllButtonView.hidden = YES;
-    }
-}
-
-#pragma mark - SuperclassMethods
-
-- (void)updateColors
-{
-    self.conteinerView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent: 0.95f];
-}
-
-- (void)localizeUI
-{
-    self.placeHolderNotificationLabel.text = dynamicLocalizedString(@"notificationsViewController.NotificationPlaceHolderlabel");
-    [self.clearAllButton setTitle:dynamicLocalizedString(@"notificationsViewController.clearAllButton.title") forState:UIControlStateNormal];
-    [self showActiveNotificationStatus];
-}
-
 - (void)showActiveNotificationStatus
 {
     if (self.dataSource.count) {
@@ -202,17 +179,39 @@
     }
 }
 
+#pragma mark - Animation
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (anim == [self.conteinerClearAllButtonView.layer animationForKey:@"keyAnimationPlaceHolder"]) {
+        [self.conteinerClearAllButtonView.layer removeAllAnimations];
+        self.conteinerClearAllButtonView.hidden = YES;
+    }
+}
+
+#pragma mark - SuperclassMethods
+
+- (void)updateColors
+{
+    self.conteinerView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent: 0.95f];
+}
+
+- (void)localizeUI
+{
+    self.placeHolderNotificationLabel.text = dynamicLocalizedString(@"notificationsViewController.NotificationPlaceHolderlabel");
+    [self.clearAllButton setTitle:dynamicLocalizedString(@"notificationsViewController.clearAllButton.title") forState:UIControlStateNormal];
+    [self showActiveNotificationStatus];
+}
+
 - (void)setRTLArabicUI
 {
-    [self transformUILayer:CATransform3DMakeScale(-1, 1, 1)];
-    
+    [self transformUILayer:TRANFORM_3D_SCALE];
     self.informableLabel.textAlignment = NSTextAlignmentLeft;
 }
 
 - (void)setLTREuropeUI
 {
     [self transformUILayer:CATransform3DIdentity];
-    
     self.informableLabel.textAlignment = NSTextAlignmentRight;
 }
 

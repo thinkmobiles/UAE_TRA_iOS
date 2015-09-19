@@ -63,7 +63,7 @@ static NSString *const keyOrder = @"order";
         self.tableView.hidden = YES;
     }
 
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - IBActions
@@ -223,10 +223,10 @@ static NSString *const keyOrder = @"order";
 {
     [super updateColors];
     
-    self.ratingView.chooseRating.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.ratingView.chooseRating.textColor = [self.dynamicService currentApplicationColor];
     
     UIImage *background = [UIImage imageNamed:@"serviceBackground"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         background = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:background];
     }
     self.backgroundImageView.image = background;
@@ -238,7 +238,7 @@ static NSString *const keyOrder = @"order";
 {
     UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
     self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
 }
 
 - (void)updateNavigationControllerBar

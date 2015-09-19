@@ -83,7 +83,7 @@ static CGFloat const heightContenerConstraint = 55.f;
     [super viewWillDisappear:animated];
     
     [self removeNotifications];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - IABaction
@@ -119,7 +119,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifierCell;
-    if ([DynamicUIService service].language == LanguageTypeArabic){
+    if (self.dynamicService.language == LanguageTypeArabic){
         identifierCell = selectProviderCellArabicUIIdentifier;
     } else {
         identifierCell = selectProviderCellEuropeUIIdentifier;
@@ -127,9 +127,9 @@ static CGFloat const heightContenerConstraint = 55.f;
     ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
     if (indexPath.row) {
         cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
-        cell.selectProviderLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+        cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
     } else {
-        cell.selectProviderImage.tintColor = [[DynamicUIService service] currentApplicationColor];
+        cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
         if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
             cell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
         } else {
@@ -323,7 +323,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
     self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
 }
 
 - (void)updateNavigationControllerBar
@@ -356,10 +356,10 @@ static CGFloat const heightContenerConstraint = 55.f;
     [attachButton setImage:buttonAttachImage forState:UIControlStateNormal];
     [attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
     attachButton.backgroundColor = [UIColor clearColor];
-    attachButton.tintColor = [[DynamicUIService service] currentApplicationColor];
+    attachButton.tintColor = [self.dynamicService currentApplicationColor];
     [attachButton setFrame:CGRectMake(0, 0, self.compliantTitleTextField.frame.size.height, self.compliantTitleTextField.frame.size.height)];
 
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - buttonAttachImage.size.width)];
         self.compliantTitleTextField.leftView = attachButton;
         self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -383,7 +383,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") style:UIBarButtonItemStyleDone target:self action:@selector(compliantSend:)];
     UIFont *font;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         font = [UIFont droidKufiBoldFontForSize:14];
     } else {
         font = [UIFont latoBoldWithSize:14];

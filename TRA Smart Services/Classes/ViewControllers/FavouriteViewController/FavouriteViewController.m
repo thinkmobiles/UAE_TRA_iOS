@@ -103,7 +103,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FavouriteTableViewCell *cell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteArabicCellIdentifier forIndexPath:indexPath];
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:FavouriteEuroCellIdentifier forIndexPath:indexPath];
@@ -141,7 +141,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (void)configureCell:(FavouriteTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    UIColor *pairCellColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.1f];
     cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
     cell.logoImage = [UIImage imageWithData:((TRAService *)self.dataSource[indexPath.row]).serviceIcon];
     cell.descriptionText = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
@@ -411,8 +411,8 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 - (UIColor *)currentDeleteAreaColor
 {
     UIColor *deleteAreaColor = [[UIColor redColor] colorWithAlphaComponent:0.8f];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        deleteAreaColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.8f];
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
+        deleteAreaColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.8f];
     }
     return deleteAreaColor;
 }
@@ -591,17 +591,17 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)updateColors
 {
-    [self.addFavouriteButton setTintColor:[[DynamicUIService service] currentApplicationColor]];
-    self.actionDescriptionLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    [self.addFavouriteButton setTintColor:[self.dynamicService currentApplicationColor]];
+    self.actionDescriptionLabel.textColor = [self.dynamicService currentApplicationColor];
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
-    [self.addServiceHiddenButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.addServiceHiddenImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+    [self.addServiceHiddenButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
+    self.addServiceHiddenImageView.tintColor = [self.dynamicService currentApplicationColor];
     
-    [AppHelper addHexagonBorderForLayer:self.addServiceHiddenImageView.layer color:[[DynamicUIService service] currentApplicationColor] width:2.0f];
+    [AppHelper addHexagonBorderForLayer:self.addServiceHiddenImageView.layer color:[self.dynamicService currentApplicationColor] width:2.0f];
 }
 
 - (void)setRTLArabicUI

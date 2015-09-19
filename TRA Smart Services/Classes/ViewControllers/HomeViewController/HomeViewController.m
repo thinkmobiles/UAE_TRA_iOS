@@ -312,7 +312,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
     self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
         
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         [self reverseDataSource];
     }
 }
@@ -506,7 +506,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     UIImage *backgroundImage = [UIImage imageNamed:@"background"];
     UIImage *movableImage = [UIImage imageNamed:@"res_polygons"];
 
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
         movableImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:movableImage];
     }
@@ -555,7 +555,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     
     NSArray *gradientColors = @[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         gradientColors = @[(id)[UIColor blackColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.5f].CGColor];
     }
     
@@ -563,18 +563,18 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [cell.polygonView setGradientWithTopColors:gradientColors];
     } else {
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
-        [cell setTintColorForLabel:[[DynamicUIService service] currentApplicationColor]];
+        [cell setTintColorForLabel:[self.dynamicService currentApplicationColor]];
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
         
         UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
-        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
             serviceLogo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:serviceLogo];
         }
 
         cell.categoryLogoImageView.image = serviceLogo;
-        cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+        cell.categoryLogoImageView.tintColor = [self.dynamicService currentApplicationColor];
     }
     
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);

@@ -40,7 +40,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - Superclass Methods
@@ -60,7 +60,7 @@
 - (void)updateColors
 {
     UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
     self.backgroundImageView.image = backgroundImage;
@@ -73,7 +73,7 @@
     [super prepareNavigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                       }];
 }
@@ -130,7 +130,7 @@
     [button addTarget:self action:@selector(showHidePassword:) forControlEvents:UIControlEventTouchUpInside];
     textField.rightView = nil;
     textField.leftView = nil;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         textField.leftViewMode = UITextFieldViewModeAlways;
         textField.leftView = button;
     } else {
@@ -144,7 +144,7 @@
 - (IBAction)showHidePassword:(UIButton *)sender
 {
     [sender setSelected:!sender.isSelected];
-    [sender setTintColor:sender.isSelected ? [DynamicUIService service].currentApplicationColor :[UIColor grayColor]];
+    [sender setTintColor:sender.isSelected ? self.dynamicService.currentApplicationColor :[UIColor grayColor]];
     [(UITextField *)[sender superview] setSecureTextEntry:!sender.isSelected];
 }
 

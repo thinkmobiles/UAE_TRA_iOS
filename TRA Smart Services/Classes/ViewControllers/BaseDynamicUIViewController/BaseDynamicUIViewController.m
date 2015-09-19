@@ -72,6 +72,15 @@
     }
 }
 
+- (void)updateBackgroundImageNamed:(NSString *)imageName
+{
+    UIImage *backgroundImage = [UIImage imageNamed:imageName];
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
+        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    }
+    self.backgroundImageView.image = backgroundImage;
+}
+
 - (void)localizeUI
 {
     setMustOverride();
@@ -118,23 +127,23 @@
         ApplicationFont prevFontSize = [[[NSUserDefaults standardUserDefaults] valueForKey:PreviousFontSizeKey] integerValue];
         
         CGFloat fontSize = currentFontSize;
-        if (prevFontSize == ApplicationFontBig && [DynamicUIService service].fontSize == ApplicationFontUndefined) {
+        if (prevFontSize == ApplicationFontBig && self.dynamicService.fontSize == ApplicationFontUndefined) {
             fontSize = currentFontSize + smallMultiplier;
-        } else if (prevFontSize == ApplicationFontUndefined && [DynamicUIService service].fontSize == ApplicationFontSmall) {
+        } else if (prevFontSize == ApplicationFontUndefined && self.dynamicService.fontSize == ApplicationFontSmall) {
             fontSize = currentFontSize + smallMultiplier;
-        } else if (prevFontSize == ApplicationFontSmall && [DynamicUIService service].fontSize == ApplicationFontUndefined) {
+        } else if (prevFontSize == ApplicationFontSmall && self.dynamicService.fontSize == ApplicationFontUndefined) {
             fontSize = currentFontSize + normalMultiplier;
-        } else if (prevFontSize == ApplicationFontUndefined && [DynamicUIService service].fontSize == ApplicationFontBig) {
+        } else if (prevFontSize == ApplicationFontUndefined && self.dynamicService.fontSize == ApplicationFontBig) {
             fontSize = currentFontSize + normalMultiplier;
-        } else if (prevFontSize == ApplicationFontSmall && [DynamicUIService service].fontSize == ApplicationFontBig) {
+        } else if (prevFontSize == ApplicationFontSmall && self.dynamicService.fontSize == ApplicationFontBig) {
             fontSize = currentFontSize + 2 * normalMultiplier;
-        } else if (prevFontSize == ApplicationFontBig && [DynamicUIService service].fontSize == ApplicationFontSmall) {
+        } else if (prevFontSize == ApplicationFontBig && self.dynamicService.fontSize == ApplicationFontSmall) {
             fontSize = currentFontSize + 2 * smallMultiplier;
         }
         NSString *fontName = ((UIFont *)[view valueForKey:@"font"]).fontName;
         UIFont *font = [UIFont fontWithName:fontName size:fontSize];
         
-        if ([DynamicUIService service].language == LanguageTypeArabic) {
+        if (self.dynamicService.language == LanguageTypeArabic) {
             if (![font.fontName containsString:DroidFontPrefix]) {
                 font = [UIFont droidKufiRegularFontForSize:fontSize];
             }
@@ -153,7 +162,7 @@
         CGFloat currentFontSize = ((UIFont *)[view valueForKey:@"font"]).pointSize;
         UIFont *font = (UIFont *)[view valueForKey:@"font"];
         
-        if ([DynamicUIService service].language == LanguageTypeArabic) {
+        if (self.dynamicService.language == LanguageTypeArabic) {
             if (![font.fontName containsString:DroidFontPrefix]) {
                 font = [UIFont droidKufiRegularFontForSize:currentFontSize];
             }

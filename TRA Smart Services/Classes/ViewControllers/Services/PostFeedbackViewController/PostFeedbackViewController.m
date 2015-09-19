@@ -79,7 +79,7 @@
     [super updateColors];
     
     [AppHelper setStyleForLayer:self.feedbackTextView.layer];
-    self.feedbackTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.feedbackTextView.textColor = [self.dynamicService currentApplicationColor];
 }
 
 @end

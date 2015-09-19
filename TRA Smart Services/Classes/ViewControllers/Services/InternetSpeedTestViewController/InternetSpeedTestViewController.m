@@ -63,7 +63,7 @@
 {
     [super updateColors];
     
-    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
+    self.activityIndicator.color = [self.dynamicService currentApplicationColor];
 }
 
 @end

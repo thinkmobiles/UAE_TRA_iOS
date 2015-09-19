@@ -297,4 +297,15 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     layer.borderColor = [UIColor grayBorderTextFieldTextColor].CGColor;
 }
 
++ (UIImage *)snapshotForView:(UIView *)view
+{
+    CGSize size = CGSizeMake(view.bounds.size.width, view.bounds.size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return snapshot;
+}
+
 @end

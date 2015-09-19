@@ -147,9 +147,9 @@
 {
     [super updateColors];
     
-    self.reportSegment.tintColor = [[DynamicUIService service] currentApplicationColor];
-    self.notes.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.notes.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.reportSegment.tintColor = [self.dynamicService currentApplicationColor];
+    self.notes.layer.borderColor = [self.dynamicService currentApplicationColor].CGColor;
+    self.notes.textColor = [self.dynamicService currentApplicationColor];
     [AppHelper setStyleForLayer:self.notes.layer];
 }
 

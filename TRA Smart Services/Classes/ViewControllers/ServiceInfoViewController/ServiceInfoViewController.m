@@ -117,19 +117,11 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:ServiceDetailsSegueIdentifier]) {
-        
-        CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-        [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
         NSDictionary *dataSource = self.dataSource[((NSIndexPath *)[[self.collectionView indexPathsForSelectedItems] firstObject]).row];
-        
         NSString *detailsText = [self.currentServiceLocalizedDataSource valueForKey:[dataSource valueForKey:@"serviceKeyName"]];
         
         ServiceDetailedInfoViewController *serviceInfoController = segue.destinationViewController;
-        serviceInfoController.fakeBackground = image;
+        serviceInfoController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
         serviceInfoController.hidesBottomBarWhenPushed = YES;
         serviceInfoController.dataSource = dataSource;
         serviceInfoController.detailedInfoText = detailsText;
@@ -145,7 +137,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 
 - (void)updateColors
 {
-    self.backgroundView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.9f];
+    self.backgroundView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.9f];
 }
 
 #pragma mark - Private
@@ -160,7 +152,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 - (void)reverseDataSourceIfNeeded
 {
     self.dataSource = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceInfoList" ofType:@"plist"]];
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         self.dataSource = [self.dataSource reversedArrayByElementsInGroup:RowCount];
     }
 }
@@ -178,7 +170,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 - (void)prepareDataSource
 {
     NSArray *serviceDescription = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceDescription" ofType:@"plist"]];
-    NSDictionary *currentLanguagePlistServices = [DynamicUIService service].language == LanguageTypeArabic ? serviceDescription[1] : serviceDescription[0];
+    NSDictionary *currentLanguagePlistServices = self.dynamicService.language == LanguageTypeArabic ? serviceDescription[1] : serviceDescription[0];
     self.currentServiceLocalizedDataSource = [currentLanguagePlistServices valueForKey:[NSString stringWithFormat:@"%ld", self.selectedServiceID]];
 }
 
