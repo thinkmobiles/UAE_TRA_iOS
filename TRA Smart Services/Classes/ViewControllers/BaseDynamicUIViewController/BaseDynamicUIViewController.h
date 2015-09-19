@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+#import "DynamicUIService.h"
+
 static CGFloat const DeclineTagForFontUpdate = 2000;
 
 static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";

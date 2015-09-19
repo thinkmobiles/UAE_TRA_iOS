@@ -34,7 +34,7 @@
     _notificationImageLogo = notificationImageLogo;
     
     self.notificationImageView.image = self.notificationImageLogo;
-    [self addHexagoneOnView:self.notificationImageView];
+    [AppHelper addHexagoneOnView:self.notificationImageView];
 }
 
 #pragma mark - IBActions
@@ -45,16 +45,5 @@
         [self.delegate notificationCellRemoveButtonDidTappedInCell:self];
     }
 }
-
-#pragma mark - Private
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
-}
-
 
 @end

@@ -19,9 +19,6 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
 
@@ -44,23 +41,6 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
     [super viewWillAppear:animated];
  
     [self.tableView reloadData];
-}
-
-#pragma mark - Custom Accessors
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
 }
 
 #pragma mark - UITableViewDataSource
@@ -164,12 +144,7 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
 
 - (void)fetchServiceList
 {
-    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
-    NSError *error;
-    self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
-    }
+    self.dataSource = [[[CoreDataManager sharedManager] fetchServiceList] mutableCopy];
 }
 
 #pragma mark - FavouriteTableViewCellDelegate
@@ -179,16 +154,11 @@ static CGFloat const SummOfVerticalOffsetsForCell = 60.f;
     TRAService *selectedService = self.dataSource[indexPath.row];
     selectedService.serviceIsFavorite = @(![selectedService.serviceIsFavorite boolValue]);
     
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    if (error) {
-        [AppHelper alertViewWithMessage:error.localizedDescription];
-    } else {
-        AddToFavouriteTableViewCell *cell = (AddToFavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
-        [cell setServiceFavourite:isFavourite];
-    }
+    [[CoreDataManager sharedManager] saveContext];
+
+    AddToFavouriteTableViewCell *cell = (AddToFavouriteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    BOOL isFavourite = [((TRAService *)self.dataSource[indexPath.row]).serviceIsFavorite boolValue];
+    [cell setServiceFavourite:isFavourite];
 }
 
 #pragma mark - Superclass Methods

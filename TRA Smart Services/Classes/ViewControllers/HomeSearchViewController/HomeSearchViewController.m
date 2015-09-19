@@ -13,19 +13,16 @@
 #import "HomeSearchResultViewController.h"
 
 static NSString *const HomeSearchCellIdentifier = @"homeSearchCell";
-static CGFloat HeightTableViewCell = 35.f;
+static CGFloat const HeightTableViewCell = 35.f;
 
 @interface HomeSearchViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerSearchView;
-@property (weak, nonatomic) IBOutlet UITextField *homeSearchTextField;
-@property (weak, nonatomic) IBOutlet UILabel *homeSearchLabel;
+@property (weak, nonatomic) IBOutlet AligmentTextField *homeSearchTextField;
+@property (weak, nonatomic) IBOutlet AligmentLabel *homeSearchLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *fakeBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
-
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
@@ -42,7 +39,6 @@ static CGFloat HeightTableViewCell = 35.f;
     
     [self prepareNotification];
     [self prepareUI];
-    [self saveFavoriteListToDBIfNeeded];
     [self prepareDataSource];
 }
 
@@ -66,7 +62,6 @@ static CGFloat HeightTableViewCell = 35.f;
     [super viewWillDisappear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-//    [self closeButtonTapped:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -81,41 +76,12 @@ static CGFloat HeightTableViewCell = 35.f;
     [self removeNotifications];
 }
 
-#pragma mark - Custom Accessors
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeSearchCellIdentifier];
-    
-    cell.textLabel.text = dynamicLocalizedString(((TRAService *)self.filteredDataSource[indexPath.row]).serviceName);
-    cell.textLabel.textColor = [UIColor whiteColor];
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell.textLabel.textAlignment = NSTextAlignmentRight;
-        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
-    } else {
-        cell.textLabel.textAlignment = NSTextAlignmentLeft;
-        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
-    }
-    if (self.homeSearchTextField.text.length) {
-        [self highlightingSearchText:cell.textLabel];
-    }
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -131,23 +97,6 @@ static CGFloat HeightTableViewCell = 35.f;
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20.f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CAGradientLayer *headerGradient = [CAGradientLayer layer];
-    headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, 20.f);
-    headerGradient.colors = @[(id)[[DynamicUIService service] currentApplicationColor].CGColor, (id)[[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.2f].CGColor];
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20.f)];
-    [headerView.layer addSublayer:headerGradient];
-    
-    return headerView;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.didSelectService) {
@@ -157,9 +106,6 @@ static CGFloat HeightTableViewCell = 35.f;
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-
-#pragma mark - Navigation
-
 
 #pragma mark - IBActions
 
@@ -178,25 +124,21 @@ static CGFloat HeightTableViewCell = 35.f;
 
 - (void)updateColors
 {
-    self.conteinerView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.95];
+    self.conteinerView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.95];
 }
 
 - (void)setRTLArabicUI
 {
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 35, 0, 15)];
-    self.homeSearchLabel.textAlignment = NSTextAlignmentRight;
-    self.homeSearchTextField.textAlignment = NSTextAlignmentRight;
     
-    self.conteinerSearchView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.homeSearchLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.homeSearchTextField.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.conteinerSearchView.layer.transform = TRANFORM_3D_SCALE;
+    self.homeSearchLabel.layer.transform = TRANFORM_3D_SCALE;
+    self.homeSearchTextField.layer.transform = TRANFORM_3D_SCALE;
 }
 
 - (void)setLTREuropeUI
 {
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 35)];
-    self.homeSearchLabel.textAlignment = NSTextAlignmentLeft;
-    self.homeSearchTextField.textAlignment = NSTextAlignmentLeft;
 }
 
 #pragma mark - KeyboardNotification
@@ -234,44 +176,7 @@ static CGFloat HeightTableViewCell = 35.f;
 
 - (void)fetchFavouriteList
 {
-    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"FavouriteServiceAll"];
-    NSError *error;
-    self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
-    }
-}
-
-- (void)saveFavoriteListToDBIfNeeded
-{
-    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
-    NSError *error;
-    NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
-    }
-    
-    if (!data.count) {
-        NSArray *speedAccessServices = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
-        NSMutableArray *otherServices = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist" ]];
-        [otherServices addObjectsFromArray:speedAccessServices];
-        
-        for (NSDictionary *dic in otherServices) {
-            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) { //temp while not all data avaliable
-                NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
-                TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
-                
-                service.serviceIsFavorite = @(NO);
-                service.serviceName = [dic valueForKey:@"serviceName"];
-                if ([dic valueForKey:@"serviceDisplayLogo"]) {
-                    service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceDisplayLogo"]], 1.0);
-                }
-                service.serviceDescription = @"No decription provided";
-                service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
-            }
-        }
-    }
-    [self.managedObjectContext save:nil];
+    self.dataSource = [[CoreDataManager sharedManager] fetchServiceList];
 }
 
 #pragma mark - Private
@@ -301,6 +206,24 @@ static CGFloat HeightTableViewCell = 35.f;
     NSRange searchTextRange = [label.text rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch];
     [attributedText setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} range:searchTextRange];
     label.attributedText = attributedText;
+}
+
+#pragma mark - Configurations
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.text = dynamicLocalizedString(((TRAService *)self.filteredDataSource[indexPath.row]).serviceName);
+    cell.textLabel.textColor = [UIColor whiteColor];
+    if (self.dynamicService.language == LanguageTypeArabic) {
+        cell.textLabel.textAlignment = NSTextAlignmentRight;
+        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
+    } else {
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        cell.textLabel.font = [UIFont latoRegularWithSize:14];
+    }
+    if (self.homeSearchTextField.text.length) {
+        [self highlightingSearchText:cell.textLabel];
+    }
 }
 
 @end

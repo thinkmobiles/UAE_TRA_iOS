@@ -53,6 +53,4 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 - (void)animateFakeButtonsLayerMovingToTop:(BOOL)toTop;
 - (void)scaleLogo:(BOOL)scale;
 
-- (void)stopAllOperations;
-
 @end

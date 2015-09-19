@@ -25,5 +25,8 @@
 #import "UIFont+AppFonts.h"
 #import "BlackWhiteConverter.h"
 #import "NSString+Validation.h"
+#import "AligmentLabel.h"
+#import "AligmentTextField.h"
+#import "CoreDataManager.h"
 
 #endif /* Prefix_pch */

@@ -26,7 +26,8 @@
 {
     [super awakeFromNib];
     
-    [self localizeAndPrepareButtons];
+    [self prepareButtons];
+    [self localizeButtons];
     self.backgroundColor = [UIColor clearColor];
     [self addGestureRecognizer];
     [self.favouriteServiceLogoImageView setContentMode:UIViewContentModeScaleAspectFit];
@@ -36,7 +37,8 @@
 {
     [super prepareForReuse];
     
-    [self localizeAndPrepareButtons];
+    [self prepareButtons];
+    [self localizeButtons];
     self.backgroundColor = [UIColor clearColor];
     
     self.favourieDescriptionLabel.text = @"";
@@ -105,16 +107,10 @@
     [button setImage:buttonImage forState:UIControlStateHighlighted];
 }
 
-- (void)localizeAndPrepareButtons
+- (void)prepareButtons
 {
     CGFloat fontSize = [DynamicUIService service].fontSize == ApplicationFontBig ? 10 * 1.1 : 10 * 0.9;
-    
-    [self.serviceInfoButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
-    [self.removeButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
-    [self.serviceInfoArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
-    [self.removeArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
-    
-    UIFont *europeanButtonFont = [UIFont fontWithName:@"Helvetica" size:fontSize];
+    UIFont *europeanButtonFont = [UIFont latoRegularWithSize:fontSize];
     UIFont *arabicButtonFont = [UIFont droidKufiRegularFontForSize:fontSize];
     
     self.serviceInfoArabicButton.titleLabel.font = arabicButtonFont;
@@ -138,6 +134,14 @@
         self.serviceInfoArabicButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - infoSize.width - spacing);
         self.serviceInfoArabicButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, infoImageWidth + spacing);
     }
+}
+
+- (void)localizeButtons
+{
+    [self.serviceInfoButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
+    [self.removeButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
+    [self.serviceInfoArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
+    [self.removeArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
 }
 
 #pragma mark - Gestures

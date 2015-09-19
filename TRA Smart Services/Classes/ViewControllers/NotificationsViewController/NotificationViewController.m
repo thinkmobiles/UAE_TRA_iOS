@@ -37,7 +37,7 @@
     }
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-   // [self prepareDataSource]; //temp
+    [self prepareDataSource]; //temp
     [self showPlaceHolderIfNeededAnimated:NO];
 }
 

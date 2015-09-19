@@ -10,9 +10,14 @@
 
 @implementation HomeSearchResultTableViewCell
 
+#pragma mark - LifeCycle
+
 - (void)prepareForReuse
 {
-
+    [super prepareForReuse];
+    
+    self.serviceNameLabel.text = @"";
+    self.customAccessoryImageView.image = nil;
 }
 
 @end

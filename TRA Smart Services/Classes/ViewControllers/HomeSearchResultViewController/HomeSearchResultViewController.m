@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
+
+//temporary not used - waitnig response from client
+
 #import "HomeSearchResultViewController.h"
 #import "HomeSearchResultTableViewCell.h"
 #import "TRAService.h"
@@ -31,12 +34,6 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
     [self prepareUI];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -47,24 +44,8 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeSearchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeSearchResultCellIdentifier];
-
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
-}
-
-- (void)configureCell:(HomeSearchResultTableViewCell *)cell atIndexPath:(NSIndexPath *) indexPath
-{
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
-    cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
-    cell.serviceNameLabel.text = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell.serviceNameLabel.textAlignment = NSTextAlignmentRight;
-    } else {
-        cell.serviceNameLabel.textAlignment = NSTextAlignmentLeft;
-    }
-    cell.customAccessoryImageView.tintColor = [UIColor grayBorderTextFieldTextColor];
-    cell.customAccessoryImageView.image = [UIImage imageNamed:@"right237"];
 }
 
 #pragma mark - UITableViewDelegate
@@ -74,13 +55,7 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
     return HeightTableViewCell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
-
 #pragma mark - IBAction
-
 
 - (IBAction)closeButtonTapped:(id)sender
 {
@@ -93,7 +68,6 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
 {
     self.navigationController.navigationBar.hidden = NO;
 
-    
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.closeBarButton.tintColor = [UIColor whiteColor];
 }
@@ -109,6 +83,23 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
     titleView.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
     self.navigationItem.titleView = titleView;
     [titleView sizeToFit];
+}
+
+#pragma mark - Configurations
+
+- (void)configureCell:(HomeSearchResultTableViewCell *)cell atIndexPath:(NSIndexPath *) indexPath
+{
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    UIColor *pairCellColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.1f];
+    cell.backgroundColor = indexPath.row % 2 ? [UIColor clearColor] : pairCellColor;
+    cell.serviceNameLabel.text = dynamicLocalizedString(((TRAService *)self.dataSource[indexPath.row]).serviceName);
+    if ([DynamicUIService service].language == LanguageTypeArabic) {
+        cell.serviceNameLabel.textAlignment = NSTextAlignmentRight;
+    } else {
+        cell.serviceNameLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    cell.customAccessoryImageView.tintColor = [UIColor grayBorderTextFieldTextColor];
+    cell.customAccessoryImageView.image = [UIImage imageNamed:@"right237"];
 }
 
 #pragma mark - Superclass Methods
@@ -133,6 +124,5 @@ static NSString *const HomeSearchResultCellIdentifier = @"homeSearchResultCell";
 {
 
 }
-
 
 @end

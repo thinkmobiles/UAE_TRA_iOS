@@ -22,7 +22,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder nibName:@"ServiceSelectionView"];
+    self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
 }
 
@@ -30,7 +30,7 @@
 
 - (void)setRTLArabicUIStyle
 {
-    [self transformUILayer:CATransform3DMakeScale(-1, 1, 1)];
+    [self transformUILayer:TRANFORM_3D_SCALE];
 }
 
 - (void)setLTREuropeUIStyle
@@ -43,20 +43,19 @@
 - (void)setServiceNameReportSMSImage:(UIImage *)image
 {
     _serviceNameReportSMSImage = image;
-    [self.reportSMSButton setImage:image forState:UIControlStateNormal];
-    
+    [self applyImage:image forButton:self.reportSMSButton];
 }
 
 - (void)setServiceNameReportWEBImage:(UIImage *)image
 {
     _serviceNameReportWEBImage = image;
-    [self.reportWEBButton setImage:image forState:UIControlStateNormal];
+    [self applyImage:image forButton:self.reportWEBButton];
 }
 
 - (void)setServiceNameViewMyListImage:(UIImage *)image
 {
     _serviceNameViewMyListImage = image;
-    [self.viewMyListButton setImage:image forState:UIControlStateNormal];
+    [self applyImage:image forButton:self.viewMyListButton];
 }
 
 #pragma mark - IBAction
@@ -66,7 +65,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(buttonReportSMSDidTapped)]) {
         [self.delegate buttonReportSMSDidTapped];
     }
-    
 }
 
 - (IBAction)reportWEBTapped:(id)sender
@@ -91,6 +89,11 @@
     self.reportWEBLabel.layer.transform = animCATransform3D;
     self.viewMyListLabel.layer.transform = animCATransform3D;
     self.layer.transform = animCATransform3D;
+}
+
+- (void)applyImage:(UIImage *)image forButton:(UIButton *)button
+{
+    [button setImage:image forState:UIControlStateNormal];
 }
 
 @end

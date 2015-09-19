@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+#define TRANFORM_3D_SCALE CATransform3DMakeScale(-1, 1, 1)
+
 @interface AppHelper : NSObject
 
 + (UITabBarController *)rootViewController;

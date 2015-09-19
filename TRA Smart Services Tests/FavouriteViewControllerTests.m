@@ -65,18 +65,6 @@
     XCTAssert(dataSource != NULL);
 }
 
-- (void)testFavouriteViewControllerHasAManagedObjectContextProperty
-{
-    objc_property_t dataSource = class_getProperty([FavouriteViewController class], "managedObjectContext");
-    XCTAssert(dataSource != NULL);
-}
-
-- (void)testFavouriteViewControllerHasAManagedObjectModelProperty
-{
-    objc_property_t dataSource = class_getProperty([FavouriteViewController class], "managedObjectModel");
-    XCTAssert(dataSource != NULL);
-}
-
 - (void)testFavouriteViewControllerHasARemoveProcessIsActiveProperty
 {
     objc_property_t dataSource = class_getProperty([FavouriteViewController class], "removeProcessIsActive");
@@ -99,22 +87,6 @@
 {
     objc_property_t dataSource = class_getProperty([FavouriteViewController class], "shadowFakeIconLayer");
     XCTAssert(dataSource != NULL);
-}
-
-#pragma mark - Functionality
-
-- (void)testDelegate
-{
-    self.favViewController.tableView.delegate = self.favViewController;
-    [self.favViewController viewDidLoad];
-    XCTAssertEqualObjects(self.favViewController.tableView.delegate, self.favViewController);
-}
-
-- (void)testDataSource
-{
-    self.favViewController.tableView.dataSource = self.favViewController;
-    [self.favViewController viewDidLoad];
-    XCTAssertEqualObjects(self.favViewController.tableView.dataSource, self.favViewController);
 }
 
 @end

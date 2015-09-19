@@ -59,9 +59,12 @@
 		93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */; };
 		93D10A751BA93B4500CCEB22 /* AboutEn.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A741BA93B4500CCEB22 /* AboutEn.rtf */; };
 		93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A761BA93B5600CCEB22 /* AboutAr.rtf */; };
+		93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A931BAD913E00CCEB22 /* AligmentLabel.m */; };
+		93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A971BAD93B300CCEB22 /* AligmentTextField.m */; };
+		93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
-		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; settings = {ASSET_TAGS = (); }; };
+		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; };
 		E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */; };
 		E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07082F31BA7FB7F0057F134 /* Main.storyboard */; };
 		E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */; };
@@ -251,6 +254,12 @@
 		93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
 		93D10A741BA93B4500CCEB22 /* AboutEn.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutEn.rtf; sourceTree = "<group>"; };
 		93D10A761BA93B5600CCEB22 /* AboutAr.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutAr.rtf; sourceTree = "<group>"; };
+		93D10A921BAD913E00CCEB22 /* AligmentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AligmentLabel.h; sourceTree = "<group>"; };
+		93D10A931BAD913E00CCEB22 /* AligmentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AligmentLabel.m; sourceTree = "<group>"; };
+		93D10A961BAD93B300CCEB22 /* AligmentTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AligmentTextField.h; sourceTree = "<group>"; };
+		93D10A971BAD93B300CCEB22 /* AligmentTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AligmentTextField.m; sourceTree = "<group>"; };
+		93D10A9A1BAD9A8800CCEB22 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
@@ -761,6 +770,33 @@
 			path = Texts;
 			sourceTree = "<group>";
 		};
+		93D10A911BAD913E00CCEB22 /* AligmentLabel */ = {
+			isa = PBXGroup;
+			children = (
+				93D10A921BAD913E00CCEB22 /* AligmentLabel.h */,
+				93D10A931BAD913E00CCEB22 /* AligmentLabel.m */,
+			);
+			path = AligmentLabel;
+			sourceTree = "<group>";
+		};
+		93D10A951BAD939D00CCEB22 /* AligmentTextField */ = {
+			isa = PBXGroup;
+			children = (
+				93D10A961BAD93B300CCEB22 /* AligmentTextField.h */,
+				93D10A971BAD93B300CCEB22 /* AligmentTextField.m */,
+			);
+			path = AligmentTextField;
+			sourceTree = "<group>";
+		};
+		93D10A991BAD9A7800CCEB22 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				93D10A9A1BAD9A8800CCEB22 /* CoreDataManager.h */,
+				93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
 		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1230,6 +1266,8 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				93D10A951BAD939D00CCEB22 /* AligmentTextField */,
+				93D10A911BAD913E00CCEB22 /* AligmentLabel */,
 				930E177C1BA581EA00295263 /* RoundSlider */,
 				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
 				9343E3221B974ECB0066329C /* LeftInsetTextField */,
@@ -1284,6 +1322,7 @@
 		ED982F481B5D345A00B6B644 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				93D10A991BAD9A7800CCEB22 /* CoreDataManager */,
 				934628FE1B8DBD970017E4CD /* BlackWhiteConverter */,
 				ED2084F71B5E744100779CBD /* NetworkManager */,
 				ED2084BC1B5E6B0400779CBD /* LocationManager */,
@@ -1939,8 +1978,11 @@
 				934629041B8E17060017E4CD /* TRAService.m in Sources */,
 				E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */,
 				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
+				93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
+				93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,
+				93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2099,7 +2141,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2108,7 +2150,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tra.traSmartService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2117,7 +2159,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2126,7 +2168,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tra.traSmartService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

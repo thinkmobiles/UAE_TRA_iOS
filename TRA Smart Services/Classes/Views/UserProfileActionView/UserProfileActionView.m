@@ -23,7 +23,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder nibName:@"UserProfileActionView"];
+    self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
 }
 
@@ -38,19 +38,12 @@
 
 - (void)setRTLStyle
 {
-    self.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.saveChangesLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.resetLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.cancelLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.saveButton.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    [self transformViewElements:TRANFORM_3D_SCALE];
 }
 
 - (void)setLTRStyle
 {
-    self.layer.transform = CATransform3DIdentity;
-    self.saveChangesLabel.layer.transform = CATransform3DIdentity;
-    self.resetLabel.layer.transform = CATransform3DIdentity;
-    self.cancelLabel.layer.transform = CATransform3DIdentity;
+    [self transformViewElements:CATransform3DIdentity];
 }
 
 #pragma mark - Action
@@ -74,6 +67,16 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(buttonSaveDidTapped)]){
         [self.delegate buttonSaveDidTapped];
     }
+}
+
+#pragma mark - Private
+
+- (void)transformViewElements:(CATransform3D)transfrom
+{
+    self.layer.transform = transfrom;
+    self.saveChangesLabel.layer.transform = transfrom;
+    self.resetLabel.layer.transform = transfrom;
+    self.cancelLabel.layer.transform = transfrom;
 }
 
 @end

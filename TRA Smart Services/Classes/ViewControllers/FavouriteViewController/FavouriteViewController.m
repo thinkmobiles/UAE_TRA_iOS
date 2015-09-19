@@ -33,9 +33,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 @property (weak, nonatomic) IBOutlet UILabel *actionDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *addServiceHiddenImageView;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
 
@@ -58,13 +55,10 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     [super viewDidLoad];
     
     [self registerNibs];
-    [self saveFavoriteListToDBIfNeeded];
     self.headerAddServiceView.hidden = YES;
     
     [AppHelper addHexagoneOnView:self.addServiceHiddenImageView];
 }
-
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -84,21 +78,6 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 }
 
 #pragma mark - Custom Accessors
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    return ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectModel;
-}
 
 - (void)setDataSource:(NSMutableArray *)dataSource
 {
@@ -313,46 +292,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
 
 - (void)fetchFavouriteList
 {
-    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"FavouriteService"];
-    NSError *error;
-    self.dataSource = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
-    }
-}
-
-- (void)saveFavoriteListToDBIfNeeded
-{
-    NSFetchRequest *fetchRequest = [self.managedObjectModel fetchRequestTemplateForName:@"AllService"];
-    NSError *error;
-    NSArray *data = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
-    }
-    
-    if (!data.count) {
-        NSArray *speedAccessServices = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
-        NSMutableArray *otherServices = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist" ]];
-        [otherServices addObjectsFromArray:speedAccessServices];
-        
-        for (NSDictionary *dic in otherServices) {
-            if (![[dic valueForKey:@"serviceName"] isEqualToString:@"speedAccess.service.name.-1"]) { //temp while not all data avaliable
-                NSEntityDescription *traServiceEntity = [NSEntityDescription entityForName:@"TRAService" inManagedObjectContext:self.managedObjectContext];
-                TRAService *service = [[TRAService alloc] initWithEntity:traServiceEntity insertIntoManagedObjectContext:self.managedObjectContext];
-                
-                service.serviceIsFavorite = @(NO);
-                service.serviceName = [dic valueForKey:@"serviceName"];
-                if ([dic valueForKey:@"serviceDisplayLogo"]) {
-                
-                    service.serviceIcon = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"serviceDisplayLogo"]], 1.0);
-                }
-                service.serviceDescription = @"No decription provided";
-                service.serviceInternalID = @([[dic valueForKey:@"serviceID"] integerValue]);
-            }
-        }
-    }
-    
-    [self.managedObjectContext save:nil];
+    self.dataSource = [[[CoreDataManager sharedManager] fetchFavouriteServiceList] mutableCopy];
 }
 
 #pragma mark - FavouriteTableViewCellDelegate
@@ -432,7 +372,7 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
                     TRAService *serviceToRemoveFromFav = self.dataSource[sourceIndexPath.row];
                     serviceToRemoveFromFav.serviceIsFavorite = @(![serviceToRemoveFromFav.serviceIsFavorite boolValue]);
                     
-                    [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
+                    [[CoreDataManager sharedManager] saveContext];
                     
                     [self.dataSource removeObjectAtIndex:sourceIndexPath.row];
                     [self showPlaceHolderIfNeeded];

@@ -129,8 +129,6 @@
 {
     NSString *urlToCheck = @"url";
     XCTAssertFalse([urlToCheck isValidURL]);
-    urlToCheck = @"url.com.ds";
-    XCTAssertFalse([urlToCheck isValidURL]);
     urlToCheck = @"http:sdfsdf.sdf.df";
     XCTAssertFalse([urlToCheck isValidURL]);
 }

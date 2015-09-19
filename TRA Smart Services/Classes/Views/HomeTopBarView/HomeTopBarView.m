@@ -36,8 +36,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
-@property (strong, nonatomic) NSOperationQueue *animOperationQueue;
-
 @end
 
 @implementation HomeTopBarView
@@ -46,7 +44,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder nibName:@"HomeTopBarView"];
+    self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
 }
 
@@ -73,35 +71,8 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)touchesBegan:(nonnull NSSet*)touches withEvent:(nullable UIEvent *)event
 {
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
-    for (CALayer *layer in self.layer.sublayers) {
-        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
-            if (layer == self.informationLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarInformationButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarInformationButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            } else if (layer == self.searchLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarSearchButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarSearchButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            } else if (layer == self.notificationLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarNotificationButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarNotificationButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            }
-        }
-    }
-    for (CALayer *layer in self.avatarView.layer.sublayers) {
-        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
-            if (layer == self.avatarImageLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
-                    [self.delegate topBarLogoImageDidTouched:self];
-                }
-            }
-        }
-    }
+    [self detectFakeButtonTouch:touchPoint];
+    [self detectAvatarTouch:touchPoint];
 }
 
 #pragma mark - CustomAccessors
@@ -146,9 +117,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)reverseLayers
 {
-    self.notificationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.searchLayer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.informationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.notificationLayer.transform = TRANFORM_3D_SCALE;
+    self.searchLayer.transform = TRANFORM_3D_SCALE;
+    self.informationLayer.transform = TRANFORM_3D_SCALE;
 }
 
 - (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel
@@ -239,7 +210,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)stopAllOperations
 {
-    [self.animOperationQueue cancelAllOperations];
     self.isAppearenceAnimationCompleted = YES;
 }
 
@@ -253,57 +223,52 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     __weak typeof(self) weakSelf = self;
     CGFloat delayForTopDrawing = 0.05;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
+        [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];
+        weakSelf.hexagonicalTopLayer.opacity = 1.0f;
+        weakSelf.avatarImageLayer.opacity = 1.f;
+    });
     
-    self.animOperationQueue = [[NSOperationQueue alloc] init];
-    self.animOperationQueue.maxConcurrentOperationCount = 1;
-    [self.animOperationQueue addOperationWithBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf.hexagonicalTopLayer addAnimation:pathAnimation forKey:nil];
-            [weakSelf.avatarImageLayer addAnimation:pathAnimation forKey:nil];
-            weakSelf.hexagonicalTopLayer.opacity = 1.0f;
-            weakSelf.avatarImageLayer.opacity = 1.f;
-        });
-        
-        CGFloat delayForInfoDrawing = self.isFakeButtonsOnTop ? AnimationTimeForLine * (5. / 8.) : AnimationTimeForLine * (6. / 8.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.informationLayer.opacity = 1.f;
-        });
-        
-        CGFloat delayForSearchDrawing = AnimationTimeForLine * (7. / 8.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForSearchDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.searchLayer.opacity = 1.f;
-        });
-        
-        CGFloat delayForMostRightBottomPart = AnimationTimeForLine;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMostRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.bottomAllwaysVisibleHexagonLayer.opacity = 1.f;
-            [weakSelf.bottomAllwaysVisibleHexagonLayer addAnimation:pathAnimation forKey:nil];
-        });
-        
-        CGFloat delayForRightBottomPart = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.bottomRightHexagonLayer.opacity = 1.f;
-            [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
-        });
-        
-        CGFloat delayForNotificationLayer = self.isFakeButtonsOnTop ? AnimationTimeForLine * (6. / 8.) : AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.notificationLayer.opacity = 1.f;
-        });
-        
-        CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.bottomMidHexagonLayer.opacity = 1.f;
-            [weakSelf.bottomMidHexagonLayer addAnimation:pathAnimation forKey:nil];
-        });
-        
-        CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
-            pathAnimation.delegate = self;
-            [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
-        });
-    }];
+    CGFloat delayForInfoDrawing = self.isFakeButtonsOnTop ? AnimationTimeForLine * (5. / 8.) : AnimationTimeForLine * (6. / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForInfoDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.informationLayer.opacity = 1.f;
+    });
+    
+    CGFloat delayForSearchDrawing = AnimationTimeForLine * (7. / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForSearchDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.searchLayer.opacity = 1.f;
+    });
+    
+    CGFloat delayForMostRightBottomPart = AnimationTimeForLine;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMostRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomAllwaysVisibleHexagonLayer.opacity = 1.f;
+        [weakSelf.bottomAllwaysVisibleHexagonLayer addAnimation:pathAnimation forKey:nil];
+    });
+    
+    CGFloat delayForRightBottomPart = AnimationTimeForLine + AnimationTimeForLine * (1 / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForRightBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomRightHexagonLayer.opacity = 1.f;
+        [weakSelf.bottomRightHexagonLayer addAnimation:pathAnimation forKey:nil];
+    });
+    
+    CGFloat delayForNotificationLayer = self.isFakeButtonsOnTop ? AnimationTimeForLine * (6. / 8.) : AnimationTimeForLine + AnimationTimeForLine * (2 / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.notificationLayer.opacity = 1.f;
+    });
+    
+    CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomMidHexagonLayer.opacity = 1.f;
+        [weakSelf.bottomMidHexagonLayer addAnimation:pathAnimation forKey:nil];
+    });
+    
+    CGFloat delayForLeftBottomPart = delayForMidBottomPart + AnimationTimeForLine * (1 / 8.);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
+        pathAnimation.delegate = self;
+        [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
+    });
 }
 
 - (void)setStartApearenceAnimationParameters
@@ -588,7 +553,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.notificationLayer = [self layerWithImage:self.notificationButtonImage inRect:notificationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.notificationLayer];
-    
     [self addHexagonBorderForLayer:self.notificationLayer];
     
     [self.layer insertSublayer:self.notificationLayer below:self.informationLayer];
@@ -795,6 +759,45 @@ static CGFloat const CornerWidthForAvatar = 3.f;
              NSFontAttributeName : [UIFont boldSystemFontOfSize:24.f],
              NSForegroundColorAttributeName : [UIColor whiteColor]
              };
+}
+
+#pragma mark - Touches
+
+- (void)detectAvatarTouch:(CGPoint)touchPoint
+{
+    for (CALayer *layer in self.avatarView.layer.sublayers) {
+        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
+            if (layer == self.avatarImageLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
+                    [self.delegate topBarLogoImageDidTouched:self];
+                }
+            }
+        }
+    }
+}
+
+- (void)detectFakeButtonTouch:(CGPoint)touchPoint
+{
+    for (CALayer *layer in self.layer.sublayers) {
+        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
+            if (layer == self.informationLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarInformationButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarInformationButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            } else if (layer == self.searchLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarSearchButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarSearchButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            } else if (layer == self.notificationLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarNotificationButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarNotificationButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            }
+        }
+    }
 }
 
 @end
