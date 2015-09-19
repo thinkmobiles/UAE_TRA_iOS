@@ -196,7 +196,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 - (ApplicationColor)savedApplicationColor
 {
-    ApplicationColor savedColor = ApplicationColorDefault;
+    ApplicationColor savedColor = ApplicationColorOrange;
     NSUInteger currentColor = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentColor] integerValue];
     switch (currentColor) {
         case 1: {
@@ -224,6 +224,7 @@ static NSString *const KeyLanguageArabic = @"ar";
 {
     ApplicationFont savedFont = ApplicationFontSmall;
     NSUInteger fontSize = [[[NSUserDefaults standardUserDefaults] valueForKey:AppKeyCurrentFontSize] integerValue];
+
     if (fontSize) {
         if (fontSize == ApplicationFontBig) {
             savedFont = ApplicationFontBig;

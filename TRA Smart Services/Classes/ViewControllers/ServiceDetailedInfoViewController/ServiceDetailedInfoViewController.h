@@ -10,5 +10,6 @@
 
 @property (strong, nonatomic) UIImage *fakeBackground;
 @property (strong, nonatomic) NSDictionary *dataSource;
+@property (strong, nonatomic) NSString * detailedInfoText;
 
 @end

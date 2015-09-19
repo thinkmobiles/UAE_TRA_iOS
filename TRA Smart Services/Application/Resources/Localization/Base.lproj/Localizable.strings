@@ -332,3 +332,11 @@
 //HomeSearchResultViewController
 
 "homeSearchResultViewController.title" = "homeSearchResultViewController.title";
+
+//VerificationIMEIViewController
+
+"verificationIMEIViewController.title" = "verificationIMEIViewController.title";
+"verificationIMEIViewController.serviceHeaderLabel" = "verificationIMEIViewController.serviceHeaderLabel";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "verificationIMEIViewController.verificationIMEIInfoEnterLabel";
+"verificationIMEIViewController.sendIMEICodeLabel" = "verificationIMEIViewController.sendIMEICodeLabel";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "verificationIMEIViewController.verificationIMEITextField.placeholder";

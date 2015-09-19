@@ -329,3 +329,11 @@
 //HomeSearchResultViewController
 
 "homeSearchResultViewController.title" = "Search Result";
+
+//VerificationIMEIViewController
+
+"verificationIMEIViewController.title" = "Verification IMEI Code";
+"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
+"verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";

@@ -131,7 +131,6 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (IBAction)sliderDidChangeValue:(UISlider *)sender
 {
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
-
     switch ((int)sender.value) {
         case 0: {
             if ([DynamicUIService service].fontSize == ApplicationFontSmall) {
@@ -544,14 +543,12 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)setCurrentColorThemaUserDefaults:(NSInteger)currentNumberColorTheme
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setInteger:currentNumberColorTheme forKey:@"currentNumberColorTheme"];
+    [[NSUserDefaults standardUserDefaults] setInteger:currentNumberColorTheme forKey:@"currentNumberColorTheme"];
 }
 
 - (NSInteger)currentColorThemaUserDefaults
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger result = (NSInteger) [userDefaults integerForKey:@"currentNumberColorTheme"];
+    NSInteger result = (NSInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"currentNumberColorTheme"];
     return result;
 }
 

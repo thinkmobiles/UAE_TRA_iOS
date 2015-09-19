@@ -39,10 +39,7 @@
     self.navigationController.navigationBar.hidden = YES;
 
     [self configureViewController];
-
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        self.descriptionTextView.textAlignment = NSTextAlignmentRight;
-    }
+    [self configureDescriptionTextView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,12 +71,12 @@
 
 - (void)localizeUI
 {
-    self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
+
 }
 
 - (void)updateColors
 {
-    self.backgroundView.backgroundColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.9f];
+    self.backgroundView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.9f];
 }
 
 #pragma mark - Private
@@ -87,8 +84,13 @@
 - (void)configureViewController
 {
     self.logoImageView.image = [UIImage imageNamed:[self.dataSource valueForKey:@"serviceInfoItemBigLogoName"]];
-    self.descriptionTextView.text = dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
-    self.descriptionTextView.textColor = [UIColor whiteColor];
+}
+
+- (void)configureDescriptionTextView
+{
+    self.descriptionTextView.text = self.detailedInfoText.length ? self.detailedInfoText :dynamicLocalizedString([self.dataSource valueForKey:@"serviceInfoItmeDetailedDescription"]);
+
+    self.descriptionTextView.textAlignment = self.dynamicService.language == LanguageTypeArabic ? NSTextAlignmentRight : NSTextAlignmentLeft;
 }
 
 @end
