@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -138,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
-                                <rect key="frame" x="188" y="265" width="225" height="21"/>
+                                <rect key="frame" x="187" y="266" width="227" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2398,7 +2397,7 @@ a new password will be sent.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT A WAY TO REGISTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0c-id-XMz" userLabel="RegisterInformation - UILAbel">
-                                <rect key="frame" x="20" y="268" width="560" height="21"/>
+                                <rect key="frame" x="16" y="268" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BtD-rt-d1s"/>
                                 </constraints>
@@ -2431,7 +2430,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirates ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-eZ-AB6" userLabel="EmiratesID - UILabel">
-                                <rect key="frame" x="35" y="618" width="245" height="50"/>
+                                <rect key="frame" x="31" y="618" width="249" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Sxh-mp-89b"/>
                                 </constraints>
@@ -2440,7 +2439,7 @@ a new password will be sent.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fil-up Form" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-hv-0rk" userLabel="Fil-upForm - UILabel">
-                                <rect key="frame" x="320" y="618" width="245" height="50"/>
+                                <rect key="frame" x="320" y="618" width="249" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rf6-zi-UEl"/>
                                 </constraints>
@@ -4393,7 +4392,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND8-GO-Vhl">
-                                <rect key="frame" x="20" y="213" width="560" height="30"/>
+                                <rect key="frame" x="16" y="213" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -5843,22 +5842,22 @@ a new password will be sent.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TT-t6-aGe" userLabel="TextFieldContainer">
-                                <rect key="frame" x="4" y="130" width="592" height="170"/>
+                                <rect key="frame" x="0.0" y="130" width="600" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To reset your password, please type your email in the field below and a temporary password will by send to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-6S-px6">
-                                        <rect key="frame" x="30" y="8" width="532" height="11"/>
+                                        <rect key="frame" x="30" y="8" width="540" height="11"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-yK-QQ9" userLabel="Email - UILabel">
-                                        <rect key="frame" x="30" y="39" width="532" height="9"/>
+                                        <rect key="frame" x="30" y="39" width="540" height="9"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
                                         <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0N3-AX-ILZ" userLabel="Email - UITextField">
-                                        <rect key="frame" x="30" y="52" width="532" height="26"/>
+                                        <rect key="frame" x="30" y="52" width="540" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="NiF-Re-e67"/>
                                         </constraints>
@@ -5869,14 +5868,14 @@ a new password will be sent.</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-mc-P4d" userLabel="EmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="78" width="532" height="1"/>
+                                        <rect key="frame" x="30" y="78" width="540" height="1"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="86k-dR-y42"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE YOUR EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="tY9-9B-Oya" userLabel="RetypeEmail - UILabel">
-                                        <rect key="frame" x="30" y="94" width="532" height="12"/>
+                                        <rect key="frame" x="30" y="94" width="540" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="zLj-Gn-W9x"/>
                                         </constraints>
@@ -5885,7 +5884,7 @@ a new password will be sent.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM1-jR-3O2" userLabel="RetypeEmail - UITextField">
-                                        <rect key="frame" x="30" y="110" width="532" height="26"/>
+                                        <rect key="frame" x="30" y="110" width="540" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="gdL-mI-JQY"/>
                                         </constraints>
@@ -5896,7 +5895,7 @@ a new password will be sent.</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-tR-6cj" userLabel="RetypeEmailSeparator - UIView">
-                                        <rect key="frame" x="30" y="136" width="532" height="1"/>
+                                        <rect key="frame" x="30" y="136" width="540" height="1"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="gxh-Xi-3hq"/>
