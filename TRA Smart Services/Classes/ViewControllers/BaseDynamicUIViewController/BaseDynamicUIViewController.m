@@ -19,17 +19,19 @@
 {
     [super viewDidLoad];
     
+    self.dynamicService = [DynamicUIService service];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRTLArabicUI) name:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setLTREuropeUI) name:UIDynamicServiceNotificationKeyNeedSetLTRUI object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setNeedsUpdateFont) name:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setNeedsUpdateFontWithSize) name:UIDynamicServiceNotificationKeyNeedUpdateFontWithSize object:nil];
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         [self setRTLArabicUI];
     } else {
         [self setLTREuropeUI];
     }
-    if ([DynamicUIService service].fontWasChanged) {
+    if (self.dynamicService.fontWasChanged) {
         [self setNeedsUpdateFontWithSize];
     }
 }
