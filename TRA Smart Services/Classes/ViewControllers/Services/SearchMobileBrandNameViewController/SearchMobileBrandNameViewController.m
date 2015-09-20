@@ -42,9 +42,14 @@
             } else {
                 NSString *string = @"";
                 for (NSDictionary *dic in response) {
-                    string = [string stringByAppendingString:[NSString stringWithFormat:@"response - %@ \n", dic]];
+                    if ([string isEqualToString:@""]) {
+                        string = [string stringByAppendingString:@"Approved Device Information\n\n"];
+                    }
+                    string = [string stringByAppendingString:[dic valueForKey:@"marketingName"]];
+                    string = [string stringByAppendingString:@"\n"];
                 }
                 weakSelf.resultInfoTextView.text = string;
+                weakSelf.resultInfoTextView.textAlignment = NSTextAlignmentCenter;
             }
             [AppHelper hideLoader];
         }];

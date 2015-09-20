@@ -42,6 +42,8 @@
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
 		934629041B8E17060017E4CD /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629031B8E17060017E4CD /* TRAService.m */; };
 		934629401B902EC00017E4CD /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9346293F1B902EC00017E4CD /* NSString+Validation.m */; };
+		939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444981BAF286E00EDCF06 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -233,6 +235,10 @@
 		934629031B8E17060017E4CD /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
 		9346293E1B902EC00017E4CD /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		9346293F1B902EC00017E4CD /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		939444941BAF238900EDCF06 /* TutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialCollectionViewCell.h; sourceTree = "<group>"; };
+		939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialCollectionViewCell.m; sourceTree = "<group>"; };
+		939444971BAF286E00EDCF06 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		939444981BAF286E00EDCF06 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -699,6 +705,24 @@
 			path = "NSString+Validation";
 			sourceTree = "<group>";
 		};
+		939444921BAF234800EDCF06 /* TutorialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				939444971BAF286E00EDCF06 /* TutorialViewController.h */,
+				939444981BAF286E00EDCF06 /* TutorialViewController.m */,
+			);
+			path = TutorialViewController;
+			sourceTree = "<group>";
+		};
+		939444931BAF238900EDCF06 /* TutorialCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				939444941BAF238900EDCF06 /* TutorialCollectionViewCell.h */,
+				939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */,
+			);
+			path = TutorialCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1132,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				939444921BAF234800EDCF06 /* TutorialViewController */,
 				E07082EF1BA7F94F0057F134 /* HomeSearchResultViewController */,
 				E00A812B1BA0574800502423 /* HomeSearchViewController */,
 				93CFCC061B9CA1AF004A1A8F /* NotificationsViewController */,
@@ -1535,6 +1560,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				939444931BAF238900EDCF06 /* TutorialCollectionViewCell */,
 				E07082F51BA80CE50057F134 /* HomeSearchResultTableViewCell */,
 				E073CC6A1B9E049400E216C1 /* ServicesSelectTableViewCell */,
 				932C8DAF1BA00C20003107E2 /* UserProfileTableViewCell */,
@@ -1914,6 +1940,7 @@
 				F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */,
 				ED2084D61B5E734000779CBD /* AFHTTPSessionManager.m in Sources */,
 				84709EB71B82F393008F3D14 /* InfoHubTableViewCell.m in Sources */,
+				939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */,
 				F1A889CC1BA31D82007EDEF7 /* ChangePasswordViewController.m in Sources */,
 				ED2084EF1B5E738600779CBD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */,
@@ -1989,6 +2016,7 @@
 				E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */,
 				F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */,
 				93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */,
+				939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
 				93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,

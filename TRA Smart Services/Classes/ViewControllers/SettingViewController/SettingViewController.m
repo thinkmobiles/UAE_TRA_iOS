@@ -11,6 +11,8 @@
 #import "UIImage+DrawText.h"
 #import "DetailsViewController.h"
 
+#import "TutorialViewController.h"
+
 static NSInteger const themeColorBlackAndWhite = 3;
 static CGFloat const optionScaleSwitch = 0.55;
 
@@ -86,6 +88,16 @@ static CGFloat const optionScaleSwitch = 0.55;
 }
 
 #pragma mark - IBActions
+
+- (IBAction)showTutorialValueDidChanged:(UISwitch *)sender
+{
+    if (sender.on) {
+        TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
+        tutorialViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self.navigationController presentViewController:tutorialViewController animated:NO completion:nil];
+    }
+}
 
 - (void)selectThemeColorBlackAndWhiteSwitch:(UISwitch *)switchState
 {

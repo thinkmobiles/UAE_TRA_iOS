@@ -337,3 +337,8 @@
 "verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
 "verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
+
+//TutorialViewController
+
+"tutorialViewController.skipButton.title" = "SKIP";
+"tutorialViewController.nextButton.title" = "NEXT";
