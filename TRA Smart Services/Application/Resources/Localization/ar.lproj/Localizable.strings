@@ -88,7 +88,7 @@
 "register.button.login" = "تسجيل الدخول";
 "register.placeHolderText.confirmPassword" = "Comfirm Password";
 "register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID";
+"register.placeHolderText.emirateID" = "e.g: 784-YYYY-NNNNNNN-C";
 "register.placeHolderText.lastName" = "Last Name";
 "register.placeHolderText.address" = "Address";
 "register.placeHolderText.landline" = "Landline";

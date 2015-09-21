@@ -12,6 +12,8 @@
 static CGFloat const HeightTextFieldAndSeparator = 50.f;
 static NSInteger const SeparatorTag = 77;
 
+static NSString *const DividerForID = @"-";
+
 @interface RegisterViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -50,6 +52,8 @@ static NSInteger const SeparatorTag = 77;
     [self prepareNotification];
     [self prepareRegisterConteinerUIView];
     [self updateColors];
+    
+    self.emiratesIDTextField.subDelegate = self;
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
@@ -167,6 +171,21 @@ static NSInteger const SeparatorTag = 77;
     [self.mobileTextField becomeFirstResponder];
 }
 
+- (IBAction)didChangeEmiratesID:(UITextField *)sender
+{
+    [self prepareEmiratesIDWithTextField:sender];
+}
+
+#pragma mark - LeftInsetTextFieldDelegate
+
+- (void)textFieldDidDelete:(UITextField *)textField
+{
+    if ((textField.text.length == 4 || textField.text.length == 9 || textField.text.length == 17) && textField.tag == 6){
+        NSString *phone = [textField.text substringToIndex:textField.text.length - 1];
+        textField.text = phone;
+    }
+}
+
 #pragma mark - Keyboard
 
 - (void)prepareNotification
@@ -245,7 +264,7 @@ static NSInteger const SeparatorTag = 77;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
         return YES;
     }
-    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
+    if (![[self.emiratesIDTextField.text stringByReplacingOccurrencesOfString:DividerForID withString:@""] isValidIDEmirates]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
         return YES;
     }
@@ -315,6 +334,34 @@ static NSInteger const SeparatorTag = 77;
 - (void)prepareRegisterConteinerUIView
 {
     self.verticalSpaseRegisterConteinerUIView.constant = self.logoImageView.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;
+}
+
+#pragma mark - TextFieldCalculations
+
+- (void)prepareEmiratesIDWithTextField:(UITextField *)textField
+{
+    if (textField.text.length == 3 || textField.text.length == 8 || textField.text.length == 16) {
+        NSString *textToShow = [textField.text stringByAppendingString:DividerForID];
+        textField.text = textToShow;
+    }
+    if (textField.text.length >= 18) {
+        NSString *phone = [textField.text substringToIndex:18];
+        textField.text = phone;
+    }
+    
+    if ((textField.text.length == 4 && ([textField.text rangeOfString:DividerForID].location == NSNotFound))) {
+        NSString *firstPart = [textField.text substringToIndex:3];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:3]];
+        textField.text = firstPart;
+    } else if ((textField.text.length == 9 && [[textField.text substringFromIndex:4] rangeOfString:DividerForID].location == NSNotFound)) {
+        NSString *firstPart = [textField.text substringToIndex:8];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:8]];
+        textField.text = firstPart;
+    } else if ((textField.text.length == 17 && [[textField.text substringFromIndex:4] rangeOfString:DividerForID].location == NSNotFound)) {
+        NSString *firstPart = [textField.text substringToIndex:16];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:16]];
+        textField.text = firstPart;
+    }
 }
 
 @end

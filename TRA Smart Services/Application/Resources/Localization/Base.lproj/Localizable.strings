@@ -321,13 +321,13 @@
 
 //EditUserProfileViewController
 
-"editUserProfileViewController.emiratesLabel" = "";
-"editUserProfileViewController.contactnumberLabel" = "";
-"editUserProfileViewController.firstNameLabel" = "";
-"editUserProfileViewController.lastNameLabel" = "";
-"editUserProfileViewController.streetAddressLabel" = "";
-"editUserProfileViewController.changePhotoButtonTitle" = "";
-"editUserProfileViewController.dataSource.0element" = "";
+"editUserProfileViewController.emiratesLabel" = "editUserProfileViewController.emiratesLabel";
+"editUserProfileViewController.contactnumberLabel" = "editUserProfileViewController.contactnumberLabel";
+"editUserProfileViewController.firstNameLabel" = "editUserProfileViewController.firstNameLabel";
+"editUserProfileViewController.lastNameLabel" = "editUserProfileViewController.lastNameLabel";
+"editUserProfileViewController.streetAddressLabel" = "editUserProfileViewController.streetAddressLabel";
+"editUserProfileViewController.changePhotoButtonTitle" = "editUserProfileViewController.changePhotoButtonTitle";
+"editUserProfileViewController.dataSource.0element" = "editUserProfileViewController.dataSource.0element";
 
 //HomeSearchResultViewController
 

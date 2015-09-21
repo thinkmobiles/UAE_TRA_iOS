@@ -1813,13 +1813,14 @@ a new password will be sent.</string>
                                                         </constraints>
                                                         <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
                                                                 <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="didChangeEmiratesID:" destination="DFS-gr-7R1" eventType="editingChanged" id="DJ6-2R-GpW"/>
                                                             <outlet property="delegate" destination="DFS-gr-7R1" id="Rzs-fC-DVy"/>
                                                         </connections>
                                                     </textField>

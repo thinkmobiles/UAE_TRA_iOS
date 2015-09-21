@@ -35,4 +35,15 @@
     return CGRectInset( bounds, self.insetValue, 0);
 }
 
+#pragma mark - UIKeyInput
+
+- (void)deleteBackward
+{
+    [super deleteBackward];
+    
+    if (self.subDelegate && [self.subDelegate respondsToSelector:@selector(textFieldDidDelete:)]){
+        [self.subDelegate textFieldDidDelete:self];
+    }
+}
+
 @end

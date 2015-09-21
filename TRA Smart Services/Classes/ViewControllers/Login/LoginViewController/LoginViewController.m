@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIView *loginSeparator;
 @property (weak, nonatomic) IBOutlet UIView *verticalSeparator;
 
-
 @property (strong, nonatomic) KeychainStorage *storage;
 @property (assign, nonatomic) BOOL isViewControllerPresented;
 
@@ -90,7 +89,6 @@
             } else {
                 [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
                 
-                [AppHelper alertViewWithMessage:response];
                 if (weakSelf.shouldAutoCloseAfterLogin) {
                     weakSelf.didCloseViewController = nil;
                     [weakSelf closeButtonPressed];

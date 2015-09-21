@@ -28,5 +28,6 @@
 #import "AligmentLabel.h"
 #import "AligmentTextField.h"
 #import "CoreDataManager.h"
+#import "TRALoaderViewController.h"
 
 #endif /* Prefix_pch */
