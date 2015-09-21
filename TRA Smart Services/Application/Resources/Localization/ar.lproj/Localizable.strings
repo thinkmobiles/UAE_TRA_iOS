@@ -342,3 +342,12 @@
 
 "tutorialViewController.skipButton.title" = "SKIP";
 "tutorialViewController.nextButton.title" = "NEXT";
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "Reply";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";

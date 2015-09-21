@@ -23,8 +23,8 @@
     [BlackWhiteConverter sharedManager];
     [[NetworkManager sharedManager] startMonitoringNetwork];
     
-    [AppHelper prepareTabBarItems];
-    [AppHelper prepareTabBarGradient];
+//    [AppHelper prepareTabBarItems];
+//    [AppHelper prepareTabBarGradient];
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
     
     return YES;

@@ -346,3 +346,11 @@
 "tutorialViewController.skipButton.title" = "tutorialViewController.skipButton.title";
 "tutorialViewController.nextButton.title" = "tutorialViewController.nextButton.title";
 
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "innovationsCollectionViewCell.string.reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "innovationsChatTableViewCell.replyButton.title";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "innovationsChatTableViewCell.reportAbuseButton.title";
