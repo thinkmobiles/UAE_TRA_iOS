@@ -11,9 +11,7 @@
 @interface CheckIMEIViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *barcodeView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *resultTextField;
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
@@ -74,7 +72,10 @@
 {
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.resultTextField.text = result;
+        if (weakSelf.didFinishWithResult) {
+            weakSelf.didFinishWithResult(result);
+        }
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     });
 }
 
@@ -105,6 +106,10 @@
     if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
         CheckIMEIViewController *viewController = segue.destinationViewController;
         viewController.needTransparentNavigationBar = YES;
+        __weak typeof(self) weakSelf = self;
+        viewController.didFinishWithResult = ^(NSString *result) {
+            weakSelf.resultTextField.text = result;
+        };
     }
 }
 
@@ -128,12 +133,10 @@
 {
     [super updateColors];
 
-    self.resultLabel.textColor = [self.dynamicService currentApplicationColor];
     [self.cameraButton.imageView setTintColor:[self.dynamicService currentApplicationColor]];
     
     [self.checkIMEIButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
-    [AppHelper setStyleForLayer:self.contentView.layer];
 }
 
 #pragma mark - Private

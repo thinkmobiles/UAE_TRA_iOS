@@ -4227,74 +4227,18 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="centerY" secondItem="SQ5-0p-d7L" secondAttribute="centerY" id="oIa-FZ-asH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-9Q-2T6" userLabel="ContentView">
-                                <rect key="frame" x="16" y="368" width="568" height="160"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVH-kR-kfR">
-                                        <rect key="frame" x="16" y="46" width="536" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="C0z-Yx-fgJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="91c-7m-CxN" id="X3M-oo-7lu"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3Q-8E-xvT">
-                                        <rect key="frame" x="142" y="84" width="284" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="XrH-p8-7Lu"/>
-                                        </constraints>
-                                        <state key="normal" title="Check IMEI">
-                                            <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="checkButtonTapped:" destination="91c-7m-CxN" eventType="touchUpInside" id="IY5-yl-NSq"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGa-On-k9Z">
-                                        <rect key="frame" x="142" y="122" width="284" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="XGa-On-k9Z" firstAttribute="top" secondItem="V3Q-8E-xvT" secondAttribute="bottom" constant="8" id="3DZ-up-TPq"/>
-                                    <constraint firstItem="V3Q-8E-xvT" firstAttribute="top" secondItem="wVH-kR-kfR" secondAttribute="bottom" constant="8" id="C4m-d7-8QW"/>
-                                    <constraint firstItem="XGa-On-k9Z" firstAttribute="height" secondItem="V3Q-8E-xvT" secondAttribute="height" id="Q2r-Ku-qXh"/>
-                                    <constraint firstItem="XGa-On-k9Z" firstAttribute="width" secondItem="V3Q-8E-xvT" secondAttribute="width" id="Rci-lI-uAG"/>
-                                    <constraint firstItem="V3Q-8E-xvT" firstAttribute="width" secondItem="yzA-9Q-2T6" secondAttribute="width" multiplier="0.5" id="S1o-L5-Z59"/>
-                                    <constraint firstAttribute="trailing" secondItem="wVH-kR-kfR" secondAttribute="trailing" constant="16" id="Xnd-i9-ycm"/>
-                                    <constraint firstItem="wVH-kR-kfR" firstAttribute="top" secondItem="yzA-9Q-2T6" secondAttribute="top" constant="46" id="d0g-Op-rzR"/>
-                                    <constraint firstAttribute="height" constant="160" id="eGc-AK-DgV"/>
-                                    <constraint firstItem="XGa-On-k9Z" firstAttribute="centerX" secondItem="yzA-9Q-2T6" secondAttribute="centerX" id="leU-fQ-bJz"/>
-                                    <constraint firstItem="wVH-kR-kfR" firstAttribute="leading" secondItem="yzA-9Q-2T6" secondAttribute="leading" constant="16" id="mE1-vM-Hh2"/>
-                                    <constraint firstItem="V3Q-8E-xvT" firstAttribute="centerX" secondItem="yzA-9Q-2T6" secondAttribute="centerX" id="xRC-1D-1lT"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="772-Rq-o7n" firstAttribute="top" secondItem="2h2-mm-xIB" secondAttribute="top" id="7R8-U3-g3J"/>
                             <constraint firstAttribute="trailing" secondItem="772-Rq-o7n" secondAttribute="trailing" id="F3M-bu-LOL"/>
-                            <constraint firstAttribute="trailing" secondItem="yzA-9Q-2T6" secondAttribute="trailing" constant="16" id="Lxn-tK-ks2"/>
                             <constraint firstItem="772-Rq-o7n" firstAttribute="leading" secondItem="2h2-mm-xIB" secondAttribute="leading" id="Q6E-kq-kGG"/>
-                            <constraint firstItem="yzA-9Q-2T6" firstAttribute="leading" secondItem="2h2-mm-xIB" secondAttribute="leading" constant="16" id="YZL-NI-9xp"/>
-                            <constraint firstItem="ycq-bj-JWG" firstAttribute="top" secondItem="yzA-9Q-2T6" secondAttribute="bottom" constant="8" id="iEA-fJ-Rug"/>
                             <constraint firstAttribute="bottom" secondItem="772-Rq-o7n" secondAttribute="bottom" id="xE2-jW-e7G"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barcodeView" destination="772-Rq-o7n" id="12l-rQ-aVQ"/>
-                        <outlet property="checkIMEIButton" destination="V3Q-8E-xvT" id="yyY-rR-pER"/>
-                        <outlet property="contentView" destination="yzA-9Q-2T6" id="56f-ip-NPS"/>
-                        <outlet property="resultLabel" destination="XGa-On-k9Z" id="5ri-oM-dRe"/>
-                        <outlet property="resultTextField" destination="wVH-kR-kfR" id="uGk-Ge-ERk"/>
                         <outlet property="scannerZoneView" destination="SQ5-0p-d7L" id="3hp-k5-q9c"/>
                     </connections>
                 </viewController>
