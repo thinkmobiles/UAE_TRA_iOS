@@ -45,6 +45,8 @@
 		939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444981BAF286E00EDCF06 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
+		939444A01BB0487D00EDCF06 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */; };
+		939444A41BB04FE300EDCF06 /* FingerPrintAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */; settings = {ASSET_TAGS = (); }; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -242,6 +244,9 @@
 		939444981BAF286E00EDCF06 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		9394449C1BAFD08400EDCF06 /* TRALoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRALoaderViewController.h; sourceTree = "<group>"; };
 		9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRALoaderViewController.m; sourceTree = "<group>"; };
+		9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		939444A21BB04FE300EDCF06 /* FingerPrintAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerPrintAuth.h; sourceTree = "<group>"; };
+		939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerPrintAuth.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -473,6 +478,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939444A01BB0487D00EDCF06 /* LocalAuthentication.framework in Frameworks */,
 				EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */,
 				EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */,
 			);
@@ -733,6 +739,15 @@
 				9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */,
 			);
 			path = TRALoaderViewController;
+			sourceTree = "<group>";
+		};
+		939444A11BB04FCC00EDCF06 /* FingerPrintAuth */ = {
+			isa = PBXGroup;
+			children = (
+				939444A21BB04FE300EDCF06 /* FingerPrintAuth.h */,
+				939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */,
+			);
+			path = FingerPrintAuth;
 			sourceTree = "<group>";
 		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
@@ -1309,6 +1324,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				939444A11BB04FCC00EDCF06 /* FingerPrintAuth */,
 				93D10A951BAD939D00CCEB22 /* AligmentTextField */,
 				93D10A911BAD913E00CCEB22 /* AligmentLabel */,
 				930E177C1BA581EA00295263 /* RoundSlider */,
@@ -1546,6 +1562,7 @@
 		EDD3E59F1B5E4A9E00405367 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */,
 				EDAA8EE11B81D63100269F1A /* CoreData.framework */,
 				EDD3E5A01B5E4ACE00405367 /* Security.framework */,
 			);
@@ -1948,6 +1965,7 @@
 				93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */,
 				F1A889C51BA2BB1E007EDEF7 /* EditUserProfileViewController.m in Sources */,
 				EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */,
+				939444A41BB04FE300EDCF06 /* FingerPrintAuth.m in Sources */,
 				ED2084F61B5E738600779CBD /* UIWebView+AFNetworking.m in Sources */,
 				847D03E61B832AF400B0768C /* AnnoucementsViewController.m in Sources */,
 				F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */,

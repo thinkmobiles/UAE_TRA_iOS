@@ -22,8 +22,12 @@
 - (void)performAutoLoginIfPossible
 {
     if ([self isAutoLoginPossible]) {
-      //  NSDictionary *userCredentials = [self.keychain credentialsForLoginedUser];
-        //todo autologin to server CRM
+        NSDictionary *userCredentials = [self.keychain credentialsForLoginedUser];
+
+        [AppHelper showLoaderWithText:dynamicLocalizedString(@"autoLogin.message")];
+        [[NetworkManager sharedManager] traSSLoginUsername:[userCredentials valueForKey:KeychainStorageKeyLogin] password:[userCredentials valueForKey:KeychainStorageKeyPassword] requestResult:^(id response, NSError *error) {
+            [AppHelper hideLoader];
+        }];
     }
 }
 

@@ -37,6 +37,13 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     return ((AppDelegate *)[UIApplication sharedApplication].delegate).window;
 }
 
++ (void)presentViewController:(UIViewController *)target onController:(UIViewController *)presenter
+{
+    target.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    presenter.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [presenter presentViewController:target animated:NO completion:nil];
+}
+
 #pragma mark - InformationView
 
 + (void)alertViewWithMessage:(NSString *)message
@@ -142,6 +149,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     }
 }
 
+//ok
 + (void)updateFontsOnTabBar
 {
     CGFloat fontSize = [AppHelper fontSizeForTabBar];
@@ -164,6 +172,7 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     }
 }
 
+//ok
 + (CGFloat)fontSizeForTabBar
 {
     CGFloat fontSize = [DynamicUIService service].fontSize;

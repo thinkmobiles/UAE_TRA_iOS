@@ -11,6 +11,8 @@
 
 static NSString *const LoaderIdentifier = @"loaderTRAId";
 
+static NSString *const LoaderBackgroundOrange = @"img_bg_1";
+
 @interface TRALoaderViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *loaderView;
@@ -64,13 +66,17 @@ static NSString *const LoaderIdentifier = @"loaderTRAId";
 
 - (void)setCompletedStatus
 {
+    self.logoImageView.hidden = YES;
+    
     [self.tailLayer removeAllAnimations];
     [self.hexLayer removeAllAnimations];
     self.tailLayer.strokeColor = [UIColor clearColor].CGColor;
     self.backgroundLayer.strokeColor = [UIColor clearColor].CGColor;
     self.hexLayer.strokeColor = [UIColor clearColor].CGColor;
     
-    [self.hexLayer addAnimation:[self pathFillingAnimations] forKey:@"fillingColorAnimation"];
+    CABasicAnimation *pathFilling = [self pathFillingAnimations] ;
+    pathFilling.duration = 0.5f;
+    [self.hexLayer addAnimation:pathFilling forKey:@"fillingColorAnimation"];
     self.hexLayer.fillColor = [UIColor whiteColor].CGColor;
     
     self.closeButton.hidden = NO;
@@ -103,7 +109,12 @@ static NSString *const LoaderIdentifier = @"loaderTRAId";
 
 - (void)updateColors
 {
-//    [super updateBackgroundImageNamed:@""]; //wait for image
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
+        self.backgroundImageView.image = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:[UIImage imageNamed:LoaderBackgroundOrange]];
+    } else {
+        NSString *name = [NSString stringWithFormat:@"img_bg_%i", (int)self.dynamicService.colorScheme];
+        self.backgroundImageView.image = [UIImage imageNamed:name];
+    }
 }
 
 - (void)localizeUI
@@ -138,15 +149,20 @@ static NSString *const LoaderIdentifier = @"loaderTRAId";
     [self.hexLayer addAnimation:group forKey:nil];
     
     //demo
-    CABasicAnimation *pathFilling = [self pathFillingAnimations];
     __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+        weakSelf.logoImageView.layer.opacity = 0.f;
+        [weakSelf.logoImageView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:self] forKey:@"hideImage"];
+        
         [weakSelf.tailLayer removeAllAnimations];
         [weakSelf.hexLayer removeAllAnimations];
         weakSelf.tailLayer.strokeColor = [UIColor clearColor].CGColor;
         weakSelf.backgroundLayer.strokeColor = [UIColor clearColor].CGColor;
         weakSelf.hexLayer.strokeColor = [UIColor clearColor].CGColor;
         
+        CABasicAnimation *pathFilling = [self pathFillingAnimations] ;
+        pathFilling.duration = 0.5f;
         [weakSelf.hexLayer addAnimation:pathFilling forKey:@"fillingColorAnimation"];
         weakSelf.hexLayer.fillColor = [UIColor whiteColor].CGColor;
         
@@ -171,10 +187,12 @@ static NSString *const LoaderIdentifier = @"loaderTRAId";
         CAShapeLayer *checkSymbolLayer = [self checkSymbolLayer];
         [self.loaderView.layer addSublayer:checkSymbolLayer];
         [checkSymbolLayer addAnimation:[self strokeEndAnimation] forKey:nil];
-        
     } else if (anim == [self.view.layer animationForKey:@"dismissView"]) {
         [self.view.layer removeAllAnimations];
         [self.presenter dismissViewControllerAnimated:NO completion:nil];
+    } else if (anim == [self.logoImageView.layer animationForKey:@"hideImage"]) {
+        [self.logoImageView.layer removeAllAnimations];
+        self.logoImageView.hidden = YES;
     }
 }
 

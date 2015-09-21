@@ -14,12 +14,13 @@
 #import "TutorialViewController.h"
 #import "TRALoaderViewController.h"
 
-static NSInteger const themeColorBlackAndWhite = 3;
-static CGFloat const optionScaleSwitch = 0.55;
+static NSInteger const ThemeColorBlackAndWhite = 3;
+static CGFloat const OptionScaleSwitch = 0.55;
+
+static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 
 @interface SettingViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerButtonColorThemeView;
@@ -84,16 +85,17 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
+//}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -101,53 +103,23 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (IBAction)showTutorialValueDidChanged:(UISwitch *)sender
 {
-    if (sender.on) {
+    if (sender.isOn) {
         TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
-        tutorialViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:tutorialViewController animated:NO completion:nil];
+        [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
     }
 }
 
 - (void)selectThemeColorBlackAndWhiteSwitch:(UISwitch *)switchState
 {
-    if ([switchState isOn]) {
-        [self selectColorTheme:themeColorBlackAndWhite];
-    } else {
-        [self selectColorTheme:[self currentColorThemaUserDefaults]];
-    }
+    switchState.isOn ? [self selectColorTheme:ThemeColorBlackAndWhite] : [self selectColorTheme:[self currentColorThemaUserDefaults]];
 }
 
-- (IBAction)selectedThemes:(id)sender
+- (IBAction)selectedThemes:(UISwitch *)sender
 {
-    [self selectColorTheme:[sender tag]];
+    [self selectColorTheme:sender.tag];
     
     [self.themeColorBlackAndWhiteSwitch setOn:NO animated:YES];
-    [self setCurrentColorThemaUserDefaults:[sender tag]];
-}
-
-- (void)languageSegmentControllerPressed:(NSUInteger)index
-{
-    switch (index) {
-        case 0: {
-            if (self.dynamicService.language == LanguageTypeEnglish) {
-                [self transformAnimationConteinerView];
-            }
-            [self.dynamicService setLanguage:LanguageTypeArabic];
-            break;
-        }
-        case 1: {
-            if (self.dynamicService.language == LanguageTypeArabic) {
-                [self transformAnimationConteinerView];
-            }
-            [self.dynamicService setLanguage:LanguageTypeEnglish];
-            break;
-        }
-    }
-    [self localizeUI];
-    [AppHelper localizeTitlesOnTabBar];
-    [AppHelper updateFontsOnTabBar];
-    [self updateLanguageSegmentControlPosition];
+    [self setCurrentColorThemaUserDefaults:sender.tag];
 }
 
 - (IBAction)sliderDidChangeValue:(UISlider *)sender
@@ -155,7 +127,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
     switch ((int)sender.value) {
         case 0: {
-            if (self.dynamicService.fontSize == ApplicationFontSmall) {
+            if (self.dynamicService.fontSize != ApplicationFontSmall) {
                 return;
             }
             [self.dynamicService saveCurrentFontSize:ApplicationFontSmall];
@@ -189,7 +161,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     NSInteger selecteValue = -1;
     if (tapPoint.x < sliderWidth / 3) {
         selecteValue = 0;
-    } else if (tapPoint.x > sliderWidth/ 3 && tapPoint.x < (sliderWidth / 3)*2) {
+    } else if (tapPoint.x > sliderWidth / 3 && tapPoint.x < (sliderWidth / 3) * 2) {
         selecteValue = 1;
     } else {
         selecteValue = 2;
@@ -197,7 +169,6 @@ static CGFloat const optionScaleSwitch = 0.55;
     
     if (selecteValue >= 0 && [view isKindOfClass:[UISlider class]]) {
         [self.slider setValue:selecteValue];
-        
         [self sliderDidChangeValue:(UISlider *)view];
     }
 }
@@ -205,19 +176,12 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (IBAction)aboutTRAButtonTapped:(id)sender
 {
     DetailsViewController *detailedInforViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsViewContrrollerID"];
-    
-    NSURL *url;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        url = [[NSBundle mainBundle] URLForResource:@"AboutAr" withExtension:@"rtf"];
-    } else {
-        url = [[NSBundle mainBundle] URLForResource:@"AboutEn" withExtension:@"rtf"];
-    }
-    NSError *error = nil;
-    NSAttributedString *dataString = [[NSAttributedString alloc] initWithFileURL:url options:nil documentAttributes:NULL error:&error];
-    
+    NSString *fileName = self.dynamicService.language == LanguageTypeArabic ? @"AboutAr" : @"AboutEn";
+    NSURL *url = [[NSBundle mainBundle] URLForResource:fileName withExtension:@"rtf"];
+    NSAttributedString *dataString = [[NSAttributedString alloc] initWithFileURL:url options:@{ NSPlainTextDocumentType : NSRTFTextDocumentType } documentAttributes:kNilOptions error:nil];
     detailedInforViewController.contentText = dataString;
     detailedInforViewController.titleText = dynamicLocalizedString(@"settings.title.aboutTra");
-
+    
     [self.navigationController pushViewController:detailedInforViewController animated:YES];
 }
 
@@ -225,12 +189,28 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)segmentControlDidPressedItem:(NSUInteger)item inSegment:(SegmentView *)segment
 {
-    switch (segment.segmentTag) {
+    switch (item) {
+        case 0: {
+            if (self.dynamicService.language == LanguageTypeEnglish) {
+                [self changeLanguageTo:LanguageTypeArabic];
+            }
+            break;
+        }
         case 1: {
-            [self languageSegmentControllerPressed:item];
+            if (self.dynamicService.language == LanguageTypeArabic) {
+                [self changeLanguageTo:LanguageTypeEnglish];
+            }
             break;
         }
     }
+}
+
+- (void)changeLanguageTo:(LanguageType)languageType
+{
+    [self transformAnimationContainerView];
+    [self.dynamicService setLanguage:languageType];
+    [self updateLanguageSegmentControlPosition];
+    [self localizeUI];
 }
 
 #pragma mark - Private
@@ -249,7 +229,7 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (void)prepareUISwitch:(UISwitch *) prepareSwitch
 {
     prepareSwitch.backgroundColor = [UIColor grayBorderTextFieldTextColor];
-    prepareSwitch.layer.cornerRadius = 16.0f;
+    prepareSwitch.layer.cornerRadius = prepareSwitch.bounds.size.height / 2;
     prepareSwitch.tintColor = [UIColor grayBorderTextFieldTextColor];
 }
 
@@ -258,10 +238,8 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (void)transformUILayer:(CATransform3D)animCATransform3D
 {
     self.conteinerView.layer.transform = animCATransform3D;
-    
     self.conteinerButtonColorThemeView.layer.transform = animCATransform3D;
     self.languageSegmentControl.layer.transform = animCATransform3D;
-    
     self.languageLabel.layer.transform = animCATransform3D;
     self.fontSizeLabel.layer.transform = animCATransform3D;
     self.colorImpairedLabel.layer.transform = animCATransform3D;
@@ -299,7 +277,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.releaseLabel.textAlignment = textAlignment;
 }
 
-- (void)transformAnimationConteinerView
+- (void)transformAnimationContainerView
 {
     UIView *protectionView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     protectionView.tag = 101;
@@ -337,7 +315,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     CATransform3D startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
     CATransform3D midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0, 0);
     CATransform3D endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 0, 0);
-    if (self.dynamicService.language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         startScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
         midScale = CATransform3DScale (self.conteinerView.layer.transform, 0.8, 0.8, 0.8);
         endScale = CATransform3DScale (self.conteinerView.layer.transform, 1, 1, 1);
@@ -406,6 +384,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.themeBlueButton.enabled = enabled;
     self.themeGreenButton.enabled = enabled;
     self.themeOrangeButton.enabled = enabled;
+    
     UIImage *themeBlueButtonImage = [[UIImage imageNamed:@"btn_theme_bl"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
     UIImage *themeOrangeButtonImage = [[UIImage imageNamed:@"btn_theme_rng"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
     UIImage *themeGreenButtonImage = [[UIImage imageNamed:@"btn_theme_grn"] imageWithRenderingMode:enabled ? UIImageRenderingModeAutomatic : UIImageRenderingModeAlwaysTemplate];
@@ -419,7 +398,6 @@ static CGFloat const optionScaleSwitch = 0.55;
 {
     [self buttonColorThemeEnable:YES];
     self.themeColorBlackAndWhiteSwitch.on = NO;
-    
     [self.dynamicService setColorScheme:selectedColor];
     
     switch (selectedColor) {
@@ -442,7 +420,6 @@ static CGFloat const optionScaleSwitch = 0.55;
             break;
         }
     }
-    
     [self updateColors];
 }
 
@@ -464,18 +441,19 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.title = title;
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
+                                                                      }];
 }
 
 #pragma mark - Superclass Methods
 
 - (void)localizeUI
 {
+    [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
+
     self.leftFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.small");
     self.centerFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.normal");
     self.rightFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.large");
-    
-    [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
     self.languageLabel.text = dynamicLocalizedString(@"settings.label.language");
     self.fontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize");
     self.colorImpairedLabel.text = dynamicLocalizedString(@"settings.label.colorImpaired");
@@ -487,14 +465,19 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.colorThemeDetailsLabel.text = dynamicLocalizedString(@"settings.label.colorThemeDetails");
     self.aboutTRATitleLabel.text = dynamicLocalizedString(@"settings.label.aboutTRATitle");
     self.aboutTRADetailsLabel.text = dynamicLocalizedString(@"settings.label.aboutTRADetails");
-    
     self.languageSegmentControl.segmentItems = @[dynamicLocalizedString(@"settings.switchControl.language.arabic"), dynamicLocalizedString(@"setting.switchControl.language.english")];
     self.releaseLabel.text = dynamicLocalizedString(@"setting.label.release");
-    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
+    
+    //v 1.0 build <version number>.<number of week>.<weakBuild>
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSDateComponents *dateComponent = [calender components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:[NSDate date]];
+    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 0];
 }
 
 - (void)updateColors
 {
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
+    
     self.screenLockNotificationSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     self.appTutorialScreensSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     self.themeColorBlackAndWhiteSwitch.onTintColor = [self.dynamicService currentApplicationColor];
@@ -503,22 +486,15 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self.languageSegmentControl setNeedsLayout];
     [self updateFontSizeSliderColor];
     [self updateColorForDescriptioveTextSize];
-    
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
 }
 
 - (void)setRTLArabicUI
 {
     [self transformUILayer:TRANFORM_3D_SCALE];
     
-    self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(- optionScaleSwitch, optionScaleSwitch, 1);
-    self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(- optionScaleSwitch, optionScaleSwitch, 1);
-    self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(- optionScaleSwitch, optionScaleSwitch, 1);
+    self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
     
     [self setTextAligmentLabelSettingViewController:NSTextAlignmentRight];
 }
@@ -527,9 +503,9 @@ static CGFloat const optionScaleSwitch = 0.55;
 {
     [self transformUILayer:CATransform3DIdentity];
     
-    self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
-    self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
-    self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(optionScaleSwitch, optionScaleSwitch, 1);
+    self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
     
     [self setTextAligmentLabelSettingViewController:NSTextAlignmentLeft];
 }
@@ -571,12 +547,12 @@ static CGFloat const optionScaleSwitch = 0.55;
 
 - (void)setCurrentColorThemaUserDefaults:(NSInteger)currentNumberColorTheme
 {
-    [[NSUserDefaults standardUserDefaults] setInteger:currentNumberColorTheme forKey:@"currentNumberColorTheme"];
+    [[NSUserDefaults standardUserDefaults] setInteger:currentNumberColorTheme forKey:KeyForOptionColor];
 }
 
 - (NSInteger)currentColorThemaUserDefaults
 {
-    NSInteger result = (NSInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"currentNumberColorTheme"];
+    NSInteger result = (NSInteger)[[NSUserDefaults standardUserDefaults] integerForKey:KeyForOptionColor];
     return result;
 }
 
@@ -588,6 +564,7 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self.slider setThumbImage:img forState:UIControlStateNormal];
     [self.slider setThumbImage:img forState:UIControlStateSelected];
     [self.slider setThumbImage:img forState:UIControlStateHighlighted];
+    
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selctedSliderValueFont:)];
     [self.slider addGestureRecognizer:tapGestureRecognizer];
 }
@@ -603,7 +580,6 @@ static CGFloat const optionScaleSwitch = 0.55;
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [self.slider setMaximumTrackImage:image forState:UIControlStateNormal];
-    
     [self.slider setMinimumTrackImage:image forState:UIControlStateNormal];
     
     [[UISlider appearance] setTintColor:[UIColor itemGradientTopColor]];
@@ -619,10 +595,11 @@ static CGFloat const optionScaleSwitch = 0.55;
 - (void)updateColorForDescriptioveTextSize
 {
     UIColor *textColor = [self.dynamicService currentApplicationColor];
+    UIColor *defaultColor = [UIColor lightGraySettingTextColor];
     
-    self.rightFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
-    self.leftFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
-    self.centerFontSizeLabel.textColor = [UIColor lightGraySettingTextColor];
+    self.rightFontSizeLabel.textColor = defaultColor;
+    self.leftFontSizeLabel.textColor = defaultColor;
+    self.centerFontSizeLabel.textColor = defaultColor;
     
     switch (self.dynamicService.fontSize) {
         case ApplicationFontUndefined: {

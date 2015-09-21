@@ -5226,19 +5226,11 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
-                                <rect key="frame" x="308" y="52" width="276" height="30"/>
+                                <rect key="frame" x="16" y="52" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="5ZJ-47-k8q"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oeP-3G-30v" userLabel="PhoneProvider">
-                                <rect key="frame" x="16" y="52" width="276" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <connections>
-                                    <outlet property="delegate" destination="OLV-R2-oyn" id="NGN-5f-Smn"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
@@ -5290,12 +5282,10 @@ a new password will be sent.</string>
                         <constraints>
                             <constraint firstItem="44B-XE-Vza" firstAttribute="leading" secondItem="XQv-fE-Ye2" secondAttribute="leading" constant="16" id="4r2-p7-Viv"/>
                             <constraint firstAttribute="trailing" secondItem="1Oi-PN-CIo" secondAttribute="trailing" constant="16" id="5QH-yN-LjA"/>
+                            <constraint firstItem="1Oi-PN-CIo" firstAttribute="leading" secondItem="XQv-fE-Ye2" secondAttribute="leading" constant="16" id="BuS-8l-849"/>
                             <constraint firstItem="1Oi-PN-CIo" firstAttribute="top" secondItem="M2r-ir-Bvk" secondAttribute="bottom" constant="16" id="GMv-bq-rAo"/>
                             <constraint firstItem="cEp-Ns-2Gd" firstAttribute="top" secondItem="e1Q-Nt-TMA" secondAttribute="bottom" constant="8" id="KKV-A3-Wmx"/>
-                            <constraint firstItem="oeP-3G-30v" firstAttribute="centerY" secondItem="1Oi-PN-CIo" secondAttribute="centerY" id="LwP-P6-bew"/>
-                            <constraint firstItem="1Oi-PN-CIo" firstAttribute="leading" secondItem="oeP-3G-30v" secondAttribute="trailing" constant="16" id="OYx-MU-QUK"/>
                             <constraint firstItem="M2r-ir-Bvk" firstAttribute="top" secondItem="Ven-WD-rF4" secondAttribute="bottom" constant="8" id="Qj5-2H-aPH"/>
-                            <constraint firstItem="oeP-3G-30v" firstAttribute="height" secondItem="1Oi-PN-CIo" secondAttribute="height" id="Qku-9s-whN"/>
                             <constraint firstItem="e1Q-Nt-TMA" firstAttribute="top" secondItem="44B-XE-Vza" secondAttribute="bottom" constant="17" id="RIS-E9-nS0"/>
                             <constraint firstItem="44B-XE-Vza" firstAttribute="top" secondItem="1Oi-PN-CIo" secondAttribute="bottom" constant="18" id="Sud-aW-EXN"/>
                             <constraint firstAttribute="trailing" secondItem="44B-XE-Vza" secondAttribute="trailing" constant="16" id="aD3-Oq-Tru"/>
@@ -5304,14 +5294,11 @@ a new password will be sent.</string>
                             <constraint firstItem="cEp-Ns-2Gd" firstAttribute="width" secondItem="XQv-fE-Ye2" secondAttribute="width" multiplier="0.5" id="pBe-4c-y1A"/>
                             <constraint firstItem="e1Q-Nt-TMA" firstAttribute="centerX" secondItem="cEp-Ns-2Gd" secondAttribute="centerX" id="phM-rm-fae"/>
                             <constraint firstAttribute="trailing" secondItem="e1Q-Nt-TMA" secondAttribute="trailing" constant="16" id="r5Y-H8-hM0"/>
-                            <constraint firstItem="oeP-3G-30v" firstAttribute="width" secondItem="1Oi-PN-CIo" secondAttribute="width" id="uCd-eX-JRr"/>
-                            <constraint firstItem="oeP-3G-30v" firstAttribute="leading" secondItem="XQv-fE-Ye2" secondAttribute="leading" constant="16" id="vr2-iJ-umb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="notes" destination="e1Q-Nt-TMA" id="Nsh-7O-tV1"/>
                         <outlet property="phoneNumber" destination="1Oi-PN-CIo" id="ySQ-P1-1DB"/>
-                        <outlet property="phoneProvider" destination="oeP-3G-30v" id="dnU-TO-3iD"/>
                         <outlet property="providerType" destination="44B-XE-Vza" id="hRb-Do-UaG"/>
                         <outlet property="reportButton" destination="cEp-Ns-2Gd" id="O2U-k1-Xsk"/>
                         <outlet property="reportSegment" destination="M2r-ir-Bvk" id="T32-Y3-6j2"/>
@@ -6193,10 +6180,10 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teW-eS-Vc4" userLabel="Background - UIImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_orange" translatesAutoresizingMaskIntoConstraints="NO" id="teW-eS-Vc4" userLabel="Background - UIImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-i6-pF0" userLabel="Logo - UIImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_downld_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-i6-pF0" userLabel="Logo - UIImageView">
                                 <rect key="frame" x="262" y="255" width="77" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -6231,7 +6218,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0WF-i6-pF0" firstAttribute="width" secondItem="6GH-zr-5Bc" secondAttribute="width" id="7nA-xH-aVv"/>
                             <constraint firstAttribute="right" secondItem="Jkz-uX-ntF" secondAttribute="right" constant="16" id="7w9-mN-IKE"/>
@@ -6278,6 +6265,7 @@ a new password will be sent.</string>
         <image name="close5" width="16" height="16"/>
         <image name="fav_back_orange" width="640" height="960"/>
         <image name="ic_chat" width="30" height="24"/>
+        <image name="ic_downld_logo" width="52" height="44"/>
         <image name="ic_favorites" width="21" height="19"/>
         <image name="ic_fiil_up" width="114" height="132"/>
         <image name="ic_home" width="22" height="18"/>
@@ -6288,6 +6276,7 @@ a new password will be sent.</string>
         <image name="ic_search_pol" width="42" height="48"/>
         <image name="ic_settings" width="18" height="18"/>
         <image name="ic_warn" width="78" height="89"/>
+        <image name="img_bg_orange" width="320" height="568"/>
         <image name="res_img_bg" width="320" height="568"/>
         <image name="res_img_logo" width="260" height="118"/>
         <image name="res_polygons" width="320" height="375"/>

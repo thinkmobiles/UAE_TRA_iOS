@@ -352,3 +352,7 @@
 "TRALoader.backButton.title" = "TRALoader.backButton.title";
 "TRALoader.information.begin" = "TRALoader.information.begin";
 "TRALoader.information.finish" = "TRALoader.information.finish";
+
+//AutoLoginService
+
+"autoLogin.message" = "autoLogin.message";

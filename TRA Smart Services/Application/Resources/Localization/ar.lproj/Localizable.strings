@@ -131,7 +131,7 @@
 "settings.label.fontsize.description.normal" = "Normal";
 "settings.label.fontsize.description.large" = "Large";
 "setting.label.release" = "Release version";
-"setting.label.releaseVersion" = "v %@, build %@";
+"setting.label.releaseVersion" = "v %@, build %i.%i.%i";
 
 //HomeViewController
 
@@ -350,3 +350,7 @@
 "TRALoader.backButton.title" = "BACK TO DASHBOARD";
 "TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
 "TRALoader.information.finish" = "Your Request has been\nsuccessfully sent and\nyou will receive an SMS\n reply shortly";
+
+//AutoLoginService
+
+"autoLogin.message" = "Logging in...";

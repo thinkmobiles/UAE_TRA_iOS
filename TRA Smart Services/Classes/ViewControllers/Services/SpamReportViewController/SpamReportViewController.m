@@ -10,9 +10,10 @@
 #import "NetworkManager.h"
 #import "LoginViewController.h"
 
+static NSInteger const BlockServiceNumber = 7726;
+
 @interface SpamReportViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *phoneProvider;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *providerType;
 
@@ -50,7 +51,7 @@
             [self POSTSpamReport];
         }
     } else {
-        if (!self.phoneProvider.text.length || !self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
+        if (!self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             if (![self.phoneNumber.text isValidPhoneNumber]) {
@@ -66,12 +67,10 @@
 {
     if (sender.selectedSegmentIndex) {
         self.providerType.enabled = NO;
-        self.phoneProvider.enabled = NO;
         [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
         [self clearUp];
     } else {
         self.providerType.enabled = YES;
-        self.phoneProvider.enabled = YES;
         [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
         [self clearUp];
     }
@@ -135,7 +134,6 @@
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"spamReportViewControler.title");
-    self.phoneProvider.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneProvider");
     self.phoneNumber.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneNumber");
     self.providerType.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.providerType");
     [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
@@ -157,7 +155,7 @@
 
 - (void)POSTSpamReport
 {
-    if (![self.phoneNumber.text isValidPhoneNumber] && ![self.phoneProvider.text isValidPhoneNumber]) {
+    if (![self.phoneNumber.text isValidUserName] ) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         return;
     }
@@ -175,7 +173,7 @@
 - (void)POSTSMSBlock
 {
     [AppHelper showLoader];
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:self.phoneProvider.text providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
         } else {
@@ -208,7 +206,6 @@
 {
     self.providerType.text = @"";
     self.phoneNumber.text = @"";
-    self.phoneProvider.text = @"";
     self.notes.text = @"";
 }
 

@@ -13,6 +13,8 @@
 + (UITabBarController *)rootViewController;
 + (UIView *)topView;
 
++ (void)presentViewController:(UIViewController *)target onController:(UIViewController *)presenter;
+
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate otherButtonTitles:(NSString *)otherButtonTitles, ...;
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate;
 + (void)alertViewWithMessage:(NSString *)message;

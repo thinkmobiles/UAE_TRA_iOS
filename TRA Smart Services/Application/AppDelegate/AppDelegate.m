@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AutoLoginService.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +26,11 @@
     
     [AppHelper prepareTabBarItems];
     [AppHelper prepareTabBarGradient];
-    self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
+    AutoLoginService *autoLogger = [[AutoLoginService alloc] init];
+    [autoLogger performAutoLoginIfPossible];
     
+    self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
+
     return YES;
 }
 

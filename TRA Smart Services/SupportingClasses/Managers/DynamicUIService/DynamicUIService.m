@@ -78,6 +78,9 @@ static NSString *const KeyLanguageArabic = @"ar";
             [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
+        
+        [AppHelper updateFontsOnTabBar];
+        [AppHelper localizeTitlesOnTabBar];
     }
 }
 
