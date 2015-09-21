@@ -21,7 +21,11 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
         </mutableArray>
+        <mutableArray key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+        </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -6206,6 +6210,88 @@ a new password will be sent.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiI-gJ-qnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="2415"/>
+        </scene>
+        <!--Loader View Controller-->
+        <scene sceneID="IDt-Kb-7Dp">
+            <objects>
+                <viewController storyboardIdentifier="loaderTRAId" id="73K-77-GyR" customClass="TRALoaderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K02-R2-6t2"/>
+                        <viewControllerLayoutGuide type="bottom" id="bVW-0n-YcP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wA9-Sr-X0v">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teW-eS-Vc4" userLabel="Background - UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-i6-pF0" userLabel="Logo - UIImageView">
+                                <rect key="frame" x="262" y="255" width="77" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GH-zr-5Bc" userLabel="Loader - UIView">
+                                <rect key="frame" x="262" y="255" width="77" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="H37-9Q-H9j"/>
+                                    <constraint firstAttribute="height" constant="90" id="T9R-w0-hvG"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-tv-eNG" userLabel="Information - UILabel">
+                                <rect key="frame" x="16" y="90" width="568" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="9dB-Pz-4re"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jkz-uX-ntF" userLabel="Close - UIButton">
+                                <rect key="frame" x="16" y="420" width="568" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PII-k0-5t1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
+                                <state key="normal" title="BACK TO DASHBOARD">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="73K-77-GyR" eventType="touchUpInside" id="lku-nL-CJx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0WF-i6-pF0" firstAttribute="width" secondItem="6GH-zr-5Bc" secondAttribute="width" id="7nA-xH-aVv"/>
+                            <constraint firstAttribute="right" secondItem="Jkz-uX-ntF" secondAttribute="right" constant="16" id="7w9-mN-IKE"/>
+                            <constraint firstItem="elQ-tv-eNG" firstAttribute="left" secondItem="wA9-Sr-X0v" secondAttribute="left" constant="16" id="AGt-0c-IeW"/>
+                            <constraint firstAttribute="right" secondItem="teW-eS-Vc4" secondAttribute="right" id="BVN-lu-Zau"/>
+                            <constraint firstAttribute="right" secondItem="elQ-tv-eNG" secondAttribute="right" constant="16" id="DXl-pe-feT"/>
+                            <constraint firstItem="teW-eS-Vc4" firstAttribute="top" secondItem="wA9-Sr-X0v" secondAttribute="top" id="IDd-jt-X3Y"/>
+                            <constraint firstItem="0WF-i6-pF0" firstAttribute="centerY" secondItem="wA9-Sr-X0v" secondAttribute="centerY" id="Kgm-Q0-Fnl"/>
+                            <constraint firstItem="teW-eS-Vc4" firstAttribute="left" secondItem="wA9-Sr-X0v" secondAttribute="left" id="N87-zL-Z2U"/>
+                            <constraint firstItem="6GH-zr-5Bc" firstAttribute="centerY" secondItem="wA9-Sr-X0v" secondAttribute="centerY" id="UFA-Eb-LIv"/>
+                            <constraint firstItem="0WF-i6-pF0" firstAttribute="height" secondItem="6GH-zr-5Bc" secondAttribute="height" id="Wz8-qd-V2O"/>
+                            <constraint firstItem="Jkz-uX-ntF" firstAttribute="top" secondItem="0WF-i6-pF0" secondAttribute="bottom" constant="75" id="YKP-9p-mxa"/>
+                            <constraint firstItem="bVW-0n-YcP" firstAttribute="top" secondItem="teW-eS-Vc4" secondAttribute="bottom" id="Z9z-Sj-MRK"/>
+                            <constraint firstItem="6GH-zr-5Bc" firstAttribute="centerX" secondItem="wA9-Sr-X0v" secondAttribute="centerX" id="fUX-xP-rGU"/>
+                            <constraint firstItem="0WF-i6-pF0" firstAttribute="top" secondItem="elQ-tv-eNG" secondAttribute="bottom" constant="40" id="h9c-aZ-3p0"/>
+                            <constraint firstItem="Jkz-uX-ntF" firstAttribute="left" secondItem="wA9-Sr-X0v" secondAttribute="left" constant="16" id="kR1-ZI-LcR"/>
+                            <constraint firstItem="0WF-i6-pF0" firstAttribute="centerX" secondItem="wA9-Sr-X0v" secondAttribute="centerX" id="oAg-f4-BTf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="teW-eS-Vc4" id="vck-2j-ymI"/>
+                        <outlet property="closeButton" destination="Jkz-uX-ntF" id="Fyg-LP-k9m"/>
+                        <outlet property="informationLabel" destination="elQ-tv-eNG" id="eIo-Py-WdN"/>
+                        <outlet property="loaderView" destination="6GH-zr-5Bc" id="o4C-c2-U8F"/>
+                        <outlet property="logoImageView" destination="0WF-i6-pF0" id="omh-sy-tDi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdn-p6-MmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="3243"/>
         </scene>
     </scenes>
     <resources>

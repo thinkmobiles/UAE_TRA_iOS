@@ -1,6 +1,4 @@
 //
-//  PTCMTutorialViewController.m
-//  PTSquared
 //
 //  Created by Stas Volskyi on 10.11.14.
 //  Copyright (c) 2014 Thinkmobiles. All rights reserved.
@@ -14,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIPageControl *tutorialPageControl;
+
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIView *verticalSeparator;

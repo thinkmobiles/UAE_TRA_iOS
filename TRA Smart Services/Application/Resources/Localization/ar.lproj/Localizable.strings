@@ -342,3 +342,7 @@
 
 "tutorialViewController.skipButton.title" = "SKIP";
 "tutorialViewController.nextButton.title" = "NEXT";
+
+//TRALoaderViewController
+
+"TRALoader.backButton.title" = "BACK TO DASHBOARD";

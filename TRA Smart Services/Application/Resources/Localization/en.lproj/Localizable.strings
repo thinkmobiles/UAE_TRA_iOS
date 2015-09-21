@@ -344,3 +344,9 @@
 
 "tutorialViewController.skipButton.title" = "SKIP";
 "tutorialViewController.nextButton.title" = "NEXT";
+
+//TRALoaderViewController
+
+"TRALoader.backButton.title" = "BACK TO DASHBOARD";
+"TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
+"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent and\nyou will receive an SMS\n reply shortly";

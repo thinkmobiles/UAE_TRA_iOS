@@ -12,6 +12,7 @@
 #import "DetailsViewController.h"
 
 #import "TutorialViewController.h"
+#import "TRALoaderViewController.h"
 
 static NSInteger const themeColorBlackAndWhite = 3;
 static CGFloat const optionScaleSwitch = 0.55;
@@ -79,6 +80,13 @@ static CGFloat const optionScaleSwitch = 0.55;
     [self updateLanguageSegmentControlPosition];
     [self updateFontSizeControl];
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

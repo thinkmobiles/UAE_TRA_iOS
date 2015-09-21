@@ -44,6 +44,7 @@
 		934629401B902EC00017E4CD /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9346293F1B902EC00017E4CD /* NSString+Validation.m */; };
 		939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444981BAF286E00EDCF06 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -239,6 +240,8 @@
 		939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialCollectionViewCell.m; sourceTree = "<group>"; };
 		939444971BAF286E00EDCF06 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		939444981BAF286E00EDCF06 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		9394449C1BAFD08400EDCF06 /* TRALoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRALoaderViewController.h; sourceTree = "<group>"; };
+		9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRALoaderViewController.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -723,6 +726,15 @@
 			path = TutorialCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		9394449B1BAFD06B00EDCF06 /* TRALoaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9394449C1BAFD08400EDCF06 /* TRALoaderViewController.h */,
+				9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */,
+			);
+			path = TRALoaderViewController;
+			sourceTree = "<group>";
+		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1132,6 +1144,7 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9394449B1BAFD06B00EDCF06 /* TRALoaderViewController */,
 				939444921BAF234800EDCF06 /* TutorialViewController */,
 				E07082EF1BA7F94F0057F134 /* HomeSearchResultViewController */,
 				E00A812B1BA0574800502423 /* HomeSearchViewController */,
@@ -1972,6 +1985,7 @@
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
 				847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */,
 				E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */,
+				9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */,
 				ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
 				ED2084D91B5E734000779CBD /* AFURLConnectionOperation.m in Sources */,
