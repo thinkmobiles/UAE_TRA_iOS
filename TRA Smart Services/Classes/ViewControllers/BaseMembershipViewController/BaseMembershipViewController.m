@@ -31,7 +31,6 @@
 {
     [super viewWillAppear:animated];
     
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 

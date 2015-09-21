@@ -12,8 +12,6 @@
 @interface BaseSearchableViewController ()
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *addBarButton;
-
 
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UIView *titleView;
@@ -44,7 +42,6 @@
     self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2.25, navBarRect.size.height); //2.25 - appox dimension
     self.searchBar.barTintColor = [UIColor whiteColor];
     self.searchBar.tintColor = self.dynamicService.currentApplicationColor;
-    
     
     self.searchBar.layer.opacity = 1.f;
     CGRect titleRect = CGRectMake(0, 0, self.searchBar.bounds.size.width, self.titleView.bounds.size.height);
@@ -88,7 +85,6 @@
     if (anim == [self.searchBar.layer animationForKey:@"hideSearchBar"]) {
         [self.searchBar.layer removeAllAnimations];
         [self.searchBar removeFromSuperview];
-        [self.navigationItem setLeftBarButtonItem:self.addBarButton animated:YES];
         [self.navigationItem setRightBarButtonItem:self.searchBarButtonItem animated:YES];
         CGRect titleRect = CGRectMake(self.navigationController.navigationBar.bounds.origin.x, self.navigationController.navigationBar.bounds.origin.y, self.navigationController.navigationBar.bounds.size.width / 2, self.navigationController.navigationBar.bounds.size.height);
         self.titleView.frame = titleRect;
@@ -132,7 +128,6 @@
 
 - (void)localizeUI
 {
-    //dummy
     self.searchanbeleViewControllerTitle.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
 }
 
@@ -150,6 +145,5 @@
 {
     //dummy
 }
-
 
 @end

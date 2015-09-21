@@ -127,7 +127,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     sender.value = roundf(sender.value / sender.maximumValue * 2) * sender.maximumValue / 2;
     switch ((int)sender.value) {
         case 0: {
-            if (self.dynamicService.fontSize != ApplicationFontSmall) {
+            if (self.dynamicService.fontSize == ApplicationFontSmall) {
                 return;
             }
             [self.dynamicService saveCurrentFontSize:ApplicationFontSmall];

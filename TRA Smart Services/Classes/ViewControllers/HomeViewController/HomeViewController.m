@@ -47,7 +47,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *movableImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
@@ -95,7 +94,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     
     if (self.isFirstTimeLoaded) {
         [self.speedAccessCollectionView reloadData];
-        [self.menuCollectionView  reloadData];
+        [self.menuCollectionView reloadData];
     }
     self.isFirstTimeLoaded = YES;
 }
@@ -151,13 +150,11 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 {
     UICollectionViewCell *cell;
     if (collectionView == self.menuCollectionView) {
-
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:MenuCollectionViewCellIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[MenuCollectionViewCell alloc] init];
-    }
-    [self configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:indexPath];
-        
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:MenuCollectionViewCellIdentifier forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[MenuCollectionViewCell alloc] init];
+        }
+        [self configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:indexPath];
     } else if (collectionView == self.speedAccessCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCollectionViewCellIdentifier forIndexPath:indexPath];
         if (!cell) {
@@ -286,14 +283,12 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
     } else {
         UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
         loginViewController.shouldAutoCloseAfterLogin = YES;
         loginViewController.didDismissed = ^() {
             [weakSelf.topView animateTopViewApearence];
         };
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:navController animated:NO completion:nil];
+        [AppHelper presentViewController:navController onController:self.navigationController];
     }
 }
 
@@ -301,10 +296,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)disableInteractiveGesture
 {
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    }
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 - (void)prepareDataSource
@@ -316,28 +309,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self reverseDataSource];
     }
 }
-
-- (UIImage *)setupFakeBackground
-{
-    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-- (UIImage *)setupFullScreenFakeBackground
-{
-    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-#pragma mark - Notifications
 
 - (void)reverseDataSource
 {
@@ -401,7 +372,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
             break;
         }
-
         case 7: {
             [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
             break;
@@ -424,13 +394,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
             break;
         }
-        default: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-            break;
-        }
     }
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -445,9 +410,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)prepareHomeSearchViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
-    UIImage *img = [self setupFullScreenFakeBackground];
     HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
-    homeSearchViewController.fakeBackground = img;
+    homeSearchViewController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
     homeSearchViewController.hidesBottomBarWhenPushed = YES;
 
     __weak typeof(self) weakSelf = self;
@@ -462,9 +426,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
-    UIImage *img = [self setupFullScreenFakeBackground];
     NotificationViewController *notificationViewController = segue.destinationViewController;
-    notificationViewController.fakeBackground = img;
+    notificationViewController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
     notificationViewController.hidesBottomBarWhenPushed = YES;
 }
 
@@ -503,16 +466,12 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"background"];
+    [super updateBackgroundImageNamed:@"background"];
     UIImage *movableImage = [UIImage imageNamed:@"res_polygons"];
-
     if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
         movableImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:movableImage];
     }
-    
     self.movableImageView.image = movableImage;
-    self.backgroundImageView.image = backgroundImage;
     
     [self.topView updateUIColor];
 }
@@ -531,16 +490,11 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row % 2) {
-        cell.cellPresentationMode = PresentationModeModeBottom;
-    } else {
-        cell.cellPresentationMode = PresentationModeModeTop;
-    }
+    cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
     
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        
         UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
         cell.itemLogoImageView.image = serviceLogo;
     }
@@ -567,12 +521,10 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        
         UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
         if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
             serviceLogo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:serviceLogo];
         }
-
         cell.categoryLogoImageView.image = serviceLogo;
         cell.categoryLogoImageView.tintColor = [self.dynamicService currentApplicationColor];
     }
@@ -665,11 +617,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
 {
-    if (self.lastContentOffset > scrollView.contentOffset.y) {
-        self.isScrollintToTop = NO;
-    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
-        self.isScrollintToTop = YES;
-    }
+    self.isScrollintToTop  = self.lastContentOffset > scrollView.contentOffset.y ? NO : YES;
 }
 
 - (void)animateSpeedAccessCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
