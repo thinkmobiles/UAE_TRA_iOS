@@ -82,7 +82,6 @@
 		E0D5E8281BAFFBB000D40579 /* InnovationsChatArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E8241BAFFBB000D40579 /* InnovationsChatArabicTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8291BAFFBB000D40579 /* InnovationsChatEuropeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E8251BAFFBB000D40579 /* InnovationsChatEuropeTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E0D5E82A1BAFFBB000D40579 /* InnovationsChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D5E8271BAFFBB000D40579 /* InnovationsChatTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E0D5E82E1BB0088A00D40579 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D5E82D1BB0088A00D40579 /* TestViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E0FEF6C81BAB0A21005810D4 /* ServiceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */; };
 		E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */; };
 		E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */; };
@@ -305,8 +304,6 @@
 		E0D5E8251BAFFBB000D40579 /* InnovationsChatEuropeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InnovationsChatEuropeTableViewCell.xib; sourceTree = "<group>"; };
 		E0D5E8261BAFFBB000D40579 /* InnovationsChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovationsChatTableViewCell.h; sourceTree = "<group>"; };
 		E0D5E8271BAFFBB000D40579 /* InnovationsChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovationsChatTableViewCell.m; sourceTree = "<group>"; };
-		E0D5E82C1BB0088A00D40579 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		E0D5E82D1BB0088A00D40579 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		E0FEF6C51BAB0A21005810D4 /* ServiceHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHeaderView.h; sourceTree = "<group>"; };
 		E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHeaderView.m; sourceTree = "<group>"; };
 		E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHeaderView.xib; sourceTree = "<group>"; };
@@ -928,15 +925,6 @@
 			path = InnovationsChatTableViewCell;
 			sourceTree = "<group>";
 		};
-		E0D5E82B1BB0086900D40579 /* TestViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E0D5E82C1BB0088A00D40579 /* TestViewController.h */,
-				E0D5E82D1BB0088A00D40579 /* TestViewController.m */,
-			);
-			path = TestViewController;
-			sourceTree = "<group>";
-		};
 		E0FEF6C41BAB0A21005810D4 /* ServiceHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1198,7 +1186,6 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E0D5E82B1BB0086900D40579 /* TestViewController */,
 				939444921BAF234800EDCF06 /* TutorialViewController */,
 				E07082EF1BA7F94F0057F134 /* HomeSearchResultViewController */,
 				E00A812B1BA0574800502423 /* HomeSearchViewController */,
@@ -2097,7 +2084,6 @@
 				93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */,
 				939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
-				E0D5E82E1BB0088A00D40579 /* TestViewController.m in Sources */,
 				93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,
 				93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */,
