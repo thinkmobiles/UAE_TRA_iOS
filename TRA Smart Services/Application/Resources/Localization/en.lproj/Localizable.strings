@@ -130,6 +130,8 @@
 "settings.label.fontsize.description.small" = "Small";
 "settings.label.fontsize.description.normal" = "Normal";
 "settings.label.fontsize.description.large" = "Large";
+"setting.label.release" = "Release version";
+"setting.label.releaseVersion" = "v %@, build %@";
 
 //HomeViewController
 

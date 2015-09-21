@@ -46,6 +46,8 @@ static CGFloat const optionScaleSwitch = 0.55;
 @property (weak, nonatomic) IBOutlet UILabel *colorThemeDetailsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aboutTRATitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aboutTRADetailsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionBuildLabel;
+@property (weak, nonatomic) IBOutlet UILabel *releaseLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *leftFontSizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *centerFontSizeLabel;
@@ -274,6 +276,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.leftFontSizeLabel.layer.transform = animCATransform3D;
     self.centerFontSizeLabel.layer.transform = animCATransform3D;
     self.rightFontSizeLabel.layer.transform = animCATransform3D;
+    self.versionBuildLabel.layer.transform = animCATransform3D;
+    self.releaseLabel.layer.transform = animCATransform3D;
 }
 
 - (void)setTextAligmentLabelSettingViewController:(NSTextAlignment)textAlignment
@@ -291,6 +295,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.aboutTRADetailsLabel.textAlignment = textAlignment;
     self.rightFontSizeLabel.textAlignment = textAlignment == NSTextAlignmentLeft ? NSTextAlignmentRight : NSTextAlignmentLeft;
     self.leftFontSizeLabel.textAlignment = textAlignment;
+    self.versionBuildLabel.textAlignment = textAlignment;
+    self.releaseLabel.textAlignment = textAlignment;
 }
 
 - (void)transformAnimationConteinerView
@@ -483,6 +489,8 @@ static CGFloat const optionScaleSwitch = 0.55;
     self.aboutTRADetailsLabel.text = dynamicLocalizedString(@"settings.label.aboutTRADetails");
     
     self.languageSegmentControl.segmentItems = @[dynamicLocalizedString(@"settings.switchControl.language.arabic"), dynamicLocalizedString(@"setting.switchControl.language.english")];
+    self.releaseLabel.text = dynamicLocalizedString(@"setting.label.release");
+    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
 }
 
 - (void)updateColors

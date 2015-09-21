@@ -129,6 +129,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -2825,7 +2827,7 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-zw-Mue" userLabel="Container - UIView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="414"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcd-OB-Qd1" userLabel="Languages - View">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
@@ -3388,15 +3390,67 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="right" secondItem="uPs-Tr-AII" secondAttribute="right" constant="25" id="tof-l1-QiV"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZo-cN-DFU" userLabel="ReleaseVersion - UIView">
+                                                <rect key="frame" x="0.0" y="414" width="600" height="58"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTL-aD-3nw" userLabel="LabelConteiner - View">
+                                                        <rect key="frame" x="25" y="15" width="550" height="29"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="550" translatesAutoresizingMaskIntoConstraints="NO" id="Tbe-Tl-DVN" userLabel="Release version - UILabel" customClass="AligmentLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="550" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                                <color key="textColor" red="0.0078431372550000003" green="0.14117647059999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" preferredMaxLayoutWidth="550" translatesAutoresizingMaskIntoConstraints="NO" id="u1P-cH-UyT" userLabel="Version - UILabel" customClass="AligmentLabel">
+                                                                <rect key="frame" x="0.0" y="17" width="550" height="12"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                                <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="u1P-cH-UyT" firstAttribute="left" secondItem="ZTL-aD-3nw" secondAttribute="left" id="4Aw-dE-Z3H"/>
+                                                            <constraint firstItem="Tbe-Tl-DVN" firstAttribute="left" secondItem="ZTL-aD-3nw" secondAttribute="left" id="KcP-3t-POZ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="u1P-cH-UyT" secondAttribute="bottom" id="LTC-RL-m6H"/>
+                                                            <constraint firstAttribute="right" secondItem="Tbe-Tl-DVN" secondAttribute="right" id="Lm9-ws-wam"/>
+                                                            <constraint firstItem="u1P-cH-UyT" firstAttribute="top" secondItem="Tbe-Tl-DVN" secondAttribute="bottom" id="VhG-dS-7Go"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ohS-IS-IgU"/>
+                                                            <constraint firstAttribute="right" secondItem="u1P-cH-UyT" secondAttribute="right" id="tHr-yY-6jD"/>
+                                                            <constraint firstItem="Tbe-Tl-DVN" firstAttribute="top" secondItem="ZTL-aD-3nw" secondAttribute="top" id="u8U-z7-tOf"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uv2-3G-Dwt" userLabel="Separator - UIView">
+                                                        <rect key="frame" x="15" y="57" width="567" height="1"/>
+                                                        <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="z57-Tp-VZr"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="right" secondItem="Uv2-3G-Dwt" secondAttribute="right" constant="18" id="1Zb-hT-0J7"/>
+                                                    <constraint firstAttribute="height" constant="58" id="Cpa-rC-bku"/>
+                                                    <constraint firstItem="Uv2-3G-Dwt" firstAttribute="left" secondItem="aZo-cN-DFU" secondAttribute="left" constant="15" id="T6l-d1-Ucz"/>
+                                                    <constraint firstItem="ZTL-aD-3nw" firstAttribute="centerY" secondItem="aZo-cN-DFU" secondAttribute="centerY" id="Vnx-Ao-kmE"/>
+                                                    <constraint firstItem="ZTL-aD-3nw" firstAttribute="left" secondItem="aZo-cN-DFU" secondAttribute="left" constant="25" id="YDf-qh-rhi"/>
+                                                    <constraint firstAttribute="right" secondItem="ZTL-aD-3nw" secondAttribute="right" constant="25" id="eXN-Cq-skb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Uv2-3G-Dwt" secondAttribute="bottom" id="ln9-9l-bEp"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0f1-NR-46Y" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="1B4-Zx-MED"/>
                                             <constraint firstAttribute="right" secondItem="0f1-NR-46Y" secondAttribute="right" id="4Ov-Ma-mLE"/>
+                                            <constraint firstAttribute="right" secondItem="aZo-cN-DFU" secondAttribute="right" id="72y-Kz-74F"/>
                                             <constraint firstItem="qcd-OB-Qd1" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="8Zo-bo-v3o"/>
                                             <constraint firstItem="NTJ-Lc-bgo" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="Ou5-Fw-X1M"/>
                                             <constraint firstItem="cLQ-Po-iSg" firstAttribute="top" secondItem="qcd-OB-Qd1" secondAttribute="bottom" id="Rhh-Rx-f0L"/>
+                                            <constraint firstItem="aZo-cN-DFU" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="SWg-vO-JdR"/>
                                             <constraint firstAttribute="right" secondItem="cLQ-Po-iSg" secondAttribute="right" id="Wpa-Qo-Ybo"/>
                                             <constraint firstItem="x4j-Rr-N00" firstAttribute="top" secondItem="NTJ-Lc-bgo" secondAttribute="bottom" id="XDq-C4-51c"/>
                                             <constraint firstItem="i66-Q7-tAH" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="bXm-Zw-7fY"/>
@@ -3411,19 +3465,20 @@ a new password will be sent.</string>
                                             <constraint firstItem="0f1-NR-46Y" firstAttribute="top" secondItem="cLQ-Po-iSg" secondAttribute="bottom" id="pAq-yM-j1o"/>
                                             <constraint firstAttribute="right" secondItem="i66-Q7-tAH" secondAttribute="right" id="qTL-ha-BB6"/>
                                             <constraint firstItem="cLQ-Po-iSg" firstAttribute="left" secondItem="lrP-zw-Mue" secondAttribute="left" id="rkm-9H-c5o"/>
-                                            <constraint firstAttribute="bottom" secondItem="BsZ-2L-xD8" secondAttribute="bottom" id="s38-Bh-9iJ"/>
                                             <constraint firstAttribute="right" secondItem="BsZ-2L-xD8" secondAttribute="right" id="tYj-Sq-Q6W"/>
+                                            <constraint firstItem="aZo-cN-DFU" firstAttribute="top" secondItem="BsZ-2L-xD8" secondAttribute="bottom" id="u1v-De-2Re"/>
                                             <constraint firstItem="i66-Q7-tAH" firstAttribute="top" secondItem="0f1-NR-46Y" secondAttribute="bottom" id="xfl-DQ-nhT"/>
+                                            <constraint firstAttribute="height" constant="550" id="zhZ-Uw-NEd"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lrP-zw-Mue" secondAttribute="bottom" id="2BY-EC-Xmx"/>
                                     <constraint firstItem="lrP-zw-Mue" firstAttribute="top" secondItem="z6H-bS-01X" secondAttribute="top" id="7Kf-yj-NnD"/>
                                     <constraint firstAttribute="right" secondItem="lrP-zw-Mue" secondAttribute="right" id="Dtc-XT-T1e"/>
                                     <constraint firstItem="lrP-zw-Mue" firstAttribute="left" secondItem="z6H-bS-01X" secondAttribute="left" id="PiL-q7-Pga"/>
-                                    <constraint firstAttribute="bottom" secondItem="lrP-zw-Mue" secondAttribute="bottom" id="UO0-r3-bIc"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -3461,6 +3516,7 @@ a new password will be sent.</string>
                         <outlet property="languageLabel" destination="UUF-Sj-Ju8" id="GKw-ci-UGw"/>
                         <outlet property="languageSegmentControl" destination="ZUG-jV-eJH" id="hcs-3z-cdS"/>
                         <outlet property="leftFontSizeLabel" destination="zYx-6j-6aH" id="Eq2-2E-Lo0"/>
+                        <outlet property="releaseLabel" destination="Tbe-Tl-DVN" id="lkx-Hg-BD4"/>
                         <outlet property="rightFontSizeLabel" destination="cuf-AN-fzs" id="4RI-FU-pBt"/>
                         <outlet property="screenLockNotificationDetailsLabel" destination="qqO-UQ-5kj" id="iBJ-pj-H9d"/>
                         <outlet property="screenLockNotificationSwitch" destination="jxA-su-MkR" id="s57-rf-YMJ"/>
@@ -3471,6 +3527,7 @@ a new password will be sent.</string>
                         <outlet property="themeColorBlackAndWhiteSwitch" destination="XU2-vw-t53" id="EWm-wv-Zui"/>
                         <outlet property="themeGreenButton" destination="Ugu-2X-2MS" id="cSz-x9-6lF"/>
                         <outlet property="themeOrangeButton" destination="4OI-f6-YBY" id="ufg-Je-YhT"/>
+                        <outlet property="versionBuildLabel" destination="u1P-cH-UyT" id="2u9-bO-Kkz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZW-Jt-Tkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
