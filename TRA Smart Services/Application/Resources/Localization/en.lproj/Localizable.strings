@@ -372,3 +372,12 @@
 "fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
 "fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
 "fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "Reply";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";

@@ -372,3 +372,12 @@
 "fingerPrintService.LoginCanceledByUser" = "fingerPrintService.LoginCanceledByUser";
 "fingerPrintService.InvalidFingerPrint" = "fingerPrintService.InvalidFingerPrint";
 "fingerPrintService.DescriptionReason" = "fingerPrintService.DescriptionReason";
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "innovationsCollectionViewCell.string.reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "innovationsChatTableViewCell.replyButton.title";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "innovationsChatTableViewCell.reportAbuseButton.title";
