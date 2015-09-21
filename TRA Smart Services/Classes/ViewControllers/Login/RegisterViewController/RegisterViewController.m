@@ -9,7 +9,6 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const HeightForToolbars = 44.f;
 static CGFloat const HeightTextFieldAndSeparator = 50.f;
 static NSInteger const SeparatorTag = 77;
 
@@ -30,7 +29,6 @@ static NSInteger const SeparatorTag = 77;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet LeftInsetTextField *selectStateTextField;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaseRegisterConteinerUIView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollLogoImage;
@@ -38,10 +36,6 @@ static NSInteger const SeparatorTag = 77;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 @property (assign, nonatomic) CGFloat keyboardHeight;
-
-@property (assign, nonatomic) NSInteger selectedState;
-@property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
-@property (strong, nonatomic) UIPickerView *selectStatePicker;
 
 @end
 
@@ -53,12 +47,9 @@ static NSInteger const SeparatorTag = 77;
 {
     [super viewWillAppear:animated];
     
-    self.selectedState = -1;
     [self prepareNotification];
     [self prepareRegisterConteinerUIView];
     [self updateColors];
-    
-    [self configureSelectStateTextFieldInputView];
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
@@ -117,40 +108,6 @@ static NSInteger const SeparatorTag = 77;
     }
     return YES;
 }
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    NSInteger pickerRowsInComponent = 0;
-    if (pickerView == self.selectStatePicker) {
-        pickerRowsInComponent = self.pickerSelectStateDataSource.count;
-    }
-    return pickerRowsInComponent;
-}
-
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    NSString *pickerTitle = @"";
-    if (pickerView == self.selectStatePicker) {
-        pickerTitle = (NSString *)self.pickerSelectStateDataSource[row];
-    }
-    return pickerTitle;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if (pickerView == self.selectStatePicker) {
-        self.selectStateTextField.text = self.pickerSelectStateDataSource[row];
-        self.selectedState = row;
-    }
-}
 
 #pragma mark - UIScrollViewDelegate
 
@@ -173,7 +130,7 @@ static NSInteger const SeparatorTag = 77;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
+    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
             return;
@@ -184,7 +141,7 @@ static NSInteger const SeparatorTag = 77;
                                                     firstName:self.firstNameTextField.text
                                                      lastName:self.lastNameTextField.text
                                                    emiratesID:self.emiratesIDTextField.text
-                                                        state:[NSString stringWithFormat:@"%i", (int)self.selectedState]
+                                                        state:[NSString stringWithFormat:@"%i", 1]
                                                   mobilePhone:self.mobileTextField.text
                                                         email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
@@ -207,7 +164,6 @@ static NSInteger const SeparatorTag = 77;
 
 - (void)doneFilteringButtonTapped
 {
-    [self.selectStateTextField resignFirstResponder];
     [self.mobileTextField becomeFirstResponder];
 }
 
@@ -255,7 +211,6 @@ static NSInteger const SeparatorTag = 77;
     [self configureTextField:self.lastNameTextField withImageName:@"ic_user_login"];
     [self configureTextField:self.mobileTextField withImageName:@"ic_phone_reg"];
     [self configureTextField:self.emailTextField withImageName:@"ic_mail"];
-    [self configureTextField:self.selectStateTextField withImageName:@"ic_state"];
 
     self.userNameTextField.textAlignment = textAlignment;
     self.passwordTextField.textAlignment = textAlignment;
@@ -265,7 +220,6 @@ static NSInteger const SeparatorTag = 77;
     self.lastNameTextField.textAlignment = textAlignment;
     self.mobileTextField.textAlignment = textAlignment;
     self.emailTextField.textAlignment = textAlignment;
-    self.selectStateTextField.textAlignment = textAlignment;
 }
 
 - (void) vizibleTextFieldChangeKeyboard
@@ -303,18 +257,12 @@ static NSInteger const SeparatorTag = 77;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
         return YES;
     }
-    if (self.selectedState <= 0) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidStateCode")];
-        return YES;
-    }
     
     return NO;
 }
 
 - (void)localizeUI
 {
-    [self preparePickerDataSource];
-    
     self.title = dynamicLocalizedString(@"register.title");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
@@ -347,7 +295,6 @@ static NSInteger const SeparatorTag = 77;
     self.lastNameTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.lastName")];
     self.emailTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.email")];
     self.emiratesIDTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.emirateID")];
-    self.selectStateTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"state.SelectState")];
     
     self.userNameTextField.textColor = color;
     self.mobileTextField.textColor = color;
@@ -357,21 +304,6 @@ static NSInteger const SeparatorTag = 77;
     self.lastNameTextField.textColor = color;
     self.emailTextField.textColor = color;
     self.emiratesIDTextField.textColor = color;
-    self.selectStateTextField.textColor = color;
-}
-
-- (void)preparePickerDataSource
-{
-    self.pickerSelectStateDataSource = @[
-                                         dynamicLocalizedString(@"state.Abu.Dhabi"),
-                                         dynamicLocalizedString(@"state.Ajman"),
-                                         dynamicLocalizedString(@"state.Dubai"),
-                                         dynamicLocalizedString(@"state.Fujairah"),
-                                         dynamicLocalizedString(@"state.Ras"),
-                                         dynamicLocalizedString(@"state.Sharjan"),
-                                         dynamicLocalizedString(@"state.Quwain")
-                                         ];
-    [self.selectStatePicker reloadAllComponents];
 }
 
 - (NSAttributedString *)placeholderWithString:(NSString *)string
@@ -383,27 +315,6 @@ static NSInteger const SeparatorTag = 77;
 - (void)prepareRegisterConteinerUIView
 {
     self.verticalSpaseRegisterConteinerUIView.constant = self.logoImageView.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;
-}
-
-- (void)configureSelectStateTextFieldInputView
-{
-    self.selectStatePicker = [[UIPickerView alloc] init];
-    self.selectStatePicker.delegate = self;
-    self.selectStatePicker.dataSource = self;
-    self.selectStateTextField.inputView = self.selectStatePicker;
-
-    self.selectStatePicker.backgroundColor = [UIColor clearColor];
-    
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HeightForToolbars)];
-    toolBar.backgroundColor = [UIColor clearColor];
-    toolBar.tintColor = [self.dynamicService currentApplicationColor];
-    
-    UIBarButtonItem *barItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneFilteringButtonTapped)];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    [toolBar setItems:@[flexibleSpace, barItemDone]];
-    
-    self.selectStateTextField.inputAccessoryView = toolBar;
 }
 
 @end

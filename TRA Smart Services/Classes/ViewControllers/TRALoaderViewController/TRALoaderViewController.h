@@ -11,6 +11,7 @@
 @property (strong, nonatomic) void (^TRALoaderWillClose)();
 
 + (TRALoaderViewController *)presentLoaderOnViewController:(UIViewController *)presenter requestName:(NSString *)requestName;
+
 - (void)dismissTRALoader;
 - (void)setCompletedStatus;
 
