@@ -66,16 +66,19 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 
 - (void)setCompletedStatus
 {
-    self.logoImageView.hidden = YES;
-    
     [self.tailLayer removeAllAnimations];
     [self.hexLayer removeAllAnimations];
     self.tailLayer.strokeColor = [UIColor clearColor].CGColor;
     self.backgroundLayer.strokeColor = [UIColor clearColor].CGColor;
     self.hexLayer.strokeColor = [UIColor clearColor].CGColor;
     
+    self.logoImageView.layer.opacity = 0.f;
+    CABasicAnimation *fadeAnim = [Animation fadeAnimFromValue:1 to:0 delegate:self];
+    fadeAnim.duration = 0.2;
+    [self.logoImageView.layer addAnimation:fadeAnim forKey:@"hideImage"];
+    
     CABasicAnimation *pathFilling = [self pathFillingAnimations] ;
-    pathFilling.duration = 0.5f;
+    pathFilling.duration = 0.2f;
     [self.hexLayer addAnimation:pathFilling forKey:@"fillingColorAnimation"];
     self.hexLayer.fillColor = [UIColor whiteColor].CGColor;
     
@@ -151,18 +154,19 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     //demo
     __weak typeof(self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-
-        weakSelf.logoImageView.layer.opacity = 0.f;
-        [weakSelf.logoImageView.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:self] forKey:@"hideImage"];
-        
         [weakSelf.tailLayer removeAllAnimations];
         [weakSelf.hexLayer removeAllAnimations];
         weakSelf.tailLayer.strokeColor = [UIColor clearColor].CGColor;
         weakSelf.backgroundLayer.strokeColor = [UIColor clearColor].CGColor;
-        weakSelf.hexLayer.strokeColor = [UIColor clearColor].CGColor;
+        weakSelf.hexLayer.strokeColor = [UIColor whiteColor].CGColor;
+        
+        weakSelf.logoImageView.layer.opacity = 0.f;
+        CABasicAnimation *fadeAnim = [Animation fadeAnimFromValue:1 to:0 delegate:self];
+        fadeAnim.duration = 0.2;
+        [weakSelf.logoImageView.layer addAnimation:fadeAnim forKey:@"hideImage"];
         
         CABasicAnimation *pathFilling = [self pathFillingAnimations] ;
-        pathFilling.duration = 0.5f;
+        pathFilling.duration = 0.2f;
         [weakSelf.hexLayer addAnimation:pathFilling forKey:@"fillingColorAnimation"];
         weakSelf.hexLayer.fillColor = [UIColor whiteColor].CGColor;
         

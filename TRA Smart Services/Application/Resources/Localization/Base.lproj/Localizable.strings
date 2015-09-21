@@ -132,6 +132,9 @@
 "settings.label.fontsize.description.large" = "settings.label.fontsize.description.large";
 "setting.label.release" = "setting.label.release";
 "setting.label.releaseVersion" = "setting.label.releaseVersion";
+"setting.label.touchID" = "setting.label.touchID";
+"setting.label.touchIDDEscription" = "setting.label.touchIDDEscription";
+"setting.loginRequired.message" = "setting.loginRequired.message";
 
 //HomeViewController
 
@@ -356,3 +359,16 @@
 //AutoLoginService
 
 "autoLogin.message" = "autoLogin.message";
+
+//FingerPrintService
+
+"fingerPrintService.passwordRequest.message" = "fingerPrintService.passwordRequest.message";
+"fingerPrintService.CancelAuth.title" = "fingerPrintService.CancelAuth.title";
+"fingerPrintService.ConfirmPassword.title" = "fingerPrintService.ConfirmPassword.title";
+"fingerPrintService.TouchIDNotEnrolled" = "fingerPrintService.TouchIDNotEnrolled";
+"fingerPrintService.PasscodeHasNotBeenSet" = "fingerPrintService.PasscodeHasNotBeenSet";
+"fingerPrintService.TouchIdNotAvaliable" = "fingerPrintService.TouchIdNotAvaliable";
+"fingerPrintService.LoginCanceledBySystem" = "fingerPrintService.LoginCanceledBySystem";
+"fingerPrintService.LoginCanceledByUser" = "fingerPrintService.LoginCanceledByUser";
+"fingerPrintService.InvalidFingerPrint" = "fingerPrintService.InvalidFingerPrint";
+"fingerPrintService.DescriptionReason" = "fingerPrintService.DescriptionReason";

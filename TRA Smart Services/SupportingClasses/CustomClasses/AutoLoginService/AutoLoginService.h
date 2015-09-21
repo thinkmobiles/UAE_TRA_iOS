@@ -11,5 +11,6 @@
 @interface AutoLoginService : NSObject
 
 - (void)performAutoLoginIfPossible;
+- (void)performAutoLoginWithPassword:(NSString *)userPassword;
 
 @end

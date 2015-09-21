@@ -110,7 +110,7 @@
 
 //SettingsViewController
 
-"settings.title" = "Settings";
+"settings.title" = "إعدادات";
 "settings.title.aboutTra" = "عن الهيئة";
 "settings.label.language" = "اللغة";
 "settings.label.fontsize" = "حجم الخط";
@@ -132,6 +132,10 @@
 "settings.label.fontsize.description.large" = "Large";
 "setting.label.release" = "Release version";
 "setting.label.releaseVersion" = "v %@, build %i.%i.%i";
+"setting.label.touchID" = "Use Touch ID";
+"setting.label.touchIDDEscription" = "Use your finger print for authentification process";
+"setting.loginRequired.message" = "Please login to enable this option";
+"fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
 
 //HomeViewController
 
@@ -354,3 +358,15 @@
 //AutoLoginService
 
 "autoLogin.message" = "Logging in...";
+
+//FingerPrintService
+
+"fingerPrintService.passwordRequest.message" = "Scan your finger to get access to services";
+"fingerPrintService.CancelAuth.title" = "Cancel auth";
+"fingerPrintService.ConfirmPassword.title" = "Enter password";
+"fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
+"fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
+"fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
+"fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
+"fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
+"fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";

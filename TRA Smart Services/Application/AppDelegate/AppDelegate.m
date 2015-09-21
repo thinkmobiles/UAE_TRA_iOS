@@ -8,8 +8,14 @@
 
 #import "AppDelegate.h"
 #import "AutoLoginService.h"
+#import "FingerPrintAuth.h"
+#import "KeychainStorage.h"
+#import "SettingViewController.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) FingerPrintAuth *touchAuth;
+@property (strong, nonatomic) AutoLoginService *autoLogger;
 
 @end
 
@@ -26,12 +32,26 @@
     
     [AppHelper prepareTabBarItems];
     [AppHelper prepareTabBarGradient];
-    AutoLoginService *autoLogger = [[AutoLoginService alloc] init];
-    [autoLogger performAutoLoginIfPossible];
     
+    [self performAutoLogin];
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
 
     return YES;
+}
+
+#pragma mark - Private
+
+- (void)performAutoLogin
+{
+    if ([KeychainStorage userName].length) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification]) {
+            self.touchAuth = [[FingerPrintAuth alloc] init];
+            [self.touchAuth authentificationsWithTouch];
+        } else {
+            self.autoLogger = [[AutoLoginService alloc] init];
+            [self.autoLogger performAutoLoginIfPossible];
+        }
+    }
 }
 
 @end

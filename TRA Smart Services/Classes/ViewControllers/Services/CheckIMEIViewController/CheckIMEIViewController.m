@@ -106,6 +106,7 @@
     if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
         CheckIMEIViewController *viewController = segue.destinationViewController;
         viewController.needTransparentNavigationBar = YES;
+        viewController.hidesBottomBarWhenPushed = YES;
         __weak typeof(self) weakSelf = self;
         viewController.didFinishWithResult = ^(NSString *result) {
             weakSelf.resultTextField.text = result;

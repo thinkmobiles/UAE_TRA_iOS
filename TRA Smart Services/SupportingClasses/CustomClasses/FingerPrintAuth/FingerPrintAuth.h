@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface FingerPrintAuth : NSObject
+@interface FingerPrintAuth : NSObject <UIAlertViewDelegate>
+
+- (void)authentificationsWithTouch;
 
 @end

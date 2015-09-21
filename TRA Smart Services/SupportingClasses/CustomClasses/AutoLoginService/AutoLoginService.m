@@ -23,10 +23,25 @@
 {
     if ([self isAutoLoginPossible]) {
         NSDictionary *userCredentials = [self.keychain credentialsForLoginedUser];
-
+        
         [AppHelper showLoaderWithText:dynamicLocalizedString(@"autoLogin.message")];
         [[NetworkManager sharedManager] traSSLoginUsername:[userCredentials valueForKey:KeychainStorageKeyLogin] password:[userCredentials valueForKey:KeychainStorageKeyPassword] requestResult:^(id response, NSError *error) {
             [AppHelper hideLoader];
+        }];
+    }
+}
+
+- (void)performAutoLoginWithPassword:(NSString *)userPassword
+{
+    if ([self isAutoLoginPossible]) {
+        NSString *userName = [KeychainStorage userName];
+        [AppHelper showLoaderWithText:dynamicLocalizedString(@"autoLogin.message")];
+
+        [[NetworkManager sharedManager] traSSLoginUsername:userName password:userPassword requestResult:^(id response, NSError *error) {
+            [AppHelper hideLoader];
+            if (error) {
+                [AppHelper alertViewWithMessage:response];
+            }
         }];
     }
 }

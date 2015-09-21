@@ -10,6 +10,7 @@
 #import "RTLController.h"
 #import "UIImage+DrawText.h"
 #import "DetailsViewController.h"
+#import "KeychainStorage.h"
 
 #import "TutorialViewController.h"
 #import "TRALoaderViewController.h"
@@ -29,6 +30,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 @property (weak, nonatomic) IBOutlet UISwitch *screenLockNotificationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *appTutorialScreensSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *themeColorBlackAndWhiteSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *touchIDSwitch;
+
 @property (weak, nonatomic) IBOutlet UIButton *themeBlueButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeOrangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeGreenButton;
@@ -49,6 +52,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 @property (weak, nonatomic) IBOutlet UILabel *aboutTRADetailsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionBuildLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *useTouchIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *touchIDDescriptionLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *leftFontSizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *centerFontSizeLabel;
@@ -73,6 +78,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self prepareNavigationBar];
     [self prepareFontSizeSlider];
     [self updateFontSizeSliderColor];
+    [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,12 +91,12 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -106,6 +112,17 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     if (sender.isOn) {
         TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
         [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
+    }
+}
+
+- (IBAction)useTouchIDValueChanged:(UISwitch *)sender
+{
+    if ([KeychainStorage userName].length) {
+        [[NSUserDefaults standardUserDefaults] setBool:sender.isOn forKey:KeyUseTouchIDIdentification];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        sender.on = NO;
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"setting.loginRequired.message")];
     }
 }
 
@@ -224,6 +241,11 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self prepareUISwitch:self.themeColorBlackAndWhiteSwitch];
     [self prepareUISwitch:self.appTutorialScreensSwitch];
     [self prepareUISwitch:self.screenLockNotificationSwitch];
+    [self prepareUISwitch:self.touchIDSwitch];
+    
+    if ([KeychainStorage userName].length) {
+        self.touchIDSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification];
+    }
 }
 
 - (void)prepareUISwitch:(UISwitch *) prepareSwitch
@@ -256,6 +278,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.rightFontSizeLabel.layer.transform = animCATransform3D;
     self.versionBuildLabel.layer.transform = animCATransform3D;
     self.releaseLabel.layer.transform = animCATransform3D;
+    self.useTouchIDLabel.layer.transform = animCATransform3D;
+    self.touchIDDescriptionLabel.layer.transform = animCATransform3D;
 }
 
 - (void)setTextAligmentLabelSettingViewController:(NSTextAlignment)textAlignment
@@ -275,6 +299,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.leftFontSizeLabel.textAlignment = textAlignment;
     self.versionBuildLabel.textAlignment = textAlignment;
     self.releaseLabel.textAlignment = textAlignment;
+    self.useTouchIDLabel.textAlignment = textAlignment;
+    self.touchIDDescriptionLabel.textAlignment = textAlignment;
 }
 
 - (void)transformAnimationContainerView
@@ -467,6 +493,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.aboutTRADetailsLabel.text = dynamicLocalizedString(@"settings.label.aboutTRADetails");
     self.languageSegmentControl.segmentItems = @[dynamicLocalizedString(@"settings.switchControl.language.arabic"), dynamicLocalizedString(@"setting.switchControl.language.english")];
     self.releaseLabel.text = dynamicLocalizedString(@"setting.label.release");
+    self.touchIDDescriptionLabel.text = dynamicLocalizedString(@"setting.label.touchIDDEscription");
+    self.useTouchIDLabel.text = dynamicLocalizedString(@"setting.label.touchID");
     
     //v 1.0 build <version number>.<number of week>.<weakBuild>
     NSCalendar *calender = [NSCalendar currentCalendar];
@@ -481,6 +509,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.screenLockNotificationSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     self.appTutorialScreensSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     self.themeColorBlackAndWhiteSwitch.onTintColor = [self.dynamicService currentApplicationColor];
+    self.touchIDSwitch.onTintColor = [self.dynamicService currentApplicationColor];
     
     self.languageSegmentControl.segmentSelectedBacrgroundColor = [self.dynamicService currentApplicationColor];
     [self.languageSegmentControl setNeedsLayout];
@@ -495,6 +524,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
     self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
     self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.touchIDSwitch.layer.transform = CATransform3DMakeScale(- OptionScaleSwitch, OptionScaleSwitch, 1);
     
     [self setTextAligmentLabelSettingViewController:NSTextAlignmentRight];
 }
@@ -506,6 +536,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.screenLockNotificationSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
     self.appTutorialScreensSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
     self.themeColorBlackAndWhiteSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
+    self.touchIDSwitch.layer.transform = CATransform3DMakeScale(OptionScaleSwitch, OptionScaleSwitch, 1);
     
     [self setTextAligmentLabelSettingViewController:NSTextAlignmentLeft];
 }

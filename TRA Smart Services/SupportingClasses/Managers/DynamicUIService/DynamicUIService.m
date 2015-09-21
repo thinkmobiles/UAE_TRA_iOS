@@ -80,8 +80,8 @@ static NSString *const KeyLanguageArabic = @"ar";
         [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
         
         [AppHelper updateFontsOnTabBar];
-        [AppHelper localizeTitlesOnTabBar];
     }
+    [AppHelper localizeTitlesOnTabBar];
 }
 
 - (void)setFontSize:(ApplicationFont)fontSize

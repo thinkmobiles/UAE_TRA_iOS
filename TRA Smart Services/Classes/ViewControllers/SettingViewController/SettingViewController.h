@@ -7,6 +7,8 @@
 //
 #import "SegmentView.h"
 
+static NSString *const KeyUseTouchIDIdentification = @"KeyUseTouchIDIdentification";
+
 @interface SettingViewController : BaseDynamicUIViewController <SegmentViewDelegate>
 
 @end

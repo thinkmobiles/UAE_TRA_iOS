@@ -171,7 +171,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 {
     NSArray *serviceDescription = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceDescription" ofType:@"plist"]];
     NSDictionary *currentLanguagePlistServices = self.dynamicService.language == LanguageTypeArabic ? serviceDescription[1] : serviceDescription[0];
-    self.currentServiceLocalizedDataSource = [currentLanguagePlistServices valueForKey:[NSString stringWithFormat:@"%ld", self.selectedServiceID]];
+    self.currentServiceLocalizedDataSource = [currentLanguagePlistServices valueForKey:[NSString stringWithFormat:@"%li", (long)self.selectedServiceID]];
 }
 
 @end

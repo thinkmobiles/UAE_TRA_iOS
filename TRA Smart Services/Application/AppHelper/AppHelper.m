@@ -44,6 +44,16 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     [presenter presentViewController:target animated:NO completion:nil];
 }
 
++ (BOOL)isiOS9_0OrHigher
+{
+    BOOL isiOS9ORHigher = NO;
+    NSOperatingSystemVersion ios9_0_0 = (NSOperatingSystemVersion){9, 0, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
+        isiOS9ORHigher = YES;
+    }
+    return isiOS9ORHigher;
+}
+
 #pragma mark - InformationView
 
 + (void)alertViewWithMessage:(NSString *)message
@@ -97,11 +107,13 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
 + (void)prepareTabBarItems
 {
     [AppHelper performResetupTabBar];
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
-        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
-        tabBarController.viewControllers = viewControllers;
-        tabBarController.selectedViewController = [viewControllers lastObject];
+    if (![AppHelper isiOS9_0OrHigher]) {
+        if ([DynamicUIService service].language == LanguageTypeArabic) {
+            UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+            NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+            tabBarController.viewControllers = viewControllers;
+            tabBarController.selectedViewController = [viewControllers lastObject];
+        }
     }
 }
 
@@ -122,7 +134,8 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
         UITabBarItem *tabBarItem = tabBar.items[idx];
-        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        NSString *title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        tabBarItem.title = title;
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
         
@@ -145,7 +158,8 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
         UITabBarItem *tabBarItem = tabBar.items[idx];
-        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        NSString *title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        tabBarItem.title = title;
     }
 }
 
