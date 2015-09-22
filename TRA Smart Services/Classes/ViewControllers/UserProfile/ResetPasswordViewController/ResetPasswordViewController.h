@@ -7,7 +7,8 @@
 //
 
 #import "BaseMembershipViewController.h"
+#import "UserProfileActionView.h"
 
-@interface ResetPasswordViewController : BaseMembershipViewController
+@interface ResetPasswordViewController : BaseMembershipViewController <UserProfileActionViewDelegate>
 
 @end

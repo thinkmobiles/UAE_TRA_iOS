@@ -10,7 +10,6 @@
 
 @interface SelectRegisterViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UILabel *registerInformation;
 @property (weak, nonatomic) IBOutlet UIButton *emiratesIDButton;
 @property (weak, nonatomic) IBOutlet UIButton *fillFormButton;
@@ -28,10 +27,7 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 #pragma mark - UI
@@ -53,11 +49,7 @@
     [self.emiratesIDLabel setTextColor:color];
     [self.fillFormLabel setTextColor:color];
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImage.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"res_img_bg"];
 }
 
 @end

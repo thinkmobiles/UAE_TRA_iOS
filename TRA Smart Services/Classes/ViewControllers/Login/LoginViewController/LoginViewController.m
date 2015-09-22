@@ -15,7 +15,6 @@
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet LeftInsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -163,11 +162,7 @@
     self.loginSeparator.backgroundColor = color;
     self.verticalSeparator.backgroundColor = color;
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"res_img_bg"];
 }
 
 - (void)setLTREuropeUI
@@ -189,11 +184,8 @@
 {
     [super prepareNavigationBar];
     [self prepareNavigationBarButton];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
 }
 
 @end

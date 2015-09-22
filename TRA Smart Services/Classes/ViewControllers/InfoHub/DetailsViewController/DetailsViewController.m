@@ -43,7 +43,8 @@
 
 - (void)localizeUI
 {
-    [self setPrepareTitleLabel:dynamicLocalizedString(@"details.title")];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
+    self.title = dynamicLocalizedString(@"details.title");
 }
 
 - (void)updateColors
@@ -55,27 +56,22 @@
         self.authorLabel.textColor = [self.dynamicService currentApplicationColor];
         self.sourceLabel.textColor = [UIColor lightGrayTextColor];
     }
-    
     self.titleImageView.backgroundColor = [self.dynamicService currentApplicationColor];
 }
 
 - (void)setLTREuropeUI
 {
-    self.descriptionTextView.textAlignment = NSTextAlignmentLeft;
-    self.dateLabel.textAlignment = NSTextAlignmentLeft;
-    self.screenTitleLabel.textAlignment = NSTextAlignmentLeft;
-    
+    [self changeElementsAligment:NSTextAlignmentLeft];
     [self exchangeLabelsText];
 }
 
 - (void)setRTLArabicUI
 {
-    self.descriptionTextView.textAlignment = NSTextAlignmentRight;
-    self.dateLabel.textAlignment = NSTextAlignmentRight;
-    self.screenTitleLabel.textAlignment = NSTextAlignmentRight;
-    
+    [self changeElementsAligment:NSTextAlignmentRight];
     [self exchangeLabelsText];
 }
+
+#pragma mark - Private
 
 - (void)exchangeLabelsText
 {
@@ -84,19 +80,11 @@
     self.sourceLabel.text = buffer;
 }
 
-#pragma mark - Private
-
-- (void)setPrepareTitleLabel:(NSString *)title
+- (void)changeElementsAligment:(NSTextAlignment)textAlignment
 {
-    UILabel *titleView = [[UILabel alloc] init];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.textColor = [UIColor whiteColor];
-    titleView.text = title;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    
-    titleView.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f];
-    self.navigationItem.titleView = titleView;
-    [titleView sizeToFit];
+    self.descriptionTextView.textAlignment = textAlignment;
+    self.dateLabel.textAlignment = textAlignment;
+    self.screenTitleLabel.textAlignment = textAlignment;
 }
 
 - (void)dispalyInformations

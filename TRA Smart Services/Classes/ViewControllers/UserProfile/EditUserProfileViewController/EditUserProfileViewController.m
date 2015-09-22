@@ -15,7 +15,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 @interface EditUserProfileViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -68,7 +67,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (IBAction)changePhotoButtonTapped:(id)sender
 {
-    
+    //waint design
 }
 
 #pragma mark - UserProfileActionViewDelegate
@@ -103,12 +102,8 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ServicesSelectTableViewCell *selectionCell;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier forIndexPath:indexPath];
-    } else {
-        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier forIndexPath:indexPath];
-    }
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
+    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     [self configureCell:selectionCell atIndexPath:indexPath];
     return selectionCell;
 }
@@ -128,7 +123,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     [self.view endEditing:YES];
     
     self.selectedEmirate = self.dataSource[indexPath.row + 1];
@@ -146,12 +140,8 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    ServicesSelectTableViewCell *selectionCell;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellArabicUIIdentifier];
-    } else {
-        selectionCell = [tableView dequeueReusableCellWithIdentifier:selectProviderCellEuropeUIIdentifier];
-    }
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
+    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier];
     selectionCell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
     selectionCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
     
@@ -178,7 +168,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     [self.view endEditing:YES];
     
     NSInteger value = DefaultHeightForTableView;
-    
     if (self.tableViewHeightConstraint.constant == DefaultHeightForTableView) {
         value *= 4;
         self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
@@ -189,7 +178,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     [self.view layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
-        self.tableViewHeightConstraint.constant = value;
+        weakSelf.tableViewHeightConstraint.constant = value;
         [weakSelf.view layoutIfNeeded];
     }];
 }
@@ -283,11 +272,7 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
     [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
@@ -339,22 +324,12 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     self.userActionView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.logoImageView.image = [UIImage imageNamed:@"test"];
-    [self addHexagoneOnView:self.logoImageView];
+    [AppHelper addHexagoneOnView:self.logoImageView];
 }
 
 - (void)fillData
 {
     self.firstNmaeTextfield.text = [KeychainStorage userName];
-}
-
-#pragma mark - Drawing
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
 }
 
 @end

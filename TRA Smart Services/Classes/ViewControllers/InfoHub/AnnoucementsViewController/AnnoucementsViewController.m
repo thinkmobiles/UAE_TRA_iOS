@@ -13,7 +13,6 @@
 @interface AnnoucementsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
@@ -57,10 +56,9 @@ static CGFloat const DefaultCellOffset = 24.0f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AnnoucementsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self cellUIIdentifier]];
+    cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
     if (indexPath.row % 2) {
-        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
-    } else {
-        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
+        cell.marginAnnouncementContainerConstraint.constant += AdditionalCellOffset;
     }
     
     if (self.dynamicService.language == LanguageTypeArabic) {
@@ -77,7 +75,6 @@ static CGFloat const DefaultCellOffset = 24.0f;
     }
     cell.annoucementLogoImage = logo;
     cell.annocementsDescriptionLabel.tag = DeclineTagForFontUpdate;
-    
     return cell;
 }
 
@@ -105,24 +102,20 @@ static CGFloat const DefaultCellOffset = 24.0f;
 - (void)localizeUI
 {
     [super localizeUI];
-    
+
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"annoucements.title");
 }
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 
 #pragma mark - Private
 
 - (NSString *)cellUIIdentifier
 {
-    if (self.dynamicService.language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         return AnnoucementsTableViewCellArabicIdentifier;
     }
     return AnnoucementsTableViewCellEuropeIdentifier;

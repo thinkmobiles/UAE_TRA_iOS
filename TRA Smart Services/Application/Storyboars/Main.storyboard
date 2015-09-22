@@ -2557,7 +2557,7 @@ a new password will be sent.</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="650"/>
                     <connections>
-                        <outlet property="backgroundImage" destination="DoR-Io-M2W" id="A5f-a1-Lpr"/>
+                        <outlet property="backgroundImageView" destination="DoR-Io-M2W" id="OYb-Nr-ILd"/>
                         <outlet property="emiratesIDButton" destination="YgR-2V-T9b" id="i2u-Yj-oqs"/>
                         <outlet property="emiratesIDLabel" destination="S9l-eZ-AB6" id="IIU-uM-ybr"/>
                         <outlet property="fillFormButton" destination="Tgv-hp-74U" id="u1v-FI-fWV"/>

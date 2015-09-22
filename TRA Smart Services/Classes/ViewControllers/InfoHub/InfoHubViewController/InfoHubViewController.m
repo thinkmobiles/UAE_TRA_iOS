@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceVerticalConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
@@ -99,7 +98,8 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? InfoHubCollectionViewCellArabicIdentifier : InfoHubCollectionViewCellEuropeIdentifier;
+    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     
     UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
@@ -107,7 +107,6 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.previewLogoImage = logo;
-
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
         cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
@@ -146,11 +145,11 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self tableViewCellUIIdentifier]];
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? InfoHubTableViewCellArabicIdentifier : InfoHubTableViewCellEuropeIdentifier;
+    InfoHubTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset;
     if (indexPath.row % 2) {
-        cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
-    } else {
-        cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset;
+        cell.marginInfoHubContainerConstraint.constant += AdditionalCellOffset;
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -189,12 +188,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [headerView.layer addSublayer:headerGradient];
     [headerView addSubview:headerLabel];
     
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        headerLabel.textAlignment = NSTextAlignmentRight;
-    } else {
-        headerLabel.textAlignment = NSTextAlignmentLeft;
-    }
-
+    headerLabel.textAlignment = self.dynamicService.language == LanguageTypeArabic ? NSTextAlignmentRight :  NSTextAlignmentLeft;
     return headerView;
 }
 
@@ -215,31 +209,17 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [self.tableView reloadData];
     [self.collectionView reloadData];
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 
 - (void)setRTLArabicUI
 {
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    self.leftSeparatorSpaceConstraint.constant = 0;
-    self.rightSeparatorSpaceConstraint.constant = DefaultCellOffset;
-    [self updateUI];
-    
-    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+    [self updateUIForLeftBasedInterface:NO];
 }
 
 - (void)setLTREuropeUI
 {
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    self.leftSeparatorSpaceConstraint.constant = DefaultCellOffset;
-    self.rightSeparatorSpaceConstraint.constant = 0;
-    [self updateUI];
-    
-    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+    [self updateUIForLeftBasedInterface:YES];
 }
 
 #pragma mark - Private
@@ -252,30 +232,19 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [self.tableView registerNib:[UINib nibWithNibName:@"InfoHubTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:InfoHubTableViewCellArabicIdentifier];
 }
 
-- (NSString *)tableViewCellUIIdentifier
-{
-    if (self.dynamicService.language == LanguageTypeArabic ) {
-        return InfoHubTableViewCellArabicIdentifier;
-    }
-    return InfoHubTableViewCellEuropeIdentifier;
-}
-
-- (NSString *)collectionViewCellUIIdentifier
-{
-    if (self.dynamicService.language == LanguageTypeArabic ) {
-        return InfoHubCollectionViewCellArabicIdentifier;
-    }
-    return InfoHubCollectionViewCellEuropeIdentifier;
-}
-
 - (void)prepareDemoDataSource
 {
     self.tableViewDataSource = @[@"Type Approval", @"Frequesncy Spectrum Authorizaions", @".ea Domain news"];
     self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
 }
 
-- (void)updateUI
+- (void)updateUIForLeftBasedInterface:(BOOL)leftBased
 {
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    self.leftSeparatorSpaceConstraint.constant = leftBased ? DefaultCellOffset : 0;
+    self.rightSeparatorSpaceConstraint.constant = leftBased ? 0 : DefaultCellOffset;
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, leftBased ? 1 : -1, 1);
+
     [self.tableView reloadData];
     [self.collectionView reloadData];
 }

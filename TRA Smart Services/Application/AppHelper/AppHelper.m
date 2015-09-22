@@ -259,6 +259,14 @@ static LanguageType startLanguage;
     }
 }
 
++ (void)titleFontForNavigationBar:(UINavigationBar *)navigationBar
+{
+    [navigationBar setTitleTextAttributes:@{
+                                            NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                            NSForegroundColorAttributeName : [UIColor whiteColor]
+                                            }];
+}
+
 #pragma mark - Hexagon
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view

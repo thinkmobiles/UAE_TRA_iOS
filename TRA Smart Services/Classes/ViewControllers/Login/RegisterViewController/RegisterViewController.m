@@ -16,7 +16,6 @@ static NSString *const DividerForID = @"-";
 
 @interface RegisterViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UIView *mainContainerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *registerScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -49,25 +48,11 @@ static NSString *const DividerForID = @"-";
 {
     [super viewWillAppear:animated];
     
-    self.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
-    
-    [self prepareNotification];
     [self prepareRegisterConteinerUIView];
     [self updateColors];
-    
+    self.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     self.emiratesIDTextField.subDelegate = self;
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self removeNotifications];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -209,7 +194,6 @@ static NSString *const DividerForID = @"-";
 
 #pragma mark - Superclass methods
 
-
 - (void)setLTREuropeUI
 {
     [self updateUI:NSTextAlignmentLeft];
@@ -243,7 +227,7 @@ static NSString *const DividerForID = @"-";
     self.emailTextField.textAlignment = textAlignment;
 }
 
-- (void) vizibleTextFieldChangeKeyboard
+- (void)vizibleTextFieldChangeKeyboard
 {
     CGFloat offsetForScrollViewY = self.registerScrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.registerScrollView.contentOffset.y - self.keyboardHeight;
     CGFloat lineEventScroll = self.registerScrollView.frame.size.height + self.registerScrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
@@ -293,12 +277,7 @@ static NSString *const DividerForID = @"-";
 {
     UIColor *color = [self.dynamicService currentApplicationColor];
     [self.loginButton setTitleColor:color forState:UIControlStateNormal];
-    
-    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"res_img_bg"];
     
     for (UIView *separator in self.registerContainer.subviews) {
         if (separator.tag == SeparatorTag) {

@@ -464,10 +464,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 - (void)prepareTitle
 {
     self.title = self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 #pragma mark - Superclass Methods

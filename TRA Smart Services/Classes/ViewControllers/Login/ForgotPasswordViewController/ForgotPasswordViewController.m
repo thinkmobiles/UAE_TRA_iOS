@@ -11,7 +11,6 @@
 
 @interface ForgotPasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet OffsetTextField *userEmailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 
@@ -25,10 +24,7 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 - (void)viewDidLayoutSubviews
@@ -42,7 +38,7 @@
 
 - (IBAction)restorePasswordPressed:(id)sender
 {
-    
+    //wait for API
 }
 
 - (void)closeButtonPressed
@@ -70,11 +66,7 @@
 {
     [self.mainButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     self.informationLabel.textColor = [self.dynamicService currentApplicationColor];
-    UIImage *backgroundImage = [UIImage imageNamed:@"res_img_bg"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"res_img_bg"];
 }
 
 @end

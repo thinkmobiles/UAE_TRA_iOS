@@ -13,7 +13,6 @@
 
 @interface UserProfileViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -50,12 +49,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserProfileTableViewCell *cell;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        cell = [tableView dequeueReusableCellWithIdentifier:UserProfileTableViewCellArabicCellIdentifier forIndexPath:indexPath];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:UserProfileTableViewCellEuropeanCellIdentifier forIndexPath:indexPath];
-    }
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? UserProfileTableViewCellArabicCellIdentifier : UserProfileTableViewCellEuropeanCellIdentifier;
+    UserProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -90,7 +85,6 @@
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, 20.f);
     headerGradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.1].CGColor];
-    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20.f)];
     [headerView.layer addSublayer:headerGradient];
     
@@ -107,12 +101,7 @@
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
-
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
     [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
@@ -134,10 +123,7 @@
 {
     [super prepareNavigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 - (void)configureCell:(UserProfileTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

@@ -7,12 +7,10 @@
 //
 
 #import "ResetPasswordViewController.h"
-#import "UserProfileActionView.h"
 #import "UIImage+DrawText.h"
 
-@interface ResetPasswordViewController () <UserProfileActionViewDelegate>
+@interface ResetPasswordViewController () 
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *resetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
@@ -57,23 +55,15 @@
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
-    
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
     [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 - (void)prepareNavigationBar
 {
     [super prepareNavigationBar];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
 }
 
 - (void)setRTLArabicUI

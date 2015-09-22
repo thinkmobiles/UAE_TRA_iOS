@@ -35,6 +35,7 @@
 + (void)updateTabBarTintColor;
 
 + (void)updateNavigationBarColor;
++ (void)titleFontForNavigationBar:(UINavigationBar *)navigationBar;
 
 + (UIBezierPath *)hexagonPathForView:(UIView *)view;
 + (UIBezierPath *)hexagonPathForRect:(CGRect)hexagonRect;
