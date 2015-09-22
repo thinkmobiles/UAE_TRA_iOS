@@ -36,6 +36,8 @@
 "message.InvalidFormatEmail" = "message.InvalidFormatEmail";
 "message.InvalidFormatURL" = "message.InvalidFormatURL";
 "message.InvalidStateCode" = "message.InvalidStateCode";
+"message.FailedToSendSMS" = "message.FailedToSendSMS";
+"message.FailedToInitializeMFController" = "message.FailedToInitializeMFController";
 
 //StatesNames
 
@@ -248,6 +250,7 @@
 "spamReportViewControler.textField.phoneNumber" = "spamReportViewControler.textField.phoneNumber";
 "spamReportViewControler.textField.providerType" = "spamReportViewControler.textField.providerType";
 "spamReportViewControler.reportButton.title" = "spamReportViewControler.reportButton.title";
+"spamReportViewControler.reportSpamButton.title" = "spamReportViewControler.reportSpamButton.title";
 "spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex0.title";
 "spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex1.title";
 

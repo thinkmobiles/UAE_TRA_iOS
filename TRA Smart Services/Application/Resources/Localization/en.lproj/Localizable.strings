@@ -36,6 +36,8 @@
 "message.InvalidFormatEmail" = "Invalid Email";
 "message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
+"message.FailedToSendSMS" = "Cant sent SMS";
+"message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
 
 //StatesNames
 
@@ -249,6 +251,7 @@
 "spamReportViewControler.textField.phoneNumber" = "Phone number";
 "spamReportViewControler.textField.providerType" = "Provider type";
 "spamReportViewControler.reportButton.title" = "Block SMS Spamer";
+"spamReportViewControler.reportSpamButton.title" = "Report SMS Spam";
 "spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
 "spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
 

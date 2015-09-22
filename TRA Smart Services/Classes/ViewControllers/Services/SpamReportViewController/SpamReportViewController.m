@@ -57,10 +57,6 @@ static NSInteger const BlockServiceNumber = 7726;
         if (!self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
-            if (![self.phoneNumber.text isValidPhoneNumber]) {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
-                return;
-            }
             [self POSTSMSBlock];
             [self sendSMSMessage];
          }
@@ -71,15 +67,14 @@ static NSInteger const BlockServiceNumber = 7726;
 {
     if (sender.selectedSegmentIndex) {
         self.providerType.hidden = YES;
-        [self animatinSelectReportType];
-        [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
-        [self clearUp];
+        [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSpamButton.title") forState:UIControlStateNormal];
     } else {
         self.providerType.hidden = NO;
-        [self animatinSelectReportType];
-        [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
-        [self clearUp];
+        [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
     }
+    
+    [self animatinSelectReportType];
+    [self clearUp];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -182,6 +177,7 @@ static NSInteger const BlockServiceNumber = 7726;
         
         NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
         NSString *message = [NSString stringWithFormat:@"b %@", self.phoneNumber.text];
+        
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
         messageController.messageComposeDelegate = self;
         [messageController setRecipients:recipents];
@@ -191,7 +187,7 @@ static NSInteger const BlockServiceNumber = 7726;
         }];
         messageController.navigationBar.tintColor = [UIColor whiteColor];
     } else {
-        NSLog(@"Error");
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.FailedToInitializeMFController")];
     }
 }
 
@@ -200,19 +196,13 @@ static NSInteger const BlockServiceNumber = 7726;
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
 {
     switch (result) {
-        case MessageComposeResultCancelled:
-            break;
         case MessageComposeResultFailed: {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.FailedToSendSMS")];
             break;
         }
-        case MessageComposeResultSent:
-            break;
-            
         default:
             break;
     }
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -223,8 +213,7 @@ static NSInteger const BlockServiceNumber = 7726;
     [self.view layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.2 animations:^{
-        
-        self.verticalDescriptionsContreint.constant = self.verticalDescriptionsContreint.constant == 18 ? 65 : 18;
+        weakSelf.verticalDescriptionsContreint.constant = weakSelf.verticalDescriptionsContreint.constant == 18 ? 65 : 18;
         [weakSelf.view layoutIfNeeded];
     }];
 }
