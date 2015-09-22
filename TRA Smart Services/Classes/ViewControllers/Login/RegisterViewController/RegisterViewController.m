@@ -117,7 +117,6 @@ static NSString *const DividerForID = @"-";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"offset = %f", scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 0) {
             [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
     } else {
