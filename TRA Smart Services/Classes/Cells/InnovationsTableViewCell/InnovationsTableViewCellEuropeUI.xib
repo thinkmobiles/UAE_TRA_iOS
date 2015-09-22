@@ -41,7 +41,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-t2-I88" userLabel="SubConteiner - View">
                                 <rect key="frame" x="90" y="0.0" width="190" height="88"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-7L-fR4" userLabel="Date - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-7L-fR4" userLabel="Date - UILabel">
                                         <rect key="frame" x="0.0" y="12" width="190" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="nbe-tb-SEw"/>
@@ -50,7 +50,7 @@
                                         <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-Vo-XwA" userLabel="Description - AligmentLabel" customClass="AligmentLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-Vo-XwA" userLabel="Description - AligmentLabel" customClass="AligmentLabel">
                                         <rect key="frame" x="0.0" y="28" width="190" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="nJP-ys-AMo"/>
@@ -59,7 +59,7 @@
                                         <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="Eoj-C8-kdx" userLabel="Title - AligmentLabel" customClass="AligmentLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="Eoj-C8-kdx" userLabel="Title - AligmentLabel" customClass="AligmentLabel">
                                         <rect key="frame" x="0.0" y="28" width="190" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>

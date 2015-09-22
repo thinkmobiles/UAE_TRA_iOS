@@ -208,7 +208,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 {
     switch (item) {
         case 0: {
-            if (self.dynamicService.language == LanguageTypeEnglish) {
+            if ((self.dynamicService.language == LanguageTypeEnglish)||(self.dynamicService.language == LanguageTypeDefault)) {
                 [self changeLanguageTo:LanguageTypeArabic];
             }
             break;

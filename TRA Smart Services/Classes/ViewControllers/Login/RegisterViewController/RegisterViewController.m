@@ -16,7 +16,7 @@ static NSString *const DividerForID = @"-";
 
 @interface RegisterViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *registerBackgroundImageView;
 @property (strong, nonatomic) IBOutlet UIView *mainContainerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *registerScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -117,10 +117,9 @@ static NSString *const DividerForID = @"-";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    NSLog(@"offset = %f", scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 0) {
-        if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
             [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
-        }
     } else {
         [self.scrollLogoImage setContentOffset:CGPointMake(0, 0)];
     }
@@ -296,7 +295,7 @@ static NSString *const DividerForID = @"-";
     if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
     }
-    self.backgroundImageView.image = backgroundImage;
+    self.registerBackgroundImageView.image = backgroundImage;
     
     for (UIView *separator in self.registerContainer.subviews) {
         if (separator.tag == SeparatorTag) {
