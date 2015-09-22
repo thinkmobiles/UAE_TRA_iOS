@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *innovationsChatReplyButton;
 @property (weak, nonatomic) IBOutlet UIButton *innovationsChatReportAbuseButton;
 @property (weak, nonatomic) IBOutlet UIImageView *innovationsChatLogoImageView;
-@property (weak, nonatomic) IBOutlet AligmentLabel *innovationsChatDescriptionLabel;
-@property (weak, nonatomic) IBOutlet AligmentLabel *innovationsChatTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *innovationsChatDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *innovationsChatTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *hexagonBackgroundView;
 
 @end

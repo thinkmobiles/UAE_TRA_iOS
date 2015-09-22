@@ -78,7 +78,6 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self prepareNavigationBar];
     [self prepareFontSizeSlider];
     [self updateFontSizeSliderColor];
-    [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,7 +94,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 {
     [super viewDidAppear:animated];
     
-    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
+//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -462,9 +461,9 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
-- (void)setPrepareTitleLabel:(NSString *)title
+- (void)prepareTitle
 {
-    self.title = title;
+    self.title = self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
                                                                       NSForegroundColorAttributeName : [UIColor whiteColor]
@@ -475,8 +474,8 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 
 - (void)localizeUI
 {
-    [self setPrepareTitleLabel:dynamicLocalizedString(@"settings.title")];
-
+    [self prepareTitle];
+    
     self.leftFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.small");
     self.centerFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.normal");
     self.rightFontSizeLabel.text = dynamicLocalizedString(@"settings.label.fontsize.description.large");

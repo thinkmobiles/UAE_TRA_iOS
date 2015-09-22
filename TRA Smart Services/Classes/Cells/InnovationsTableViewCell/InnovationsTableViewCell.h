@@ -12,9 +12,9 @@ static NSString *const InnovationsTableViewCellArabicIdentifier = @"InnovationsT
 @interface InnovationsTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *innovationsTransactionImageView;
-@property (strong, nonatomic) IBOutlet AligmentLabel *innovationsTransactionDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *innovationsTransactionDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *innovationsTransactionDateLabel;
-@property (strong, nonatomic) IBOutlet AligmentLabel *innovationsTransactionTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *innovationsTransactionTitleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *marginInnovationsContainerConstraint;
 
 @end

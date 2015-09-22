@@ -16,7 +16,6 @@
 + (void)presentViewController:(UIViewController *)target onController:(UIViewController *)presenter;
 + (BOOL)isiOS9_0OrHigher;
 
-
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate otherButtonTitles:(NSString *)otherButtonTitles, ...;
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate;
 + (void)alertViewWithMessage:(NSString *)message;

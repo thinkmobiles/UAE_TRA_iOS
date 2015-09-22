@@ -12,15 +12,17 @@
 
 @interface ChangePasswordViewController () <UserProfileActionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLogoImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *changeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *oldPasswordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *retypePasswordLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *retypePasswordTextField;
+
 @property (weak, nonatomic) IBOutlet UserProfileActionView *actionView;
 
 @end
@@ -29,7 +31,8 @@
 
 #pragma mark - LifeCycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUserView];
@@ -59,12 +62,7 @@
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
-    
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
     [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
 }
 
@@ -110,10 +108,10 @@
 - (void)updateUI:(NSTextAlignment)textAlignment
 {
     self.oldPasswordLabel.textAlignment = textAlignment;
-    self.oldPasswordTextField.textAlignment = textAlignment;
     self.passwordLabel.textAlignment = textAlignment;
-    self.passwordTextField.textAlignment = textAlignment;
     self.retypePasswordLabel.textAlignment = textAlignment;
+    self.oldPasswordTextField.textAlignment = textAlignment;
+    self.passwordTextField.textAlignment = textAlignment;
     self.retypePasswordTextField.textAlignment = textAlignment;
     
     [self configureTextField:self.oldPasswordTextField];

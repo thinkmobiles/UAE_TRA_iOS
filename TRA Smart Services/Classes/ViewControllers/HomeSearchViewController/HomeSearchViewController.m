@@ -19,8 +19,8 @@ static CGFloat const HeightTableViewCell = 35.f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerSearchView;
-@property (weak, nonatomic) IBOutlet AligmentTextField *homeSearchTextField;
-@property (weak, nonatomic) IBOutlet AligmentLabel *homeSearchLabel;
+@property (weak, nonatomic) IBOutlet UITextField *homeSearchTextField;
+@property (weak, nonatomic) IBOutlet UILabel *homeSearchLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *fakeBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 
@@ -130,6 +130,9 @@ static CGFloat const HeightTableViewCell = 35.f;
 - (void)setRTLArabicUI
 {
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 35, 0, 15)];
+  
+    self.homeSearchLabel.textAlignment = NSTextAlignmentRight;
+    self.homeSearchTextField.textAlignment = NSTextAlignmentRight;
     
     self.conteinerSearchView.layer.transform = TRANFORM_3D_SCALE;
     self.homeSearchLabel.layer.transform = TRANFORM_3D_SCALE;

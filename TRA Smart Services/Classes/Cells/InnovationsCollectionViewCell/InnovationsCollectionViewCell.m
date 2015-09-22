@@ -11,7 +11,7 @@
 @interface InnovationsCollectionViewCell()
 
 @property (strong, nonatomic) IBOutlet UIImageView *innovationsPreviewIconImageView;
-@property (strong, nonatomic) IBOutlet AligmentLabel *innovationsPreviewedDateDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *innovationsPreviewedDateDescriptionLabel;
 
 @end
 

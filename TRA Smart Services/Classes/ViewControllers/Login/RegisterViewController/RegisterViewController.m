@@ -49,6 +49,8 @@ static NSString *const DividerForID = @"-";
 {
     [super viewWillAppear:animated];
     
+    self.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    
     [self prepareNotification];
     [self prepareRegisterConteinerUIView];
     [self updateColors];

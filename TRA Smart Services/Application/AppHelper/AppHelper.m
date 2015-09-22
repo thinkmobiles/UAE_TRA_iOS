@@ -16,6 +16,8 @@
 static CGFloat const MaximumTabBarFontSize = 15.f;
 static CGFloat const MinimumTabBarFontSize = 10.f;
 
+static LanguageType startLanguage;
+
 @implementation AppHelper
 
 #pragma mark - Public
@@ -106,6 +108,8 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
 
 + (void)prepareTabBarItems
 {
+    startLanguage = [DynamicUIService service].language;
+    
     [AppHelper performResetupTabBar];
     if (![AppHelper isiOS9_0OrHigher]) {
         if ([DynamicUIService service].language == LanguageTypeArabic) {
@@ -147,9 +151,20 @@ static CGFloat const MinimumTabBarFontSize = 10.f;
 + (void)localizeTitlesOnTabBar
 {
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        localizedMenuItems = [localizedMenuItems reversedArray];
+    if ([AppHelper isiOS9_0OrHigher] ) {
+        if (startLanguage == LanguageTypeArabic) {
+            if ([DynamicUIService service].language == LanguageTypeEnglish) {
+                localizedMenuItems = [localizedMenuItems reversedArray];
+            }
+        } else {
+            if ([DynamicUIService service].language == LanguageTypeArabic) {
+                localizedMenuItems = [localizedMenuItems reversedArray];
+            }
+        }
+    } else {
+        if ([DynamicUIService service].language == LanguageTypeArabic) {
+            localizedMenuItems = [localizedMenuItems reversedArray];
+        }
     }
     
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;

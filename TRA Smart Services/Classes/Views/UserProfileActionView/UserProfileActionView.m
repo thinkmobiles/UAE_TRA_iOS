@@ -77,6 +77,7 @@
     self.saveChangesLabel.layer.transform = transfrom;
     self.resetLabel.layer.transform = transfrom;
     self.cancelLabel.layer.transform = transfrom;
+    self.saveButton.layer.transform = transfrom;
 }
 
 @end

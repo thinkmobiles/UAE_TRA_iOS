@@ -65,8 +65,6 @@
 		93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */; };
 		93D10A751BA93B4500CCEB22 /* AboutEn.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A741BA93B4500CCEB22 /* AboutEn.rtf */; };
 		93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A761BA93B5600CCEB22 /* AboutAr.rtf */; };
-		93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A931BAD913E00CCEB22 /* AligmentLabel.m */; };
-		93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A971BAD93B300CCEB22 /* AligmentTextField.m */; };
 		93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */; };
 		93D10A9E1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */; };
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
@@ -282,10 +280,6 @@
 		93CFCC0C1B9CB4E9004A1A8F /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
 		93D10A741BA93B4500CCEB22 /* AboutEn.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutEn.rtf; sourceTree = "<group>"; };
 		93D10A761BA93B5600CCEB22 /* AboutAr.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AboutAr.rtf; sourceTree = "<group>"; };
-		93D10A921BAD913E00CCEB22 /* AligmentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AligmentLabel.h; sourceTree = "<group>"; };
-		93D10A931BAD913E00CCEB22 /* AligmentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AligmentLabel.m; sourceTree = "<group>"; };
-		93D10A961BAD93B300CCEB22 /* AligmentTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AligmentTextField.h; sourceTree = "<group>"; };
-		93D10A971BAD93B300CCEB22 /* AligmentTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AligmentTextField.m; sourceTree = "<group>"; };
 		93D10A9A1BAD9A8800CCEB22 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceViewControllersIdentifiers.plist; sourceTree = "<group>"; };
@@ -845,24 +839,6 @@
 			path = Texts;
 			sourceTree = "<group>";
 		};
-		93D10A911BAD913E00CCEB22 /* AligmentLabel */ = {
-			isa = PBXGroup;
-			children = (
-				93D10A921BAD913E00CCEB22 /* AligmentLabel.h */,
-				93D10A931BAD913E00CCEB22 /* AligmentLabel.m */,
-			);
-			path = AligmentLabel;
-			sourceTree = "<group>";
-		};
-		93D10A951BAD939D00CCEB22 /* AligmentTextField */ = {
-			isa = PBXGroup;
-			children = (
-				93D10A961BAD93B300CCEB22 /* AligmentTextField.h */,
-				93D10A971BAD93B300CCEB22 /* AligmentTextField.m */,
-			);
-			path = AligmentTextField;
-			sourceTree = "<group>";
-		};
 		93D10A991BAD9A7800CCEB22 /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1377,8 +1353,6 @@
 			isa = PBXGroup;
 			children = (
 				939444A11BB04FCC00EDCF06 /* FingerPrintAuth */,
-				93D10A951BAD939D00CCEB22 /* AligmentTextField */,
-				93D10A911BAD913E00CCEB22 /* AligmentLabel */,
 				930E177C1BA581EA00295263 /* RoundSlider */,
 				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
 				9343E3221B974ECB0066329C /* LeftInsetTextField */,
@@ -1785,9 +1759,9 @@
 			isa = PBXGroup;
 			children = (
 				F1A889BD1BA2BB1E007EDEF7 /* ChangePasswordViewController */,
+				F1A889C21BA2BB1E007EDEF7 /* UserProfileViewController */,
 				F1A889BE1BA2BB1E007EDEF7 /* EditUserProfileViewController */,
 				F1A889C11BA2BB1E007EDEF7 /* ResetPasswordViewController */,
-				F1A889C21BA2BB1E007EDEF7 /* UserProfileViewController */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -2116,9 +2090,7 @@
 				93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */,
 				939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */,
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
-				93D10A981BAD93B300CCEB22 /* AligmentTextField.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,
-				93D10A941BAD913E00CCEB22 /* AligmentLabel.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

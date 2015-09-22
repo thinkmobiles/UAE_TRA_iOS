@@ -12,7 +12,7 @@ static NSString *const InnovationsCollectionViewCellArabicIdentifier = @"Innovat
 @interface InnovationsCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *innovationsPreviewDateLabel;
-@property (strong, nonatomic) IBOutlet AligmentLabel *innovationsPreviewDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *innovationsPreviewDescriptionLabel;
 @property (strong, nonatomic) NSDate *reviewedData;
 
 @property (strong, nonatomic) UIImage *previewLogoImage;
