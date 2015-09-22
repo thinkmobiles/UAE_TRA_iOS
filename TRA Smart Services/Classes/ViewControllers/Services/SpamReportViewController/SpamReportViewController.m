@@ -9,10 +9,11 @@
 #import "SpamReportViewController.h"
 #import "NetworkManager.h"
 #import "LoginViewController.h"
+#import <MessageUI/MessageUI.h>
 
 static NSInteger const BlockServiceNumber = 7726;
 
-@interface SpamReportViewController ()
+@interface SpamReportViewController () <MFMessageComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *providerType;
@@ -20,6 +21,7 @@ static NSInteger const BlockServiceNumber = 7726;
 @property (weak, nonatomic) IBOutlet UITextView *notes;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *reportSegment;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalDescriptionsContreint;
 
 @property (strong, nonatomic) UIPickerView *selectProviderPicker;
 @property (strong, nonatomic) NSArray *pickerSelectProviderDataSource;
@@ -49,6 +51,7 @@ static NSInteger const BlockServiceNumber = 7726;
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [self POSTSpamReport];
+            [self sendSMSMessage];
         }
     } else {
         if (!self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
@@ -59,18 +62,21 @@ static NSInteger const BlockServiceNumber = 7726;
                 return;
             }
             [self POSTSMSBlock];
-        }
+            [self sendSMSMessage];
+         }
     }
 }
 
 - (IBAction)didChangeReportType:(UISegmentedControl *)sender
 {
     if (sender.selectedSegmentIndex) {
-        self.providerType.enabled = NO;
+        self.providerType.hidden = YES;
+        [self animatinSelectReportType];
         [self.reportButton setTitle:@"Report SMS Spam" forState:UIControlStateNormal];
         [self clearUp];
     } else {
-        self.providerType.enabled = YES;
+        self.providerType.hidden = NO;
+        [self animatinSelectReportType];
         [self.reportButton setTitle:@"Block SMS Spamer" forState:UIControlStateNormal];
         [self clearUp];
     }
@@ -155,35 +161,73 @@ static NSInteger const BlockServiceNumber = 7726;
 
 - (void)POSTSpamReport
 {
-    if (![self.phoneNumber.text isValidUserName] ) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
-        return;
-    }
-    [AppHelper showLoader];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
-        } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-        }
-        [AppHelper hideLoader];
     }];
 }
 
 - (void)POSTSMSBlock
 {
-    [AppHelper showLoader];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
-        } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-        }
-        [AppHelper hideLoader];
     }];
 }
 
+#pragma mark - SMSMessage
+
+- (void)sendSMSMessage
+{
+    if([MFMessageComposeViewController canSendText]) {
+        [UINavigationBar appearance].barTintColor = self.dynamicService.currentApplicationColor;
+        [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+        [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:17] : [UIFont latoRegularWithSize:17]};
+        
+        NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
+        NSString *message = [NSString stringWithFormat:@"b %@", self.phoneNumber.text];
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+        messageController.messageComposeDelegate = self;
+        [messageController setRecipients:recipents];
+        [messageController setBody:message];
+        [self presentViewController:messageController animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
+        messageController.navigationBar.tintColor = [UIColor whiteColor];
+    } else {
+        NSLog(@"Error");
+    }
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+        case MessageComposeResultFailed: {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.FailedToSendSMS")];
+            break;
+        }
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Private
+
+- (void)animatinSelectReportType
+{
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        self.verticalDescriptionsContreint.constant = self.verticalDescriptionsContreint.constant == 18 ? 65 : 18;
+        [weakSelf.view layoutIfNeeded];
+    }];
+}
 
 - (void)preparePickerDataSource
 {

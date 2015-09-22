@@ -5304,8 +5304,8 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="5ZJ-47-k8q"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
-                                <rect key="frame" x="16" y="100" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
+                                <rect key="frame" x="16" y="100" width="568" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -5354,10 +5354,10 @@ a new password will be sent.</string>
                             <constraint firstItem="44B-XE-Vza" firstAttribute="leading" secondItem="XQv-fE-Ye2" secondAttribute="leading" constant="16" id="4r2-p7-Viv"/>
                             <constraint firstAttribute="trailing" secondItem="1Oi-PN-CIo" secondAttribute="trailing" constant="16" id="5QH-yN-LjA"/>
                             <constraint firstItem="1Oi-PN-CIo" firstAttribute="leading" secondItem="XQv-fE-Ye2" secondAttribute="leading" constant="16" id="BuS-8l-849"/>
+                            <constraint firstItem="e1Q-Nt-TMA" firstAttribute="top" secondItem="1Oi-PN-CIo" secondAttribute="bottom" constant="65" id="DuG-xq-LBz"/>
                             <constraint firstItem="1Oi-PN-CIo" firstAttribute="top" secondItem="M2r-ir-Bvk" secondAttribute="bottom" constant="16" id="GMv-bq-rAo"/>
                             <constraint firstItem="cEp-Ns-2Gd" firstAttribute="top" secondItem="e1Q-Nt-TMA" secondAttribute="bottom" constant="8" id="KKV-A3-Wmx"/>
                             <constraint firstItem="M2r-ir-Bvk" firstAttribute="top" secondItem="Ven-WD-rF4" secondAttribute="bottom" constant="8" id="Qj5-2H-aPH"/>
-                            <constraint firstItem="e1Q-Nt-TMA" firstAttribute="top" secondItem="44B-XE-Vza" secondAttribute="bottom" constant="17" id="RIS-E9-nS0"/>
                             <constraint firstItem="44B-XE-Vza" firstAttribute="top" secondItem="1Oi-PN-CIo" secondAttribute="bottom" constant="18" id="Sud-aW-EXN"/>
                             <constraint firstAttribute="trailing" secondItem="44B-XE-Vza" secondAttribute="trailing" constant="16" id="aD3-Oq-Tru"/>
                             <constraint firstAttribute="centerX" secondItem="M2r-ir-Bvk" secondAttribute="centerX" id="fP1-ew-GxX"/>
@@ -5373,6 +5373,7 @@ a new password will be sent.</string>
                         <outlet property="providerType" destination="44B-XE-Vza" id="hRb-Do-UaG"/>
                         <outlet property="reportButton" destination="cEp-Ns-2Gd" id="O2U-k1-Xsk"/>
                         <outlet property="reportSegment" destination="M2r-ir-Bvk" id="T32-Y3-6j2"/>
+                        <outlet property="verticalDescriptionsContreint" destination="DuG-xq-LBz" id="hX2-6c-m34"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk4-vB-rEg" userLabel="First Responder" sceneMemberID="firstResponder"/>

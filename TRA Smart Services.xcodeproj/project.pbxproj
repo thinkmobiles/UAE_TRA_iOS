@@ -72,6 +72,7 @@
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
+		E065D0641BB13DCB00427AD2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065D0631BB13DCB00427AD2 /* MessageUI.framework */; };
 		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; };
 		E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */; };
 		E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07082F31BA7FB7F0057F134 /* Main.storyboard */; };
@@ -294,6 +295,7 @@
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
 		E00A812D1BA0577A00502423 /* HomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
+		E065D0631BB13DCB00427AD2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E06B05251BABEC6E00365A3A /* ServiceDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceDescription.plist; sourceTree = "<group>"; };
 		E07082F01BA7F96A0057F134 /* HomeSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchResultViewController.h; sourceTree = "<group>"; };
 		E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchResultViewController.m; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E065D0641BB13DCB00427AD2 /* MessageUI.framework in Frameworks */,
 				939444A01BB0487D00EDCF06 /* LocalAuthentication.framework in Frameworks */,
 				EDAA8EE21B81D63100269F1A /* CoreData.framework in Frameworks */,
 				EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */,
@@ -1611,6 +1614,7 @@
 		EDD3E59F1B5E4A9E00405367 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E065D0631BB13DCB00427AD2 /* MessageUI.framework */,
 				9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */,
 				EDAA8EE11B81D63100269F1A /* CoreData.framework */,
 				EDD3E5A01B5E4ACE00405367 /* Security.framework */,
@@ -2297,6 +2301,7 @@
 				939444B21BB079A500EDCF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */ = {
 			isa = XCConfigurationList;
