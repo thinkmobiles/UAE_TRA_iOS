@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KLw-NL-vgl" id="bX8-y9-9gB">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-LU-jTg" userLabel="ArabicUI">
@@ -102,21 +102,21 @@
                                             <action selector="serviceInfoButtonTapped:" destination="KLw-NL-vgl" eventType="touchUpInside" id="1Ng-yI-aFO"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fN8-YQ-fue" userLabel="Remove -UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="fN8-YQ-fue" userLabel="Remove -UILabel">
                                         <rect key="frame" x="0.0" y="48" width="70" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="zhj-Nf-94N"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HA-2F-ybr" userLabel="ServiceInfor - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="3HA-2F-ybr" userLabel="ServiceInfor - UILabel">
                                         <rect key="frame" x="108" y="48" width="69" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eMZ-e1-lse"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
