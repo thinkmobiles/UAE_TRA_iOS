@@ -173,16 +173,6 @@ static NSString *const DividerForID = @"-";
 
 #pragma mark - Keyboard
 
-- (void)prepareNotification
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)removeNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];

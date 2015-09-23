@@ -691,7 +691,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
                                                             <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1984,6 +1984,7 @@ a new password will be sent.</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="950"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="ec8-cA-VqL" id="A69-wL-M2m"/>
                         <outlet property="confirmPasswordTextField" destination="Wfb-NY-gcP" id="SJo-WK-5Jt"/>
                         <outlet property="emailTextField" destination="WAd-Tu-LyJ" id="MRo-AC-6uC"/>
                         <outlet property="emiratesIDTextField" destination="h0U-Un-NrF" id="K2c-KY-c9H"/>
@@ -1995,7 +1996,6 @@ a new password will be sent.</string>
                         <outlet property="mainContainerView" destination="xgR-5H-iYw" id="IaL-Gh-RA1"/>
                         <outlet property="mobileTextField" destination="YSb-aK-F5h" id="MXV-KA-yGk"/>
                         <outlet property="passwordTextField" destination="dQS-AY-eSB" id="1qk-2t-NWf"/>
-                        <outlet property="registerBackgroundImageView" destination="ec8-cA-VqL" id="3Eg-Qa-g4h"/>
                         <outlet property="registerButton" destination="dnH-BM-6gu" id="LN3-98-N3G"/>
                         <outlet property="registerContainer" destination="X5C-Zb-oQC" id="k7o-jX-w7V"/>
                         <outlet property="registerScrollView" destination="j4D-WR-PuB" id="fcw-bf-cLt"/>
