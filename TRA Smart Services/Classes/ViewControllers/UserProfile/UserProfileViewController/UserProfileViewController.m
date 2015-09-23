@@ -10,6 +10,7 @@
 #import "UserProfileTableViewCell.h"
 #import "KeychainStorage.h"
 #import "UIImage+DrawText.h"
+#import "SettingViewController.h"
 
 @interface UserProfileViewController ()
 
@@ -71,7 +72,7 @@
     if (segue.length) {
         [self performSegueWithIdentifier:segue sender:self];
     } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"userProfile.notificationMesasge") delegate:self otherButtonTitles:dynamicLocalizedString(@"uiElement.cancelButton.title")];
     }
 }
 
@@ -89,6 +90,13 @@
     [headerView.layer addSublayer:headerGradient];
     
     return headerView;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self performLogout];
 }
 
 #pragma mark - Superclass methods
@@ -135,6 +143,25 @@
         cell.separatorView.hidden = YES;
         cell.shevronImageView.hidden = YES;
     }
+}
+
+- (void)performLogout
+{
+    [AppHelper showLoader];
+    __weak typeof(self) weakSelf = self;
+    [[NetworkManager sharedManager] traSSLogout:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:response];
+        } else {
+            KeychainStorage *storage = [[KeychainStorage alloc] init];
+            [storage removeStoredCredentials];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:KeyUseTouchIDIdentification];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        [AppHelper hideLoader];
+    }];
 }
 
 @end

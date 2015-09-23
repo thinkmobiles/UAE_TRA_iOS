@@ -14,6 +14,7 @@
 //UIElements Title
 
 "uiElement.cancelButton.title" = "uiElement.cancelButton.title";
+"uiElement.OKButton.title" = "uiElement.OKButton.title";
 
 //Messages for Alerts
 
@@ -297,6 +298,7 @@
 "userProfile.changePassword" = "userProfile.changePassword";
 "userProfile.resetPassword" = "userProfile.resetPassword";
 "userProfile.logoutFromAccount" = "userProfile.logoutFromAccount";
+"userProfile.notificationMesasge" = "userProfile.notificationMesasge";
 
 //ResetPasswordViewController
 

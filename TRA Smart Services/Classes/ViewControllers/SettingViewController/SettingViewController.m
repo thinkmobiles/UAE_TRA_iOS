@@ -88,6 +88,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self updateLanguageSegmentControlPosition];
     [self updateFontSizeControl];
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
+    self.touchIDSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -241,10 +242,6 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self prepareUISwitch:self.appTutorialScreensSwitch];
     [self prepareUISwitch:self.screenLockNotificationSwitch];
     [self prepareUISwitch:self.touchIDSwitch];
-    
-    if ([KeychainStorage userName].length) {
-        self.touchIDSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification];
-    }
 }
 
 - (void)prepareUISwitch:(UISwitch *) prepareSwitch

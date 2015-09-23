@@ -33,7 +33,7 @@
     [AppHelper prepareTabBarItems];
     [AppHelper prepareTabBarGradient];
     
-   // [self performAutoLogin];
+    [self performAutoLogin];
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
 
     return YES;
