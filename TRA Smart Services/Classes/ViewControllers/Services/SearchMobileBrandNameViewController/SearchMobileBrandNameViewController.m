@@ -87,11 +87,12 @@
 
 - (void)updateColors
 {
-    self.brandNameTextField.layer.borderColor = [self.dynamicService currentApplicationColor].CGColor;
-    self.brandNameTextField.textColor = [self.dynamicService currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    self.brandNameTextField.layer.borderColor = color.CGColor;
+    self.brandNameTextField.textColor = color;
     
-    [self.searchButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
-    self.searchButton.layer.borderColor = [self.dynamicService currentApplicationColor].CGColor;
+    [self.searchButton setTitleColor:color forState:UIControlStateNormal];
+    self.searchButton.layer.borderColor = color.CGColor;
 }
 
 #pragma mark - Private

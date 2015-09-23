@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SpamReportViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+#import <MessageUI/MessageUI.h>
+
+@interface SpamReportViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MFMessageComposeViewControllerDelegate>
 
 @end

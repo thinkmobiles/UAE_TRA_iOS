@@ -178,7 +178,6 @@ static LanguageType startLanguage;
     }
 }
 
-//ok
 + (void)updateFontsOnTabBar
 {
     CGFloat fontSize = [AppHelper fontSizeForTabBar];
@@ -187,8 +186,7 @@ static LanguageType startLanguage;
         font = [UIFont droidKufiRegularFontForSize:fontSize];
     }
 
-    NSDictionary *parameters = @{ NSFontAttributeName :font,
-                                  NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
+    NSDictionary *parameters = @{ NSFontAttributeName :font, NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
 
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
     tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
@@ -201,7 +199,6 @@ static LanguageType startLanguage;
     }
 }
 
-//ok
 + (CGFloat)fontSizeForTabBar
 {
     CGFloat fontSize = [DynamicUIService service].fontSize;

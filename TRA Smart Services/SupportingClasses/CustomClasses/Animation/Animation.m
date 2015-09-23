@@ -1,6 +1,6 @@
 //
 //  Animation.m
-//  PTSquared
+//  
 //
 //  Created by Kirill Gorbushko on 29.04.15.
 //  Copyright (c) 2015 Kirill Gorbushko. All rights reserved.

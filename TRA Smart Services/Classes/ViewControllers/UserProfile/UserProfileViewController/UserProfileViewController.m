@@ -96,7 +96,9 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self performLogout];
+    if (!buttonIndex) {
+        [self performLogout];
+    }
 }
 
 #pragma mark - Superclass methods

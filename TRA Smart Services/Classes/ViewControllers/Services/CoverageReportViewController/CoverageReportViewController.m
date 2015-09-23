@@ -103,7 +103,6 @@
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [weakSelf.HUD hide:YES];
-
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
@@ -189,8 +188,9 @@
 {
     [super updateColors];
     
-    self.activityIndicator.color = [self.dynamicService currentApplicationColor];
-    self.signalLevelSlider.minimumTrackTintColor = [self.dynamicService currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    self.activityIndicator.color = color;
+    self.signalLevelSlider.minimumTrackTintColor = color;
 }
 
 #pragma mark - Private

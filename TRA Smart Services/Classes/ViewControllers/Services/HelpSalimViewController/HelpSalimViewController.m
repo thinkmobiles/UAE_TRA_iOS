@@ -39,7 +39,6 @@
         } else {
             [AppHelper alertViewWithMessage:response];
         }
-        
         [AppHelper hideLoader];
     }];
 }

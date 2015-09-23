@@ -116,7 +116,6 @@
 		ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
-		ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */; };
 		ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */; };
 		ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8E061B7CB90800519E96 /* BarcodeCodeReader.m */; };
 		ED7192811B5450D60086C6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7192801B5450D60086C6EE /* main.m */; };
@@ -373,8 +372,6 @@
 		ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpacityCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		ED5A343A1B6EACAC0082AF5B /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
 		ED5A343B1B6EACAC0082AF5B /* RTLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLController.m; sourceTree = "<group>"; };
-		ED5A34461B6EB7EE0082AF5B /* HexagonicalImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexagonicalImage.h; sourceTree = "<group>"; };
-		ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonicalImage.m; sourceTree = "<group>"; };
 		ED6C8DF91B7B9D1900519E96 /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
 		ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
 		ED6C8E051B7CB90800519E96 /* BarcodeCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeCodeReader.h; sourceTree = "<group>"; };
@@ -1098,15 +1095,6 @@
 			path = RTLController;
 			sourceTree = "<group>";
 		};
-		ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */ = {
-			isa = PBXGroup;
-			children = (
-				ED5A34461B6EB7EE0082AF5B /* HexagonicalImage.h */,
-				ED5A34471B6EB7EE0082AF5B /* HexagonicalImage.m */,
-			);
-			path = HexagonicalImage;
-			sourceTree = "<group>";
-		};
 		ED6537291B6FFDAF00A50CBC /* SegmentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1359,7 +1347,6 @@
 				93A436EB1B85D185009299C5 /* PushNoAnimationSegue */,
 				ED6C8E041B7CB90800519E96 /* BarcodeCodeReader */,
 				ED2369C71B71E8D200F0F882 /* InternetSpeedChecker */,
-				ED5A34451B6EB7DA0082AF5B /* HexagonicalImage */,
 				ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */,
 				ED5A34391B6EACAC0082AF5B /* RTLController */,
 				ED20852F1B5F775B00779CBD /* AutoLoginService */,
@@ -2067,7 +2054,6 @@
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
-				ED5A34481B6EB7EE0082AF5B /* HexagonicalImage.m in Sources */,
 				93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */,
 				932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,

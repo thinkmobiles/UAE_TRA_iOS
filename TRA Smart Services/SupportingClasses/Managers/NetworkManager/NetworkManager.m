@@ -222,7 +222,13 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 
 - (void)traSSLogout:(ResponseBlock)logoutResponse
 {
-    [self performPOST:traSSLogOut withParameters:nil response:logoutResponse];
+    __weak typeof(self) weakSelf = self;
+    [self.manager POST:traSSLogOut parameters:nil success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        PerformSuccessRecognition(operation, responseObject, logoutResponse);
+        weakSelf.isUserLoggined = NO;
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        PerformFailureRecognition(operation, error, logoutResponse);
+    }];
 }
 
 #pragma mark - LifeCycle

@@ -28,6 +28,20 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 @implementation DynamicUIService
 
+#pragma mark - LifeCycle
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self prepareDefaultLocaleBundle];
+        self.fontSize = [self currentApplicationFontSize];
+        self.colorScheme = [self savedApplicationColor];
+        self.fontWasChanged = NO;
+    }
+    return self;
+}
+
 #pragma mark - Public
 
 + (instancetype)service
@@ -71,12 +85,11 @@ static NSString *const KeyLanguageArabic = @"ar";
     
     if (prevType != language ) {
         if (prevType == LanguageTypeArabic) {
-            [AppHelper reverseTabBarItems];
             [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetLTRUI object:nil];
         } else if (language == LanguageTypeArabic) {
-            [AppHelper reverseTabBarItems];
             [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedSetRTLUI object:nil];
         }
+        [AppHelper reverseTabBarItems];
         [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFont object:nil];
         
         [AppHelper updateFontsOnTabBar];
@@ -142,20 +155,6 @@ static NSString *const KeyLanguageArabic = @"ar";
     
     [[NSUserDefaults standardUserDefaults] setValue:@(fontSize) forKey:AppKeyCurrentFontSize];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark - LifeCycle
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self prepareDefaultLocaleBundle];
-        self.fontSize = [self currentApplicationFontSize];
-        self.colorScheme = [self savedApplicationColor];
-        self.fontWasChanged = NO;
-    }
-    return self;
 }
 
 #pragma mark - Private

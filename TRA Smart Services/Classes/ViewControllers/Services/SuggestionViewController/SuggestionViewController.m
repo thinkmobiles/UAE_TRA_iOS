@@ -21,7 +21,7 @@
 
 @implementation SuggestionViewController
 
-#pragma mark - Life Cicle
+#pragma mark - LifeCycle
 
 - (void)viewWillAppear:(BOOL)animated
 {

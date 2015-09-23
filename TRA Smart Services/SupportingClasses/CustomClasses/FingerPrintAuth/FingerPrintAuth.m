@@ -18,6 +18,19 @@
 
 @implementation FingerPrintAuth
 
+#pragma mark - LifeCycle
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.service = [[AutoLoginService alloc] init];
+    }
+    return self;
+}
+
+#pragma mark - Public
+
 - (void)authentificationsWithTouch
 {
     LAContext *context = [[LAContext alloc] init];
@@ -84,14 +97,16 @@
             break;
         }
         case LAErrorUserFallback: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"fingerPrintService.LoginCanceledByUser")];                        break;
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"fingerPrintService.LoginCanceledByUser")];
+            break;
         }
         case LAErrorAuthenticationFailed: {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"fingerPrintService.InvalidFingerPrint")];
             break;
         }
         case LAErrorUserCancel: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"fingerPrintService.LoginCanceledByUser")];                        break;
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"fingerPrintService.LoginCanceledByUser")];
+            break;
         }
     }
 }
@@ -112,17 +127,6 @@
             break;
         }
     }
-}
-
-#pragma mark - LifeCycle
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.service = [[AutoLoginService alloc] init];
-    }
-    return self;
 }
 
 @end

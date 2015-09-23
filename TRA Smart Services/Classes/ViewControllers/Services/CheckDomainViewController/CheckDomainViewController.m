@@ -28,7 +28,6 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet UIView *topHolderView;
 
 @property (weak, nonatomic) IBOutlet RatingView *ratingView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -224,12 +223,7 @@ static NSString *const keyOrder = @"order";
     [super updateColors];
     
     self.ratingView.chooseRating.textColor = [self.dynamicService currentApplicationColor];
-    
-    UIImage *background = [UIImage imageNamed:@"serviceBackground"];
-    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-        background = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:background];
-    }
-    self.backgroundImageView.image = background;
+    [super updateBackgroundImageNamed:@"serviceBackground"];
 }
 
 #pragma mark - Private
@@ -265,16 +259,13 @@ static NSString *const keyOrder = @"order";
         } else {
             self.domainAvaliabilityLabel.textColor = [UIColor lightGreenTextColor];
         }
-        self.ratingView.hidden = NO;
-        self.avaliabilityButton.hidden = YES;
-        self.whoISButton.hidden = YES;
     } else if (self.result) {
-        self.ratingView.hidden = NO;
         self.tableView.hidden = NO;
-        self.avaliabilityButton.hidden = YES;
-        self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
     }
+    self.ratingView.hidden = NO;
+    self.avaliabilityButton.hidden = YES;
+    self.whoISButton.hidden = YES;
 }
 
 - (void)prepareRatingView

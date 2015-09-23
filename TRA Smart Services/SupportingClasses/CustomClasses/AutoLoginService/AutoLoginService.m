@@ -17,6 +17,17 @@
 
 @implementation AutoLoginService
 
+#pragma mark - LifeCycle
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _keychain = [[KeychainStorage alloc] init];
+    }
+    return self;
+}
+
 #pragma mark - Public
 
 - (void)performAutoLoginIfPossible
@@ -46,17 +57,6 @@
     }
 }
 
-#pragma mark - LifeCycle
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self baseInitialization];
-    }
-    return self;
-}
-
 #pragma mark - Private
 
 - (BOOL)isAutoLoginPossible
@@ -67,11 +67,6 @@
         possible = YES;
     }
     return possible;
-}
-
-- (void)baseInitialization
-{
-    self.keychain = [[KeychainStorage alloc] init];
 }
 
 @end

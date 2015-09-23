@@ -9,11 +9,10 @@
 #import "SpamReportViewController.h"
 #import "NetworkManager.h"
 #import "LoginViewController.h"
-#import <MessageUI/MessageUI.h>
 
 static NSInteger const BlockServiceNumber = 7726;
 
-@interface SpamReportViewController () <MFMessageComposeViewControllerDelegate>
+@interface SpamReportViewController () 
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *providerType;
@@ -30,7 +29,7 @@ static NSInteger const BlockServiceNumber = 7726;
 
 @implementation SpamReportViewController
 
-#pragma mark - Life Cicle
+#pragma mark - LifeCycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -59,7 +58,7 @@ static NSInteger const BlockServiceNumber = 7726;
         } else {
             [self POSTSMSBlock];
             [self sendSMSMessage];
-         }
+        }
     }
 }
 
@@ -146,9 +145,10 @@ static NSInteger const BlockServiceNumber = 7726;
 {
     [super updateColors];
     
-    self.reportSegment.tintColor = [self.dynamicService currentApplicationColor];
-    self.notes.layer.borderColor = [self.dynamicService currentApplicationColor].CGColor;
-    self.notes.textColor = [self.dynamicService currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    self.reportSegment.tintColor = color;
+    self.notes.layer.borderColor = color.CGColor;
+    self.notes.textColor = color;
     [AppHelper setStyleForLayer:self.notes.layer];
 }
 

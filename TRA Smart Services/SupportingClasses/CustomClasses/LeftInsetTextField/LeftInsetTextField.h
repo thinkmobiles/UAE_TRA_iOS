@@ -12,7 +12,6 @@
 - (void)textFieldDidDelete:(UITextField *)textField;
 @end
 
-
 IB_DESIGNABLE
 @interface LeftInsetTextField : UITextField
 

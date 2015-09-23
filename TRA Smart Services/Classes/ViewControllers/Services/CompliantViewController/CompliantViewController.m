@@ -69,7 +69,6 @@ static CGFloat const heightContenerConstraint = 55.f;
     [super viewWillAppear:animated];
     
     [self presentLoginIfNeeded];
-    
     [self prepareNotification];
     [self prepareTopView];
     [self updateNavigationControllerBar];
@@ -118,23 +117,14 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifierCell;
-    if (self.dynamicService.language == LanguageTypeArabic){
-        identifierCell = selectProviderCellArabicUIIdentifier;
-    } else {
-        identifierCell = selectProviderCellEuropeUIIdentifier;
-    }
+    NSString *identifierCell = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
     ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
     if (indexPath.row) {
         cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
         cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
     } else {
         cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
-        if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
-            cell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
-        } else {
-            cell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
-        }
+        cell.selectProviderImage.image = self.heightTableViewConstraint.constant == heightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
         if (self.selectedProvider.length) {
             cell.selectProviderLabel.text = self.selectedProvider;
             cell.selectProviderLabel.textColor = [UIColor blackColor];
@@ -160,10 +150,8 @@ static CGFloat const heightContenerConstraint = 55.f;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.compliantTitleTextField resignFirstResponder];
-    [self.referenceNumberTextField resignFirstResponder];
-    [self.compliantDescriptionTextView resignFirstResponder];
+{    
+    [self.view endEditing:YES];
 
     if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
         [self animationSelectTableView:YES];
@@ -178,15 +166,9 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
+    [tableView setLayoutMargins:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -209,12 +191,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    CGFloat deltaOffset;
-    if (IS_IPHONE_5) {
-        deltaOffset = 5.f;
-    } else {
-        deltaOffset = verticalSpaceTitleConteinerConstraint + heightContenerConstraint + verticalSpaceDescriptionConstraintCompliantServise;
-    }
+    CGFloat deltaOffset = IS_IPHONE_5 ? 5.f : verticalSpaceTitleConteinerConstraint + heightContenerConstraint + verticalSpaceDescriptionConstraintCompliantServise;
     [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - deltaOffset) animated:YES];
     return YES;
 }
@@ -245,28 +222,26 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     [super setRTLArabicUI];
     
-    self.compliantTitleLabel.textAlignment = NSTextAlignmentRight;
-    self.compliantTitleTextField.textAlignment = NSTextAlignmentRight;
-    self.compliantReterenceNumberLabel.textAlignment = NSTextAlignmentRight;
-    self.referenceNumberTextField.textAlignment = NSTextAlignmentRight;
-    self.compliantServicePoviderLabel.textAlignment = NSTextAlignmentRight;
-    self.compliantDescriptionTextView.textAlignment = NSTextAlignmentRight;
-    [self.compliantDescriptionTextView setNeedsDisplay];
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
 }
 
 - (void)setLTREuropeUI
 {
     [super setLTREuropeUI];
     
-    self.compliantTitleLabel.textAlignment = NSTextAlignmentLeft;
-    self.compliantTitleTextField.textAlignment = NSTextAlignmentLeft;
-    self.compliantReterenceNumberLabel.textAlignment = NSTextAlignmentLeft;
-    self.referenceNumberTextField.textAlignment = NSTextAlignmentLeft;
-    self.compliantServicePoviderLabel.textAlignment = NSTextAlignmentLeft;
-    self.compliantDescriptionTextView.textAlignment = NSTextAlignmentLeft;
-    [self.compliantDescriptionTextView setNeedsDisplay];
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
 }
 
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.compliantTitleLabel.textAlignment = alignment;
+    self.compliantTitleTextField.textAlignment = alignment;
+    self.compliantReterenceNumberLabel.textAlignment = alignment;
+    self.referenceNumberTextField.textAlignment = alignment;
+    self.compliantServicePoviderLabel.textAlignment = alignment;
+    self.compliantDescriptionTextView.textAlignment = alignment;
+    [self.compliantDescriptionTextView setNeedsDisplay];
+}
 
 #pragma mark - Keyboard
 
@@ -306,8 +281,6 @@ static CGFloat const heightContenerConstraint = 55.f;
             self.verticalSpaceDescriptionConstraint.constant = verticalSpaceDescriptionConstraintCompliantServise;
             break;
         }
-        default:
-            break;
     }
 }
 
@@ -361,15 +334,12 @@ static CGFloat const heightContenerConstraint = 55.f;
 
     if (self.dynamicService.language == LanguageTypeArabic) {
         [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - buttonAttachImage.size.width)];
-        self.compliantTitleTextField.leftView = attachButton;
-        self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
-        self.compliantTitleTextField.rightView = nil;
     } else {
         [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - buttonAttachImage.size.width, 0, 0)];
-        self.compliantTitleTextField.rightView = attachButton;
-        self.compliantTitleTextField.rightViewMode = UITextFieldViewModeAlways;
-        self.compliantTitleTextField.leftView = nil;
     }
+    self.compliantTitleTextField.leftView = attachButton;
+    self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.compliantTitleTextField.rightView = nil;
 }
 
 - (void)configureCell:(UITableViewCell *)cell
@@ -382,13 +352,8 @@ static CGFloat const heightContenerConstraint = 55.f;
 - (void)addSendButtonToNavigationBar
 {
     UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") style:UIBarButtonItemStyleDone target:self action:@selector(compliantSend:)];
-    UIFont *font;
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        font = [UIFont droidKufiBoldFontForSize:14];
-    } else {
-        font = [UIFont latoBoldWithSize:14];
-   }
-    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName:font};
+    UIFont *font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14] : [UIFont latoBoldWithSize:14];
+    NSDictionary *attributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : font };
     [sendBarButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = sendBarButtonItem;
 }

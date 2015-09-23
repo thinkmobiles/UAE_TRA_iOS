@@ -9,10 +9,6 @@
 #import "BaseServiceViewController.h"
 #import "LoginViewController.h"
 
-@interface BaseServiceViewController ()
-
-@end
-
 @implementation BaseServiceViewController
 
 #pragma mark - LifeCycle
@@ -22,10 +18,7 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 #pragma mark - Public
@@ -34,10 +27,6 @@
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
         UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
         __weak typeof(self) weakSelf = self;
         ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
             if (![NetworkManager sharedManager].isUserLoggined) {
@@ -45,8 +34,7 @@
             }
         };
         ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:viewController animated:NO completion:nil];
+        [AppHelper presentViewController:viewController onController:self.navigationController];
     }
 }
 
