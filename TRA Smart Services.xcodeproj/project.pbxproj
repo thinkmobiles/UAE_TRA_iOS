@@ -39,6 +39,7 @@
 		934629011B8DBDAA0017E4CD /* BlackWhiteConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629001B8DBDAA0017E4CD /* BlackWhiteConverter.m */; };
 		934629041B8E17060017E4CD /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629031B8E17060017E4CD /* TRAService.m */; };
 		934629401B902EC00017E4CD /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9346293F1B902EC00017E4CD /* NSString+Validation.m */; };
+		93782EC31BB2F2F100D3604B /* SpamReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93782EC21BB2F2F100D3604B /* SpamReportViewController.m */; settings = {ASSET_TAGS = (); }; };
 		939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444981BAF286E00EDCF06 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -161,7 +162,6 @@
 		EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */; };
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
-		EDFEE7191B7DE32F0062CB64 /* SpamReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */; };
 		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
 		F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */; };
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
@@ -243,6 +243,8 @@
 		934629031B8E17060017E4CD /* TRAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAService.m; sourceTree = "<group>"; };
 		9346293E1B902EC00017E4CD /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		9346293F1B902EC00017E4CD /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		93782EC11BB2F2F100D3604B /* SpamReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamReportViewController.h; sourceTree = "<group>"; };
+		93782EC21BB2F2F100D3604B /* SpamReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamReportViewController.m; sourceTree = "<group>"; };
 		939444941BAF238900EDCF06 /* TutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialCollectionViewCell.h; sourceTree = "<group>"; };
 		939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialCollectionViewCell.m; sourceTree = "<group>"; };
 		939444971BAF286E00EDCF06 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
@@ -459,8 +461,6 @@
 		EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageReportViewController.m; sourceTree = "<group>"; };
 		EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedTestViewController.h; sourceTree = "<group>"; };
 		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
-		EDFEE7171B7DE32F0062CB64 /* SpamReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamReportViewController.h; sourceTree = "<group>"; };
-		EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamReportViewController.m; sourceTree = "<group>"; };
 		F166B7461BA893C50001DD88 /* SelectRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRegisterViewController.h; sourceTree = "<group>"; };
 		F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRegisterViewController.m; sourceTree = "<group>"; };
 		F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
@@ -729,6 +729,23 @@
 				9346293F1B902EC00017E4CD /* NSString+Validation.m */,
 			);
 			path = "NSString+Validation";
+			sourceTree = "<group>";
+		};
+		93782EBF1BB2F2F100D3604B /* SpamService */ = {
+			isa = PBXGroup;
+			children = (
+				93782EC01BB2F2F100D3604B /* SpamReportViewController */,
+			);
+			path = SpamService;
+			sourceTree = "<group>";
+		};
+		93782EC01BB2F2F100D3604B /* SpamReportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93782EC11BB2F2F100D3604B /* SpamReportViewController.h */,
+				93782EC21BB2F2F100D3604B /* SpamReportViewController.m */,
+			);
+			path = SpamReportViewController;
 			sourceTree = "<group>";
 		};
 		939444921BAF234800EDCF06 /* TutorialViewController */ = {
@@ -1062,12 +1079,12 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				93782EBF1BB2F2F100D3604B /* SpamService */,
 				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
-				EDFEE7161B7DE32F0062CB64 /* SpamReportViewController */,
 				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AA91B7CF687001B4441 /* HelpSalimViewController */,
@@ -1725,15 +1742,6 @@
 			path = InternetSpeedTestViewController;
 			sourceTree = "<group>";
 		};
-		EDFEE7161B7DE32F0062CB64 /* SpamReportViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EDFEE7171B7DE32F0062CB64 /* SpamReportViewController.h */,
-				EDFEE7181B7DE32F0062CB64 /* SpamReportViewController.m */,
-			);
-			path = SpamReportViewController;
-			sourceTree = "<group>";
-		};
 		F166B7451BA88AE50001DD88 /* SelectRegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2035,6 +2043,7 @@
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */,
 				93A436F21B85F778009299C5 /* UIFont+AppFonts.m in Sources */,
+				93782EC31BB2F2F100D3604B /* SpamReportViewController.m in Sources */,
 				EDAA8F021B83C18F00269F1A /* ServiceInfoViewController.m in Sources */,
 				EDAA8F051B84D2FA00269F1A /* FavouriteTableViewCell.m in Sources */,
 				ED2084F11B5E738600779CBD /* UIAlertView+AFNetworking.m in Sources */,
@@ -2067,7 +2076,6 @@
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
 				EDC04F991B70E35B0071BADA /* ForgotPasswordViewController.m in Sources */,
 				847D03E31B832AE300B0768C /* DetailsViewController.m in Sources */,
-				EDFEE7191B7DE32F0062CB64 /* SpamReportViewController.m in Sources */,
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				93A436EE1B85D196009299C5 /* PushNoAnimationSegue.m in Sources */,
 				84709EB31B82F335008F3D14 /* InfoHubCollectionViewCell.m in Sources */,
