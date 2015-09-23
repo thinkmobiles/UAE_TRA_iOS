@@ -126,7 +126,6 @@
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY < 50.f ? 50.f : offsetForScrollViewY)];
-        [weakSelf.view layoutIfNeeded];
     }];
 }
 
@@ -135,7 +134,6 @@
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         [weakSelf.scrollView setContentOffset:CGPointZero];
-        [weakSelf.view layoutIfNeeded];
     }];
 }
 

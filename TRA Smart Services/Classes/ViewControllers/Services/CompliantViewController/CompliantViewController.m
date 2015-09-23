@@ -261,7 +261,6 @@ static CGFloat const heightContenerConstraint = 55.f;
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.2 animations:^{
         [weakSelf.scrollView setContentOffset:CGPointZero];
-        [weakSelf.view layoutIfNeeded];
     }];
 }
 

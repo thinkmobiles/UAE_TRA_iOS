@@ -30,6 +30,7 @@
 		932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932C8DB91BA03136003107E2 /* UserProfileActionView.xib */; };
 		932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DBD1BA036D8003107E2 /* BaseXibView.m */; };
 		932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */; };
+		933647331BB29EC9004EC552 /* WhoIsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 933647321BB29EC9004EC552 /* WhoIsModel.m */; settings = {ASSET_TAGS = (); }; };
 		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3241B974ED50066329C /* LeftInsetTextField.m */; };
 		9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3281B9818070066329C /* DomainInfoTableViewCell.m */; };
@@ -224,6 +225,8 @@
 		932C8DBD1BA036D8003107E2 /* BaseXibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseXibView.m; sourceTree = "<group>"; };
 		932FD8DA1B947ECC008EFBD8 /* BaseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseServiceViewController.h; sourceTree = "<group>"; };
 		932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServiceViewController.m; sourceTree = "<group>"; };
+		933647311BB29EC9004EC552 /* WhoIsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoIsModel.h; sourceTree = "<group>"; };
+		933647321BB29EC9004EC552 /* WhoIsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhoIsModel.m; sourceTree = "<group>"; };
 		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
 		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		9343E3231B974ED50066329C /* LeftInsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftInsetTextField.h; sourceTree = "<group>"; };
@@ -645,6 +648,23 @@
 				932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */,
 			);
 			path = BaseServiceViewController;
+			sourceTree = "<group>";
+		};
+		9336472F1BB29EA2004EC552 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				933647301BB29EBB004EC552 /* WhoIsModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		933647301BB29EBB004EC552 /* WhoIsModel */ = {
+			isa = PBXGroup;
+			children = (
+				933647311BB29EC9004EC552 /* WhoIsModel.h */,
+				933647321BB29EC9004EC552 /* WhoIsModel.m */,
+			);
+			path = WhoIsModel;
 			sourceTree = "<group>";
 		};
 		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
@@ -1165,6 +1185,7 @@
 		ED71929E1B5451C80086C6EE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9336472F1BB29EA2004EC552 /* Model */,
 				EDEC9DED1B6A338B00334503 /* Views */,
 				EDEC9DE81B6A336D00334503 /* Cells */,
 				ED71929F1B5451C80086C6EE /* ViewControllers */,
@@ -1965,6 +1986,7 @@
 				F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */,
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,
+				933647331BB29EC9004EC552 /* WhoIsModel.m in Sources */,
 				84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */,
 				F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,

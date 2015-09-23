@@ -201,10 +201,8 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     [TextFieldNavigator findNextTextFieldFromCurrent:textField];
     if (textField.returnKeyType == UIReturnKeyDone) {
         __weak typeof(self) weakSelf = self;
-        [self.view layoutIfNeeded];
         [UIView animateWithDuration:0.25 animations:^{
             weakSelf.scrollView.contentOffset = CGPointZero;
-            [weakSelf.view layoutIfNeeded];
         }];
         return YES;
     } else if (textField.returnKeyType == UIReturnKeyNext){
@@ -214,7 +212,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
             CGFloat deltaSpace = textField.tag == 2 ? 80.f : 40.f;
             CGFloat yOffset = weakSelf.scrollView.contentOffset.y + deltaSpace;
             weakSelf.scrollView.contentOffset = CGPointMake(0, yOffset);
-            [weakSelf.view layoutIfNeeded];
         }];
     }
     return NO;
@@ -247,7 +244,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
         __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.25 animations:^{
             [weakSelf.scrollView setContentOffset:CGPointMake(0, - offsetY / 2)];
-            [weakSelf.view layoutIfNeeded];
         }];
     }
 }

@@ -35,6 +35,11 @@
     return CGRectInset( bounds, self.insetValue, 0);
 }
 
+- (CGRect)placeholderRectForBounds:(CGRect)bounds
+{
+    return CGRectInset( bounds, self.insetValue, 0);
+}
+
 #pragma mark - UIKeyInput
 
 - (void)deleteBackward
