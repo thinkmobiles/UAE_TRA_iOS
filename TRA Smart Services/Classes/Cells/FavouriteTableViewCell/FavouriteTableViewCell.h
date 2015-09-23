@@ -21,10 +21,6 @@ static NSString *const FavouriteArabicCellIdentifier = @"arabicFavCell";
 
 @interface FavouriteTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *removeButton;
-@property (weak, nonatomic) IBOutlet UIImageView *removeImageView;
-
-
 @property (strong, nonatomic) UIImage *logoImage;
 @property (copy, nonatomic) NSString *descriptionText;
 

@@ -10,10 +10,14 @@
 
 @interface FavouriteTableViewCell()
 
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *removeImageView;
 @property (weak, nonatomic) IBOutlet UIButton *serviceInfoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIView *hexagonBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *serviceInforLabel;
+@property (weak, nonatomic) IBOutlet UILabel *removeLabel;
 
 @end
 
@@ -60,7 +64,7 @@
         actRemoveImage = [UIImage imageNamed:@"ic_remove_dctv"];
     }
     self.removeImageView.image = selected ? actRemoveImage : [UIImage imageNamed:@"ic_remove_dctv"];
-    self.removeButton.titleLabel.textColor = selected ? selectionColor : [UIColor lightGrayColor];
+    self.removeLabel.textColor = selected ? selectionColor : [UIColor lightGrayColor];
 }
 
 #pragma mark - Custom Accessors
@@ -86,8 +90,8 @@
 
 - (void)localizeButtons
 {
-    [self.serviceInfoButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
-    [self.removeButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
+    self.serviceInforLabel.text = dynamicLocalizedString(@"favouriteCell.infoButton.title");
+    self.removeLabel.text = dynamicLocalizedString(@"favouriteCell.deleteButton.title");
 }
 
 #pragma mark - Gestures
