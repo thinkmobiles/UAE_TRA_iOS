@@ -224,9 +224,13 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 - (void)changeLanguageTo:(LanguageType)languageType
 {
     [self transformAnimationContainerView];
-    [self.dynamicService setLanguage:languageType];
-    [self updateLanguageSegmentControlPosition];
-    [self localizeUI];
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf.dynamicService setLanguage:languageType];
+        [weakSelf updateLanguageSegmentControlPosition];
+        [weakSelf localizeUI];
+        [weakSelf updateSubviewForParentViewIfPossible:self.view fontSizeInclude:YES];
+    });
 }
 
 #pragma mark - Private

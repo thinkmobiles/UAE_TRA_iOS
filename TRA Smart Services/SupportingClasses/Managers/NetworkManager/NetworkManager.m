@@ -186,7 +186,37 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 
 #pragma mark - Favourite
 
+- (void)traSSNoCRMSErviceGetFavoritesServices:(ResponseBlock)favoriteServices
+{
+    [self performGET:traSSNOCRMServiceGETFavoritesServices withParameters:nil response:favoriteServices];
+}
 
+- (void)traSSNoCRMServicePostAddServicesToFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result
+{
+    NSDictionary *parameters;
+    if (serviceNames) {
+        parameters = @{@"serviceNames" : serviceNames};
+    } else {
+        return;
+    }
+    [self performPOST:traSSNOCRMServicePOSTAddServicesToFavorites withParameters:parameters response:result];
+}
+
+- (void)traSSNoCRMServiceDeleteServicesFromFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result
+{
+    NSDictionary *parameters;
+    if (serviceNames) {
+        parameters = @{@"serviceNames" : serviceNames};
+    } else {
+        return;
+    }
+    [self performDELETE:traSSNOCRMServiceDELETEServicesFromFavorites withParameters:parameters response:result];
+}
+
+- (void)traSSNoCRMServiceGetAllServicesNames:(ResponseBlock)result
+{
+    [self performGET:traSSNOCRMServiceGETAllServicesNames withParameters:nil response:result];
+}
 
 #pragma mark - UserInteraction
 
@@ -303,6 +333,15 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
 {
     NSString *stringCleanPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * operation, id responseObject) {
+        PerformSuccessRecognition(operation, responseObject, completionHandler);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        PerformFailureRecognition(operation, error, completionHandler);
+    }];
+}
+
+- (void)performDELETE:(NSString *)path withParameters:(NSDictionary *)parameters response:(ResponseBlock)completionHandler
+{
+    [self.manager DELETE:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         PerformSuccessRecognition(operation, responseObject, completionHandler);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, completionHandler);
