@@ -27,7 +27,7 @@
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectInset( bounds, self.insetValue,0);
+    return CGRectInset( bounds, self.insetValue, 0);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
