@@ -244,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
                                 <rect key="frame" x="188" y="266" width="225" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -688,11 +688,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -4158,7 +4158,6 @@ a new password will be sent.</string>
                         <segue destination="bNC-bU-kdP" kind="show" identifier="HomeToHelpSalimSeque" id="Fwe-Ne-S3H"/>
                         <segue destination="Vhn-R2-wMo" kind="show" identifier="HomeToCoverageSegue" id="ufa-Tu-oC9"/>
                         <segue destination="g1T-5v-LUj" kind="show" identifier="HomeSpeedTestSegue" id="rT5-X8-51s"/>
-                        <segue destination="OLV-R2-oyn" kind="show" identifier="HomeToSpamReportSegue" id="lsz-QU-WFE"/>
                         <segue destination="9jW-oN-JHA" kind="show" identifier="HomeToCompliantSeque" id="AP5-vn-iSI"/>
                         <segue destination="EUe-xY-9fo" kind="show" identifier="HomeToSuggestionSeque" id="ye5-Hu-sFZ"/>
                         <segue destination="8EY-X5-ZEA" kind="show" identifier="HomeBarcodeReaderSegue" id="8Qo-dn-GXM"/>
@@ -4166,6 +4165,7 @@ a new password will be sent.</string>
                         <segue destination="1ju-h4-Gvp" kind="custom" identifier="HomeToNotificationSegue" customClass="PushNoAnimationSegue" id="yQN-dn-9wC"/>
                         <segue destination="9qw-gE-WN4" kind="show" identifier="UserProfileSegue" id="tpG-If-Ldd"/>
                         <segue destination="2Yn-1j-Blg" kind="custom" identifier="HomeToHomeSearchSegue" customClass="PushNoAnimationSegue" id="s8V-CU-EX6"/>
+                        <segue destination="G1M-6S-rZ4" kind="show" identifier="HomeToSpamReportSegue" id="o6F-ZU-Noo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtq-cG-a1w" sceneMemberID="firstResponder"/>
@@ -5284,6 +5284,24 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="2738" y="255"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="yOV-hE-CHk">
+            <objects>
+                <viewController id="G1M-6S-rZ4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gs5-Xx-LcX"/>
+                        <viewControllerLayoutGuide type="bottom" id="aTm-EO-C2B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="odr-9R-maa">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gx2-FL-XTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5004" y="-2001"/>
+        </scene>
         <!--Spam Report View Controller-->
         <scene sceneID="dqR-62-x4l">
             <objects>
@@ -5293,10 +5311,10 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="3sm-6D-lco"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XQv-fE-Ye2">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
                                 <rect key="frame" x="16" y="52" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
@@ -5305,14 +5323,14 @@ a new password will be sent.</string>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
-                                <rect key="frame" x="16" y="100" width="568" height="29"/>
+                                <rect key="frame" x="16" y="100" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="Kmq-OW-MXa"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-Ns-2Gd" userLabel="ReportSpam">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-Ns-2Gd" userLabel="ReportSpam">
                                 <rect key="frame" x="150" y="255" width="300" height="30"/>
                                 <state key="normal" title="Block SMS Spamer">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -5322,7 +5340,7 @@ a new password will be sent.</string>
                                     <action selector="responseSpam:" destination="OLV-R2-oyn" eventType="touchUpInside" id="EGL-PE-S3y"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-Nt-TMA" userLabel="Notes">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-Nt-TMA" userLabel="Notes">
                                 <rect key="frame" x="16" y="147" width="568" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5334,7 +5352,7 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="UX2-48-Heq"/>
                                 </connections>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-ir-Bvk">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-ir-Bvk">
                                 <rect key="frame" x="175" y="8" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="wTs-ni-viY"/>

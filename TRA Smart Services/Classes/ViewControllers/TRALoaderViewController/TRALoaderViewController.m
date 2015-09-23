@@ -150,39 +150,6 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     [self.loaderView.layer insertSublayer:self.tailLayer above:self.hexLayer];
     
     [self.hexLayer addAnimation:group forKey:nil];
-    
-    //demo
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tailLayer removeAllAnimations];
-        [weakSelf.hexLayer removeAllAnimations];
-        weakSelf.tailLayer.strokeColor = [UIColor clearColor].CGColor;
-        weakSelf.backgroundLayer.strokeColor = [UIColor clearColor].CGColor;
-        weakSelf.hexLayer.strokeColor = [UIColor whiteColor].CGColor;
-        
-        weakSelf.logoImageView.layer.opacity = 0.f;
-        CABasicAnimation *fadeAnim = [Animation fadeAnimFromValue:1 to:0 delegate:self];
-        fadeAnim.duration = 0.2;
-        [weakSelf.logoImageView.layer addAnimation:fadeAnim forKey:@"hideImage"];
-        
-        CABasicAnimation *pathFilling = [self pathFillingAnimations] ;
-        pathFilling.duration = 0.2f;
-        [weakSelf.hexLayer addAnimation:pathFilling forKey:@"fillingColorAnimation"];
-        weakSelf.hexLayer.fillColor = [UIColor whiteColor].CGColor;
-        
-        weakSelf.closeButton.hidden = NO;
-        weakSelf.closeButton.layer.opacity = 0.f;
-        [weakSelf.closeButton.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
-        weakSelf.closeButton.layer.opacity = 1.f;
-        
-        CATransition *animation = [CATransition animation];
-        animation.duration = 1.0;
-        animation.type = kCATransitionPush;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        [weakSelf.informationLabel.layer addAnimation:animation forKey:nil];
-        
-        weakSelf.informationLabel.text = dynamicLocalizedString(@"TRALoader.information.finish");
-    });
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
