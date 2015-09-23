@@ -11,6 +11,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -20,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHc-FB-KgR" id="oYM-bV-Tnh">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-sh-wjH" userLabel="EuropeanUI">
@@ -60,20 +62,51 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-rj-PUO" userLabel="Data- UiView">
                                 <rect key="frame" x="0.0" y="0.0" width="235" height="87"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-pa-6OS" userLabel="Description - UILabel">
                                         <rect key="frame" x="20" y="16" width="195" height="32"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_remove_dctv" translatesAutoresizingMaskIntoConstraints="NO" id="whY-fx-vbo" userLabel="Remove - UIImageView">
+                                        <rect key="frame" x="132" y="57" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="aJq-qu-yAU"/>
+                                            <constraint firstAttribute="height" constant="16" id="dwH-Ag-R57"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info_sml" translatesAutoresizingMaskIntoConstraints="NO" id="InZ-eK-y6n" userLabel="ServiceInfor - UIImageView">
+                                        <rect key="frame" x="34" y="57" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="jkk-jZ-x4R"/>
+                                            <constraint firstAttribute="width" constant="16" id="rP4-Nz-TRK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0T-LY-r6l" userLabel="Remove -UILabel">
+                                        <rect key="frame" x="156" y="54" width="59" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="etk-wr-Ivd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grp-ND-VqW" userLabel="ServiceInfo -UILabel">
+                                        <rect key="frame" x="58" y="54" width="60" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ZK2-AD-I1F"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-me-O8w" userLabel="ServiceInfor - UIButton">
                                         <rect key="frame" x="20" y="52" width="98" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="lE5-ni-g9Z"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
-                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <state key="normal" image="ic_info_sml">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -84,11 +117,10 @@
                                             <action selector="serviceInfoButtonTapped:" destination="dHc-FB-KgR" eventType="touchUpInside" id="uQf-6h-PHo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzV-HI-82j" userLabel="Remove - UIButton">
                                         <rect key="frame" x="118" y="40" width="97" height="50"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
-                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <state key="normal" image="ic_remove_dctv">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -98,15 +130,25 @@
                                 <constraints>
                                     <constraint firstItem="UzV-HI-82j" firstAttribute="left" secondItem="LJc-me-O8w" secondAttribute="right" id="3iO-h5-jLE"/>
                                     <constraint firstItem="LJc-me-O8w" firstAttribute="left" secondItem="2CO-rj-PUO" secondAttribute="left" constant="20" id="4FW-6f-a33"/>
+                                    <constraint firstItem="LJc-me-O8w" firstAttribute="left" secondItem="InZ-eK-y6n" secondAttribute="right" constant="-30" id="4WS-kF-Nuu"/>
+                                    <constraint firstItem="whY-fx-vbo" firstAttribute="centerY" secondItem="UzV-HI-82j" secondAttribute="centerY" id="4hu-wA-yQ3"/>
                                     <constraint firstItem="UzV-HI-82j" firstAttribute="height" secondItem="LJc-me-O8w" secondAttribute="height" multiplier="2" id="52w-rH-BRO"/>
                                     <constraint firstItem="LJc-me-O8w" firstAttribute="width" secondItem="UzV-HI-82j" secondAttribute="width" id="7VJ-G9-c26"/>
+                                    <constraint firstItem="grp-ND-VqW" firstAttribute="centerY" secondItem="LJc-me-O8w" secondAttribute="centerY" id="8Z0-46-ZIn"/>
                                     <constraint firstAttribute="bottom" secondItem="LJc-me-O8w" secondAttribute="bottom" constant="10" id="BW0-Xf-6Su"/>
                                     <constraint firstAttribute="right" secondItem="1rN-pa-6OS" secondAttribute="right" constant="20" id="Nzk-14-CFg"/>
                                     <constraint firstAttribute="right" secondItem="UzV-HI-82j" secondAttribute="right" constant="20" id="O9Z-e4-f65"/>
+                                    <constraint firstItem="I0T-LY-r6l" firstAttribute="centerY" secondItem="UzV-HI-82j" secondAttribute="centerY" id="QyR-3w-vMM"/>
                                     <constraint firstItem="1rN-pa-6OS" firstAttribute="left" secondItem="2CO-rj-PUO" secondAttribute="left" constant="20" id="YJT-Uo-wOC"/>
+                                    <constraint firstItem="UzV-HI-82j" firstAttribute="left" secondItem="whY-fx-vbo" secondAttribute="right" constant="-30" id="ayi-wv-CCM"/>
                                     <constraint firstItem="1rN-pa-6OS" firstAttribute="top" secondItem="2CO-rj-PUO" secondAttribute="top" constant="16" id="gA1-dA-gkw"/>
+                                    <constraint firstItem="grp-ND-VqW" firstAttribute="right" secondItem="LJc-me-O8w" secondAttribute="right" id="hBY-1l-HkG"/>
+                                    <constraint firstItem="I0T-LY-r6l" firstAttribute="left" secondItem="whY-fx-vbo" secondAttribute="right" constant="8" id="jh3-cY-cng"/>
+                                    <constraint firstItem="InZ-eK-y6n" firstAttribute="centerY" secondItem="LJc-me-O8w" secondAttribute="centerY" id="mix-63-O6c"/>
+                                    <constraint firstItem="I0T-LY-r6l" firstAttribute="right" secondItem="UzV-HI-82j" secondAttribute="right" id="obC-2h-qiu"/>
                                     <constraint firstItem="LJc-me-O8w" firstAttribute="centerY" secondItem="UzV-HI-82j" secondAttribute="centerY" id="r33-sE-DnL"/>
                                     <constraint firstItem="LJc-me-O8w" firstAttribute="top" secondItem="1rN-pa-6OS" secondAttribute="bottom" constant="4" id="uoK-2t-tZT"/>
+                                    <constraint firstItem="grp-ND-VqW" firstAttribute="left" secondItem="InZ-eK-y6n" secondAttribute="right" constant="8" id="v4L-ta-sqe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -135,7 +177,10 @@
                 <outlet property="favouriteServiceLogoImageView" destination="2Yd-8c-QqX" id="ycT-xr-hnV"/>
                 <outlet property="hexagonBackgroundView" destination="RVk-qm-4XX" id="IJ7-U0-B16"/>
                 <outlet property="removeButton" destination="UzV-HI-82j" id="VVc-5J-Dpe"/>
+                <outlet property="removeImageView" destination="whY-fx-vbo" id="Xbo-P9-EuU"/>
+                <outlet property="removeLabel" destination="I0T-LY-r6l" id="W16-lg-es5"/>
                 <outlet property="serviceInfoButton" destination="LJc-me-O8w" id="kNL-lg-oKj"/>
+                <outlet property="serviceInforLabel" destination="grp-ND-VqW" id="zFu-Hd-fAk"/>
             </connections>
             <point key="canvasLocation" x="480" y="431"/>
         </tableViewCell>

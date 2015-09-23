@@ -11,6 +11,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -20,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KLw-NL-vgl" id="bX8-y9-9gB">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-LU-jTg" userLabel="ArabicUI">
@@ -60,46 +62,88 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-9A-PI0" userLabel="Data- UiView">
                                 <rect key="frame" x="85" y="0.0" width="235" height="87"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="igG-Z5-rt3" userLabel="Description - UILabel">
                                         <rect key="frame" x="20" y="16" width="195" height="26"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.1058823529" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-xu-65g" userLabel="Remove - UIButton">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_remove_dctv" translatesAutoresizingMaskIntoConstraints="NO" id="F71-EY-S7c" userLabel="Remove - UIImageView">
+                                        <rect key="frame" x="78" y="51" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="Nan-iU-5xN"/>
+                                            <constraint firstAttribute="height" constant="16" id="nbk-of-j6j"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-xu-65g" userLabel="Remove - UIButton">
                                         <rect key="frame" x="0.0" y="34" width="108" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="C2Z-QU-xKl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
-                                        <state key="normal" image="ic_remove_dctv">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info_sml" translatesAutoresizingMaskIntoConstraints="NO" id="jRy-7a-Ycn" userLabel="ServiceInfor - UIImageView">
+                                        <rect key="frame" x="185" y="51" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="TGP-pm-Pdd"/>
+                                            <constraint firstAttribute="width" constant="16" id="aTP-yk-ywz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-7i-Xql" userLabel="ServiceInfor - UIButton">
                                         <rect key="frame" x="108" y="46" width="107" height="25"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
-                                        <state key="normal" image="ic_info_sml">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="serviceInfoButtonTapped:" destination="KLw-NL-vgl" eventType="touchUpInside" id="oda-J6-R2M"/>
+                                            <action selector="serviceInfoButtonTapped:" destination="KLw-NL-vgl" eventType="touchUpInside" id="1Ng-yI-aFO"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fN8-YQ-fue" userLabel="Remove -UILabel">
+                                        <rect key="frame" x="0.0" y="48" width="70" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="zhj-Nf-94N"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HA-2F-ybr" userLabel="ServiceInfor - UILabel">
+                                        <rect key="frame" x="108" y="48" width="69" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="eMZ-e1-lse"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kS9-xu-65g" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" id="1jp-Fs-z6c"/>
                                     <constraint firstItem="kS9-xu-65g" firstAttribute="centerY" secondItem="qXh-7i-Xql" secondAttribute="centerY" id="4J0-ml-742"/>
                                     <constraint firstAttribute="right" secondItem="qXh-7i-Xql" secondAttribute="right" constant="20" id="5cr-QE-3Xz"/>
+                                    <constraint firstItem="F71-EY-S7c" firstAttribute="left" secondItem="fN8-YQ-fue" secondAttribute="right" constant="8" id="6tq-LQ-ctI"/>
+                                    <constraint firstItem="F71-EY-S7c" firstAttribute="left" secondItem="kS9-xu-65g" secondAttribute="right" constant="-30" id="Bhb-GY-KO2"/>
+                                    <constraint firstItem="F71-EY-S7c" firstAttribute="centerY" secondItem="kS9-xu-65g" secondAttribute="centerY" id="CJ1-jl-LX0"/>
+                                    <constraint firstItem="3HA-2F-ybr" firstAttribute="centerY" secondItem="qXh-7i-Xql" secondAttribute="centerY" id="Gc2-YB-AFc"/>
+                                    <constraint firstItem="fN8-YQ-fue" firstAttribute="centerY" secondItem="kS9-xu-65g" secondAttribute="centerY" id="IiG-8E-zli"/>
+                                    <constraint firstItem="3HA-2F-ybr" firstAttribute="left" secondItem="qXh-7i-Xql" secondAttribute="left" id="XNW-FO-b22"/>
+                                    <constraint firstItem="jRy-7a-Ycn" firstAttribute="left" secondItem="qXh-7i-Xql" secondAttribute="right" constant="-30" id="Z2f-zh-Wue"/>
+                                    <constraint firstItem="fN8-YQ-fue" firstAttribute="left" secondItem="kS9-xu-65g" secondAttribute="left" id="gRe-y2-GMj"/>
                                     <constraint firstAttribute="bottom" secondItem="qXh-7i-Xql" secondAttribute="bottom" constant="16" id="i7V-bP-nbF"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="top" secondItem="rA3-9A-PI0" secondAttribute="top" constant="16" id="lsn-oS-Dmf"/>
                                     <constraint firstItem="kS9-xu-65g" firstAttribute="width" secondItem="qXh-7i-Xql" secondAttribute="width" id="mdo-7c-78W"/>
+                                    <constraint firstItem="jRy-7a-Ycn" firstAttribute="left" secondItem="3HA-2F-ybr" secondAttribute="right" constant="8" id="pIl-6e-iGv"/>
                                     <constraint firstItem="qXh-7i-Xql" firstAttribute="top" secondItem="igG-Z5-rt3" secondAttribute="bottom" constant="4" id="rCt-Dy-noD"/>
                                     <constraint firstItem="qXh-7i-Xql" firstAttribute="left" secondItem="kS9-xu-65g" secondAttribute="right" id="rx2-7n-7F2"/>
                                     <constraint firstAttribute="right" secondItem="igG-Z5-rt3" secondAttribute="right" constant="20" id="s2e-c6-HPf"/>
                                     <constraint firstItem="igG-Z5-rt3" firstAttribute="left" secondItem="rA3-9A-PI0" secondAttribute="left" constant="20" id="tLQ-m8-rqM"/>
                                     <constraint firstItem="qXh-7i-Xql" firstAttribute="height" secondItem="kS9-xu-65g" secondAttribute="height" multiplier="0.5" id="wL1-kF-WZQ"/>
+                                    <constraint firstItem="jRy-7a-Ycn" firstAttribute="centerY" secondItem="qXh-7i-Xql" secondAttribute="centerY" id="xRg-0M-xkk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -127,8 +171,11 @@
                 <outlet property="favourieDescriptionLabel" destination="igG-Z5-rt3" id="8tK-wI-kl1"/>
                 <outlet property="favouriteServiceLogoImageView" destination="j7o-8B-ZoJ" id="bVi-of-zZ0"/>
                 <outlet property="hexagonBackgroundView" destination="KYW-sN-BSU" id="nVJ-9R-ULL"/>
-                <outlet property="removeArabicButton" destination="kS9-xu-65g" id="xWI-rk-Equ"/>
-                <outlet property="serviceInfoArabicButton" destination="qXh-7i-Xql" id="XmX-nL-PMm"/>
+                <outlet property="removeButton" destination="kS9-xu-65g" id="kfZ-vc-GIt"/>
+                <outlet property="removeImageView" destination="F71-EY-S7c" id="H9a-Se-Jf3"/>
+                <outlet property="removeLabel" destination="fN8-YQ-fue" id="5fl-z7-fP9"/>
+                <outlet property="serviceInfoButton" destination="qXh-7i-Xql" id="lbU-TB-NDX"/>
+                <outlet property="serviceInforLabel" destination="3HA-2F-ybr" id="6RL-4M-Vdx"/>
             </connections>
             <point key="canvasLocation" x="463" y="455"/>
         </tableViewCell>

@@ -34,7 +34,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8u-fa-W76" userLabel="SubConteiner - View">
                                 <rect key="frame" x="16" y="0.0" width="182" height="89"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-Ts-hDB" userLabel="Date - UILabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-Ts-hDB" userLabel="Date - UILabel">
                                         <rect key="frame" x="0.0" y="12" width="182" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="zBp-zX-Egu"/>
@@ -43,7 +43,7 @@
                                         <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="XR9-8p-ftM" userLabel="Description - AligmentLabel" customClass="AligmentLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="XR9-8p-ftM" userLabel="Description - AligmentLabel" customClass="AligmentLabel">
                                         <rect key="frame" x="0.0" y="31" width="182" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="chV-SI-3au"/>
@@ -52,7 +52,7 @@
                                         <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="uM2-lP-0RB" userLabel="Title - AligmentLabel" customClass="AligmentLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="uM2-lP-0RB" userLabel="Title - AligmentLabel" customClass="AligmentLabel">
                                         <rect key="frame" x="0.0" y="31" width="182" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.27058823529999998" green="0.33333333329999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>

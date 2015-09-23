@@ -105,9 +105,7 @@ static NSString *const DividerForID = @"-";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y >= 0) {
-        if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
             [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
-        }
     } else {
         [self.scrollLogoImage setContentOffset:CGPointMake(0, 0)];
     }

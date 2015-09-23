@@ -10,11 +10,14 @@
 
 @interface FavouriteTableViewCell()
 
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *removeImageView;
 @property (weak, nonatomic) IBOutlet UIButton *serviceInfoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UIButton *serviceInfoArabicButton;
 @property (weak, nonatomic) IBOutlet UIView *hexagonBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *serviceInforLabel;
+@property (weak, nonatomic) IBOutlet UILabel *removeLabel;
 
 @end
 
@@ -26,7 +29,6 @@
 {
     [super awakeFromNib];
     
-    [self prepareButtons];
     [self localizeButtons];
     self.backgroundColor = [UIColor clearColor];
     [self addGestureRecognizer];
@@ -37,7 +39,6 @@
 {
     [super prepareForReuse];
     
-    [self prepareButtons];
     [self localizeButtons];
     self.backgroundColor = [UIColor clearColor];
     
@@ -62,16 +63,8 @@
         selectionColor = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.8f];
         actRemoveImage = [UIImage imageNamed:@"ic_remove_dctv"];
     }
-
-    if (selected) {
-        [self prepareButton:self.removeButton withColor:selectionColor image:actRemoveImage];
-        [self prepareButton:self.removeArabicButton withColor:selectionColor image:actRemoveImage];
-    } else {
-        UIColor *inactColor = [UIColor lightGrayColor];
-        UIImage *inactImage = [UIImage imageNamed:@"ic_remove_dctv"];
-        [self prepareButton:self.removeButton withColor:inactColor image:inactImage];
-        [self prepareButton:self.removeArabicButton withColor:inactColor image:inactImage];
-    }
+    self.removeImageView.image = selected ? actRemoveImage : [UIImage imageNamed:@"ic_remove_dctv"];
+    self.removeLabel.textColor = selected ? selectionColor : [UIColor lightGrayColor];
 }
 
 #pragma mark - Custom Accessors
@@ -95,53 +88,10 @@
 
 #pragma mark - Private
 
-- (void)prepareButton:(UIButton *)button withColor:(UIColor *)color image:(UIImage *)buttonImage
-{
-    button.titleLabel.textColor = color;
-    [button setTitleColor:color forState:UIControlStateNormal];
-    [button setTitleColor:color forState:UIControlStateSelected];
-    [button setTitleColor:color forState:UIControlStateHighlighted];
-    
-    [button setImage:buttonImage forState:UIControlStateNormal];
-    [button setImage:buttonImage forState:UIControlStateSelected];
-    [button setImage:buttonImage forState:UIControlStateHighlighted];
-}
-
-- (void)prepareButtons
-{
-    CGFloat fontSize = [DynamicUIService service].fontSize == ApplicationFontBig ? 10 * 1.1 : 10 * 0.9;
-    UIFont *europeanButtonFont = [UIFont latoRegularWithSize:fontSize];
-    UIFont *arabicButtonFont = [UIFont droidKufiRegularFontForSize:fontSize];
-    
-    self.serviceInfoArabicButton.titleLabel.font = arabicButtonFont;
-    self.removeArabicButton.titleLabel.font = arabicButtonFont;
-    self.serviceInfoButton.titleLabel.font = europeanButtonFont;
-    self.removeButton.titleLabel.font = europeanButtonFont;
-
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        CGFloat spacing = 5.f;
-        NSDictionary *attributes = @{ NSFontAttributeName : arabicButtonFont };
-        
-        NSString *removeTitle = dynamicLocalizedString(@"favouriteCell.deleteButton.title");
-        CGSize titleSize = [removeTitle sizeWithAttributes:attributes];
-        CGFloat removeImageWidth = self.removeArabicButton.imageView.image.size.width;
-        self.removeArabicButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - titleSize.width - spacing);
-        self.removeArabicButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, removeImageWidth + spacing);
-
-        NSString *infoTitle = dynamicLocalizedString(@"favouriteCell.infoButton.title");
-        CGSize infoSize = [infoTitle sizeWithAttributes:attributes];
-        CGFloat infoImageWidth = self.serviceInfoArabicButton.imageView.image.size.width;
-        self.serviceInfoArabicButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - infoSize.width - spacing);
-        self.serviceInfoArabicButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, infoImageWidth + spacing);
-    }
-}
-
 - (void)localizeButtons
 {
-    [self.serviceInfoButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
-    [self.removeButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
-    [self.serviceInfoArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.infoButton.title") forState:UIControlStateNormal];
-    [self.removeArabicButton setTitle:dynamicLocalizedString(@"favouriteCell.deleteButton.title") forState:UIControlStateNormal];
+    self.serviceInforLabel.text = dynamicLocalizedString(@"favouriteCell.infoButton.title");
+    self.removeLabel.text = dynamicLocalizedString(@"favouriteCell.deleteButton.title");
 }
 
 #pragma mark - Gestures
@@ -149,7 +99,6 @@
 - (void)addGestureRecognizer
 {
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapGesture:)];
-    [self.removeArabicButton addGestureRecognizer:longPressGesture];
     [self.removeButton addGestureRecognizer:longPressGesture];
 }
 
