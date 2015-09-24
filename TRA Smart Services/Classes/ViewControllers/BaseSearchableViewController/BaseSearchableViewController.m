@@ -39,7 +39,7 @@
     
     CGRect navBarRect = self.navigationController.navigationBar.bounds;
     CGFloat offset = 20.f;
-    self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 2.25, navBarRect.size.height); //2.25 - appox dimension
+    self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 3, navBarRect.size.height);
     self.searchBar.barTintColor = [UIColor whiteColor];
     self.searchBar.tintColor = self.dynamicService.currentApplicationColor;
     

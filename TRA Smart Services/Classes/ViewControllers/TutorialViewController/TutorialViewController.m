@@ -10,6 +10,8 @@
 
 static NSUInteger const TutorialPageCount = 3;
 
+static LanguageType startLanguage;
+
 @interface TutorialViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -30,6 +32,7 @@ static NSUInteger const TutorialPageCount = 3;
 
     [self configureDataSource];
     [self configurePageControl];
+    self.tutorialPageControl.currentPage = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,6 +82,10 @@ static NSUInteger const TutorialPageCount = 3;
         cell = [[TutorialCollectionViewCell alloc] init];
     }
     cell.imageView.image = self.tutorialImages[indexPath.row];
+    cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+    if (self.dynamicService.language == LanguageTypeArabic) {
+        cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+    }
     return cell;
 }
 
@@ -118,6 +125,13 @@ static NSUInteger const TutorialPageCount = 3;
 
 - (void)updateColors
 {
+    [super updateBackgroundImageNamed:@"res_img_tut_fakeHome_1"];
+    
+    if (self.dynamicService.colorScheme != ApplicationColorBlackAndWhite) {
+        NSString *backgrounfImageName = [NSString stringWithFormat:@"res_img_tut_fakeHome_%i", (int)self.dynamicService.colorScheme];
+        self.backgroundImageView.image = [UIImage imageNamed:backgrounfImageName];
+    }
+    
     self.fakeColorShemeView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.8f];
 }
 
@@ -127,6 +141,20 @@ static NSUInteger const TutorialPageCount = 3;
     [self.collectionView reloadData];
 }
 
+- (void)setRTLArabicUI
+{
+//    self.tutorialPageControl.layer.transform = TRANFORM_3D_SCALE;
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+
+}
+
+- (void)setLTREuropeUI
+{
+//    self.tutorialPageControl.layer.transform = CATransform3DIdentity;
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+
+}
+
 #pragma mark - Private
 
 - (void)configureDataSource
@@ -134,12 +162,27 @@ static NSUInteger const TutorialPageCount = 3;
     self.tutorialImages = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < TutorialPageCount; i++) {
-        NSString *fileName = [NSString stringWithFormat:@"TutorialScreen%i", (int)(i + 1)];
+        NSString *fileName;
+        if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
+            fileName = [NSString stringWithFormat:@"TutorialScreen%i_1", (int)(i + 1)];
+        } else {
+            fileName = [NSString stringWithFormat:@"TutorialScreen%i_%i", (int)(i + 1), (int)self.dynamicService.colorScheme];
+        }
+        
         UIImage *tutorialScreen = [UIImage imageNamed:fileName];
         if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
             tutorialScreen = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:tutorialScreen];
         }
         [self.tutorialImages addObject:tutorialScreen];
+    }
+    
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (!startLanguage) {
+            startLanguage = self.dynamicService.language;
+        }
+        if (startLanguage == LanguageTypeArabic) {
+            self.tutorialImages = [[self.tutorialImages reversedArray] mutableCopy];
+        }
     }
 }
 
