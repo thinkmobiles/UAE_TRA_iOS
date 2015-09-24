@@ -15,7 +15,7 @@
 static NSInteger const BlockServiceNumber = 7726;
 static CGFloat const heightSelectTableViewCell = 33.f;
 static CGFloat const verticalTopReportTextFieldConstreintSpamSMS = 89.f;
-static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 30.f;
+static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 @interface SpamReportViewController ()
 
@@ -51,6 +51,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 30.f;
     [super viewWillAppear:animated];
 
     [self didChangeReportType:self.selectSpamReport];
+    [self configureTextField];
 }
 
 #pragma mark - IBAction
@@ -200,7 +201,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 30.f;
 {
     [AppHelper showLoader];
     [self.view endEditing:YES];
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.reportTextField.text notes:@"" requestResult:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.reportTextField.text notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
             [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
         } else {
@@ -264,6 +265,23 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 30.f;
 
 #pragma mark - Private
 
+- (void)configureTextField
+{
+    UIImage *image = [UIImage imageNamed:self.selectSpamReport == SpamReportTypeSMS ? @"ic_phone_spam" : @"ic_www"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [imageView setImage:image];
+    imageView.tintColor = [self.dynamicService currentApplicationColor];
+    self.reportTextField.rightView = nil;
+    self.reportTextField.leftView = nil;
+    if (self.dynamicService.language == LanguageTypeArabic) {
+        self.reportTextField.leftViewMode = UITextFieldViewModeAlways;
+        self.reportTextField.leftView = imageView;
+    } else {
+        self.reportTextField.rightViewMode = UITextFieldViewModeAlways;
+        self.reportTextField.rightView = imageView;
+    }
+}
+
 - (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
 {
     self.descriptionTextView.textAlignment = alignment;
@@ -274,16 +292,12 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 30.f;
 - (void)didChangeReportType:(SpamReportType)select
 {
     if (select == SpamReportTypeWeb) {
-        self.descriptionTextView.hidden = YES;
         self.selectTableView.hidden = YES;
-        self.separatorDescription.hidden = YES;
         self.separatorSelectedProvider.hidden = YES;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
     } else {
-        [self presentLoginIfNeeded];
-        self.descriptionTextView.hidden = NO;
+//        [self presentLoginIfNeeded];
         self.selectTableView.hidden = NO;
-        self.separatorDescription.hidden = NO;
         self.separatorSelectedProvider.hidden = NO;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamSMS;
     }
