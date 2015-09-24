@@ -358,6 +358,7 @@
 //TRALoaderViewController
 
 "TRALoader.backButton.title" = "TRALoader.backButton.title";
+"TRALoader.backButton.cancel" = "TRALoader.backButton.cancel";
 "TRALoader.information.begin" = "TRALoader.information.begin";
 "TRALoader.information.finish" = "TRALoader.information.finish";
 

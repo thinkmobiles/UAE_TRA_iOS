@@ -244,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
                                 <rect key="frame" x="188" y="266" width="225" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -688,11 +688,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -2566,6 +2566,10 @@ a new password will be sent.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByK-45-7OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceBackground" id="5Tn-dv-Oy0" userLabel="Background - ImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="303"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="2738" y="-1994"/>
         </scene>
@@ -2600,9 +2604,6 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="184" id="e9R-Im-KLz"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5Tn-dv-Oy0" userLabel="Background - ImageView">
-                                <rect key="frame" x="0.0" y="184" width="600" height="303"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain name(i.e. tra.gov.ae)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField" customClass="LeftInsetTextField">
                                 <rect key="frame" x="16" y="200" width="568" height="40"/>
                                 <constraints>
@@ -2755,7 +2756,7 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="dey-3G-9KT" id="ZTG-bh-xAi"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-Ma-dXQ" userLabel="Rating View - UIView" customClass="RatingView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-Ma-dXQ" userLabel="Rating View - UIView">
                                 <rect key="frame" x="188" y="362" width="225" height="125"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2777,7 +2778,6 @@ a new password will be sent.</string>
                             <constraint firstItem="yfd-3M-8p2" firstAttribute="top" secondItem="IiL-L5-7N3" secondAttribute="top" id="HSF-36-Y1o"/>
                             <constraint firstItem="yfd-3M-8p2" firstAttribute="left" secondItem="IiL-L5-7N3" secondAttribute="left" id="Hdw-sC-ajM"/>
                             <constraint firstItem="8Xy-6i-Ze5" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="N1m-dV-FXd"/>
-                            <constraint firstAttribute="trailing" secondItem="5Tn-dv-Oy0" secondAttribute="trailing" id="Oeh-B9-qDi"/>
                             <constraint firstAttribute="right" secondItem="rwy-ye-h72" secondAttribute="right" constant="16" id="PRA-Pa-BW9"/>
                             <constraint firstAttribute="right" secondItem="yfd-3M-8p2" secondAttribute="right" id="SQU-2P-tC8"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="YFY-Bg-kM4"/>
@@ -2786,12 +2786,9 @@ a new password will be sent.</string>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="height" secondItem="7NQ-mA-hdv" secondAttribute="height" id="kNY-vo-Ca2"/>
                             <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" constant="16" id="m0n-4a-gnN"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerY" secondItem="7NQ-mA-hdv" secondAttribute="centerY" id="oip-6Q-OlT"/>
-                            <constraint firstItem="5Tn-dv-Oy0" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" id="oqF-TX-Kdu"/>
                             <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="mL5-Ma-dXQ" secondAttribute="bottom" id="swZ-9e-8vS"/>
-                            <constraint firstItem="5Tn-dv-Oy0" firstAttribute="top" secondItem="yfd-3M-8p2" secondAttribute="bottom" id="tGm-wB-ewM"/>
                             <constraint firstItem="7NQ-mA-hdv" firstAttribute="leading" secondItem="Qdg-PU-pvo" secondAttribute="trailing" constant="15" id="uC7-H8-p6T"/>
                             <constraint firstItem="rwy-ye-h72" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="ynv-ja-w0H"/>
-                            <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="5Tn-dv-Oy0" secondAttribute="bottom" id="zN5-yo-6iG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -4630,25 +4627,18 @@ a new password will be sent.</string>
                                     <action selector="checkInternetSpeedButtonTapped:" destination="g1T-5v-LUj" eventType="touchUpInside" id="oO7-gl-QEx"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="t9h-iX-GEu">
-                                <rect key="frame" x="282" y="250" width="37" height="37"/>
-                                <color key="color" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="akB-RW-N1e" secondAttribute="centerX" id="976-al-cbS"/>
                             <constraint firstItem="xOn-cB-BR9" firstAttribute="leading" secondItem="6HI-cz-map" secondAttribute="leading" constant="16" id="Eoe-vQ-qf5"/>
                             <constraint firstAttribute="trailing" secondItem="xOn-cB-BR9" secondAttribute="trailing" constant="16" id="HKn-5k-RaL"/>
-                            <constraint firstAttribute="centerY" secondItem="t9h-iX-GEu" secondAttribute="centerY" id="K7M-Wt-9Dh"/>
-                            <constraint firstAttribute="centerX" secondItem="t9h-iX-GEu" secondAttribute="centerX" id="S0K-C9-z49"/>
                             <constraint firstItem="akB-RW-N1e" firstAttribute="top" secondItem="xOn-cB-BR9" secondAttribute="bottom" constant="8" id="YZy-qd-9dS"/>
                             <constraint firstItem="akB-RW-N1e" firstAttribute="width" secondItem="6HI-cz-map" secondAttribute="width" multiplier="0.5" id="obC-Fr-ipl"/>
                             <constraint firstItem="xOn-cB-BR9" firstAttribute="top" secondItem="UnL-1i-j3Q" secondAttribute="bottom" constant="8" id="xJ0-wU-xmr"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="t9h-iX-GEu" id="D0W-cM-ImF"/>
                         <outlet property="checkButton" destination="akB-RW-N1e" id="ibN-E3-dCa"/>
                         <outlet property="speedTestResult" destination="xOn-cB-BR9" id="9Uf-Zg-ogB"/>
                     </connections>

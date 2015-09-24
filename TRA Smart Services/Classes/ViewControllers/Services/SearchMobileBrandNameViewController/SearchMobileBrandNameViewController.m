@@ -33,13 +33,14 @@
 - (IBAction)searchButtonTapped:(id)sender
 {
     if (self.brandNameTextField.text.length) {
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByMobileBrand:self.brandNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
                 NSString *string = @"";
                 for (NSDictionary *dic in response) {
                     if ([string isEqualToString:@""]) {
@@ -51,7 +52,6 @@
                 weakSelf.resultInfoTextView.text = string;
                 weakSelf.resultInfoTextView.textAlignment = NSTextAlignmentCenter;
             }
-            [AppHelper hideLoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];

@@ -81,15 +81,18 @@ static NSString *const keyOrder = @"order";
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         self.domainAvaliabilityLabel.hidden = NO;
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                PresentResult(response);
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [loader dismissTRALoader];
+                    PresentResult(response);
+                });
             }
-            [AppHelper hideLoader];
         }];
     }
 }
@@ -109,15 +112,19 @@ static NSString *const keyOrder = @"order";
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         self.domainAvaliabilityLabel.hidden = NO;
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
+            NSLog(@"%@", [NSThread currentThread]);
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                PresentResult(response);
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [loader dismissTRALoader];
+                    PresentResult(response);
+                });
             }
-            [AppHelper hideLoader];
         }];
     }
 }
@@ -215,14 +222,14 @@ static NSString *const keyOrder = @"order";
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
     self.serviceView.serviceName.text = dynamicLocalizedString(@"checkDomainViewController.domainTitleForView");
-    self.ratingView.chooseRating.text = [dynamicLocalizedString(@"checkDomainViewController.chooseRating") uppercaseString];
+//    self.ratingView.chooseRating.text = [dynamicLocalizedString(@"checkDomainViewController.chooseRating") uppercaseString];
 }
 
 - (void)updateColors
 {
     [super updateColors];
     
-    self.ratingView.chooseRating.textColor = [self.dynamicService currentApplicationColor];
+//    self.ratingView.chooseRating.textColor = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"serviceBackground"];
 }
 

@@ -84,15 +84,14 @@
 - (IBAction)checkButtonTapped:(id)sender
 {
     if (self.resultTextField.text.length) {
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:nil];
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
-            [AppHelper hideLoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];

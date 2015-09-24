@@ -128,11 +128,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.speedAccessCollectionView) {
-        [self speedAccessCollectionViewCellSelectedAtIndexPath:indexPath];
-    } else {
-        [self otherServiceCollectionViewCellSelectedAtIndexPath:indexPath];
-    }
+    collectionView == self.speedAccessCollectionView ? [self speedAccessCollectionViewCellSelectedAtIndexPath:indexPath] : [self otherServiceCollectionViewCellSelectedAtIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -359,8 +359,9 @@
 //TRALoaderViewController
 
 "TRALoader.backButton.title" = "BACK TO DASHBOARD";
+"TRALoader.backButton.cancel" = "CANCEL";
 "TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
-"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent and\nyou will receive an SMS\n reply shortly";
+"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";
 
 //AutoLoginService
 

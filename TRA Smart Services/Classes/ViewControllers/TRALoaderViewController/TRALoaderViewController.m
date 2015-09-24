@@ -43,7 +43,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 
 #pragma mark - Public
 
-+ (TRALoaderViewController *)presentLoaderOnViewController:(UIViewController *)presenter requestName:(NSString *)requestName
++ (TRALoaderViewController *)presentLoaderOnViewController:(UIViewController *)presenter requestName:(NSString *)requestName closeButton:(BOOL)show
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     TRALoaderViewController *loader = [storyboard instantiateViewControllerWithIdentifier:LoaderIdentifier];
@@ -56,6 +56,10 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     [presenter presentViewController:loader animated:NO completion:^{
         [loader startAnimations];
     }];
+    
+    loader.closeButton.hidden = !show;
+    [loader.closeButton setTitle:dynamicLocalizedString(@"TRALoader.backButton.cancel") forState:UIControlStateNormal];
+    
     return loader;
 }
 
@@ -64,7 +68,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     [self closeButtonTapped:nil];
 }
 
-- (void)setCompletedStatus
+- (void)setCompletedStatus:(TRACompleteStatus)status withDescription:(NSString *)description
 {
     [self.tailLayer removeAllAnimations];
     [self.hexLayer removeAllAnimations];
@@ -86,6 +90,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     self.closeButton.layer.opacity = 0.f;
     [self.closeButton.layer addAnimation:[Animation fadeAnimFromValue:0 to:1 delegate:nil] forKey:nil];
     self.closeButton.layer.opacity = 1.f;
+    [self.closeButton setTitle:dynamicLocalizedString(@"TRALoader.backButton.title") forState:UIControlStateNormal];
     
     CATransition *animation = [CATransition animation];
     animation.duration = 1.0;
@@ -122,7 +127,6 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 
 - (void)localizeUI
 {
-    [self.closeButton setTitle:dynamicLocalizedString(@"TRALoader.backButton.title") forState:UIControlStateNormal];
     self.informationLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"TRALoader.information.begin"), self.requestName];
 }
 
