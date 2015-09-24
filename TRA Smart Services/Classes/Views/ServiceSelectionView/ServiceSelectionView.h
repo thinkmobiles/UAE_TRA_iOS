@@ -31,5 +31,6 @@
 
 - (void)setRTLArabicUIStyle;
 - (void)setLTREuropeUIStyle;
+- (void)updateUIColor;
 
 @end

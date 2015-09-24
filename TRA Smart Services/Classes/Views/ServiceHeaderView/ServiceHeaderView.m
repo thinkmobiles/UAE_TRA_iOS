@@ -10,6 +10,8 @@
 
 @interface ServiceHeaderView()
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+
 @end
 
 @implementation ServiceHeaderView
@@ -20,6 +22,30 @@
 {
     self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
+}
+
+#pragma mark - Public
+
+- (void)updateUIColor
+{
+    [self prepareImageView];
+}
+
+#pragma mark - SetMethods
+
+- (void)setServiceHeaderImage:(UIImage *)serviceHeaderImage
+{
+    _serviceHeaderImage = serviceHeaderImage;
+    [self prepareImageView];
+}
+
+- (void)prepareImageView
+{
+    UIImage *image = self.serviceHeaderImage;
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        image = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:image];
+    }
+    self.headerImageView.image = image;
 }
 
 @end

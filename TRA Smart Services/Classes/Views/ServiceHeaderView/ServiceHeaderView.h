@@ -11,6 +11,8 @@
 @interface ServiceHeaderView : BaseXibView
 
 @property (weak, nonatomic) IBOutlet UILabel *serviceHeaderLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *serviceHeaderImageView;
+@property (strong, nonatomic) UIImage *serviceHeaderImage;
+
+- (void)updateUIColor;
 
 @end
