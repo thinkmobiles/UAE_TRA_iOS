@@ -247,14 +247,12 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title" = "SMS Spam Report";
-"spamReportViewControler.textField.phoneProvider" = "Provider number";
-"spamReportViewControler.textField.phoneNumber" = "Phone number";
-"spamReportViewControler.textField.providerType" = "Provider type";
-"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
-"spamReportViewControler.reportSpamButton.title" = "Report SMS Spam";
-"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
-"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+"spamReportViewControler.title.spamSMS" = "Spam - SMS";
+"spamReportViewControler.title.spamWEB" = "Spam - Website";
+"spamReportViewControler.reportTextField.reportSMS" = "Number";
+"spamReportViewControler.reportTextField.reportWeb" = "Link";
+"spamReportViewControler.reportButton.title" = "SUBMIT";
+"spamReportViewControler.descriptionTextView.placeholder" = "Copy and Paste the SMS here...";
 
 //"InternetSpeedTestViewController
 

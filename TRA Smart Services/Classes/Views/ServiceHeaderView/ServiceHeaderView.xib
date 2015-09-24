@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Lato-Regular.ttf">
@@ -27,24 +26,26 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6s-QQ-6a4" userLabel="Service Header - Image View">
-                            <rect key="frame" x="122" y="30" width="77" height="89"/>
+                            <rect key="frame" x="122" y="0.0" width="77" height="89"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="77" id="Zzz-do-Kv1"/>
                                 <constraint firstAttribute="width" secondItem="M6s-QQ-6a4" secondAttribute="height" multiplier="49:57" id="yAs-xG-iwV"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seD-n4-H0N" userLabel="Service Header - Label">
-                            <rect key="frame" x="53" y="142" width="214" height="0.0"/>
-                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="seD-n4-H0N" userLabel="Service Header - Label">
+                            <rect key="frame" x="16" y="93" width="288" height="137"/>
+                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="seD-n4-H0N" firstAttribute="width" secondItem="bZu-AO-9wt" secondAttribute="width" multiplier="0.67" id="GZB-wd-evh"/>
-                        <constraint firstItem="M6s-QQ-6a4" firstAttribute="top" secondItem="bZu-AO-9wt" secondAttribute="top" constant="30" id="Ipn-aM-D4k"/>
+                        <constraint firstItem="seD-n4-H0N" firstAttribute="left" secondItem="bZu-AO-9wt" secondAttribute="left" constant="16" id="APU-QK-hgx"/>
+                        <constraint firstItem="M6s-QQ-6a4" firstAttribute="top" secondItem="bZu-AO-9wt" secondAttribute="top" id="Ipn-aM-D4k"/>
                         <constraint firstAttribute="centerX" secondItem="M6s-QQ-6a4" secondAttribute="centerX" id="Lvz-oA-Pjf"/>
-                        <constraint firstItem="seD-n4-H0N" firstAttribute="top" secondItem="M6s-QQ-6a4" secondAttribute="bottom" constant="23" id="WSS-sc-PGc"/>
+                        <constraint firstAttribute="bottom" secondItem="seD-n4-H0N" secondAttribute="bottom" id="WLW-5Z-igO"/>
+                        <constraint firstItem="seD-n4-H0N" firstAttribute="top" secondItem="M6s-QQ-6a4" secondAttribute="bottom" constant="4" id="WSS-sc-PGc"/>
+                        <constraint firstAttribute="right" secondItem="seD-n4-H0N" secondAttribute="right" constant="16" id="YNB-W7-uVf"/>
                         <constraint firstAttribute="centerX" secondItem="seD-n4-H0N" secondAttribute="centerX" id="fEw-9S-eYP"/>
                     </constraints>
                 </view>

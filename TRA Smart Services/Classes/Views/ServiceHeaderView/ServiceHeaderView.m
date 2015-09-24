@@ -36,16 +36,15 @@
 - (void)setServiceHeaderImage:(UIImage *)serviceHeaderImage
 {
     _serviceHeaderImage = serviceHeaderImage;
-    [self prepareImageView];
+    self.headerImageView.image = serviceHeaderImage;
 }
 
 - (void)prepareImageView
 {
-    UIImage *image = self.serviceHeaderImage;
+    self.headerImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        image = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:image];
+        self.headerImageView.tintColor = [UIColor blackColor];
     }
-    self.headerImageView.image = image;
 }
 
 @end
