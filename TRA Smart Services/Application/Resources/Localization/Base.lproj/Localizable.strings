@@ -378,6 +378,11 @@
 "fingerPrintService.InvalidFingerPrint" = "fingerPrintService.InvalidFingerPrint";
 "fingerPrintService.DescriptionReason" = "fingerPrintService.DescriptionReason";
 
+//SpamListViewController
+
+"spamListViewController.title" = "";
+
+
 //InnovationsCollectionViewCell
 
 "innovationsCollectionViewCell.string.reviewed" = "innovationsCollectionViewCell.string.reviewed";

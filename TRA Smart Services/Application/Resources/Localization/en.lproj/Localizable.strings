@@ -378,6 +378,11 @@
 "fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
 "fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
 
+//SpamListViewController
+
+"spamListViewController.title" = "My List";
+
+
 //InnovationsCollectionViewCell
 
 "innovationsCollectionViewCell.string.reviewed" = "Reviewed";
