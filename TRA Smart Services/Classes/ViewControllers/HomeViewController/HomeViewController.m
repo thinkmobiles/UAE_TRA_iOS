@@ -315,24 +315,20 @@ static LanguageType startLanguage;
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
     self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
     
-    //    if (self.dynamicService.language == LanguageTypeArabic) {
-    //        [self reverseDataSource];
-    //    }
-
-    
-    if (self.dynamicService.language == LanguageTypeEnglish && startLanguage == LanguageTypeArabic) {
-        [self reverseDataSource];
-    } else if (self.dynamicService.language == LanguageTypeArabic) {
-        [self reverseDataSource];
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if ((self.dynamicService.language == LanguageTypeArabic && startLanguage == LanguageTypeEnglish) ||
+            (self.dynamicService.language == LanguageTypeEnglish && startLanguage == LanguageTypeArabic)) {
+            [self reverseDataSource];
+        }
+    } else {
+        if (self.dynamicService.language == LanguageTypeArabic) {
+            [self reverseDataSource];
+        }
     }
-
 }
 
 - (void)reverseDataSource
 {
-//    if ([AppHelper isiOS9_0OrHigher] && !self.isFirstTimeLoaded) {
-//        return;
-//    }
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
     self.otherServiceDataSource = [self.otherServiceDataSource reversedArrayByElementsInGroup:RowCount];
 }
@@ -511,7 +507,15 @@ static LanguageType startLanguage;
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (startLanguage == LanguageTypeEnglish) {
+            cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
+        } else {
+            cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeTop : PresentationModeModeBottom;
+        }
+    } else {
+        cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
+    }
     
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
