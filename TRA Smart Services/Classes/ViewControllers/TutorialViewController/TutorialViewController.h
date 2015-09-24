@@ -8,4 +8,6 @@ static NSString *const KeyIsTutorialShowed = @"KeyIsTutorialShowed";
 
 @interface TutorialViewController : BaseDynamicUIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (strong, nonatomic) void (^didCloseViewController)();
+
 @end

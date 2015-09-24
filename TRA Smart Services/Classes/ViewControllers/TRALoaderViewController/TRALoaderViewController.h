@@ -6,8 +6,9 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+static CGFloat const TRAAnimationDuration = 2;
+
 typedef NS_ENUM(NSInteger, TRACompleteStatus) {
-    TRACompleteStatusUnknown = -1,
     TRACompleteStatusFailure = 0,
     TRACompleteStatusSuccess = 1,
 };

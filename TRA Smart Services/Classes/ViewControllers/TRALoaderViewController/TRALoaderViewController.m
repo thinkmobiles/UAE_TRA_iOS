@@ -23,6 +23,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 @property (strong, nonatomic) CAShapeLayer *hexLayer;
 @property (strong, nonatomic) CAShapeLayer *tailLayer;
 @property (strong, nonatomic) CAShapeLayer *backgroundLayer;
+@property (strong, nonatomic) CAShapeLayer *resultSymbolLayer;
 
 @property (copy, nonatomic) NSString *requestName;
 @property (strong, nonatomic) UIViewController *presenter;
@@ -98,7 +99,8 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [self.informationLabel.layer addAnimation:animation forKey:nil];
     
-    self.informationLabel.text = dynamicLocalizedString(@"TRALoader.information.finish");
+    self.informationLabel.text = status == TRACompleteStatusSuccess ? dynamicLocalizedString(@"TRALoader.information.finish") : description;
+    self.resultSymbolLayer = status == TRACompleteStatusSuccess ? [self checkSymbolLayer] :[self crossSymbolLayer];
 }
 
 #pragma mark - IBActions
@@ -148,22 +150,19 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.animations = @[pathAnimation, pathAnimation2];
     group.repeatCount = MAXFLOAT;
-    group.duration = 2.f;
+    group.duration = TRAAnimationDuration;
     
     self.tailLayer = [self layerWithColor:[UIColor clearColor] inRect:hexagonRect];
     [self.loaderView.layer insertSublayer:self.tailLayer above:self.hexLayer];
     
     [self.hexLayer addAnimation:group forKey:nil];
-    
-    [self performSelector:@selector(setCompletedStatus) withObject:nil afterDelay:2.f];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (anim == [self.hexLayer animationForKey:@"fillingColorAnimation"]) {
-        CAShapeLayer *resultSymbolLayer =  [self crossSymbolLayer];//[self checkSymbolLayer];
-        [self.loaderView.layer addSublayer:resultSymbolLayer];
-        [resultSymbolLayer addAnimation:[self strokeEndAnimation] forKey:nil];
+        [self.loaderView.layer addSublayer:self.resultSymbolLayer];
+        [self.resultSymbolLayer addAnimation:[self strokeEndAnimation] forKey:nil];
     } else if (anim == [self.view.layer animationForKey:@"dismissView"]) {
         [self.view.layer removeAllAnimations];
         [self.presenter dismissViewControllerAnimated:NO completion:nil];
@@ -189,7 +188,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 - (CABasicAnimation *)strokeStartAnimation
 {
     CABasicAnimation *strokeStartAnimation = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
-    strokeStartAnimation.duration = 2;
+    strokeStartAnimation.duration = TRAAnimationDuration;
     strokeStartAnimation.beginTime = 0.2;
     strokeStartAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     strokeStartAnimation.toValue = [NSNumber numberWithFloat:1.0f];
@@ -200,7 +199,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 - (CABasicAnimation *)strokeEndAnimation
 {
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    pathAnimation.duration = 2;
+    pathAnimation.duration = TRAAnimationDuration;
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];

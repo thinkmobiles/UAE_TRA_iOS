@@ -16,6 +16,7 @@
 #import "UserProfileViewController.h"
 #import "HomeSearchViewController.h"
 #import "KeychainStorage.h"
+#import "TutorialViewController.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -37,6 +38,8 @@ static NSString *const HomeToSearchBrandNameSegueIdentifier = @"HomeToSearchBran
 static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationSegue";
 static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue";
+
+static LanguageType startLanguage;
 
 @interface HomeViewController ()
 
@@ -66,6 +69,8 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    startLanguage = self.dynamicService.language;
     
     self.selectedServiceIDHomeSearchViewController = - 1;
     self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
@@ -104,6 +109,15 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     [super viewDidAppear:animated];
     
     [self.topView animateTopViewApearence];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:KeyIsTutorialShowed]) {
+        TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
+        __weak typeof(self) weakSelf = self;
+        tutorialViewController.didCloseViewController = ^() {
+            [weakSelf.topView animateTopViewApearence];
+        };
+        [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -300,17 +314,25 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 {
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
     self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
-        
-    if (self.dynamicService.language == LanguageTypeArabic) {
+    
+    //    if (self.dynamicService.language == LanguageTypeArabic) {
+    //        [self reverseDataSource];
+    //    }
+
+    
+    if (self.dynamicService.language == LanguageTypeEnglish && startLanguage == LanguageTypeArabic) {
+        [self reverseDataSource];
+    } else if (self.dynamicService.language == LanguageTypeArabic) {
         [self reverseDataSource];
     }
+
 }
 
 - (void)reverseDataSource
 {
-    if ([AppHelper isiOS9_0OrHigher] && !self.isFirstTimeLoaded) {
-        return;
-    }
+//    if ([AppHelper isiOS9_0OrHigher] && !self.isFirstTimeLoaded) {
+//        return;
+//    }
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
     self.otherServiceDataSource = [self.otherServiceDataSource reversedArrayByElementsInGroup:RowCount];
 }
@@ -460,7 +482,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)localizeUI
 {
-    
+
 }
 
 - (void)updateColors

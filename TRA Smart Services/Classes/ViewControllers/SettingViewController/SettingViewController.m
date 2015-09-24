@@ -95,7 +95,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 {
     [super viewDidAppear:animated];
     
-    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
+//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -111,8 +111,16 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 {
     if (sender.isOn) {
         TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
+        __weak typeof(self) weakSelf = self;
+        tutorialViewController.didCloseViewController = ^() {
+            [UIView animateWithDuration:0.3 animations:^{
+                [weakSelf.view setNeedsLayout];
+                [weakSelf.view layoutIfNeeded];
+            }];
+        };
         [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
     }
+    sender.on = NO;
 }
 
 - (IBAction)useTouchIDValueChanged:(UISwitch *)sender
@@ -464,7 +472,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 
 - (void)prepareTitle
 {
-    self.title = self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
+    self.title = dynamicLocalizedString(@"tabBarMenu_item_5");//self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 

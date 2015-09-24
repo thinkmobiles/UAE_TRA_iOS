@@ -40,11 +40,29 @@ static NSUInteger const TutorialPageCount = 3;
     self.view.layer.opacity = 1.f;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+}
+
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
     self.collectionView.layoutMargins = UIEdgeInsetsZero;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)closeButtonTapped:(id)sender
+{
+    [self storeTutorialStatus];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    [self.view.layer addAnimation:[Animation fadeAnimFromValue:1. to:0. delegate:self] forKey:@"fadeAnimation"];
+    self.view.layer.opacity = 0.f;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -88,6 +106,9 @@ static NSUInteger const TutorialPageCount = 3;
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (anim == [self.view.layer animationForKey:@"fadeAnimation"]) {
+        if (self.didCloseViewController) {
+            self.didCloseViewController();
+        }
         [self.view.layer removeAllAnimations];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -126,6 +147,7 @@ static NSUInteger const TutorialPageCount = 3;
 {
     self.tutorialPageControl.numberOfPages = self.tutorialImages.count;
 }
+
 - (void)storeTutorialStatus
 {
     [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:KeyIsTutorialShowed];

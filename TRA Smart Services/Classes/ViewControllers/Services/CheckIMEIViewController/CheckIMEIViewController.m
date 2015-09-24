@@ -88,7 +88,7 @@
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:nil];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
