@@ -743,6 +743,7 @@
 		93782EBF1BB2F2F100D3604B /* SpamService */ = {
 			isa = PBXGroup;
 			children = (
+				E059DD151BB2F3B500C34EF0 /* SpamSelectionViewController */,
 				93782EC41BB2F36000D3604B /* SpamListViewController */,
 				93782EC01BB2F2F100D3604B /* SpamReportViewController */,
 			);

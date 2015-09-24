@@ -251,7 +251,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
                                 <rect key="frame" x="188" y="266" width="225" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -695,11 +695,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -5700,9 +5700,9 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlw-Ap-jnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5004" y="-2823"/>
+            <point key="canvasLocation" x="6407" y="-3078"/>
         </scene>
-        <!--View Controller-->
+        <!--Spam Selection View Controller-->
         <scene sceneID="yOV-hE-CHk">
             <objects>
                 <viewController id="G1M-6S-rZ4" customClass="SpamSelectionViewController" sceneMemberID="viewController">
@@ -5744,16 +5744,21 @@ a new password will be sent.</string>
                             <constraint firstItem="aTm-EO-C2B" firstAttribute="top" secondItem="abt-ID-BX5" secondAttribute="bottom" id="zA8-Ev-6yE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fEj-c4-r8T">
+                        <barButtonItem key="backBarButtonItem" title=" " id="M7e-B8-jT2"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="abt-ID-BX5" id="1jR-LK-mmu"/>
                         <outlet property="conteinerServiceHeaderView" destination="wQj-Qh-RHE" id="SCt-Ky-f9W"/>
                         <outlet property="conteinerServiceSelectionView" destination="ij2-lD-gDL" id="X17-s3-huG"/>
+                        <segue destination="nZG-eo-eL5" kind="show" identifier="spamListSegueIdentifier" id="i6R-hl-n2E"/>
+                        <segue destination="OLV-R2-oyn" kind="show" identifier="reportSpamSegueIdentifier" id="Ok6-Nn-WS0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx2-FL-XTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5004" y="-2001"/>
+            <point key="canvasLocation" x="5699" y="-3078"/>
         </scene>
         <!--Spam Report View Controller-->
         <scene sceneID="dqR-62-x4l">
@@ -5768,7 +5773,7 @@ a new password will be sent.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Oi-PN-CIo" userLabel="PhoneNumber">
-                                <rect key="frame" x="16" y="72" width="568" height="30"/>
+                                <rect key="frame" x="16" y="116" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
@@ -5776,7 +5781,7 @@ a new password will be sent.</string>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider type " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44B-XE-Vza" userLabel="ProviderType">
-                                <rect key="frame" x="16" y="120" width="568" height="30"/>
+                                <rect key="frame" x="16" y="164" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -5784,7 +5789,7 @@ a new password will be sent.</string>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-Ns-2Gd" userLabel="ReportSpam">
-                                <rect key="frame" x="150" y="275" width="300" height="30"/>
+                                <rect key="frame" x="150" y="319" width="300" height="30"/>
                                 <state key="normal" title="Block SMS Spamer">
                                     <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -5794,7 +5799,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-Nt-TMA" userLabel="Notes">
-                                <rect key="frame" x="16" y="167" width="568" height="100"/>
+                                <rect key="frame" x="16" y="211" width="568" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="sCh-Bi-aOw"/>
@@ -5806,7 +5811,7 @@ a new password will be sent.</string>
                                 </connections>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-ir-Bvk">
-                                <rect key="frame" x="175" y="28" width="250" height="29"/>
+                                <rect key="frame" x="175" y="72" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="wTs-ni-viY"/>
                                 </constraints>
@@ -5849,7 +5854,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk4-vB-rEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5004" y="-1317"/>
+            <point key="canvasLocation" x="5699" y="-2352"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Va4-iQ-bbV">

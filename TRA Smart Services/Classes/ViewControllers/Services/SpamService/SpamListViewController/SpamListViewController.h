@@ -12,4 +12,6 @@
 
 @interface SpamListViewController : BaseSearchableViewController <UITableViewDataSource, UITableViewDelegate, SpamListTableViewCellDelegate, MFMessageComposeViewControllerDelegate>
 
+@property (strong, nonatomic) void(^shouldNavigateToSpamReport)();
+
 @end

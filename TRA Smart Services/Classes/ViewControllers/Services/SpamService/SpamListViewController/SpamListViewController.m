@@ -51,7 +51,10 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (IBAction)addToSpamButtonTapped:(id)sender
 {
-    
+    if (self.shouldNavigateToSpamReport) {
+        self.shouldNavigateToSpamReport();
+    }
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (IBAction)selectModeSwitchTapped:(id)sender

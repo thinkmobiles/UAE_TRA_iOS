@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface SpamSelectionViewController : BaseDynamicUIViewController
+#import "ServiceSelectionView.h"
+
+@interface SpamSelectionViewController : BaseDynamicUIViewController <ServiceSelectionViewDelegate>
 
 @end

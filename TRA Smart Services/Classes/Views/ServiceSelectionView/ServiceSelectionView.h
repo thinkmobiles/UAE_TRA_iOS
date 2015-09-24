@@ -8,7 +8,7 @@
 
 #import "BaseXibView.h"
 
-@protocol SelectedServiseViewDelegate <NSObject>
+@protocol ServiceSelectionViewDelegate <NSObject>
 
 @required
 - (void)buttonReportSMSDidTapped;
@@ -19,7 +19,7 @@
 
 @interface ServiceSelectionView : BaseXibView
 
-@property (weak, nonatomic) id <SelectedServiseViewDelegate> delegate;
+@property (weak, nonatomic) id <ServiceSelectionViewDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *reportSMSLabel;
 @property (weak, nonatomic) IBOutlet UILabel *reportWEBLabel;
