@@ -246,14 +246,12 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title" = "spamReportViewControler.title";
-"spamReportViewControler.textField.phoneProvider" = "spamReportViewControler.textField.phoneProvider";
-"spamReportViewControler.textField.phoneNumber" = "spamReportViewControler.textField.phoneNumber";
-"spamReportViewControler.textField.providerType" = "spamReportViewControler.textField.providerType";
+"spamReportViewControler.title.spamSMS" = "spamReportViewControler.title.spamSMS";
+"spamReportViewControler.title.spamWEB" = "spamReportViewControler.title.spamWEB";
+"spamReportViewControler.reportTextField.reportSMS" = "spamReportViewControler.reportTextField.reportSMS";
+"spamReportViewControler.reportTextField.reportWeb" = "spamReportViewControler.reportTextField.reportWeb";
 "spamReportViewControler.reportButton.title" = "spamReportViewControler.reportButton.title";
-"spamReportViewControler.reportSpamButton.title" = "spamReportViewControler.reportSpamButton.title";
-"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex0.title";
-"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex1.title";
+"spamReportViewControler.descriptionTextView.placeholder" = "spamReportViewControler.descriptionTextView.placeholder";
 
 //InternetSpeedTestViewController
 

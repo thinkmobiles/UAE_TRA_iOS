@@ -12,7 +12,8 @@
 #import "SpamListViewController.h"
 
 static NSString *const SpamListSegueIdentifier = @"spamListSegueIdentifier";
-static NSString *const ReportSpamSegueIdentifier = @"reportSpamSegueIdentifier";
+static NSString *const ReportSpamSMSSegueIdentifier = @"reportSpamSMSSegueIdentifier";
+static NSString *const ReportSpamWebSegueIdentifier = @"reportSpamWebSegueIdentifier";
 
 @interface SpamSelectionViewController ()
 
@@ -60,12 +61,12 @@ static NSString *const ReportSpamSegueIdentifier = @"reportSpamSegueIdentifier";
 
 - (void)buttonReportSMSDidTapped
 {
-    [self performSegueWithIdentifier:ReportSpamSegueIdentifier sender:self];
+    [self performSegueWithIdentifier:ReportSpamSMSSegueIdentifier sender:self];
 }
 
 - (void)buttonReportWEBDidTapped
 {
-    [self performSegueWithIdentifier:ReportSpamSegueIdentifier sender:self];
+    [self performSegueWithIdentifier:ReportSpamWebSegueIdentifier sender:self];
 }
 
 - (void)buttonViewMyListDidTapped
@@ -77,17 +78,26 @@ static NSString *const ReportSpamSegueIdentifier = @"reportSpamSegueIdentifier";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:ReportSpamSegueIdentifier]) {
-        [self prepareSpamReportViewControllerWithSegue:segue];
-    } else if ([segue.identifier isEqualToString:SpamListSegueIdentifier]) {
+    if ([segue.identifier isEqualToString:ReportSpamSMSSegueIdentifier]) {
+        [self prepareSMSSpamReportViewControllerWithSegue:segue];
+    } else if ([segue.identifier isEqualToString:ReportSpamWebSegueIdentifier]) {
+        [self prepareWebSpamReportViewControllerWithSegue:segue];
+    }
+    else if ([segue.identifier isEqualToString:SpamListSegueIdentifier]) {
         [self prepareSpamListViewControllerWithSegue:segue];
     }
 }
 
-- (void)prepareSpamReportViewControllerWithSegue:(UIStoryboardSegue *)segue
+- (void)prepareSMSSpamReportViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
     SpamReportViewController *spamReportViewController = segue.destinationViewController;
-    //todo - determine mode - web or sms
+    spamReportViewController.selectSpamReport = SpamReportTypeSMS;
+}
+
+- (void)prepareWebSpamReportViewControllerWithSegue:(UIStoryboardSegue *)segue
+{
+    SpamReportViewController *spamReportViewController = segue.destinationViewController;
+    spamReportViewController.selectSpamReport = SpamReportTypeWeb;
 }
 
 - (void)prepareSpamListViewControllerWithSegue:(UIStoryboardSegue *)segue
@@ -95,7 +105,7 @@ static NSString *const ReportSpamSegueIdentifier = @"reportSpamSegueIdentifier";
     SpamListViewController *spamListViewController = segue.destinationViewController;
     __weak typeof(self) weakSelf = self;
     spamListViewController.shouldNavigateToSpamReport = ^() {
-        [weakSelf performSegueWithIdentifier:ReportSpamSegueIdentifier sender:weakSelf];
+        [weakSelf performSegueWithIdentifier:ReportSpamSMSSegueIdentifier sender:weakSelf];
     };
 }
 
