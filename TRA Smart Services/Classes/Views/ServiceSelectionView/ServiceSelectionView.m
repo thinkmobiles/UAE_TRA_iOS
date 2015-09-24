@@ -38,6 +38,17 @@
     [self transformUILayer:CATransform3DIdentity];
 }
 
+- (void)updateUIColor
+{
+    [self applyImage:self.serviceNameReportSMSImage forButton:self.reportSMSButton];
+    [self applyImage:self.serviceNameReportWEBImage forButton:self.reportWEBButton];
+    [self applyImage:self.serviceNameViewMyListImage forButton:self.viewMyListButton];
+    
+    [self setDefaultTintColorsForButtonsIfNeeded];
+    
+    [self setupLabelTextColor];
+}
+
 #pragma mark - SetMethods
 
 - (void)setServiceNameReportSMSImage:(UIImage *)image
@@ -93,7 +104,29 @@
 
 - (void)applyImage:(UIImage *)image forButton:(UIButton *)button
 {
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        image = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:image];
+        [button setTintColor:[UIColor blackColor]];
+    }
     [button setImage:image forState:UIControlStateNormal];
+}
+
+- (void)setDefaultTintColorsForButtonsIfNeeded
+{
+    if ([DynamicUIService service].colorScheme != ApplicationColorBlackAndWhite) {
+        [self.reportSMSButton setTintColor:[UIColor defaultOrangeColor]];
+        [self.reportWEBButton setTintColor:[UIColor defaultGreenColor]];
+        [self.viewMyListButton setTintColor:[UIColor defaultBlueColor]];
+    }
+}
+
+- (void)setupLabelTextColor
+{
+    BOOL isBlackAndWhite = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite;
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    self.reportSMSLabel.textColor = isBlackAndWhite ? color : [UIColor defaultOrangeColor];
+    self.reportWEBLabel.textColor = isBlackAndWhite ? color : [UIColor defaultGreenColor];
+    self.viewMyListLabel.textColor = isBlackAndWhite ? color : [UIColor defaultBlueColor];
 }
 
 @end

@@ -40,6 +40,8 @@
 		934629041B8E17060017E4CD /* TRAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 934629031B8E17060017E4CD /* TRAService.m */; };
 		934629401B902EC00017E4CD /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9346293F1B902EC00017E4CD /* NSString+Validation.m */; };
 		93782EC31BB2F2F100D3604B /* SpamReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93782EC21BB2F2F100D3604B /* SpamReportViewController.m */; settings = {ASSET_TAGS = (); }; };
+		93782EC71BB2F3B500D3604B /* SpamListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93782EC61BB2F3B500D3604B /* SpamListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		93782ECB1BB2F71F00D3604B /* SpamListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93782ECA1BB2F71F00D3604B /* SpamListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		939444961BAF238900EDCF06 /* TutorialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		939444991BAF286E00EDCF06 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444981BAF286E00EDCF06 /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -72,6 +74,7 @@
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
+		E059DD181BB2F3D700C34EF0 /* SpamSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E065D0641BB13DCB00427AD2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065D0631BB13DCB00427AD2 /* MessageUI.framework */; };
 		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; };
 		E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F11BA7F96A0057F134 /* HomeSearchResultViewController.m */; };
@@ -90,7 +93,7 @@
 		E0FEF6C81BAB0A21005810D4 /* ServiceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6C61BAB0A21005810D4 /* ServiceHeaderView.m */; };
 		E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */; };
 		E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */; };
-		E0FEF6CF1BAB0A33005810D4 /* ServiseSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */; };
+		E0FEF6CF1BAB0A33005810D4 /* ServiceSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6CD1BAB0A33005810D4 /* ServiceSelectionView.xib */; };
 		E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
@@ -245,6 +248,10 @@
 		9346293F1B902EC00017E4CD /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		93782EC11BB2F2F100D3604B /* SpamReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamReportViewController.h; sourceTree = "<group>"; };
 		93782EC21BB2F2F100D3604B /* SpamReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamReportViewController.m; sourceTree = "<group>"; };
+		93782EC51BB2F3B500D3604B /* SpamListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamListViewController.h; sourceTree = "<group>"; };
+		93782EC61BB2F3B500D3604B /* SpamListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamListViewController.m; sourceTree = "<group>"; };
+		93782EC91BB2F71F00D3604B /* SpamListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamListTableViewCell.h; sourceTree = "<group>"; };
+		93782ECA1BB2F71F00D3604B /* SpamListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamListTableViewCell.m; sourceTree = "<group>"; };
 		939444941BAF238900EDCF06 /* TutorialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialCollectionViewCell.h; sourceTree = "<group>"; };
 		939444951BAF238900EDCF06 /* TutorialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialCollectionViewCell.m; sourceTree = "<group>"; };
 		939444971BAF286E00EDCF06 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
@@ -293,6 +300,8 @@
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
 		E00A812D1BA0577A00502423 /* HomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
+		E059DD161BB2F3D700C34EF0 /* SpamSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamSelectionViewController.h; sourceTree = "<group>"; };
+		E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamSelectionViewController.m; sourceTree = "<group>"; };
 		E065D0631BB13DCB00427AD2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E06B05251BABEC6E00365A3A /* ServiceDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceDescription.plist; sourceTree = "<group>"; };
 		E07082F01BA7F96A0057F134 /* HomeSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchResultViewController.h; sourceTree = "<group>"; };
@@ -319,7 +328,7 @@
 		E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHeaderView.xib; sourceTree = "<group>"; };
 		E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
 		E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
-		E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiseSelectionView.xib; sourceTree = "<group>"; };
+		E0FEF6CD1BAB0A33005810D4 /* ServiceSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSelectionView.xib; sourceTree = "<group>"; };
 		E0FEF6D11BAB0E14005810D4 /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
 		E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
@@ -734,6 +743,8 @@
 		93782EBF1BB2F2F100D3604B /* SpamService */ = {
 			isa = PBXGroup;
 			children = (
+				E059DD151BB2F3B500C34EF0 /* SpamSelectionViewController */,
+				93782EC41BB2F36000D3604B /* SpamListViewController */,
 				93782EC01BB2F2F100D3604B /* SpamReportViewController */,
 			);
 			path = SpamService;
@@ -746,6 +757,24 @@
 				93782EC21BB2F2F100D3604B /* SpamReportViewController.m */,
 			);
 			path = SpamReportViewController;
+			sourceTree = "<group>";
+		};
+		93782EC41BB2F36000D3604B /* SpamListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93782EC51BB2F3B500D3604B /* SpamListViewController.h */,
+				93782EC61BB2F3B500D3604B /* SpamListViewController.m */,
+			);
+			path = SpamListViewController;
+			sourceTree = "<group>";
+		};
+		93782EC81BB2F71000D3604B /* SpamListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				93782EC91BB2F71F00D3604B /* SpamListTableViewCell.h */,
+				93782ECA1BB2F71F00D3604B /* SpamListTableViewCell.m */,
+			);
+			path = SpamListTableViewCell;
 			sourceTree = "<group>";
 		};
 		939444921BAF234800EDCF06 /* TutorialViewController */ = {
@@ -900,6 +929,15 @@
 			path = HomeSearchViewController;
 			sourceTree = "<group>";
 		};
+		E059DD151BB2F3B500C34EF0 /* SpamSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E059DD161BB2F3D700C34EF0 /* SpamSelectionViewController.h */,
+				E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */,
+			);
+			path = SpamSelectionViewController;
+			sourceTree = "<group>";
+		};
 		E07082EF1BA7F94F0057F134 /* HomeSearchResultViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,7 +1013,7 @@
 			children = (
 				E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */,
 				E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */,
-				E0FEF6CD1BAB0A33005810D4 /* ServiseSelectionView.xib */,
+				E0FEF6CD1BAB0A33005810D4 /* ServiceSelectionView.xib */,
 			);
 			path = ServiceSelectionView;
 			sourceTree = "<group>";
@@ -1642,6 +1680,7 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				93782EC81BB2F71000D3604B /* SpamListTableViewCell */,
 				E0D5E8231BAFFBB000D40579 /* InnovationsChatTableViewCell */,
 				E0D5E80B1BAFDCAA00D40579 /* InnovationsCollectionViewCell */,
 				E0D5E8101BAFDCAA00D40579 /* InnovationsTableViewCell */,
@@ -1932,7 +1971,7 @@
 				F1F15CD21B96EEC300891246 /* RatingView.xib in Resources */,
 				932C8DBA1BA03136003107E2 /* UserProfileActionView.xib in Resources */,
 				E0D5E8281BAFFBB000D40579 /* InnovationsChatArabicTableViewCell.xib in Resources */,
-				E0FEF6CF1BAB0A33005810D4 /* ServiseSelectionView.xib in Resources */,
+				E0FEF6CF1BAB0A33005810D4 /* ServiceSelectionView.xib in Resources */,
 				932C8DAE1B9F4AD3003107E2 /* Launch Screen.xib in Resources */,
 				93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */,
 				93D10A771BA93B5600CCEB22 /* AboutAr.rtf in Resources */,
@@ -2000,9 +2039,11 @@
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
+				93782ECB1BB2F71F00D3604B /* SpamListTableViewCell.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
 				93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */,
 				EDAA8F081B84DAE800269F1A /* UIView+Snapshot.m in Sources */,
+				E059DD181BB2F3D700C34EF0 /* SpamSelectionViewController.m in Sources */,
 				ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */,
 				F1A889C91BA2BCB8007EDEF7 /* ResetPasswordViewController.m in Sources */,
 				E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */,
@@ -2082,6 +2123,7 @@
 				EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */,
 				93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				93782EC71BB2F3B500D3604B /* SpamListViewController.m in Sources */,
 				93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */,
 				ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */,
 				93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */,

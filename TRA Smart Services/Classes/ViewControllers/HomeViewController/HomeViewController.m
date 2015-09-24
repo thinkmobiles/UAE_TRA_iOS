@@ -308,6 +308,9 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)reverseDataSource
 {
+    if ([AppHelper isiOS9_0OrHigher] && !self.isFirstTimeLoaded) {
+        return;
+    }
     self.speedAccessDataSource = [[self.speedAccessDataSource reversedArray] mutableCopy];
     self.otherServiceDataSource = [self.otherServiceDataSource reversedArrayByElementsInGroup:RowCount];
 }

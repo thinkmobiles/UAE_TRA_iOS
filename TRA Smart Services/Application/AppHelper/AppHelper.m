@@ -82,7 +82,9 @@ static LanguageType startLanguage;
 + (void)showLoader
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD showHUDAddedTo:[AppHelper topView] animated:YES].dimBackground = YES;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[AppHelper topView] animated:YES];
+        hud.dimBackground = YES;
+        hud.color = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.7f];
     });
 }
 
@@ -92,6 +94,7 @@ static LanguageType startLanguage;
         MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:[AppHelper topView]];
         hud.removeFromSuperViewOnHide = YES;
         hud.labelText = text;
+        hud.color = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.7f];
         [[AppHelper topView] addSubview:hud];
         [hud show:YES];
     });

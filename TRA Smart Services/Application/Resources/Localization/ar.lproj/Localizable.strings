@@ -377,6 +377,11 @@
 "fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
 "fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
 
+//SpamListViewController
+
+"spamListViewController.title" = "My List";
+
+
 //InnovationsCollectionViewCell
 
 "innovationsCollectionViewCell.string.reviewed" = "Reviewed";
@@ -385,3 +390,11 @@
 
 "innovationsChatTableViewCell.replyButton.title" = "Reply";
 "innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "Spam";
+"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites as Spam to TRA";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";

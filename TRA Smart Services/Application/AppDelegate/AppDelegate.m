@@ -44,13 +44,16 @@
 - (void)performAutoLogin
 {
     if ([KeychainStorage userName].length) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification]) {
-            self.touchAuth = [[FingerPrintAuth alloc] init];
-            [self.touchAuth authentificationsWithTouch];
-        } else {
+        
+//        commentedOut TouchID Identification
+        
+//        if ([[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification]) {
+//            self.touchAuth = [[FingerPrintAuth alloc] init];
+//            [self.touchAuth authentificationsWithTouch];
+//        } else {
             self.autoLogger = [[AutoLoginService alloc] init];
             [self.autoLogger performAutoLoginIfPossible];
-        }
+//        }
     }
 }
 

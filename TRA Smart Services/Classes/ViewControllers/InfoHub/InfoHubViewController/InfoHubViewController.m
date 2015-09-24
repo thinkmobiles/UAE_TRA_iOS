@@ -240,13 +240,18 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)updateUIForLeftBasedInterface:(BOOL)leftBased
 {
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+    [self reverseDataSource];
     self.leftSeparatorSpaceConstraint.constant = leftBased ? DefaultCellOffset : 0;
     self.rightSeparatorSpaceConstraint.constant = leftBased ? 0 : DefaultCellOffset;
     self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, leftBased ? 1 : -1, 1);
 
     [self.tableView reloadData];
     [self.collectionView reloadData];
+}
+
+- (void)reverseDataSource
+{
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
 }
 
 @end
