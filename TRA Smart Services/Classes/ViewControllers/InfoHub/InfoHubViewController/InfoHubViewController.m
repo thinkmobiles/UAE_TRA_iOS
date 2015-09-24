@@ -10,6 +10,13 @@
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
 
+static CGFloat const SectionHeaderHeight = 40.0f;
+static CGFloat const AdditionalCellOffset = 20.0f;
+static CGFloat const DefaultCellOffset = 22.0f;
+static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
+
+static LanguageType startingLanguageType;
+
 @interface InfoHubViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -29,11 +36,6 @@
 
 @end
 
-static CGFloat const SectionHeaderHeight = 40.0f;
-static CGFloat const AdditionalCellOffset = 20.0f;
-static CGFloat const DefaultCellOffset = 22.0f;
-static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
-
 @implementation InfoHubViewController
 
 #pragma mark - LifeCycle
@@ -43,6 +45,12 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [super viewDidLoad];
     
     [self registerNibs];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self prepareDemoDataSource];
 }
 
@@ -240,7 +248,17 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (void)updateUIForLeftBasedInterface:(BOOL)leftBased
 {
-    [self reverseDataSource];
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (!startingLanguageType) {
+            startingLanguageType = self.dynamicService.language;
+        }
+        if (startingLanguageType == LanguageTypeArabic) {
+            [self reverseDataSource];
+        }
+    } else {
+        [self reverseDataSource];
+    }
+    
     self.leftSeparatorSpaceConstraint.constant = leftBased ? DefaultCellOffset : 0;
     self.rightSeparatorSpaceConstraint.constant = leftBased ? 0 : DefaultCellOffset;
     self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, leftBased ? 1 : -1, 1);
