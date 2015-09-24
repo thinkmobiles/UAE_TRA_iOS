@@ -175,7 +175,7 @@ static NSInteger const BlockServiceNumber = 7726;
         [UINavigationBar appearance].tintColor = [UIColor whiteColor];
         [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:17] : [UIFont latoRegularWithSize:17]};
         
-        NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
+        NSArray *recipents = @[[NSString stringWithFormat:@"%li", (long)BlockServiceNumber]];
         NSString *message = [NSString stringWithFormat:@"b %@", self.phoneNumber.text];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];

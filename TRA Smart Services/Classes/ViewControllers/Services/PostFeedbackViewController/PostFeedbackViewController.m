@@ -32,15 +32,14 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         return;
     }
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
         } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }
-        [AppHelper hideLoader];
     }];
 }
 
