@@ -150,14 +150,16 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     [self.loaderView.layer insertSublayer:self.tailLayer above:self.hexLayer];
     
     [self.hexLayer addAnimation:group forKey:nil];
+    
+    [self performSelector:@selector(setCompletedStatus) withObject:nil afterDelay:2.f];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (anim == [self.hexLayer animationForKey:@"fillingColorAnimation"]) {
-        CAShapeLayer *checkSymbolLayer = [self checkSymbolLayer];
-        [self.loaderView.layer addSublayer:checkSymbolLayer];
-        [checkSymbolLayer addAnimation:[self strokeEndAnimation] forKey:nil];
+        CAShapeLayer *resultSymbolLayer =  [self crossSymbolLayer];//[self checkSymbolLayer];
+        [self.loaderView.layer addSublayer:resultSymbolLayer];
+        [resultSymbolLayer addAnimation:[self strokeEndAnimation] forKey:nil];
     } else if (anim == [self.view.layer animationForKey:@"dismissView"]) {
         [self.view.layer removeAllAnimations];
         [self.presenter dismissViewControllerAnimated:NO completion:nil];
@@ -214,6 +216,17 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     return checkSymbolLayer;
 }
 
+- (CAShapeLayer *)crossSymbolLayer
+{
+    CAShapeLayer *crossSymbolLayer = [CAShapeLayer layer];
+    crossSymbolLayer.frame = self.loaderView.layer.bounds;
+    crossSymbolLayer.strokeColor = [UIColor redColor].CGColor;
+    crossSymbolLayer.fillColor = [UIColor clearColor].CGColor;
+    crossSymbolLayer.path = [self bezierPathForCrossSymbolInRect:self.loaderView.bounds].CGPath;
+    crossSymbolLayer.lineWidth = 3.f;
+    return crossSymbolLayer;
+}
+
 - (CAShapeLayer *)layerWithColor:(UIColor *)color inRect:(CGRect)rect
 {
     CAShapeLayer *maskWhiteLayer = [CAShapeLayer layer];
@@ -228,13 +241,24 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 
 #pragma mark - Calculations
 
+- (UIBezierPath *)bezierPathForCrossSymbolInRect:(CGRect)parentRect
+{
+    CGRect innerRect = [self innerRectFromRect:parentRect];
+    
+    CGFloat delataXOffset = ABS(innerRect.size.height - innerRect.size.width) / 2;
+    
+    UIBezierPath *crossSymbolBezierPath = [UIBezierPath bezierPath];
+    [crossSymbolBezierPath moveToPoint:CGPointMake(delataXOffset + innerRect.origin.x, innerRect.origin.y + innerRect.size.height)];
+    [crossSymbolBezierPath addLineToPoint:CGPointMake(delataXOffset +innerRect.origin.x + innerRect.size.height, innerRect.origin.y)];
+    [crossSymbolBezierPath moveToPoint:CGPointMake(delataXOffset +innerRect.origin.x, innerRect.origin.y)];
+    [crossSymbolBezierPath addLineToPoint:CGPointMake(delataXOffset +innerRect.origin.x + innerRect.size.height, innerRect.origin.y + innerRect.size.height)];
+
+    return crossSymbolBezierPath;
+}
+
 - (UIBezierPath *)bezierPathForCheckSymbolInRect:(CGRect)parentRect
 {
-    CGFloat innerRectHeight = 0.3 * parentRect.size.height;
-    CGFloat innerRectWidth = 0.45 * parentRect.size.width;
-    CGFloat originX = (parentRect.size.width - innerRectWidth) / 2;
-    CGFloat originY = (parentRect.size.height - innerRectHeight) / 2;
-    CGRect innerRect = CGRectMake(originX, originY, innerRectWidth, innerRectHeight);
+    CGRect innerRect = [self innerRectFromRect:parentRect];
     
     UIBezierPath *checkSymbolBezierPath = [UIBezierPath bezierPath];
     [checkSymbolBezierPath moveToPoint:CGPointMake(innerRect.origin.x, innerRect.origin.y + innerRect.size.height * 0.5)];
@@ -257,6 +281,16 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     [hexagonPath closePath];
     hexagonPath.lineJoinStyle = kCGLineJoinRound;
     return hexagonPath;
+}
+
+- (CGRect)innerRectFromRect:(CGRect)parentRect
+{
+    CGFloat innerRectHeight = 0.3 * parentRect.size.height;
+    CGFloat innerRectWidth = 0.45 * parentRect.size.width;
+    CGFloat originX = (parentRect.size.width - innerRectWidth) / 2;
+    CGFloat originY = (parentRect.size.height - innerRectHeight) / 2;
+    CGRect innerRect = CGRectMake(originX, originY, innerRectWidth, innerRectHeight);
+    return innerRect;
 }
 
 @end

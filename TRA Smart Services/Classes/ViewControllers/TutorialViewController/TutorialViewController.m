@@ -8,14 +8,13 @@
 #import "Animation.h"
 #import "TutorialCollectionViewCell.h"
 
+static NSUInteger const TutorialPageCount = 3;
+
 @interface TutorialViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *fakeColorShemeView;
 @property (weak, nonatomic) IBOutlet UIPageControl *tutorialPageControl;
-
-@property (weak, nonatomic) IBOutlet UIButton *skipButton;
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UIView *verticalSeparator;
 
 @property (strong, nonatomic) NSMutableArray *tutorialImages;
 
@@ -45,28 +44,7 @@
 {
     [super viewDidLayoutSubviews];
     
-    if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
-        self.collectionView.layoutMargins = UIEdgeInsetsZero;
-    } else {
-        self.collectionView.contentInset = UIEdgeInsetsZero;
-    }
-}
-
-#pragma mark - IBAction
-
-- (IBAction)skipButonTapped:(id)sender
-{
-    [self storeTutorialStatus];
-    
-    [self.view.layer addAnimation:[Animation fadeAnimFromValue:1. to:0. delegate:self] forKey:@"fadeAnimation"];
-    self.view.layer.opacity = 0.f;
-}
-
-- (IBAction)nextButtonTapped:(id)sender
-{
-        NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(indexPath.row + 1) inSection:indexPath.section] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-        self.tutorialPageControl.currentPage = indexPath.row + 1;
+    self.collectionView.layoutMargins = UIEdgeInsetsZero;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -105,17 +83,6 @@
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (self.collectionView.contentOffset.x >= CGRectGetWidth(self.collectionView.bounds) * (self.tutorialImages.count - 1.5) ) {
-        self.nextButton.hidden = YES;
-        self.verticalSeparator.hidden = YES;
-    } else {
-        self.nextButton.hidden = NO;
-        self.verticalSeparator.hidden = NO;
-    }
-}
-
 #pragma mark - Animation
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -130,24 +97,22 @@
 
 - (void)updateColors
 {
-    
+    self.fakeColorShemeView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.8f];
 }
 
 - (void)localizeUI
 {
-    [self.skipButton setTitle:dynamicLocalizedString(@"tutorialViewController.skipButton.title") forState:UIControlStateNormal];
-    [self.nextButton setTitle:dynamicLocalizedString(@"tutorialViewController.nextButton.title") forState:UIControlStateNormal];
+    [self configureDataSource];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Private
 
 - (void)configureDataSource
 {
-    if (!self.tutorialImages) {
-        self.tutorialImages = [[NSMutableArray alloc] init];
-    }
+    self.tutorialImages = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < TutorialPageCount; i++) {
         NSString *fileName = [NSString stringWithFormat:@"TutorialScreen%i", (int)(i + 1)];
         UIImage *tutorialScreen = [UIImage imageNamed:fileName];
         if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {

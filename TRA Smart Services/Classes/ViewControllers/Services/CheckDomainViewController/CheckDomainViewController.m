@@ -27,8 +27,6 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet ServiceView *serviceView;
 @property (weak, nonatomic) IBOutlet UIView *topHolderView;
 
-@property (weak, nonatomic) IBOutlet RatingView *ratingView;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -42,7 +40,6 @@ static NSString *const keyOrder = @"order";
     [super viewWillAppear:animated];
     
     [self prepareTopView];
-    [self prepareRatingView];
     [self updateNavigationControllerBar];
     [self prepareUI];
     [self displayDataIfNeeded];
@@ -54,11 +51,9 @@ static NSString *const keyOrder = @"order";
 
     if (!self.response) {
         self.domainAvaliabilityLabel.hidden = YES;
-        self.ratingView.hidden = YES;
         self.domainNameTextField.text = @"";
     }
     if (!self.result) {
-        self.ratingView.hidden = YES;
         self.tableView.hidden = YES;
     }
 
@@ -215,14 +210,12 @@ static NSString *const keyOrder = @"order";
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
     self.serviceView.serviceName.text = dynamicLocalizedString(@"checkDomainViewController.domainTitleForView");
-    self.ratingView.chooseRating.text = [dynamicLocalizedString(@"checkDomainViewController.chooseRating") uppercaseString];
 }
 
 - (void)updateColors
 {
     [super updateColors];
     
-    self.ratingView.chooseRating.textColor = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"serviceBackground"];
 }
 
@@ -259,18 +252,14 @@ static NSString *const keyOrder = @"order";
         } else {
             self.domainAvaliabilityLabel.textColor = [UIColor lightGreenTextColor];
         }
+        self.avaliabilityButton.hidden = YES;
+        self.whoISButton.hidden = YES;
     } else if (self.result) {
         self.tableView.hidden = NO;
+        self.avaliabilityButton.hidden = YES;
+        self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
     }
-    self.ratingView.hidden = NO;
-    self.avaliabilityButton.hidden = YES;
-    self.whoISButton.hidden = YES;
-}
-
-- (void)prepareRatingView
-{
-    self.ratingView.delegate = self;
 }
 
 - (NSArray *)parseData:(NSString *)inputData

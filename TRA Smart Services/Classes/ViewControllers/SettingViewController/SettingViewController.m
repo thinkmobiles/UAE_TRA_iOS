@@ -95,7 +95,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 {
     [super viewDidAppear:animated];
     
-//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
+    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
