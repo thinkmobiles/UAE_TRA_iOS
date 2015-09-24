@@ -166,6 +166,7 @@
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
+		F16DA2C11BB43DC70002AC44 /* BottomBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */; settings = {ASSET_TAGS = (); }; };
 		F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */; };
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
 		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
@@ -472,6 +473,8 @@
 		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
 		F166B7461BA893C50001DD88 /* SelectRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRegisterViewController.h; sourceTree = "<group>"; };
 		F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRegisterViewController.m; sourceTree = "<group>"; };
+		F16DA2BF1BB43DC70002AC44 /* BottomBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBorderTextField.h; sourceTree = "<group>"; };
+		F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBorderTextField.m; sourceTree = "<group>"; };
 		F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
 		F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteEuroTableViewCell.xib; sourceTree = "<group>"; };
 		F17785471B8DB8A400D96B1E /* AddToFavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteTableViewCell.h; sourceTree = "<group>"; };
@@ -1416,6 +1419,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				F16DA2BE1BB43DC70002AC44 /* BottomBorderTextField */,
 				939444A11BB04FCC00EDCF06 /* FingerPrintAuth */,
 				930E177C1BA581EA00295263 /* RoundSlider */,
 				E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */,
@@ -1790,6 +1794,15 @@
 			path = SelectRegisterViewController;
 			sourceTree = "<group>";
 		};
+		F16DA2BE1BB43DC70002AC44 /* BottomBorderTextField */ = {
+			isa = PBXGroup;
+			children = (
+				F16DA2BF1BB43DC70002AC44 /* BottomBorderTextField.h */,
+				F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */,
+			);
+			path = BottomBorderTextField;
+			sourceTree = "<group>";
+		};
 		F17785441B8DB8A400D96B1E /* AddToFavoriteTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2103,6 +2116,7 @@
 				E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */,
 				9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */,
 				ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */,
+				F16DA2C11BB43DC70002AC44 /* BottomBorderTextField.m in Sources */,
 				ED982F331B5D24DA00B6B644 /* AppHelper.m in Sources */,
 				ED2084D91B5E734000779CBD /* AFURLConnectionOperation.m in Sources */,
 				EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */,

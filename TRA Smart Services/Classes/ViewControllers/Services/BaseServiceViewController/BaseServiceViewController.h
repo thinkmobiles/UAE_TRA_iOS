@@ -7,6 +7,7 @@
 //
 
 #import "TRALoaderViewController.h"
+#import "BottomBorderTextField.h"
 
 @interface BaseServiceViewController : BaseDynamicUIViewController
 
