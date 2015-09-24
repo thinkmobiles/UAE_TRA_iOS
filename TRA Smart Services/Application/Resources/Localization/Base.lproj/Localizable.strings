@@ -391,3 +391,11 @@
 
 "innovationsChatTableViewCell.replyButton.title" = "innovationsChatTableViewCell.replyButton.title";
 "innovationsChatTableViewCell.reportAbuseButton.title" = "innovationsChatTableViewCell.reportAbuseButton.title";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "spamSelectionViewController.title";
+"spamSelectionViewController.serviceHeaderLabel" = "spamSelectionViewController.serviceHeaderLabel";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "spamSelectionViewController.serviceSelectionView.reportSMSLabel";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "spamSelectionViewController.serviceSelectionView.reportWEBLabel";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "spamSelectionViewController.serviceSelectionView.viewMyListLabel";

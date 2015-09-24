@@ -389,3 +389,11 @@
 
 "innovationsChatTableViewCell.replyButton.title" = "Reply";
 "innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "Spam";
+"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites as Spam to TRA";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";
