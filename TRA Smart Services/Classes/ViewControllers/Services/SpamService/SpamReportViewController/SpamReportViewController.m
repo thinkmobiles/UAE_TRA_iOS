@@ -43,6 +43,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     [super viewDidLoad];
 
     self.selectedProvider = @"";
+    self.reportButton.layer.cornerRadius = 5.f;
+
     [self prepareDataSource];
 }
 
@@ -232,8 +234,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         [UINavigationBar appearance].tintColor = [UIColor whiteColor];
         [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:17] : [UIFont latoRegularWithSize:17]};
         
-        NSArray *recipents = @[[NSString stringWithFormat:@"%li", (long)BlockServiceNumber]];
-        NSString *message = [NSString stringWithFormat:@"b %@", self.phoneNumber.text];
+        NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
+        NSString *message = [NSString stringWithFormat:@"b %@", self.reportTextField.text];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
         messageController.messageComposeDelegate = self;
