@@ -6574,7 +6574,7 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="res_img_tut_fakeHome" translatesAutoresizingMaskIntoConstraints="NO" id="3WS-Sg-BsO" userLabel="FakeBackground - UIIMageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3WS-Sg-BsO" userLabel="FakeBackground - UIIMageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-sK-qoU" userLabel="FakeColorSheme - UIView">
@@ -6790,7 +6790,6 @@ a new password will be sent.</string>
         <image name="img_bg_service" width="320" height="569"/>
         <image name="res_img_bg" width="320" height="568"/>
         <image name="res_img_logo" width="260" height="118"/>
-        <image name="res_img_tut_fakeHome" width="320" height="568"/>
         <image name="res_polygons" width="320" height="375"/>
         <image name="right237" width="16" height="16"/>
         <image name="serviceBackground" width="320" height="335"/>
