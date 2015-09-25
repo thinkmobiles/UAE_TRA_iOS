@@ -78,7 +78,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
@@ -90,7 +90,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
@@ -102,7 +102,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
@@ -114,7 +114,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
@@ -126,7 +126,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
@@ -138,7 +138,7 @@
 		<key>serviceID</key>
 		<string>0</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
 		<string>ic_global</string>
 		<key>serviceOrder</key>
