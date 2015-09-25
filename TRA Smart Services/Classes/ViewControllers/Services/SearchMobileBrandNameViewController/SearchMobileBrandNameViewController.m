@@ -10,8 +10,8 @@
 
 @interface SearchMobileBrandNameViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *brandNameTextField;
-@property (weak, nonatomic) IBOutlet UITextView *resultInfoTextView;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *brandNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextView *resultInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
@@ -87,10 +87,9 @@
 
 - (void)updateColors
 {
-    UIColor *color = [self.dynamicService currentApplicationColor];
-    self.brandNameTextField.layer.borderColor = color.CGColor;
-    self.brandNameTextField.textColor = color;
+    [super updateColors];
     
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [self.searchButton setTitleColor:color forState:UIControlStateNormal];
     self.searchButton.layer.borderColor = color.CGColor;
 }
@@ -101,9 +100,6 @@
 {
     self.searchButton.layer.cornerRadius = 8;
     self.searchButton.layer.borderWidth = 1;
-    
-    self.brandNameTextField.layer.cornerRadius = 8;
-    self.brandNameTextField.layer.borderWidth = 1;
 }
 
 @end

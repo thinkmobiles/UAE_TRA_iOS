@@ -19,6 +19,7 @@
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 #pragma mark - Public
@@ -51,8 +52,10 @@
         if ([subView isKindOfClass:[UIButton class]]) {
             [AppHelper setStyleForLayer:subView.layer];
             [(UIButton *)subView setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
+        } else if ([subView isKindOfClass:[BottomBorderTextField class]]) {
+            [AppHelper setStyleForTextField:(BottomBorderTextField *)subView];
+        }  else if ([subView isKindOfClass:[BottomBorderTextView class]]) {
+            [AppHelper setStyleForTextView:(BottomBorderTextView *)subView];
         }
     }
 }

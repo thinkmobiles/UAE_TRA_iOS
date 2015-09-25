@@ -336,6 +336,20 @@ static LanguageType startLanguage;
     layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }
 
++ (void)setStyleForTextField:(BottomBorderTextField *)textField
+{
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    textField.textColor = color;
+    textField.bottomBorderColor = color;
+}
+
++ (void)setStyleForTextView:(BottomBorderTextView *)textView
+{
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    textView.textColor = color;
+    textView.bottomBorderColor = color;
+}
+
 + (void)setStyleGrayColorForLayer:(CALayer *)layer
 {
     layer.cornerRadius = 0;

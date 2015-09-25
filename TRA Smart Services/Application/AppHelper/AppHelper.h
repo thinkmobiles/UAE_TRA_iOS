@@ -7,6 +7,8 @@
 //
 
 #define TRANFORM_3D_SCALE CATransform3DMakeScale(-1, 1, 1)
+@class BottomBorderTextField;
+@class BottomBorderTextView;
 
 @interface AppHelper : NSObject
 
@@ -46,6 +48,8 @@
 + (NSString *)compactDateStringFrom:(NSDate *)date;
 
 + (void)setStyleForLayer:(CALayer *)layer;
++ (void)setStyleForTextField:(BottomBorderTextField *)textField;
++ (void)setStyleForTextView:(BottomBorderTextView *)textView;
 + (void)setStyleGrayColorForLayer:(CALayer *)layer;
 
 + (UIImage *)snapshotForView:(UIView *)view;
