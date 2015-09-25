@@ -4365,7 +4365,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="width" secondItem="qiU-yu-9mv" secondAttribute="height" multiplier="6:5" id="IRy-5d-pWl"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-wc-b98">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-wc-b98">
                                                 <rect key="frame" x="20" y="138" width="560" height="382"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>

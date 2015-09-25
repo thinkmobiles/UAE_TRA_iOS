@@ -84,7 +84,7 @@ static NSString *const DividerForID = @"-";
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     CGFloat selectegStateTextField = 0;
-    if (textField.tag == 8) {
+    if (textField.tag == 7) {
         selectegStateTextField = 2 * HeightTextFieldAndSeparator;
     }
     self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height + selectegStateTextField;
@@ -94,9 +94,6 @@ static NSString *const DividerForID = @"-";
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     [self vizibleTextFieldChangeKeyboard];
-    if (textField.tag == 7) {
-        return NO;
-    }
     return YES;
 }
 

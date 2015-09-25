@@ -258,6 +258,8 @@
 
 "internetSpeedTestViewController.title" = "Speed Test Demo";
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
+"InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
 
 //HelpSalimViewController
 
