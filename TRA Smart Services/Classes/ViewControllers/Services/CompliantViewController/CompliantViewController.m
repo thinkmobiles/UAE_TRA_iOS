@@ -215,6 +215,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     [AppHelper setStyleGrayColorForLayer:self.compliantDescriptionTextView.layer];
     [self.selectTableView reloadData];
+    [super updateBackgroundImageNamed:@"trimmedBackground"];
 }
 
 - (void)setRTLArabicUI
@@ -322,6 +323,9 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)addAttachButtonTitleTextField
 {
+    self.compliantTitleTextField.rightView = nil;
+    self.compliantTitleTextField.leftView = nil;
+    
     UIButton *attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *buttonAttachImage = [UIImage imageNamed:@"btn_attach"];
     [attachButton setImage:buttonAttachImage forState:UIControlStateNormal];
@@ -332,12 +336,14 @@ static CGFloat const heightContenerConstraint = 55.f;
 
     if (self.dynamicService.language == LanguageTypeArabic) {
         [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - buttonAttachImage.size.width)];
+        self.compliantTitleTextField.leftView = attachButton;
+        self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
+
     } else {
         [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - buttonAttachImage.size.width, 0, 0)];
+        self.compliantTitleTextField.rightView = attachButton;
+        self.compliantTitleTextField.rightViewMode = UITextFieldViewModeAlways;
     }
-    self.compliantTitleTextField.leftView = attachButton;
-    self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.compliantTitleTextField.rightView = nil;
 }
 
 - (void)configureCell:(UITableViewCell *)cell

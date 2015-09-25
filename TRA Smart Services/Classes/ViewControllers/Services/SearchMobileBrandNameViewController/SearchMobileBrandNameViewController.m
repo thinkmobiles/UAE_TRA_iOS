@@ -92,6 +92,7 @@
     UIColor *color = [self.dynamicService currentApplicationColor];
     [self.searchButton setTitleColor:color forState:UIControlStateNormal];
     self.searchButton.layer.borderColor = color.CGColor;
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private

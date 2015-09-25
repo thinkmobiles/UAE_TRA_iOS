@@ -10,9 +10,9 @@
 
 @interface PostFeedbackViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *serviceNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *ratingTextField;
-@property (weak, nonatomic) IBOutlet UITextView *feedbackTextView;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *serviceNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *ratingTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextView *feedbackTextView;
 @property (weak, nonatomic) IBOutlet UILabel *feedbackLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
@@ -79,6 +79,7 @@
     
     [AppHelper setStyleForLayer:self.feedbackTextView.layer];
     self.feedbackTextView.textColor = [self.dynamicService currentApplicationColor];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

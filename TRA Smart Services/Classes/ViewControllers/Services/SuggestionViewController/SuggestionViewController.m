@@ -12,8 +12,8 @@
 
 @interface SuggestionViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *suggestionTitle;
-@property (weak, nonatomic) IBOutlet UITextField *suggectionDescription;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *suggestionTitle;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
@@ -76,6 +76,8 @@
 - (void)updateColors
 {
     [super updateColors];
+    
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

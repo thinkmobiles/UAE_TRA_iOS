@@ -63,6 +63,7 @@
 {
     [super updateColors];
 
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

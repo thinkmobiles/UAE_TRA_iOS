@@ -19,7 +19,7 @@ static NSString *const keyOrder = @"order";
 
 @interface CheckDomainViewController ()
 
-@property (weak, nonatomic) IBOutlet LeftInsetTextField *domainNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *domainNameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *avaliabilityButton;
 @property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 @property (weak, nonatomic) IBOutlet UILabel *domainAvaliabilityLabel;
@@ -41,7 +41,6 @@ static NSString *const keyOrder = @"order";
     
     [self prepareTopView];
     [self updateNavigationControllerBar];
-    [self prepareUI];
     [self displayDataIfNeeded];
 }
 
@@ -240,13 +239,6 @@ static NSString *const keyOrder = @"order";
 {
     [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-}
-
-- (void)prepareUI
-{
-    self.domainNameTextField.layer.borderColor = [UIColor lightGrayBorderColor].CGColor;
-    self.domainNameTextField.layer.borderWidth = 1.5f;
-    self.domainNameTextField.layer.cornerRadius = 3.f;
 }
 
 - (void)displayDataIfNeeded

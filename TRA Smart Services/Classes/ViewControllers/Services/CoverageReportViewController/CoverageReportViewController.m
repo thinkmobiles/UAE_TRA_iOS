@@ -11,7 +11,7 @@
 
 @interface CoverageReportViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
@@ -189,6 +189,7 @@
     UIColor *color = [self.dynamicService currentApplicationColor];
     self.activityIndicator.color = color;
     self.signalLevelSlider.minimumTrackTintColor = color;
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private

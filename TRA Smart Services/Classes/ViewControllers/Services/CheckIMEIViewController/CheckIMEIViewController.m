@@ -11,7 +11,7 @@
 @interface CheckIMEIViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *barcodeView;
-@property (weak, nonatomic) IBOutlet UITextField *resultTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
@@ -136,6 +136,7 @@
     [self.cameraButton.imageView setTintColor:[self.dynamicService currentApplicationColor]];
     [self.checkIMEIButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private

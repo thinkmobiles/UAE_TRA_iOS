@@ -13,20 +13,19 @@
 #import "PlaceholderTextView.h"
 
 static NSInteger const BlockServiceNumber = 7726;
-static CGFloat const heightSelectTableViewCell = 33.f;
-static CGFloat const verticalTopReportTextFieldConstreintSpamSMS = 89.f;
+static CGFloat const heightSelectTableViewCell = 40.f;
+static CGFloat const verticalTopReportTextFieldConstreintSpamSMS = 96.f;
 static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 @interface SpamReportViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *reportTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *reportTextField;
 @property (weak, nonatomic) IBOutlet PlaceholderTextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalTopReportTextFieldConstreint;
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
 @property (weak, nonatomic) IBOutlet UIView *separatorDescription;
-@property (weak, nonatomic) IBOutlet UIView *separatorReport;
 @property (weak, nonatomic) IBOutlet UIView *separatorSelectedProvider;
 
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
@@ -175,16 +174,19 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 - (void)updateColors
 {
+    [super updateColors];
+    
     UIColor *color = [self.dynamicService currentApplicationColor];
     
     self.reportButton.backgroundColor = color;
     self.descriptionTextView.textColor = color;
     self.reportTextField.textColor = color;
     self.separatorDescription.backgroundColor = color;
-    self.separatorReport.backgroundColor = color;
     self.separatorSelectedProvider.backgroundColor = color;
     [super updateBackgroundImageNamed:@"img_bg_service"];
     [self.selectTableView reloadData];
+    [self.reportButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [AppHelper setStyleForTextView:self.descriptionTextView];
 }
 
 - (void)setRTLArabicUI

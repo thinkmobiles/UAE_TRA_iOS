@@ -7,7 +7,7 @@
 //
 
 IB_DESIGNABLE
-@interface PlaceholderTextView : UITextView
+@interface PlaceholderTextView : BottomBorderTextView
 
 @property (strong, nonatomic) IBInspectable NSString *placeholder;
 @property (strong, nonatomic) IBInspectable UIColor *placeholderColor;
