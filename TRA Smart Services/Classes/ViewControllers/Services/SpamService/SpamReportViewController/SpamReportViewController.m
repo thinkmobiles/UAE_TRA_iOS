@@ -234,7 +234,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         [UINavigationBar appearance].tintColor = [UIColor whiteColor];
         [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:17] : [UIFont latoRegularWithSize:17]};
         
-        NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
+        NSArray *recipents = @[[NSString stringWithFormat:@"%i", (int)BlockServiceNumber]];
         NSString *message = [NSString stringWithFormat:@"b %@", self.reportTextField.text];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];

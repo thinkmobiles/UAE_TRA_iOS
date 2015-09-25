@@ -156,7 +156,7 @@
 		EDD3E5921B5DA96300405367 /* BaseMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5911B5DA96300405367 /* BaseMembershipViewController.m */; };
 		EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5991B5DAC0900405367 /* Animation.m */; };
 		EDD3E5A11B5E4ACE00405367 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD3E5A01B5E4ACE00405367 /* Security.framework */; };
-		EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */; };
+		EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5A41B5E4B0800405367 /* KeychainStorage.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DE61B6A335E00334503 /* HomeViewController.m */; };
 		EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DEB1B6A338000334503 /* MenuCollectionViewCell.m */; };
 		EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF01B6A33A600334503 /* HexagonView.m */; };

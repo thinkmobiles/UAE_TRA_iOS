@@ -241,7 +241,7 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (void)presentMFController
 {
-    NSArray *recipents = @[[NSString stringWithFormat:@"%li", UnblockServiceNumber]];
+    NSArray *recipents = @[[NSString stringWithFormat:@"%i", (int)UnblockServiceNumber]];
     NSString *message = [NSString stringWithFormat:@"u %@", @"<HERE ADD NUMBER TO UNBLOCK>"];
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
