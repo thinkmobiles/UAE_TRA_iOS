@@ -37,8 +37,6 @@ static NSString *const UIDynamicServiceNotificationKeyNeedUpdateFont = @"UIDynam
 
 @interface DynamicUIService : NSObject
 
-@property (assign, nonatomic) BOOL fontWasChanged;
-
 @property (assign, nonatomic) ApplicationFont fontSize;
 @property (assign, nonatomic) ApplicationColor colorScheme;
 @property (assign, nonatomic) LanguageType language;

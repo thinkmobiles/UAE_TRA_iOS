@@ -36,6 +36,10 @@
 {
     [self.speedChecker performAccurateInternetTest];
     self.loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:YES];
+    __weak typeof(self) weakSelf = self;
+    self.loader.TRALoaderWillClose = ^() {
+        [weakSelf.speedChecker stopTest];
+    };
 }
 
 #pragma mark - InternetSpeedCheckerDelegate

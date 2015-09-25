@@ -31,9 +31,7 @@
     } else {
         [self setLTREuropeUI];
     }
-    if (self.dynamicService.fontWasChanged) {
-        [self setNeedsUpdateFontWithSize];
-    }
+    [self setNeedsUpdateFontWithSize];
 }
 
 - (void)viewWillAppear:(BOOL)animated

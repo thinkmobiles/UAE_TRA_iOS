@@ -45,6 +45,14 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     [self testInternetDownloadSpeed];
 }
 
+- (void)stopTest
+{
+    [self.URLConnection cancel];
+    if (self.URLConnection) {
+        self.URLConnection = nil;
+    }
+}
+
 #pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(nonnull NSURLConnection *)connection didReceiveResponse:(nonnull NSURLResponse *)response

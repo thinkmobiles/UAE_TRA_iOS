@@ -37,7 +37,6 @@ static NSString *const KeyLanguageArabic = @"ar";
         [self prepareDefaultLocaleBundle];
         self.fontSize = [self currentApplicationFontSize];
         self.colorScheme = [self savedApplicationColor];
-        self.fontWasChanged = NO;
     }
     return self;
 }
@@ -109,7 +108,6 @@ static NSString *const KeyLanguageArabic = @"ar";
     if (_fontSize != prevFont ){
         [[NSNotificationCenter defaultCenter] postNotificationName:UIDynamicServiceNotificationKeyNeedUpdateFontWithSize object:nil];
     }
-    self.fontWasChanged = YES;
 }
 
 #pragma mark - ColorScheme
