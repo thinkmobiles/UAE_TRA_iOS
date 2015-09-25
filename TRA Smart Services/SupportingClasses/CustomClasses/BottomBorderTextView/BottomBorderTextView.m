@@ -16,6 +16,8 @@
 
 @implementation BottomBorderTextView
 
+#pragma mark - LifeCycle
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -34,7 +36,14 @@
     return self;
 }
 
-#pragma mark - Property
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    _bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+}
+
+#pragma mark - Accessor
 
 - (void)setBottomBorderColor:(UIColor *)bottomBorderColor
 {

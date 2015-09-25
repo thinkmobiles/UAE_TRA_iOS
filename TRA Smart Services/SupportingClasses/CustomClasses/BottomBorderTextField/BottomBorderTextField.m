@@ -34,6 +34,13 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    _bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+}
+
 #pragma mark - Property
 
 - (void)setBottomBorderColor:(UIColor *)bottomBorderColor
