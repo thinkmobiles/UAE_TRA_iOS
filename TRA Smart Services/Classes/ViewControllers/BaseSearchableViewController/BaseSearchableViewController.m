@@ -58,6 +58,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    self.searchBar.text = @"";
     [self.searchBar.layer addAnimation:[Animation fadeAnimFromValue:1 to:0 delegate:self] forKey:@"hideSearchBar"];
     self.searchBar.layer.opacity = 0.f;
     [self.searchBar endEditing:YES];

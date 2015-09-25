@@ -117,7 +117,7 @@ static LanguageType startingLanguageType;
     cell.previewLogoImage = logo;
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
-        cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
+        cell.announcementPreviewDescriptionLabel.text = @"Your app ";
     }
     cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
     
@@ -162,7 +162,7 @@ static LanguageType startingLanguageType;
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
-    cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
+    cell.infoHubTransactionDescriptionLabel.text = @"Your application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
     cell.infoHubTransactionTitleLabel.textColor = [self.dynamicService currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];

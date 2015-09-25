@@ -1,10 +1,10 @@
 /*
-  Localizable.strings
-  TRA Smart Services
-
-  Created by Kirill Gorbushko on 13.07.15.
-  Copyright © 2015 Thinkmobiles. All rights reserved.
-*/
+ Localizable.strings
+ TRA Smart Services
+ 
+ Created by Kirill Gorbushko on 13.07.15.
+ Copyright © 2015 Thinkmobiles. All rights reserved.
+ */
 
 //API descriptors
 
@@ -35,21 +35,21 @@
 "message.InvalidFormatLastName" = "Invalid Last Name";
 "message.InvalidFormatMobile" = "Invalid mobilePhone";
 "message.InvalidFormatEmail" = "Invalid Email";
-"message.InvalidFormatURL" = "Invalid URL format";
-"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
+"message.InvalidFormatURL" = "الرابط غير صحيح";
+"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
 "message.FailedToSendSMS" = "Cant sent SMS";
 "message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
 
 //StatesNames
 
-"state.SelectState" = "Select State";
-"state.Abu.Dhabi" = "Abu Dhabi";
-"state.Ajman" = "Ajman";
-"state.Dubai" = "Dubai";
-"state.Fujairah" = "Fujairah";
-"state.Ras" = "Ras al-Khaiman";
-"state.Sharjan" = "Sharjah";
-"state.Quwain" = "Umm al-Quwain";
+"state.SelectState" = "الإمارة";
+"state.Abu.Dhabi" = "أبوظبي";
+"state.Ajman" = "عجمان";
+"state.Dubai" = "دبي";
+"state.Fujairah" = "الفجيرة";
+"state.Ras" = "رأس الخيمة";
+"state.Sharjan" = "الشارقة";
+"state.Quwain" = "أم القيوين";
 
 //ProviderType
 
@@ -76,8 +76,8 @@
 "login.button.registerButton" = "تسجيل";
 
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
-"login.picker.genre.male" = "Male";
-"login.picker.genre.female" = "Female";
+"login.picker.genre.male" = "ذكر";
+"login.picker.genre.female" = "انثى";
 "login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
@@ -89,15 +89,15 @@
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
-"register.placeHolderText.confirmPassword" = "Comfirm Password";
-"register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "e.g: 784-YYYY-NNNNNNN-C";
-"register.placeHolderText.lastName" = "Last Name";
-"register.placeHolderText.address" = "Address";
-"register.placeHolderText.landline" = "Landline";
-"register.placeHolderText.country" = "Country";
-"register.placeHolderText.email" = "Email";
-"register.placeHolderText.state" = "State";
+"register.placeHolderText.confirmPassword" = "تأكيد كلمة المرور";
+"register.placeHolderText.firstName" = "الاسم";
+"register.placeHolderText.emirateID" = "هوة الإمارات";
+"register.placeHolderText.lastName" = "اللقب";
+"register.placeHolderText.address" = "العنوان";
+"register.placeHolderText.landline" = "الهاتف الأرضي";
+"register.placeHolderText.country" = "البلد";
+"register.placeHolderText.email" = "البريد الالكتروني";
+"register.placeHolderText.state" = "الامارة";
 
 //SelectRegisterViewController
 "register.label.registerInfo" = "SELECT A WAY TO REGISTER";
@@ -106,7 +106,7 @@
 
 //RestorePasswordViewController
 
-"restorePassword.title" = "Restore Password";
+"restorePassword.title" = "استعادة كلمة المرور";
 "restorePassword.PlaceholderText.email" = "البريد الالكتروني";
 "restorePassword.button.restore" = "Restore Password";
 "restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
@@ -122,7 +122,7 @@
 "settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
 "settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
 "settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
-"settings.label.colorThemeTitle" = "Color Theme";
+"settings.label.colorThemeTitle" = "تغيير اللون";
 "settings.label.colorThemeDetails" = "Change color theme for app";
 "settings.label.aboutTRATitle" = "عن الهيئة";
 "settings.label.aboutTRADetails" = "Read mare about TRA";
@@ -145,18 +145,18 @@
 "speedAccess.service.name.-1" = "Demo";
 "speedAccess.service.name.0" = "تفاصيل النطاق";
 "speedAccess.service.name.1" = "تحقق من توفر النطاق";
-"speedAccess.service.name.2" = "Domain Check";
-"speedAccess.service.name.3" = "Mobile Brand1";
-"speedAccess.service.name.4" = "Feedback1";
+"speedAccess.service.name.2" = "هوية الجهاز";
+"speedAccess.service.name.3" = "الأجهزة المعتمدة";
+"speedAccess.service.name.4" = "تعليقاتكم";
 "speedAccess.service.name.5" = "رسائل غير مرغوبة";
-"speedAccess.service.name.6" = "Help Salim";
+"speedAccess.service.name.6" = "ساعد سالم";
 "speedAccess.service.name.7" = "تحقق";
 "speedAccess.service.name.8" = "التغطية";
 "speedAccess.service.name.9" = "انترنت";
-"speedAccess.service.name.10" = "شكوى";
+"speedAccess.service.name.10" = "شكوى على مزود خدمة";
 "speedAccess.service.name.11" = "اقتراح";
-"speedAccess.service.name.12" = "إستفسار المتوافقة";
-"speedAccess.service.name.13" = "Compliant TRA";
+"speedAccess.service.name.12" = "المتوافقة";
+"speedAccess.service.name.13" = "شكوى على الهيئة";
 
 //NotificationsViewController
 
@@ -203,7 +203,7 @@
 "coverageLevel.title" = "قوة التغطية";
 "coverageReport.reportSignalButton.title" = "Report signal";
 "coverageReport.detectLocationButton.title" = "Detect location";
-"coverageReport.addressTextField" = "Address";
+"coverageReport.addressTextField" = "العنوان";
 "coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
@@ -261,7 +261,7 @@
 
 //HelpSalimViewController
 
-"helpSalimViewController.title" = "Help Salim Service";
+"helpSalimViewController.title" = "خدمة ساعد سالم";
 "helpSalimViewController.urlToReportTextField" = "URL to report";
 "helpSalimViewController.commentLabel.text" = "Comment";
 "helpSalimViewController.reportURLButton.title" = "Report URL";
