@@ -286,13 +286,12 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
                 snapshotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
                 snapshotView.alpha = 0.98f;
                 selectedCell.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                selectedCell.hidden = YES;
             }];
             break;
         }
         case UIGestureRecognizerStateChanged: {
             if (self.removeProcessIsActive) {
+                selectedCell.hidden = YES;
                 CGPoint center = snapshotView.center;
                 center.y = location.y;
                 snapshotView.center = center;
