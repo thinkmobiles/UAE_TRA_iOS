@@ -9,21 +9,28 @@
 #import "SpamReportViewController.h"
 #import "NetworkManager.h"
 #import "LoginViewController.h"
+#import "ServicesSelectTableViewCell.h"
+#import "PlaceholderTextView.h"
 
 static NSInteger const BlockServiceNumber = 7726;
+static CGFloat const heightSelectTableViewCell = 33.f;
+static CGFloat const verticalTopReportTextFieldConstreintSpamSMS = 89.f;
+static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
-@interface SpamReportViewController () 
+@interface SpamReportViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
-@property (weak, nonatomic) IBOutlet UITextField *providerType;
-
-@property (weak, nonatomic) IBOutlet UITextView *notes;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *reportSegment;
+@property (weak, nonatomic) IBOutlet UITextField *reportTextField;
+@property (weak, nonatomic) IBOutlet PlaceholderTextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalDescriptionsContreint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalTopReportTextFieldConstreint;
+@property (weak, nonatomic) IBOutlet UITableView *selectTableView;
+@property (weak, nonatomic) IBOutlet UIView *separatorDescription;
+@property (weak, nonatomic) IBOutlet UIView *separatorReport;
+@property (weak, nonatomic) IBOutlet UIView *separatorSelectedProvider;
 
-@property (strong, nonatomic) UIPickerView *selectProviderPicker;
-@property (strong, nonatomic) NSArray *pickerSelectProviderDataSource;
+@property (strong, nonatomic) NSArray *selectProviderDataSource;
+@property (strong, nonatomic) NSString *selectedProvider;
 
 @end
 
@@ -31,13 +38,22 @@ static NSInteger const BlockServiceNumber = 7726;
 
 #pragma mark - LifeCycle
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.selectedProvider = @"";
+    self.reportButton.layer.cornerRadius = 5.f;
+
+    [self prepareDataSource];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self presentLoginIfNeeded];
-    [self preparePickerDataSource];
-    [self configureSelectProviderTextFieldInputView];
+
+    [self didChangeReportType:self.selectSpamReport];
+    [self configureTextField];
 }
 
 #pragma mark - IBAction
@@ -45,35 +61,22 @@ static NSInteger const BlockServiceNumber = 7726;
 - (IBAction)responseSpam:(id)sender
 {
     [self.view endEditing:YES];
-    if (self.reportSegment.selectedSegmentIndex) {
-        if (!self.phoneNumber.text.length || !self.notes.text.length) {
+    if (self.selectSpamReport == SpamReportTypeWeb) {
+        if (!self.reportTextField.text.length) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        }  else  if (![self.reportTextField.text isValidURL]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatURL")];
+        } else {
+            [self helpSalimReport];
+        }
+    } else if (self.selectSpamReport == SpamReportTypeSMS) {
+        if (!self.reportTextField.text.length || !self.selectedProvider.length || !self.descriptionTextView.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
         }
-    } else {
-        if (!self.phoneNumber.text.length || !self.providerType.text.length || !self.notes.text.length) {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
-        } else {
-            [self POSTSMSBlock];
-            [self sendSMSMessage];
-        }
     }
-}
-
-- (IBAction)didChangeReportType:(UISegmentedControl *)sender
-{
-    if (sender.selectedSegmentIndex) {
-        self.providerType.hidden = YES;
-        [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSpamButton.title") forState:UIControlStateNormal];
-    } else {
-        self.providerType.hidden = NO;
-        [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
-    }
-    
-    [self animatinSelectReportType];
-    [self clearUp];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -95,74 +98,130 @@ static NSInteger const BlockServiceNumber = 7726;
     return YES;
 }
 
-#pragma mark - UIPickerViewDataSource
+#pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 1;
+    NSString *identifierCell = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
+    ServicesSelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
+    if (indexPath.row) {
+        cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
+        cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
+    } else {
+        cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
+        cell.selectProviderImage.image = self.heightTableViewConstraint.constant == heightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
+        if (self.selectedProvider.length) {
+            cell.selectProviderLabel.text = self.selectedProvider;
+            cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
+        } else {
+            cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
+            cell.selectProviderLabel.textColor = [UIColor lightGrayColor];
+        }
+    }
+    [self configureCell:cell];
+    return cell;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (void)configureCell:(UITableViewCell *)cell
 {
-    NSInteger pickerRowsInComponent = 0;
-    if (pickerView == self.selectProviderPicker) {
-        pickerRowsInComponent = self.pickerSelectProviderDataSource.count;
-    }
-    return pickerRowsInComponent;
+    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.size.height + 1, cell.frame.size.width, cell.frame.size.height)];
+    selectedView.backgroundColor = [UIColor clearColor];
+    [cell setSelectedBackgroundView:selectedView];
 }
 
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *pickerTitle = @"";
-    if (pickerView == self.selectProviderPicker) {
-        pickerTitle = (NSString *)self.pickerSelectProviderDataSource[row];
-    }
-    return pickerTitle;
+    return self.selectProviderDataSource.count;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (pickerView == self.selectProviderPicker) {
-        self.providerType.text = self.pickerSelectProviderDataSource[row];
+    return heightSelectTableViewCell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.view endEditing:YES];
+    
+    if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
+        [self animationSelectTableView:YES];
+    } else {
+        [self animationSelectTableView:NO];
+        if (indexPath.row) {
+            self.selectedProvider = self.selectProviderDataSource[indexPath.row];
+            [self.selectTableView reloadData];
+        }
     }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
+    [tableView setLayoutMargins:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
 }
 
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
-    self.title = dynamicLocalizedString(@"spamReportViewControler.title");
-    self.phoneNumber.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.phoneNumber");
-    self.providerType.placeholder = dynamicLocalizedString(@"spamReportViewControler.textField.providerType");
+    self.title = dynamicLocalizedString(self.selectSpamReport == SpamReportTypeSMS ? @"spamReportViewControler.title.spamSMS" : @"spamReportViewControler.title.spamWEB");
+    self.reportTextField.placeholder = dynamicLocalizedString(self.selectSpamReport == SpamReportTypeSMS ?@"spamReportViewControler.reportTextField.reportSMS" : @"spamReportViewControler.reportTextField.reportWeb");
     [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
-    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex0.title") forSegmentAtIndex:0];
-    [self.reportSegment setTitle:dynamicLocalizedString(@"spamReportViewControler.reportSegment.forSegmentAtIndex1.title") forSegmentAtIndex:1];
+    self.descriptionTextView.placeholder = dynamicLocalizedString(@"spamReportViewControler.descriptionTextView.placeholder");
 }
 
 - (void)updateColors
 {
-    [super updateColors];
-    
     UIColor *color = [self.dynamicService currentApplicationColor];
-    self.reportSegment.tintColor = color;
-    self.notes.layer.borderColor = color.CGColor;
-    self.notes.textColor = color;
-    [AppHelper setStyleForLayer:self.notes.layer];
+    
+    self.reportButton.backgroundColor = color;
+    self.descriptionTextView.textColor = color;
+    self.reportTextField.textColor = color;
+    self.separatorDescription.backgroundColor = color;
+    self.separatorReport.backgroundColor = color;
+    self.separatorSelectedProvider.backgroundColor = color;
+    [super updateBackgroundImageNamed:@"img_bg_service"];
+    [self.selectTableView reloadData];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
 }
 
 #pragma mark - Networking
 
+- (void)helpSalimReport
+{
+    [AppHelper showLoader];
+    [self.view endEditing:YES];
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.reportTextField.text notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+        } else {
+            [AppHelper alertViewWithMessage:response];
+        }
+        [AppHelper hideLoader];
+    }];
+}
+
 - (void)POSTSpamReport
 {
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.phoneNumber.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSSpamReport:self.reportTextField.text notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
     }];
 }
 
 - (void)POSTSMSBlock
 {
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.phoneNumber.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.providerType.text notes:self.notes.text requestResult:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.reportTextField.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.selectedProvider notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
     }];
 }
 
@@ -175,8 +234,8 @@ static NSInteger const BlockServiceNumber = 7726;
         [UINavigationBar appearance].tintColor = [UIColor whiteColor];
         [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:17] : [UIFont latoRegularWithSize:17]};
         
-        NSArray *recipents = @[[NSString stringWithFormat:@"%li", (long)BlockServiceNumber]];
-        NSString *message = [NSString stringWithFormat:@"b %@", self.phoneNumber.text];
+        NSArray *recipents = @[[NSString stringWithFormat:@"%li", BlockServiceNumber]];
+        NSString *message = [NSString stringWithFormat:@"b %@", self.reportTextField.text];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
         messageController.messageComposeDelegate = self;
@@ -208,38 +267,75 @@ static NSInteger const BlockServiceNumber = 7726;
 
 #pragma mark - Private
 
-- (void)animatinSelectReportType
+- (void)configureTextField
 {
+    UIImage *image = [UIImage imageNamed:self.selectSpamReport == SpamReportTypeSMS ? @"ic_phone_spam" : @"ic_www"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [imageView setImage:image];
+    imageView.tintColor = [self.dynamicService currentApplicationColor];
+    self.reportTextField.rightView = nil;
+    self.reportTextField.leftView = nil;
+    if (self.dynamicService.language == LanguageTypeArabic) {
+        self.reportTextField.leftViewMode = UITextFieldViewModeAlways;
+        self.reportTextField.leftView = imageView;
+    } else {
+        self.reportTextField.rightViewMode = UITextFieldViewModeAlways;
+        self.reportTextField.rightView = imageView;
+    }
+}
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.descriptionTextView.textAlignment = alignment;
+    self.reportTextField.textAlignment = alignment;
+    [self.descriptionTextView setNeedsDisplay];
+}
+
+- (void)didChangeReportType:(SpamReportType)select
+{
+    if (select == SpamReportTypeWeb) {
+        self.selectTableView.hidden = YES;
+        self.separatorSelectedProvider.hidden = YES;
+        self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
+    } else {
+        [self presentLoginIfNeeded];
+        self.selectTableView.hidden = NO;
+        self.separatorSelectedProvider.hidden = NO;
+        self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamSMS;
+    }
+    [self clearUp];
+}
+
+- (void)animationSelectTableView:(BOOL)selected
+{
+    CGFloat heightTableView = heightSelectTableViewCell;
+    if (selected) {
+        heightTableView = heightSelectTableViewCell * self.selectProviderDataSource.count;
+    }
     [self.view layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.2 animations:^{
-        weakSelf.verticalDescriptionsContreint.constant = weakSelf.verticalDescriptionsContreint.constant == 18 ? 65 : 18;
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.heightTableViewConstraint.constant = heightTableView;
+        self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamSMS + heightTableView - heightSelectTableViewCell;
         [weakSelf.view layoutIfNeeded];
     }];
-}
-
-- (void)preparePickerDataSource
-{
-    self.pickerSelectProviderDataSource = @[
-                                            dynamicLocalizedString(@"providerType.Du"),
-                                            dynamicLocalizedString(@"providerType.Etisalat"),
-                                            ];
-    [self.selectProviderPicker reloadAllComponents];
-}
-
-- (void)configureSelectProviderTextFieldInputView
-{
-    self.selectProviderPicker = [[UIPickerView alloc] init];
-    self.selectProviderPicker.delegate = self;
-    self.selectProviderPicker.dataSource = self;
-    self.providerType.inputView = self.selectProviderPicker;
+    [self.selectTableView reloadData];
 }
 
 - (void)clearUp
 {
-    self.providerType.text = @"";
-    self.phoneNumber.text = @"";
-    self.notes.text = @"";
+    self.reportTextField.text = @"";
+    self.descriptionTextView.text = @"";
+    self.selectedProvider= @"";
+}
+
+- (void)prepareDataSource
+{
+    self.selectProviderDataSource = @[
+                                      dynamicLocalizedString(@"providerType.selectProvider.text"),
+                                      dynamicLocalizedString(@"providerType.Du"),
+                                      dynamicLocalizedString(@"providerType.Etisalat"),
+                                      ];
 }
 
 @end

@@ -8,6 +8,13 @@
 
 #import <MessageUI/MessageUI.h>
 
-@interface SpamReportViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MFMessageComposeViewControllerDelegate>
+typedef NS_ENUM(NSUInteger, SpamReportType) {
+    SpamReportTypeSMS,
+    SpamReportTypeWeb
+};
+
+@interface SpamReportViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate>
+
+@property (assign, nonatomic) SpamReportType selectSpamReport;
 
 @end

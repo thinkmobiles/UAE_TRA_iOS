@@ -32,7 +32,12 @@ static LanguageType startLanguage;
 
     [self configureDataSource];
     [self configurePageControl];
-    self.tutorialPageControl.currentPage = 0;
+    
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (startLanguage == LanguageTypeArabic) {
+            self.tutorialPageControl.currentPage = TutorialPageCount - 1;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -128,7 +133,7 @@ static LanguageType startLanguage;
     [super updateBackgroundImageNamed:@"res_img_tut_fakeHome_1"];
     
     if (self.dynamicService.colorScheme != ApplicationColorBlackAndWhite) {
-        NSString *backgrounfImageName = [NSString stringWithFormat:@"res_img_tut_fakeHome_%i", (int)self.dynamicService.colorScheme];
+        NSString *backgrounfImageName = [NSString stringWithFormat:@"res_img_tut_fakeHome_en_%i",/* self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en", */(int)self.dynamicService.colorScheme];
         self.backgroundImageView.image = [UIImage imageNamed:backgrounfImageName];
     }
     
@@ -143,16 +148,14 @@ static LanguageType startLanguage;
 
 - (void)setRTLArabicUI
 {
-//    self.tutorialPageControl.layer.transform = TRANFORM_3D_SCALE;
     self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
-
+    self.tutorialPageControl.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
 }
 
 - (void)setLTREuropeUI
 {
-//    self.tutorialPageControl.layer.transform = CATransform3DIdentity;
     self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
-
+    self.tutorialPageControl.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
 }
 
 #pragma mark - Private
@@ -162,12 +165,7 @@ static LanguageType startLanguage;
     self.tutorialImages = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < TutorialPageCount; i++) {
-        NSString *fileName;
-        if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
-            fileName = [NSString stringWithFormat:@"TutorialScreen%i_1", (int)(i + 1)];
-        } else {
-            fileName = [NSString stringWithFormat:@"TutorialScreen%i_%i", (int)(i + 1), (int)self.dynamicService.colorScheme];
-        }
+        NSString *fileName = [NSString stringWithFormat:@"TutorialScreen%i_en", (int)(i + 1)/*, self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en"*/];
         
         UIImage *tutorialScreen = [UIImage imageNamed:fileName];
         if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
