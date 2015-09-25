@@ -10,7 +10,7 @@
 
 static CGFloat MaximumElapsedTime = 8.f;
 static NSUInteger Repeats = 10;
-static NSUInteger AccurateTestRepeats = 7;
+static NSUInteger AccurateTestRepeats = 3;
 
 
 static NSString *const TestFilePath = @"https://drive.google.com/uc?export=download&id=0B1GU18BxUf8hTFdUcFpMejlYUXc";
@@ -43,6 +43,14 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
     self.tryCount = 0;
     self.isAccurateTest = YES;
     [self testInternetDownloadSpeed];
+}
+
+- (void)stopTest
+{
+    [self.URLConnection cancel];
+    if (self.URLConnection) {
+        self.URLConnection = nil;
+    }
 }
 
 #pragma mark - NSURLConnectionDataDelegate
@@ -111,7 +119,6 @@ static NSString *const TestFilePath = @"https://drive.google.com/uc?export=downl
             if (self.delegate && [self.delegate respondsToSelector:@selector(speedCheckerDidCalculateSpeed:testMethod:)]) {
                 [self.delegate speedCheckerDidCalculateSpeed:self.averageSpeed testMethod:SpeedTestTypeAccurate];
             }
-            
         }
     } else {
         if (speed < 0 && self.tryCount < Repeats) {

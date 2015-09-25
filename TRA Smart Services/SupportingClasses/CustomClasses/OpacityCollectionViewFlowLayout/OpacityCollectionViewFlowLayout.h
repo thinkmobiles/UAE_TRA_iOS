@@ -6,9 +6,6 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface OpacityCollectionViewFlowLayout : UICollectionViewFlowLayout
-
 
 @end

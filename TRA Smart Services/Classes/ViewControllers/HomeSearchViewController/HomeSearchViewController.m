@@ -8,9 +8,12 @@
 
 #import "HomeSearchViewController.h"
 #import "Animation.h"
+#import "TRAService.h"
+#import "AppDelegate.h"
+#import "HomeSearchResultViewController.h"
 
-static NSString *const homeSearchCellIdentifier = @"homeSearchCell";
-static CGFloat heightTableViewCell = 35.f;
+static NSString *const HomeSearchCellIdentifier = @"homeSearchCell";
+static CGFloat const HeightTableViewCell = 35.f;
 
 @interface HomeSearchViewController ()
 
@@ -21,7 +24,7 @@ static CGFloat heightTableViewCell = 35.f;
 @property (weak, nonatomic) IBOutlet UIImageView *fakeBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerView;
 
-@property (strong, nonatomic) NSArray *developmentDataSource;
+@property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
 
 @end
@@ -47,12 +50,25 @@ static CGFloat heightTableViewCell = 35.f;
     self.navigationController.navigationBar.hidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.homeSearchTextField becomeFirstResponder];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [self closeButtonTapped:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)dealloc
@@ -64,26 +80,14 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeSearchCellIdentifier];
-    
-    cell.textLabel.text = self.filteredDataSource[indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell.textLabel.textAlignment = NSTextAlignmentRight;
-        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
-    } else {
-        cell.textLabel.textAlignment = NSTextAlignmentLeft;
-        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
-    }
-    if (self.homeSearchTextField.text.length) {
-        [self highlightingSearchText:cell.textLabel];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeSearchCellIdentifier];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return heightTableViewCell;
+    return HeightTableViewCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -93,25 +97,13 @@ static CGFloat heightTableViewCell = 35.f;
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20.f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CAGradientLayer *headerGradient = [CAGradientLayer layer];
-    headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, 20.f);
-    headerGradient.colors = @[(id)[[DynamicUIService service] currentApplicationColor].CGColor, (id)[[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.2f].CGColor];
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20.f)];
-    [headerView.layer addSublayer:headerGradient];
-    
-    return headerView;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.didSelectService) {
+        TRAService *selectedService = self.filteredDataSource[indexPath.row];
+        self.didSelectService([selectedService.serviceInternalID integerValue]);
+    }
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -132,25 +124,24 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)updateColors
 {
-    self.conteinerView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.conteinerView.backgroundColor = [[self.dynamicService currentApplicationColor] colorWithAlphaComponent:0.95];
 }
 
 - (void)setRTLArabicUI
 {
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 35, 0, 15)];
+  
     self.homeSearchLabel.textAlignment = NSTextAlignmentRight;
     self.homeSearchTextField.textAlignment = NSTextAlignmentRight;
     
-    self.conteinerSearchView.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.homeSearchLabel.layer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.homeSearchTextField.layer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.conteinerSearchView.layer.transform = TRANFORM_3D_SCALE;
+    self.homeSearchLabel.layer.transform = TRANFORM_3D_SCALE;
+    self.homeSearchTextField.layer.transform = TRANFORM_3D_SCALE;
 }
 
 - (void)setLTREuropeUI
 {
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 35)];
-    self.homeSearchLabel.textAlignment = NSTextAlignmentLeft;
-    self.homeSearchTextField.textAlignment = NSTextAlignmentLeft;
 }
 
 #pragma mark - KeyboardNotification
@@ -167,21 +158,36 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)textFieldDidChangeText:(id)sender
 {
-    if(self.homeSearchTextField.text.length) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", self.homeSearchTextField.text];
-        self.filteredDataSource = [self.developmentDataSource filteredArrayUsingPredicate:predicate];
+    if (self.homeSearchTextField.text.length) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(TRAService *service, NSDictionary *bindings) {
+            NSString *localizedServiceName = dynamicLocalizedString(service.serviceName);
+            BOOL containsString = [localizedServiceName rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch].location !=NSNotFound;
+            return containsString;
+        }];
+        [self fetchFavouriteList];
+        self.filteredDataSource = [[self.dataSource filteredArrayUsingPredicate:predicate] mutableCopy];
+        
+        self.dataSource = self.filteredDataSource;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-        self.filteredDataSource = [[NSArray alloc] initWithArray: self.developmentDataSource];
+        self.filteredDataSource = [[NSArray alloc] init];
     }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - CoreData
+
+- (void)fetchFavouriteList
+{
+    self.dataSource = [[CoreDataManager sharedManager] fetchServiceList];
 }
 
 #pragma mark - Private
 
 - (void)prepareDataSource
 {
-    self.developmentDataSource = @[@"Bulgaria, Sofia", @"Croatia, Zagreb", @"France, Paris", @"Hungary, Budapest", @"Italy, Rome", @"Poland, Warsaw", @"Slovakia, Bratislava", @"Great Britain, London", @"Macedonia, Skopje", @"Switzerland, Bern"];
-    self.filteredDataSource = [[NSArray alloc] initWithArray: self.developmentDataSource];
+    [self fetchFavouriteList];
+    self.filteredDataSource = [[NSArray alloc] init];
 }
 
 - (void)prepareUI
@@ -198,11 +204,32 @@ static CGFloat heightTableViewCell = 35.f;
 
 - (void)highlightingSearchText:(UILabel *)label
 {
-    NSDictionary *attribs = @{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName:label.font };
+    NSDictionary *attribs = @{
+                              NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.5],
+                              NSFontAttributeName : label.font
+                              };
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text attributes:attribs];
     NSRange searchTextRange = [label.text rangeOfString:self.homeSearchTextField.text options:NSCaseInsensitiveSearch];
-    [attributedText setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} range:searchTextRange];
+    [attributedText setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} range:searchTextRange];
     label.attributedText = attributedText;
+}
+
+#pragma mark - Configurations
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.text = dynamicLocalizedString(((TRAService *)self.filteredDataSource[indexPath.row]).serviceName);
+    cell.textLabel.textColor = [UIColor whiteColor];
+    if (self.dynamicService.language == LanguageTypeArabic) {
+        cell.textLabel.textAlignment = NSTextAlignmentRight;
+        cell.textLabel.font = [UIFont droidKufiRegularFontForSize:14];
+    } else {
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        cell.textLabel.font = [UIFont latoRegularWithSize:14];
+    }
+    if (self.homeSearchTextField.text.length) {
+        [self highlightingSearchText:cell.textLabel];
+    }
 }
 
 @end

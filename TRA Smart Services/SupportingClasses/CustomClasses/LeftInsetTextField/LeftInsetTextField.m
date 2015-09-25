@@ -27,12 +27,28 @@
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectInset( bounds, self.insetValue,0);
+    return CGRectInset( bounds, self.insetValue, 0);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
     return CGRectInset( bounds, self.insetValue, 0);
+}
+
+- (CGRect)placeholderRectForBounds:(CGRect)bounds
+{
+    return CGRectInset( bounds, self.insetValue, 0);
+}
+
+#pragma mark - UIKeyInput
+
+- (void)deleteBackward
+{
+    [super deleteBackward];
+    
+    if (self.subDelegate && [self.subDelegate respondsToSelector:@selector(textFieldDidDelete:)]){
+        [self.subDelegate textFieldDidDelete:self];
+    }
 }
 
 @end

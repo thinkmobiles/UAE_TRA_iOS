@@ -11,6 +11,8 @@
 		<string>ic_info_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.0</string>
+		<key>serviceKeyName</key>
+		<string>about</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -21,6 +23,8 @@
 		<string>btn_doc_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.1</string>
+		<key>serviceKeyName</key>
+		<string>requiredDocuments</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -31,6 +35,8 @@
 		<string>btn_terms_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.2</string>
+		<key>serviceKeyName</key>
+		<string>termsAndCondition</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -41,6 +47,8 @@
 		<string>btn_serv_packbig</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.3</string>
+		<key>serviceKeyName</key>
+		<string>package</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -51,6 +59,8 @@
 		<string>btn_time_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.4</string>
+		<key>serviceKeyName</key>
+		<string>expectedTime</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -61,6 +71,8 @@
 		<string>btn_fees_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.5</string>
+		<key>serviceKeyName</key>
+		<string>fee</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -71,6 +83,8 @@
 		<string>btn_contact_big</string>
 		<key>serviceInfoItmeDetailedDescription</key>
 		<string>serviceInfoItmeDetailedDescription.6</string>
+		<key>serviceKeyName</key>
+		<string>officer</string>
 	</dict>
 </array>
 </plist>

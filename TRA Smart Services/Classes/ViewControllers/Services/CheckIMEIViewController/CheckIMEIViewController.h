@@ -12,4 +12,6 @@
 
 @property (assign, nonatomic) BOOL needTransparentNavigationBar;
 
+@property (strong, nonatomic) void (^didFinishWithResult)(NSString *result);
+
 @end

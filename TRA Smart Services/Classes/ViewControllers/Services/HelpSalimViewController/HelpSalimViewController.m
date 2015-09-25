@@ -31,16 +31,14 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatURL")];
         return;
     }
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.urlToReportTextField.text notes:self.commentTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
         } else {
-            [AppHelper alertViewWithMessage:response];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }
-        
-        [AppHelper hideLoader];
     }];
 }
 
@@ -79,7 +77,7 @@
     [super updateColors];
     
     [AppHelper setStyleForLayer:self.commentTextView.layer];
-    self.commentTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.commentTextView.textColor = [self.dynamicService currentApplicationColor];
 }
 
 @end

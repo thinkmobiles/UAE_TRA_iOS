@@ -11,9 +11,9 @@
 @interface InternetSpeedTestViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *speedTestResult;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
 
+@property (strong, nonatomic) TRALoaderViewController *loader;
 @property (strong, nonatomic) InternetSpeedChecker *speedChecker;
 
 @end
@@ -35,7 +35,11 @@
 - (IBAction)checkInternetSpeedButtonTapped:(id)sender
 {
     [self.speedChecker performAccurateInternetTest];
-    [self.activityIndicator startAnimating];
+    self.loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:YES];
+    __weak typeof(self) weakSelf = self;
+    self.loader.TRALoaderWillClose = ^() {
+        [weakSelf.speedChecker stopTest];
+    };
 }
 
 #pragma mark - InternetSpeedCheckerDelegate
@@ -47,7 +51,7 @@
     } else {
         self.speedTestResult.text = [NSString stringWithFormat:dynamicLocalizedString(@"InternetSpeedTestViewController.speedTestResult.text.accurate"), speed];
     }
-    [self.activityIndicator stopAnimating];
+    [self.loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
     self.checkButton.enabled = YES;
 }
 
@@ -62,8 +66,8 @@
 - (void)updateColors
 {
     [super updateColors];
-    
-    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
+
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

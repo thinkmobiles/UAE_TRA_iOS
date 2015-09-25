@@ -11,9 +11,7 @@
 @interface CheckIMEIViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *barcodeView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UITextField *resultTextField;
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
 @property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
@@ -74,7 +72,10 @@
 {
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.resultTextField.text = result;
+        if (weakSelf.didFinishWithResult) {
+            weakSelf.didFinishWithResult(result);
+        }
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     });
 }
 
@@ -83,15 +84,14 @@
 - (IBAction)checkButtonTapped:(id)sender
 {
     if (self.resultTextField.text.length) {
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
-            [AppHelper hideLoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
@@ -105,6 +105,11 @@
     if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
         CheckIMEIViewController *viewController = segue.destinationViewController;
         viewController.needTransparentNavigationBar = YES;
+        viewController.hidesBottomBarWhenPushed = YES;
+        __weak typeof(self) weakSelf = self;
+        viewController.didFinishWithResult = ^(NSString *result) {
+            weakSelf.resultTextField.text = result;
+        };
     }
 }
 
@@ -128,12 +133,10 @@
 {
     [super updateColors];
 
-    self.resultLabel.textColor = [[DynamicUIService service] currentApplicationColor];
-    [self.cameraButton.imageView setTintColor:[[DynamicUIService service] currentApplicationColor]];
-    
-    [self.checkIMEIButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    [self.cameraButton.imageView setTintColor:[self.dynamicService currentApplicationColor]];
+    [self.checkIMEIButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
     [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
-    [AppHelper setStyleForLayer:self.contentView.layer];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private

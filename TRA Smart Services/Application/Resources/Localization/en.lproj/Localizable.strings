@@ -14,6 +14,7 @@
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";
+"uiElement.OKButton.title" = "OK";
 
 //Messages for Alerts
 
@@ -36,6 +37,8 @@
 "message.InvalidFormatEmail" = "Invalid Email";
 "message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
+"message.FailedToSendSMS" = "Cant sent SMS";
+"message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
 
 //StatesNames
 
@@ -68,9 +71,10 @@
 "login.title" = "Login";
 "login.placeHolderText.username" = "Username";
 "login.placeHolderText.password" = "Password";
-"login.button.login" = "Login";
-"login.button.forgotPassword" = "Forgot the password";
-"login.button.registerButton" = "Register now";
+"login.button.login" = "LOGIN";
+"login.button.forgotPassword" = "Password?";
+"login.button.registerButton" = "Register";
+
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
 "login.picker.genre.male" = "Male";
 "login.picker.genre.female" = "Female";
@@ -87,13 +91,18 @@
 "register.button.login" = "Login";
 "register.placeHolderText.confirmPassword" = "Confirm password";
 "register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID";
+"register.placeHolderText.emirateID" = "e.g: 784-YYYY-NNNNNNN-C";
 "register.placeHolderText.lastName" = "Last Name";
 "register.placeHolderText.address" = "Address";
 "register.placeHolderText.landline" = "Landline";
 "register.placeHolderText.country" = "Country";
 "register.placeHolderText.email" = "Email";
 "register.placeHolderText.state" = "State";
+
+//SelectRegisterViewController
+"register.label.registerInfo" = "SELECT A WAY TO REGISTER";
+"register.label.emiratesID" = "Emirates ID\nVerification";
+"register.label.fillForm" = "Fill-up Form\n(Manual)";
 
 //RestorePasswordViewController
 
@@ -105,6 +114,7 @@
 //SettingsViewController
 
 "settings.title" = "Settings";
+"settings.title.aboutTra" = "About TRA";
 "settings.label.language" = "Language Preference";
 "settings.label.fontsize" = "Font Size Display";
 "settings.label.colorImpaired" = "Color Impaired";
@@ -120,6 +130,15 @@
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
+"settings.label.fontsize.description.small" = "Small";
+"settings.label.fontsize.description.normal" = "Normal";
+"settings.label.fontsize.description.large" = "Large";
+"setting.label.release" = "Release version";
+"setting.label.releaseVersion" = "v %@, build %i.%i.%i";
+"setting.label.touchID" = "Use Touch ID";
+"setting.label.touchIDDEscription" = "Use your finger print for authentification process";
+"setting.loginRequired.message" = "Please login to enable this option";
+"fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
 
 //HomeViewController
 
@@ -127,7 +146,7 @@
 
 "speedAccess.service.name.0" = "Domain Info";
 "speedAccess.service.name.1" = "Domain Avaliability";
-"speedAccess.service.name.2" = "Check IMEI";
+"speedAccess.service.name.2" = "Domain Check";
 "speedAccess.service.name.3" = "Mobile Brand";
 "speedAccess.service.name.4" = "Feedback";
 "speedAccess.service.name.5" = "Spam Report";
@@ -145,6 +164,7 @@
 "notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
 "notificationsViewController.noNotificationsMessage" = "You have no Notifications";
 "notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
+"notificationsViewController.clearAllButton.title" = "Clear All";
 
 //FavouriteViewController
 
@@ -227,13 +247,13 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title" = "SMS Spam Report";
-"spamReportViewControler.textField.phoneProvider" = "Provider number";
-"spamReportViewControler.textField.phoneNumber" = "Phone number";
-"spamReportViewControler.textField.providerType" = "Provider type";
-"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
-"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
-"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+"spamReportViewControler.title.spamSMS" = "Spam - SMS";
+"spamReportViewControler.title.spamWEB" = "Spam - Website";
+"spamReportViewControler.reportTextField.reportSMS" = "Number";
+"spamReportViewControler.reportTextField.reportWeb" = "Link";
+"spamReportViewControler.reportButton.title" = "SUBMIT";
+"spamReportViewControler.descriptionTextView.placeholder" = "Copy and Paste the SMS here...";
+
 
 //"InternetSpeedTestViewController
 
@@ -278,6 +298,7 @@
 "userProfile.changePassword" = "Change Password";
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "Logout from your Account";
+"userProfile.notificationMesasge" = "Are you sure that u want to logout?";
 
 //ResetPasswordViewController
 
@@ -316,3 +337,65 @@
 "editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
 "editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
 "editUserProfileViewController.dataSource.0element" = "Tap to select";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "Search Result";
+
+//VerificationIMEIViewController
+
+"verificationIMEIViewController.title" = "Verification IMEI Code";
+"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
+"verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
+
+//TutorialViewController
+
+"tutorialViewController.skipButton.title" = "SKIP";
+"tutorialViewController.nextButton.title" = "NEXT";
+
+//TRALoaderViewController
+
+"TRALoader.backButton.title" = "BACK TO DASHBOARD";
+"TRALoader.backButton.cancel" = "CANCEL";
+"TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
+"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";
+
+//AutoLoginService
+
+"autoLogin.message" = "Logging in...";
+
+//FingerPrintService
+
+"fingerPrintService.passwordRequest.message" = "Scan your finger to get access to services";
+"fingerPrintService.CancelAuth.title" = "Cancel auth";
+"fingerPrintService.ConfirmPassword.title" = "Enter password";
+"fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
+"fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
+"fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
+"fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
+"fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
+"fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
+
+//SpamListViewController
+
+"spamListViewController.title" = "My List";
+
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "Reply";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "Spam";
+"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites\nas Spam to TRA";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";

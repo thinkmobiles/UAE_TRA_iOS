@@ -9,10 +9,6 @@
 #import "BaseServiceViewController.h"
 #import "LoginViewController.h"
 
-@interface BaseServiceViewController ()
-
-@end
-
 @implementation BaseServiceViewController
 
 #pragma mark - LifeCycle
@@ -22,10 +18,8 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 #pragma mark - Public
@@ -34,10 +28,6 @@
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
         UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
         __weak typeof(self) weakSelf = self;
         ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
             if (![NetworkManager sharedManager].isUserLoggined) {
@@ -45,8 +35,7 @@
             }
         };
         ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:viewController animated:NO completion:nil];
+        [AppHelper presentViewController:viewController onController:self.navigationController];
     }
 }
 
@@ -56,15 +45,17 @@
 {
     for (UILabel *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UILabel class]]) {
-            subView.textColor = [[DynamicUIService service] currentApplicationColor];
+            subView.textColor = [self.dynamicService currentApplicationColor];
         }
     }
     for (UIView *subView in self.view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             [AppHelper setStyleForLayer:subView.layer];
-            [(UIButton *)subView setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-        } else if ([subView isKindOfClass:[UITextField class]]) {
-            [AppHelper setStyleForLayer:subView.layer];
+            [(UIButton *)subView setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
+        } else if ([subView isKindOfClass:[BottomBorderTextField class]]) {
+            [AppHelper setStyleForTextField:(BottomBorderTextField *)subView];
+        }  else if ([subView isKindOfClass:[BottomBorderTextView class]]) {
+            [AppHelper setStyleForTextView:(BottomBorderTextView *)subView];
         }
     }
 }

@@ -10,10 +10,10 @@
 #import "UserProfileTableViewCell.h"
 #import "KeychainStorage.h"
 #import "UIImage+DrawText.h"
+#import "SettingViewController.h"
 
 @interface UserProfileViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -38,7 +38,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,12 +50,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserProfileTableViewCell *cell;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        cell = [tableView dequeueReusableCellWithIdentifier:UserProfileTableViewCellArabicCellIdentifier forIndexPath:indexPath];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:UserProfileTableViewCellEuropeanCellIdentifier forIndexPath:indexPath];
-    }
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? UserProfileTableViewCellArabicCellIdentifier : UserProfileTableViewCellEuropeanCellIdentifier;
+    UserProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -76,7 +72,7 @@
     if (segue.length) {
         [self performSegueWithIdentifier:segue sender:self];
     } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"userProfile.notificationMesasge") delegate:self otherButtonTitles:dynamicLocalizedString(@"uiElement.cancelButton.title")];
     }
 }
 
@@ -90,11 +86,19 @@
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, 20.f);
     headerGradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.1].CGColor];
-    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20.f)];
     [headerView.layer addSublayer:headerGradient];
     
     return headerView;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (!buttonIndex) {
+        [self performLogout];
+    }
 }
 
 #pragma mark - Superclass methods
@@ -107,13 +111,8 @@
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
-
-    [super addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor]];
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 #pragma mark - Private
@@ -127,17 +126,14 @@
 {
     self.userNameLabel.text = [[KeychainStorage userName] capitalizedString];
     self.userLogoImageView.image = [UIImage imageNamed:@"test"];
-    [super addHexagoneOnView:self.userLogoImageView];
+    [AppHelper addHexagoneOnView:self.userLogoImageView];
 }
 
 - (void)prepareNavigationBar
 {
     [super prepareNavigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 - (void)configureCell:(UserProfileTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -149,6 +145,25 @@
         cell.separatorView.hidden = YES;
         cell.shevronImageView.hidden = YES;
     }
+}
+
+- (void)performLogout
+{
+    [AppHelper showLoader];
+    __weak typeof(self) weakSelf = self;
+    [[NetworkManager sharedManager] traSSLogout:^(id response, NSError *error) {
+        if (error) {
+            [AppHelper alertViewWithMessage:response];
+        } else {
+            KeychainStorage *storage = [[KeychainStorage alloc] init];
+            [storage removeStoredCredentials];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:KeyUseTouchIDIdentification];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        [AppHelper hideLoader];
+    }];
 }
 
 @end

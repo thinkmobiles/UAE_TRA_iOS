@@ -10,9 +10,9 @@
 
 @interface PostFeedbackViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *serviceNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *ratingTextField;
-@property (weak, nonatomic) IBOutlet UITextView *feedbackTextView;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *serviceNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *ratingTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextView *feedbackTextView;
 @property (weak, nonatomic) IBOutlet UILabel *feedbackLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
@@ -32,15 +32,14 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         return;
     }
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
         } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }
-        [AppHelper hideLoader];
     }];
 }
 
@@ -79,7 +78,8 @@
     [super updateColors];
     
     [AppHelper setStyleForLayer:self.feedbackTextView.layer];
-    self.feedbackTextView.textColor = [[DynamicUIService service] currentApplicationColor];
+    self.feedbackTextView.textColor = [self.dynamicService currentApplicationColor];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

@@ -14,6 +14,7 @@
 //UIElements Title
 
 "uiElement.cancelButton.title" = "uiElement.cancelButton.title";
+"uiElement.OKButton.title" = "uiElement.OKButton.title";
 
 //Messages for Alerts
 
@@ -36,6 +37,8 @@
 "message.InvalidFormatEmail" = "message.InvalidFormatEmail";
 "message.InvalidFormatURL" = "message.InvalidFormatURL";
 "message.InvalidStateCode" = "message.InvalidStateCode";
+"message.FailedToSendSMS" = "message.FailedToSendSMS";
+"message.FailedToInitializeMFController" = "message.FailedToInitializeMFController";
 
 //StatesNames
 
@@ -71,10 +74,16 @@
 "login.button.login" = "login.button.login";
 "login.button.forgotPassword" = "login.button.forgotPassword";
 "login.button.registerButton" = "login.button.registerButton";
+
 "login.restore_password.message" = "login.restore_password.message";
 "login.picker.genre.male" = "login.picker.genre.male";
 "login.picker.genre.female" = "login.picker.genre.female";
 "login.picker.genre.undefined" = "login.picker.genre.undefined";
+
+//SelectRegisterViewController
+"register.label.registerInfo" = "register.label.registerInfo";
+"register.label.emiratesID" = "register.label.emiratesID";
+"register.label.fillForm" = "register.label.fillForm";
 
 //RegisterViewController
 
@@ -105,6 +114,7 @@
 //SettingsViewController
 
 "settings.title" = "settings.title";
+"settings.title.aboutTra" = "settings.title.aboutTra";
 "settings.label.language" = "settings.label.language";
 "settings.label.fontsize" = "settings.label.fontsize";
 "settings.label.colorImpaired" = "settings.label.colorImpaired";
@@ -120,6 +130,14 @@
 "setting.switchControl.language.english" = "setting.switchControl.language.english";
 "setting.switchControl.textSize.big" = "setting.switchControl.textSize.big";
 "setting.switchControl.textSize.small" = "setting.switchControl.textSize.small";
+"settings.label.fontsize.description.small" = "settings.label.fontsize.description.small";
+"settings.label.fontsize.description.normal" = "settings.label.fontsize.description.normal";
+"settings.label.fontsize.description.large" = "settings.label.fontsize.description.large";
+"setting.label.release" = "setting.label.release";
+"setting.label.releaseVersion" = "setting.label.releaseVersion";
+"setting.label.touchID" = "setting.label.touchID";
+"setting.label.touchIDDEscription" = "setting.label.touchIDDEscription";
+"setting.loginRequired.message" = "setting.loginRequired.message";
 
 //HomeViewController
 
@@ -145,6 +163,7 @@
 "notificationsViewController.NotificationPlaceHolderlabel" = "notificationsViewController.NotificationPlaceHolderlabel";
 "notificationsViewController.noNotificationsMessage" = "notificationsViewController.noNotificationsMessage";
 "notificationsViewController.NotificationsMessage" = "notificationsViewController.NotificationsMessage";
+"notificationsViewController.clearAllButton.title" = "notificationsViewController.clearAllButton.title";
 
 //FavouriteViewController
 
@@ -227,13 +246,12 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title" = "spamReportViewControler.title";
-"spamReportViewControler.textField.phoneProvider" = "spamReportViewControler.textField.phoneProvider";
-"spamReportViewControler.textField.phoneNumber" = "spamReportViewControler.textField.phoneNumber";
-"spamReportViewControler.textField.providerType" = "spamReportViewControler.textField.providerType";
+"spamReportViewControler.title.spamSMS" = "spamReportViewControler.title.spamSMS";
+"spamReportViewControler.title.spamWEB" = "spamReportViewControler.title.spamWEB";
+"spamReportViewControler.reportTextField.reportSMS" = "spamReportViewControler.reportTextField.reportSMS";
+"spamReportViewControler.reportTextField.reportWeb" = "spamReportViewControler.reportTextField.reportWeb";
 "spamReportViewControler.reportButton.title" = "spamReportViewControler.reportButton.title";
-"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex0.title";
-"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "spamReportViewControler.reportSegment.forSegmentAtIndex1.title";
+"spamReportViewControler.descriptionTextView.placeholder" = "spamReportViewControler.descriptionTextView.placeholder";
 
 //InternetSpeedTestViewController
 
@@ -278,6 +296,7 @@
 "userProfile.changePassword" = "userProfile.changePassword";
 "userProfile.resetPassword" = "userProfile.resetPassword";
 "userProfile.logoutFromAccount" = "userProfile.logoutFromAccount";
+"userProfile.notificationMesasge" = "userProfile.notificationMesasge";
 
 //ResetPasswordViewController
 
@@ -309,10 +328,73 @@
 
 //EditUserProfileViewController
 
-"editUserProfileViewController.emiratesLabel" = "";
-"editUserProfileViewController.contactnumberLabel" = "";
-"editUserProfileViewController.firstNameLabel" = "";
-"editUserProfileViewController.lastNameLabel" = "";
-"editUserProfileViewController.streetAddressLabel" = "";
-"editUserProfileViewController.changePhotoButtonTitle" = "";
-"editUserProfileViewController.dataSource.0element" = "";
+"editUserProfileViewController.emiratesLabel" = "editUserProfileViewController.emiratesLabel";
+"editUserProfileViewController.contactnumberLabel" = "editUserProfileViewController.contactnumberLabel";
+"editUserProfileViewController.firstNameLabel" = "editUserProfileViewController.firstNameLabel";
+"editUserProfileViewController.lastNameLabel" = "editUserProfileViewController.lastNameLabel";
+"editUserProfileViewController.streetAddressLabel" = "editUserProfileViewController.streetAddressLabel";
+"editUserProfileViewController.changePhotoButtonTitle" = "editUserProfileViewController.changePhotoButtonTitle";
+"editUserProfileViewController.dataSource.0element" = "editUserProfileViewController.dataSource.0element";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "homeSearchResultViewController.title";
+
+//VerificationIMEIViewController
+
+"verificationIMEIViewController.title" = "verificationIMEIViewController.title";
+"verificationIMEIViewController.serviceHeaderLabel" = "verificationIMEIViewController.serviceHeaderLabel";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "verificationIMEIViewController.verificationIMEIInfoEnterLabel";
+"verificationIMEIViewController.sendIMEICodeLabel" = "verificationIMEIViewController.sendIMEICodeLabel";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "verificationIMEIViewController.verificationIMEITextField.placeholder";
+
+//TutorialViewController
+
+"tutorialViewController.skipButton.title" = "tutorialViewController.skipButton.title";
+"tutorialViewController.nextButton.title" = "tutorialViewController.nextButton.title";
+
+//TRALoaderViewController
+
+"TRALoader.backButton.title" = "TRALoader.backButton.title";
+"TRALoader.backButton.cancel" = "TRALoader.backButton.cancel";
+"TRALoader.information.begin" = "TRALoader.information.begin";
+"TRALoader.information.finish" = "TRALoader.information.finish";
+
+//AutoLoginService
+
+"autoLogin.message" = "autoLogin.message";
+
+//FingerPrintService
+
+"fingerPrintService.passwordRequest.message" = "fingerPrintService.passwordRequest.message";
+"fingerPrintService.CancelAuth.title" = "fingerPrintService.CancelAuth.title";
+"fingerPrintService.ConfirmPassword.title" = "fingerPrintService.ConfirmPassword.title";
+"fingerPrintService.TouchIDNotEnrolled" = "fingerPrintService.TouchIDNotEnrolled";
+"fingerPrintService.PasscodeHasNotBeenSet" = "fingerPrintService.PasscodeHasNotBeenSet";
+"fingerPrintService.TouchIdNotAvaliable" = "fingerPrintService.TouchIdNotAvaliable";
+"fingerPrintService.LoginCanceledBySystem" = "fingerPrintService.LoginCanceledBySystem";
+"fingerPrintService.LoginCanceledByUser" = "fingerPrintService.LoginCanceledByUser";
+"fingerPrintService.InvalidFingerPrint" = "fingerPrintService.InvalidFingerPrint";
+"fingerPrintService.DescriptionReason" = "fingerPrintService.DescriptionReason";
+
+//SpamListViewController
+
+"spamListViewController.title" = "";
+
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "innovationsCollectionViewCell.string.reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "innovationsChatTableViewCell.replyButton.title";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "innovationsChatTableViewCell.reportAbuseButton.title";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "spamSelectionViewController.title";
+"spamSelectionViewController.serviceHeaderLabel" = "spamSelectionViewController.serviceHeaderLabel";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "spamSelectionViewController.serviceSelectionView.reportSMSLabel";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "spamSelectionViewController.serviceSelectionView.reportWEBLabel";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "spamSelectionViewController.serviceSelectionView.viewMyListLabel";

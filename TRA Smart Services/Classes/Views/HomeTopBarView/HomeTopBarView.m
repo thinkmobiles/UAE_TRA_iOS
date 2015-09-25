@@ -44,7 +44,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder nibName:@"HomeTopBarView"];
+    self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
 }
 
@@ -71,35 +71,8 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 - (void)touchesBegan:(nonnull NSSet*)touches withEvent:(nullable UIEvent *)event
 {
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
-    for (CALayer *layer in self.layer.sublayers) {
-        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
-            if (layer == self.informationLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarInformationButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarInformationButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            } else if (layer == self.searchLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarSearchButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarSearchButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            } else if (layer == self.notificationLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarNotificationButtonDidPressedInView:)] && self.delegate) {
-                    [self.delegate topBarNotificationButtonDidPressedInView:self];
-                }
-                [layer addAnimation:[self layerPressAnimation] forKey:nil];
-            }
-        }
-    }
-    for (CALayer *layer in self.avatarView.layer.sublayers) {
-        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
-            if (layer == self.avatarImageLayer) {
-                if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
-                    [self.delegate topBarLogoImageDidTouched:self];
-                }
-            }
-        }
-    }
+    [self detectFakeButtonTouch:touchPoint];
+    [self detectAvatarTouch:touchPoint];
 }
 
 #pragma mark - CustomAccessors
@@ -144,9 +117,9 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)reverseLayers
 {
-    self.notificationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.searchLayer.transform = CATransform3DMakeScale(-1, 1, 1);
-    self.informationLayer.transform = CATransform3DMakeScale(-1, 1, 1);
+    self.notificationLayer.transform = TRANFORM_3D_SCALE;
+    self.searchLayer.transform = TRANFORM_3D_SCALE;
+    self.informationLayer.transform = TRANFORM_3D_SCALE;
 }
 
 - (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel
@@ -235,14 +208,19 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.position = informationMovePoint;
 }
 
+- (void)stopAllOperations
+{
+    self.isAppearenceAnimationCompleted = YES;
+}
+
 - (void)animateTopViewApearence
 {
-    CGFloat AnimationTimeForLine = 0.3f;
+    CGFloat AnimationTimeForLine = 0.15f;
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.duration = AnimationTimeForLine;
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-
+    
     __weak typeof(self) weakSelf = self;
     CGFloat delayForTopDrawing = 0.05;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForTopDrawing * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -278,7 +256,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForNotificationLayer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.notificationLayer.opacity = 1.f;
     });
-
+    
     CGFloat delayForMidBottomPart = delayForRightBottomPart + AnimationTimeForLine * (5. / 6.);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForMidBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.bottomMidHexagonLayer.opacity = 1.f;
@@ -289,7 +267,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayForLeftBottomPart * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.bottomLeftHexagonLayer.opacity = 1.f;
         pathAnimation.delegate = self;
-        pathAnimation.removedOnCompletion = NO;
         [weakSelf.bottomLeftHexagonLayer addAnimation:pathAnimation forKey:@"lastTopAppearenceAnimation"];
     });
 }
@@ -299,6 +276,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.opacity = 0.f;
     self.searchLayer.opacity = 0.f;
     self.notificationLayer.opacity = 0.f;
+    
     self.bottomRightHexagonLayer.opacity = 0.f;
     self.bottomMidHexagonLayer.opacity = 0.f;
     self.bottomLeftHexagonLayer.opacity = 0.f;
@@ -316,7 +294,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.backgroundColor = color;
     self.searchLayer.backgroundColor = color;
     self.notificationLayer.backgroundColor = color;
-    self.avatarImageLayer.backgroundColor = color;
+    self.avatarImageLayer.backgroundColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor].CGColor : [UIColor itemGradientTopColor].CGColor;
 }
 
 #pragma mark - AnimationDelegate
@@ -410,6 +388,12 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self.avatarImageLayer removeFromSuperlayer];
     
     self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
+    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        self.avatarImageLayer.backgroundColor = [UIColor blackColor].CGColor;
+    } else {
+        self.avatarImageLayer.backgroundColor = [UIColor itemGradientTopColor].CGColor;
+    }
+    
     [self addHexagoneMaskForLayer:self.avatarImageLayer];
     
     self.borderLogoLayer = [CAShapeLayer layer];
@@ -569,7 +553,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.notificationLayer = [self layerWithImage:self.notificationButtonImage inRect:notificationLayerRect forMainLogo:NO];
     [self addHexagoneMaskForLayer:self.notificationLayer];
-    
     [self addHexagonBorderForLayer:self.notificationLayer];
     
     [self.layer insertSublayer:self.notificationLayer below:self.informationLayer];
@@ -776,6 +759,45 @@ static CGFloat const CornerWidthForAvatar = 3.f;
              NSFontAttributeName : [UIFont boldSystemFontOfSize:24.f],
              NSForegroundColorAttributeName : [UIColor whiteColor]
              };
+}
+
+#pragma mark - Touches
+
+- (void)detectAvatarTouch:(CGPoint)touchPoint
+{
+    for (CALayer *layer in self.avatarView.layer.sublayers) {
+        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
+            if (layer == self.avatarImageLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarLogoImageDidTouched:)] && self.delegate) {
+                    [self.delegate topBarLogoImageDidTouched:self];
+                }
+            }
+        }
+    }
+}
+
+- (void)detectFakeButtonTouch:(CGPoint)touchPoint
+{
+    for (CALayer *layer in self.layer.sublayers) {
+        if ([layer containsPoint:[self.layer convertPoint:touchPoint toLayer:layer]]) {
+            if (layer == self.informationLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarInformationButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarInformationButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            } else if (layer == self.searchLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarSearchButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarSearchButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            } else if (layer == self.notificationLayer) {
+                if ([self.delegate respondsToSelector:@selector(topBarNotificationButtonDidPressedInView:)] && self.delegate) {
+                    [self.delegate topBarNotificationButtonDidPressedInView:self];
+                }
+                [layer addAnimation:[self layerPressAnimation] forKey:nil];
+            }
+        }
+    }
 }
 
 @end

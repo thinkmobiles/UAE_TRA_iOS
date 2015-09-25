@@ -10,8 +10,8 @@
 
 @interface SearchMobileBrandNameViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *brandNameTextField;
-@property (weak, nonatomic) IBOutlet UITextView *resultInfoTextView;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *brandNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextView *resultInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
@@ -33,20 +33,25 @@
 - (IBAction)searchButtonTapped:(id)sender
 {
     if (self.brandNameTextField.text.length) {
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByMobileBrand:self.brandNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
                 NSString *string = @"";
                 for (NSDictionary *dic in response) {
-                    string = [string stringByAppendingString:[NSString stringWithFormat:@"response - %@ \n", dic]];
+                    if ([string isEqualToString:@""]) {
+                        string = [string stringByAppendingString:@"Approved Device Information\n\n"];
+                    }
+                    string = [string stringByAppendingString:[dic valueForKey:@"marketingName"]];
+                    string = [string stringByAppendingString:@"\n"];
                 }
                 weakSelf.resultInfoTextView.text = string;
+                weakSelf.resultInfoTextView.textAlignment = NSTextAlignmentCenter;
             }
-            [AppHelper hideLoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
@@ -82,11 +87,12 @@
 
 - (void)updateColors
 {
-    self.brandNameTextField.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
-    self.brandNameTextField.textColor = [[DynamicUIService service] currentApplicationColor];
+    [super updateColors];
     
-    [self.searchButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.searchButton.layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    [self.searchButton setTitleColor:color forState:UIControlStateNormal];
+    self.searchButton.layer.borderColor = color.CGColor;
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private
@@ -95,9 +101,6 @@
 {
     self.searchButton.layer.cornerRadius = 8;
     self.searchButton.layer.borderWidth = 1;
-    
-    self.brandNameTextField.layer.cornerRadius = 8;
-    self.brandNameTextField.layer.borderWidth = 1;
 }
 
 @end

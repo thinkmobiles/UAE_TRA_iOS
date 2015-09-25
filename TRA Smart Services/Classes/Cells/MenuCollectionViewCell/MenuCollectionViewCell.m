@@ -37,15 +37,7 @@
 
 - (void)updateViewMode:(PresentationMode)cellPresentationMode
 {
-    switch (cellPresentationMode) {
-        case PresentationModeModeTop: {
-            self.polygonViewTopSpaceConstraint.constant = 0.f;
-            break;
-        }
-        case PresentationModeModeBottom: {
-            self.polygonViewTopSpaceConstraint.constant = self.frame.size.height * 0.2;
-        }
-    }
+    self.polygonViewTopSpaceConstraint.constant = cellPresentationMode ? self.frame.size.height * 0.2 : 0;
 }
 
 @end

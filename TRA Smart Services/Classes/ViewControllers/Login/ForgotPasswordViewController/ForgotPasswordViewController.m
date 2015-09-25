@@ -11,7 +11,6 @@
 
 @interface ForgotPasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet OffsetTextField *userEmailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *informationLabel;
 
@@ -24,6 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 - (void)viewDidLayoutSubviews
@@ -37,7 +38,7 @@
 
 - (IBAction)restorePasswordPressed:(id)sender
 {
-    
+    //wait for API
 }
 
 - (void)closeButtonPressed
@@ -63,9 +64,9 @@
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
-    [self.mainButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    self.informationLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    [self.mainButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
+    self.informationLabel.textColor = [self.dynamicService currentApplicationColor];
+    [super updateBackgroundImageNamed:@"res_img_bg"];
 }
 
 @end

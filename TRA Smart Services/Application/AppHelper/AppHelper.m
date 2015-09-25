@@ -11,8 +11,12 @@
 #import "AppDelegate.h"
 #import "DynamicUIService.h"
 #import "UIColor+AppColor.h"
+#import "UIImage+DrawText.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
+static CGFloat const MinimumTabBarFontSize = 10.f;
+
+static LanguageType startLanguage;
 
 @implementation AppHelper
 
@@ -35,33 +39,52 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     return ((AppDelegate *)[UIApplication sharedApplication].delegate).window;
 }
 
++ (void)presentViewController:(UIViewController *)target onController:(UIViewController *)presenter
+{
+    target.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    presenter.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [presenter presentViewController:target animated:NO completion:nil];
+}
+
++ (BOOL)isiOS9_0OrHigher
+{
+    BOOL isiOS9ORHigher = NO;
+    NSOperatingSystemVersion ios9_0_0 = (NSOperatingSystemVersion){9, 0, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
+        isiOS9ORHigher = YES;
+    }
+    return isiOS9ORHigher;
+}
+
 #pragma mark - InformationView
 
 + (void)alertViewWithMessage:(NSString *)message
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:nil cancelButtonTitle:dynamicLocalizedString(@"uiElement.OKButton.title") otherButtonTitles: nil] show];
     });
 }
 
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:alertViewDelegate cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:alertViewDelegate cancelButtonTitle:dynamicLocalizedString(@"uiElement.OKButton.title") otherButtonTitles: nil] show];
     });
 }
 
 + (void)alertViewWithMessage:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)alertViewDelegate otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:alertViewDelegate cancelButtonTitle:@"OK" otherButtonTitles:otherButtonTitles, nil] show];
+        [[[UIAlertView alloc] initWithTitle:[AppHelper appName] message:message delegate:alertViewDelegate cancelButtonTitle:dynamicLocalizedString(@"uiElement.OKButton.title") otherButtonTitles:otherButtonTitles, nil] show];
     });
 }
 
 + (void)showLoader
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD showHUDAddedTo:[AppHelper topView] animated:YES].dimBackground = YES;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[AppHelper topView] animated:YES];
+        hud.dimBackground = YES;
+        hud.color = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.7f];
     });
 }
 
@@ -71,6 +94,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
         MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:[AppHelper topView]];
         hud.removeFromSuperViewOnHide = YES;
         hud.labelText = text;
+        hud.color = [[[DynamicUIService service] currentApplicationColor] colorWithAlphaComponent:0.7f];
         [[AppHelper topView] addSubview:hud];
         [hud show:YES];
     });
@@ -87,20 +111,23 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 
 + (void)prepareTabBarItems
 {
+    startLanguage = [DynamicUIService service].language;
+    
     [AppHelper performResetupTabBar];
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
-        NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
-        tabBarController.viewControllers = viewControllers;
-        tabBarController.selectedViewController = [viewControllers lastObject];
+    if (![AppHelper isiOS9_0OrHigher]) {
+        if ([DynamicUIService service].language == LanguageTypeArabic) {
+            UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
+            NSArray *viewControllers = [tabBarController.viewControllers reversedArray];
+            tabBarController.viewControllers = viewControllers;
+            tabBarController.selectedViewController = [viewControllers lastObject];
+        }
     }
 }
 
 + (void)performResetupTabBar
 {
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
-    CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
+    CGFloat fontSize = [AppHelper fontSizeForTabBar];
     UIFont *font = [UIFont latoRegularWithSize:fontSize];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         font = [UIFont droidKufiRegularFontForSize:fontSize];
@@ -109,12 +136,13 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     NSDictionary *parameters = @{ NSFontAttributeName : font,
                                   NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
         UITabBarItem *tabBarItem = tabBar.items[idx];
-        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        NSString *title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        tabBarItem.title = title;
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
         
@@ -126,36 +154,45 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 + (void)localizeTitlesOnTabBar
 {
     NSArray *localizedMenuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TabBarMenuList" ofType:@"plist"]];
-    
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        localizedMenuItems = [localizedMenuItems reversedArray];
+    if ([AppHelper isiOS9_0OrHigher] ) {
+        if (startLanguage == LanguageTypeArabic) {
+            if ([DynamicUIService service].language == LanguageTypeEnglish) {
+                localizedMenuItems = [localizedMenuItems reversedArray];
+            }
+        } else {
+            if ([DynamicUIService service].language == LanguageTypeArabic) {
+                localizedMenuItems = [localizedMenuItems reversedArray];
+            }
+        }
+    } else {
+        if ([DynamicUIService service].language == LanguageTypeArabic) {
+            localizedMenuItems = [localizedMenuItems reversedArray];
+        }
     }
     
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
         UITabBarItem *tabBarItem = tabBar.items[idx];
-        tabBarItem.title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        NSString *title = dynamicLocalizedString([localizedMenuItems[idx] valueForKey:@"title"]);
+        tabBarItem.title = title;
     }
 }
 
 + (void)updateFontsOnTabBar
 {
-    CGFloat fontSize = [DynamicUIService service].fontSize;
-    fontSize = fontSize == 2 ? MaximumTabBarFontSize : 12.f;
-    
+    CGFloat fontSize = [AppHelper fontSizeForTabBar];
     UIFont *font = [UIFont latoRegularWithSize:fontSize];
     if ([DynamicUIService service].language == LanguageTypeArabic) {
         font = [UIFont droidKufiRegularFontForSize:fontSize];
     }
 
-    NSDictionary *parameters = @{ NSFontAttributeName :font,
-                                  NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
+    NSDictionary *parameters = @{ NSFontAttributeName :font, NSForegroundColorAttributeName : [UIColor tabBarTextColor] };
 
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
     tabBar.backgroundColor = [UIColor menuItemGrayColor];
     
     for (int idx = 0; idx < tabBar.items.count; idx++) {
@@ -163,6 +200,18 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateNormal];
         [tabBarItem setTitleTextAttributes:parameters forState:UIControlStateSelected];
     }
+}
+
++ (CGFloat)fontSizeForTabBar
+{
+    CGFloat fontSize = [DynamicUIService service].fontSize;
+    
+    if (fontSize) {
+        fontSize = fontSize == 2 ? MaximumTabBarFontSize : MinimumTabBarFontSize;
+    } else {
+        fontSize = 12.f;
+    }
+    return fontSize;
 }
 
 + (void)prepareTabBarGradient
@@ -192,7 +241,7 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
 + (void)updateTabBarTintColor
 {
     UITabBar *tabBar = [AppHelper rootViewController].tabBar;
-    tabBar.tintColor = [DynamicUIService service].currentApplicationColor;
+    tabBar.tintColor = [DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite ? [UIColor blackColor] : [UIColor itemGradientTopColor];
 }
 
 #pragma mark - NavigationBar Configuration
@@ -202,10 +251,20 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     UITabBarController *tabBarController = (UITabBarController *)[AppHelper rootViewController];
     for (UINavigationController *viewController in tabBarController.viewControllers) {
         if ([viewController isKindOfClass:[UINavigationController class]]) {
-            viewController.navigationBar.barTintColor = [DynamicUIService service].currentApplicationColor;
-            viewController.navigationBar.translucent = NO;
+            UIColor *uiColor = [[DynamicUIService service].currentApplicationColor colorWithAlphaComponent:0.8f];
+            UIImage *backgroundImage = [UIImage imageWithColor:uiColor inRect:CGRectMake(0, 0, 1, 1)];
+            [viewController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+            viewController.navigationBar.barTintColor = [UIColor whiteColor];
         }
     }
+}
+
++ (void)titleFontForNavigationBar:(UINavigationBar *)navigationBar
+{
+    [navigationBar setTitleTextAttributes:@{
+                                            NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
+                                            NSForegroundColorAttributeName : [UIColor whiteColor]
+                                            }];
 }
 
 #pragma mark - Hexagon
@@ -228,6 +287,26 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     [hexagonPath addLineToPoint:CGPointMake(CGRectGetMidX(hexagonRect), 0)];
     
     return hexagonPath;
+}
+
++ (void)addHexagoneOnView:(UIView *)view
+{
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = view.layer.bounds;
+    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
+    view.layer.mask = maskLayer;
+}
+
++ (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color width:(CGFloat) width
+{
+    CAShapeLayer *borderlayer = [CAShapeLayer layer];
+    borderlayer.fillColor = [UIColor clearColor].CGColor;
+    borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
+    borderlayer.lineWidth = width;
+    borderlayer.frame = layer.bounds;
+    borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
+    
+    [layer addSublayer:borderlayer];
 }
 
 #pragma mark - Date
@@ -257,11 +336,36 @@ static CGFloat const MaximumTabBarFontSize = 15.f;
     layer.borderColor = [[DynamicUIService service] currentApplicationColor].CGColor;
 }
 
++ (void)setStyleForTextField:(BottomBorderTextField *)textField
+{
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    textField.textColor = color;
+    textField.bottomBorderColor = color;
+}
+
++ (void)setStyleForTextView:(BottomBorderTextView *)textView
+{
+    UIColor *color = [[DynamicUIService service] currentApplicationColor];
+    textView.textColor = color;
+    textView.bottomBorderColor = color;
+}
+
 + (void)setStyleGrayColorForLayer:(CALayer *)layer
 {
     layer.cornerRadius = 0;
     layer.borderWidth = 1;
     layer.borderColor = [UIColor grayBorderTextFieldTextColor].CGColor;
+}
+
++ (UIImage *)snapshotForView:(UIView *)view
+{
+    CGSize size = CGSizeMake(view.bounds.size.width, view.bounds.size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return snapshot;
 }
 
 @end

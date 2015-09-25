@@ -6,11 +6,21 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
+#import "DynamicUIService.h"
+
 static CGFloat const DeclineTagForFontUpdate = 2000;
+
+static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";
 
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (strong, nonatomic) DynamicUIService *dynamicService;
+
 - (void)updateSubviewForParentViewIfPossible:(UIView *)mainView fontSizeInclude:(BOOL)includeFontSizeChange;
+- (void)updateBackgroundImageNamed:(NSString *)imageName;
+
 - (void)localizeUI;
 - (void)updateColors;
 

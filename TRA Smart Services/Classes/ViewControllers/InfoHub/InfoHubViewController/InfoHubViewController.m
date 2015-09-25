@@ -10,6 +10,13 @@
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
 
+static CGFloat const SectionHeaderHeight = 40.0f;
+static CGFloat const AdditionalCellOffset = 20.0f;
+static CGFloat const DefaultCellOffset = 22.0f;
+static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
+
+static LanguageType startingLanguageType;
+
 @interface InfoHubViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -18,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *seeMoreButton;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceVerticalConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
@@ -30,11 +36,6 @@
 
 @end
 
-static CGFloat const SectionHeaderHeight = 40.0f;
-static CGFloat const AdditionalCellOffset = 20.0f;
-static CGFloat const DefaultCellOffset = 22.0f;
-static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
-
 @implementation InfoHubViewController
 
 #pragma mark - LifeCycle
@@ -44,6 +45,12 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [super viewDidLoad];
     
     [self registerNibs];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self prepareDemoDataSource];
 }
 
@@ -99,22 +106,22 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self collectionViewCellUIIdentifier] forIndexPath:indexPath];
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? InfoHubCollectionViewCellArabicIdentifier : InfoHubCollectionViewCellEuropeIdentifier;
+    InfoHubCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.announcementPreviewDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     
     UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.previewLogoImage = logo;
-
     cell.announcementPreviewDescriptionLabel.text = [NSString stringWithFormat:@"Regarding application process for frequncy spectrum %li", (long)indexPath.row + 1];
     if (indexPath.row) {
-        cell.announcementPreviewDescriptionLabel.text = @"Yout app ";
+        cell.announcementPreviewDescriptionLabel.text = @"Your app ";
     }
     cell.announcementPreviewDescriptionLabel.tag = DeclineTagForFontUpdate;
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
     }
 
@@ -146,21 +153,21 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    InfoHubTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self tableViewCellUIIdentifier]];
+    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? InfoHubTableViewCellArabicIdentifier : InfoHubTableViewCellEuropeIdentifier;
+    InfoHubTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset;
     if (indexPath.row % 2) {
-        cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
-    } else {
-        cell.marginInfoHubContainerConstraint.constant = DefaultCellOffset;
+        cell.marginInfoHubContainerConstraint.constant += AdditionalCellOffset;
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
-    cell.infoHubTransactionDescriptionLabel.text = @"Yout application for type Approval has been reviewd by TRA personel";
+    cell.infoHubTransactionDescriptionLabel.text = @"Your application for type Approval has been reviewd by TRA personel";
     cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
-    cell.infoHubTransactionTitleLabel.textColor = [[DynamicUIService service] currentApplicationColor];
+    cell.infoHubTransactionTitleLabel.textColor = [self.dynamicService currentApplicationColor];
     cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
     UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.infoHubTransactionImageView.image = logo;
@@ -179,7 +186,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(DefaultCellOffset, 0, tableView.frame.size.width - DefaultCellOffset * 2, SectionHeaderHeight)];
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.text = dynamicLocalizedString(@"transactions.label.text");
-    headerLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
+    headerLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     
     CAGradientLayer *headerGradient = [CAGradientLayer layer];
     headerGradient.frame = CGRectMake(0, 0, tableView.frame.size.width, SectionHeaderHeight);
@@ -189,12 +196,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [headerView.layer addSublayer:headerGradient];
     [headerView addSubview:headerLabel];
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        headerLabel.textAlignment = NSTextAlignmentRight;
-    } else {
-        headerLabel.textAlignment = NSTextAlignmentLeft;
-    }
-
+    headerLabel.textAlignment = self.dynamicService.language == LanguageTypeArabic ? NSTextAlignmentRight :  NSTextAlignmentLeft;
     return headerView;
 }
 
@@ -206,7 +208,7 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
-    self.announcementsLabel.font = [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
+    self.announcementsLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
 }
 
@@ -215,31 +217,17 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [self.tableView reloadData];
     [self.collectionView reloadData];
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 
 - (void)setRTLArabicUI
 {
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    self.leftSeparatorSpaceConstraint.constant = 0;
-    self.rightSeparatorSpaceConstraint.constant = DefaultCellOffset;
-    [self updateUI];
-    
-    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, -1, 1);
+    [self updateUIForLeftBasedInterface:NO];
 }
 
 - (void)setLTREuropeUI
 {
-    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
-    self.leftSeparatorSpaceConstraint.constant = DefaultCellOffset;
-    self.rightSeparatorSpaceConstraint.constant = 0;
-    [self updateUI];
-    
-    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+    [self updateUIForLeftBasedInterface:YES];
 }
 
 #pragma mark - Private
@@ -252,32 +240,36 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
     [self.tableView registerNib:[UINib nibWithNibName:@"InfoHubTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:InfoHubTableViewCellArabicIdentifier];
 }
 
-- (NSString *)tableViewCellUIIdentifier
-{
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        return InfoHubTableViewCellArabicIdentifier;
-    }
-    return InfoHubTableViewCellEuropeIdentifier;
-}
-
-- (NSString *)collectionViewCellUIIdentifier
-{
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
-        return InfoHubCollectionViewCellArabicIdentifier;
-    }
-    return InfoHubCollectionViewCellEuropeIdentifier;
-}
-
 - (void)prepareDemoDataSource
 {
     self.tableViewDataSource = @[@"Type Approval", @"Frequesncy Spectrum Authorizaions", @".ea Domain news"];
     self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
 }
 
-- (void)updateUI
+- (void)updateUIForLeftBasedInterface:(BOOL)leftBased
 {
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (!startingLanguageType) {
+            startingLanguageType = self.dynamicService.language;
+        }
+        if (startingLanguageType == LanguageTypeArabic) {
+            [self reverseDataSource];
+        }
+    } else {
+        [self reverseDataSource];
+    }
+    
+    self.leftSeparatorSpaceConstraint.constant = leftBased ? DefaultCellOffset : 0;
+    self.rightSeparatorSpaceConstraint.constant = leftBased ? 0 : DefaultCellOffset;
+    self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, leftBased ? 1 : -1, 1);
+
     [self.tableView reloadData];
     [self.collectionView reloadData];
+}
+
+- (void)reverseDataSource
+{
+    self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
 }
 
 @end

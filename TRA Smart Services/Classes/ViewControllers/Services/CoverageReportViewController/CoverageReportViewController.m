@@ -11,7 +11,7 @@
 
 @interface CoverageReportViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISlider *signalLevelSlider;
 @property (weak, nonatomic) IBOutlet UIButton *reportSignalButton;
@@ -84,26 +84,23 @@
     }
 }
 
-#pragma mark - IbAction
+#pragma mark - IBAction
 
 - (IBAction)reportSignalButtonTapped:(id)sender
 {
     if ([LocationManager sharedManager].currentLattitude || self.addressTextField.text.length) {
-        [self.HUD show:YES];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
 
-        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTPoorCoverageAtLatitude:[LocationManager sharedManager].currentLattitude longtitude:[LocationManager sharedManager].currentLongtitude address:self.addressTextField.text signalPower:self.signalLevelSlider.value  requestResult:^(id response, NSError *error) {
             if (error) {
                 if (error.code == -999) {
-                    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.OperationCanceledByUser")];
+                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"message.OperationCanceledByUser")];
                 } else {
-                    [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
                 }
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
-            [weakSelf.HUD hide:YES];
-
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
@@ -189,8 +186,10 @@
 {
     [super updateColors];
     
-    self.activityIndicator.color = [[DynamicUIService service] currentApplicationColor];
-    self.signalLevelSlider.minimumTrackTintColor = [[DynamicUIService service] currentApplicationColor];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    self.activityIndicator.color = color;
+    self.signalLevelSlider.minimumTrackTintColor = color;
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private

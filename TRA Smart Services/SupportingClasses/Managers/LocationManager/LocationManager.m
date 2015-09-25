@@ -32,9 +32,7 @@
 - (void)permissionRequest
 {
     if ([[LocationManager sharedManager] isLocationServiceEnabled]) {
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
+        [self.locationManager requestWhenInUseAuthorization];
     }
 }
 
@@ -85,22 +83,6 @@
     }];
 }
 
-+ (NSString *)GPSDataFromLocation:(CLLocationCoordinate2D)location latitudeRef:(NSString *)latitudeRef longtitudeRef:(NSString *)longtitudeRef
-{
-    int degrees = location.latitude;
-    double decimal = fabs(location.latitude - degrees);
-    int minutes = decimal * 60;
-    NSString *latValue = [NSString stringWithFormat:@"%d°%@ %d'", degrees, latitudeRef, minutes];
-    
-    degrees = location.longitude;
-    decimal = fabs(location.longitude - degrees);
-    minutes = decimal * 60;
-    NSString *longValue = [NSString stringWithFormat:@"%d°%@ %d'", degrees, longtitudeRef, minutes];
-    
-    NSString *GPS = [[latValue stringByAppendingString:@" "] stringByAppendingString:longValue];
-    return GPS;
-}
-
 #pragma mark - Configuration
 
 - (instancetype)init
@@ -118,9 +100,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kCLHeadingFilterNone;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
+    [self.locationManager requestWhenInUseAuthorization];
 }
 
 #pragma mark - CLLocationManagerDelegate

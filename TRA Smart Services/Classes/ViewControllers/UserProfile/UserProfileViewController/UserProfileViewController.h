@@ -8,6 +8,6 @@
 
 #import "BaseMembershipViewController.h"
 
-@interface UserProfileViewController : BaseMembershipViewController
+@interface UserProfileViewController : BaseMembershipViewController <UIAlertViewDelegate>
 
 @end

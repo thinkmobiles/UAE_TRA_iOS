@@ -21,6 +21,7 @@ static NSString *const FavIconNameInActiveGreen = @"check_green";
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteServiceLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *favourieDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIView *hexagonBackgroundView;
 
 @end
 
@@ -60,7 +61,8 @@ static NSString *const FavIconNameInActiveGreen = @"check_green";
 {
     _logoImage = logoImage;
     _favouriteServiceLogoImageView.image = logoImage;
-    [self addHexagoneOnView:self.favouriteServiceLogoImageView];
+    [AppHelper addHexagoneOnView:self.hexagonBackgroundView];
+    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor] width:3.0f];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText
@@ -95,16 +97,6 @@ static NSString *const FavIconNameInActiveGreen = @"check_green";
 
         [self.favoriteButton setImage:inActiveIcon forState:UIControlStateNormal];
     }
-}
-
-#pragma mark - Private
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
 }
 
 @end

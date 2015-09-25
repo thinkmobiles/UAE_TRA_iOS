@@ -31,7 +31,6 @@
 {
     [super viewWillAppear:animated];
     
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -65,6 +64,23 @@
 
 #pragma mark - Public
 
+- (void)configureTextField:(LeftInsetTextField *)textField withImageName:(NSString *)imageName
+{
+    UIImage *leftImage = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:leftImage];
+    [imageView setImage:leftImage];
+    imageView.tintColor = [self.dynamicService currentApplicationColor];
+    textField.rightView = nil;
+    textField.leftView = nil;
+    if (self.dynamicService.language != LanguageTypeArabic) {
+        textField.leftViewMode = UITextFieldViewModeAlways;
+        textField.leftView = imageView;
+    } else {
+        textField.rightViewMode = UITextFieldViewModeAlways;
+        textField.rightView = imageView;
+    }
+}
+
 - (void)prepareNavigationBar
 {
     [self.navigationController presentTransparentNavigationBarAnimated:NO];
@@ -77,26 +93,6 @@
 - (void)returnKeyDone
 {
     
-}
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
-}
-
-- (void)addHexagonBorderForLayer:(CALayer *)layer color:(UIColor *)color
-{
-    CAShapeLayer *borderlayer = [CAShapeLayer layer];
-    borderlayer.fillColor = [UIColor clearColor].CGColor;
-    borderlayer.strokeColor = color ? color.CGColor : [[DynamicUIService service] currentApplicationColor].CGColor;
-    borderlayer.lineWidth = 3.f;
-    borderlayer.frame = layer.bounds;
-    borderlayer.path = [AppHelper hexagonPathForRect:layer.bounds].CGPath;
-    
-    [layer addSublayer:borderlayer];
 }
 
 #pragma mark - Private
@@ -130,7 +126,6 @@
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         [weakSelf.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY < 50.f ? 50.f : offsetForScrollViewY)];
-        [weakSelf.view layoutIfNeeded];
     }];
 }
 
@@ -139,7 +134,6 @@
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         [weakSelf.scrollView setContentOffset:CGPointZero];
-        [weakSelf.view layoutIfNeeded];
     }];
 }
 

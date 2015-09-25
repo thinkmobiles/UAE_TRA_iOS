@@ -34,17 +34,7 @@
     _previewLogoImage = previewLogoImage;
     
     self.announcementPreviewIconImageView.image = previewLogoImage;
-    [self addHexagoneOnView:self.announcementPreviewIconImageView];
-}
-
-#pragma mark - Private
-
-- (void)addHexagoneOnView:(UIView *)view
-{
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.layer.bounds;
-    maskLayer.path = [AppHelper hexagonPathForView:view].CGPath;
-    view.layer.mask = maskLayer;
+    [AppHelper addHexagoneOnView:self.announcementPreviewIconImageView];
 }
 
 @end

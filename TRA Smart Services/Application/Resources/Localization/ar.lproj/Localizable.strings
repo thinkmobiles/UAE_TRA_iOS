@@ -1,10 +1,10 @@
 /*
-  Localizable.strings
-  TRA Smart Services
-
-  Created by Kirill Gorbushko on 13.07.15.
-  Copyright © 2015 Thinkmobiles. All rights reserved.
-*/
+ Localizable.strings
+ TRA Smart Services
+ 
+ Created by Kirill Gorbushko on 13.07.15.
+ Copyright © 2015 Thinkmobiles. All rights reserved.
+ */
 
 //API descriptors
 
@@ -14,6 +14,7 @@
 //UIElements Title
 
 "uiElement.cancelButton.title" = "Cancel";
+"uiElement.OKButton.title" = "OK";
 
 //Messages for Alerts
 
@@ -34,19 +35,21 @@
 "message.InvalidFormatLastName" = "Invalid Last Name";
 "message.InvalidFormatMobile" = "Invalid mobilePhone";
 "message.InvalidFormatEmail" = "Invalid Email";
-"message.InvalidFormatURL" = "Invalid URL format";
-"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
+"message.InvalidFormatURL" = "الرابط غير صحيح";
+"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
+"message.FailedToSendSMS" = "Cant sent SMS";
+"message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
 
 //StatesNames
 
-"state.SelectState" = "Select State";
-"state.Abu.Dhabi" = "Abu Dhabi";
-"state.Ajman" = "Ajman";
-"state.Dubai" = "Dubai";
-"state.Fujairah" = "Fujairah";
-"state.Ras" = "Ras al-Khaiman";
-"state.Sharjan" = "Sharjah";
-"state.Quwain" = "Umm al-Quwain";
+"state.SelectState" = "الإمارة";
+"state.Abu.Dhabi" = "أبوظبي";
+"state.Ajman" = "عجمان";
+"state.Dubai" = "دبي";
+"state.Fujairah" = "الفجيرة";
+"state.Ras" = "رأس الخيمة";
+"state.Sharjan" = "الشارقة";
+"state.Quwain" = "أم القيوين";
 
 //ProviderType
 
@@ -71,9 +74,10 @@
 "login.button.login" = "تسجيل الدخول";
 "login.button.forgotPassword" = "نسيت كلمة المرور";
 "login.button.registerButton" = "تسجيل";
+
 "login.restore_password.message" = "To restore password please enter your email that was used during registration";
-"login.picker.genre.male" = "Male";
-"login.picker.genre.female" = "Female";
+"login.picker.genre.male" = "ذكر";
+"login.picker.genre.female" = "انثى";
 "login.picker.genre.undefined" = "Not specified";
 
 //RegisterViewController
@@ -85,26 +89,32 @@
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
-"register.placeHolderText.confirmPassword" = "Comfirm Password";
-"register.placeHolderText.firstName" = "First Name";
-"register.placeHolderText.emirateID" = "Emirates ID";
-"register.placeHolderText.lastName" = "Last Name";
-"register.placeHolderText.address" = "Address";
-"register.placeHolderText.landline" = "Landline";
-"register.placeHolderText.country" = "Country";
-"register.placeHolderText.email" = "Email";
-"register.placeHolderText.state" = "State";
+"register.placeHolderText.confirmPassword" = "تأكيد كلمة المرور";
+"register.placeHolderText.firstName" = "الاسم";
+"register.placeHolderText.emirateID" = "هوة الإمارات";
+"register.placeHolderText.lastName" = "اللقب";
+"register.placeHolderText.address" = "العنوان";
+"register.placeHolderText.landline" = "الهاتف الأرضي";
+"register.placeHolderText.country" = "البلد";
+"register.placeHolderText.email" = "البريد الالكتروني";
+"register.placeHolderText.state" = "الامارة";
+
+//SelectRegisterViewController
+"register.label.registerInfo" = "SELECT A WAY TO REGISTER";
+"register.label.emiratesID" = "Emirates ID\nVerification";
+"register.label.fillForm" = "Fill-up Form\n(Manual)";
 
 //RestorePasswordViewController
 
-"restorePassword.title" = "Restore Password";
+"restorePassword.title" = "استعادة كلمة المرور";
 "restorePassword.PlaceholderText.email" = "البريد الالكتروني";
 "restorePassword.button.restore" = "Restore Password";
 "restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
 
 //SettingsViewController
 
-"settings.title" = "Settings";
+"settings.title" = "إعدادات";
+"settings.title.aboutTra" = "عن الهيئة";
 "settings.label.language" = "اللغة";
 "settings.label.fontsize" = "حجم الخط";
 "settings.label.colorImpaired" = "Color Impaired";
@@ -112,39 +122,48 @@
 "settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
 "settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
 "settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
-"settings.label.colorThemeTitle" = "Color Theme";
+"settings.label.colorThemeTitle" = "تغيير اللون";
 "settings.label.colorThemeDetails" = "Change color theme for app";
-"settings.label.aboutTRATitle" = "About TRA";
+"settings.label.aboutTRATitle" = "عن الهيئة";
 "settings.label.aboutTRADetails" = "Read mare about TRA";
 "settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
-
+"settings.label.fontsize.description.small" = "Small";
+"settings.label.fontsize.description.normal" = "Normal";
+"settings.label.fontsize.description.large" = "Large";
+"setting.label.release" = "Release version";
+"setting.label.releaseVersion" = "v %@, build %i.%i.%i";
+"setting.label.touchID" = "Use Touch ID";
+"setting.label.touchIDDEscription" = "Use your finger print for authentification process";
+"setting.loginRequired.message" = "Please login to enable this option";
+"fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
 
 //HomeViewController
 
 "speedAccess.service.name.-1" = "Demo";
 "speedAccess.service.name.0" = "تفاصيل النطاق";
 "speedAccess.service.name.1" = "تحقق من توفر النطاق";
-"speedAccess.service.name.2" = "Check IMEI1";
-"speedAccess.service.name.3" = "Mobile Brand1";
-"speedAccess.service.name.4" = "Feedback1";
+"speedAccess.service.name.2" = "هوية الجهاز";
+"speedAccess.service.name.3" = "الأجهزة المعتمدة";
+"speedAccess.service.name.4" = "تعليقاتكم";
 "speedAccess.service.name.5" = "رسائل غير مرغوبة";
-"speedAccess.service.name.6" = "Help Salim";
+"speedAccess.service.name.6" = "ساعد سالم";
 "speedAccess.service.name.7" = "تحقق";
 "speedAccess.service.name.8" = "التغطية";
 "speedAccess.service.name.9" = "انترنت";
-"speedAccess.service.name.10" = "شكوى";
+"speedAccess.service.name.10" = "شكوى على مزود خدمة";
 "speedAccess.service.name.11" = "اقتراح";
-"speedAccess.service.name.12" = "إستفسار المتوافقة";
-"speedAccess.service.name.13" = "Compliant TRA";
+"speedAccess.service.name.12" = "المتوافقة";
+"speedAccess.service.name.13" = "شكوى على الهيئة";
 
 //NotificationsViewController
 
 "notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
 "notificationsViewController.noNotificationsMessage" = "You have no Notifications";
 "notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
+"notificationsViewController.clearAllButton.title" = "Clear All";
 
 //FavouriteViewController
 
@@ -184,7 +203,7 @@
 "coverageLevel.title" = "قوة التغطية";
 "coverageReport.reportSignalButton.title" = "Report signal";
 "coverageReport.detectLocationButton.title" = "Detect location";
-"coverageReport.addressTextField" = "Address";
+"coverageReport.addressTextField" = "العنوان";
 "coverageReport.alertButton2.title" = "Enter address manually";
 
 //InfoHubViewController
@@ -228,22 +247,23 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title" = "SMS Spam Report";
-"spamReportViewControler.textField.phoneProvider" = "Provider number";
-"spamReportViewControler.textField.phoneNumber" = "Phone number";
-"spamReportViewControler.textField.providerType" = "Provider type";
-"spamReportViewControler.reportButton.title" = "Block SMS Spamer";
-"spamReportViewControler.reportSegment.forSegmentAtIndex0.title" = "SMS Block";
-"spamReportViewControler.reportSegment.forSegmentAtIndex1.title" = "Spam Report";
+"spamReportViewControler.title.spamSMS" = "Spam - SMS";
+"spamReportViewControler.title.spamWEB" = "Spam - Website";
+"spamReportViewControler.reportTextField.reportSMS" = "Number";
+"spamReportViewControler.reportTextField.reportWeb" = "Link";
+"spamReportViewControler.reportButton.title" = "SUBMIT";
+"spamReportViewControler.descriptionTextView.placeholder" = "Copy and Paste the SMS here...";
 
 //"InternetSpeedTestViewController
 
 "internetSpeedTestViewController.title" = "Speed Test Demo";
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
+"InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
 
 //HelpSalimViewController
 
-"helpSalimViewController.title" = "Help Salim Service";
+"helpSalimViewController.title" = "خدمة ساعد سالم";
 "helpSalimViewController.urlToReportTextField" = "URL to report";
 "helpSalimViewController.commentLabel.text" = "Comment";
 "helpSalimViewController.reportURLButton.title" = "Report URL";
@@ -277,6 +297,7 @@
 "userProfile.changePassword" = "Change Password";
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "تسجيل الخروج";
+"userProfile.notificationMesasge" = "Are you sure that u want to logout?";
 
 //ResetPasswordViewController
 
@@ -315,3 +336,65 @@
 "editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
 "editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
 "editUserProfileViewController.dataSource.0element" = "Tap to select";
+
+//HomeSearchResultViewController
+
+"homeSearchResultViewController.title" = "Search Result";
+
+//VerificationIMEIViewController
+
+"verificationIMEIViewController.title" = "Verification IMEI Code";
+"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
+"verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
+
+//TutorialViewController
+
+"tutorialViewController.skipButton.title" = "SKIP";
+"tutorialViewController.nextButton.title" = "NEXT";
+
+//TRALoaderViewController
+
+"TRALoader.backButton.title" = "BACK TO DASHBOARD";
+"TRALoader.backButton.cancel" = "CANCEL";
+"TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
+"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";
+
+//AutoLoginService
+
+"autoLogin.message" = "Logging in...";
+
+//FingerPrintService
+
+"fingerPrintService.passwordRequest.message" = "Scan your finger to get access to services";
+"fingerPrintService.CancelAuth.title" = "Cancel auth";
+"fingerPrintService.ConfirmPassword.title" = "Enter password";
+"fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
+"fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
+"fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
+"fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
+"fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
+"fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
+
+//SpamListViewController
+
+"spamListViewController.title" = "My List";
+
+
+//InnovationsCollectionViewCell
+
+"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+
+//InnovationsChatTableViewCell
+
+"innovationsChatTableViewCell.replyButton.title" = "Reply";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+
+//SpamSelectionViewController
+
+"spamSelectionViewController.title" = "Spam";
+"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites as Spam to TRA";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";

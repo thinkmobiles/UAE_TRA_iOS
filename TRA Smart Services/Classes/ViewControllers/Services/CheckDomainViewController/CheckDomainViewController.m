@@ -19,7 +19,7 @@ static NSString *const keyOrder = @"order";
 
 @interface CheckDomainViewController ()
 
-@property (weak, nonatomic) IBOutlet LeftInsetTextField *domainNameTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *domainNameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *avaliabilityButton;
 @property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 @property (weak, nonatomic) IBOutlet UILabel *domainAvaliabilityLabel;
@@ -27,12 +27,7 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet ServiceView *serviceView;
 @property (weak, nonatomic) IBOutlet UIView *topHolderView;
 
-@property (weak, nonatomic) IBOutlet RatingView *ratingView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (strong, nonatomic) UIImage *navigationBarBackgroundImage;
 
 @end
 
@@ -45,12 +40,8 @@ static NSString *const keyOrder = @"order";
     [super viewWillAppear:animated];
     
     [self prepareTopView];
-    [self prepareRatingView];
     [self updateNavigationControllerBar];
-    [self prepareUI];
     [self displayDataIfNeeded];
-    
-    self.navigationBarBackgroundImage = self.navigationController.navigationBar.backIndicatorImage;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -59,15 +50,13 @@ static NSString *const keyOrder = @"order";
 
     if (!self.response) {
         self.domainAvaliabilityLabel.hidden = YES;
-        self.ratingView.hidden = YES;
         self.domainNameTextField.text = @"";
     }
     if (!self.result) {
-        self.ratingView.hidden = YES;
         self.tableView.hidden = YES;
     }
 
-    [self.navigationController.navigationBar setBackgroundImage:self.navigationBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - IBActions
@@ -85,16 +74,20 @@ static NSString *const keyOrder = @"order";
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
-        self.domainAvaliabilityLabel.hidden = NO;
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [weakSelf displayDataIfNeeded];
             } else {
-                PresentResult(response);
+                weakSelf.domainAvaliabilityLabel.hidden = NO;
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [loader dismissTRALoader];
+                    PresentResult(response);
+                });
             }
-            [AppHelper hideLoader];
         }];
     }
 }
@@ -113,16 +106,20 @@ static NSString *const keyOrder = @"order";
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
-        self.domainAvaliabilityLabel.hidden = NO;
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [weakSelf displayDataIfNeeded];
             } else {
-                PresentResult(response);
+                weakSelf.domainAvaliabilityLabel.hidden = NO;
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [loader dismissTRALoader];
+                    PresentResult(response);
+                });
             }
-            [AppHelper hideLoader];
         }];
     }
 }
@@ -220,20 +217,13 @@ static NSString *const keyOrder = @"order";
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
     self.serviceView.serviceName.text = dynamicLocalizedString(@"checkDomainViewController.domainTitleForView");
-    self.ratingView.chooseRating.text = [dynamicLocalizedString(@"checkDomainViewController.chooseRating") uppercaseString];
 }
 
 - (void)updateColors
 {
     [super updateColors];
     
-    self.ratingView.chooseRating.textColor = [[DynamicUIService service] currentApplicationColor];
-    
-    UIImage *background = [UIImage imageNamed:@"serviceBackground"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        background = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:background];
-    }
-    self.backgroundImageView.image = background;
+    [super updateBackgroundImageNamed:@"serviceBackground"];
 }
 
 #pragma mark - Private
@@ -242,20 +232,13 @@ static NSString *const keyOrder = @"order";
 {
     UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
     self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
+    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
 }
 
 - (void)updateNavigationControllerBar
 {
     [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-}
-
-- (void)prepareUI
-{
-    self.domainNameTextField.layer.borderColor = [UIColor lightGrayBorderColor].CGColor;
-    self.domainNameTextField.layer.borderWidth = 1.5f;
-    self.domainNameTextField.layer.cornerRadius = 3.f;
 }
 
 - (void)displayDataIfNeeded
@@ -269,21 +252,14 @@ static NSString *const keyOrder = @"order";
         } else {
             self.domainAvaliabilityLabel.textColor = [UIColor lightGreenTextColor];
         }
-        self.ratingView.hidden = NO;
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
     } else if (self.result) {
-        self.ratingView.hidden = NO;
         self.tableView.hidden = NO;
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
     }
-}
-
-- (void)prepareRatingView
-{
-    self.ratingView.delegate = self;
 }
 
 - (NSArray *)parseData:(NSString *)inputData

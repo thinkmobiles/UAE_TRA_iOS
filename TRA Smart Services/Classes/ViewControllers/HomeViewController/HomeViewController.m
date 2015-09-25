@@ -16,6 +16,7 @@
 #import "UserProfileViewController.h"
 #import "HomeSearchViewController.h"
 #import "KeychainStorage.h"
+#import "TutorialViewController.h"
 
 static CGFloat const CellSpacing = 5.f;
 static CGFloat const RowCount = 4.f;
@@ -38,6 +39,8 @@ static NSString *const HomeToNotificationSegueIdentifier = @"HomeToNotificationS
 static NSString *const HomeToUserProfileSegueIdentifier = @"UserProfileSegue";
 static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue";
 
+static LanguageType startLanguage;
+
 @interface HomeViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *speedAccessCollectionViewTopSpaceConstraint;
@@ -47,7 +50,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *movableImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSMutableArray *speedAccessDataSource;
 @property (strong, nonatomic) NSMutableArray *otherServiceDataSource;
@@ -56,6 +58,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 @property (assign, nonatomic) BOOL isScrollintToTop;
 @property (assign, nonatomic) BOOL stopAnimate;
 @property (assign, nonatomic) BOOL isFirstTimeLoaded;
+@property (assign, nonatomic) NSInteger selectedServiceIDHomeSearchViewController;
 
 @end
 
@@ -66,6 +69,11 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    startLanguage = self.dynamicService.language;
+    
+    self.selectedServiceIDHomeSearchViewController = - 1;
+    self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
     
     [self prepareTopBar];
     self.topView.enableFakeBarAnimations = YES;
@@ -91,7 +99,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     
     if (self.isFirstTimeLoaded) {
         [self.speedAccessCollectionView reloadData];
-        [self.menuCollectionView  reloadData];
+        [self.menuCollectionView reloadData];
     }
     self.isFirstTimeLoaded = YES;
 }
@@ -101,6 +109,15 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     [super viewDidAppear:animated];
     
     [self.topView animateTopViewApearence];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:KeyIsTutorialShowed]) {
+        TutorialViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialID"];
+        __weak typeof(self) weakSelf = self;
+        tutorialViewController.didCloseViewController = ^() {
+            [weakSelf.topView animateTopViewApearence];
+        };
+        [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -125,11 +142,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.speedAccessCollectionView) {
-        [self speedAccessCollectionViewCellSelectedAtIndexPath:indexPath];
-    } else {
-        [self otherServiceCollectionViewCellSelectedAtIndexPath:indexPath];
-    }
+    collectionView == self.speedAccessCollectionView ? [self speedAccessCollectionViewCellSelectedAtIndexPath:indexPath] : [self otherServiceCollectionViewCellSelectedAtIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -147,13 +160,11 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 {
     UICollectionViewCell *cell;
     if (collectionView == self.menuCollectionView) {
-
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:MenuCollectionViewCellIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[MenuCollectionViewCell alloc] init];
-    }
-    [self configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:indexPath];
-        
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:MenuCollectionViewCellIdentifier forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[MenuCollectionViewCell alloc] init];
+        }
+        [self configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:indexPath];
     } else if (collectionView == self.speedAccessCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCollectionViewCellIdentifier forIndexPath:indexPath];
         if (!cell) {
@@ -282,18 +293,12 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [self performSegueWithIdentifier:HomeToUserProfileSegueIdentifier sender:self];
     } else {
         UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        navController.modalPresentationStyle = UIModalPresentationCurrentContext;
-#ifdef __IPHONE_8_0
-        navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-#endif
         LoginViewController *loginViewController = (LoginViewController *)navController.topViewController;
         loginViewController.shouldAutoCloseAfterLogin = YES;
-        
         loginViewController.didDismissed = ^() {
             [weakSelf.topView animateTopViewApearence];
         };
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        [self.navigationController presentViewController:navController animated:NO completion:nil];
+        [AppHelper presentViewController:navController onController:self.navigationController];
     }
 }
 
@@ -301,34 +306,26 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)disableInteractiveGesture
 {
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    }
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 - (void)prepareDataSource
 {
     self.speedAccessDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SpeedAccessServices" ofType:@"plist"]];
     self.otherServiceDataSource = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OtherServices" ofType:@"plist"]];
-        
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
-        [self reverseDataSource];
+    
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if ((self.dynamicService.language == LanguageTypeArabic && startLanguage == LanguageTypeEnglish) ||
+            (self.dynamicService.language == LanguageTypeEnglish && startLanguage == LanguageTypeArabic)) {
+            [self reverseDataSource];
+        }
+    } else {
+        if (self.dynamicService.language == LanguageTypeArabic) {
+            [self reverseDataSource];
+        }
     }
 }
-
-- (UIImage *)setupFakeBackground
-{
-    CGSize size = CGSizeMake(self.navigationController.view.bounds.size.width, self.navigationController.view.bounds.size.height - 50);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-
-#pragma mark - Notifications
 
 - (void)reverseDataSource
 {
@@ -352,7 +349,46 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     }
     
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
+    [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
+}
+
+- (void)sevriceSwitchPerformSegue:(NSInteger) serviceID
+{
+    if (![NetworkManager sharedManager].networkStatus) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
+        return;
+    }
+    switch (serviceID) {
+        case 2: {
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            break;
+        }
+        case 3: {
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            break;
+        }
+        case 5: {
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
+            break;
+        }
+        case 6: {
+            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            break;
+        }
         case 7: {
             [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
             break;
@@ -365,38 +401,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
             [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
             break;
         }
-        case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-        default: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-            break;
-        }
-    }
-}
-
-- (void)otherServiceCollectionViewCellSelectedAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (![NetworkManager sharedManager].networkStatus) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
-        return;
-    }
-    
-    NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
-    switch ([[selectedServiceDetails valueForKey:@"serviceID"] integerValue]) {
-        case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
-            break;
-        }
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
-            break;
-        }
         case 12:
         case 13:
         case 10: {
@@ -405,14 +409,6 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         }
         case 11: {
             [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
-            break;
-        }
-        case 3: {
-            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
-            break;
-        }
-        default: {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
             break;
         }
     }
@@ -432,13 +428,24 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)prepareHomeSearchViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
     HomeSearchViewController *homeSearchViewController = segue.destinationViewController;
-    homeSearchViewController.fakeBackground = [self setupFakeBackground];
+    homeSearchViewController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
+    homeSearchViewController.hidesBottomBarWhenPushed = YES;
+
+    __weak typeof(self) weakSelf = self;
+    homeSearchViewController.didSelectService = ^(NSInteger selectedServiseID){
+        weakSelf.navigationController.navigationBar.hidden = NO;
+        [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        [UIView performWithoutAnimation:^{
+            [weakSelf sevriceSwitchPerformSegue:selectedServiseID];
+        }];
+    };
 }
 
 - (void)prepareNotificationViewControllerWithSegue:(UIStoryboardSegue *)segue
 {
     NotificationViewController *notificationViewController = segue.destinationViewController;
-    notificationViewController.fakeBackground = [self setupFakeBackground];
+    notificationViewController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
+    notificationViewController.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)prepareCompliantViewControllerWithSegue:(UIStoryboardSegue *)segue
@@ -461,9 +468,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    
     self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
-    
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
@@ -473,28 +478,24 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)localizeUI
 {
-    
+
 }
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"background"];
+    [super updateBackgroundImageNamed:@"background"];
     UIImage *movableImage = [UIImage imageNamed:@"res_polygons"];
-
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         movableImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:movableImage];
     }
-    
     self.movableImageView.image = movableImage;
-    self.backgroundImageView.image = backgroundImage;
     
     [self.topView updateUIColor];
 }
 
 - (void)setRTLArabicUI
 {
-    [self transformTopView:CATransform3DMakeScale(-1, 1, 1)];
+    [self transformTopView:TRANFORM_3D_SCALE];
 }
 
 - (void)setLTREuropeUI
@@ -506,16 +507,19 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)configureMainCell:(MenuCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row % 2) {
-        cell.cellPresentationMode = PresentationModeModeBottom;
+    if ([AppHelper isiOS9_0OrHigher]) {
+        if (startLanguage == LanguageTypeEnglish) {
+            cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
+        } else {
+            cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeTop : PresentationModeModeBottom;
+        }
     } else {
-        cell.cellPresentationMode = PresentationModeModeTop;
+        cell.cellPresentationMode = indexPath.row % 2 ? PresentationModeModeBottom : PresentationModeModeTop;
     }
     
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        
         UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
         cell.itemLogoImageView.image = serviceLogo;
     }
@@ -530,7 +534,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
     NSDictionary *selectedServiceDetails = self.speedAccessDataSource[indexPath.row];
     
     NSArray *gradientColors = @[(id)[UIColor itemGradientTopColor].CGColor, (id)[UIColor itemGradientBottomColor].CGColor];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         gradientColors = @[(id)[UIColor blackColor].CGColor, (id)[[UIColor whiteColor] colorWithAlphaComponent:0.5f].CGColor];
     }
     
@@ -538,18 +542,16 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
         [cell.polygonView setGradientWithTopColors:gradientColors];
     } else {
         [cell.polygonView setGradientWithTopColors:@[(id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor]];
-        [cell setTintColorForLabel:[[DynamicUIService service] currentApplicationColor]];
+        [cell setTintColorForLabel:[self.dynamicService currentApplicationColor]];
     }
     
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        
         UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
-        if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+        if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
             serviceLogo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:serviceLogo];
         }
-
         cell.categoryLogoImageView.image = serviceLogo;
-        cell.categoryLogoImageView.tintColor = [[DynamicUIService service] currentApplicationColor];
+        cell.categoryLogoImageView.tintColor = [self.dynamicService currentApplicationColor];
     }
     
     cell.categoryTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
@@ -640,11 +642,7 @@ static NSString *const HomeToHomeSearchSegueIdentifier = @"HomeToHomeSearchSegue
 
 - (void)detectScrollDirectioninScrollView:(UIScrollView *)scrollView
 {
-    if (self.lastContentOffset > scrollView.contentOffset.y) {
-        self.isScrollintToTop = NO;
-    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
-        self.isScrollintToTop = YES;
-    }
+    self.isScrollintToTop  = self.lastContentOffset > scrollView.contentOffset.y ? NO : YES;
 }
 
 - (void)animateSpeedAccessCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

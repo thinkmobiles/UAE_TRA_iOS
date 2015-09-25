@@ -14,7 +14,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithCoder:coder nibName:@"ServiceView"];
+    self = [super initWithCoder:coder nibName:NSStringFromClass([self class])];
     return self;
 }
 

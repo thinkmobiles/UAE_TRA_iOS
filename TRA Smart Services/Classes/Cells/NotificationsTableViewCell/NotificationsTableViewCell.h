@@ -20,10 +20,10 @@ static NSString *const NotificationsTableViewCellArabicIdentifier = @"notificati
 
 @interface NotificationsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) id <NotificationsTableViewCellDelegate> delegate;
-@property (strong, nonatomic) UIImage *notificationImageLogo;
-
 @property (weak, nonatomic) IBOutlet UILabel *notificationTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notificationDetailsLabel;
+
+@property (weak, nonatomic) id <NotificationsTableViewCellDelegate> delegate;
+@property (strong, nonatomic) UIImage *notificationImageLogo;
 
 @end

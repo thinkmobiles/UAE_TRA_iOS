@@ -12,6 +12,8 @@
 
 - (void)prepareForReuse
 {
+    [super prepareForReuse];
+    
     self.selectProviderLabel.text = @"";
     self.selectProviderImage.image = nil;
 }

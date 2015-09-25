@@ -15,12 +15,15 @@
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-@property (weak, nonatomic) IBOutlet OffsetTextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIView *userNameSeparator;
+@property (weak, nonatomic) IBOutlet UIView *passwordSeparator;
+@property (weak, nonatomic) IBOutlet UIView *loginSeparator;
+@property (weak, nonatomic) IBOutlet UIView *verticalSeparator;
 
 @property (strong, nonatomic) KeychainStorage *storage;
 @property (assign, nonatomic) BOOL isViewControllerPresented;
@@ -54,8 +57,10 @@
 {
     [super viewDidDisappear:animated];
     
-    if (self.didDismissed) {
-        self.didDismissed();
+    if (self.navigationController.viewControllers.count == 1) {
+        if (self.didDismissed) {
+            self.didDismissed();
+        }
     }
 }
 
@@ -83,7 +88,6 @@
             } else {
                 [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
                 
-                [AppHelper alertViewWithMessage:response];
                 if (weakSelf.shouldAutoCloseAfterLogin) {
                     weakSelf.didCloseViewController = nil;
                     [weakSelf closeButtonPressed];
@@ -118,6 +122,15 @@
 
 #pragma mark - Private
 
+- (void)updateUI:(NSTextAlignment)textAlignment
+{
+    [self configureTextField:self.userNameTextField withImageName:@"ic_user_login"];
+    [self configureTextField:self.passwordTextField withImageName:@"ic_pass"];
+    
+    self.userNameTextField.textAlignment = textAlignment;
+    self.passwordTextField.textAlignment = textAlignment;
+}
+
 #pragma mark - UI
 
 - (void)localizeUI
@@ -132,9 +145,34 @@
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
-    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    [self.loginButton setBackgroundColor:color];
+    [self.registerButton setTitleColor:color forState:UIControlStateNormal];
+    [self.forgotPasswordButton setTitleColor:color forState:UIControlStateNormal];
+    
+    [self.userNameTextField.leftView setTintColor:color];
+    [self.userNameTextField.rightView setTintColor:color];
+    self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:dynamicLocalizedString(@"login.placeHolderText.username") attributes:@{NSForegroundColorAttributeName: color}];
+    self.userNameTextField.textColor = color;
+    self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:dynamicLocalizedString(@"login.placeHolderText.password") attributes:@{NSForegroundColorAttributeName: color}];
+    self.passwordTextField.textColor = color;
+    
+    self.userNameSeparator.backgroundColor = color;
+    self.passwordSeparator.backgroundColor = color;
+    self.loginSeparator.backgroundColor = color;
+    self.verticalSeparator.backgroundColor = color;
+    
+    [super updateBackgroundImageNamed:@"res_img_bg"];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUI:NSTextAlignmentLeft];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUI:NSTextAlignmentRight];
 }
 
 - (void)prepareNavigationBarButton
@@ -146,11 +184,8 @@
 {
     [super prepareNavigationBar];
     [self prepareNavigationBarButton];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
 }
 
 @end

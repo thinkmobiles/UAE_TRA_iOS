@@ -6,10 +6,9 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface AutoLoginService : NSObject
 
 - (void)performAutoLoginIfPossible;
+- (void)performAutoLoginWithPassword:(NSString *)userPassword;
 
 @end

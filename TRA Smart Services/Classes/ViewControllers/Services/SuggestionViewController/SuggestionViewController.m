@@ -12,8 +12,8 @@
 
 @interface SuggestionViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *suggestionTitle;
-@property (weak, nonatomic) IBOutlet UITextField *suggectionDescription;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *suggestionTitle;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
@@ -21,7 +21,7 @@
 
 @implementation SuggestionViewController
 
-#pragma mark - Life Cicle
+#pragma mark - LifeCycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -43,14 +43,13 @@
     if (!self.suggestionTitle.text.length || !self.suggectionDescription.text.length){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTSendSuggestion:self.suggestionTitle.text description:self.suggectionDescription.text attachment:self.selectImage requestResult:^(id response, NSError *error) {
             if (error) {
-                [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
-            [AppHelper hideLoader];
         }];
     }
 }
@@ -77,6 +76,8 @@
 - (void)updateColors
 {
     [super updateColors];
+    
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 @end

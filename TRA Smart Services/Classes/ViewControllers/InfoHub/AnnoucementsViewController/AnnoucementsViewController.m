@@ -13,7 +13,6 @@
 @interface AnnoucementsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *filteredDataSource;
@@ -57,13 +56,12 @@ static CGFloat const DefaultCellOffset = 24.0f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AnnoucementsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self cellUIIdentifier]];
+    cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
     if (indexPath.row % 2) {
-        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset + AdditionalCellOffset;
-    } else {
-        cell.marginAnnouncementContainerConstraint.constant = DefaultCellOffset;
+        cell.marginAnnouncementContainerConstraint.constant += AdditionalCellOffset;
     }
     
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         cell.annocementsDescriptionLabel.text = @"الخيل والليل والبيداء تعرفني والسيف والرمح والقرطاس و القلمصحبت في الفلوات الوحش منفردا حتى تعجب مني القور و الأكم        يا من يعز علينا ان نفارقهم وجداننا كل شيء بعدكم عدم ما كان أخلقنا منكم بتكرمة لو ان أمركم من أمرنا أمم إن كان سركم ما قال حاسدنا فما لجرح إذا أرضاكم ألم و بيننا لو رعيتم ذاك معرفة غن المعارف في اهل النهى ذمم";
         cell.annocementsDateLabel.text = @"قصيدة ابو الطيب المتنبي";
     } else {
@@ -72,12 +70,11 @@ static CGFloat const DefaultCellOffset = 24.0f;
     }
     
     UIImage *logo = [UIImage imageNamed:@"test"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.annoucementLogoImage = logo;
     cell.annocementsDescriptionLabel.tag = DeclineTagForFontUpdate;
-    
     return cell;
 }
 
@@ -105,24 +102,20 @@ static CGFloat const DefaultCellOffset = 24.0f;
 - (void)localizeUI
 {
     [super localizeUI];
-    
+
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"annoucements.title");
 }
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 
 #pragma mark - Private
 
 - (NSString *)cellUIIdentifier
 {
-    if ([DynamicUIService service].language == LanguageTypeArabic ) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         return AnnoucementsTableViewCellArabicIdentifier;
     }
     return AnnoucementsTableViewCellEuropeIdentifier;

@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
+#import "TRALoaderViewController.h"
+#import "BottomBorderTextField.h"
+#import "BottomBorderTextView.h"
+
 @interface BaseServiceViewController : BaseDynamicUIViewController
 
 - (void)presentLoginIfNeeded;
-
 - (void)updateColors;
-
 
 @end

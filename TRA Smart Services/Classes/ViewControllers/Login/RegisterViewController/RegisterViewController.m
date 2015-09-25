@@ -9,36 +9,34 @@
 #import "RegisterViewController.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const HeightForToolbars = 44.f;
 static CGFloat const HeightTextFieldAndSeparator = 50.f;
+static NSInteger const SeparatorTag = 77;
+
+static NSString *const DividerForID = @"-";
 
 @interface RegisterViewController ()
 
-@property (strong, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *mainContainerView;
+@property (weak, nonatomic) IBOutlet UIScrollView *registerScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
-@property (weak, nonatomic) IBOutlet OffsetTextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *confirmPasswordTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *emiratesIDTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *mobileTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet OffsetTextField *selectStateTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *emiratesIDTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *mobileTextField;
+@property (weak, nonatomic) IBOutlet LeftInsetTextField *emailTextField;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaseRegisterConteinerUIView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollLogoImage;
+@property (weak, nonatomic) IBOutlet UIView *registerContainer;
 
 @property (assign, nonatomic) CGFloat offSetTextFildY;
 @property (assign, nonatomic) CGFloat keyboardHeight;
-
-@property (assign, nonatomic) NSInteger selectedState;
-@property (strong, nonatomic) NSArray *pickerSelectStateDataSource;
-@property (strong, nonatomic) UIPickerView *selectStatePicker;
 
 @end
 
@@ -50,26 +48,11 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
 {
     [super viewWillAppear:animated];
     
-    self.selectedState = -1;
-    [self prepareNotification];
     [self prepareRegisterConteinerUIView];
     [self updateColors];
-    
-    [self configureSelectStateTextFieldInputView];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    [self prepareNavigationBar];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self removeNotifications];
+    self.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    self.emiratesIDTextField.subDelegate = self;
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -80,19 +63,19 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
 
     if (textField.returnKeyType == UIReturnKeyNext) {
         CGFloat offsetTextField = textField.frame.origin.y + self.verticalSpaseRegisterConteinerUIView.constant;
-        CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
+        CGFloat lineEventScroll = self.registerScrollView.frame.size.height + self.registerScrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
 
         if (offsetTextField  > lineEventScroll) {
-            [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y + HeightTextFieldAndSeparator) animated:YES];
+            [self.registerScrollView setContentOffset:CGPointMake(0, self.registerScrollView.contentOffset.y + HeightTextFieldAndSeparator) animated:YES];
         }
-        CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
+        CGFloat offsetForScrollViewY = self.registerScrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.registerScrollView.contentOffset.y - self.keyboardHeight;
         if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - HeightTextFieldAndSeparator) {
-            [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
+            [self.registerScrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.registerScrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
         }
     }
     if (textField.returnKeyType == UIReturnKeyDone) {
-        CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
-        [self.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
+        CGFloat offsetForScrollViewY = self.registerScrollView.contentSize.height - self.registerScrollView.frame.size.height;
+        [self.registerScrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
         return YES;
     }
     return NO;
@@ -101,7 +84,7 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     CGFloat selectegStateTextField = 0;
-    if (textField.tag == 8) {
+    if (textField.tag == 7) {
         selectegStateTextField = 2 * HeightTextFieldAndSeparator;
     }
     self.offSetTextFildY = textField.frame.origin.y + textField.frame.size.height + selectegStateTextField;
@@ -113,49 +96,13 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
     [self vizibleTextFieldChangeKeyboard];
     return YES;
 }
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    NSInteger pickerRowsInComponent = 0;
-    if (pickerView == self.selectStatePicker) {
-        pickerRowsInComponent = self.pickerSelectStateDataSource.count;
-    }
-    return pickerRowsInComponent;
-}
-
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    NSString *pickerTitle = @"";
-    if (pickerView == self.selectStatePicker) {
-        pickerTitle = (NSString *)self.pickerSelectStateDataSource[row];
-    }
-    return pickerTitle;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if (pickerView == self.selectStatePicker) {
-        self.selectStateTextField.text = self.pickerSelectStateDataSource[row];
-        self.selectedState = row;
-    }
-}
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y >= 0) {
-        if (self.verticalSpaseRegisterConteinerUIView.constant >= scrollView.contentOffset.y) {
             [self.scrollLogoImage setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
-        }
     } else {
         [self.scrollLogoImage setContentOffset:CGPointMake(0, 0)];
     }
@@ -169,7 +116,7 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length && self.selectStateTextField.text.length) {
+    if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
             return;
@@ -180,7 +127,7 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
                                                     firstName:self.firstNameTextField.text
                                                      lastName:self.lastNameTextField.text
                                                    emiratesID:self.emiratesIDTextField.text
-                                                        state:[NSString stringWithFormat:@"%i", (int)self.selectedState]
+                                                        state:[NSString stringWithFormat:@"%i", 1]
                                                   mobilePhone:self.mobileTextField.text
                                                         email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
@@ -198,27 +145,30 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
 
 - (IBAction)loginButtonPress:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)doneFilteringButtonTapped
 {
-    [self.selectStateTextField resignFirstResponder];
-    CGFloat offsetForScrollViewY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
-    [self.scrollView setContentOffset:CGPointMake(0, offsetForScrollViewY ) animated:YES];
+    [self.mobileTextField becomeFirstResponder];
+}
+
+- (IBAction)didChangeEmiratesID:(UITextField *)sender
+{
+    [self prepareEmiratesIDWithTextField:sender];
+}
+
+#pragma mark - LeftInsetTextFieldDelegate
+
+- (void)textFieldDidDelete:(UITextField *)textField
+{
+    if ((textField.text.length == 4 || textField.text.length == 9 || textField.text.length == 17) && textField.tag == 6){
+        NSString *phone = [textField.text substringToIndex:textField.text.length - 1];
+        textField.text = phone;
+    }
 }
 
 #pragma mark - Keyboard
-
-- (void)prepareNotification
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-}
-
-- (void)removeNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
@@ -227,14 +177,47 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
     [self vizibleTextFieldChangeKeyboard];
 }
 
+#pragma mark - Superclass methods
+
+- (void)setLTREuropeUI
+{
+    [self updateUI:NSTextAlignmentLeft];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUI:NSTextAlignmentRight];
+}
+
 #pragma mark - Private
 
-- (void) vizibleTextFieldChangeKeyboard
+- (void)updateUI:(NSTextAlignment)textAlignment
 {
-    CGFloat offsetForScrollViewY = self.scrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.scrollView.contentOffset.y - self.keyboardHeight;
-    CGFloat lineEventScroll = self.scrollView.frame.size.height + self.scrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
+    [self configureTextField:self.userNameTextField withImageName:@"ic_user_login"];
+    [self configureTextField:self.passwordTextField withImageName:@"ic_pass"];
+    [self configureTextField:self.confirmPasswordTextField withImageName:@"ic_pass"];
+    [self configureTextField:self.firstNameTextField withImageName:@"ic_user_login"];
+    [self configureTextField:self.emiratesIDTextField withImageName:@"ic_id"];
+    [self configureTextField:self.lastNameTextField withImageName:@"ic_user_login"];
+    [self configureTextField:self.mobileTextField withImageName:@"ic_phone_reg"];
+    [self configureTextField:self.emailTextField withImageName:@"ic_mail"];
+
+    self.userNameTextField.textAlignment = textAlignment;
+    self.passwordTextField.textAlignment = textAlignment;
+    self.confirmPasswordTextField.textAlignment = textAlignment;
+    self.firstNameTextField.textAlignment = textAlignment;
+    self.emiratesIDTextField.textAlignment = textAlignment;
+    self.lastNameTextField.textAlignment = textAlignment;
+    self.mobileTextField.textAlignment = textAlignment;
+    self.emailTextField.textAlignment = textAlignment;
+}
+
+- (void)vizibleTextFieldChangeKeyboard
+{
+    CGFloat offsetForScrollViewY = self.registerScrollView.frame.size.height - self.verticalSpaseRegisterConteinerUIView.constant - self.registerScrollView.contentOffset.y - self.keyboardHeight;
+    CGFloat lineEventScroll = self.registerScrollView.frame.size.height + self.registerScrollView.contentOffset.y - self.keyboardHeight - 2 * HeightTextFieldAndSeparator + 20.f;
     if (lineEventScroll < self.offSetTextFildY + self.verticalSpaseRegisterConteinerUIView.constant - HeightTextFieldAndSeparator) {
-        [self.scrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.scrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
+        [self.registerScrollView setContentOffset:CGPointMake(0, self.offSetTextFildY - offsetForScrollViewY - self.registerScrollView.contentOffset.y + HeightTextFieldAndSeparator + 10.f) animated:YES];
     }
 }
 
@@ -252,7 +235,7 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
         return YES;
     }
-    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
+    if (![[self.emiratesIDTextField.text stringByReplacingOccurrencesOfString:DividerForID withString:@""] isValidIDEmirates]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
         return YES;
     }
@@ -264,57 +247,54 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
         return YES;
     }
-    if (self.selectedState <= 0) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidStateCode")];
-        return YES;
-    }
     
     return NO;
 }
 
 - (void)localizeUI
 {
-    [self preparePickerDataSource];
-    
     self.title = dynamicLocalizedString(@"register.title");
-    self.userNameTextField.placeholder = dynamicLocalizedString(@"register.placeholderText.username");
-    self.mobileTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.phone");
-    self.passwordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.password");
-    self.confirmPasswordTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.confirmPassword");
-    self.firstNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.firstName");
-    self.lastNameTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.lastName");
-    self.emailTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.email");
-    self.emiratesIDTextField.placeholder = dynamicLocalizedString(@"register.placeHolderText.emirateID");
-    self.selectStateTextField.placeholder = dynamicLocalizedString(@"state.SelectState");
     [self.registerButton setTitle:dynamicLocalizedString(@"register.button.register") forState:UIControlStateNormal];
     [self.loginButton setTitle:dynamicLocalizedString(@"register.button.login") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
-    self.logoImageView.backgroundColor = [[DynamicUIService service] currentApplicationColor];
-    [self.registerButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    [self.loginButton setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
-    [self.registerButton  setTitleColor:[[DynamicUIService service] currentApplicationColor] forState:UIControlStateNormal];
+    UIColor *color = [self.dynamicService currentApplicationColor];
+    [self.loginButton setTitleColor:color forState:UIControlStateNormal];
+    [super updateBackgroundImageNamed:@"res_img_bg"];
+    
+    for (UIView *separator in self.registerContainer.subviews) {
+        if (separator.tag == SeparatorTag) {
+            separator.backgroundColor = color;
+        }
+    }
+    
+    [self.registerButton setBackgroundColor:[self.dynamicService currentApplicationColor]];
+    
+    self.userNameTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeholderText.username")];
+    self.mobileTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.phone")];
+    self.passwordTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.password")];
+    self.confirmPasswordTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.confirmPassword")];
+    self.firstNameTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.firstName")];
+    self.lastNameTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.lastName")];
+    self.emailTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.email")];
+    self.emiratesIDTextField.attributedPlaceholder = [self placeholderWithString:dynamicLocalizedString(@"register.placeHolderText.emirateID")];
+    
+    self.userNameTextField.textColor = color;
+    self.mobileTextField.textColor = color;
+    self.passwordTextField.textColor = color;
+    self.confirmPasswordTextField.textColor = color;
+    self.firstNameTextField.textColor = color;
+    self.lastNameTextField.textColor = color;
+    self.emailTextField.textColor = color;
+    self.emiratesIDTextField.textColor = color;
 }
 
-- (void)preparePickerDataSource
+- (NSAttributedString *)placeholderWithString:(NSString *)string
 {
-    self.pickerSelectStateDataSource = @[
-                                         dynamicLocalizedString(@"state.Abu.Dhabi"),
-                                         dynamicLocalizedString(@"state.Ajman"),
-                                         dynamicLocalizedString(@"state.Dubai"),
-                                         dynamicLocalizedString(@"state.Fujairah"),
-                                         dynamicLocalizedString(@"state.Ras"),
-                                         dynamicLocalizedString(@"state.Sharjan"),
-                                         dynamicLocalizedString(@"state.Quwain")
-                                         ];
-    [self.selectStatePicker reloadAllComponents];
-}
-
-- (void)prepareNavigationBar
-{
-    self.title = dynamicLocalizedString(@"register.title");
+    NSDictionary *attributes = @{NSForegroundColorAttributeName:[self.dynamicService currentApplicationColor]};
+    return [[NSAttributedString alloc] initWithString:string attributes:attributes];
 }
 
 - (void)prepareRegisterConteinerUIView
@@ -322,25 +302,32 @@ static CGFloat const HeightTextFieldAndSeparator = 50.f;
     self.verticalSpaseRegisterConteinerUIView.constant = self.logoImageView.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.navigationController.navigationBar.frame.origin.y;
 }
 
-- (void)configureSelectStateTextFieldInputView
-{
-    self.selectStatePicker = [[UIPickerView alloc] init];
-    self.selectStatePicker.delegate = self;
-    self.selectStatePicker.dataSource = self;
-    self.selectStateTextField.inputView = self.selectStatePicker;
+#pragma mark - TextFieldCalculations
 
-    self.selectStatePicker.backgroundColor = [UIColor clearColor];
+- (void)prepareEmiratesIDWithTextField:(UITextField *)textField
+{
+    if (textField.text.length == 3 || textField.text.length == 8 || textField.text.length == 16) {
+        NSString *textToShow = [textField.text stringByAppendingString:DividerForID];
+        textField.text = textToShow;
+    }
+    if (textField.text.length >= 18) {
+        NSString *phone = [textField.text substringToIndex:18];
+        textField.text = phone;
+    }
     
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HeightForToolbars)];
-    toolBar.backgroundColor = [UIColor clearColor];
-    toolBar.tintColor = [[DynamicUIService service] currentApplicationColor];
-    
-    UIBarButtonItem *barItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneFilteringButtonTapped)];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    [toolBar setItems:@[flexibleSpace, barItemDone]];
-    
-    self.selectStateTextField.inputAccessoryView = toolBar;
+    if ((textField.text.length == 4 && ([textField.text rangeOfString:DividerForID].location == NSNotFound))) {
+        NSString *firstPart = [textField.text substringToIndex:3];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:3]];
+        textField.text = firstPart;
+    } else if ((textField.text.length == 9 && [[textField.text substringFromIndex:4] rangeOfString:DividerForID].location == NSNotFound)) {
+        NSString *firstPart = [textField.text substringToIndex:8];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:8]];
+        textField.text = firstPart;
+    } else if ((textField.text.length == 17 && [[textField.text substringFromIndex:4] rangeOfString:DividerForID].location == NSNotFound)) {
+        NSString *firstPart = [textField.text substringToIndex:16];
+        firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:16]];
+        textField.text = firstPart;
+    }
 }
 
 @end

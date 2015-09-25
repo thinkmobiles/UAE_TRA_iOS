@@ -9,5 +9,6 @@
 @interface ServiceInfoViewController : BaseDynamicUIViewController
 
 @property (strong, nonatomic) UIImage *fakeBackground;
+@property (assign, nonatomic) NSInteger selectedServiceID;
 
 @end

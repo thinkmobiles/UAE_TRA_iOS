@@ -12,15 +12,17 @@
 
 @interface ChangePasswordViewController () <UserProfileActionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLogoImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *changeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *oldPasswordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *retypePasswordLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *retypePasswordTextField;
+
 @property (weak, nonatomic) IBOutlet UserProfileActionView *actionView;
 
 @end
@@ -29,7 +31,8 @@
 
 #pragma mark - LifeCycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUserView];
@@ -40,7 +43,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[DynamicUIService service] currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - Superclass Methods
@@ -59,23 +62,15 @@
 
 - (void)updateColors
 {
-    UIImage *backgroundImage = [UIImage imageNamed:@"fav_back_orange"];
-    if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
-        backgroundImage = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:backgroundImage];
-    }
-    self.backgroundImageView.image = backgroundImage;
-    
-    [super addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor]];
+    [super updateBackgroundImageNamed:@"fav_back_orange"];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
 }
 
 - (void)prepareNavigationBar
 {
     [super prepareNavigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSFontAttributeName : [DynamicUIService service].language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14.f] : [UIFont latoRegularWithSize:14.f],
-                                                                      NSForegroundColorAttributeName : [UIColor whiteColor]
-                                                                      }];
+    [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
 - (void)setRTLArabicUI
@@ -98,7 +93,7 @@
 {
     self.title = dynamicLocalizedString(@"userProfile.title");
     self.userLogoImageView.image = [UIImage imageNamed:@"test"];
-    [super addHexagoneOnView:self.userLogoImageView];
+    [AppHelper addHexagoneOnView:self.userLogoImageView];
 }
 
 - (void)clearPassword
@@ -110,10 +105,10 @@
 - (void)updateUI:(NSTextAlignment)textAlignment
 {
     self.oldPasswordLabel.textAlignment = textAlignment;
-    self.oldPasswordTextField.textAlignment = textAlignment;
     self.passwordLabel.textAlignment = textAlignment;
-    self.passwordTextField.textAlignment = textAlignment;
     self.retypePasswordLabel.textAlignment = textAlignment;
+    self.oldPasswordTextField.textAlignment = textAlignment;
+    self.passwordTextField.textAlignment = textAlignment;
     self.retypePasswordTextField.textAlignment = textAlignment;
     
     [self configureTextField:self.oldPasswordTextField];
@@ -130,7 +125,7 @@
     [button addTarget:self action:@selector(showHidePassword:) forControlEvents:UIControlEventTouchUpInside];
     textField.rightView = nil;
     textField.leftView = nil;
-    if ([DynamicUIService service].language == LanguageTypeArabic) {
+    if (self.dynamicService.language == LanguageTypeArabic) {
         textField.leftViewMode = UITextFieldViewModeAlways;
         textField.leftView = button;
     } else {
@@ -144,7 +139,7 @@
 - (IBAction)showHidePassword:(UIButton *)sender
 {
     [sender setSelected:!sender.isSelected];
-    [sender setTintColor:sender.isSelected ? [DynamicUIService service].currentApplicationColor :[UIColor grayColor]];
+    [sender setTintColor:sender.isSelected ? self.dynamicService.currentApplicationColor :[UIColor grayColor]];
     [(UITextField *)[sender superview] setSecureTextEntry:!sender.isSelected];
 }
 

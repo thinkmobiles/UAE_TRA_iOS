@@ -83,11 +83,15 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
         NSMutableDictionary *attributesToUpdate = [NSMutableDictionary dictionary];
         attributesToUpdate[(__bridge id)kSecValueData] = [password dataUsingEncoding:NSUTF8StringEncoding];
         OSStatus sts = SecItemUpdate((__bridge CFDictionaryRef)keychainItem, (__bridge CFDictionaryRef)attributesToUpdate);
+#if DEBUG
         NSLog(@"Password Updated - Error Code: %d", (int)sts);
+#endif
     } else {
         keychainItem[(__bridge id)kSecValueData] = [password dataUsingEncoding:NSUTF8StringEncoding];
         OSStatus sts = SecItemAdd((__bridge CFDictionaryRef)keychainItem, NULL);
+#if DEBUG
         NSLog(@"Password saved - Error Code: %d", (int)sts);
+#endif
     }
 }
 
@@ -104,7 +108,9 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     
     CFDictionaryRef result = nil;
     OSStatus sts = SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, (CFTypeRef *)&result);
+#if DEBUG
     NSLog(@"Password Get - Error Code: %d", (int)sts);
+#endif
     NSString *password;
     if(sts == noErr) {
         NSDictionary *resultDict = (__bridge_transfer NSDictionary *)result;
@@ -130,7 +136,9 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     
     if(SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, NULL) == noErr) {
         OSStatus sts = SecItemDelete((__bridge CFDictionaryRef)keychainItem);
+#if DEBUG
         NSLog(@"Password delete - Error Code: %d", (int)sts);
+#endif
     }
 }
 

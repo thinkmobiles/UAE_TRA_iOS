@@ -24,5 +24,6 @@ typedef NS_ENUM(NSUInteger, SpeedTestType) {
 
 - (void)performFastInternetSpeedTest;
 - (void)performAccurateInternetTest;
+- (void)stopTest;
 
 @end

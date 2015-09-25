@@ -6,9 +6,7 @@
 //  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
-#import "RatingView.h"
-
-@interface CheckDomainViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate, RatingViewDelegate>
+@interface CheckDomainViewController : BaseServiceViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @property (copy, nonatomic) NSString *domainName;
 @property (copy, nonatomic) NSString *response;
