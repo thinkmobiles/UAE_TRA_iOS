@@ -26,6 +26,7 @@
 {
     [super viewWillAppear:animated];
     
+    [self addAttachButtonTextField:self.suggestionTitle];
     [self presentLoginIfNeededAndPopToRootController:nil];
 }
 

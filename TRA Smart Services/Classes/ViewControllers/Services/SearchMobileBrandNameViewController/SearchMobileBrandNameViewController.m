@@ -87,6 +87,7 @@
 - (void)updateColors
 {
     [super updateColors];
+}
 
 - (void)setRTLArabicUI
 {
