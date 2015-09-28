@@ -133,9 +133,8 @@
 {
     [super updateColors];
 
-    [self.cameraButton.imageView setTintColor:[self.dynamicService currentApplicationColor]];
-    [self.checkIMEIButton setTitleColor:[self.dynamicService currentApplicationColor] forState:UIControlStateNormal];
-    [AppHelper setStyleForLayer:self.checkIMEIButton.layer];
+    [self.cameraButton.imageView setTintColor:[UIColor whiteColor]];
+
     [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 

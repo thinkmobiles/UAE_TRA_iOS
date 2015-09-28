@@ -238,7 +238,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
         [weakSelf.dynamicService setLanguage:languageType];
         [weakSelf updateLanguageSegmentControlPosition];
         [weakSelf localizeUI];
-        [weakSelf updateSubviewForParentViewIfPossible:self.view fontSizeInclude:YES];
+        [weakSelf updateSubviewForParentViewIfPossible:self.view fontSizeInclude:NO];
     });
 }
 

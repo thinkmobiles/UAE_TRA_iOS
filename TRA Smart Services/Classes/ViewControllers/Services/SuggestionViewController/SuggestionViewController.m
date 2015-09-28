@@ -14,7 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *suggestionTitle;
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *suggectionDescription;
-@property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
 @end
@@ -28,14 +27,10 @@
     [super viewWillAppear:animated];
     
     [self presentLoginIfNeeded];
+    [self addAttachButtonTextField:self.suggestionTitle];
 }
 
 #pragma mark - IABaction
-
-- (IBAction)selectImage:(id)sender
-{
-    [self selectImagePickerController];
-}
 
 - (IBAction)suggection:(id)sender
 {
@@ -54,6 +49,13 @@
     }
 }
 
+#pragma mark - Superclass Methods
+
+- (void)selectImageDidLoad
+{
+//    self.buttonAttachImage = [UIImage imageNamed:@"ic_ml"];
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -69,7 +71,6 @@
     self.title = dynamicLocalizedString(@"suggestionViewController.title");
     self.suggestionTitle.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionTitle");
     self.suggectionDescription.placeholder = dynamicLocalizedString(@"suggestionViewController.textField.suggestionDescription");
-    [self.selectImageButton setTitle:dynamicLocalizedString(@"suggestionViewController.selectImageButton.title") forState:UIControlStateNormal];
     [self.sendSuggestionButton setTitle:dynamicLocalizedString(@"suggestionViewController.sendSuggestionButton.title") forState:UIControlStateNormal];
 }
 

@@ -24,9 +24,6 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 @property (weak, nonatomic) IBOutlet UILabel *domainAvaliabilityLabel;
 
-@property (weak, nonatomic) IBOutlet ServiceView *serviceView;
-@property (weak, nonatomic) IBOutlet UIView *topHolderView;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -39,7 +36,10 @@ static NSString *const keyOrder = @"order";
 {
     [super viewWillAppear:animated];
     
-    [self prepareTopView];
+    if (!self.domainName) {
+        self.domainNameTextField.userInteractionEnabled = YES;
+    }
+    
     [self updateNavigationControllerBar];
     [self displayDataIfNeeded];
 }
@@ -67,7 +67,7 @@ static NSString *const keyOrder = @"order";
     void (^PresentResult)(NSString *response) = ^(NSString *response) {
         CheckDomainViewController *checkDomainViewController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
         checkDomainViewController.response = response;
-        checkDomainViewController.domainName = weakSelf.domainNameTextField.text;
+        checkDomainViewController.domainName = weakSelf.domainNameTextField.text;        
         [weakSelf.navigationController pushViewController:checkDomainViewController animated:YES];
     };
     
@@ -216,28 +216,19 @@ static NSString *const keyOrder = @"order";
     self.domainNameTextField.placeholder = dynamicLocalizedString(@"checkDomainViewController.domainNameTextField");
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
-    self.serviceView.serviceName.text = dynamicLocalizedString(@"checkDomainViewController.domainTitleForView");
 }
 
 - (void)updateColors
 {
     [super updateColors];
     
-    [super updateBackgroundImageNamed:@"serviceBackground"];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 #pragma mark - Private
 
-- (void)prepareTopView
-{
-    UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
-    self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
-}
-
 - (void)updateNavigationControllerBar
 {
-    [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
 }
 

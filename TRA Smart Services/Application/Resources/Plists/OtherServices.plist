@@ -76,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
@@ -88,7 +88,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
@@ -112,7 +112,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
@@ -124,7 +124,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
@@ -136,7 +136,7 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
 		<string></string>
 		<key>serviceLogo</key>
