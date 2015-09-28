@@ -141,9 +141,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -971,24 +968,8 @@
                                                             <constraint firstAttribute="height" constant="1" id="fmg-zu-utr"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMIRATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="qaL-T6-8oV" userLabel="Emirate - UILabel">
-                                                        <rect key="frame" x="30" y="171" width="540" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="kSp-aS-fcC"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
-                                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlf-Tl-wL0" userLabel="Emirate Separator - UIView">
-                                                        <rect key="frame" x="30" y="213" width="540" height="1"/>
-                                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="4aF-1g-b3g"/>
-                                                        </constraints>
-                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT NUMBER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="DYo-x1-Fm5" userLabel="ContactNumber  - UILabel">
-                                                        <rect key="frame" x="30" y="229" width="540" height="12"/>
+                                                        <rect key="frame" x="30" y="171" width="540" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="Rkc-2H-X0a"/>
                                                         </constraints>
@@ -997,7 +978,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-x9-Ujr" userLabel="ContactNumber - UITextField">
-                                                        <rect key="frame" x="30" y="245" width="540" height="26"/>
+                                                        <rect key="frame" x="30" y="187" width="540" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="rot-JV-689"/>
                                                         </constraints>
@@ -1008,105 +989,12 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-ti-F6f" userLabel="Emirate Separator - UIView">
-                                                        <rect key="frame" x="30" y="271" width="540" height="1"/>
+                                                        <rect key="frame" x="30" y="213" width="540" height="1"/>
                                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="hQq-Xp-dEr"/>
                                                         </constraints>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BnW-BV-ANV" userLabel="Emirate - Table View">
-                                                        <rect key="frame" x="30" y="187" width="540" height="26"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="83V-nk-TFw"/>
-                                                        </constraints>
-                                                        <prototypes>
-                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellEuropeUI" id="nx6-VZ-keo" userLabel="EuropeUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="0.0" y="22" width="540" height="44"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nx6-VZ-keo" id="dbb-Y6-hBa">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tuQ-0d-2ew" userLabel="Select - Image View">
-                                                                            <rect key="frame" x="524" y="14" width="16" height="16"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="16" id="TKN-Q2-nYe"/>
-                                                                                <constraint firstAttribute="width" constant="16" id="r5O-Vj-8lU"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCT-Lk-fe2" userLabel="Select Provaider">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="506" height="44"/>
-                                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                                            <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="cCT-Lk-fe2" firstAttribute="left" secondItem="dbb-Y6-hBa" secondAttribute="left" id="4yi-RR-zmO"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="cCT-Lk-fe2" secondAttribute="bottom" id="8ng-IK-DyV"/>
-                                                                        <constraint firstAttribute="right" secondItem="tuQ-0d-2ew" secondAttribute="right" id="BdU-pw-ys8"/>
-                                                                        <constraint firstItem="tuQ-0d-2ew" firstAttribute="left" secondItem="cCT-Lk-fe2" secondAttribute="right" constant="18" id="pWg-Ia-oX8"/>
-                                                                        <constraint firstItem="cCT-Lk-fe2" firstAttribute="top" secondItem="dbb-Y6-hBa" secondAttribute="top" id="tjN-ln-5e3"/>
-                                                                        <constraint firstAttribute="centerY" secondItem="tuQ-0d-2ew" secondAttribute="centerY" id="ys3-Nr-zcK"/>
-                                                                    </constraints>
-                                                                </tableViewCellContentView>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                <connections>
-                                                                    <outlet property="selectProviderImage" destination="tuQ-0d-2ew" id="NYL-Qe-aG2"/>
-                                                                    <outlet property="selectProviderLabel" destination="cCT-Lk-fe2" id="wN4-MQ-io4"/>
-                                                                </connections>
-                                                            </tableViewCell>
-                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectProviderCellArabicUI" id="OMC-VN-Voi" userLabel="ArabicUI - selectProviderCell" customClass="ServicesSelectTableViewCell">
-                                                                <rect key="frame" x="0.0" y="66" width="540" height="44"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OMC-VN-Voi" id="iGV-CD-cNM">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-6l-1tN" userLabel="Select - Image View">
-                                                                            <rect key="frame" x="0.0" y="14" width="16" height="16"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="16" id="GYC-TX-091"/>
-                                                                                <constraint firstAttribute="height" constant="16" id="dvk-Hz-lcL"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFM-NR-aj0" userLabel="Select Provaider">
-                                                                            <rect key="frame" x="34" y="0.0" width="506" height="44"/>
-                                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                                            <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="XFM-NR-aj0" firstAttribute="top" secondItem="iGV-CD-cNM" secondAttribute="top" id="CJs-lQ-TCa"/>
-                                                                        <constraint firstItem="SuS-6l-1tN" firstAttribute="left" secondItem="iGV-CD-cNM" secondAttribute="left" id="Cbe-b5-VmT"/>
-                                                                        <constraint firstAttribute="right" secondItem="XFM-NR-aj0" secondAttribute="right" id="IO6-f1-eS2"/>
-                                                                        <constraint firstAttribute="centerY" secondItem="SuS-6l-1tN" secondAttribute="centerY" id="VNf-R0-Nnm"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="XFM-NR-aj0" secondAttribute="bottom" id="dIb-gA-Y6j"/>
-                                                                        <constraint firstItem="XFM-NR-aj0" firstAttribute="left" secondItem="SuS-6l-1tN" secondAttribute="right" constant="18" id="qew-2t-2IK"/>
-                                                                    </constraints>
-                                                                </tableViewCellContentView>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                <connections>
-                                                                    <outlet property="selectProviderImage" destination="SuS-6l-1tN" id="kf5-YR-y9P"/>
-                                                                    <outlet property="selectProviderLabel" destination="XFM-NR-aj0" id="Kzk-0N-5iy"/>
-                                                                </connections>
-                                                            </tableViewCell>
-                                                        </prototypes>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="iCT-2a-cfz" id="903-B4-UEs"/>
-                                                            <outlet property="delegate" destination="iCT-2a-cfz" id="nNx-6k-Sak"/>
-                                                        </connections>
-                                                    </tableView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1116,19 +1004,16 @@
                                                     <constraint firstItem="PeD-Od-con" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="2Xf-PQ-1X4"/>
                                                     <constraint firstItem="vMG-Zb-moy" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="47a-k4-6b2"/>
                                                     <constraint firstItem="0nS-x9-Ujr" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="5hC-ED-NXb"/>
-                                                    <constraint firstItem="qaL-T6-8oV" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="6Y6-TG-bGi"/>
                                                     <constraint firstItem="bgC-4J-fPp" firstAttribute="top" secondItem="Y6h-a2-WUQ" secondAttribute="top" id="6kg-6j-Uot"/>
                                                     <constraint firstAttribute="right" secondItem="aHV-CC-DZx" secondAttribute="right" constant="30" id="6s9-8g-POo"/>
                                                     <constraint firstAttribute="right" secondItem="DYo-x1-Fm5" secondAttribute="right" constant="30" id="7My-RK-Wm7"/>
                                                     <constraint firstItem="aHV-CC-DZx" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="83k-E6-N7R"/>
                                                     <constraint firstItem="1iS-g8-2oM" firstAttribute="top" secondItem="HJx-Mu-hRB" secondAttribute="bottom" constant="4" id="84h-s0-iQx"/>
                                                     <constraint firstItem="PeD-Od-con" firstAttribute="top" secondItem="lGo-be-ChU" secondAttribute="bottom" id="92q-LG-5uf"/>
-                                                    <constraint firstItem="qaL-T6-8oV" firstAttribute="top" secondItem="Ttg-ky-Fi5" secondAttribute="bottom" constant="15" id="9Gg-md-DN1"/>
                                                     <constraint firstAttribute="right" secondItem="vMG-Zb-moy" secondAttribute="right" constant="30" id="CIY-kl-3Ss"/>
                                                     <constraint firstItem="Ttg-ky-Fi5" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="GAg-zy-Hek"/>
                                                     <constraint firstAttribute="right" secondItem="PeD-Od-con" secondAttribute="right" constant="30" id="IgX-jh-sId"/>
                                                     <constraint firstItem="bgC-4J-fPp" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="Ipr-CX-Cma"/>
-                                                    <constraint firstAttribute="right" secondItem="vlf-Tl-wL0" secondAttribute="right" constant="30" id="Lkc-5A-IM8"/>
                                                     <constraint firstAttribute="right" secondItem="Ttg-ky-Fi5" secondAttribute="right" constant="30" id="MfV-Cm-Swb"/>
                                                     <constraint firstItem="Ttg-ky-Fi5" firstAttribute="top" secondItem="1iS-g8-2oM" secondAttribute="bottom" id="NaH-eY-KVU"/>
                                                     <constraint firstAttribute="right" secondItem="bgC-4J-fPp" secondAttribute="right" constant="30" id="NjC-DY-t5o"/>
@@ -1140,20 +1025,14 @@
                                                     <constraint firstAttribute="right" secondItem="lGo-be-ChU" secondAttribute="right" constant="30" id="Wo7-xe-Xu3"/>
                                                     <constraint firstAttribute="right" secondItem="W4h-ti-F6f" secondAttribute="right" constant="30" id="YXS-3G-ccx"/>
                                                     <constraint firstAttribute="height" constant="275" id="a6c-cj-kYR"/>
-                                                    <constraint firstItem="BnW-BV-ANV" firstAttribute="top" secondItem="qaL-T6-8oV" secondAttribute="bottom" constant="4" id="axY-Dw-KaQ"/>
                                                     <constraint firstItem="0nS-x9-Ujr" firstAttribute="top" secondItem="DYo-x1-Fm5" secondAttribute="bottom" constant="4" id="c3F-RM-khz"/>
                                                     <constraint firstItem="HJx-Mu-hRB" firstAttribute="top" secondItem="PeD-Od-con" secondAttribute="bottom" constant="15" id="fQK-yY-PXO"/>
                                                     <constraint firstAttribute="right" secondItem="1iS-g8-2oM" secondAttribute="right" constant="30" id="hVI-Dq-9so"/>
-                                                    <constraint firstItem="BnW-BV-ANV" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="jV4-xp-6jx"/>
-                                                    <constraint firstItem="vlf-Tl-wL0" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="mQp-KL-HH4"/>
                                                     <constraint firstItem="vMG-Zb-moy" firstAttribute="top" secondItem="aHV-CC-DZx" secondAttribute="bottom" constant="15" id="nNI-U4-SPY"/>
-                                                    <constraint firstItem="vlf-Tl-wL0" firstAttribute="top" secondItem="BnW-BV-ANV" secondAttribute="bottom" id="pOE-Uu-TNZ"/>
-                                                    <constraint firstAttribute="right" secondItem="qaL-T6-8oV" secondAttribute="right" constant="30" id="pVq-sY-aRC"/>
                                                     <constraint firstItem="lGo-be-ChU" firstAttribute="top" secondItem="vMG-Zb-moy" secondAttribute="bottom" constant="4" id="tik-j7-JDt"/>
-                                                    <constraint firstAttribute="right" secondItem="BnW-BV-ANV" secondAttribute="right" constant="30" id="uTw-x8-VFY"/>
                                                     <constraint firstItem="W4h-ti-F6f" firstAttribute="top" secondItem="0nS-x9-Ujr" secondAttribute="bottom" id="ubB-OE-qBz"/>
                                                     <constraint firstAttribute="right" secondItem="0nS-x9-Ujr" secondAttribute="right" constant="30" id="vQW-mS-RDb"/>
-                                                    <constraint firstItem="DYo-x1-Fm5" firstAttribute="top" secondItem="qaL-T6-8oV" secondAttribute="bottom" constant="46" id="x3e-Sp-329"/>
+                                                    <constraint firstItem="DYo-x1-Fm5" firstAttribute="top" secondItem="Ttg-ky-Fi5" secondAttribute="bottom" constant="15" id="wvD-TE-8IP"/>
                                                     <constraint firstItem="HJx-Mu-hRB" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="y69-jK-kRZ"/>
                                                     <constraint firstItem="lGo-be-ChU" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="z1q-E8-PTT"/>
                                                 </constraints>
@@ -1201,7 +1080,6 @@
                         <outlet property="changePhotoButton" destination="gUH-0x-p1m" id="0we-6c-YMR"/>
                         <outlet property="contactNumberLabel" destination="DYo-x1-Fm5" id="YSC-AP-Zsj"/>
                         <outlet property="contactNumberTextfield" destination="0nS-x9-Ujr" id="IUu-PA-kxD"/>
-                        <outlet property="emiratesLabel" destination="qaL-T6-8oV" id="iji-sH-JHk"/>
                         <outlet property="firstNameLabel" destination="bgC-4J-fPp" id="X6f-xR-BpD"/>
                         <outlet property="firstNmaeTextfield" destination="Eqv-Px-3ke" id="Nh4-Eo-XBg"/>
                         <outlet property="lastNameLabel" destination="vMG-Zb-moy" id="lfG-Xe-T6W"/>
@@ -1210,8 +1088,6 @@
                         <outlet property="scrollView" destination="H3q-Zy-3nN" id="vu2-VF-mH0"/>
                         <outlet property="streetAddressLabel" destination="HJx-Mu-hRB" id="yk8-Kz-vPF"/>
                         <outlet property="streetAddressTextfield" destination="1iS-g8-2oM" id="NcR-cS-TJB"/>
-                        <outlet property="tableView" destination="BnW-BV-ANV" id="NZl-Da-WOO"/>
-                        <outlet property="tableViewHeightConstraint" destination="83V-nk-TFw" id="c4Q-ox-von"/>
                         <outlet property="userActionView" destination="N8b-N6-K0h" id="TLZ-BP-DxE"/>
                     </connections>
                 </viewController>
