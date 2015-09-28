@@ -142,7 +142,7 @@
 
 //HomeViewController
 
-"speedAccess.service.name.-1" = "Demo";
+"speedAccess.service.name.-1" = "";
 "speedAccess.service.name.0" = "تفاصيل النطاق";
 "speedAccess.service.name.1" = "تحقق من توفر النطاق";
 "speedAccess.service.name.2" = "هوية الجهاز";

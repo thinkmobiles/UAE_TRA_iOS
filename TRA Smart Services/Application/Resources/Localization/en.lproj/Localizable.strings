@@ -142,7 +142,7 @@
 
 //HomeViewController
 
-"speedAccess.service.name.-1" = "Demo";
+"speedAccess.service.name.-1" = "";
 
 "speedAccess.service.name.0" = "Domain Info";
 "speedAccess.service.name.1" = "Domain Avaliability";

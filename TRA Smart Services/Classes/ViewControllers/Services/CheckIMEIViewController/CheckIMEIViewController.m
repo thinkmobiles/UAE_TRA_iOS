@@ -7,6 +7,7 @@
 //
 
 #import "CheckIMEIViewController.h"
+#import "CheckIMEIModel.h"
 
 @interface CheckIMEIViewController ()
 
@@ -87,10 +88,14 @@
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
-            if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
-            } else {
+            if ([response isKindOfClass:[NSArray class]] && [(NSArray *)response count] && !error) {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                for (NSDictionary *dic in response) {
+                    CheckIMEIModel *obj = [[CheckIMEIModel alloc] initFromDictionary:dic];
+                    NSLog(@"%@", obj.description);
+                }
+            } else {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:!error ? dynamicLocalizedString(@"message.NoInternetConnection") : error.localizedDescription];
             }
         }];
     } else {

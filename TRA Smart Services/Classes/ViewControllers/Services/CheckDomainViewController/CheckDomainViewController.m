@@ -226,6 +226,16 @@ static NSString *const keyOrder = @"order";
     [super updateBackgroundImageNamed:@"serviceBackground"];
 }
 
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
+}
+
 #pragma mark - Private
 
 - (void)prepareTopView
@@ -239,6 +249,12 @@ static NSString *const keyOrder = @"order";
 {
     [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
+}
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.domainNameTextField.textAlignment = alignment;
+    self.domainAvaliabilityLabel.textAlignment = alignment;
 }
 
 - (void)displayDataIfNeeded

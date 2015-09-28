@@ -27,7 +27,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self presentLoginIfNeeded];
+    [self presentLoginIfNeededAndPopToRootController:nil];
 }
 
 #pragma mark - IABaction

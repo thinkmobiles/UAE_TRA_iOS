@@ -56,14 +56,12 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
     }
 }
 
-- (IBAction)selectModeSwitchTapped:(id)sender
+- (IBAction)selectModeSwitchTapped:(UISegmentedControl *)sender
 {
+#warning temp while block websites
     BOOL isArabicUI = self.dynamicService.language == LanguageTypeArabic;
-    if (isArabicUI) {
-        
-    } else {
-        
-    }
+    [AppHelper alertViewWithMessage:@"Screen in developing process"];
+    sender.selectedSegmentIndex = sender.selectedSegmentIndex ? 0 : 1;
 }
 
 #pragma mark - UISearchBarDelegate
@@ -93,7 +91,7 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;//self.activeDataSource.count;
+    return self.activeDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -185,14 +183,17 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (void)prepareDataSource
 {
-    //todo
+#warning temp solution
+    self.dataSource = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7"];
+    self.activeDataSource = [[NSMutableArray alloc] initWithArray:self.dataSource];
 }
 
 - (void)updateUIElementsTransform:(CATransform3D)transform
 {
     self.addToSpamButton.layer.transform = transform;
     self.topButtonContainer.layer.transform = transform;
-    self.selectModeSwitch.selectedSegmentIndex = self.selectModeSwitch.selectedSegmentIndex ? 0 : 1;
+#warning temp while block websites
+    self.selectModeSwitch.selectedSegmentIndex = self.dynamicService.language == LanguageTypeArabic ? 1 : 0;
     [self.tableView reloadData];
 }
 

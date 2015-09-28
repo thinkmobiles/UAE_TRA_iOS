@@ -24,14 +24,18 @@
 
 #pragma mark - Public
 
-- (void)presentLoginIfNeeded
+- (void)presentLoginIfNeededAndPopToRootController:(UIViewController *)controller
 {
     if (![NetworkManager sharedManager].isUserLoggined) {
         UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         __weak typeof(self) weakSelf = self;
         ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
             if (![NetworkManager sharedManager].isUserLoggined) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                if (controller) {
+                    [weakSelf.navigationController popToViewController:controller animated:NO];
+                } else {
+                    [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                }
             }
         };
         ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;

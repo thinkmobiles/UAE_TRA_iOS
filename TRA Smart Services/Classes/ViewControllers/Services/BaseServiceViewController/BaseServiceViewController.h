@@ -12,7 +12,7 @@
 
 @interface BaseServiceViewController : BaseDynamicUIViewController
 
-- (void)presentLoginIfNeeded;
+- (void)presentLoginIfNeededAndPopToRootController:(UIViewController *)controller;
 - (void)updateColors;
 
 @end

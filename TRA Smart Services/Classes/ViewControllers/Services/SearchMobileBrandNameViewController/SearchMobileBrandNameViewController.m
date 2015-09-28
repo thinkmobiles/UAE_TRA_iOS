@@ -95,12 +95,29 @@
     [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
+}
+
 #pragma mark - Private
 
 - (void)prepareUI
 {
     self.searchButton.layer.cornerRadius = 8;
     self.searchButton.layer.borderWidth = 1;
+}
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.brandNameTextField.textAlignment = alignment;
+    self.resultInfoTextView.textAlignment = alignment;
+    [self.resultInfoTextView setNeedsDisplay];
 }
 
 @end

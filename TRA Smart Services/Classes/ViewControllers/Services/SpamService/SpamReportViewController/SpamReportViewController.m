@@ -300,7 +300,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         self.separatorSelectedProvider.hidden = YES;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
     } else {
-        [self presentLoginIfNeeded];
+        [self presentLoginIfNeededAndPopToRootController:[self.navigationController viewControllers][self.navigationController.viewControllers.count - 2]];
         self.selectTableView.hidden = NO;
         self.separatorSelectedProvider.hidden = NO;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamSMS;
