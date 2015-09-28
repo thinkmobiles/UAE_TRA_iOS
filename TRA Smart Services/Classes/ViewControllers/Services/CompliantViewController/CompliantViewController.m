@@ -27,19 +27,18 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 @property (weak, nonatomic) IBOutlet UIView *conteinerReferenceNumberView;
 @property (weak, nonatomic) IBOutlet UIView *conteinerServiceProviderView;
-@property (weak, nonatomic) IBOutlet UIView *topHolderView;
 
 @property (weak, nonatomic) IBOutlet UILabel *compliantTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compliantReterenceNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compliantServicePoviderLabel;
+@property (weak, nonatomic) IBOutlet UIButton *complaintSendButton;
 
-@property (weak, nonatomic) IBOutlet UITextField *compliantTitleTextField;
-@property (weak, nonatomic) IBOutlet UITextField *referenceNumberTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *compliantTitleTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *referenceNumberTextField;
 
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet ServiceView *serviceView;
 @property (weak, nonatomic) IBOutlet PlaceholderTextView *compliantDescriptionTextView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
@@ -70,11 +69,9 @@ static CGFloat const heightContenerConstraint = 55.f;
 
     [self presentLoginIfNeededAndPopToRootController:nil];
     [self prepareNotification];
-    [self prepareTopView];
     [self updateNavigationControllerBar];
     self.heightTableViewConstraint.constant = heightSelectTableViewCell;
-    [self addAttachButtonTitleTextField];
-    [self addSendButtonToNavigationBar];
+    [self addAttachButtonTextField:self.compliantTitleTextField];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -197,15 +194,31 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 #pragma mark - SuperclassMethods
 
+#pragma mark - Superclass Methods
+
 - (void)localizeUI
 {
-    self.title = dynamicLocalizedString(@"compliantViewController.title");
+    switch (self.type) {
+        case ComplianTypeCustomProvider: {
+            self.title = dynamicLocalizedString(@"compliantViewController.title.compliantAboutServiceProvider");
+            break;
+        }
+        case ComplianTypeTRAService: {
+            self.title = dynamicLocalizedString(@"compliantViewController.title.comtlaintTRA");
+            break;
+        }
+        case ComplianTypeEnquires: {
+            self.title = dynamicLocalizedString(@"compliantViewController.title.enquires");
+            break;
+        }
+    }
     self.compliantTitleTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
     self.referenceNumberTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
     self.compliantDescriptionTextView.placeholder = dynamicLocalizedString(@"compliantViewController.description.placeholder");
     self.compliantTitleLabel.text = dynamicLocalizedString(@"compliantViewController.compliantTitleLabel");
     self.compliantReterenceNumberLabel.text = dynamicLocalizedString(@"compliantViewController.compliantReterenceNumberLabel");
     self.compliantServicePoviderLabel.text = dynamicLocalizedString(@"compliantViewController.compliantServiceProviderLabel");
+    [self.complaintSendButton setTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") forState:UIControlStateNormal];
     
     [self prepareSelectProviderDataSource];
     [self.selectTableView reloadData];
@@ -213,9 +226,10 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)updateColors
 {
-    [AppHelper setStyleGrayColorForLayer:self.compliantDescriptionTextView.layer];
+    [super updateColors];
+    
     [self.selectTableView reloadData];
-    [super updateBackgroundImageNamed:@"trimmedBackground"];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 - (void)setRTLArabicUI
@@ -291,16 +305,8 @@ static CGFloat const heightContenerConstraint = 55.f;
                                       dynamicLocalizedString(@"providerType.Yahsat")];
 }
 
-- (void)prepareTopView
-{
-    UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
-    self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
-}
-
 - (void)updateNavigationControllerBar
 {
-    [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
 }
 
@@ -321,45 +327,11 @@ static CGFloat const heightContenerConstraint = 55.f;
     [self.selectTableView reloadData];
 }
 
-- (void)addAttachButtonTitleTextField
-{
-    self.compliantTitleTextField.rightView = nil;
-    self.compliantTitleTextField.leftView = nil;
-    
-    UIButton *attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *buttonAttachImage = [UIImage imageNamed:@"btn_attach"];
-    [attachButton setImage:buttonAttachImage forState:UIControlStateNormal];
-    [attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-    attachButton.backgroundColor = [UIColor clearColor];
-    attachButton.tintColor = [self.dynamicService currentApplicationColor];
-    [attachButton setFrame:CGRectMake(0, 0, self.compliantTitleTextField.frame.size.height, self.compliantTitleTextField.frame.size.height)];
-
-    if (self.dynamicService.language == LanguageTypeArabic) {
-        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - buttonAttachImage.size.width)];
-        self.compliantTitleTextField.leftView = attachButton;
-        self.compliantTitleTextField.leftViewMode = UITextFieldViewModeAlways;
-
-    } else {
-        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - buttonAttachImage.size.width, 0, 0)];
-        self.compliantTitleTextField.rightView = attachButton;
-        self.compliantTitleTextField.rightViewMode = UITextFieldViewModeAlways;
-    }
-}
-
 - (void)configureCell:(UITableViewCell *)cell
 {
     UIView *selectedView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.size.height + 1, cell.frame.size.width, cell.frame.size.height)];
     selectedView.backgroundColor = [UIColor clearColor];
     [cell setSelectedBackgroundView:selectedView];
-}
-
-- (void)addSendButtonToNavigationBar
-{
-    UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") style:UIBarButtonItemStyleDone target:self action:@selector(compliantSend:)];
-    UIFont *font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:14] : [UIFont latoBoldWithSize:14];
-    NSDictionary *attributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : font };
-    [sendBarButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = sendBarButtonItem;
 }
 
 @end

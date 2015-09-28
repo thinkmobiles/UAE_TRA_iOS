@@ -154,9 +154,9 @@
 "speedAccess.service.name.7" = "Verification";
 "speedAccess.service.name.8" = "Coverage";
 "speedAccess.service.name.9" = "Internet";
-"speedAccess.service.name.10" = "Compliant Custom Service";
+"speedAccess.service.name.10" = "Complain about service provider";
 "speedAccess.service.name.11" = "Suggestion";
-"speedAccess.service.name.12" = "Compliant Enquires";
+"speedAccess.service.name.12" = "Enquires";
 "speedAccess.service.name.13" = "Compliant TRA";
 
 //NotificationsViewController
@@ -237,7 +237,9 @@
 
 //CompliantViewController
 
-"compliantViewController.title" = "Compliant";
+"compliantViewController.title.comtlaintTRA" = "Compliant TRA";
+"compliantViewController.title.enquires" = "Enquires";
+"compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
 "compliantViewController.textField.placeholder" = "Enter here";
 "compliantViewController.description.placeholder" = "Description";
 "compliantViewController.compliantTitleLabel" = "COMPLAINT TITLE";
@@ -345,7 +347,7 @@
 //VerificationIMEIViewController
 
 "verificationIMEIViewController.title" = "Verification IMEI Code";
-"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
+"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile\nphone to be verified";
 "verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
 "verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
