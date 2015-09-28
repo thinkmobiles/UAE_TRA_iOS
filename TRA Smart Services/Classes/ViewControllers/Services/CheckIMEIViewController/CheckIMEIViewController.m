@@ -12,10 +12,7 @@
 @interface CheckIMEIViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *barcodeView;
-@property (weak, nonatomic) IBOutlet BottomBorderTextField *resultTextField;
 @property (weak, nonatomic) IBOutlet UIView *scannerZoneView;
-@property (weak, nonatomic) IBOutlet UIButton *checkIMEIButton;
-@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (strong, nonatomic) BarcodeCodeReader *reader;
 @property (strong, nonatomic) UIImage *navigationBarImage;
@@ -64,7 +61,6 @@
     if (self.needTransparentNavigationBar) {
         [self.navigationController.navigationBar setBackgroundImage:self.navigationBarImage forBarMetrics:UIBarMetricsDefault];
     }
-    self.title = @" ";
 }
 
 #pragma mark - BarcodeCodeReaderDelegate
@@ -80,65 +76,16 @@
     });
 }
 
-#pragma mark - IBActions
-
-- (IBAction)checkButtonTapped:(id)sender
-{
-    if (self.resultTextField.text.length) {
-        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        [self.view endEditing:YES];
-        [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.resultTextField.text requestResult:^(id response, NSError *error) {
-            if ([response isKindOfClass:[NSArray class]] && [(NSArray *)response count] && !error) {
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                for (NSDictionary *dic in response) {
-                    CheckIMEIModel *obj = [[CheckIMEIModel alloc] initFromDictionary:dic];
-                    NSLog(@"%@", obj.description);
-                }
-            } else {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:!error ? dynamicLocalizedString(@"message.NoInternetConnection") : error.localizedDescription];
-            }
-        }];
-    } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
-    }
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"scanIMEISegue"]) {
-        CheckIMEIViewController *viewController = segue.destinationViewController;
-        viewController.needTransparentNavigationBar = YES;
-        viewController.hidesBottomBarWhenPushed = YES;
-        __weak typeof(self) weakSelf = self;
-        viewController.didFinishWithResult = ^(NSString *result) {
-            weakSelf.resultTextField.text = result;
-        };
-    }
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.view endEditing:YES];
-    return YES;
-}
-
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"checkIMEIViewController.title");
-    [self.checkIMEIButton setTitle:dynamicLocalizedString(@"checkIMEIViewController.checkIMEIButton.title") forState:UIControlStateNormal];
 }
 
 - (void)updateColors
 {
     [super updateColors];
-
-    [self.cameraButton.imageView setTintColor:[UIColor whiteColor]];
 
     [super updateBackgroundImageNamed:@"img_bg_service"];
 }

@@ -1134,8 +1134,8 @@
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
-				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
 				E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */,
+				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
 			);
 			path = Services;
 			sourceTree = "<group>";
