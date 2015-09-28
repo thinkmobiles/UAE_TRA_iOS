@@ -11,16 +11,12 @@
 #import "KeychainStorage.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const DefaultHeightForTableView = 26.f;
-
 @interface EditUserProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet UILabel *emiratesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
@@ -34,8 +30,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 @property (weak, nonatomic) IBOutlet UITextField *contactNumberTextfield;
 
 @property (weak, nonatomic) IBOutlet UserProfileActionView *userActionView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (assign, nonatomic) CGPoint textFieldTouchPoint;
@@ -84,109 +78,11 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     self.streetAddressTextfield.text = @"";
     self.selectedEmirate = @"";
     self.contactNumberTextfield.text = @"";
-    
-    [self.tableView reloadData];
 }
 
 - (void)buttonSaveDidTapped
 {
     [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataSource.count - 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
-    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    [self configureCell:selectionCell atIndexPath:indexPath];
-    return selectionCell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return DefaultHeightForTableView * 1.5;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return DefaultHeightForTableView;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self.view endEditing:YES];
-    
-    self.selectedEmirate = self.dataSource[indexPath.row + 1];
-    [self.tableView reloadData];
-    
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableViewHeightConstraint.constant = DefaultHeightForTableView;
-        [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [weakSelf.tableView reloadData];
-    }];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
-    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    selectionCell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
-    selectionCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
-    
-    if (self.selectedEmirate.length) {
-        selectionCell.selectProviderLabel.text = self.selectedEmirate;
-        selectionCell.selectProviderLabel.textColor = [UIColor blackColor];
-    } else {
-        selectionCell.selectProviderLabel.text = [self.dataSource firstObject];
-        selectionCell.selectProviderLabel.textColor = [UIColor grayBorderTextFieldTextColor];
-    }
-    selectionCell.contentView.backgroundColor = [UIColor clearColor];
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hederClicked)];
-    tapGesture.cancelsTouchesInView = NO;
-    [selectionCell.contentView addGestureRecognizer:tapGesture];
-    
-    self.headerCell = selectionCell;
-    
-    return selectionCell;
-}
-
-- (void)hederClicked
-{
-    [self.view endEditing:YES];
-    
-    NSInteger value = DefaultHeightForTableView;
-    if (self.tableViewHeightConstraint.constant == DefaultHeightForTableView) {
-        value *= 4;
-        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
-    } else {
-        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
-    }
-    
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableViewHeightConstraint.constant = value;
-        [weakSelf.view layoutIfNeeded];
-    }];
-}
-
-- (void)configureCell:(ServicesSelectTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    cell.selectProviderLabel.text = self.dataSource[indexPath.row + 1];
-    cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -255,21 +151,19 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     self.title = dynamicLocalizedString(@"userProfile.title");
     [self.userActionView localizeUI];
     
-    self.emiratesLabel.text = dynamicLocalizedString(@"editUserProfileViewController.emiratesLabel");
     self.contactNumberLabel.text = dynamicLocalizedString(@"editUserProfileViewController.contactnumberLabel");
     self.firstNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.firstNameLabel");
     self.lastNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.lastNameLabel");
     self.streetAddressLabel.text = dynamicLocalizedString(@"editUserProfileViewController.streetAddressLabel");
     [self.changePhotoButton setTitle:dynamicLocalizedString(@"editUserProfileViewController.changePhotoButtonTitle") forState:UIControlStateNormal];
-    
-    [self prepareDataSource];
-    [self.tableView reloadData];
 }
 
 - (void)updateColors
 {
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.];
+    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:color width:3.];
+    self.logoImageView.tintColor = color;
 }
 
 - (void)setRTLArabicUI
@@ -290,7 +184,6 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (void)updateUIaligment:(NSTextAlignment)aligment
 {
-    self.emiratesLabel.textAlignment = aligment;
     self.contactNumberLabel.textAlignment = aligment;
     self.firstNameLabel.textAlignment = aligment;
     self.lastNameLabel.textAlignment = aligment;
@@ -301,26 +194,12 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     self.contactNumberTextfield.textAlignment = aligment;
 }
 
-- (void)prepareDataSource
-{
-    self.dataSource = @[
-                        dynamicLocalizedString(@"editUserProfileViewController.dataSource.0element"),
-                        dynamicLocalizedString(@"state.Abu.Dhabi"),
-                        dynamicLocalizedString(@"state.Ajman"),
-                        dynamicLocalizedString(@"state.Dubai"),
-                        dynamicLocalizedString(@"state.Fujairah"),
-                        dynamicLocalizedString(@"state.Ras"),
-                        dynamicLocalizedString(@"state.Sharjan"),
-                        dynamicLocalizedString(@"state.Quwain")
-                        ];
-}
-
 - (void)prepareUI
 {
     self.userActionView.delegate = self;
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.logoImageView.image = [UIImage imageNamed:@"test"];
+    self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.logoImageView];
+    self.logoImageView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)fillData

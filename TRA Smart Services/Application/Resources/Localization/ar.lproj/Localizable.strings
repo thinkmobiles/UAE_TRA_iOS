@@ -239,12 +239,9 @@
 "compliantViewController.title.comtlaintTRA" = "شكوى";
 "compliantViewController.title.enquires" = "Enquires";
 "compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
-"compliantViewController.textField.placeholder" = "Enter here";
+"compliantViewController.compliantTitleTextField.placeholder" = "Complaint title";
+"compliantViewController.referenceNumberTextField.placeholder" = "Reference number";
 "compliantViewController.description.placeholder" = "شرح";
-"compliantViewController.selectProvider.text" = "Tap to select";
-"compliantViewController.compliantTitleLabel" = "عنوان الشكوى";
-"compliantViewController.compliantReterenceNumberLabel" = "REFERENCE NUMBER";
-"compliantViewController.compliantServiceProviderLabel" = "SERVICE PROVIDER";
 "compliantViewController.compliantSendBarButtonItem.title" = "شكوى";
 
 //SpamReportViewControler
