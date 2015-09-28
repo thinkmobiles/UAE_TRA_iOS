@@ -262,13 +262,6 @@
 "InternetSpeedTestViewController.speedTestResult.text" = "InternetSpeedTestViewController.speedTestResult.text";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "InternetSpeedTestViewController.speedTestResult.text.accurate";
 
-//HelpSalimViewController
-
-"helpSalimViewController.title" = "helpSalimViewController.title";
-"helpSalimViewController.urlToReportTextField" = "helpSalimViewController.urlToReportTextField";
-"helpSalimViewController.commentLabel.text" = "helpSalimViewController.commentLabel.text";
-"helpSalimViewController.reportURLButton.title" = "helpSalimViewController.reportURLButton.title";
-
 //PostFeedbackViewController
 
 "postFeedbackViewController.title" = "postFeedbackViewController.title";

@@ -63,7 +63,8 @@
 "tabBarMenu_item_1" = "الرئيسية";
 "tabBarMenu_item_2" = "المفضلة";
 "tabBarMenu_item_3" = "معلومات";
-"tabBarMenu_item_4" = "استفسارات";
+//"tabBarMenu_item_4" = "استفسارات";
+"tabBarMenu_item_4" = "Enquires";
 "tabBarMenu_item_5" = "إعدادات";
 
 //LoginViewController
@@ -262,13 +263,6 @@
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
 "InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
-
-//HelpSalimViewController
-
-"helpSalimViewController.title" = "خدمة ساعد سالم";
-"helpSalimViewController.urlToReportTextField" = "URL to report";
-"helpSalimViewController.commentLabel.text" = "Comment";
-"helpSalimViewController.reportURLButton.title" = "Report URL";
 
 //PostFeedbackViewController
 

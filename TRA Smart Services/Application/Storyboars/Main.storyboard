@@ -246,38 +246,6 @@
             </objects>
             <point key="canvasLocation" x="238" y="1674"/>
         </scene>
-        <!--Inquiries-->
-        <scene sceneID="ntu-wX-F5s">
-            <objects>
-                <viewController id="Ylg-l3-PgM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kq1-Zt-bf8"/>
-                        <viewControllerLayoutGuide type="bottom" id="7IH-fi-07s"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b2G-05-2MB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Screen in developing process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="osO-01-6Gx">
-                                <rect key="frame" x="188" y="266" width="225" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="osO-01-6Gx" secondAttribute="centerY" id="TNM-Li-xRl"/>
-                            <constraint firstAttribute="centerX" secondItem="osO-01-6Gx" secondAttribute="centerX" id="cEh-Ph-NS9"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="Inquiries" image="ic_inq" id="xBk-B8-hVq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="km3-UF-Lxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1123" y="1674"/>
-        </scene>
         <!--Favourite View Controller-->
         <scene sceneID="hfd-DE-eJz">
             <objects>
@@ -3583,7 +3551,7 @@ a new password will be sent.</string>
                         <segue destination="oBx-Gx-wdB" kind="relationship" relationship="viewControllers" id="PX4-CA-BfY"/>
                         <segue destination="MaE-O4-fGC" kind="relationship" relationship="viewControllers" id="3AC-Bf-LwD"/>
                         <segue destination="ar5-iQ-1gK" kind="relationship" relationship="viewControllers" id="1h2-El-9aF"/>
-                        <segue destination="Ylg-l3-PgM" kind="relationship" relationship="viewControllers" id="DaG-Jq-lcO"/>
+                        <segue destination="n0t-Y0-nau" kind="relationship" relationship="viewControllers" id="gCe-1e-oPl"/>
                         <segue destination="Wsa-rP-hfE" kind="relationship" relationship="viewControllers" id="vG7-XI-Azj"/>
                     </connections>
                 </tabBarController>
@@ -4118,7 +4086,6 @@ a new password will be sent.</string>
                         <outlet property="topView" destination="PFo-5b-foy" id="A7D-Mc-l8f"/>
                         <segue destination="dey-3G-9KT" kind="show" identifier="HomeCheckDomainSegue" id="jMU-my-Fn1"/>
                         <segue destination="9dF-S3-6Fb" kind="show" identifier="HomePostFeedbackSegue" id="rOI-cy-bkh"/>
-                        <segue destination="bNC-bU-kdP" kind="show" identifier="HomeToHelpSalimSeque" id="Fwe-Ne-S3H"/>
                         <segue destination="Vhn-R2-wMo" kind="show" identifier="HomeToCoverageSegue" id="ufa-Tu-oC9"/>
                         <segue destination="g1T-5v-LUj" kind="show" identifier="HomeSpeedTestSegue" id="rT5-X8-51s"/>
                         <segue destination="9jW-oN-JHA" kind="show" identifier="HomeToCompliantSeque" id="AP5-vn-iSI"/>
@@ -4664,90 +4631,6 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="5004" y="-532"/>
         </scene>
-        <!--Help Salim View Controller-->
-        <scene sceneID="7Hn-Vk-6P1">
-            <objects>
-                <viewController storyboardIdentifier="helpSalimID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bNC-bU-kdP" customClass="HelpSalimViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cnk-k5-gUg"/>
-                        <viewControllerLayoutGuide type="bottom" id="L8g-N7-vCI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="I5A-gx-krg">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNp-0b-wbu">
-                                <rect key="frame" x="16" y="33" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqs-Yq-bzn">
-                                <rect key="frame" x="150" y="170" width="300" height="30"/>
-                                <state key="normal" title="Report URL">
-                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="reportURlButtonTapped:" destination="bNC-bU-kdP" eventType="touchUpInside" id="fGy-vg-SBJ"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMB-gz-1PG" customClass="BottomBorderTextView">
-                                <rect key="frame" x="16" y="62" width="568" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="IkP-7c-LNJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bNC-bU-kdP" id="Eqa-aw-Smf"/>
-                                </connections>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-p4-Nfr" userLabel="Backgroung - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="URL to report" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-YV-Aig" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="8" width="568" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bNC-bU-kdP" id="xKk-SZ-KlF"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cMB-gz-1PG" firstAttribute="leading" secondItem="I5A-gx-krg" secondAttribute="leading" constant="16" id="2zY-Ir-CGp"/>
-                            <constraint firstAttribute="trailing" secondItem="cMB-gz-1PG" secondAttribute="trailing" constant="16" id="8uZ-Q9-V5J"/>
-                            <constraint firstItem="c2O-YV-Aig" firstAttribute="leading" secondItem="I5A-gx-krg" secondAttribute="leading" constant="16" id="D7x-tP-7Eg"/>
-                            <constraint firstItem="eqs-Yq-bzn" firstAttribute="width" secondItem="I5A-gx-krg" secondAttribute="width" multiplier="0.5" id="HLt-dn-WeL"/>
-                            <constraint firstAttribute="centerX" secondItem="eqs-Yq-bzn" secondAttribute="centerX" id="YHk-YQ-CHd"/>
-                            <constraint firstItem="fNp-0b-wbu" firstAttribute="leading" secondItem="I5A-gx-krg" secondAttribute="leading" constant="16" id="aHD-Tp-lW9"/>
-                            <constraint firstItem="c2O-YV-Aig" firstAttribute="top" secondItem="cnk-k5-gUg" secondAttribute="bottom" constant="8" id="dVI-ff-Z8F"/>
-                            <constraint firstAttribute="trailing" secondItem="fNp-0b-wbu" secondAttribute="trailing" constant="16" id="eZv-RM-dwn"/>
-                            <constraint firstAttribute="trailing" secondItem="c2O-YV-Aig" secondAttribute="trailing" constant="16" id="jmu-G9-yjL"/>
-                            <constraint firstItem="eqs-Yq-bzn" firstAttribute="top" secondItem="cMB-gz-1PG" secondAttribute="bottom" constant="8" id="kID-4Y-ivT"/>
-                            <constraint firstItem="cMB-gz-1PG" firstAttribute="top" secondItem="fNp-0b-wbu" secondAttribute="bottom" constant="8" id="l6R-D0-Mgc"/>
-                            <constraint firstAttribute="trailing" secondItem="pwN-p4-Nfr" secondAttribute="trailing" id="rLR-JQ-Z7i"/>
-                            <constraint firstAttribute="bottom" secondItem="pwN-p4-Nfr" secondAttribute="bottom" id="s2X-UD-R7h"/>
-                            <constraint firstItem="fNp-0b-wbu" firstAttribute="top" secondItem="c2O-YV-Aig" secondAttribute="bottom" constant="8" id="sQf-MB-Qd1"/>
-                            <constraint firstItem="pwN-p4-Nfr" firstAttribute="top" secondItem="I5A-gx-krg" secondAttribute="top" id="sXV-Wh-gVw"/>
-                            <constraint firstItem="pwN-p4-Nfr" firstAttribute="leading" secondItem="I5A-gx-krg" secondAttribute="leading" id="vTs-5J-Ee5"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="backgroundImageView" destination="pwN-p4-Nfr" id="zu7-Hc-j8v"/>
-                        <outlet property="commentLabel" destination="fNp-0b-wbu" id="AxJ-X6-1St"/>
-                        <outlet property="commentTextView" destination="cMB-gz-1PG" id="UCW-XR-5Gm"/>
-                        <outlet property="reportURLButton" destination="eqs-Yq-bzn" id="dJH-ie-r6E"/>
-                        <outlet property="urlToReportTextField" destination="c2O-YV-Aig" id="u7d-nI-St2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxg-ju-yIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4254" y="-504"/>
-        </scene>
         <!--Compliant View Controller-->
         <scene sceneID="eHz-AH-Vcz">
             <objects>
@@ -4757,13 +4640,13 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="74n-dy-0xV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X0O-F8-uuJ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="836"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trimmedBackground" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-e1-pHs" userLabel="Background - ImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="787"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="851"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="JVZ-iu-ZkM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="JVZ-iu-ZkM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="787"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJB-dU-Hcb">
@@ -5057,6 +4940,7 @@ a new password will be sent.</string>
                             <constraint firstItem="74n-dy-0xV" firstAttribute="top" secondItem="s7L-e1-pHs" secondAttribute="bottom" id="zX8-Cs-6GU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1Ed-xx-RYh"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="900"/>
                     <connections>
@@ -5079,7 +4963,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN1-sQ-thU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5699" y="-1496"/>
+            <point key="canvasLocation" x="2763" y="1824"/>
         </scene>
         <!--Suggestion View Controller-->
         <scene sceneID="JYw-bg-v7i">
@@ -5150,6 +5034,7 @@ a new password will be sent.</string>
                             <constraint firstAttribute="centerX" secondItem="sac-CW-4SX" secondAttribute="centerX" id="djm-Mi-5M6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Vkl-vK-ejG"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="Fcy-K2-rAf" id="Mwe-un-Mlv"/>
                         <outlet property="sendSuggestionButton" destination="sac-CW-4SX" id="HKy-vS-fqM"/>
@@ -5159,7 +5044,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N60-Wu-85y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5740" y="-572"/>
+            <point key="canvasLocation" x="5807" y="-540"/>
         </scene>
         <!--Service Info View Controller-->
         <scene sceneID="M1X-eR-eAK">
@@ -5698,6 +5583,7 @@ a new password will be sent.</string>
                         <outlet property="selectModeSwitch" destination="Qhd-a3-AHX" id="48S-Bt-LQY"/>
                         <outlet property="tableView" destination="Ly2-1a-PFD" id="4eh-eV-8Mp"/>
                         <outlet property="topButtonContainer" destination="hGy-Yv-FxA" id="GxP-VV-FBG"/>
+                        <segue destination="OLV-R2-oyn" kind="show" identifier="spamWebSegueIdentifier" id="BqK-as-Ww8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlw-Ap-jnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5882,7 +5768,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="1" id="zZc-RI-5XP"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-Ns-2Gd" userLabel="Submit - UIButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-Ns-2Gd" userLabel="Submit - UIButton">
                                 <rect key="frame" x="150" y="491" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wjy-cI-s71"/>
@@ -5896,7 +5782,7 @@ a new password will be sent.</string>
                                     <action selector="responseSpam:" destination="OLV-R2-oyn" eventType="touchUpInside" id="EGL-PE-S3y"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-Nt-TMA" userLabel="Description - UITextView" customClass="PlaceholderTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-Nt-TMA" userLabel="Description - UITextView" customClass="PlaceholderTextView">
                                 <rect key="frame" x="16" y="225" width="568" height="241"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
@@ -6888,6 +6774,31 @@ a new password will be sent.</string>
             </objects>
             <point key="canvasLocation" x="238" y="3243"/>
         </scene>
+        <!--Inquiries-->
+        <scene sceneID="dzg-E8-71U">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n0t-Y0-nau" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" title="Inquiries" image="ic_inq" id="n5e-E9-UUV"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" alpha="0.69999998807907104" contentMode="scaleToFill" id="vPS-Tt-qyM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9jW-oN-JHA" kind="relationship" relationship="rootViewController" id="xJv-y2-lEy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIe-go-ea3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1123" y="1644"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="320" height="517"/>
@@ -6926,7 +6837,8 @@ a new password will be sent.</string>
         <image name="trimmedBackground" width="320" height="335"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ok6-Nn-WS0"/>
+        <segue reference="xJv-y2-lEy"/>
+        <segue reference="BqK-as-Ww8"/>
         <segue reference="fWX-0G-qd7"/>
     </inferredMetricsTieBreakers>
 </document>

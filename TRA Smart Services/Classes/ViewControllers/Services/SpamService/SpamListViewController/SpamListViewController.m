@@ -12,8 +12,10 @@ static NSString *const LeftSegmentImageEurope = @"res_segm_sms_europe";
 static NSString *const RightSegmentImageEurope = @"res_segm_web_europe";
 static NSString *const LeftSegmentImageArabic = @"res_segm_web_arabic";
 static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
+static NSString *const SpamWebSegueIdentifier = @"spamWebSegueIdentifier";
 
 #import "SpamListViewController.h"
+#import "SpamReportViewController.h"
 
 @interface SpamListViewController ()
 
@@ -58,10 +60,17 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (IBAction)selectModeSwitchTapped:(UISegmentedControl *)sender
 {
-#warning temp while block websites
-    BOOL isArabicUI = self.dynamicService.language == LanguageTypeArabic;
-    [AppHelper alertViewWithMessage:@"Screen in developing process"];
     sender.selectedSegmentIndex = sender.selectedSegmentIndex ? 0 : 1;
+    [self performSegueWithIdentifier:SpamWebSegueIdentifier sender:self];
+    
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SpamReportViewController *spamReportViewController = segue.destinationViewController;
+    spamReportViewController.selectSpamReport = SpamReportTypeWeb;
 }
 
 #pragma mark - UISearchBarDelegate

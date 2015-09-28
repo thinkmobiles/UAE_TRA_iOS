@@ -54,6 +54,15 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 #pragma mark - Life Cicle
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _type = ComplianTypeEnquires;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

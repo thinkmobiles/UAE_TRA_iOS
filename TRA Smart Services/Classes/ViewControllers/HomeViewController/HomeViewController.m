@@ -271,7 +271,9 @@ static LanguageType startLanguage;
 
 - (void)topBarInformationButtonDidPressedInView:(HomeTopBarView *)parentView
 {
-    NSLog(@"1");
+#warning temp solution - fout
+    NSInteger sugestionID = 11;
+    [self sevriceSwitchPerformSegue:sugestionID];
 }
 
 - (void)topBarNotificationButtonDidPressedInView:(HomeTopBarView *)parentView
@@ -362,7 +364,7 @@ static LanguageType startLanguage;
     [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
 }
 
-- (void)sevriceSwitchPerformSegue:(NSInteger) serviceID
+- (void)sevriceSwitchPerformSegue:(NSInteger)serviceID
 {
     if (![NetworkManager sharedManager].networkStatus) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
@@ -383,10 +385,6 @@ static LanguageType startLanguage;
         }
         case 5: {
             [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
             break;
         }
         case 7: {

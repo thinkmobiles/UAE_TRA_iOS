@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "res_img_green_bg_ar5.png",
+      "idiom" : "iphone",
+      "filename" : "res_img_tut_bg_green_5.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "res_img_green_bg_ar6+.png",
+      "idiom" : "iphone",
+      "filename" : "res_img_tut_bg_green_6+.png",
       "scale" : "3x"
     }
   ],

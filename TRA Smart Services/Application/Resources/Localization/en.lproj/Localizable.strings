@@ -63,7 +63,8 @@
 "tabBarMenu_item_1" = "Home";
 "tabBarMenu_item_2" = "Favourite";
 "tabBarMenu_item_3" = "Info Hub";
-"tabBarMenu_item_4" = "Inquires";
+//"tabBarMenu_item_4" = "Inquires";
+"tabBarMenu_item_4" = "Enquires";
 "tabBarMenu_item_5" = "Settings";
 
 //LoginViewController
@@ -263,13 +264,6 @@
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
 "InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
-
-//HelpSalimViewController
-
-"helpSalimViewController.title" = "Help Salim Service";
-"helpSalimViewController.urlToReportTextField" = "URL to report";
-"helpSalimViewController.commentLabel.text" = "Comment";
-"helpSalimViewController.reportURLButton.title" = "Report URL";
 
 //PostFeedbackViewController
 

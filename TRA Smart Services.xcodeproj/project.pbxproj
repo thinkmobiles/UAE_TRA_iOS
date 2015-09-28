@@ -162,7 +162,6 @@
 		EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF01B6A33A600334503 /* HexagonView.m */; };
 		EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */; };
 		EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */; };
-		EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */; };
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
@@ -467,8 +466,6 @@
 		EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFeedbackViewController.h; sourceTree = "<group>"; };
 		EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFeedbackViewController.m; sourceTree = "<group>"; };
-		EDF30AAA1B7CF693001B4441 /* HelpSalimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpSalimViewController.h; sourceTree = "<group>"; };
-		EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpSalimViewController.m; sourceTree = "<group>"; };
 		EDF30AAE1B7CF9AC001B4441 /* CoverageReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverageReportViewController.h; sourceTree = "<group>"; };
 		EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageReportViewController.m; sourceTree = "<group>"; };
 		EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedTestViewController.h; sourceTree = "<group>"; };
@@ -1135,7 +1132,6 @@
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
 				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
-				EDF30AA91B7CF687001B4441 /* HelpSalimViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
 				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
@@ -1333,9 +1329,9 @@
 		ED982F1F1B5D24DA00B6B644 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				ED982F231B5D24DA00B6B644 /* AppHelper */,
 				EDAA8EE31B81D78700269F1A /* CoreData */,
 				ED982F201B5D24DA00B6B644 /* AppDelegate */,
-				ED982F231B5D24DA00B6B644 /* AppHelper */,
 				ED982F261B5D24DA00B6B644 /* Constants */,
 				ED982F281B5D24DA00B6B644 /* Resources */,
 				ED982F301B5D24DA00B6B644 /* Storyboars */,
@@ -1766,15 +1762,6 @@
 			path = PostFeedbackViewController;
 			sourceTree = "<group>";
 		};
-		EDF30AA91B7CF687001B4441 /* HelpSalimViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EDF30AAA1B7CF693001B4441 /* HelpSalimViewController.h */,
-				EDF30AAB1B7CF693001B4441 /* HelpSalimViewController.m */,
-			);
-			path = HelpSalimViewController;
-			sourceTree = "<group>";
-		};
 		EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2092,7 +2079,6 @@
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */,
 				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
-				EDF30AAC1B7CF693001B4441 /* HelpSalimViewController.m in Sources */,
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
