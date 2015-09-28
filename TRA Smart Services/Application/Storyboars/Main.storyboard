@@ -851,7 +851,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npp-v1-BIS" userLabel="Logo Container - UIView">
                                                 <rect key="frame" x="175" y="25" width="250" height="95"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-qp-u8R" userLabel="Logo - UiIMageView">
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-qp-u8R" userLabel="Logo - UiIMageView">
                                                         <rect key="frame" x="92" y="0.0" width="67" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="67" id="5d8-ob-BaZ"/>
@@ -3607,7 +3607,7 @@ a new password will be sent.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvC-vM-ixz" userLabel="Logo Container - UIView">
                                 <rect key="frame" x="175" y="25" width="250" height="110"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="53X-rz-YW3" userLabel="Logo - UiIMageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="53X-rz-YW3" userLabel="Logo - UiIMageView">
                                         <rect key="frame" x="92" y="0.0" width="67" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="67" id="f3J-UV-Fmr"/>
@@ -6224,7 +6224,7 @@ a new password will be sent.</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lV3-cs-Cnb" userLabel="Logo Container - UIView">
                                                 <rect key="frame" x="175" y="25" width="250" height="95"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVp-nj-gEQ" userLabel="Logo - UIImageView">
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVp-nj-gEQ" userLabel="Logo - UIImageView">
                                                         <rect key="frame" x="92" y="0.0" width="67" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="67" id="IpD-eB-Nbg"/>
@@ -6446,7 +6446,7 @@ a new password will be sent.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zao-7U-F9a" userLabel="Logo Container - UIView">
                                 <rect key="frame" x="175" y="25" width="250" height="95"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndt-SV-479" userLabel="Logo - UiIMageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndt-SV-479" userLabel="Logo - UiIMageView">
                                         <rect key="frame" x="92" y="0.0" width="67" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="67" id="2qk-Ob-oJJ"/>

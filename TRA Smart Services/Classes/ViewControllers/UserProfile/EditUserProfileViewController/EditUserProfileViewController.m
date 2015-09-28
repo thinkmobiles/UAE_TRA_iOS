@@ -268,8 +268,10 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (void)updateColors
 {
+    UIColor *color = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.];
+    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:color width:3.];
+    self.logoImageView.tintColor = color;
 }
 
 - (void)setRTLArabicUI
@@ -319,8 +321,9 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 {
     self.userActionView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.logoImageView.image = [UIImage imageNamed:@"test"];
+    self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.logoImageView];
+    self.logoImageView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)fillData
