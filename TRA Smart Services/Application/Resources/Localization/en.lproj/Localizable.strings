@@ -53,7 +53,7 @@
 
 //ProviderType
 
-"providerType.selectProvider.text" = "Tap to select";
+"providerType.selectProvider.text" = "Tap to select Service Provider";
 "providerType.Du" = "Du Service Provider";
 "providerType.Etisalat" = "Etisalat Service Provider";
 "providerType.Yahsat" = "Yahsat Service Provider";
@@ -241,11 +241,9 @@
 "compliantViewController.title.comtlaintTRA" = "Compliant TRA";
 "compliantViewController.title.enquires" = "Enquires";
 "compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
-"compliantViewController.textField.placeholder" = "Enter here";
+"compliantViewController.compliantTitleTextField.placeholder" = "Complaint title";
+"compliantViewController.referenceNumberTextField.placeholder" = "Reference number";
 "compliantViewController.description.placeholder" = "Description";
-"compliantViewController.compliantTitleLabel" = "COMPLAINT TITLE";
-"compliantViewController.compliantReterenceNumberLabel" = "REFERENCE NUMBER";
-"compliantViewController.compliantServiceProviderLabel" = "SERVICE PROVIDER";
 "compliantViewController.compliantSendBarButtonItem.title" = "Send";
 
 //SpamReportViewControler

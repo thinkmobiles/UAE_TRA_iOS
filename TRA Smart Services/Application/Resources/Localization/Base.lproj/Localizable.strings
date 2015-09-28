@@ -239,11 +239,9 @@
 "compliantViewController.title.comtlaintTRA" = "compliantViewController.title.comtlaintTRA";
 "compliantViewController.title.enquires" = "compliantViewController.title.enquires";
 "compliantViewController.title.compliantAboutServiceProvider" = "compliantViewController.title.compliantAboutServiceProvider";
-"compliantViewController.textField.placeholder" = "compliantViewController.textField.placeholder";
+"compliantViewController.compliantTitleTextField.placeholder" = "compliantViewController.compliantTitleTextField.placeholder";
+"compliantViewController.referenceNumberTextField.placeholder" = "compliantViewController.referenceNumberTextField.placeholder";
 "compliantViewController.description.placeholder" = "compliantViewController.description.placeholder";
-"compliantViewController.compliantServiceProviderLabel" = "compliantViewController.compliantServiceProviderLabel";
-"compliantViewController.compliantTitleLabel" = "compliantViewController.compliantTitleLabel";
-"compliantViewController.compliantReterenceNumberLabel" = "compliantViewController.compliantReterenceNumberLabel";
 "compliantViewController.compliantSendBarButtonItem.title" = "compliantViewController.compliantSendBarButtonItem.title";
 
 //SpamReportViewControler

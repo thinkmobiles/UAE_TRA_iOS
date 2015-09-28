@@ -17,21 +17,14 @@
 
 static NSString *const providerCellIdentifier = @"compliantProviderCell";
 
-static CGFloat const heightSelectTableViewCell = 33.f;
-static CGFloat const verticalSpaceDescriptionConstraintCompliantCustomServise = 168.f;
-static CGFloat const verticalSpaceDescriptionConstraintCompliantServise = 22.f;
-static CGFloat const verticalSpaceTitleConteinerConstraint = 18.f;
-static CGFloat const heightContenerConstraint = 55.f;
+static CGFloat const HeightSelectTableViewCell = 40.f;
+static CGFloat const VerticalSpaceDescriptionConstraintCompliantCustomServise = 155.f;
+static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
 @interface CompliantViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *conteinerReferenceNumberView;
-@property (weak, nonatomic) IBOutlet UIView *conteinerServiceProviderView;
-
-@property (weak, nonatomic) IBOutlet UILabel *compliantTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *compliantReterenceNumberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *compliantServicePoviderLabel;
 @property (weak, nonatomic) IBOutlet UIButton *complaintSendButton;
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
 
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *compliantTitleTextField;
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *referenceNumberTextField;
@@ -79,7 +72,7 @@ static CGFloat const heightContenerConstraint = 55.f;
     [self presentLoginIfNeededAndPopToRootController:nil];
     [self prepareNotification];
     [self updateNavigationControllerBar];
-    self.heightTableViewConstraint.constant = heightSelectTableViewCell;
+    self.heightTableViewConstraint.constant = HeightSelectTableViewCell;
     [self addAttachButtonTextField:self.compliantTitleTextField];
 }
 
@@ -129,10 +122,10 @@ static CGFloat const heightContenerConstraint = 55.f;
         cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
     } else {
         cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
-        cell.selectProviderImage.image = self.heightTableViewConstraint.constant == heightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
+        cell.selectProviderImage.image = self.heightTableViewConstraint.constant == HeightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
         if (self.selectedProvider.length) {
             cell.selectProviderLabel.text = self.selectedProvider;
-            cell.selectProviderLabel.textColor = [UIColor blackColor];
+            cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
         } else {
             cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
             cell.selectProviderLabel.textColor = [UIColor grayBorderTextFieldTextColor];
@@ -149,7 +142,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return heightSelectTableViewCell;
+    return HeightSelectTableViewCell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -158,7 +151,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {    
     [self.view endEditing:YES];
 
-    if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
+    if (self.heightTableViewConstraint.constant == HeightSelectTableViewCell) {
         [self animationSelectTableView:YES];
     } else {
         [self animationSelectTableView:NO];
@@ -196,14 +189,12 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    CGFloat deltaOffset = IS_IPHONE_5 ? 5.f : verticalSpaceTitleConteinerConstraint + heightContenerConstraint + verticalSpaceDescriptionConstraintCompliantServise;
+    CGFloat deltaOffset = IS_IPHONE_5 ? 5.f : 25.f + HeightSelectTableViewCell + VerticalSpaceDescriptionConstraintCompliantServise;
     [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - deltaOffset) animated:YES];
     return YES;
 }
 
 #pragma mark - SuperclassMethods
-
-#pragma mark - Superclass Methods
 
 - (void)localizeUI
 {
@@ -221,12 +212,9 @@ static CGFloat const heightContenerConstraint = 55.f;
             break;
         }
     }
-    self.compliantTitleTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
-    self.referenceNumberTextField.placeholder = dynamicLocalizedString(@"compliantViewController.textField.placeholder");
+    self.compliantTitleTextField.placeholder = dynamicLocalizedString(@"compliantViewController.compliantTitleTextField.placeholder");
+    self.referenceNumberTextField.placeholder = dynamicLocalizedString(@"compliantViewController.referenceNumberTextField.placeholder");
     self.compliantDescriptionTextView.placeholder = dynamicLocalizedString(@"compliantViewController.description.placeholder");
-    self.compliantTitleLabel.text = dynamicLocalizedString(@"compliantViewController.compliantTitleLabel");
-    self.compliantReterenceNumberLabel.text = dynamicLocalizedString(@"compliantViewController.compliantReterenceNumberLabel");
-    self.compliantServicePoviderLabel.text = dynamicLocalizedString(@"compliantViewController.compliantServiceProviderLabel");
     [self.complaintSendButton setTitle:dynamicLocalizedString(@"compliantViewController.compliantSendBarButtonItem.title") forState:UIControlStateNormal];
     
     [self prepareSelectProviderDataSource];
@@ -237,6 +225,7 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     [super updateColors];
     
+    self.separatorView.backgroundColor = [self.dynamicService currentApplicationColor];
     [self.selectTableView reloadData];
     [super updateBackgroundImageNamed:@"img_bg_service"];
 }
@@ -257,11 +246,8 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
 {
-    self.compliantTitleLabel.textAlignment = alignment;
     self.compliantTitleTextField.textAlignment = alignment;
-    self.compliantReterenceNumberLabel.textAlignment = alignment;
     self.referenceNumberTextField.textAlignment = alignment;
-    self.compliantServicePoviderLabel.textAlignment = alignment;
     self.compliantDescriptionTextView.textAlignment = alignment;
     [self.compliantDescriptionTextView setNeedsDisplay];
 }
@@ -293,14 +279,15 @@ static CGFloat const heightContenerConstraint = 55.f;
 {
     switch (type) {
         case ComplianTypeCustomProvider: {
-            self.conteinerReferenceNumberView.hidden = NO;
-            self.conteinerServiceProviderView.hidden = NO;
-            self.verticalSpaceDescriptionConstraint.constant = verticalSpaceDescriptionConstraintCompliantCustomServise;
+            self.referenceNumberTextField.hidden = NO;
+            self.selectTableView.hidden = NO;
+            self.separatorView.hidden = NO;
+            self.verticalSpaceDescriptionConstraint.constant = VerticalSpaceDescriptionConstraintCompliantCustomServise;
             break;
         }
         case ComplianTypeEnquires:
         case ComplianTypeTRAService: {
-            self.verticalSpaceDescriptionConstraint.constant = verticalSpaceDescriptionConstraintCompliantServise;
+            self.verticalSpaceDescriptionConstraint.constant = VerticalSpaceDescriptionConstraintCompliantServise;
             break;
         }
     }
@@ -321,16 +308,16 @@ static CGFloat const heightContenerConstraint = 55.f;
 
 - (void)animationSelectTableView:(BOOL)selected
 {
-    CGFloat heightTableView = heightSelectTableViewCell;
+    CGFloat heightTableView = HeightSelectTableViewCell;
     if (selected) {
-        heightTableView = heightSelectTableViewCell * self.selectProviderDataSource.count;
+        heightTableView = HeightSelectTableViewCell * self.selectProviderDataSource.count;
     }
     [self.view layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
         weakSelf.heightTableViewConstraint.constant = heightTableView;
-        weakSelf.heightConteinerSelectedProviderConstraint.constant = heightTableView + 22.f;
-        weakSelf.verticalSpaceDescriptionConstraint.constant = heightTableView + verticalSpaceDescriptionConstraintCompliantCustomServise - heightSelectTableViewCell;
+        weakSelf.heightConteinerSelectedProviderConstraint.constant = heightTableView;
+        weakSelf.verticalSpaceDescriptionConstraint.constant = heightTableView + VerticalSpaceDescriptionConstraintCompliantCustomServise - HeightSelectTableViewCell;
         [weakSelf.view layoutIfNeeded];
     }];
     [self.selectTableView reloadData];
