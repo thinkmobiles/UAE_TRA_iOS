@@ -24,7 +24,6 @@
 {
     [super viewDidLoad];
     
-    [self prepareUI];
     self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
 }
 
@@ -88,19 +87,8 @@
 - (void)updateColors
 {
     [super updateColors];
-    
-    UIColor *color = [self.dynamicService currentApplicationColor];
-    [self.searchButton setTitleColor:color forState:UIControlStateNormal];
-    self.searchButton.layer.borderColor = color.CGColor;
+
     [super updateBackgroundImageNamed:@"img_bg_service"];
-}
-
-#pragma mark - Private
-
-- (void)prepareUI
-{
-    self.searchButton.layer.cornerRadius = 8;
-    self.searchButton.layer.borderWidth = 1;
 }
 
 @end

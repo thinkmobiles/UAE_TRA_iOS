@@ -10,8 +10,8 @@
 
 @interface HelpSalimViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *urlToReportTextField;
-@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet BottomBorderTextField *urlToReportTextField;
+@property (weak, nonatomic) IBOutlet BottomBorderTextView *commentTextView;
 @property (weak, nonatomic) IBOutlet UIButton *reportURLButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
@@ -76,7 +76,7 @@
 {
     [super updateColors];
     
-    [AppHelper setStyleForLayer:self.commentTextView.layer];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
     self.commentTextView.textColor = [self.dynamicService currentApplicationColor];
 }
 

@@ -11,5 +11,6 @@
 @property (strong, nonatomic) UIImage *selectImage;
 
 - (void)selectImagePickerController;
+- (void)addAttachButtonTextField:(UITextField *)textField;
 
 @end
