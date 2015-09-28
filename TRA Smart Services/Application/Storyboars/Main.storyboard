@@ -4806,8 +4806,8 @@ a new password will be sent.</string>
                                                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-Gy-QYa" userLabel="Title - TextField" customClass="BottomBorderTextField">
-                                                        <rect key="frame" x="0.0" y="21" width="534" height="33"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-Gy-QYa" userLabel="Title - TextField" customClass="BottomBorderTextField">
+                                                        <rect key="frame" x="8" y="22" width="534" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="qVz-di-Rlp"/>
                                                         </constraints>

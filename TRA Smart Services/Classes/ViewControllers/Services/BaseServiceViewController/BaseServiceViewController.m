@@ -48,7 +48,14 @@
             subView.textColor = [self.dynamicService currentApplicationColor];
         }
     }
-    for (UIView *subView in self.view.subviews) {
+    [self updateColors:self.view];
+}
+
+#pragma mark - Private
+
+- (void)updateColors:(UIView *) view
+{
+    for (UIView *subView in view.subviews) {
         if ([subView isKindOfClass:[UIButton class]]) {
             [(UIButton *)subView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [(UIButton *)subView setBackgroundColor:[self.dynamicService currentApplicationColor]];
@@ -57,6 +64,7 @@
         }  else if ([subView isKindOfClass:[BottomBorderTextView class]]) {
             [AppHelper setStyleForTextView:(BottomBorderTextView *)subView];
         }
+        [self updateColors:subView];
     }
 }
 
