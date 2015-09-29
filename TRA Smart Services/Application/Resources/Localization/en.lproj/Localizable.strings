@@ -393,3 +393,15 @@
 "spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
 "spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
 "spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";
+
+//ListOfMobileBrandViewController
+
+"listOfMobileBrandViewController.title" = "List of Mobile Brand";
+
+//ListOfDevicesViewController
+
+"listOfDevicesViewController.title" = "List of Devices";
+
+//InnovationsViewController
+
+"innovationsViewController.title" = "Innovations";

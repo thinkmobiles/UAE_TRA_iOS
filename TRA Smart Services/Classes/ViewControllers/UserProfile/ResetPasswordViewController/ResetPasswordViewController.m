@@ -54,10 +54,7 @@
 
 - (void)updateColors
 {
-    UIColor *color = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:color width:3.];
-    self.userLogoImageView.tintColor = color;
 }
 
 - (void)prepareNavigationBar
@@ -88,7 +85,8 @@
     self.title = dynamicLocalizedString(@"userProfile.title");
     self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
-    self.userLogoImageView.backgroundColor = [UIColor whiteColor];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.userLogoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)updateUI:(NSTextAlignment)textAlignment
