@@ -143,6 +143,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -159,75 +161,97 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="qhw-oP-FuE" userLabel="Background - Image View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kej-dk-0nl" userLabel="Conteiner Service Header - View" customClass="ServiceHeaderView">
-                                <rect key="frame" x="0.0" y="89" width="600" height="179"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWK-O1-4Qa" userLabel="ResultSendIMEI - Label">
+                                <rect key="frame" x="16" y="114" width="568" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tag-mC-hGb" userLabel="CotainerView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-2U-leb" userLabel="Enter IMEI - TextField" customClass="BottomBorderTextField">
+                                        <rect key="frame" x="30" y="272" width="540" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="U3r-7G-hAC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Veq-pR-Xch" id="wj0-e6-8Q3"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-pD-ORO" userLabel="Info Enter IMEI - Label">
+                                        <rect key="frame" x="300" y="332" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <color key="textColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nv-r9-EZt" userLabel="Sent IMEI Code - Button">
+                                        <rect key="frame" x="238" y="362" width="125" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="FVc-TI-9co"/>
+                                            <constraint firstAttribute="height" constant="75" id="y2s-fP-APn"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                                        <state key="normal" image="btn_chang"/>
+                                        <connections>
+                                            <action selector="checkButtonTapped:" destination="Veq-pR-Xch" eventType="touchUpInside" id="pEi-nJ-Zo1"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND IMEI CODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWo-QO-5v9" userLabel="Send IMEI Code - Label">
+                                        <rect key="frame" x="240" y="419" width="120" height="18"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <color key="textColor" red="0.12941176470588234" green="0.65490196078431373" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kej-dk-0nl" userLabel="Conteiner Service Header - View" customClass="ServiceHeaderView">
+                                        <rect key="frame" x="0.0" y="25" width="600" height="197"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1nv-r9-EZt" firstAttribute="centerX" secondItem="tag-mC-hGb" secondAttribute="centerX" id="9G7-cZ-z17"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kej-dk-0nl" secondAttribute="trailing" id="BUP-X6-p0y"/>
+                                    <constraint firstItem="OeK-pD-ORO" firstAttribute="top" secondItem="cPO-2U-leb" secondAttribute="bottom" constant="20" id="EtO-AH-nxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="cPO-2U-leb" secondAttribute="trailing" constant="30" id="Frf-2y-jHw"/>
+                                    <constraint firstItem="Kej-dk-0nl" firstAttribute="leading" secondItem="tag-mC-hGb" secondAttribute="leading" id="MyV-CP-TzF"/>
+                                    <constraint firstItem="Kej-dk-0nl" firstAttribute="top" secondItem="tag-mC-hGb" secondAttribute="top" constant="25" id="WSk-Qq-GcH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1nv-r9-EZt" secondAttribute="bottom" constant="50" id="Yrm-Wc-9hr"/>
+                                    <constraint firstItem="eWo-QO-5v9" firstAttribute="centerX" secondItem="1nv-r9-EZt" secondAttribute="centerX" id="Z03-hS-H0Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="eWo-QO-5v9" secondAttribute="bottom" constant="50" id="elU-Lv-YqQ"/>
+                                    <constraint firstItem="OeK-pD-ORO" firstAttribute="centerX" secondItem="tag-mC-hGb" secondAttribute="centerX" id="hdm-2b-atG"/>
+                                    <constraint firstItem="cPO-2U-leb" firstAttribute="leading" secondItem="tag-mC-hGb" secondAttribute="leading" constant="30" id="mxd-VN-cSe"/>
+                                    <constraint firstItem="cPO-2U-leb" firstAttribute="top" secondItem="Kej-dk-0nl" secondAttribute="bottom" constant="50" id="sDz-HS-16a"/>
+                                    <constraint firstItem="1nv-r9-EZt" firstAttribute="top" secondItem="OeK-pD-ORO" secondAttribute="bottom" constant="30" id="xpF-Pf-IIY"/>
+                                </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-2U-leb" userLabel="Enter IMEI - TextField" customClass="BottomBorderTextField">
-                                <rect key="frame" x="30" y="318" width="540" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="U3r-7G-hAC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Veq-pR-Xch" id="wj0-e6-8Q3"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-pD-ORO" userLabel="Info Enter IMEI - Label">
-                                <rect key="frame" x="114" y="379" width="372" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nv-r9-EZt" userLabel="Sent IMEI Code - Button">
-                                <rect key="frame" x="238" y="426" width="125" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="FVc-TI-9co"/>
-                                    <constraint firstAttribute="height" constant="75" id="y2s-fP-APn"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" image="btn_chang"/>
-                                <connections>
-                                    <action selector="checkButtonTapped:" destination="Veq-pR-Xch" eventType="touchUpInside" id="pEi-nJ-Zo1"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND IMEI CODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWo-QO-5v9" userLabel="Send IMEI Code - Label">
-                                <rect key="frame" x="238" y="483" width="125" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="0.12941176470588234" green="0.65490196078431373" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eWo-QO-5v9" firstAttribute="centerX" secondItem="1nv-r9-EZt" secondAttribute="centerX" id="5Zo-xy-4tf"/>
+                            <constraint firstItem="qhw-oP-FuE" firstAttribute="top" secondItem="Qsb-dh-Rec" secondAttribute="top" id="2sU-jp-57v"/>
+                            <constraint firstItem="tag-mC-hGb" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" id="41w-Ad-ixi"/>
                             <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="qhw-oP-FuE" secondAttribute="bottom" id="64g-rV-gt8"/>
-                            <constraint firstItem="OeK-pD-ORO" firstAttribute="top" secondItem="cPO-2U-leb" secondAttribute="bottom" constant="21" id="967-Zz-aK5"/>
-                            <constraint firstItem="cPO-2U-leb" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" constant="30" id="N5u-X0-1hF"/>
-                            <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="1nv-r9-EZt" secondAttribute="bottom" constant="50" id="N99-Pj-GIl"/>
-                            <constraint firstItem="1nv-r9-EZt" firstAttribute="top" secondItem="OeK-pD-ORO" secondAttribute="bottom" constant="30" id="NIX-UL-Rf8"/>
-                            <constraint firstItem="OeK-pD-ORO" firstAttribute="centerX" secondItem="Qsb-dh-Rec" secondAttribute="centerX" id="NZh-aR-52n"/>
+                            <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="tag-mC-hGb" secondAttribute="bottom" id="PzL-hX-Jfn"/>
                             <constraint firstAttribute="trailing" secondItem="qhw-oP-FuE" secondAttribute="trailing" id="TQ0-uV-c8c"/>
-                            <constraint firstItem="qhw-oP-FuE" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" id="aVV-qL-QUk"/>
-                            <constraint firstAttribute="trailing" secondItem="cPO-2U-leb" secondAttribute="trailing" constant="30" id="e4S-PA-g9E"/>
-                            <constraint firstItem="1nv-r9-EZt" firstAttribute="centerX" secondItem="Qsb-dh-Rec" secondAttribute="centerX" id="eYi-Nv-kYi"/>
-                            <constraint firstItem="eWo-QO-5v9" firstAttribute="width" secondItem="1nv-r9-EZt" secondAttribute="width" id="iLf-xo-5Xe"/>
-                            <constraint firstAttribute="trailing" secondItem="Kej-dk-0nl" secondAttribute="trailing" id="lJ1-X3-qR5"/>
-                            <constraint firstItem="Kej-dk-0nl" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" id="mVU-yR-YaZ"/>
-                            <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="eWo-QO-5v9" secondAttribute="bottom" constant="50" id="siV-s5-vJ6"/>
+                            <constraint firstItem="aWK-O1-4Qa" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" constant="16" id="asq-t6-7G2"/>
+                            <constraint firstItem="w9X-dd-Nte" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aWK-O1-4Qa" secondAttribute="bottom" constant="20" id="jiK-tC-WkV"/>
+                            <constraint firstItem="tag-mC-hGb" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" id="kxZ-8D-rMe"/>
+                            <constraint firstAttribute="trailing" secondItem="tag-mC-hGb" secondAttribute="trailing" id="lYM-Fb-1l2"/>
+                            <constraint firstAttribute="trailing" secondItem="aWK-O1-4Qa" secondAttribute="trailing" constant="16" id="wEW-bk-IB1"/>
                             <constraint firstItem="qhw-oP-FuE" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" id="whP-21-oNA"/>
-                            <constraint firstItem="Kej-dk-0nl" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" constant="25" id="xH8-fc-rUb"/>
-                            <constraint firstItem="cPO-2U-leb" firstAttribute="top" secondItem="Kej-dk-0nl" secondAttribute="bottom" constant="50" id="xSh-ID-WKz"/>
-                            <constraint firstItem="OeK-pD-ORO" firstAttribute="width" secondItem="qhw-oP-FuE" secondAttribute="width" multiplier="0.62" id="zsH-T3-8hE"/>
+                            <constraint firstItem="aWK-O1-4Qa" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" constant="50" id="x31-kL-qgB"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="qhw-oP-FuE" id="L14-ev-g8t"/>
+                        <outlet property="containerView" destination="tag-mC-hGb" id="Wms-6D-4Bf"/>
                         <outlet property="conteinerServiseHeaderView" destination="Kej-dk-0nl" id="9z6-mX-U5Y"/>
+                        <outlet property="resultSendIMEILabel" destination="aWK-O1-4Qa" id="IdM-oc-NK3"/>
                         <outlet property="sendIMEICodeButton" destination="1nv-r9-EZt" id="aey-Jl-Yba"/>
                         <outlet property="sendIMEICodeLabel" destination="eWo-QO-5v9" id="z7U-Nl-gxF"/>
                         <outlet property="verificationIMEIInfoEnterLabel" destination="OeK-pD-ORO" id="032-pT-yBa"/>

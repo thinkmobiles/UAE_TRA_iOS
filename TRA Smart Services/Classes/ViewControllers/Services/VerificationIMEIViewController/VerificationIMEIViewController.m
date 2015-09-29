@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *verificationIMEIInfoEnterLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendIMEICodeButton;
 @property (weak, nonatomic) IBOutlet UILabel *sendIMEICodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultSendIMEILabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -52,10 +54,13 @@
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.verificationIMEITextField.text requestResult:^(id response, NSError *error) {
             if ([response isKindOfClass:[NSArray class]] && [(NSArray *)response count] && !error) {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                NSString *resultIMEI = @"";
                 for (NSDictionary *dic in response) {
                     CheckIMEIModel *obj = [[CheckIMEIModel alloc] initFromDictionary:dic];
-                    NSLog(@"%@", obj.description);
+                    resultIMEI = [resultIMEI stringByAppendingPathComponent:obj.description];
                 }
+                [self showResultSendIMEI:resultIMEI];
+
                 [loader dismissTRALoader];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:!error ? dynamicLocalizedString(@"message.NoInternetConnection") : error.localizedDescription];
@@ -103,6 +108,14 @@
 {
     [self.conteinerServiseHeaderView updateUIColor];
     [AppHelper setStyleForTextField:self.verificationIMEITextField];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
+    
+    UIColor *color = [UIColor defaultGreenColor];
+    if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
+        color = [UIColor blackColor];
+    }
+    self.sendIMEICodeLabel.textColor = color;
+    self.sendIMEICodeButton.tintColor = color;
 }
 
 - (void)setRTLArabicUI
@@ -156,6 +169,13 @@
     self.conteinerServiseHeaderView.serviceHeaderLabel.textColor = [UIColor blackColor];
     self.conteinerServiseHeaderView.serviceHeaderLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:16] : [UIFont latoRegularWithSize:16];
     self.conteinerServiseHeaderView.serviceHeaderImage = [UIImage imageNamed:@"ic_edit_hex"];
+}
+
+- (void)showResultSendIMEI:(NSString *)result
+{
+    self.containerView.hidden = YES;
+    self.resultSendIMEILabel.hidden = NO;
+    self.resultSendIMEILabel.text = result;
 }
 
 @end
