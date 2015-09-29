@@ -160,10 +160,7 @@
 
 - (void)updateColors
 {
-    UIColor *color = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:color width:3.];
-    self.logoImageView.tintColor = color;
 }
 
 - (void)setRTLArabicUI
@@ -199,7 +196,8 @@
     self.userActionView.delegate = self;
     self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.logoImageView];
-    self.logoImageView.backgroundColor = [UIColor whiteColor];
+    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.logoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)fillData

@@ -111,10 +111,7 @@
 
 - (void)updateColors
 {
-    UIColor *color = [self.dynamicService currentApplicationColor];
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:color width:3.];
-    self.userLogoImageView.tintColor = color;
 }
 
 #pragma mark - Private
@@ -129,7 +126,8 @@
     self.userNameLabel.text = [[KeychainStorage userName] capitalizedString];
     self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
-    self.userLogoImageView.backgroundColor = [UIColor whiteColor];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.userLogoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)prepareNavigationBar
