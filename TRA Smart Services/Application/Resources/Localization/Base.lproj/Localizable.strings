@@ -399,3 +399,7 @@
 //ListOfDevicesViewController
 
 "listOfDevicesViewController.title" = "listOfDevicesViewController.title";
+
+//InnovationsViewController
+
+"innovationsViewController.title" = "innovationsViewController.title";

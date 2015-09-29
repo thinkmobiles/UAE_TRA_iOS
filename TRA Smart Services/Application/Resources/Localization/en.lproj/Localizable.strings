@@ -401,3 +401,7 @@
 //ListOfDevicesViewController
 
 "listOfDevicesViewController.title" = "List of Devices";
+
+//InnovationsViewController
+
+"innovationsViewController.title" = "Innovations";
