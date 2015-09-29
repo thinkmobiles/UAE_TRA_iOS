@@ -341,11 +341,6 @@
 "verificationIMEIViewController.sendIMEICodeLabel" = "verificationIMEIViewController.sendIMEICodeLabel";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "verificationIMEIViewController.verificationIMEITextField.placeholder";
 
-//TutorialViewController
-
-"tutorialViewController.skipButton.title" = "tutorialViewController.skipButton.title";
-"tutorialViewController.nextButton.title" = "tutorialViewController.nextButton.title";
-
 //TRALoaderViewController
 
 "TRALoader.backButton.title" = "TRALoader.backButton.title";

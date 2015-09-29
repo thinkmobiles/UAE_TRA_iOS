@@ -8,8 +8,8 @@
 
 //API descriptors
 
-"api.message.serverError" = "Internal Server Error occured. Please try again later.";
-"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+"api.message.serverError" = "Your request cannot be processed at the moment. Please try again later.";
+"api.message.noDataFound" = "Request completed successfully. No data found.";
 
 //UIElements Title
 
@@ -42,21 +42,21 @@
 
 //StatesNames
 
-"state.SelectState" = "Select State";
+"state.SelectState" = "Select Emirate";
 "state.Abu.Dhabi" = "Abu Dhabi";
 "state.Ajman" = "Ajman";
 "state.Dubai" = "Dubai";
 "state.Fujairah" = "Fujairah";
-"state.Ras" = "Ras al-Khaiman";
+"state.Ras" = "Ras al-Khaimah";
 "state.Sharjan" = "Sharjah";
 "state.Quwain" = "Umm al-Quwain";
 
 //ProviderType
 
-"providerType.selectProvider.text" = "Tap to select Service Provider";
-"providerType.Du" = "Du Service Provider";
-"providerType.Etisalat" = "Etisalat Service Provider";
-"providerType.Yahsat" = "Yahsat Service Provider";
+"providerType.selectProvider.text" = "Tap to select";
+"providerType.Du" = "Du";
+"providerType.Etisalat" = "Etisalat";
+"providerType.Yahsat" = "Yahsat";
 
 //TabBarMenuItems
 
@@ -72,11 +72,11 @@
 "login.title" = "Login";
 "login.placeHolderText.username" = "Username";
 "login.placeHolderText.password" = "Password";
-"login.button.login" = "LOGIN";
+"login.button.login" = "Login";
 "login.button.forgotPassword" = "Password?";
 "login.button.registerButton" = "Register";
 
-"login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.restore_password.message" = "To restore password, please enter your email that was used during registration";
 "login.picker.genre.male" = "Male";
 "login.picker.genre.female" = "Female";
 "login.picker.genre.undefined" = "Not specified";
@@ -101,16 +101,16 @@
 "register.placeHolderText.state" = "State";
 
 //SelectRegisterViewController
-"register.label.registerInfo" = "SELECT A WAY TO REGISTER";
+"register.label.registerInfo" = "Select a registeration method";
 "register.label.emiratesID" = "Emirates ID\nVerification";
 "register.label.fillForm" = "Fill-up Form\n(Manual)";
 
 //RestorePasswordViewController
 
 "restorePassword.title" = "Restore Password";
-"restorePassword.PlaceholderText.email" = "E-mail";
+"restorePassword.PlaceholderText.email" = "Email";
 "restorePassword.button.restore" = "Restore Password";
-"restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
+"restorePassword.information.label.text" = "If you have forgotten your password,\nplease enter your email below and\na new password will be sent to you.";
 
 //SettingsViewController
 
@@ -122,7 +122,7 @@
 "settings.label.screenLockNotificationTitle" = "Screen Lock Notification";
 "settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
 "settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
-"settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
+"settings.label.appTutorialScreensDetails" = "Activates tutorial screens";
 "settings.label.colorThemeTitle" = "Color Theme";
 "settings.label.colorThemeDetails" = "Change color theme for app";
 "settings.label.aboutTRATitle" = "About TRA";
@@ -134,17 +134,16 @@
 "settings.label.fontsize.description.small" = "Small";
 "settings.label.fontsize.description.normal" = "Normal";
 "settings.label.fontsize.description.large" = "Large";
-"setting.label.release" = "Release version";
+"setting.label.release" = "Release Version";
 "setting.label.releaseVersion" = "v %@, build %i.%i.%i";
 "setting.label.touchID" = "Use Touch ID";
-"setting.label.touchIDDEscription" = "Use your finger print for authentification process";
+"setting.label.touchIDDEscription" = "Use your fingerprint for authentification process";
 "setting.loginRequired.message" = "Please login to enable this option";
 "fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
 
 //HomeViewController
 
 "speedAccess.service.name.-1" = "";
-
 "speedAccess.service.name.0" = "Domain Info";
 "speedAccess.service.name.1" = "Domain Avaliability";
 "speedAccess.service.name.2" = "Domain Check";
@@ -155,22 +154,22 @@
 "speedAccess.service.name.7" = "Verification";
 "speedAccess.service.name.8" = "Coverage";
 "speedAccess.service.name.9" = "Internet";
-"speedAccess.service.name.10" = "Complain about service provider";
+"speedAccess.service.name.10" = "Complian about Service Provider";
 "speedAccess.service.name.11" = "Suggestion";
 "speedAccess.service.name.12" = "Enquires";
-"speedAccess.service.name.13" = "Compliant TRA";
+"speedAccess.service.name.13" = "Complian about TRA";
 
 //NotificationsViewController
 
 "notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
-"notificationsViewController.noNotificationsMessage" = "You have no Notifications";
-"notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
+"notificationsViewController.noNotificationsMessage" = "You have no notifications";
+"notificationsViewController.NotificationsMessage" = "You have (%i) notifications";
 "notificationsViewController.clearAllButton.title" = "Clear All";
 
 //FavouriteViewController
 
 "favourite.title" = "Favourites";
-"favourite.button.addFav.title" = "ADD A SERVICE";
+"favourite.button.addFav.title" = "Add a Service";
 "favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";
 
 //FavouriteCell
@@ -187,13 +186,13 @@
 "serviceInfoItemName.4" = "Expected Time";
 "serviceInfoItemName.5" = "Service Fees";
 "serviceInfoItemName.6" = "Officer in Charge of this Service";
-"serviceInfoItmeDetailedDescription.0" = "No description";
-"serviceInfoItmeDetailedDescription.1" = "No description";
-"serviceInfoItmeDetailedDescription.2" = "No description";
-"serviceInfoItmeDetailedDescription.3" = "No description";
-"serviceInfoItmeDetailedDescription.4" = "No description";
-"serviceInfoItmeDetailedDescription.5" = "No description";
-"serviceInfoItmeDetailedDescription.6" = "No description";
+"serviceInfoItmeDetailedDescription.0" = "";
+"serviceInfoItmeDetailedDescription.1" = "";
+"serviceInfoItmeDetailedDescription.2" = "";
+"serviceInfoItmeDetailedDescription.3" = "";
+"serviceInfoItmeDetailedDescription.4" = "";
+"serviceInfoItmeDetailedDescription.5" = "";
+"serviceInfoItmeDetailedDescription.6" = "";
 
 //CoverageReport
 
@@ -217,7 +216,7 @@
 
 //AnnoucementsViewController
 
-"annoucements.title" = "info Hub Announcements";
+"annoucements.title" = "Info Hub Announcements";
 
 //DetailsViewController
 
@@ -238,7 +237,7 @@
 
 //CompliantViewController
 
-"compliantViewController.title.comtlaintTRA" = "Compliant TRA";
+"compliantViewController.title.comtlaintTRA" = "Compliant";
 "compliantViewController.title.enquires" = "Enquires";
 "compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
 "compliantViewController.compliantTitleTextField.placeholder" = "Complaint title";
@@ -248,19 +247,18 @@
 
 //SpamReportViewControler
 
-"spamReportViewControler.title.spamSMS" = "Spam - SMS";
-"spamReportViewControler.title.spamWEB" = "Spam - Website";
-"spamReportViewControler.reportTextField.reportSMS" = "Number";
+"spamReportViewControler.title.spamSMS" = "SMS Spam Report";
+"spamReportViewControler.title.spamWEB" = "Help Salim";
+"spamReportViewControler.reportTextField.reportSMS" = "Phone number";
 "spamReportViewControler.reportTextField.reportWeb" = "Link";
-"spamReportViewControler.reportButton.title" = "SUBMIT";
-"spamReportViewControler.descriptionTextView.placeholder" = "Copy and Paste the SMS here...";
-
+"spamReportViewControler.reportButton.title" = "Report";
+"spamReportViewControler.descriptionTextView.placeholder" = "Copy and paste the SMS here...";
 
 //"InternetSpeedTestViewController
 
-"internetSpeedTestViewController.title" = "Speed Test Demo";
+"internetSpeedTestViewController.title" = "Speed Test";
 "internetSpeedTestViewController.checkButton.title" = "Check Speed";
-"InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
+"InternetSpeedTestViewController.speedTestResult.text" = "Connection speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
 
 //PostFeedbackViewController
@@ -276,7 +274,7 @@
 "checkDomainViewController.title" = "Domain check";
 "checkDomainViewController.domainNameTextField" = "Insert Domain name here";
 "checkDomainViewController.avaliabilityButton.title" = "AVALIABILITY";
-"checkDomainViewController.whoISButton.title" = "WHO IS?";
+"checkDomainViewController.whoISButton.title" = "WHOIS";
 "checkDomainViewController.domainTitleForView" = "Domain Check Service";
 "checkDomainViewController.chooseRating" = "Choose Rating";
 
@@ -292,14 +290,14 @@
 "userProfile.changePassword" = "Change Password";
 "userProfile.resetPassword" = "Reset Password";
 "userProfile.logoutFromAccount" = "Logout from your Account";
-"userProfile.notificationMesasge" = "Are you sure that u want to logout?";
+"userProfile.notificationMesasge" = "Are you sure that you want to logout?";
 
 //ResetPasswordViewController
 
 "resetPassword.info" = "To reset your password, please type your email in the field below and a temporary password will by send to you.";
-"resetPassword.email" = "EMAIL";
+"resetPassword.email" = "Email";
 "resetPassword.placeHolder.email" = "Email";
-"resetPassword.retypeEmail" = "RETYPE YOUR EMAIL";
+"resetPassword.retypeEmail" = "Retype your email";
 "resetPassword.placeHolder.retypeEmail" = "Retype your email";
 
 //ChangePasswordViewController
@@ -309,7 +307,7 @@
 "changePassword.password" = "NEW PASSWORD";
 "changePassword.placeHolder.password" = "New Password";
 "changePassword.retypePassword" = "RETYPE NEW PASSWORD";
-"changePassword.placeHolder.retypePassword" = "Retype New PAssword";
+"changePassword.placeHolder.retypePassword" = "Retype New Password";
 
 //UserProfileActionView
 
@@ -344,15 +342,10 @@
 "verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
 
-//TutorialViewController
-
-"tutorialViewController.skipButton.title" = "SKIP";
-"tutorialViewController.nextButton.title" = "NEXT";
-
 //TRALoaderViewController
 
-"TRALoader.backButton.title" = "BACK TO DASHBOARD";
-"TRALoader.backButton.cancel" = "CANCEL";
+"TRALoader.backButton.title" = "Back to Dashboard";
+"TRALoader.backButton.cancel" = "Cancel";
 "TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
 "TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";
 
@@ -370,12 +363,11 @@
 "fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
 "fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
 "fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
-"fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
+"fingerPrintService.InvalidFingerPrint" = "Invalid fingerprint";
 
 //SpamListViewController
 
 "spamListViewController.title" = "My List";
-
 
 //InnovationsCollectionViewCell
 
@@ -390,6 +382,6 @@
 
 "spamSelectionViewController.title" = "Spam";
 "spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites\nas Spam to TRA";
-"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
-"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
-"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "Report\nSMS";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "Report\nWebsite";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "View\nMy List";

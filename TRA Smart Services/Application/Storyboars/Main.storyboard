@@ -4000,86 +4000,6 @@ a new password will be sent.</string>
             <point key="canvasLocation" x="1123" y="-572"/>
         </scene>
         <!--CheckIMEI View Controller-->
-        <scene sceneID="7Gj-gB-SZx">
-            <objects>
-                <viewController storyboardIdentifier="checkIMEIID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8EY-X5-ZEA" customClass="CheckIMEIViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LQa-dx-40R"/>
-                        <viewControllerLayoutGuide type="bottom" id="ljP-gJ-ehm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rXf-xI-ix2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgf-Gx-Mdo" userLabel="Background - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-DV-eBj" userLabel="IMEI - TextField" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="16" width="528" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="deR-qC-FTi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="8EY-X5-ZEA" id="XB0-ll-ZhU"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2S-xj-MFe">
-                                <rect key="frame" x="552" y="20" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="e6y-CU-LLB"/>
-                                    <constraint firstAttribute="height" constant="32" id="uMV-LV-TdW"/>
-                                </constraints>
-                                <color key="tintColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" image="camera">
-                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56H-gX-NS3">
-                                <rect key="frame" x="150" y="64" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uZc-oh-HV8"/>
-                                </constraints>
-                                <state key="normal" title="Check IMEI">
-                                    <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkButtonTapped:" destination="8EY-X5-ZEA" eventType="touchUpInside" id="SYj-aw-XIW"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="T2S-xj-MFe" secondAttribute="trailing" constant="16" id="1uc-Nb-dND"/>
-                            <constraint firstItem="T2S-xj-MFe" firstAttribute="centerY" secondItem="aEO-DV-eBj" secondAttribute="centerY" id="7Sp-pZ-Hqy"/>
-                            <constraint firstItem="aEO-DV-eBj" firstAttribute="top" secondItem="LQa-dx-40R" secondAttribute="bottom" constant="16" id="HvO-MD-PIo"/>
-                            <constraint firstItem="56H-gX-NS3" firstAttribute="top" secondItem="aEO-DV-eBj" secondAttribute="bottom" constant="8" id="SzZ-KT-7YH"/>
-                            <constraint firstAttribute="bottom" secondItem="zgf-Gx-Mdo" secondAttribute="bottom" id="a6T-ZH-WoP"/>
-                            <constraint firstItem="zgf-Gx-Mdo" firstAttribute="top" secondItem="rXf-xI-ix2" secondAttribute="top" id="dAO-cn-XRN"/>
-                            <constraint firstItem="T2S-xj-MFe" firstAttribute="leading" secondItem="aEO-DV-eBj" secondAttribute="trailing" constant="8" id="iHz-lQ-Ccf"/>
-                            <constraint firstItem="56H-gX-NS3" firstAttribute="width" secondItem="rXf-xI-ix2" secondAttribute="width" multiplier="0.5" id="lXT-vw-Ptu"/>
-                            <constraint firstAttribute="trailing" secondItem="zgf-Gx-Mdo" secondAttribute="trailing" id="nsR-bR-qba"/>
-                            <constraint firstItem="zgf-Gx-Mdo" firstAttribute="leading" secondItem="rXf-xI-ix2" secondAttribute="leading" id="nxY-eF-TwI"/>
-                            <constraint firstAttribute="centerX" secondItem="56H-gX-NS3" secondAttribute="centerX" id="ry9-pu-knT"/>
-                            <constraint firstItem="aEO-DV-eBj" firstAttribute="leading" secondItem="rXf-xI-ix2" secondAttribute="leading" constant="16" id="xqp-ys-W1b"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="backgroundImageView" destination="zgf-Gx-Mdo" id="0zf-ih-Zi6"/>
-                        <outlet property="cameraButton" destination="T2S-xj-MFe" id="SnU-lw-Wzb"/>
-                        <outlet property="checkIMEIButton" destination="56H-gX-NS3" id="j2R-KO-pIC"/>
-                        <outlet property="resultTextField" destination="aEO-DV-eBj" id="j7S-aw-yBM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GEh-GB-KuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4250" y="1452"/>
-        </scene>
-        <!--CheckIMEI View Controller-->
         <scene sceneID="aWk-f6-gKS">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="91c-7m-CxN" customClass="CheckIMEIViewController" sceneMemberID="viewController">
@@ -6828,7 +6748,6 @@ a new password will be sent.</string>
         <image name="btn_theme_bl" width="16" height="16"/>
         <image name="btn_theme_grn" width="16" height="16"/>
         <image name="btn_theme_rng" width="16" height="16"/>
-        <image name="camera" width="32" height="32"/>
         <image name="close" width="64" height="64"/>
         <image name="close5" width="16" height="16"/>
         <image name="fav_back_orange" width="640" height="960"/>
