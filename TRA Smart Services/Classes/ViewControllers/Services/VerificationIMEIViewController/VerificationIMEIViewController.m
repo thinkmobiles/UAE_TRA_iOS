@@ -154,7 +154,7 @@
     self.conteinerServiseHeaderView.serviceHeaderLabel.text = dynamicLocalizedString(@"verificationIMEIViewController.serviceHeaderLabel");
     self.conteinerServiseHeaderView.serviceHeaderLabel.textColor = [UIColor blackColor];
     self.conteinerServiseHeaderView.serviceHeaderLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:16] : [UIFont latoRegularWithSize:16];
-    self.conteinerServiseHeaderView.serviceHeaderImage = [UIImage imageNamed:@"ic_edit_hex"];
+    self.conteinerServiseHeaderView.serviceHeaderImage = [UIImage imageNamed:@"ic_mobile"];
 }
 
 @end
