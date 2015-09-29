@@ -2,8 +2,7 @@
 //  InternetSpeedChecker.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 05.08.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 05.08.15.
 //
 
 typedef NS_ENUM(NSUInteger, SpeedTestType) {

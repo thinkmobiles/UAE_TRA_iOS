@@ -2,8 +2,7 @@
 //  CAGradientRadialLayer.h
 //  360cam
 //
-//  Created by Kirill Gorbushko on 08.07.15.
-//  Copyright © 2015 Kirill Gorbushko. All rights reserved.
+//  Created by Admin on 08.07.15.
 //
 
 #import <QuartzCore/QuartzCore.h>

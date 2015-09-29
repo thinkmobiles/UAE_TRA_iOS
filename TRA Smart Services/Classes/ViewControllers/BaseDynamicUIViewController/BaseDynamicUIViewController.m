@@ -2,8 +2,7 @@
 //  BaseDynamicUIViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 01.08.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 01.08.15.
 //
 
 #define mustOverride() @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"%s must be overridden in a subclass/category", __PRETTY_FUNCTION__] userInfo:nil]

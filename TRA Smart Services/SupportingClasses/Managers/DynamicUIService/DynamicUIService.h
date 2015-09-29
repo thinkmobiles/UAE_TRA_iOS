@@ -2,8 +2,7 @@
 //  DynamicLanguageService.h
 //  testOnFlyLocalizationStrings
 //
-//  Created by Kirill Gorbushko on 16.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 16.07.15.
 //
 
 #import <Foundation/Foundation.h>

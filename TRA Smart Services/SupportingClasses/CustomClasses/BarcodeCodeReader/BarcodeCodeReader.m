@@ -2,8 +2,7 @@
 //  BarcodeReader.m
 //  QRCodeReader
 //
-//  Created by Kirill Gorbushko on 04.05.15.
-//  Copyright (c) 2015. All rights reserved.
+//  Created by Admin on 04.05.15.
 //
 
 #import "BarcodeCodeReader.h"
@@ -132,7 +131,7 @@
         AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
         [self.captureSession addOutput:captureMetadataOutput];
         
-        dispatch_queue_t dispatchQueue = dispatch_queue_create("com.thinkMobiles.captureQueue.barcodeReading.TRA.smart.service", DISPATCH_QUEUE_SERIAL);
+        dispatch_queue_t dispatchQueue = dispatch_queue_create("com.captureQueue.barcodeReading.TRA.smart.service", DISPATCH_QUEUE_SERIAL);
         [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
         [captureMetadataOutput setMetadataObjectTypes: [self allowedTypes]];
         

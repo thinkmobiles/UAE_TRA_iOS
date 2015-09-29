@@ -2,8 +2,7 @@
 //  MBProgressHUD+CancelButton.m
 //  360cam
 //
-//  Created by Kirill Gorbushko on 06.07.15.
-//  Copyright © 2015 Kirill Gorbushko. All rights reserved.
+//  Created by Admin on 06.07.15.
 //
 
 #import "MBProgressHUD+CancelButton.h"

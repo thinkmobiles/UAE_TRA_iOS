@@ -2,8 +2,7 @@
 //  CheckIMEIModel.m
 //  TRA Smart Services
 //
-//  Created by Anatoliy Dalekorey on 9/28/15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 9/28/15.
 //
 
 #import "CheckIMEIModel.h"

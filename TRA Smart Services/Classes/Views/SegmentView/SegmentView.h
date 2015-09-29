@@ -2,7 +2,7 @@
 //  SegmentView.h
 //  
 //
-//  Created by Kirill Gorbushko on 03.08.15.
+//  Created by Admin on 03.08.15.
 //
 //
 @class SegmentView;

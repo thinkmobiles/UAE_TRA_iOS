@@ -2,8 +2,7 @@
 //  UINavigationController+Transparent.m
 //  PTSquared
 //
-//  Created by Kirill Gorbushko on 23.04.15.
-//  Copyright (c) 2015 Kirill Gorbushko. All rights reserved.
+//  Created by Admin on 23.04.15.
 //
 
 #import "UINavigationController+Transparent.h"

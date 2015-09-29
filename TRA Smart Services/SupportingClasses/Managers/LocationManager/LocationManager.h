@@ -2,8 +2,7 @@
 //  LocationManager.h
 //
 //
-//  Created by Kirill Gorbushko on 06.02.15.
-//  Copyright (c) 2015 Kirill Gorbushko. All rights reserved.
+//  Created by Admin on 06.02.15.
 //
 
 #import <CoreLocation/CoreLocation.h>

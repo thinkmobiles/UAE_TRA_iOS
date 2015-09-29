@@ -3,7 +3,6 @@
 //  PlaceholderTextView
 //
 //  Created by Roma on 07.09.15.
-//  Copyright (c) 2015 Roma. All rights reserved.
 //
 
 #import "PlaceholderTextView.h"
