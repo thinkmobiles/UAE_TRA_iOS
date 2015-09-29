@@ -391,3 +391,11 @@
 "spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "spamSelectionViewController.serviceSelectionView.reportSMSLabel";
 "spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "spamSelectionViewController.serviceSelectionView.reportWEBLabel";
 "spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "spamSelectionViewController.serviceSelectionView.viewMyListLabel";
+
+//ListOfMobileBrandViewController
+
+"listOfMobileBrandViewController.title" = "listOfMobileBrandViewController.title";
+
+//ListOfDevicesViewController
+
+"listOfDevicesViewController.title" = "listOfDevicesViewController.title";

@@ -5819,8 +5819,8 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_bg_service" translatesAutoresizingMaskIntoConstraints="NO" id="E4K-pQ-61s" userLabel="Background - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_service" translatesAutoresizingMaskIntoConstraints="NO" id="E4K-pQ-61s" userLabel="Background - UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uB9-Ex-EoQ" userLabel="Avaliability - Button">
                                 <rect key="frame" x="150" y="140" width="300" height="40"/>
@@ -5846,8 +5846,8 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="s8m-33-967" id="VmM-3q-6Vt"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-Rr-urp" userLabel="Result - UITextView" customClass="BottomBorderTextView">
-                                <rect key="frame" x="8" y="188" width="584" height="355"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-Rr-urp" userLabel="Result - UITextView" customClass="BottomBorderTextView">
+                                <rect key="frame" x="8" y="188" width="584" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -6600,8 +6600,8 @@ a new password will be sent.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QJh-rY-bUb" userLabel="Background - UIImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pgV-gy-sZl">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pgV-gy-sZl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -6609,23 +6609,23 @@ a new password will be sent.</string>
                                         <rect key="frame" x="0.0" y="28" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLq-CJ-y79" id="yMp-f2-Lkt">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFl-Nn-YYV" userLabel="ConteinerCell - UIView">
-                                                    <rect key="frame" x="16" y="0.0" width="584" height="129"/>
+                                                    <rect key="frame" x="16" y="0.0" width="584" height="130"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBB-8h-4aT" userLabel="Separator - UIView">
-                                                            <rect key="frame" x="90" y="128" width="494" height="1"/>
+                                                            <rect key="frame" x="90" y="129" width="494" height="1"/>
                                                             <color key="backgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="9ep-D9-jRF"/>
                                                             </constraints>
                                                         </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tXS-8K-dVV" userLabel="LogoBrand - Image View">
-                                                            <rect key="frame" x="90" y="0.0" width="474" height="128"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tXS-8K-dVV" userLabel="LogoBrand - Image View">
+                                                            <rect key="frame" x="90" y="0.0" width="474" height="129"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="et1-Ew-Mjz" userLabel="DeviceHexagon - Image View">
+                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="et1-Ew-Mjz" userLabel="DeviceHexagon - Image View">
                                                             <rect key="frame" x="0.0" y="25" width="70" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="9nR-SG-gyA"/>
@@ -6705,8 +6705,8 @@ a new password will be sent.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMy-2j-6ea" userLabel="Background - UIImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-l0-K3M">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-l0-K3M">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -6714,27 +6714,27 @@ a new password will be sent.</string>
                                         <rect key="frame" x="0.0" y="28" width="600" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ep-1b-fIb" id="A06-0Y-qDA">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-s3-Xw2" userLabel="ContainerCell - UIView">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-s3-Xw2" userLabel="ContainerCell - UIView">
                                                     <rect key="frame" x="20" y="0.0" width="580" height="113"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2LD-P1-rUd" userLabel="deviceHexagon - UIImageView">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2LD-P1-rUd" userLabel="deviceHexagon - UIImageView">
                                                             <rect key="frame" x="0.0" y="17" width="70" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="0mN-Ww-jHz"/>
                                                                 <constraint firstAttribute="width" constant="70" id="NoU-QC-gHa"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXz-7o-whT" userLabel="Separator - UIView">
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXz-7o-whT" userLabel="Separator - UIView">
                                                             <rect key="frame" x="90" y="112" width="490" height="1"/>
                                                             <color key="backgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="BWZ-wn-JcR"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-zm-sBc" userLabel="Coteiner Label - UIView">
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-zm-sBc" userLabel="Coteiner Label - UIView">
                                                             <rect key="frame" x="90" y="54" width="470" height="6"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-l1-Eks" userLabel="Description - UILabel">
@@ -6828,7 +6828,7 @@ a new password will be sent.</string>
         <image name="btn_theme_bl" width="16" height="16"/>
         <image name="btn_theme_grn" width="16" height="16"/>
         <image name="btn_theme_rng" width="16" height="16"/>
-        <image name="camera" width="32" height="32"/>
+        <image name="camera" width="16" height="16"/>
         <image name="close" width="64" height="64"/>
         <image name="close5" width="16" height="16"/>
         <image name="fav_back_orange" width="640" height="960"/>

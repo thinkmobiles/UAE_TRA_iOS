@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>logoBrand</key>
+		<string>ic_htc</string>
+		<key>name</key>
+		<string>HTC</string>
+		<key>iconHexagone</key>
+		<string>ic_htc_salsa</string>
+	</dict>
+	<dict>
+		<key>logoBrand</key>
+		<string>ic_huaw</string>
+		<key>name</key>
+		<string>HUAWEI</string>
+		<key>iconHexagone</key>
+		<string>ic_htc_salsa</string>
+	</dict>
+	<dict>
+		<key>logoBrand</key>
+		<string>ic_iphone</string>
+		<key>name</key>
+		<string>iPhone</string>
+		<key>iconHexagone</key>
+		<string>ic_htc_salsa</string>
+	</dict>
+	<dict>
+		<key>logoBrand</key>
+		<string>ic_nokia</string>
+		<key>name</key>
+		<string>NOKIA</string>
+		<key>iconHexagone</key>
+		<string>ic_htc_salsa</string>
+	</dict>
+	<dict>
+		<key>logoBrand</key>
+		<string>ic_samsung</string>
+		<key>name</key>
+		<string>Samsung</string>
+		<key>iconHexagone</key>
+		<string>ic_htc_salsa</string>
+	</dict>
+</array>
+</plist>

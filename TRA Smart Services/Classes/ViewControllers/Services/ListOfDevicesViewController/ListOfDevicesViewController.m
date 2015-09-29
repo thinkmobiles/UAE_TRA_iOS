@@ -22,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -64,7 +66,7 @@
 
 - (void)localizeUI
 {
-    
+    self.title = dynamicLocalizedString(@"listOfDevicesViewController.title");
 }
 
 - (void)updateColors
