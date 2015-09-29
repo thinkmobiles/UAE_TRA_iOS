@@ -34,8 +34,6 @@
 
 - (void)updateColors
 {
-    [super updateColors];
-    
     [super updateBackgroundImageNamed:@"fav_back_orange"];
 }
 

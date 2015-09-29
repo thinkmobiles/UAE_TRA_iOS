@@ -270,9 +270,7 @@ static LanguageType startLanguage;
 
 - (void)topBarInformationButtonDidPressedInView:(HomeTopBarView *)parentView
 {
-#warning temp solution - fout
-    NSInteger sugestionID = 11;
-    [self sevriceSwitchPerformSegue:sugestionID];
+    [self performSegueWithIdentifier:@"InnovationsSegue" sender:self];
 }
 
 - (void)topBarNotificationButtonDidPressedInView:(HomeTopBarView *)parentView

@@ -202,15 +202,14 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 - (void)helpSalimReport
 {
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.reportTextField.text notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
-            [AppHelper alertViewWithMessage:response];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }
-        [AppHelper hideLoader];
     }];
 }
 

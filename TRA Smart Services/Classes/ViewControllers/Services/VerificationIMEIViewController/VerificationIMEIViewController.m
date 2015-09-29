@@ -51,18 +51,19 @@
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.verificationIMEITextField.text requestResult:^(id response, NSError *error) {
-            if ([response isKindOfClass:[NSArray class]] && [(NSArray *)response count] && !error) {
+            if ([response isKindOfClass:[NSArray class]] && !error) {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
                 NSString *resultIMEI = @"";
                 for (NSDictionary *dic in response) {
                     CheckIMEIModel *obj = [[CheckIMEIModel alloc] initFromDictionary:dic];
-                    resultIMEI = [resultIMEI stringByAppendingPathComponent:obj.description];
+                    resultIMEI = [resultIMEI stringByAppendingString:obj.description];
                 }
                 [self showResultSendIMEI:resultIMEI];
-
-                [loader dismissTRALoader];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [loader dismissTRALoader];
+                });
             } else {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:!error ? dynamicLocalizedString(@"message.NoInternetConnection") : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             }
         }];
     } else {

@@ -33,7 +33,7 @@
 
 - (NSString *)description
 {
-    NSString *str = [NSString stringWithFormat:@"%@  %@", _marketingName, _allocationDate];
+    NSString *str = [NSString stringWithFormat:@"%@  %@\n", _marketingName, _allocationDate];
     return str;
 }
 

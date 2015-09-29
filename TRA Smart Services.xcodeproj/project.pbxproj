@@ -1186,20 +1186,20 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
+				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
+				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
+				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
+				84869E291B7DEBD100177B5B /* CompliantViewController */,
+				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
+				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
 				E07889771BBA9F2E00F019EB /* ListOfDevicesViewController */,
 				E078897A1BBA9F2E00F019EB /* ListOfMobileBrandViewController */,
-				93782EBF1BB2F2F100D3604B /* SpamService */,
-				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
-				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
-				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
-				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
-				84869E291B7DEBD100177B5B /* CompliantViewController */,
-				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
-				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
-				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
+				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
+				93782EBF1BB2F2F100D3604B /* SpamService */,
+				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */,
-				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
 			);
 			path = Services;
 			sourceTree = "<group>";

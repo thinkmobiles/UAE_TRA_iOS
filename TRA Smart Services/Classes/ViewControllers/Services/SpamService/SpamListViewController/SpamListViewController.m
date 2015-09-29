@@ -192,7 +192,7 @@ static NSString *const SpamWebSegueIdentifier = @"spamWebSegueIdentifier";
 - (void)prepareDataSource
 {
 #warning temp solution
-    self.dataSource = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7"];
+    self.dataSource = @[@"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title"];
     self.activeDataSource = [[NSMutableArray alloc] initWithArray:self.dataSource];
 }
 

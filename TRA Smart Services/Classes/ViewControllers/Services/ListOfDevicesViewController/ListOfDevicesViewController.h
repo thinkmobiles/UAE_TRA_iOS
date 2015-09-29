@@ -8,4 +8,6 @@
 
 @interface ListOfDevicesViewController : BaseServiceViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) NSArray *dataSource;
+
 @end

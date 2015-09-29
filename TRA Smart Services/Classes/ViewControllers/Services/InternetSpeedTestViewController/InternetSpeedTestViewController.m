@@ -51,6 +51,9 @@
         self.speedTestResult.text = [NSString stringWithFormat:dynamicLocalizedString(@"InternetSpeedTestViewController.speedTestResult.text.accurate"), speed];
     }
     [self.loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.loader dismissTRALoader];
+    });
     self.checkButton.enabled = YES;
 }
 
