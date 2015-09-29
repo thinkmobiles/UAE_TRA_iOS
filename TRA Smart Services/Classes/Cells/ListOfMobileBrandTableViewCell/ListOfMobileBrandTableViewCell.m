@@ -11,18 +11,10 @@
 
 #pragma mark - LifeCycle
 
-- (void)awakeFromNib
+- (void)prepareForReuse
 {
-    [super awakeFromNib];
-    
-    [self prepareHexagonLayer];
-}
-
-#pragma mark - Private
-
-- (void)prepareHexagonLayer
-{
-  //  [AppHelper addHexagonBorderForLayer:self. View.layer color:[[DynamicUIService service] currentApplicationColor] width:1.0f];
+    self.deviceHexagonImageView.image = nil;
+    self.logoBrandImageView.image = nil;
 }
 
 @end

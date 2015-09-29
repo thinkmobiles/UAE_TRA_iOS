@@ -11,18 +11,11 @@
 
 #pragma mark - LifeCycle
 
-- (void)awakeFromNib
+- (void)prepareForReuse
 {
-    [super awakeFromNib];
-    
-    [self prepareHexagonLayer];
-}
-
-#pragma mark - Private
-
-- (void)prepareHexagonLayer
-{
- 
+    self.deviceHexagonImageView.image = nil;
+    self.titleModelDevaceLabel.text = @"";
+    self.descriptionModelDevaceLabel.text = @"";
 }
 
 @end
