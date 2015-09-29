@@ -158,15 +158,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="qhw-oP-FuE" userLabel="Background - Image View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="qhw-oP-FuE" userLabel="Background - Image View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kej-dk-0nl" userLabel="Conteiner Service Header - View" customClass="ServiceHeaderView">
-                                <rect key="frame" x="0.0" y="114" width="600" height="151"/>
+                                <rect key="frame" x="0.0" y="89" width="600" height="195"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-pD-ORO" userLabel="Info Enter IMEI - Label">
-                                <rect key="frame" x="114" y="386" width="372" height="0.0"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-2U-leb" userLabel="Enter IMEI - TextField" customClass="BottomBorderTextField">
+                                <rect key="frame" x="30" y="344" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U3r-7G-hAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-pD-ORO" userLabel="Info Enter IMEI - Label">
+                                <rect key="frame" x="114" y="395" width="372" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -190,17 +198,6 @@
                                 <color key="textColor" red="0.12941176470588234" green="0.65490196078431373" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-2U-leb" userLabel="Enter IMEI - TextField" customClass="BottomBorderTextField">
-                                <rect key="frame" x="30" y="325" width="540" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="U3r-7G-hAC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Veq-pR-Xch" id="6mr-rd-653"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -209,8 +206,9 @@
                             <constraint firstItem="OeK-pD-ORO" firstAttribute="top" secondItem="cPO-2U-leb" secondAttribute="bottom" constant="21" id="967-Zz-aK5"/>
                             <constraint firstItem="cPO-2U-leb" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" constant="30" id="N5u-X0-1hF"/>
                             <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="1nv-r9-EZt" secondAttribute="bottom" constant="50" id="N99-Pj-GIl"/>
-                            <constraint firstItem="1nv-r9-EZt" firstAttribute="top" secondItem="OeK-pD-ORO" secondAttribute="bottom" constant="40" id="NIX-UL-Rf8"/>
+                            <constraint firstItem="1nv-r9-EZt" firstAttribute="top" secondItem="OeK-pD-ORO" secondAttribute="bottom" constant="30" id="NIX-UL-Rf8"/>
                             <constraint firstItem="OeK-pD-ORO" firstAttribute="centerX" secondItem="Qsb-dh-Rec" secondAttribute="centerX" id="NZh-aR-52n"/>
+                            <constraint firstItem="Kej-dk-0nl" firstAttribute="height" secondItem="qhw-oP-FuE" secondAttribute="height" multiplier="0.4" id="Psf-Jp-ocd"/>
                             <constraint firstAttribute="trailing" secondItem="qhw-oP-FuE" secondAttribute="trailing" id="TQ0-uV-c8c"/>
                             <constraint firstItem="qhw-oP-FuE" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" id="aVV-qL-QUk"/>
                             <constraint firstAttribute="trailing" secondItem="cPO-2U-leb" secondAttribute="trailing" constant="30" id="e4S-PA-g9E"/>
@@ -220,7 +218,7 @@
                             <constraint firstItem="Kej-dk-0nl" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" id="mVU-yR-YaZ"/>
                             <constraint firstItem="w9X-dd-Nte" firstAttribute="top" secondItem="eWo-QO-5v9" secondAttribute="bottom" constant="50" id="siV-s5-vJ6"/>
                             <constraint firstItem="qhw-oP-FuE" firstAttribute="leading" secondItem="Qsb-dh-Rec" secondAttribute="leading" id="whP-21-oNA"/>
-                            <constraint firstItem="Kej-dk-0nl" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" constant="50" id="xH8-fc-rUb"/>
+                            <constraint firstItem="Kej-dk-0nl" firstAttribute="top" secondItem="0lr-hm-BYx" secondAttribute="bottom" constant="25" id="xH8-fc-rUb"/>
                             <constraint firstItem="cPO-2U-leb" firstAttribute="top" secondItem="Kej-dk-0nl" secondAttribute="bottom" constant="60" id="xSh-ID-WKz"/>
                             <constraint firstItem="OeK-pD-ORO" firstAttribute="width" secondItem="qhw-oP-FuE" secondAttribute="width" multiplier="0.62" id="zsH-T3-8hE"/>
                         </constraints>
@@ -3962,12 +3960,12 @@ a new password will be sent.</string>
                         <segue destination="g1T-5v-LUj" kind="show" identifier="HomeSpeedTestSegue" id="rT5-X8-51s"/>
                         <segue destination="9jW-oN-JHA" kind="show" identifier="HomeToCompliantSeque" id="AP5-vn-iSI"/>
                         <segue destination="EUe-xY-9fo" kind="show" identifier="HomeToSuggestionSeque" id="ye5-Hu-sFZ"/>
-                        <segue destination="s8m-33-967" kind="show" identifier="HomeToSearchBrandNameSegue" id="k9x-Kv-bvU"/>
                         <segue destination="1ju-h4-Gvp" kind="custom" identifier="HomeToNotificationSegue" customClass="PushNoAnimationSegue" id="yQN-dn-9wC"/>
                         <segue destination="9qw-gE-WN4" kind="show" identifier="UserProfileSegue" id="tpG-If-Ldd"/>
                         <segue destination="2Yn-1j-Blg" kind="custom" identifier="HomeToHomeSearchSegue" customClass="PushNoAnimationSegue" id="s8V-CU-EX6"/>
                         <segue destination="G1M-6S-rZ4" kind="show" identifier="HomeToSpamReportSegue" id="o6F-ZU-Noo"/>
                         <segue destination="Veq-pR-Xch" kind="show" identifier="HomeBarcodeReaderSegue" id="L7Q-ep-RTR"/>
+                        <segue destination="vqo-MK-H8J" kind="show" identifier="HomeToSearchBrandNameSegue" id="Zel-vE-M27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtq-cG-a1w" sceneMemberID="firstResponder"/>
@@ -6590,13 +6588,13 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="RSp-Bo-TYK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YId-L4-f7L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QJh-rY-bUb" userLabel="Background - UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pgV-gy-sZl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pgV-gy-sZl">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
