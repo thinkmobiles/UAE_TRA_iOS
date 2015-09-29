@@ -81,6 +81,10 @@
 		E07082F41BA7FB7F0057F134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07082F31BA7FB7F0057F134 /* Main.storyboard */; };
 		E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */; };
 		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
+		E07889751BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889711BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E07889761BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E078897D1BBA9F2E00F019EB /* ListOfDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E078897E1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8151BAFDCAA00D40579 /* InnovationsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D5E80D1BAFDCAA00D40579 /* InnovationsCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8161BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E80E1BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8171BAFDCAA00D40579 /* InnovationsCollectionViewCellEuropeUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E80F1BAFDCAA00D40579 /* InnovationsCollectionViewCellEuropeUI.xib */; settings = {ASSET_TAGS = (); }; };
@@ -313,6 +317,14 @@
 		E07082F71BA80D040057F134 /* HomeSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchResultTableViewCell.m; sourceTree = "<group>"; };
 		E073CC6B1B9E049400E216C1 /* ServicesSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesSelectTableViewCell.h; sourceTree = "<group>"; };
 		E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesSelectTableViewCell.m; sourceTree = "<group>"; };
+		E07889701BBA9EFD00F019EB /* ListOfDevicesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfDevicesTableViewCell.h; sourceTree = "<group>"; };
+		E07889711BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfDevicesTableViewCell.m; sourceTree = "<group>"; };
+		E07889731BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfMobileBrandTableViewCell.h; sourceTree = "<group>"; };
+		E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfMobileBrandTableViewCell.m; sourceTree = "<group>"; };
+		E07889781BBA9F2E00F019EB /* ListOfDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfDevicesViewController.h; sourceTree = "<group>"; };
+		E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfDevicesViewController.m; sourceTree = "<group>"; };
+		E078897B1BBA9F2E00F019EB /* ListOfMobileBrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfMobileBrandViewController.h; sourceTree = "<group>"; };
+		E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfMobileBrandViewController.m; sourceTree = "<group>"; };
 		E0D5E80C1BAFDCAA00D40579 /* InnovationsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovationsCollectionViewCell.h; sourceTree = "<group>"; };
 		E0D5E80D1BAFDCAA00D40579 /* InnovationsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovationsCollectionViewCell.m; sourceTree = "<group>"; };
 		E0D5E80E1BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InnovationsCollectionViewCellArabicUI.xib; sourceTree = "<group>"; };
@@ -972,6 +984,42 @@
 			path = ServicesSelectTableViewCell;
 			sourceTree = "<group>";
 		};
+		E078896F1BBA9EFD00F019EB /* ListOfDevicesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E07889701BBA9EFD00F019EB /* ListOfDevicesTableViewCell.h */,
+				E07889711BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m */,
+			);
+			path = ListOfDevicesTableViewCell;
+			sourceTree = "<group>";
+		};
+		E07889721BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E07889731BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.h */,
+				E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */,
+			);
+			path = ListOfMobileBrandTableViewCell;
+			sourceTree = "<group>";
+		};
+		E07889771BBA9F2E00F019EB /* ListOfDevicesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E07889781BBA9F2E00F019EB /* ListOfDevicesViewController.h */,
+				E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */,
+			);
+			path = ListOfDevicesViewController;
+			sourceTree = "<group>";
+		};
+		E078897A1BBA9F2E00F019EB /* ListOfMobileBrandViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E078897B1BBA9F2E00F019EB /* ListOfMobileBrandViewController.h */,
+				E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */,
+			);
+			path = ListOfMobileBrandViewController;
+			sourceTree = "<group>";
+		};
 		E0D5E80B1BAFDCAA00D40579 /* InnovationsCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1124,6 +1172,8 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E07889771BBA9F2E00F019EB /* ListOfDevicesViewController */,
+				E078897A1BBA9F2E00F019EB /* ListOfMobileBrandViewController */,
 				93782EBF1BB2F2F100D3604B /* SpamService */,
 				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
@@ -1688,6 +1738,8 @@
 		EDEC9DE81B6A336D00334503 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E078896F1BBA9EFD00F019EB /* ListOfDevicesTableViewCell */,
+				E07889721BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell */,
 				93782EC81BB2F71000D3604B /* SpamListTableViewCell */,
 				E0D5E8231BAFFBB000D40579 /* InnovationsChatTableViewCell */,
 				E0D5E80B1BAFDCAA00D40579 /* InnovationsCollectionViewCell */,
@@ -2055,6 +2107,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07889761BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m in Sources */,
 				934629401B902EC00017E4CD /* NSString+Validation.m in Sources */,
 				F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */,
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
@@ -2065,6 +2118,7 @@
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
+				E07889751BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m in Sources */,
 				93782ECB1BB2F71F00D3604B /* SpamListTableViewCell.m in Sources */,
 				EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */,
 				93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */,
@@ -2106,6 +2160,7 @@
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				F1EE541F1BB95004005D7B77 /* CheckIMEIModel.m in Sources */,
 				E0D5E8151BAFDCAA00D40579 /* InnovationsCollectionViewCell.m in Sources */,
+				E078897E1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */,
@@ -2134,6 +2189,7 @@
 				ED2084D91B5E734000779CBD /* AFURLConnectionOperation.m in Sources */,
 				EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */,
 				84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */,
+				E078897D1BBA9F2E00F019EB /* ListOfDevicesViewController.m in Sources */,
 				ED2084DB1B5E734000779CBD /* AFURLResponseSerialization.m in Sources */,
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,

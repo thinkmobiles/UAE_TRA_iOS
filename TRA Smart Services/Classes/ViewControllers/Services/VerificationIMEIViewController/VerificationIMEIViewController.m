@@ -102,6 +102,7 @@
 - (void)updateColors
 {
     [self.conteinerServiseHeaderView updateUIColor];
+    [AppHelper setStyleForTextField:self.verificationIMEITextField];
 }
 
 - (void)setRTLArabicUI
@@ -136,7 +137,7 @@
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [button setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateSelected];
-    [button setTintColor:[UIColor grayColor]];
+    [button setTintColor:[self.dynamicService currentApplicationColor]];
     [button addTarget:self action:@selector(prepareForSegue) forControlEvents:UIControlEventTouchUpInside];
     textField.rightView = nil;
     textField.leftView = nil;
