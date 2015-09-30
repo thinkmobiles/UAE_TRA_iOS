@@ -7,6 +7,6 @@
 
 #import "BaseSelectImageViewController.h"
 
-@interface InnovationsViewController : BaseServiceViewController
+@interface InnovationsViewController : BaseSelectImageViewController
 
 @end

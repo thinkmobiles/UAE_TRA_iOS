@@ -22,7 +22,7 @@
 		<key>logoBrand</key>
 		<string>ic_iphone</string>
 		<key>name</key>
-		<string>iPhone</string>
+		<string>Apple</string>
 		<key>iconHexagone</key>
 		<string>ic_htc_salsa</string>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>logoBrand</key>
 		<string>ic_nokia</string>
 		<key>name</key>
-		<string>NOKIA</string>
+		<string>Nokia</string>
 		<key>iconHexagone</key>
 		<string>ic_htc_salsa</string>
 	</dict>
