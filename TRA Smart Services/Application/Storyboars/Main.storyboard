@@ -6325,36 +6325,30 @@ a new password will be sent.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-H4-a64">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvQ-y8-Boz" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="45" width="568" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvQ-y8-Boz" customClass="BottomBorderTextField">
+                                <rect key="frame" x="16" y="25" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Q8I-qj-aJj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-7D-HsB" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="110" width="568" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-7D-HsB" customClass="BottomBorderTextField">
+                                <rect key="frame" x="16" y="90" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hkq-f0-xX7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="PlaceholderTextView">
-                                <rect key="frame" x="16" y="175" width="568" height="295"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your message here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="BottomBorderTextView">
+                                <rect key="frame" x="16" y="155" width="568" height="202"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="insetValue">
-                                        <real key="value" value="-3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type your message here..."/>
-                                </userDefinedRuntimeAttributes>
                             </textView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="avw-YL-Mc1" userLabel="Container - UIView">
-                                <rect key="frame" x="0.0" y="480" width="600" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avw-YL-Mc1" userLabel="Container - UIView">
+                                <rect key="frame" x="0.0" y="367" width="600" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5f-dP-70M">
                                         <rect key="frame" x="16" y="10" width="47" height="21"/>
@@ -6390,12 +6384,17 @@ a new password will be sent.</string>
                                     <constraint firstItem="glz-GX-1eS" firstAttribute="leading" secondItem="LI2-sM-z4i" secondAttribute="trailing" constant="20" id="wbA-gG-PW4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nu-tM-i88">
-                                <rect key="frame" x="16" y="540" width="568" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nu-tM-i88">
+                                <rect key="frame" x="16" y="427" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EXh-cl-dpU"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendInfo:" destination="5at-6E-Y4n" eventType="touchUpInside" id="gDg-tD-AUn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -6425,8 +6424,10 @@ a new password will be sent.</string>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="4ms-H4-a64" id="duq-Rf-EOt"/>
+                        <outlet property="descriptionTextView" destination="0vC-Th-flv" id="hch-fF-U3M"/>
                         <outlet property="innovationsMessageTextField" destination="EYv-7D-HsB" id="fdR-Vx-Ah6"/>
                         <outlet property="innovationsTitleTextField" destination="NvQ-y8-Boz" id="mz8-yN-cds"/>
+                        <outlet property="submitButton" destination="2Nu-tM-i88" id="Qx3-By-dyc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UtF-zf-EAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
