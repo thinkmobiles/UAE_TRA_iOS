@@ -2,8 +2,7 @@
 //  InnovationsViewController.m
 //  TRA Smart Services
 //
-//  Created by  on 29.09.15.
-//  Copyright © 2015 . All rights reserved.
+//  Created by Admin on 29.09.15.
 //
 
 #import "InnovationsViewController.h"
