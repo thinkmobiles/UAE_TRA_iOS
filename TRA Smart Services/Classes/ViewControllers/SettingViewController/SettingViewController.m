@@ -12,7 +12,6 @@
 #import "KeychainStorage.h"
 
 #import "TutorialViewController.h"
-#import "TRALoaderViewController.h"
 
 static NSInteger const ThemeColorBlackAndWhite = 3;
 static CGFloat const OptionScaleSwitch = 0.55;
@@ -88,13 +87,6 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self updateFontSizeControl];
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
     self.touchIDSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

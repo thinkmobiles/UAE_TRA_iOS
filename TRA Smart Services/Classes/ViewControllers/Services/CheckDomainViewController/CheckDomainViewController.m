@@ -73,19 +73,16 @@ static NSString *const keyOrder = @"order";
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
+        [self.domainNameTextField resignFirstResponder];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 [weakSelf displayDataIfNeeded];
             } else {
                 weakSelf.domainAvaliabilityLabel.hidden = NO;
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    [loader dismissTRALoader];
-                    PresentResult(response);
-                });
+                [loader dismissTRALoader];
+                PresentResult(response);
             }
         }];
     }
@@ -105,19 +102,16 @@ static NSString *const keyOrder = @"order";
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
+        [self.domainNameTextField resignFirstResponder];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 [weakSelf displayDataIfNeeded];
             } else {
                 weakSelf.domainAvaliabilityLabel.hidden = NO;
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    [loader dismissTRALoader];
-                    PresentResult(response);
-                });
+                [loader dismissTRALoader];
+                PresentResult(response);
             }
         }];
     }
@@ -170,14 +164,6 @@ static NSString *const keyOrder = @"order";
     } else {
         cell.valueLabel.text = [selectedItem valueForKey:keyValue];
     }
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.view endEditing:YES];
-    return YES;
 }
 
 #pragma mark - UITextViewDelegate

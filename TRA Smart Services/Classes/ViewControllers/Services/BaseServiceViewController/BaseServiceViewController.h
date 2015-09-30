@@ -5,7 +5,6 @@
 //  Created by Admin on 31.08.15.
 //
 
-#import "TRALoaderViewController.h"
 #import "BottomBorderTextField.h"
 #import "BottomBorderTextView.h"
 

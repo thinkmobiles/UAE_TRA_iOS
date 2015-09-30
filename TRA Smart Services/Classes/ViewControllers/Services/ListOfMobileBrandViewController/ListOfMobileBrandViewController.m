@@ -65,11 +65,8 @@ static NSString *const ListDeviceSegue = @"listOfDevicesSegue";
         if (error) {
             [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
-            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                [loader dismissTRALoader];
-                [weakSelf performSegueWithIdentifier:ListDeviceSegue sender:response];
-            });
+            [loader dismissTRALoader];
+            [weakSelf performSegueWithIdentifier:ListDeviceSegue sender:response];
         }
     }];
 }

@@ -89,13 +89,12 @@
 {
     if ([LocationManager sharedManager].currentLattitude || self.addressTextField.text.length) {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTPoorCoverageAtLatitude:[LocationManager sharedManager].currentLattitude longtitude:[LocationManager sharedManager].currentLongtitude address:self.addressTextField.text signalPower:self.signalLevelSlider.value  requestResult:^(id response, NSError *error) {
             if (error) {
                 if (error.code == -999) {
                     [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"message.OperationCanceledByUser")];
                 } else {
-                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 }
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
