@@ -8,7 +8,7 @@
 #import "BaseSelectImageViewController.h"
 
 static NSString *const ImageNameButtonAttachClear = @"btn_attach";
-static NSString *const ImageNameButtonAttachData = @"ic_ml";
+static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
 
 @interface BaseSelectImageViewController ()
 

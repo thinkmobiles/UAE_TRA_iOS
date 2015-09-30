@@ -396,7 +396,7 @@
 //InnovationsViewController
 
 "innovationsViewController.title" = "Innovations";
-
+"innovationsViewController.innovationsMessageLabel.text" = "Message";
 "innovationsViewController.submitButton" = "Submit";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "Title";
 "innovationsViewController.descriptionTextView.placeholder" = "Type your message here...";

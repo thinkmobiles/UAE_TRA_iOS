@@ -6,6 +6,8 @@
 //  Copyright © 2015 Thinkmobiles. All rights reserved.
 //
 
-@interface InnovationsViewController : BaseDynamicUIViewController
+#import "BaseSelectImageViewController.h"
+
+@interface InnovationsViewController : BaseSelectImageViewController
 
 @end
