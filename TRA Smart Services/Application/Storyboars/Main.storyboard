@@ -6341,7 +6341,7 @@ a new password will be sent.</string>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your message here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="BottomBorderTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your message here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="PlaceholderTextView">
                                 <rect key="frame" x="16" y="155" width="568" height="202"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -6425,8 +6425,12 @@ a new password will be sent.</string>
                     <connections>
                         <outlet property="backgroundImageView" destination="4ms-H4-a64" id="duq-Rf-EOt"/>
                         <outlet property="descriptionTextView" destination="0vC-Th-flv" id="hch-fF-U3M"/>
+                        <outlet property="infoIconImageView" destination="KKd-7c-rJ4" id="4ku-le-c1I"/>
                         <outlet property="innovationsMessageTextField" destination="EYv-7D-HsB" id="fdR-Vx-Ah6"/>
                         <outlet property="innovationsTitleTextField" destination="NvQ-y8-Boz" id="mz8-yN-cds"/>
+                        <outlet property="optionsSwitch" destination="LI2-sM-z4i" id="lxM-Qr-hnK"/>
+                        <outlet property="privateLabel" destination="glz-GX-1eS" id="nYh-l2-fdF"/>
+                        <outlet property="publicLabel" destination="D5f-dP-70M" id="d0F-DC-Zqc"/>
                         <outlet property="submitButton" destination="2Nu-tM-i88" id="Qx3-By-dyc"/>
                     </connections>
                 </viewController>
