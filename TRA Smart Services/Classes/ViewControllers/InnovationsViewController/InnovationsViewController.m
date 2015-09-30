@@ -131,6 +131,7 @@
     self.innovationsTitleTextField.text = @"";
     self.descriptionTextView.text = @"";
     self.selectImage = nil;
+    [self prepareAttachButton];
 }
 
 - (void)prepareAttachButton
