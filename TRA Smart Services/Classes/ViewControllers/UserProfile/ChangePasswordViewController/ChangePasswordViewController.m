@@ -96,12 +96,6 @@
     self.userLogoImageView.tintColor = [UIColor whiteColor];
 }
 
-- (void)clearPassword
-{
-    self.passwordTextField.text = @"";
-    self.retypePasswordTextField.text = @"";
-}
-
 - (void)updateUI:(NSTextAlignment)textAlignment
 {
     self.oldPasswordLabel.textAlignment = textAlignment;
@@ -147,18 +141,23 @@
 
 - (void)buttonCancelDidTapped
 {
-    self.oldPasswordTextField.text = @"";
-    [self clearPassword];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonResetDidTapped
 {
-    [self clearPassword];
+    self.oldPasswordTextField.text = @"";
+    self.passwordTextField.text = @"";
+    self.retypePasswordTextField.text = @"";
 }
 
 - (void)buttonSaveDidTapped
 {
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+    if (![self.passwordTextField.text isEqualToString:self.retypePasswordTextField.text]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
+        return;
+    }
+    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
 }
 
 @end

@@ -38,6 +38,10 @@
     [super viewWillAppear:animated];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -122,8 +126,6 @@
 
 - (void)prepareUserView
 {
-    self.userNameLabel.text = [[KeychainStorage userName] capitalizedString];
-    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
     [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
     self.userLogoImageView.tintColor = [UIColor whiteColor];

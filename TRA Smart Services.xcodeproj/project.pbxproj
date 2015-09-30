@@ -181,6 +181,7 @@
 		F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C41BA2BB1E007EDEF7 /* UserProfileViewController.m */; };
 		F1A889C91BA2BCB8007EDEF7 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C81BA2BCB8007EDEF7 /* ResetPasswordViewController.m */; };
 		F1A889CC1BA31D82007EDEF7 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889CB1BA31D82007EDEF7 /* ChangePasswordViewController.m */; };
+		F1B5B7E81BBC2654004B1F75 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B7E71BBC2654004B1F75 /* UserModel.m */; settings = {ASSET_TAGS = (); }; };
 		F1EE541F1BB95004005D7B77 /* CheckIMEIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EE541E1BB95004005D7B77 /* CheckIMEIModel.m */; settings = {ASSET_TAGS = (); }; };
 		F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCC1B96EE7900891246 /* RatingView.m */; };
 		F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCF1B96EE9100891246 /* ServiceView.m */; };
@@ -507,6 +508,8 @@
 		F1A889C81BA2BCB8007EDEF7 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		F1A889CA1BA31D82007EDEF7 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		F1A889CB1BA31D82007EDEF7 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		F1B5B7E61BBC2654004B1F75 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		F1B5B7E71BBC2654004B1F75 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		F1EE541D1BB95004005D7B77 /* CheckIMEIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIModel.h; sourceTree = "<group>"; };
 		F1EE541E1BB95004005D7B77 /* CheckIMEIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIModel.m; sourceTree = "<group>"; };
 		F1F15CCB1B96EE7900891246 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
@@ -685,6 +688,7 @@
 		9336472F1BB29EA2004EC552 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1B5B7E51BBC2638004B1F75 /* UserModel */,
 				F1EE541C1BB94FB6005D7B77 /* CheckIMEIModel */,
 				933647301BB29EBB004EC552 /* WhoIsModel */,
 			);
@@ -1942,6 +1946,15 @@
 			path = UserProfileViewController;
 			sourceTree = "<group>";
 		};
+		F1B5B7E51BBC2638004B1F75 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				F1B5B7E61BBC2654004B1F75 /* UserModel.h */,
+				F1B5B7E71BBC2654004B1F75 /* UserModel.m */,
+			);
+			path = UserModel;
+			sourceTree = "<group>";
+		};
 		F1EE541C1BB94FB6005D7B77 /* CheckIMEIModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2132,6 +2145,7 @@
 				933647331BB29EC9004EC552 /* WhoIsModel.m in Sources */,
 				84869E341B7E1D6F00177B5B /* BaseSelectImageViewController.m in Sources */,
 				F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */,
+				F1B5B7E81BBC2654004B1F75 /* UserModel.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,

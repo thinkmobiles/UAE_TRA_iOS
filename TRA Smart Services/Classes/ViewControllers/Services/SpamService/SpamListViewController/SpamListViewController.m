@@ -191,7 +191,7 @@ static NSString *const SpamWebSegueIdentifier = @"spamWebSegueIdentifier";
 
 - (void)prepareDataSource
 {
-#warning temp solution
+    //temp solution
     self.dataSource = @[@"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title"];
     self.activeDataSource = [[NSMutableArray alloc] initWithArray:self.dataSource];
 }
@@ -200,7 +200,7 @@ static NSString *const SpamWebSegueIdentifier = @"spamWebSegueIdentifier";
 {
     self.addToSpamButton.layer.transform = transform;
     self.topButtonContainer.layer.transform = transform;
-#warning temp while block websites
+    //temp while block websites
     self.selectModeSwitch.selectedSegmentIndex = self.dynamicService.language == LanguageTypeArabic ? 1 : 0;
     [self.tableView reloadData];
 }

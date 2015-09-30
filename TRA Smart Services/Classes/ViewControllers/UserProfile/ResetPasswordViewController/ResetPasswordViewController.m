@@ -101,8 +101,7 @@
 
 - (void)buttonCancelDidTapped
 {
-    self.emailTextField.text = @"";
-    self.retypeEmailTextField.text = @"";
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonResetDidTapped

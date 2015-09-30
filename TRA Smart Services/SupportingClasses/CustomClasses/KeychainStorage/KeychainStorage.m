@@ -68,6 +68,20 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     return name;
 }
 
+- (void)saveCustomObject:(UserModel *)object key:(NSString *)key {
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key];
+    [defaults synchronize];
+}
+
+- (UserModel *)loadCustomObjectWithKey:(NSString *)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:key];
+    UserModel *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    return object;
+}
+
 #pragma mark - Keychain
 
 - (void)saveUserLogin:(NSString *)login andPassword:(NSString *)password

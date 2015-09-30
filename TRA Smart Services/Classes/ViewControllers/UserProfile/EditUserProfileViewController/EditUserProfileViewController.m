@@ -6,6 +6,7 @@
 //
 
 #import "EditUserProfileViewController.h"
+
 #import "ServicesSelectTableViewCell.h"
 #import "KeychainStorage.h"
 #import "TextFieldNavigator.h"
@@ -67,21 +68,27 @@
 
 - (void)buttonCancelDidTapped
 {
-    [self fillData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonResetDidTapped
 {
-    self.firstNmaeTextfield.text = @"";
-    self.lastNameTextField.text = @"";
-    self.streetAddressTextfield.text = @"";
-    self.selectedEmirate = @"";
-    self.contactNumberTextfield.text = @"";
+    [self fillData];
 }
 
 - (void)buttonSaveDidTapped
 {
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+    if (self.firstNmaeTextfield.text.length && self.lastNameTextField.text.length) {
+        if (![self.contactNumberTextfield.text isValidPhoneNumber]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+            return;
+        }
+        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
+        [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+    } else {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -201,7 +208,18 @@
 
 - (void)fillData
 {
-    self.firstNmaeTextfield.text = [KeychainStorage userName];
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    self.firstNmaeTextfield.text = user.firstName;
+    self.lastNameTextField.text = user.lastName;
+    self.streetAddressTextfield.text = user.streetName;
+    self.contactNumberTextfield.text = user.contactNumber;
+}
+
+- (BOOL)isValidPhoneNumber
+{
+    NSString *allowedSymbols = @"[0-9]{4,}";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:self];
 }
 
 @end
