@@ -7,6 +7,7 @@
 
 #import "VerificationIMEIViewController.h"
 #import "CheckIMEIViewController.h"
+#import "ResultIMEIViewController.h"
 
 #import "ServiceHeaderView.h"
 
@@ -19,8 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *verificationIMEIInfoEnterLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendIMEICodeButton;
 @property (weak, nonatomic) IBOutlet UILabel *sendIMEICodeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *resultSendIMEILabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (strong, nonatomic) NSString *resultSendIMEICode;
 
 @end
 
@@ -49,16 +51,17 @@
 {
     if (self.verificationIMEITextField.text.length) {
         [self.view endEditing:YES];
+        __weak typeof(self) weakSelf = self;
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByIMEI:self.verificationIMEITextField.text requestResult:^(id response, NSError *error) {
             if ([response isKindOfClass:[NSArray class]] && !error) {
-                NSString *resultIMEI = @"";
+                weakSelf.resultSendIMEICode = @"";
                 for (NSDictionary *dic in response) {
                     CheckIMEIModel *obj = [[CheckIMEIModel alloc] initFromDictionary:dic];
-                    resultIMEI = [resultIMEI stringByAppendingString:obj.description];
+                    weakSelf.resultSendIMEICode = [weakSelf.resultSendIMEICode stringByAppendingString:obj.description];
                 }
-                [self showResultSendIMEI:resultIMEI];
                 [loader dismissTRALoader];
+                [weakSelf prepareForSegueResultSendIMEI];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             }
@@ -80,7 +83,10 @@
         viewController.didFinishWithResult = ^(NSString *result) {
             weakSelf.verificationIMEITextField.text = result;
         };
-    }
+    } if ([segue.identifier isEqualToString:@"resultIMEICodeSegue"]) {
+        ResultIMEIViewController *resultIMEIViewController = segue.destinationViewController;
+        resultIMEIViewController.resultString = self.resultSendIMEICode;
+    };
 }
 
 #pragma mark - UITextFieldDelegate
@@ -142,6 +148,11 @@
     [self performSegueWithIdentifier:@"scanIMEISegue" sender:self];
 }
 
+- (void)prepareForSegueResultSendIMEI
+{
+    [self performSegueWithIdentifier:@"resultIMEICodeSegue" sender:self];
+}
+
 - (void)configureTextField:(UITextField *)textField
 {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -166,13 +177,6 @@
     self.conteinerServiseHeaderView.serviceHeaderLabel.textColor = [UIColor blackColor];
     self.conteinerServiseHeaderView.serviceHeaderLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiRegularFontForSize:16] : [UIFont latoRegularWithSize:16];
     self.conteinerServiseHeaderView.serviceHeaderImage = [UIImage imageNamed:@"ic_mobile"];
-}
-
-- (void)showResultSendIMEI:(NSString *)result
-{
-    self.containerView.hidden = YES;
-    self.resultSendIMEILabel.hidden = NO;
-    self.resultSendIMEILabel.text = result;
 }
 
 @end

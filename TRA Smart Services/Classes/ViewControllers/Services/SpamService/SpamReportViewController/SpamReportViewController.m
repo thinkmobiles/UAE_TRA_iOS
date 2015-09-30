@@ -288,7 +288,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 {
     self.descriptionTextView.textAlignment = alignment;
     self.reportTextField.textAlignment = alignment;
-    [self.descriptionTextView setNeedsDisplay];
 }
 
 - (void)didChangeReportType:(SpamReportType)select

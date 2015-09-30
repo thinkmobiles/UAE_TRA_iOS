@@ -8,11 +8,12 @@
 #import "SuggestionViewController.h"
 #import "NetworkManager.h"
 #import "LoginViewController.h"
+#import "PlaceholderTextView.h"
 
 @interface SuggestionViewController ()
 
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *suggestionTitle;
-@property (weak, nonatomic) IBOutlet BottomBorderTextField *suggectionDescription;
+@property (weak, nonatomic) IBOutlet PlaceholderTextView *suggectionDescription;
 @property (weak, nonatomic) IBOutlet UIButton *sendSuggestionButton;
 
 @end
@@ -46,13 +47,6 @@
             }
         }];
     }
-}
-
-#pragma mark - Superclass Methods
-
-- (void)selectImageDidLoad
-{
-//    self.buttonAttachImage = [UIImage imageNamed:@"ic_ml"];
 }
 
 #pragma mark - UITextFieldDelegate

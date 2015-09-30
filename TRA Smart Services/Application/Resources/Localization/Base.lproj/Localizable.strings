@@ -402,3 +402,8 @@
 "innovationsViewController.submitButton" = "innovationsViewController.submitButton";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "innovationsViewController.innovationsTitleTextField.placeholder";
 "innovationsViewController.descriptionTextView.placeholder" = "innovationsViewController.descriptionTextView.placeholder";
+
+//ResultIMEIViewController
+
+"resultIMEIViewController.title" = "resultIMEIViewController.title";
+"resultIMEIViewController.noDeviceDatabase" = "resultIMEIViewController.noDeviceDatabase";

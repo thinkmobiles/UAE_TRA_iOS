@@ -44,7 +44,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
 @implementation CompliantViewController
 
-#pragma mark - Life Cicle
+#pragma mark - Life Cycle
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -243,7 +243,6 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     self.compliantTitleTextField.textAlignment = alignment;
     self.referenceNumberTextField.textAlignment = alignment;
     self.compliantDescriptionTextView.textAlignment = alignment;
-    [self.compliantDescriptionTextView setNeedsDisplay];
 }
 
 #pragma mark - Keyboard

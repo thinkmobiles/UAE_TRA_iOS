@@ -72,6 +72,8 @@
 		93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */; };
 		93D10A9E1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */; };
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
+		E0072A921BBC225E00DA5692 /* ResultIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E0072A931BBC225E00DA5692 /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
 		E059DD181BB2F3D700C34EF0 /* SpamSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -100,7 +102,6 @@
 		E0FEF6C91BAB0A21005810D4 /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6C71BAB0A21005810D4 /* ServiceHeaderView.xib */; };
 		E0FEF6CE1BAB0A33005810D4 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */; };
 		E0FEF6CF1BAB0A33005810D4 /* ServiceSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FEF6CD1BAB0A33005810D4 /* ServiceSelectionView.xib */; };
-		E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */; };
 		ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */; };
 		ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084BE1B5E6B0400779CBD /* LocationManager.m */; };
 		ED2084D41B5E734000779CBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2084C21B5E734000779CBD /* AFHTTPRequestOperation.m */; };
@@ -305,6 +306,10 @@
 		93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceViewControllersIdentifiers.plist; sourceTree = "<group>"; };
 		93D10A9F1BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FavouriteViewController+DeleteAction.h"; sourceTree = "<group>"; };
 		93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FavouriteViewController+DeleteAction.m"; sourceTree = "<group>"; };
+		E0072A8D1BBC225E00DA5692 /* ResultIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultIMEIViewController.h; sourceTree = "<group>"; };
+		E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultIMEIViewController.m; sourceTree = "<group>"; };
+		E0072A901BBC225E00DA5692 /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
+		E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
@@ -349,8 +354,6 @@
 		E0FEF6CB1BAB0A33005810D4 /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
 		E0FEF6CC1BAB0A33005810D4 /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
 		E0FEF6CD1BAB0A33005810D4 /* ServiceSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSelectionView.xib; sourceTree = "<group>"; };
-		E0FEF6D11BAB0E14005810D4 /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
-		E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		ED0CBC221B6FFDED002E6AB3 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		ED0CBC231B6FFDED002E6AB3 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		ED2084BD1B5E6B0400779CBD /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -939,6 +942,24 @@
 			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
+		E0072A8C1BBC225E00DA5692 /* ResultIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E0072A8D1BBC225E00DA5692 /* ResultIMEIViewController.h */,
+				E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */,
+			);
+			path = ResultIMEIViewController;
+			sourceTree = "<group>";
+		};
+		E0072A8F1BBC225E00DA5692 /* VerificationIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E0072A901BBC225E00DA5692 /* VerificationIMEIViewController.h */,
+				E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */,
+			);
+			path = VerificationIMEIViewController;
+			sourceTree = "<group>";
+		};
 		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,15 +1112,6 @@
 			path = ServiceSelectionView;
 			sourceTree = "<group>";
 		};
-		E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E0FEF6D11BAB0E14005810D4 /* VerificationIMEIViewController.h */,
-				E0FEF6D21BAB0E14005810D4 /* VerificationIMEIViewController.m */,
-			);
-			path = VerificationIMEIViewController;
-			sourceTree = "<group>";
-		};
 		ED2084BC1B5E6B0400779CBD /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1203,7 +1215,8 @@
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				93782EBF1BB2F2F100D3604B /* SpamService */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
-				E0FEF6D01BAB0DE3005810D4 /* VerificationIMEIViewController */,
+				E0072A8C1BBC225E00DA5692 /* ResultIMEIViewController */,
+				E0072A8F1BBC225E00DA5692 /* VerificationIMEIViewController */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2147,7 +2160,6 @@
 				F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */,
 				F1B5B7E81BBC2654004B1F75 /* UserModel.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
-				E0FEF6D31BAB0E14005810D4 /* VerificationIMEIViewController.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
 				E07889751BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m in Sources */,
 				93782ECB1BB2F71F00D3604B /* SpamListTableViewCell.m in Sources */,
@@ -2210,6 +2222,7 @@
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
 				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
+				E0072A921BBC225E00DA5692 /* ResultIMEIViewController.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
 				847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */,
@@ -2245,6 +2258,7 @@
 				93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */,
 				932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
+				E0072A931BBC225E00DA5692 /* VerificationIMEIViewController.m in Sources */,
 				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
