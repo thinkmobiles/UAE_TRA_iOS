@@ -400,3 +400,8 @@
 "innovationsViewController.submitButton" = "Submit";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "Title";
 "innovationsViewController.descriptionTextView.placeholder" = "Type your message here...";
+
+//ResultIMEIViewController
+
+"resultIMEIViewController.title" = "Result IMEI Code";
+"resultIMEIViewController.noDeviceDatabase" = "No result for this IMEI";

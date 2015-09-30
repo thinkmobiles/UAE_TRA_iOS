@@ -60,11 +60,15 @@
 
 - (IBAction)sendInfo:(id)sender
 {
-    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-    });
-    [self clearUI];
+    if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else {
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+        });
+        [self clearUI];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
