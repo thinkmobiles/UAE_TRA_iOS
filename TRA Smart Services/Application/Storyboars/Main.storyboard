@@ -148,6 +148,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -458,10 +459,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zss-hg-5l3" userLabel="TopBar - View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANNOUNCEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="155" translatesAutoresizingMaskIntoConstraints="NO" id="xYL-ma-Icr" userLabel="Announcement - UILabel">
+                                                <rect key="frame" x="22" y="0.0" width="101" height="45"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.13725490200000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j45-km-Tl5" userLabel="See more - UIButton">
                                                 <rect key="frame" x="509" y="0.0" width="75" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="isA-Ll-fJS"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="isA-Ll-fJS"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                 <state key="normal" title="See more">
@@ -472,19 +479,12 @@
                                                     <segue destination="rJg-cK-Cng" kind="show" id="uxr-Tn-KPe"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANNOUNCEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="155" translatesAutoresizingMaskIntoConstraints="NO" id="xYL-ma-Icr" userLabel="Announcement - UILabel">
-                                                <rect key="frame" x="22" y="0.0" width="479" height="45"/>
-                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="11"/>
-                                                <color key="textColor" red="0.0" green="0.13725490200000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="xYL-ma-Icr" firstAttribute="left" secondItem="zss-hg-5l3" secondAttribute="left" constant="22" id="A09-lW-Bor"/>
                                             <constraint firstItem="j45-km-Tl5" firstAttribute="top" secondItem="zss-hg-5l3" secondAttribute="top" id="DOB-ET-cOz"/>
                                             <constraint firstAttribute="right" secondItem="j45-km-Tl5" secondAttribute="right" constant="16" id="FBM-hY-Tec"/>
-                                            <constraint firstItem="j45-km-Tl5" firstAttribute="left" secondItem="xYL-ma-Icr" secondAttribute="right" constant="8" id="J61-lg-Vjb"/>
                                             <constraint firstAttribute="bottom" secondItem="xYL-ma-Icr" secondAttribute="bottom" id="M93-eK-5bI"/>
                                             <constraint firstAttribute="bottom" secondItem="j45-km-Tl5" secondAttribute="bottom" id="QQF-Qb-tI2"/>
                                             <constraint firstAttribute="height" constant="45" id="TuQ-XP-Sp8"/>
@@ -4280,9 +4280,6 @@ a new password will be sent.</string>
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j6S-Q9-iP9" userLabel="Background -UIImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="agV-IF-JEb">
                                 <rect key="frame" x="282" y="214" width="37" height="37"/>
                                 <color key="color" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4337,6 +4334,9 @@ a new password will be sent.</string>
                                     <action selector="reportSignalButtonTapped:" destination="Vhn-R2-wMo" eventType="touchUpInside" id="CyH-hL-7hc"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j6S-Q9-iP9" userLabel="Background -UIImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -4436,17 +4436,17 @@ a new password will be sent.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_service" translatesAutoresizingMaskIntoConstraints="NO" id="zJ1-yO-NBc" userLabel="Background - UIImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOn-cB-BR9" userLabel="Result - label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="xOn-cB-BR9" userLabel="Result - label">
                                 <rect key="frame" x="16" y="8" width="568" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CIo-zd-L5s"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akB-RW-N1e">
-                                <rect key="frame" x="150" y="76" width="300" height="40"/>
+                                <rect key="frame" x="150" y="84" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2Kz-Qd-a87"/>
                                 </constraints>
@@ -4465,7 +4465,7 @@ a new password will be sent.</string>
                             <constraint firstAttribute="centerX" secondItem="akB-RW-N1e" secondAttribute="centerX" id="976-al-cbS"/>
                             <constraint firstItem="xOn-cB-BR9" firstAttribute="leading" secondItem="6HI-cz-map" secondAttribute="leading" constant="16" id="Eoe-vQ-qf5"/>
                             <constraint firstAttribute="trailing" secondItem="xOn-cB-BR9" secondAttribute="trailing" constant="16" id="HKn-5k-RaL"/>
-                            <constraint firstItem="akB-RW-N1e" firstAttribute="top" secondItem="xOn-cB-BR9" secondAttribute="bottom" constant="8" id="YZy-qd-9dS"/>
+                            <constraint firstItem="akB-RW-N1e" firstAttribute="top" secondItem="xOn-cB-BR9" secondAttribute="bottom" constant="16" id="YZy-qd-9dS"/>
                             <constraint firstItem="zJ1-yO-NBc" firstAttribute="top" secondItem="6HI-cz-map" secondAttribute="top" id="bVr-33-08Z"/>
                             <constraint firstAttribute="trailing" secondItem="zJ1-yO-NBc" secondAttribute="trailing" id="h7c-Rf-QBk"/>
                             <constraint firstItem="akB-RW-N1e" firstAttribute="width" secondItem="6HI-cz-map" secondAttribute="width" multiplier="0.5" id="obC-Fr-ipl"/>
@@ -6869,11 +6869,11 @@ a new password will be sent.</string>
                                                                 <constraint firstAttribute="height" constant="1" id="BWZ-wn-JcR"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-zm-sBc" userLabel="Coteiner Label - UIView">
-                                                            <rect key="frame" x="90" y="47" width="470" height="21"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-zm-sBc" userLabel="Coteiner Label - UIView">
+                                                            <rect key="frame" x="90" y="44" width="470" height="26"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-l1-Eks" userLabel="Description - UILabel">
-                                                                    <rect key="frame" x="0.0" y="21" width="470" height="0.0"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-l1-Eks" userLabel="Description - UILabel">
+                                                                    <rect key="frame" x="0.0" y="26" width="470" height="0.0"/>
                                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                                     <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
