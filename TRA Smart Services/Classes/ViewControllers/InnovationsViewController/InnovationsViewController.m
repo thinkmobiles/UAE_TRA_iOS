@@ -11,13 +11,14 @@
 @interface InnovationsViewController ()
 
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *innovationsTitleTextField;
-@property (weak, nonatomic) IBOutlet BottomBorderTextField *innovationsMessageTextField;
 @property (weak, nonatomic) IBOutlet PlaceholderTextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UILabel *publicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *privateLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *optionsSwitch;
 @property (weak, nonatomic) IBOutlet UIImageView *infoIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *innovationsMessageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
 @end
 
@@ -27,13 +28,24 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [self prepareUISwitchSettingViewController];
     [self selectOptionSwitch:self.optionsSwitch];
+    [self prepareAttachButton];
 }
 
 #pragma mark - IBAction
+
+- (IBAction)tapAttachButton:(id)sender
+{
+    [self selectImagePickerController];
+}
 
 - (void)selectOptionSwitch:(UISwitch *)opitonSwitch
 {
@@ -52,6 +64,25 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
     });
+    [self clearUI];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - SuperclassMethods
@@ -61,19 +92,21 @@
     self.title = dynamicLocalizedString(@"innovationsViewController.title");
     [self.submitButton setTitle:dynamicLocalizedString(@"innovationsViewController.submitButton") forState:UIControlStateNormal];
     self.innovationsTitleTextField.placeholder = dynamicLocalizedString(@"innovationsViewController.innovationsTitleTextField.placeholder");
-
+    self.innovationsMessageLabel.text = dynamicLocalizedString(@"innovationsViewController.innovationsMessageLabel.text");
     self.descriptionTextView.placeholder = dynamicLocalizedString(@"innovationsViewController.descriptionTextView.placeholder");
 }
 
 - (void)updateColors
 {
+    [super updateColors];
+    
     [super updateBackgroundImageNamed:@"fav_back_orange"];
     
     UIColor *color = [DynamicUIService service].currentApplicationColor;
-    self.innovationsTitleTextField.bottomBorderColor = color;
-    self.innovationsMessageTextField.bottomBorderColor = color;
-    self.descriptionTextView.bottomBorderColor = color;
-    self.submitButton.backgroundColor = color;
+    self.optionsSwitch.onTintColor = color;
+    self.infoIconImageView.tintColor = color;
+    self.attachButton.backgroundColor = [UIColor clearColor];
+    self.attachButton.tintColor = color;
 }
 
 #pragma mark - UIPreparation
@@ -90,6 +123,23 @@
     prepareSwitch.backgroundColor = [UIColor grayBorderTextFieldTextColor];
     prepareSwitch.layer.cornerRadius = prepareSwitch.bounds.size.height / 2;
     prepareSwitch.tintColor = [UIColor grayBorderTextFieldTextColor];
+}
+
+- (void)clearUI
+{
+    self.innovationsTitleTextField.text = @"";
+    self.descriptionTextView.text = @"";
+    self.selectImage = nil;
+    [self prepareAttachButton];
+}
+
+- (void)prepareAttachButton
+{
+    if (self.selectImage) {
+        [self.attachButton setImage:[UIImage imageNamed:@"btn_attach_file"] forState:UIControlStateNormal];
+    } else {
+        [self.attachButton setImage:[UIImage imageNamed:@"btn_attach"] forState:UIControlStateNormal];
+    }
 }
 
 @end

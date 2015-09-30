@@ -6313,6 +6313,7 @@ a new password will be sent.</string>
         <!--Innovations View Controller-->
         <scene sceneID="nUQ-gi-fVk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UtF-zf-EAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="5at-6E-Y4n" customClass="InnovationsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7AO-BP-M8D"/>
@@ -6325,27 +6326,14 @@ a new password will be sent.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-H4-a64">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvQ-y8-Boz" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="25" width="568" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Q8I-qj-aJj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-7D-HsB" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="90" width="568" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hkq-f0-xX7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your message here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="PlaceholderTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-Th-flv" customClass="PlaceholderTextView">
                                 <rect key="frame" x="16" y="155" width="568" height="202"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5at-6E-Y4n" id="mLB-e3-ubV"/>
+                                </connections>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avw-YL-Mc1" userLabel="Container - UIView">
                                 <rect key="frame" x="0.0" y="367" width="600" height="40"/>
@@ -6363,7 +6351,7 @@ a new password will be sent.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info_act" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-7c-rJ4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_state" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-7c-rJ4">
                                         <rect key="frame" x="564" y="10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="9zY-dP-YqO"/>
@@ -6396,17 +6384,51 @@ a new password will be sent.</string>
                                     <action selector="sendInfo:" destination="5at-6E-Y4n" eventType="touchUpInside" id="gDg-tD-AUn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btm-FY-bZc">
+                                <rect key="frame" x="16" y="90" width="512" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Cbf-lV-qzV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciO-XM-Ybx">
+                                <rect key="frame" x="544" y="90" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Pjc-3h-y3t"/>
+                                    <constraint firstAttribute="height" constant="40" id="g31-vu-fL8"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="tapAttachButton:" destination="5at-6E-Y4n" eventType="touchUpInside" id="bOC-8j-TjY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvQ-y8-Boz" customClass="BottomBorderTextField">
+                                <rect key="frame" x="16" y="25" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Q8I-qj-aJj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5at-6E-Y4n" id="kxZ-sS-cD7"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0vC-Th-flv" firstAttribute="top" secondItem="btm-FY-bZc" secondAttribute="bottom" constant="25" id="35C-c3-NRG"/>
+                            <constraint firstItem="btm-FY-bZc" firstAttribute="top" secondItem="NvQ-y8-Boz" secondAttribute="bottom" constant="25" id="3yK-rf-tqh"/>
                             <constraint firstItem="0vC-Th-flv" firstAttribute="leading" secondItem="PvT-wY-KpO" secondAttribute="leading" constant="16" id="52z-Rm-EL1"/>
                             <constraint firstAttribute="trailing" secondItem="4ms-H4-a64" secondAttribute="trailing" id="Am3-xX-NQH"/>
+                            <constraint firstItem="btm-FY-bZc" firstAttribute="leading" secondItem="PvT-wY-KpO" secondAttribute="leading" constant="16" id="BeD-XP-8wh"/>
                             <constraint firstItem="2Nu-tM-i88" firstAttribute="leading" secondItem="PvT-wY-KpO" secondAttribute="leading" constant="16" id="BsP-oL-GJ8"/>
                             <constraint firstItem="2Nu-tM-i88" firstAttribute="centerX" secondItem="4ms-H4-a64" secondAttribute="centerX" id="FFT-Nq-iUh"/>
                             <constraint firstItem="hzH-R1-ix7" firstAttribute="top" secondItem="2Nu-tM-i88" secondAttribute="bottom" constant="20" id="I5Z-KF-vS7"/>
                             <constraint firstItem="4ms-H4-a64" firstAttribute="top" secondItem="PvT-wY-KpO" secondAttribute="top" id="IuG-Tz-SNK"/>
+                            <constraint firstAttribute="trailing" secondItem="ciO-XM-Ybx" secondAttribute="trailing" constant="16" id="Jc8-gu-dc6"/>
                             <constraint firstAttribute="trailing" secondItem="0vC-Th-flv" secondAttribute="trailing" constant="16" id="KYV-KU-ZLc"/>
-                            <constraint firstItem="0vC-Th-flv" firstAttribute="top" secondItem="EYv-7D-HsB" secondAttribute="bottom" constant="25" id="OeQ-XN-M4y"/>
+                            <constraint firstItem="ciO-XM-Ybx" firstAttribute="leading" secondItem="btm-FY-bZc" secondAttribute="trailing" constant="16" id="PRS-KM-CMS"/>
                             <constraint firstAttribute="trailing" secondItem="2Nu-tM-i88" secondAttribute="trailing" constant="16" id="Qvy-fY-4GX"/>
                             <constraint firstAttribute="trailing" secondItem="NvQ-y8-Boz" secondAttribute="trailing" constant="16" id="TkJ-gi-rVB"/>
                             <constraint firstAttribute="trailing" secondItem="avw-YL-Mc1" secondAttribute="trailing" id="VLH-bM-fNX"/>
@@ -6415,18 +6437,17 @@ a new password will be sent.</string>
                             <constraint firstItem="NvQ-y8-Boz" firstAttribute="top" secondItem="7AO-BP-M8D" secondAttribute="bottom" constant="25" id="giq-he-piJ"/>
                             <constraint firstItem="4ms-H4-a64" firstAttribute="leading" secondItem="PvT-wY-KpO" secondAttribute="leading" id="iLN-cf-Vzw"/>
                             <constraint firstItem="avw-YL-Mc1" firstAttribute="top" secondItem="0vC-Th-flv" secondAttribute="bottom" constant="10" id="kLI-yt-sNQ"/>
-                            <constraint firstItem="EYv-7D-HsB" firstAttribute="leading" secondItem="PvT-wY-KpO" secondAttribute="leading" constant="16" id="ntT-54-IEK"/>
                             <constraint firstItem="2Nu-tM-i88" firstAttribute="top" secondItem="avw-YL-Mc1" secondAttribute="bottom" constant="20" id="pDh-9G-xsS"/>
-                            <constraint firstAttribute="trailing" secondItem="EYv-7D-HsB" secondAttribute="trailing" constant="16" id="vAo-1m-nTt"/>
-                            <constraint firstItem="EYv-7D-HsB" firstAttribute="top" secondItem="NvQ-y8-Boz" secondAttribute="bottom" constant="25" id="vhQ-xg-hsQ"/>
+                            <constraint firstItem="ciO-XM-Ybx" firstAttribute="centerY" secondItem="btm-FY-bZc" secondAttribute="centerY" id="pxx-BZ-nwY"/>
                             <constraint firstAttribute="bottom" secondItem="4ms-H4-a64" secondAttribute="bottom" id="zcy-dt-Kft"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="attachButton" destination="ciO-XM-Ybx" id="cm9-IB-CK3"/>
                         <outlet property="backgroundImageView" destination="4ms-H4-a64" id="duq-Rf-EOt"/>
                         <outlet property="descriptionTextView" destination="0vC-Th-flv" id="hch-fF-U3M"/>
                         <outlet property="infoIconImageView" destination="KKd-7c-rJ4" id="4ku-le-c1I"/>
-                        <outlet property="innovationsMessageTextField" destination="EYv-7D-HsB" id="fdR-Vx-Ah6"/>
+                        <outlet property="innovationsMessageLabel" destination="btm-FY-bZc" id="sHo-1z-rU9"/>
                         <outlet property="innovationsTitleTextField" destination="NvQ-y8-Boz" id="mz8-yN-cds"/>
                         <outlet property="optionsSwitch" destination="LI2-sM-z4i" id="lxM-Qr-hnK"/>
                         <outlet property="privateLabel" destination="glz-GX-1eS" id="nYh-l2-fdF"/>
@@ -6434,7 +6455,6 @@ a new password will be sent.</string>
                         <outlet property="submitButton" destination="2Nu-tM-i88" id="Qx3-By-dyc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UtF-zf-EAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1928" y="-1342"/>
         </scene>
@@ -6914,11 +6934,11 @@ a new password will be sent.</string>
         <image name="ic_home" width="22" height="18"/>
         <image name="ic_id_ver" width="114" height="132"/>
         <image name="ic_info" width="20" height="21"/>
-        <image name="ic_info_act" width="20" height="21"/>
         <image name="ic_inq" width="20" height="20"/>
         <image name="ic_not" width="18" height="18"/>
         <image name="ic_search_pol" width="42" height="48"/>
         <image name="ic_settings" width="18" height="18"/>
+        <image name="ic_state" width="32" height="32"/>
         <image name="ic_warn" width="78" height="89"/>
         <image name="img_bg_1" width="320" height="568"/>
         <image name="img_bg_service" width="320" height="569"/>

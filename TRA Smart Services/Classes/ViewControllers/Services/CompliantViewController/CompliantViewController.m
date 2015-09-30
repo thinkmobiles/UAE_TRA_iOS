@@ -85,11 +85,6 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
 #pragma mark - IABaction
 
-- (IBAction)selectImage:(id)sender
-{
-    [self selectImagePickerController];
-}
-
 - (IBAction)compliantSend:(id)sender
 {
     [self.view endEditing:YES];
