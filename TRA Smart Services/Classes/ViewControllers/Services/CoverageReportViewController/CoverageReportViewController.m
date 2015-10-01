@@ -80,7 +80,6 @@
     if (!buttonIndex) {
         NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         [[UIApplication sharedApplication] openURL:settingsURL];
-        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
