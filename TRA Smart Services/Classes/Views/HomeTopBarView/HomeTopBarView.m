@@ -49,20 +49,19 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
-    
-    [self updateAvatarPosition];
-    [self prepareLogoImage];
+    [super layoutSubviews];    
     
     if (!self.disableFakeButtonLayersDrawing) {
+        [self updateAvatarPosition];
+        [self prepareLogoImage];
+        
         [self drawHexagonicalWireTop];
         [self prepareInformationButtonLayer];
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];
         [self drawHexagonicalWireBotton];
-        
+        [self setStartApearenceAnimationParameters];
     }
-    [self setStartApearenceAnimationParameters];
 }
 
 #pragma mark - Override
