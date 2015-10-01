@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *infoIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *innovationsMessageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *attachButton;
+@property (weak, nonatomic) IBOutlet UIView *containerInfoView;
+@property (weak, nonatomic) IBOutlet UIView *containerMessageView;
 
 @end
 
@@ -113,6 +115,18 @@
     self.attachButton.tintColor = color;
 }
 
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+    [self transformUILayer:TRANFORM_3D_SCALE];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
+    [self transformUILayer:CATransform3DIdentity];
+}
+
 #pragma mark - UIPreparation
 
 - (void)prepareUISwitchSettingViewController
@@ -144,6 +158,25 @@
     } else {
         [self.attachButton setImage:[UIImage imageNamed:@"btn_attach"] forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - Private
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.innovationsTitleTextField.textAlignment = alignment;
+    self.descriptionTextView.textAlignment = alignment;
+    self.innovationsMessageLabel.textAlignment = alignment;
+}
+
+- (void)transformUILayer:(CATransform3D)animCATransform3D
+{
+    self.containerInfoView.layer.transform = animCATransform3D;
+    self.containerMessageView.layer.transform = animCATransform3D;
+    self.innovationsMessageLabel.layer.transform = animCATransform3D;
+    self.attachButton.layer.transform = animCATransform3D;
+    self.privateLabel.layer.transform = animCATransform3D;
+    self.publicLabel.layer.transform = animCATransform3D;
 }
 
 @end

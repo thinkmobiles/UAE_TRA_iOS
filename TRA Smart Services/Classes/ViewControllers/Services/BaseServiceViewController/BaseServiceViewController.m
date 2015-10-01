@@ -8,6 +8,14 @@
 #import "BaseServiceViewController.h"
 #import "LoginViewController.h"
 
+static CGFloat const HeightForToolbars = 44.f;
+
+@interface BaseServiceViewController()
+
+@property (weak, nonatomic)  id textView;
+
+@end
+
 @implementation BaseServiceViewController
 
 #pragma mark - LifeCycle
@@ -42,6 +50,21 @@
     }
 }
 
+- (void)configureKeyboardButtonDone:(id)textView
+{
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HeightForToolbars)];
+    toolBar.backgroundColor = [UIColor clearColor];
+    toolBar.tintColor = [[DynamicUIService service] currentApplicationColor];
+    
+    UIBarButtonItem *barItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    [toolBar setItems:@[flexibleSpace, barItemDone]];
+    
+    [textView setInputAccessoryView:toolBar];
+    self.textView = textView;
+}
+
 #pragma mark - Superclass methods
 
 - (void)updateColors
@@ -52,6 +75,13 @@
         }
     }
     [self updateColors:self.view];
+}
+
+#pragma mark - Action
+
+- (void)doneButtonTapped
+{
+    [self.textView resignFirstResponder];
 }
 
 #pragma mark - Private

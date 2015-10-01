@@ -12,5 +12,6 @@
 
 - (void)presentLoginIfNeededAndPopToRootController:(UIViewController *)controller;
 - (void)updateColors;
+- (void)configureKeyboardButtonDone:(UITextView *)textView;
 
 @end

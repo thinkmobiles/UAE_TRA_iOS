@@ -52,6 +52,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
     [self didChangeReportType:self.selectSpamReport];
     [self configureTextField];
+    [self configureKeyboardButtonDone:self.descriptionTextView];
 }
 
 #pragma mark - IBAction
@@ -70,6 +71,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     } else if (self.selectSpamReport == SpamReportTypeSMS) {
         if (!self.reportTextField.text.length || !self.selectedProvider.length || !self.descriptionTextView.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        } if (![self.reportTextField.text isValidPhoneNumber]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
@@ -82,17 +85,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
-    return YES;
-}
-
-#pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
     return YES;
 }
 

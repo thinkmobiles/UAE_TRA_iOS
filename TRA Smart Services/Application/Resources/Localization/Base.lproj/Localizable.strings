@@ -208,6 +208,8 @@
 
 //InfoHubViewController
 
+"infoHubViewController.textLAbel" = "infoHubViewController.textLAbel";
+
 "infoHub.title" = "infoHub.title";
 "announcements.label.text" = "announcements.label.text";
 "seeMore.button.title" = "seeMore.button.title";

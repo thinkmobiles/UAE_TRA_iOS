@@ -31,6 +31,7 @@
     [super viewDidLoad];
     
     [self prepareHUD];
+    [self prepareButtonTitle];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -216,6 +217,18 @@
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
     }
+}
+
+- (void)prepareButtonTitle
+{
+    [self minimumScaleFactorTitleButton:self.reportSignalButton];
+    [self minimumScaleFactorTitleButton:self.detectLocationButton];
+}
+
+- (void)minimumScaleFactorTitleButton:(UIButton *)button
+{
+    button.titleLabel.adjustsFontSizeToFitWidth = YES;
+    button.titleLabel.minimumScaleFactor = 0.7f;
 }
 
 @end

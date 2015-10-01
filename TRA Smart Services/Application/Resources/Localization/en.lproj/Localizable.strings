@@ -208,6 +208,8 @@
 
 //InfoHubViewController
 
+"infoHubViewController.textLAbel" = "There are no pending transactions";
+
 "infoHub.title" = "Info Hub";
 "announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
