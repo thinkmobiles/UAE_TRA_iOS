@@ -18,7 +18,7 @@
 
 //Messages for Alerts
 
-"message.notImplemented" = "غير متوفر";
+""message.notImplemented" = "غير متوفر";
 "message.success" = "تم بنجاح";
 "message.EmptyInputParameters" = "يرجى ملئ الحقل";
 "message.IncorrectRatings" = "خطأ في الصيغة";
@@ -27,7 +27,7 @@
 "message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
 "message.NoInternetConnection" = "لا يوجد اتصال بالانترنت. يرجى التحقق من الشبكة والمحاولة من جديد.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
-"message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
+"message.PasswordsNotEqual" = "يجب أن تتطابق كلمة المرور مع تأكيدها. يرجى المحاولة من جديد.";
 "message.OperationCanceledByUser" = "تم إلغاء العملية من قبل المستخدم";
 "message.InvalidFormatUserName" = "معلومات الدخول غير صحيحة";
 "message.InvalidFormatIDEmirates" = "هوية إمارات غير صالحة";
@@ -36,7 +36,7 @@
 "message.InvalidFormatMobile" = "رقم جوال خاطئ";
 "message.InvalidFormatEmail" = "يرجى ادخال عنوان بريد إلكتروني صحيح";
 "message.InvalidFormatURL" = "الرابط غير صحيح";
-"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
+"message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
 "message.FailedToSendSMS" = "لايمكن ارسال الرسالة القصيرة";
 "message.FailedToInitializeMFController" = "لايمكن ارسال رسائل قصيرة من هذا الجهاز";
 
@@ -75,10 +75,10 @@
 "login.button.forgotPassword" = "نسيت كلمة المرور";
 "login.button.registerButton" = "تسجيل";
 
-"login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.restore_password.message" = "لاستعادة كلمة المرور، يرجى ادخال البريد الإلكتروني المستخدم عند التسجيل.";
 "login.picker.genre.male" = "ذكر";
 "login.picker.genre.female" = "انثى";
-"login.picker.genre.undefined" = "غير محدد";
+"login.picker.genre.undefined" = "";
 
 //RegisterViewController
 
@@ -118,12 +118,12 @@
 "settings.label.language" = "اللغة";
 "settings.label.fontsize" = "حجم الخط";
 "settings.label.colorImpaired" = "بدون ألوان";
-"settings.label.screenLockNotificationTitle" = "Screen Lock Notification";
-"settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
-"settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
-"settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
+"settings.label.screenLockNotificationTitle" = "عرض الإخطارات عند قفل الجهاز";
+"settings.label.screenLockNotificationDetauils" = "عرض الإخطارات عندما يكون الجهاز مقفلاً";
+"settings.label.appTutorialScreensTitle" = "شاشات المساعدة";
+"settings.label.appTutorialScreensDetails" = "تفعيل شاشات المساعدة للبرنامج";
 "settings.label.colorThemeTitle" = "تغيير اللون";
-"settings.label.colorThemeDetails" = "Change color theme for app";
+"settings.label.colorThemeDetails" = "تغيير نمط اللون";
 "settings.label.aboutTRATitle" = "عن الهيئة";
 "settings.label.aboutTRADetails" = "اقرأ المزيد عن الهيئة";
 "settings.switchControl.language.arabic" = "العربية";
@@ -133,12 +133,12 @@
 "settings.label.fontsize.description.small" = "صغير";
 "settings.label.fontsize.description.normal" = "عادي";
 "settings.label.fontsize.description.large" = "كبير";
-"setting.label.release" = "Release version";
+"setting.label.release" = "الإصدار";
 "setting.label.releaseVersion" = "v %@, build %i.%i.%i";
-"setting.label.touchID" = "Use Touch ID";
+"setting.label.touchID" = "استخدام البصمة";
 "setting.label.touchIDDEscription" = "استخدم بصمتك لإتمام لتسجيل الدخول";
 "setting.loginRequired.message" = "يرجى تسجيل الدخول للوصل لهذه الخدمة";
-"fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
+"fingerPrintService.DescriptionReason" = "يرجى مسح البصمة للوصول للخدمات";
 
 //HomeViewController
 
@@ -223,8 +223,8 @@
 
 //SearchMobileBrandNameViewController
 
-"searchMobileBrandNameViewController.title" = "Search Mobile Brand";
-"searchMobileBrandNameViewController.searchButton" = "Search brand name";
+"searchMobileBrandNameViewController.title" = "الأجهزة المعتمدة";
+"searchMobileBrandNameViewController.searchButton" = "بحث";
 
 //SuggestionViewController
 
@@ -256,7 +256,7 @@
 //"InternetSpeedTestViewController
 
 "internetSpeedTestViewController.title" = "اختبار السرعة";
-"internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"internetSpeedTestViewController.checkButton.title" = "فحص السرعة";
 "InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
 
@@ -284,10 +284,10 @@
 
 //UserProfileViewController
 
-"userProfile.title" = "User Profile";
-"userProfile.EditProfile" = "Edit Profile";
+"userProfile.title" = "الملف الشخصي";
+"userProfile.EditProfile" = "تعديل الملف الشخصي";
 "userProfile.changePassword" = "تغيير كلمة المرور";
-"userProfile.resetPassword" = "Reset Password";
+"userProfile.resetPassword" = "تغيير كلمة المرور";
 "userProfile.logoutFromAccount" = "تسجيل الخروج";
 "userProfile.notificationMesasge" = "هل أنت متأكد من أنك تريد تسجيل الخروج؟";
 
@@ -326,19 +326,19 @@
 "editUserProfileViewController.firstNameLabel" = "الاسم";
 "editUserProfileViewController.lastNameLabel" = "اللقب";
 "editUserProfileViewController.streetAddressLabel" = "العنوان";
-"editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
-"editUserProfileViewController.dataSource.0element" = "Tap to select";
+"editUserProfileViewController.changePhotoButtonTitle" = "";
+"editUserProfileViewController.dataSource.0element" = "اختيار";
 
 //HomeSearchResultViewController
 
-"homeSearchResultViewController.title" = "Search Result";
+"homeSearchResultViewController.title" = "نتائج البحث";
 
 //VerificationIMEIViewController
 
-"verificationIMEIViewController.title" = "Verification IMEI Code";
-"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
-"verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
+"verificationIMEIViewController.title" = "تحقق من رقم IMEI";
+"verificationIMEIViewController.serviceHeaderLabel" = "ادخل رقم IMEI للجهاز المراد التحقق منه.";
+"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "";
+"verificationIMEIViewController.sendIMEICodeLabel" = "ارسل";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "اكتب هنا";
 
 //TRALoaderViewController
@@ -354,8 +354,8 @@
 
 //FingerPrintService
 
-"fingerPrintService.passwordRequest.message" = "Scan your finger to get access to services";
-"fingerPrintService.CancelAuth.title" = "Cancel auth";
+"fingerPrintService.passwordRequest.message" = "امسح بصمتك للوصول للخدمات";
+"fingerPrintService.CancelAuth.title" = "إلغاء الدخول";
 "fingerPrintService.ConfirmPassword.title" = "ادخل كلمة المرور";
 "fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
 "fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
@@ -370,20 +370,20 @@
 
 //InnovationsCollectionViewCell
 
-"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+"innovationsCollectionViewCell.string.reviewed" = "تمت المراجعة";
 
 //InnovationsChatTableViewCell
 
-"innovationsChatTableViewCell.replyButton.title" = "Reply";
-"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+"innovationsChatTableViewCell.replyButton.title" = "إرسال رد";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "شكوى";
 
 //SpamSelectionViewController
 
 "spamSelectionViewController.title" = "رسائل غير مرغوبة";
-"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites as Spam to TRA";
-"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
-"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
-"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";
+"spamSelectionViewController.serviceHeaderLabel" = "شكاوي الرسائل الغير مرغوبة و مواقع الإنترنت";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "شكوى على\nرسالة غير مرغوبة";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "شكوى على\nموقع إنترنت";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "عرض\nالقائمة الخاصة";
 
 //ListOfMobileBrandViewController
 
