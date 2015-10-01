@@ -71,6 +71,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     } else if (self.selectSpamReport == SpamReportTypeSMS) {
         if (!self.reportTextField.text.length || !self.selectedProvider.length || !self.descriptionTextView.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        } if (![self.reportTextField.text isValidPhoneNumber]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
