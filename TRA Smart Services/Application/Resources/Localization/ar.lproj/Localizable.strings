@@ -18,7 +18,7 @@
 
 //Messages for Alerts
 
-""message.notImplemented" = "غير متوفر";
+"message.notImplemented" = "غير متوفر";
 "message.success" = "تم بنجاح";
 "message.EmptyInputParameters" = "يرجى ملئ الحقل";
 "message.IncorrectRatings" = "خطأ في الصيغة";
