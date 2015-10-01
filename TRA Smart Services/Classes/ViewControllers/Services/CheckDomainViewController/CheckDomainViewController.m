@@ -41,6 +41,7 @@ static NSString *const keyOrder = @"order";
     
     [self updateNavigationControllerBar];
     [self displayDataIfNeeded];
+    [self prepareButtonTitle];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -303,6 +304,18 @@ static NSString *const keyOrder = @"order";
     }];
     
     return data;
+}
+
+- (void)prepareButtonTitle
+{
+    [self minimumScaleFactorTitleButton:self.whoISButton];
+    [self minimumScaleFactorTitleButton:self.avaliabilityButton];
+}
+
+- (void)minimumScaleFactorTitleButton:(UIButton *)button
+{
+    button.titleLabel.adjustsFontSizeToFitWidth = YES;
+    button.titleLabel.minimumScaleFactor = 0.7f;
 }
 
 @end
