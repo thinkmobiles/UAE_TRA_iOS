@@ -18,6 +18,8 @@ static LanguageType startingLanguageType;
 
 @interface InfoHubViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *announcementsLabel;
@@ -204,6 +206,8 @@ static LanguageType startingLanguageType;
 - (void)localizeUI
 {
     [super localizeUI];
+    
+    self.textLabel.text = dynamicLocalizedString(@"infoHubViewController.textLAbel");
     
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
