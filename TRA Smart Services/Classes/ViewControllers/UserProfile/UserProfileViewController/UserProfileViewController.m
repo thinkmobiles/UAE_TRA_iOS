@@ -40,6 +40,9 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     
     UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (!user) {
+        user = [UserModel new];
+    }
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
 }

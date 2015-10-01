@@ -17,29 +17,19 @@
 
 #pragma mark - LifeCycle
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (void)willMoveToSuperview:(UIView *)newSuperview
 {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self addBottomBorder];
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
+        [self addBottomBorder:newSuperview];
     }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self addBottomBorder];
-    }
-    return self;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    _bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+    _bottomBorder.frame = CGRectMake(self.frame.origin.x, self.frame.size.height + self.frame.origin.y + 1, self.bounds.size.width, 1.0f);
 }
 
 #pragma mark - Accessor
@@ -52,12 +42,12 @@
 
 #pragma mark - Private
 
-- (void)addBottomBorder
+- (void)addBottomBorder:(UIView *)superView
 {
     _bottomBorder = [CALayer layer];
-    _bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+    _bottomBorder.frame = CGRectMake(self.frame.origin.x, self.frame.size.height + self.frame.origin.y + 1, self.frame.size.width, 1.0f);
     _bottomBorder.backgroundColor = [UIColor clearColor].CGColor;
-    [self.layer addSublayer:_bottomBorder];
+    [superView.layer addSublayer:_bottomBorder];
 }
 
 @end

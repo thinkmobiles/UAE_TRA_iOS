@@ -79,7 +79,7 @@
 - (void)buttonSaveDidTapped
 {
     if (self.firstNmaeTextfield.text.length && self.lastNameTextField.text.length) {
-        if (![self.contactNumberTextfield.text isValidPhoneNumber]) {
+        if (self.contactNumberTextfield.text.length && ![self.contactNumberTextfield.text isValidPhoneNumber]) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
             return;
         }
