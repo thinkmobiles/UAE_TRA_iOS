@@ -2050,6 +2050,7 @@
 					};
 					ED71927B1B5450D60086C6EE = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3C9NG3BP4F;
 					};
 				};
 			};

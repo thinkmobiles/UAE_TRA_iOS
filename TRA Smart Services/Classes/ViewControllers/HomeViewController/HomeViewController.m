@@ -75,7 +75,6 @@ static LanguageType startLanguage;
     self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
     
     [self prepareTopBar];
-    self.topView.enableFakeBarAnimations = YES;
     
     [AppHelper updateNavigationBarColor];
     [self disableInteractiveGesture];
@@ -117,6 +116,7 @@ static LanguageType startLanguage;
         };
         [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
     }
+    self.topView.disableFakeButtonLayersDrawing = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated

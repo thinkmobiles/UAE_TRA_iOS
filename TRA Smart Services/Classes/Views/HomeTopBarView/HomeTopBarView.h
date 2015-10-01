@@ -32,10 +32,10 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 @property (assign, nonatomic) NSUInteger notificationsCount;
 @property (copy, nonatomic) NSString *userInitials;
 
+@property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
 @property (assign, nonatomic) BOOL isBottomHexagonWireOnTop;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
-@property (assign, nonatomic) BOOL enableFakeBarAnimations;
 
 - (void)reverseLayers;
 - (void)setStartApearenceAnimationParameters;

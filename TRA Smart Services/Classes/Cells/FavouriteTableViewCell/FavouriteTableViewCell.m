@@ -74,8 +74,7 @@
     _favouriteServiceLogoImageView.image = logoImage;
     
     [AppHelper addHexagoneOnView:self.hexagonBackgroundView];
-    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor ] width:3.0f];
-    
+    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor] width:3.0f];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText

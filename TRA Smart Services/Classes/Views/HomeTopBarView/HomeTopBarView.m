@@ -29,7 +29,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *searchLayer;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
-@property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
 @property (assign, nonatomic) BOOL isFakeButtonsOnTop;
 @property (assign, nonatomic) __block BOOL isAppearenceAnimationCompleted;
 
@@ -163,8 +162,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self moveNotificationLayerToTop:toTop];
     [self moveInformationLayerToStartPosition:toTop];
     self.isFakeButtonsOnTop = toTop;
-    self.enableFakeBarAnimations = NO;
-    self.disableFakeButtonLayersDrawing = YES;
 }
 
 - (void)animateBottomWireMovingWithProgress:(CGFloat)progress
@@ -301,7 +298,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     if (anim == [self.notificationLayer animationForKey:@"animationNotificationLayer"]) {
         [self.notificationLayer removeAllAnimations];
-        self.enableFakeBarAnimations = YES;
     }
     if (anim == [self.informationLayer animationForKey:@"animationInformationLayer"]) {
         [self.informationLayer removeAllAnimations];
