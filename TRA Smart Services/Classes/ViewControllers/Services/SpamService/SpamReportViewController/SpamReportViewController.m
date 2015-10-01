@@ -52,6 +52,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
     [self didChangeReportType:self.selectSpamReport];
     [self configureTextField];
+    [self configureKeyboardButtonDone:self.descriptionTextView];
 }
 
 #pragma mark - IBAction

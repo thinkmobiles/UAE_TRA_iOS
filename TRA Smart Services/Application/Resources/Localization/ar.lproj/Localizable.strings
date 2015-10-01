@@ -18,7 +18,7 @@
 
 //Messages for Alerts
 
-""message.notImplemented" = "غير متوفر";
+"message.notImplemented" = "غير متوفر";
 "message.success" = "تم بنجاح";
 "message.EmptyInputParameters" = "يرجى ملئ الحقل";
 "message.IncorrectRatings" = "خطأ في الصيغة";
@@ -36,7 +36,7 @@
 "message.InvalidFormatMobile" = "رقم جوال خاطئ";
 "message.InvalidFormatEmail" = "يرجى ادخال عنوان بريد إلكتروني صحيح";
 "message.InvalidFormatURL" = "الرابط غير صحيح";
-"message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
+"message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة':\n5,'الشارقة': 6,\n'أم القيوين': 7";
 "message.FailedToSendSMS" = "لايمكن ارسال الرسالة القصيرة";
 "message.FailedToInitializeMFController" = "لايمكن ارسال رسائل قصيرة من هذا الجهاز";
 

@@ -28,6 +28,7 @@
     
     [self addAttachButtonTextField:self.suggestionTitle];
     [self presentLoginIfNeededAndPopToRootController:nil];
+    [self configureKeyboardButtonDone:self.suggectionDescription];
 }
 
 #pragma mark - IABaction
@@ -72,6 +73,24 @@
     [super updateColors];
     
     [super updateBackgroundImageNamed:@"img_bg_service"];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
+}
+
+#pragma mark - Private
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.suggectionDescription.textAlignment = alignment;
+    self.suggestionTitle.textAlignment = alignment;
 }
 
 @end

@@ -73,6 +73,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     [self updateNavigationControllerBar];
     self.heightTableViewConstraint.constant = HeightSelectTableViewCell;
     [self addAttachButtonTextField:self.compliantTitleTextField];
+    [self configureKeyboardButtonDone:self.compliantDescriptionTextView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -172,14 +173,6 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 }
 
 #pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
