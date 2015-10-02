@@ -20,11 +20,11 @@
 		<key>serviceName</key>
 		<string>speedAccess.service.name.10</string>
 		<key>serviceLogo</key>
-		<string>ic_edit</string>
+		<string>ic_cover_sp</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_share</string>
+		<string>ic_cover_sp</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -60,7 +60,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_play</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>

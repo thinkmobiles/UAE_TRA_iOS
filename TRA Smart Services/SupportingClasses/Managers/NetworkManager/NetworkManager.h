@@ -6,6 +6,7 @@
 //
 
 #import "AFNetworkReachabilityManager.h"
+#import "TRALoaderViewController.h"
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
 

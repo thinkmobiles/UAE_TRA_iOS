@@ -5,6 +5,8 @@
 //  Created by Admin on 21.09.15.
 //
 
+#import "BaseDynamicUIViewController.h"
+
 static CGFloat const TRAAnimationDuration = 2;
 
 typedef NS_ENUM(NSInteger, TRACompleteStatus) {

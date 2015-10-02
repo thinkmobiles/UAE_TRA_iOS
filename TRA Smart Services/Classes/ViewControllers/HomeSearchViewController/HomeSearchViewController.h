@@ -5,8 +5,6 @@
 //  Created by Admin on 09.09.15.
 //
 
-#import "BaseDynamicUIViewController.h"
-
 @interface HomeSearchViewController : BaseDynamicUIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UIImage *fakeBackground;

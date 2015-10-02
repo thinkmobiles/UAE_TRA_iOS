@@ -28,7 +28,7 @@
 		<key>serviceNeedGradient</key>
 		<false/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_spam_logo</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -42,7 +42,7 @@
 		<key>serviceNeedGradient</key>
 		<true/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_coverage_logo</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -56,7 +56,7 @@
 		<key>serviceNeedGradient</key>
 		<true/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_intern</string>
 	</dict>
 </array>
 </plist>

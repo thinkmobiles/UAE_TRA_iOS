@@ -8,8 +8,6 @@
 #import "AppHelper.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-#import "DynamicUIService.h"
-#import "UIColor+AppColor.h"
 #import "UIImage+DrawText.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;

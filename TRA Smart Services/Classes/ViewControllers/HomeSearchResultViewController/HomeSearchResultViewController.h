@@ -5,8 +5,6 @@
 //  Created by Admin on 15.09.15.
 //
 
-#import "BaseDynamicUIViewController.h"
-
 @interface HomeSearchResultViewController : BaseDynamicUIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *dataSource;

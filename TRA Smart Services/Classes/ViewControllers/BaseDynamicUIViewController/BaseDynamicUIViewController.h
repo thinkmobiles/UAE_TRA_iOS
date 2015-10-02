@@ -5,8 +5,6 @@
 //  Created by Admin on 01.08.15.
 //
 
-#import "DynamicUIService.h"
-
 static CGFloat const DeclineTagForFontUpdate = 2000;
 
 static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";

@@ -47,7 +47,6 @@
 		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		939444A01BB0487D00EDCF06 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */; };
 		939444A41BB04FE300EDCF06 /* FingerPrintAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */; settings = {ASSET_TAGS = (); }; };
-		939444AC1BB079A500EDCF06 /* TRA_Smart_ServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444AB1BB079A500EDCF06 /* TRA_Smart_ServicesTests.m */; };
 		939444B71BB079C600EDCF06 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B31BB079C600EDCF06 /* BarcodeReaderTest.m */; settings = {ASSET_TAGS = (); }; };
 		939444B81BB079C600EDCF06 /* FavouriteViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
 		939444B91BB079C600EDCF06 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B51BB079C600EDCF06 /* KeychainTest.m */; settings = {ASSET_TAGS = (); }; };
@@ -85,8 +84,6 @@
 		E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E073CC6C1B9E049400E216C1 /* ServicesSelectTableViewCell.m */; };
 		E07889751BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889711BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E07889761BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E078897D1BBA9F2E00F019EB /* ListOfDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E078897E1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E07889801BBAB9F600F019EB /* MobileBrandList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E078897F1BBAB9F600F019EB /* MobileBrandList.plist */; settings = {ASSET_TAGS = (); }; };
 		E07889851BBAE14200F019EB /* InnovationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889841BBAE14200F019EB /* InnovationsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8151BAFDCAA00D40579 /* InnovationsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D5E80D1BAFDCAA00D40579 /* InnovationsCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -183,6 +180,8 @@
 		F1A889C91BA2BCB8007EDEF7 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C81BA2BCB8007EDEF7 /* ResetPasswordViewController.m */; };
 		F1A889CC1BA31D82007EDEF7 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889CB1BA31D82007EDEF7 /* ChangePasswordViewController.m */; };
 		F1B5B7E81BBC2654004B1F75 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B7E71BBC2654004B1F75 /* UserModel.m */; settings = {ASSET_TAGS = (); }; };
+		F1BC6F081BBE7755000D5A8B /* ListOfDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BC6F041BBE7755000D5A8B /* ListOfDevicesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F1BC6F091BBE7755000D5A8B /* ListOfMobileBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BC6F071BBE7755000D5A8B /* ListOfMobileBrandViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F1EE541F1BB95004005D7B77 /* CheckIMEIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EE541E1BB95004005D7B77 /* CheckIMEIModel.m */; settings = {ASSET_TAGS = (); }; };
 		F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCC1B96EE7900891246 /* RatingView.m */; };
 		F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F15CCF1B96EE9100891246 /* ServiceView.m */; };
@@ -272,7 +271,6 @@
 		939444A21BB04FE300EDCF06 /* FingerPrintAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerPrintAuth.h; sourceTree = "<group>"; };
 		939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerPrintAuth.m; sourceTree = "<group>"; };
 		939444A91BB079A400EDCF06 /* TRA Smart ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart ServicesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		939444AB1BB079A500EDCF06 /* TRA_Smart_ServicesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRA_Smart_ServicesTests.m; sourceTree = "<group>"; };
 		939444AD1BB079A500EDCF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		939444B31BB079C600EDCF06 /* BarcodeReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReaderTest.m; sourceTree = "<group>"; };
 		939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewControllerTests.m; sourceTree = "<group>"; };
@@ -329,10 +327,6 @@
 		E07889711BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfDevicesTableViewCell.m; sourceTree = "<group>"; };
 		E07889731BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfMobileBrandTableViewCell.h; sourceTree = "<group>"; };
 		E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfMobileBrandTableViewCell.m; sourceTree = "<group>"; };
-		E07889781BBA9F2E00F019EB /* ListOfDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfDevicesViewController.h; sourceTree = "<group>"; };
-		E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfDevicesViewController.m; sourceTree = "<group>"; };
-		E078897B1BBA9F2E00F019EB /* ListOfMobileBrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfMobileBrandViewController.h; sourceTree = "<group>"; };
-		E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfMobileBrandViewController.m; sourceTree = "<group>"; };
 		E078897F1BBAB9F600F019EB /* MobileBrandList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MobileBrandList.plist; sourceTree = "<group>"; };
 		E07889831BBAE14200F019EB /* InnovationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovationsViewController.h; sourceTree = "<group>"; };
 		E07889841BBAE14200F019EB /* InnovationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovationsViewController.m; sourceTree = "<group>"; };
@@ -513,6 +507,10 @@
 		F1A889CB1BA31D82007EDEF7 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		F1B5B7E61BBC2654004B1F75 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F1B5B7E71BBC2654004B1F75 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		F1BC6F031BBE7755000D5A8B /* ListOfDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfDevicesViewController.h; sourceTree = "<group>"; };
+		F1BC6F041BBE7755000D5A8B /* ListOfDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfDevicesViewController.m; sourceTree = "<group>"; };
+		F1BC6F061BBE7755000D5A8B /* ListOfMobileBrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfMobileBrandViewController.h; sourceTree = "<group>"; };
+		F1BC6F071BBE7755000D5A8B /* ListOfMobileBrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfMobileBrandViewController.m; sourceTree = "<group>"; };
 		F1EE541D1BB95004005D7B77 /* CheckIMEIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIModel.h; sourceTree = "<group>"; };
 		F1EE541E1BB95004005D7B77 /* CheckIMEIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIModel.m; sourceTree = "<group>"; };
 		F1F15CCB1B96EE7900891246 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
@@ -851,7 +849,6 @@
 				939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */,
 				939444B51BB079C600EDCF06 /* KeychainTest.m */,
 				939444B61BB079C600EDCF06 /* VerificationWithRegularTest.m */,
-				939444AB1BB079A500EDCF06 /* TRA_Smart_ServicesTests.m */,
 				939444AD1BB079A500EDCF06 /* Info.plist */,
 			);
 			path = "TRA Smart ServicesTests";
@@ -1032,24 +1029,6 @@
 			path = ListOfMobileBrandTableViewCell;
 			sourceTree = "<group>";
 		};
-		E07889771BBA9F2E00F019EB /* ListOfDevicesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E07889781BBA9F2E00F019EB /* ListOfDevicesViewController.h */,
-				E07889791BBA9F2E00F019EB /* ListOfDevicesViewController.m */,
-			);
-			path = ListOfDevicesViewController;
-			sourceTree = "<group>";
-		};
-		E078897A1BBA9F2E00F019EB /* ListOfMobileBrandViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E078897B1BBA9F2E00F019EB /* ListOfMobileBrandViewController.h */,
-				E078897C1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m */,
-			);
-			path = ListOfMobileBrandViewController;
-			sourceTree = "<group>";
-		};
 		E07889811BBAE11400F019EB /* InnovationsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1202,6 +1181,7 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F1BC6F011BBE7754000D5A8B /* Mobile Brand */,
 				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
@@ -1209,8 +1189,6 @@
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
-				E07889771BBA9F2E00F019EB /* ListOfDevicesViewController */,
-				E078897A1BBA9F2E00F019EB /* ListOfMobileBrandViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				93782EBF1BB2F2F100D3604B /* SpamService */,
@@ -1968,6 +1946,33 @@
 			path = UserModel;
 			sourceTree = "<group>";
 		};
+		F1BC6F011BBE7754000D5A8B /* Mobile Brand */ = {
+			isa = PBXGroup;
+			children = (
+				F1BC6F021BBE7755000D5A8B /* ListOfDevicesViewController */,
+				F1BC6F051BBE7755000D5A8B /* ListOfMobileBrandViewController */,
+			);
+			path = "Mobile Brand";
+			sourceTree = "<group>";
+		};
+		F1BC6F021BBE7755000D5A8B /* ListOfDevicesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1BC6F031BBE7755000D5A8B /* ListOfDevicesViewController.h */,
+				F1BC6F041BBE7755000D5A8B /* ListOfDevicesViewController.m */,
+			);
+			path = ListOfDevicesViewController;
+			sourceTree = "<group>";
+		};
+		F1BC6F051BBE7755000D5A8B /* ListOfMobileBrandViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1BC6F061BBE7755000D5A8B /* ListOfMobileBrandViewController.h */,
+				F1BC6F071BBE7755000D5A8B /* ListOfMobileBrandViewController.m */,
+			);
+			path = ListOfMobileBrandViewController;
+			sourceTree = "<group>";
+		};
 		F1EE541C1BB94FB6005D7B77 /* CheckIMEIModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2141,7 +2146,6 @@
 				939444BA1BB079C600EDCF06 /* VerificationWithRegularTest.m in Sources */,
 				939444B81BB079C600EDCF06 /* FavouriteViewControllerTests.m in Sources */,
 				939444B91BB079C600EDCF06 /* KeychainTest.m in Sources */,
-				939444AC1BB079A500EDCF06 /* TRA_Smart_ServicesTests.m in Sources */,
 				939444B71BB079C600EDCF06 /* BarcodeReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2204,8 +2208,8 @@
 				84709EAF1B82F2AC008F3D14 /* InfoHubViewController.m in Sources */,
 				F1EE541F1BB95004005D7B77 /* CheckIMEIModel.m in Sources */,
 				E0D5E8151BAFDCAA00D40579 /* InnovationsCollectionViewCell.m in Sources */,
-				E078897E1BBA9F2E00F019EB /* ListOfMobileBrandViewController.m in Sources */,
 				ED7192811B5450D60086C6EE /* main.m in Sources */,
+				F1BC6F091BBE7755000D5A8B /* ListOfMobileBrandViewController.m in Sources */,
 				EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */,
 				932C8DB21BA00C35003107E2 /* UserProfileTableViewCell.m in Sources */,
 				93A436F21B85F778009299C5 /* UIFont+AppFonts.m in Sources */,
@@ -2234,7 +2238,6 @@
 				ED2084D91B5E734000779CBD /* AFURLConnectionOperation.m in Sources */,
 				EDC04F9B1B70E35B0071BADA /* RegisterViewController.m in Sources */,
 				84869E2C1B7DEBE100177B5B /* CompliantViewController.m in Sources */,
-				E078897D1BBA9F2E00F019EB /* ListOfDevicesViewController.m in Sources */,
 				ED2084DB1B5E734000779CBD /* AFURLResponseSerialization.m in Sources */,
 				ED7D9F231B6BAB7B00C20402 /* UIImage+DrawText.m in Sources */,
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
@@ -2251,6 +2254,7 @@
 				EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */,
 				93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
+				F1BC6F081BBE7755000D5A8B /* ListOfDevicesViewController.m in Sources */,
 				93782EC71BB2F3B500D3604B /* SpamListViewController.m in Sources */,
 				93CFCC0D1B9CB4E9004A1A8F /* NotificationsTableViewCell.m in Sources */,
 				F17320381BB51D290008F745 /* BottomBorderTextView.m in Sources */,
@@ -2420,7 +2424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Khaldoon Mereb (3C9NG3BP4F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2438,7 +2442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Khaldoon Mereb (42J84GD7P8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Khaldoon Mereb (3C9NG3BP4F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/TRA Smart Services/Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;

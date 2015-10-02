@@ -112,7 +112,7 @@
 
 - (void)buttonSaveDidTapped
 {
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+    //To DO
 }
 
 @end

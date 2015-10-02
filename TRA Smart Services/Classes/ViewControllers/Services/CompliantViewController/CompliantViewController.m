@@ -6,7 +6,6 @@
 //
 
 #import "CompliantViewController.h"
-#import "NetworkManager.h"
 #import "LoginViewController.h"
 #import "ServiceView.h"
 #import "LeftInsetTextField.h"

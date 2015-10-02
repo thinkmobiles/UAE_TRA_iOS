@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-#import "BaseDynamicUIViewController.h"
 #include <objc/runtime.h>
 #import "FavouriteViewController.h"
 

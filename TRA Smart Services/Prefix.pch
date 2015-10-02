@@ -25,6 +25,5 @@
 #import "BlackWhiteConverter.h"
 #import "NSString+Validation.h"
 #import "CoreDataManager.h"
-#import "TRALoaderViewController.h"
 
 #endif /* Prefix_pch */

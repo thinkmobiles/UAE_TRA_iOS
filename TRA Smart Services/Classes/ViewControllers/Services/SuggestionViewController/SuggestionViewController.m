@@ -6,7 +6,6 @@
 //
 
 #import "SuggestionViewController.h"
-#import "NetworkManager.h"
 #import "LoginViewController.h"
 #import "PlaceholderTextView.h"
 
