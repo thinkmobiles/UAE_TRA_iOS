@@ -13,6 +13,7 @@ static CGFloat const HeightForToolbars = 44.f;
 @interface BaseServiceViewController()
 
 @property (weak, nonatomic)  id textView;
+@property (assign, nonatomic) CGFloat keyboardHeight;
 
 @end
 
@@ -27,6 +28,8 @@ static CGFloat const HeightForToolbars = 44.f;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
     self.navigationController.navigationBar.translucent = YES;
+    
+    [self prepareNotification];
 }
 
 #pragma mark - Public
@@ -65,6 +68,21 @@ static CGFloat const HeightForToolbars = 44.f;
     self.textView = textView;
 }
 
+#pragma mark - TextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.start];
+    CGRect frame = textView.frame;
+    CGFloat curcorPointY = frame.origin.y + caretRect.origin.y - textView.contentOffset.y - HeightForToolbars;
+    CGFloat keyPositionY = self.view.frame.size.height - self.keyboardHeight;
+    if (curcorPointY > keyPositionY) {
+        CGFloat lineKetboard = self.keyboardHeight - self.view.bounds.size.height + frame.origin.y + frame.size.height - HeightForToolbars;
+        CGPoint bottomOffset = CGPointMake(0, textView.contentSize.height - frame.size.height + lineKetboard);
+        [textView setContentOffset: bottomOffset];
+    }
+}
+
 #pragma mark - Superclass methods
 
 - (void)updateColors
@@ -99,6 +117,31 @@ static CGFloat const HeightForToolbars = 44.f;
         }
         [self updateColors:subView];
     }
+}
+
+#pragma mark - Keyboard
+
+- (void)prepareNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)removeNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillAppear:(NSNotification *)notification
+{
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.keyboardHeight = keyboardRect.size.height;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [self.textView setContentOffset: CGPointZero];
 }
 
 @end
