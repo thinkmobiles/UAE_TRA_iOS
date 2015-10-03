@@ -46,17 +46,17 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>9</string>
+		<string>7</string>
 		<key>serviceName</key>
-		<string>speedAccess.service.name.9</string>
+		<string>speedAccess.service.name.2</string>
 		<key>serviceLogo</key>
-		<string>ic_internet</string>
+		<string>ic_domain</string>
 		<key>serviceOrder</key>
 		<string>3</string>
 		<key>serviceNeedGradient</key>
 		<true/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_intern</string>
+		<string>ic_domain_logo</string>
 	</dict>
 </array>
 </plist>

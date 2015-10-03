@@ -40,12 +40,12 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
     [attachButton setFrame:CGRectMake(0, 0, textField.frame.size.height, textField.frame.size.height)];
     
     if (self.dynamicService.language == LanguageTypeArabic) {
-        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - self.buttonAttachImage.size.width)];
+        //[attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - self.buttonAttachImage.size.width)];
         textField.leftView = attachButton;
         textField.leftViewMode = UITextFieldViewModeAlways;
         
     } else {
-        [attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - self.buttonAttachImage.size.width, 0, 0)];
+        //[attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - self.buttonAttachImage.size.width, 0, 0)];
         textField.rightView = attachButton;
         textField.rightViewMode = UITextFieldViewModeAlways;
     }

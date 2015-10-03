@@ -6211,6 +6211,7 @@ a new password will be sent.</string>
         <!--Reset Password View Controller-->
         <scene sceneID="wTY-8W-8Ig">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZB-Ph-a5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="anJ-hX-kHd" customClass="ResetPasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z4D-oh-jD4"/>
@@ -6379,7 +6380,6 @@ a new password will be sent.</string>
                         <outlet property="userLogoImageView" destination="ndt-SV-479" id="TXq-o8-05D"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AZB-Ph-a5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2738" y="-4071"/>
         </scene>

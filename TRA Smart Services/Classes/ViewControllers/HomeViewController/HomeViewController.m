@@ -376,6 +376,7 @@ static LanguageType startLanguage;
             [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
             break;
         }
+            //dont use
         case 4: {
             [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
             break;
