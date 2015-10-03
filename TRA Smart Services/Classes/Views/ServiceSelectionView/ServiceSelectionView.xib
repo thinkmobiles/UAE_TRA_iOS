@@ -125,7 +125,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGk-Hb-Jhm" userLabel="View My List - UIView">
                     <rect key="frame" x="150" y="0.0" width="150" height="400"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n38-Vx-B2z" userLabel="View My List Conteiner - UIView">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n38-Vx-B2z" userLabel="View My List Conteiner - UIView">
                             <rect key="frame" x="15" y="254" width="120" height="146"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpB-kZ-CTC" userLabel="View My List - UIButton">

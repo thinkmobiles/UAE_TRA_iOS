@@ -207,7 +207,7 @@
 
 //InfoHubViewController
 
-"infoHubViewController.textLAbel" = "There are no pending transactions";
+"infoHubViewController.textLabel" = "There are no pending transactions";
 
 "infoHub.title" = "معلومات";
 "announcements.label.text" = "اعلانات";
@@ -392,17 +392,17 @@
 
 //ListOfDevicesViewController
 
-"listOfDevicesViewController.title" = "List of Devices";
+"listOfDevicesViewController.title" = "قائمة الإجهزة";
 
 //InnovationsViewController
 
-"innovationsViewController.title" = "Innovations";
-"innovationsViewController.innovationsMessageLabel.text" = "Message";
-"innovationsViewController.submitButton" = "Submit";
-"innovationsViewController.innovationsTitleTextField.placeholder" = "Title";
-"innovationsViewController.descriptionTextView.placeholder" = "Type your message here...";
+"innovationsViewController.title" = "أفكار إبداعية";
+"innovationsViewController.innovationsMessageLabel.text" = "الرسالة";
+"innovationsViewController.submitButton" = "أرسل";
+"innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
+"innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";
 
 //ResultIMEIViewController
 
-"resultIMEIViewController.title" = "Result IMEI Code";
-"resultIMEIViewController.noDeviceDatabase" = "No result for this IMEI";
+"resultIMEIViewController.title" = "نتيجة البحث";
+"resultIMEIViewController.noDeviceDatabase" = "لا تجد نتائج";

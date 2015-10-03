@@ -71,8 +71,6 @@
 		93D10A9C1BAD9A8800CCEB22 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10A9B1BAD9A8800CCEB22 /* CoreDataManager.m */; };
 		93D10A9E1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */; };
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
-		E0072A921BBC225E00DA5692 /* ResultIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E0072A931BBC225E00DA5692 /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
 		E059DD181BB2F3D700C34EF0 /* SpamSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -122,7 +120,6 @@
 		ED2085321B5F776C00779CBD /* AutoLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2085311B5F776C00779CBD /* AutoLoginService.m */; };
 		ED2369CA1B71E8E200F0F882 /* InternetSpeedChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */; };
 		ED3D982A1B7CD6A4000DEEB8 /* CheckDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */; };
-		ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */; };
 		ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */; };
 		ED5A343D1B6EACAC0082AF5B /* RTLController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5A343B1B6EACAC0082AF5B /* RTLController.m */; };
 		ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C8DFA1B7B9D1900519E96 /* NSArray+Reverse.m */; };
@@ -170,6 +167,9 @@
 		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
 		F16DA2C11BB43DC70002AC44 /* BottomBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */; settings = {ASSET_TAGS = (); }; };
+		F170023D1BBEB2C300F7BE1A /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17002361BBEB2C300F7BE1A /* CheckIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F170023E1BBEB2C300F7BE1A /* ResultIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17002391BBEB2C300F7BE1A /* ResultIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F170023F1BBEB2C300F7BE1A /* VerificationIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F170023C1BBEB2C300F7BE1A /* VerificationIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F17320381BB51D290008F745 /* BottomBorderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F17320371BB51D290008F745 /* BottomBorderTextView.m */; settings = {ASSET_TAGS = (); }; };
 		F17785491B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */; };
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
@@ -304,10 +304,6 @@
 		93D10A9D1BADAD0D00CCEB22 /* ServiceViewControllersIdentifiers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceViewControllersIdentifiers.plist; sourceTree = "<group>"; };
 		93D10A9F1BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FavouriteViewController+DeleteAction.h"; sourceTree = "<group>"; };
 		93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FavouriteViewController+DeleteAction.m"; sourceTree = "<group>"; };
-		E0072A8D1BBC225E00DA5692 /* ResultIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultIMEIViewController.h; sourceTree = "<group>"; };
-		E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultIMEIViewController.m; sourceTree = "<group>"; };
-		E0072A901BBC225E00DA5692 /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
-		E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		E00A038A1B9EEFD700A4CFA1 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
@@ -397,8 +393,6 @@
 		ED2369C91B71E8E200F0F882 /* InternetSpeedChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedChecker.m; sourceTree = "<group>"; };
 		ED3D98251B7CD6A4000DEEB8 /* CheckDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDomainViewController.h; sourceTree = "<group>"; };
 		ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDomainViewController.m; sourceTree = "<group>"; };
-		ED3D98281B7CD6A4000DEEB8 /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
-		ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIViewController.m; sourceTree = "<group>"; };
 		ED5A34371B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpacityCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		ED5A34381B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpacityCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		ED5A343A1B6EACAC0082AF5B /* RTLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLController.h; sourceTree = "<group>"; };
@@ -489,6 +483,12 @@
 		F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRegisterViewController.m; sourceTree = "<group>"; };
 		F16DA2BF1BB43DC70002AC44 /* BottomBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBorderTextField.h; sourceTree = "<group>"; };
 		F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBorderTextField.m; sourceTree = "<group>"; };
+		F17002351BBEB2C300F7BE1A /* CheckIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIMEIViewController.h; sourceTree = "<group>"; };
+		F17002361BBEB2C300F7BE1A /* CheckIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIMEIViewController.m; sourceTree = "<group>"; };
+		F17002381BBEB2C300F7BE1A /* ResultIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultIMEIViewController.h; sourceTree = "<group>"; };
+		F17002391BBEB2C300F7BE1A /* ResultIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultIMEIViewController.m; sourceTree = "<group>"; };
+		F170023B1BBEB2C300F7BE1A /* VerificationIMEIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationIMEIViewController.h; sourceTree = "<group>"; };
+		F170023C1BBEB2C300F7BE1A /* VerificationIMEIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationIMEIViewController.m; sourceTree = "<group>"; };
 		F17320361BB51D290008F745 /* BottomBorderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBorderTextView.h; sourceTree = "<group>"; };
 		F17320371BB51D290008F745 /* BottomBorderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBorderTextView.m; sourceTree = "<group>"; };
 		F17785451B8DB8A400D96B1E /* AddToFavouriteArabicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToFavouriteArabicTableViewCell.xib; sourceTree = "<group>"; };
@@ -939,24 +939,6 @@
 			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
-		E0072A8C1BBC225E00DA5692 /* ResultIMEIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E0072A8D1BBC225E00DA5692 /* ResultIMEIViewController.h */,
-				E0072A8E1BBC225E00DA5692 /* ResultIMEIViewController.m */,
-			);
-			path = ResultIMEIViewController;
-			sourceTree = "<group>";
-		};
-		E0072A8F1BBC225E00DA5692 /* VerificationIMEIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E0072A901BBC225E00DA5692 /* VerificationIMEIViewController.h */,
-				E0072A911BBC225E00DA5692 /* VerificationIMEIViewController.m */,
-			);
-			path = VerificationIMEIViewController;
-			sourceTree = "<group>";
-		};
 		E00A03891B9EEFD700A4CFA1 /* PlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,7 +1017,8 @@
 				E07889831BBAE14200F019EB /* InnovationsViewController.h */,
 				E07889841BBAE14200F019EB /* InnovationsViewController.m */,
 			);
-			path = InnovationsViewController;
+			name = InnovationsViewController;
+			path = ../InnovationsViewController;
 			sourceTree = "<group>";
 		};
 		E0D5E80B1BAFDCAA00D40579 /* InnovationsCollectionViewCell */ = {
@@ -1181,20 +1164,19 @@
 		ED3D98231B7CD6A4000DEEB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F1BC6F011BBE7754000D5A8B /* Mobile Brand */,
-				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
 				932FD8D91B947EAF008EFBD8 /* BaseServiceViewController */,
-				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
-				ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */,
-				84869E291B7DEBD100177B5B /* CompliantViewController */,
+				84869E311B7E1D5900177B5B /* BaseSelectImageViewController */,
+				F17002331BBEB2C300F7BE1A /* VerificationEMEI */,
+				93782EBF1BB2F2F100D3604B /* SpamService */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
 				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
+				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
+				84869E291B7DEBD100177B5B /* CompliantViewController */,
 				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
 				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
-				93782EBF1BB2F2F100D3604B /* SpamService */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
-				E0072A8C1BBC225E00DA5692 /* ResultIMEIViewController */,
-				E0072A8F1BBC225E00DA5692 /* VerificationIMEIViewController */,
+				F1BC6F011BBE7754000D5A8B /* Mobile Brand */,
+				E07889811BBAE11400F019EB /* InnovationsViewController */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1206,15 +1188,6 @@
 				ED3D98261B7CD6A4000DEEB8 /* CheckDomainViewController.m */,
 			);
 			path = CheckDomainViewController;
-			sourceTree = "<group>";
-		};
-		ED3D98271B7CD6A4000DEEB8 /* CheckIMEIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED3D98281B7CD6A4000DEEB8 /* CheckIMEIViewController.h */,
-				ED3D98291B7CD6A4000DEEB8 /* CheckIMEIViewController.m */,
-			);
-			path = CheckIMEIViewController;
 			sourceTree = "<group>";
 		};
 		ED5A34361B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout */ = {
@@ -1316,7 +1289,6 @@
 		ED71929F1B5451C80086C6EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E07889811BBAE11400F019EB /* InnovationsViewController */,
 				9394449B1BAFD06B00EDCF06 /* TRALoaderViewController */,
 				939444921BAF234800EDCF06 /* TutorialViewController */,
 				E07082EF1BA7F94F0057F134 /* HomeSearchResultViewController */,
@@ -1861,6 +1833,43 @@
 			path = BottomBorderTextField;
 			sourceTree = "<group>";
 		};
+		F17002331BBEB2C300F7BE1A /* VerificationEMEI */ = {
+			isa = PBXGroup;
+			children = (
+				F17002341BBEB2C300F7BE1A /* CheckIMEIViewController */,
+				F17002371BBEB2C300F7BE1A /* ResultIMEIViewController */,
+				F170023A1BBEB2C300F7BE1A /* VerificationIMEIViewController */,
+			);
+			path = VerificationEMEI;
+			sourceTree = "<group>";
+		};
+		F17002341BBEB2C300F7BE1A /* CheckIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F17002351BBEB2C300F7BE1A /* CheckIMEIViewController.h */,
+				F17002361BBEB2C300F7BE1A /* CheckIMEIViewController.m */,
+			);
+			path = CheckIMEIViewController;
+			sourceTree = "<group>";
+		};
+		F17002371BBEB2C300F7BE1A /* ResultIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F17002381BBEB2C300F7BE1A /* ResultIMEIViewController.h */,
+				F17002391BBEB2C300F7BE1A /* ResultIMEIViewController.m */,
+			);
+			path = ResultIMEIViewController;
+			sourceTree = "<group>";
+		};
+		F170023A1BBEB2C300F7BE1A /* VerificationIMEIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F170023B1BBEB2C300F7BE1A /* VerificationIMEIViewController.h */,
+				F170023C1BBEB2C300F7BE1A /* VerificationIMEIViewController.m */,
+			);
+			path = VerificationIMEIViewController;
+			sourceTree = "<group>";
+		};
 		F17320351BB51D080008F745 /* BottomBorderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2180,7 +2189,6 @@
 				ED982F441B5D313600B6B644 /* UIColor+AppColor.m in Sources */,
 				EDD3E59A1B5DAC0900405367 /* Animation.m in Sources */,
 				9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */,
-				ED3D982B1B7CD6A4000DEEB8 /* CheckIMEIViewController.m in Sources */,
 				EDAA8EAB1B81AB2700269F1A /* BaseSearchableViewController.m in Sources */,
 				ED982F4C1B5D346100B6B644 /* DynamicUIService.m in Sources */,
 				ED2084F01B5E738600779CBD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2223,10 +2231,10 @@
 				E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */,
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
 				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
+				F170023E1BBEB2C300F7BE1A /* ResultIMEIViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
 				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
 				ED2084DC1B5E734000779CBD /* AFURLSessionManager.m in Sources */,
-				E0072A921BBC225E00DA5692 /* ResultIMEIViewController.m in Sources */,
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
 				847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */,
@@ -2243,6 +2251,7 @@
 				ED982F581B5D82EC00B6B644 /* UINavigationController+TopButton.m in Sources */,
 				ED7D9F271B6CD87A00C20402 /* SettingViewController.m in Sources */,
 				F1F15CCD1B96EE7900891246 /* RatingView.m in Sources */,
+				F170023F1BBEB2C300F7BE1A /* VerificationIMEIViewController.m in Sources */,
 				EDAA8EA31B7E3F4700269F1A /* FavouriteViewController.m in Sources */,
 				84869E301B7E132D00177B5B /* SuggestionViewController.m in Sources */,
 				ED2084DA1B5E734000779CBD /* AFURLRequestSerialization.m in Sources */,
@@ -2262,7 +2271,6 @@
 				93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */,
 				932C8DB81BA0312B003107E2 /* UserProfileActionView.m in Sources */,
 				EDD3E5A51B5E4B0800405367 /* KeychainStorage.m in Sources */,
-				E0072A931BBC225E00DA5692 /* VerificationIMEIViewController.m in Sources */,
 				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
@@ -2274,6 +2282,7 @@
 				ED6C8DFB1B7B9D1900519E96 /* NSArray+Reverse.m in Sources */,
 				ED2084F51B5E738600779CBD /* UIRefreshControl+AFNetworking.m in Sources */,
 				ED2084D51B5E734000779CBD /* AFHTTPRequestOperationManager.m in Sources */,
+				F170023D1BBEB2C300F7BE1A /* CheckIMEIViewController.m in Sources */,
 				9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */,
 				E0D5E8181BAFDCAA00D40579 /* InnovationsTableViewCell.m in Sources */,
 				934629041B8E17060017E4CD /* TRAService.m in Sources */,
