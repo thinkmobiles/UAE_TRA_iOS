@@ -397,7 +397,6 @@
 //InnovationsViewController
 
 "innovationsViewController.title" = "Innovations";
-"innovationsViewController.innovationsMessageLabel.text" = "Message";
 "innovationsViewController.submitButton" = "Submit";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "Title";
 "innovationsViewController.descriptionTextView.placeholder" = "Type your message here...";
@@ -406,3 +405,9 @@
 
 "resultIMEIViewController.title" = "Result IMEI Code";
 "resultIMEIViewController.noDeviceDatabase" = "No result for this IMEI";
+
+//SelectImageActionSheet
+
+"selectImageActionSheet.cancel" = "Cancel";
+"selectImageActionSheet.removeFile" = "Remove attached file";
+"selectImageActionSheet.selectImage" = "Choose image from gallery";

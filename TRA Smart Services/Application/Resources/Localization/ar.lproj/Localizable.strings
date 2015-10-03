@@ -397,7 +397,6 @@
 //InnovationsViewController
 
 "innovationsViewController.title" = "أفكار إبداعية";
-"innovationsViewController.innovationsMessageLabel.text" = "الرسالة";
 "innovationsViewController.submitButton" = "أرسل";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
 "innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";
@@ -406,3 +405,8 @@
 
 "resultIMEIViewController.title" = "نتيجة البحث";
 "resultIMEIViewController.noDeviceDatabase" = "لا تجد نتائج";
+//SelectImageActionSheet
+
+"selectImageActionSheet.cancel" = "الغاء";
+"selectImageActionSheet.removeFile" = "Remove attached file";
+"selectImageActionSheet.selectImage" = "Choose image from gallery";

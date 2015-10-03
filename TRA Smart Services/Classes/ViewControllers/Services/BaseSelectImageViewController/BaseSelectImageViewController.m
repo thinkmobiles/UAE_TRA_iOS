@@ -13,6 +13,7 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
 @interface BaseSelectImageViewController ()
 
 @property (strong, nonatomic) UIImage *buttonAttachImage;
+@property (strong, nonatomic) UIButton *attachButton;
 
 @end
 
@@ -32,26 +33,51 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
     textField.rightView = nil;
     textField.leftView = nil;
     
-    UIButton *attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
-    [attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-    attachButton.backgroundColor = [UIColor clearColor];
-    attachButton.tintColor = [self.dynamicService currentApplicationColor];
-    [attachButton setFrame:CGRectMake(0, 0, textField.frame.size.height, textField.frame.size.height)];
+    self.attachButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
+    [self.attachButton addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
+    self.attachButton.backgroundColor = [UIColor clearColor];
+    self.attachButton.tintColor = [self.dynamicService currentApplicationColor];
+    [self.attachButton setFrame:CGRectMake(0, 0, textField.frame.size.height, textField.frame.size.height)];
     
     if (self.dynamicService.language == LanguageTypeArabic) {
-        //[attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, attachButton.frame.size.width - self.buttonAttachImage.size.width)];
-        textField.leftView = attachButton;
+        textField.leftView = self.attachButton;
         textField.leftViewMode = UITextFieldViewModeAlways;
-        
     } else {
-        //[attachButton setImageEdgeInsets:UIEdgeInsetsMake(0, attachButton.frame.size.width - self.buttonAttachImage.size.width, 0, 0)];
-        textField.rightView = attachButton;
+        textField.rightView = self.attachButton;
         textField.rightViewMode = UITextFieldViewModeAlways;
     }
 }
 
-#pragma mark - SelectPhoto
+#pragma mark - Private
+
+- (void)setButtonAttachImage:(UIImage *)buttonAttachImage
+{
+    _buttonAttachImage = buttonAttachImage;
+    [self.attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
+}
+
+- (void)configureActionSheet
+{
+    UIAlertController *selectImageController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    [selectImageController addAction:cancelAction];
+    
+    UIAlertAction *selectImageAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.selectImage") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self selectImagePickerController];
+    }];
+    [selectImageController addAction:selectImageAction];
+    
+    UIAlertAction *removeAttachAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.removeFile") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (self.selectImage) {
+            self.selectImage = nil;
+            self.buttonAttachImage = [UIImage imageNamed:ImageNameButtonAttachClear];
+        }
+    }];
+    [selectImageController addAction:removeAttachAction];
+    
+    [self presentViewController:selectImageController animated:YES completion:nil];
+}
 
 - (void)selectImagePickerController
 {
@@ -77,7 +103,7 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
 
 - (IBAction)selectImage:(id)sender
 {
-    [self selectImagePickerController];
+    [self configureActionSheet];
 }
 
 @end

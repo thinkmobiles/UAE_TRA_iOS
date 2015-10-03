@@ -136,6 +136,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     
     if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
         [self animationSelectTableView:YES];
+        self.selectedProvider = @"";
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {

@@ -370,7 +370,6 @@
 
 "spamListViewController.title" = "";
 
-
 //InnovationsCollectionViewCell
 
 "innovationsCollectionViewCell.string.reviewed" = "innovationsCollectionViewCell.string.reviewed";
@@ -399,7 +398,6 @@
 //InnovationsViewController
 
 "innovationsViewController.title" = "innovationsViewController.title";
-"innovationsViewController.innovationsMessageLabel.text" = "innovationsViewController.innovationsMessageLabel.text";
 "innovationsViewController.submitButton" = "innovationsViewController.submitButton";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "innovationsViewController.innovationsTitleTextField.placeholder";
 "innovationsViewController.descriptionTextView.placeholder" = "innovationsViewController.descriptionTextView.placeholder";
@@ -408,3 +406,9 @@
 
 "resultIMEIViewController.title" = "resultIMEIViewController.title";
 "resultIMEIViewController.noDeviceDatabase" = "resultIMEIViewController.noDeviceDatabase";
+
+//SelectImageActionSheet
+
+"selectImageActionSheet.cancel" = "selectImageActionSheet.cancel";
+"selectImageActionSheet.removeFile" = "selectImageActionSheet.removeFile";
+"selectImageActionSheet.selectImage" = "selectImageActionSheet.selectImage";

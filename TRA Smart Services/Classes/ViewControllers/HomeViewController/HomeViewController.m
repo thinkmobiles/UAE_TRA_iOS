@@ -393,6 +393,7 @@ static LanguageType startLanguage;
             [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
             break;
         }
+            //dont use
         case 9: {
             [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
             break;

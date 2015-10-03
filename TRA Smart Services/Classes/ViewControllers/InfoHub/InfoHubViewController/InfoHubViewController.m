@@ -207,7 +207,7 @@ static LanguageType startingLanguageType;
 {
     [super localizeUI];
     
-    self.textLabel.text = dynamicLocalizedString(@"infoHubViewController.textLAbel");
+    self.textLabel.text = dynamicLocalizedString(@"infoHubViewController.textLabel");
     
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");

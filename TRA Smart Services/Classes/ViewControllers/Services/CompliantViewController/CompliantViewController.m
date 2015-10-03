@@ -147,6 +147,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
     if (self.heightTableViewConstraint.constant == HeightSelectTableViewCell) {
         [self animationSelectTableView:YES];
+        self.selectedProvider = @"";
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
