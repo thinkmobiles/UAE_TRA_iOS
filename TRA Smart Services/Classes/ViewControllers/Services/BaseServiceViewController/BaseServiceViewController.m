@@ -7,6 +7,7 @@
 
 #import "BaseServiceViewController.h"
 #import "LoginViewController.h"
+#import "ServiceInfoViewController.h"
 
 static CGFloat const HeightForToolbars = 44.f;
 
@@ -30,6 +31,9 @@ static CGFloat const HeightForToolbars = 44.f;
     self.navigationController.navigationBar.translucent = YES;
     
     [self prepareNotification];
+    if (self.serviceID > 0) {
+        [self addInfoButtonToNavigationBar];
+    }
 }
 
 #pragma mark - Public
@@ -117,6 +121,22 @@ static CGFloat const HeightForToolbars = 44.f;
         }
         [self updateColors:subView];
     }
+}
+
+- (void)addInfoButtonToNavigationBar
+{
+    UIImage *infoImage = [UIImage imageNamed:@"ic_info_sml"];
+    UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithImage:infoImage style:UIBarButtonItemStyleDone target:self action:@selector(showServiceInfo)];
+    self.navigationItem.rightBarButtonItem = infoButton;
+}
+
+- (void)showServiceInfo
+{
+    ServiceInfoViewController *serviceInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"serviceInfoIdentifier"];
+    serviceInfoViewController.hidesBottomBarWhenPushed = YES;
+    serviceInfoViewController.selectedServiceID = self.serviceID;
+    serviceInfoViewController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
+    [self.navigationController pushViewController:serviceInfoViewController animated:NO];
 }
 
 #pragma mark - Keyboard

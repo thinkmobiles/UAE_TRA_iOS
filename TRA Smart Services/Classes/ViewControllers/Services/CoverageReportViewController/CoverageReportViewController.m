@@ -99,6 +99,9 @@
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                loader.ratingView.hidden = NO;
+            });
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];

@@ -18,6 +18,15 @@
 
 @implementation InnovationsViewController
 
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self configureKeyboardButtonDone:self.descriptionTextView];
+}
+
 #pragma mark - IBAction
 
 - (IBAction)sendInfo:(id)sender
@@ -37,16 +46,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
-    return YES;
-}
-
-#pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
     return YES;
 }
 

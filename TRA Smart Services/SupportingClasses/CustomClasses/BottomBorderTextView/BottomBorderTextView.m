@@ -29,7 +29,7 @@
 {
     [super layoutSubviews];
     
-    _bottomBorder.frame = CGRectMake(self.frame.origin.x, self.frame.size.height + self.frame.origin.y + 1, self.bounds.size.width, 1.0f);
+    [self changeBorder];
 }
 
 #pragma mark - Accessor
@@ -40,12 +40,19 @@
     _bottomBorder.backgroundColor = bottomBorderColor.CGColor;
 }
 
+- (void)changeBorder
+{
+    _bottomBorder.frame = CGRectMake(self.frame.origin.x, self.frame.size.height + self.frame.origin.y + 1, self.frame.size.width, 1.0f);
+}
+
 #pragma mark - Private
 
 - (void)addBottomBorder:(UIView *)superView
 {
-    _bottomBorder = [CALayer layer];
-    _bottomBorder.frame = CGRectMake(self.frame.origin.x, self.frame.size.height + self.frame.origin.y + 1, self.frame.size.width, 1.0f);
+    if (!_bottomBorder) {
+        _bottomBorder = [CALayer layer];
+    }
+    [self changeBorder];
     _bottomBorder.backgroundColor = [UIColor clearColor].CGColor;
     [superView.layer addSublayer:_bottomBorder];
 }

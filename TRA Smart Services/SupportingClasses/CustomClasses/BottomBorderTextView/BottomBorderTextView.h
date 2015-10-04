@@ -11,4 +11,6 @@
 
 @property (strong, nonatomic) UIColor *bottomBorderColor;
 
+- (void)changeBorder;
+
 @end

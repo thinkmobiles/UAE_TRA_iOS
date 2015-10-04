@@ -178,22 +178,6 @@ static NSString *const keyOrder = @"order";
     return YES;
 }
 
-#pragma mark - RatingViewDelegate
-
-- (void)ratingChanged:(NSInteger)rating
-{
-    [AppHelper showLoader];
-
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:@"Rating" forSerivce:ServiceNameDomainCheck withRating:rating requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
-        } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-        }
-        [AppHelper hideLoader];
-    }];
-}
-
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI

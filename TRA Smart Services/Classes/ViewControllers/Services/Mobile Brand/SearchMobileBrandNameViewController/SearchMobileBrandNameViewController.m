@@ -7,24 +7,18 @@
 
 #import "SearchMobileBrandNameViewController.h"
 
+#import "ListOfDevicesViewController.h"
+
+static NSString *const ListDeviceSegue = @"listOfDevicesSegue";
+
 @interface SearchMobileBrandNameViewController ()
 
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *brandNameTextField;
-@property (weak, nonatomic) IBOutlet BottomBorderTextView *resultInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
 @implementation SearchMobileBrandNameViewController
-
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
-}
 
 #pragma mark - IBActions
 
@@ -36,23 +30,22 @@
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePerformSearchByMobileBrand:self.brandNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                NSString *string = @"";
-                for (NSDictionary *dic in response) {
-                    if ([string isEqualToString:@""]) {
-                        string = [string stringByAppendingString:@"Approved Device Information\n\n"];
-                    }
-                    string = [string stringByAppendingString:[dic valueForKey:@"marketingName"]];
-                    string = [string stringByAppendingString:@"\n"];
-                }
-                weakSelf.resultInfoTextView.text = string;
-                weakSelf.resultInfoTextView.textAlignment = NSTextAlignmentCenter;
+                [loader dismissTRALoader];
+                [weakSelf performSegueWithIdentifier:ListDeviceSegue sender:response];
             }
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ListDeviceSegue]) {
+        ListOfDevicesViewController *cont = segue.destinationViewController;
+        cont.dataSource = sender;
     }
 }
 
@@ -64,23 +57,13 @@
     return YES;
 }
 
-#pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
-
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"searchMobileBrandNameViewController.title");
     [self.searchButton setTitle:dynamicLocalizedString(@"searchMobileBrandNameViewController.searchButton") forState:UIControlStateNormal];
+    self.brandNameTextField.placeholder = dynamicLocalizedString(@"searchMobileBrandNameViewController.searchTextField.placeholder");
 }
 
 - (void)updateColors
@@ -109,8 +92,6 @@
 - (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
 {
     self.brandNameTextField.textAlignment = alignment;
-    self.resultInfoTextView.textAlignment = alignment;
-    [self.resultInfoTextView setNeedsDisplay];
 }
 
 @end

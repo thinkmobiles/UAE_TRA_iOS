@@ -26,6 +26,13 @@
     return self;
 }
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [self init];
+    
+    return self;
+}
+
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_firstName forKey:@"firstName"];
     [encoder encodeObject:_lastName forKey:@"lastName"];

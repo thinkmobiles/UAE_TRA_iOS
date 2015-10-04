@@ -7,10 +7,9 @@
 
 #import "AFNetworkReachabilityManager.h"
 #import "TRALoaderViewController.h"
+#import "UserModel.h"
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
-
-static NSString *const ServiceNameDomainCheck = @"Check Domain Service";
 
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
@@ -71,6 +70,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse;
 - (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
 - (void)traSSLogout:(ResponseBlock)logoutResponse;
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)registerResponse;
 
 #pragma mark - Temp
 

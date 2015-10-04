@@ -226,6 +226,7 @@
 
 "searchMobileBrandNameViewController.title" = "الأجهزة المعتمدة";
 "searchMobileBrandNameViewController.searchButton" = "بحث";
+"searchMobileBrandNameViewController.searchTextField.placeholder" = "Enter Brand Name";
 
 //SuggestionViewController
 

@@ -199,6 +199,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
 
     if (selectedService) {
+        if ([selectedService isKindOfClass:[BaseServiceViewController class]]) {
+            [(BaseServiceViewController *)selectedService setServiceID:navigationIndex];
+        }
         [self.navigationController pushViewController:selectedService animated:YES];
     }
 }

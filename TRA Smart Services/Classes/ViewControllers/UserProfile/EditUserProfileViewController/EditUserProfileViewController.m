@@ -84,8 +84,16 @@
             return;
         }
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
-        [[KeychainStorage new] saveCustomObject:user key:userModelKey];
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        [AppHelper showLoader];
+        [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
+            if (error) {
+                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+            } else {
+                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+            }
+            [AppHelper hideLoader];
+        }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }

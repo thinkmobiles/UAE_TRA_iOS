@@ -31,3 +31,4 @@ static NSString *const traSSNOCRMServiceGETAllServicesNames = @"/service/service
 static NSString *const traSSRegister = @"/crm/register";
 static NSString *const traSSLogin = @"/crm/signIn";
 static NSString *const traSSLogOut = @"/crm/signOut";
+static NSString *const traSSUpdateProfile = @"/crm/profile";

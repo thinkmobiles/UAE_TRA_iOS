@@ -4,14 +4,14 @@
 <array>
 	<string></string>
 	<string></string>
-	<string>checkIMEIID</string>
+	<string>verificationIMEIID</string>
 	<string>mobileBrandID</string>
-	<string>feedbackID</string>
-	<string>spamReportID</string>
-	<string>helpSalimID</string>
+	<string></string>
+	<string>spamReportSelect</string>
+	<string></string>
 	<string>verificationID</string>
 	<string>coverageID</string>
-	<string>internetSpeedID</string>
+	<string></string>
 	<string>compliantID</string>
 	<string>suggestionID</string>
 	<string>compliantID</string>

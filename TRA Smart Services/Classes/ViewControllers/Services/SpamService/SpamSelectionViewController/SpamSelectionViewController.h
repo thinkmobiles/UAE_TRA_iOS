@@ -7,6 +7,6 @@
 
 #import "ServiceSelectionView.h"
 
-@interface SpamSelectionViewController : BaseDynamicUIViewController <ServiceSelectionViewDelegate>
+@interface SpamSelectionViewController : BaseServiceViewController <ServiceSelectionViewDelegate>
 
 @end

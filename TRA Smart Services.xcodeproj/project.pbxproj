@@ -31,7 +31,6 @@
 		932C8DBE1BA036D8003107E2 /* BaseXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C8DBD1BA036D8003107E2 /* BaseXibView.m */; };
 		932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */; };
 		933647331BB29EC9004EC552 /* WhoIsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 933647321BB29EC9004EC552 /* WhoIsModel.m */; settings = {ASSET_TAGS = (); }; };
-		9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */; };
 		9343E3251B974ED50066329C /* LeftInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3241B974ED50066329C /* LeftInsetTextField.m */; };
 		9343E3291B9818070066329C /* DomainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343E3281B9818070066329C /* DomainInfoTableViewCell.m */; };
 		934628F91B8D873C0017E4CD /* MBProgressHUD+CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 934628F81B8D873C0017E4CD /* MBProgressHUD+CancelButton.m */; };
@@ -162,9 +161,7 @@
 		EDEC9DEC1B6A338000334503 /* MenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DEB1B6A338000334503 /* MenuCollectionViewCell.m */; };
 		EDEC9DF11B6A33A600334503 /* HexagonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF01B6A33A600334503 /* HexagonView.m */; };
 		EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */; };
-		EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */; };
 		EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */; };
-		EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */; };
 		F166B7481BA893C50001DD88 /* SelectRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */; };
 		F16DA2C11BB43DC70002AC44 /* BottomBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F16DA2C01BB43DC70002AC44 /* BottomBorderTextField.m */; settings = {ASSET_TAGS = (); }; };
 		F170023D1BBEB2C300F7BE1A /* CheckIMEIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17002361BBEB2C300F7BE1A /* CheckIMEIViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -175,6 +172,7 @@
 		F177854A1B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17785461B8DB8A400D96B1E /* AddToFavouriteEuroTableViewCell.xib */; };
 		F177854B1B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */; };
 		F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */; };
+		F19D45F81BC1657900489523 /* SearchMobileBrandNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19D45F71BC1657900489523 /* SearchMobileBrandNameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F1A889C51BA2BB1E007EDEF7 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C01BA2BB1E007EDEF7 /* EditUserProfileViewController.m */; };
 		F1A889C61BA2BB1E007EDEF7 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C41BA2BB1E007EDEF7 /* UserProfileViewController.m */; };
 		F1A889C91BA2BCB8007EDEF7 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A889C81BA2BCB8007EDEF7 /* ResetPasswordViewController.m */; };
@@ -239,8 +237,6 @@
 		932FD8DB1B947ECC008EFBD8 /* BaseServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServiceViewController.m; sourceTree = "<group>"; };
 		933647311BB29EC9004EC552 /* WhoIsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoIsModel.h; sourceTree = "<group>"; };
 		933647321BB29EC9004EC552 /* WhoIsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhoIsModel.m; sourceTree = "<group>"; };
-		9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
-		9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		9343E3231B974ED50066329C /* LeftInsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftInsetTextField.h; sourceTree = "<group>"; };
 		9343E3241B974ED50066329C /* LeftInsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftInsetTextField.m; sourceTree = "<group>"; };
 		9343E3271B9818070066329C /* DomainInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomainInfoTableViewCell.h; sourceTree = "<group>"; };
@@ -473,12 +469,8 @@
 		EDEC9DF01B6A33A600334503 /* HexagonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexagonView.m; sourceTree = "<group>"; };
 		EDEC9DF31B6A381500334503 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		EDEC9DF41B6A381500334503 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
-		EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFeedbackViewController.h; sourceTree = "<group>"; };
-		EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFeedbackViewController.m; sourceTree = "<group>"; };
 		EDF30AAE1B7CF9AC001B4441 /* CoverageReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverageReportViewController.h; sourceTree = "<group>"; };
 		EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageReportViewController.m; sourceTree = "<group>"; };
-		EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetSpeedTestViewController.h; sourceTree = "<group>"; };
-		EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetSpeedTestViewController.m; sourceTree = "<group>"; };
 		F166B7461BA893C50001DD88 /* SelectRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRegisterViewController.h; sourceTree = "<group>"; };
 		F166B7471BA893C50001DD88 /* SelectRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRegisterViewController.m; sourceTree = "<group>"; };
 		F16DA2BF1BB43DC70002AC44 /* BottomBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBorderTextField.h; sourceTree = "<group>"; };
@@ -497,6 +489,8 @@
 		F17785481B8DB8A400D96B1E /* AddToFavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteTableViewCell.m; sourceTree = "<group>"; };
 		F177854D1B8DE23800D96B1E /* AddToFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToFavouriteViewController.h; sourceTree = "<group>"; };
 		F177854E1B8DE23800D96B1E /* AddToFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToFavouriteViewController.m; sourceTree = "<group>"; };
+		F19D45F61BC1657900489523 /* SearchMobileBrandNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMobileBrandNameViewController.h; sourceTree = "<group>"; };
+		F19D45F71BC1657900489523 /* SearchMobileBrandNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMobileBrandNameViewController.m; sourceTree = "<group>"; };
 		F1A889BF1BA2BB1E007EDEF7 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
 		F1A889C01BA2BB1E007EDEF7 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
 		F1A889C31BA2BB1E007EDEF7 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -703,15 +697,6 @@
 				933647321BB29EC9004EC552 /* WhoIsModel.m */,
 			);
 			path = WhoIsModel;
-			sourceTree = "<group>";
-		};
-		9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9343D3241B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.h */,
-				9343D3251B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m */,
-			);
-			path = SearchMobileBrandNameViewController;
 			sourceTree = "<group>";
 		};
 		9343E3221B974ECB0066329C /* LeftInsetTextField */ = {
@@ -1169,11 +1154,8 @@
 				F17002331BBEB2C300F7BE1A /* VerificationEMEI */,
 				93782EBF1BB2F2F100D3604B /* SpamService */,
 				EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */,
-				EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */,
 				ED3D98241B7CD6A4000DEEB8 /* CheckDomainViewController */,
 				84869E291B7DEBD100177B5B /* CompliantViewController */,
-				EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */,
-				9343D3231B8C5D78007C0EE1 /* SearchMobileBrandNameViewController */,
 				84869E2D1B7E130C00177B5B /* SuggestionViewController */,
 				F1BC6F011BBE7754000D5A8B /* Mobile Brand */,
 				E07889811BBAE11400F019EB /* InnovationsViewController */,
@@ -1788,15 +1770,6 @@
 			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		EDF30AA51B7CED7E001B4441 /* PostFeedbackViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EDF30AA61B7CED88001B4441 /* PostFeedbackViewController.h */,
-				EDF30AA71B7CED88001B4441 /* PostFeedbackViewController.m */,
-			);
-			path = PostFeedbackViewController;
-			sourceTree = "<group>";
-		};
 		EDF30AAD1B7CF9A1001B4441 /* CoverageReportViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1804,15 +1777,6 @@
 				EDF30AAF1B7CF9AC001B4441 /* CoverageReportViewController.m */,
 			);
 			path = CoverageReportViewController;
-			sourceTree = "<group>";
-		};
-		EDF30AB11B7D00E1001B4441 /* InternetSpeedTestViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EDF30AB21B7D00EC001B4441 /* InternetSpeedTestViewController.h */,
-				EDF30AB31B7D00EC001B4441 /* InternetSpeedTestViewController.m */,
-			);
-			path = InternetSpeedTestViewController;
 			sourceTree = "<group>";
 		};
 		F166B7451BA88AE50001DD88 /* SelectRegisterViewController */ = {
@@ -1899,6 +1863,15 @@
 			path = AddToFavoriteViewController;
 			sourceTree = "<group>";
 		};
+		F19D45F51BC1657900489523 /* SearchMobileBrandNameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F19D45F61BC1657900489523 /* SearchMobileBrandNameViewController.h */,
+				F19D45F71BC1657900489523 /* SearchMobileBrandNameViewController.m */,
+			);
+			path = SearchMobileBrandNameViewController;
+			sourceTree = "<group>";
+		};
 		F1A889BC1BA2BB1E007EDEF7 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1958,6 +1931,7 @@
 		F1BC6F011BBE7754000D5A8B /* Mobile Brand */ = {
 			isa = PBXGroup;
 			children = (
+				F19D45F51BC1657900489523 /* SearchMobileBrandNameViewController */,
 				F1BC6F021BBE7755000D5A8B /* ListOfDevicesViewController */,
 				F1BC6F051BBE7755000D5A8B /* ListOfMobileBrandViewController */,
 			);
@@ -2174,6 +2148,7 @@
 				F1B5B7E81BBC2654004B1F75 /* UserModel.m in Sources */,
 				ED6C8E071B7CB90800519E96 /* BarcodeCodeReader.m in Sources */,
 				ED2084F31B5E738600779CBD /* UIImageView+AFNetworking.m in Sources */,
+				F19D45F81BC1657900489523 /* SearchMobileBrandNameViewController.m in Sources */,
 				E07889751BBA9EFD00F019EB /* ListOfDevicesTableViewCell.m in Sources */,
 				93782ECB1BB2F71F00D3604B /* SpamListTableViewCell.m in Sources */,
 				E07889851BBAE14200F019EB /* InnovationsViewController.m in Sources */,
@@ -2230,7 +2205,6 @@
 				ED2085051B5F70AC00779CBD /* NetworkManager.m in Sources */,
 				E07082F81BA80D040057F134 /* HomeSearchResultTableViewCell.m in Sources */,
 				EDEC9DF51B6A381500334503 /* CategoryCollectionViewCell.m in Sources */,
-				9343D3261B8C5D88007C0EE1 /* SearchMobileBrandNameViewController.m in Sources */,
 				F170023E1BBEB2C300F7BE1A /* ResultIMEIViewController.m in Sources */,
 				ED2084D71B5E734000779CBD /* AFNetworkReachabilityManager.m in Sources */,
 				F1F15CD01B96EE9100891246 /* ServiceView.m in Sources */,
@@ -2260,7 +2234,6 @@
 				EDD3E58E1B5D8D7100405367 /* TextFieldNavigator.m in Sources */,
 				93A436EE1B85D196009299C5 /* PushNoAnimationSegue.m in Sources */,
 				84709EB31B82F335008F3D14 /* InfoHubCollectionViewCell.m in Sources */,
-				EDF30AA81B7CED88001B4441 /* PostFeedbackViewController.m in Sources */,
 				93CFCC091B9CA21A004A1A8F /* NotificationViewController.m in Sources */,
 				EDD3E58D1B5D8D7100405367 /* OffsetTextField.m in Sources */,
 				F1BC6F081BBE7755000D5A8B /* ListOfDevicesViewController.m in Sources */,
@@ -2274,7 +2247,6 @@
 				932FD8DC1B947ECC008EFBD8 /* BaseServiceViewController.m in Sources */,
 				E07082F21BA7F96A0057F134 /* HomeSearchResultViewController.m in Sources */,
 				ED982F541B5D82B900B6B644 /* UINavigationController+Transparent.m in Sources */,
-				EDF30AB41B7D00EC001B4441 /* InternetSpeedTestViewController.m in Sources */,
 				EDF30AB01B7CF9AC001B4441 /* CoverageReportViewController.m in Sources */,
 				EDEC9DE71B6A335E00334503 /* HomeViewController.m in Sources */,
 				EDAA8EE61B81D79A00269F1A /* TRAService.xcdatamodeld in Sources */,

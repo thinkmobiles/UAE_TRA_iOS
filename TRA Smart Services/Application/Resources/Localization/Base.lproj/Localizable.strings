@@ -226,6 +226,7 @@
 
 "searchMobileBrandNameViewController.title" = "searchMobileBrandNameViewController.title";
 "searchMobileBrandNameViewController.searchButton" = "searchMobileBrandNameViewController.searchButton";
+"searchMobileBrandNameViewController.searchTextField.placeholder" = "searchMobileBrandNameViewController.searchTextField.placeholder";
 
 //SuggestionViewController
 
@@ -276,7 +277,6 @@
 "checkDomainViewController.avaliabilityButton.title" = "checkDomainViewController.avaliabilityButton.title";
 "checkDomainViewController.whoISButton.title" = "checkDomainViewController.whoISButton.title";
 "checkDomainViewController.domainTitleForView" = "checkDomainViewController.domainTitleForView";
-"checkDomainViewController.chooseRating" = "checkDomainViewController.chooseRating";
 
 //CheckIMEIViewController
 
@@ -348,6 +348,7 @@
 "TRALoader.backButton.cancel" = "TRALoader.backButton.cancel";
 "TRALoader.information.begin" = "TRALoader.information.begin";
 "TRALoader.information.finish" = "TRALoader.information.finish";
+"checkDomainViewController.chooseRating" = "checkDomainViewController.chooseRating";
 
 //AutoLoginService
 

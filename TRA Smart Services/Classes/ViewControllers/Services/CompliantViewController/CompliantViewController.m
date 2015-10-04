@@ -101,6 +101,9 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                loader.ratingView.hidden = NO;
+            });
         }];
     }
 }
@@ -155,6 +158,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
             [self.selectTableView reloadData];
         }
     }
+    [self.compliantDescriptionTextView changeBorder];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

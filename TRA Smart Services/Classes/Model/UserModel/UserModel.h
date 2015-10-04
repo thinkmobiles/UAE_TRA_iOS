@@ -13,7 +13,9 @@
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *streetName;
 @property (strong, nonatomic) NSString *contactNumber;
+@property (strong, nonatomic) NSString *email;
 
 - (instancetype)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName streetName:(NSString *)streetName contactNumber:(NSString *)contactNumber;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -369,43 +369,43 @@ static LanguageType startLanguage;
     }
     switch (serviceID) {
         case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 3: {
-            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:@(serviceID)];
             break;
         }
             //dont use
         case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:@(serviceID)];
             break;
         }
         case 7: {
-            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 8: {
-            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:@(serviceID)];
             break;
         }
             //dont use
         case 9: {
-            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 12:
         case 13:
         case 10: {
-            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:@(serviceID)];
             break;
         }
         case 11: {
-            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:@(serviceID)];
             break;
         }
     }
@@ -413,6 +413,9 @@ static LanguageType startLanguage;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.destinationViewController isKindOfClass:[BaseServiceViewController class]]&& [sender isKindOfClass:[NSNumber class]]) {
+        [(BaseServiceViewController *)segue.destinationViewController setServiceID:[sender integerValue]];
+    }
     if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {

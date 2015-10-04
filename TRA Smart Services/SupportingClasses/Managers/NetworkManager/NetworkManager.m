@@ -260,6 +260,16 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     }];
 }
 
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse
+{
+    NSDictionary *parameters = @{
+                                 @"first" : userProfile.firstName,
+                                 @"last" : userProfile.lastName
+                                };
+    
+    [self performPUT:traSSUpdateProfile withParameters:parameters response:updateProfileResponse];
+}
+
 #pragma mark - LifeCycle
 
 - (instancetype)initWithBaseURL:(NSURL *)baseURL
@@ -328,6 +338,15 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
 - (void)performPOST:(NSString *)path withParameters:(NSDictionary *)parameters response:(ResponseBlock)completionHandler
 {
     [self.manager POST:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        PerformSuccessRecognition(operation, responseObject, completionHandler);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        PerformFailureRecognition(operation, error, completionHandler);
+    }];
+}
+
+- (void)performPUT:(NSString *)path withParameters:(NSDictionary *)parameters response:(ResponseBlock)completionHandler
+{
+    [self.manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         PerformSuccessRecognition(operation, responseObject, completionHandler);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, completionHandler);
