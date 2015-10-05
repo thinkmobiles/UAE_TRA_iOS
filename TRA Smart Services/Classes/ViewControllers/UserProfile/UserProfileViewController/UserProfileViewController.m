@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     
+    self.title = dynamicLocalizedString(@"userProfile.title");
     [self prepareDataSource];
     [self prepareUserView];
     [self getProfileFromServer];
@@ -120,17 +121,17 @@
 
 - (void)getProfileFromServer
 {
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     __weak typeof(self) weakSelf = self;
     [[NetworkManager sharedManager] traSSGetUserProfileResult:^(id response, NSError *error) {
         if (error) {
-            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
             UserModel *user = [[UserModel alloc] initWithDictionary:response];;
             [[KeychainStorage new] saveCustomObject:user key:userModelKey];
             [weakSelf fillUserProfile];
+            [loader dismissTRALoader];
         }
-        [AppHelper hideLoader];
     }];
 }
 

@@ -21,7 +21,7 @@ static NSString *const AddToFavouriteArabicCellIdentifier = @"arabicAddToFavCell
 
 @property (strong, nonatomic) UIImage *logoImage;
 @property (copy, nonatomic) NSString *descriptionText;
-@property (weak, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 
 @property (weak, nonatomic) id <AddToFavouriteTableViewCellDelegate> delegate;
 

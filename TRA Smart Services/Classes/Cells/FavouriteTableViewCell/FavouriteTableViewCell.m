@@ -97,6 +97,7 @@
 - (void)addGestureRecognizer
 {
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapGesture:)];
+    longPressGesture.minimumPressDuration = 0.15;
     [self.removeButton addGestureRecognizer:longPressGesture];
 }
 

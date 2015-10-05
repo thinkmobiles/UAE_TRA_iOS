@@ -37,7 +37,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDescriptionConstraint;
 
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
-@property (strong, nonatomic) NSString *selectedProvider;
+@property (assign, nonatomic) NSInteger selectedProvider;
 
 @end
 
@@ -60,7 +60,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     
     [self updateUIForCompliantType:self.type];
     [self prepareSelectProviderDataSource];
-    self.selectedProvider = @"";
+    self.selectedProvider = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -90,11 +90,11 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitleTextField.text.length ||
-        (self.type == ComplianTypeCustomProvider && (!self.selectedProvider.length || !self.referenceNumberTextField.text.length))){
+        (self.type == ComplianTypeCustomProvider && (!self.selectedProvider || !self.referenceNumberTextField.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        NSString *provider = [[[self.selectedProvider componentsSeparatedByString:@" "] firstObject] lowercaseString];
+        NSString *provider = [[[self.selectProviderDataSource[self.selectedProvider] componentsSeparatedByString:@" "] firstObject] lowercaseString];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
@@ -120,8 +120,8 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     } else {
         cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
         cell.selectProviderImage.image = self.heightTableViewConstraint.constant == HeightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
-        if (self.selectedProvider.length) {
-            cell.selectProviderLabel.text = self.selectedProvider;
+        if (self.selectedProvider) {
+            cell.selectProviderLabel.text = self.selectProviderDataSource[self.selectedProvider];
             cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
         } else {
             cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
@@ -150,11 +150,11 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
     if (self.heightTableViewConstraint.constant == HeightSelectTableViewCell) {
         [self animationSelectTableView:YES];
-        self.selectedProvider = @"";
+        self.selectedProvider = 0;
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
-            self.selectedProvider = self.selectProviderDataSource[indexPath.row];
+            self.selectedProvider = indexPath.row;
             [self.selectTableView reloadData];
         }
     }

@@ -86,10 +86,11 @@
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
-            if (error) {
+            if (error || ![response isKindOfClass:[NSDictionary class]]) {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
-                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                UserModel *updateUser = [[UserModel alloc] initWithDictionary:response];
+                [[KeychainStorage new] saveCustomObject:updateUser key:userModelKey];
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
         }];

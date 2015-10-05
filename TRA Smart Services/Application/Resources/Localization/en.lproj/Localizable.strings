@@ -236,9 +236,9 @@
 
 //CompliantViewController
 
-"compliantViewController.title.comtlaintTRA" = "Compliant";
+"compliantViewController.title.comtlaintTRA" = "Complain About TRA";
 "compliantViewController.title.enquires" = "Enquires";
-"compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
+"compliantViewController.title.compliantAboutServiceProvider" = "Compliant About Service Provider";
 "compliantViewController.compliantTitleTextField.placeholder" = "Title";
 "compliantViewController.referenceNumberTextField.placeholder" = "Reference number";
 "compliantViewController.description.placeholder" = "Description";
@@ -335,9 +335,8 @@
 
 //VerificationIMEIViewController
 
-"verificationIMEIViewController.title" = "Verification IMEI Code";
+"verificationIMEIViewController.title" = "Device Verification";
 "verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile\nphone to be verified";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
 "verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
 
@@ -382,7 +381,7 @@
 "spamSelectionViewController.title" = "Spam";
 "spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites\nas Spam to TRA";
 "spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "Report\nSMS";
-"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "Report\nWebsite";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "Help\nSalim";
 "spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "View\nMy List";
 
 //ListOfMobileBrandViewController
@@ -399,6 +398,14 @@
 "innovationsViewController.submitButton" = "Submit";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "Title";
 "innovationsViewController.descriptionTextView.placeholder" = "Type your message here...";
+"innovationsViewController.selectInnovativeIdeasFor0" = "Innovative Ideas for";
+"innovationsViewController.selectInnovativeIdeasFor1" = "Customer Happiness";
+"innovationsViewController.selectInnovativeIdeasFor2" = "Employee Satisfaction";
+"innovationsViewController.selectInnovativeIdeasFor3" = "TRA Service Improvement";
+"innovationsViewController.selectInnovativeIdeasFor4" = "Reducing cost & increasing Revenue";
+"innovationsViewController.selectInnovativeIdeasFor5" = "Raising TRA Institutional Reputation";
+"innovationsViewController.selectInnovativeIdeasFor6" = "Futurology Studies";
+
 
 //ResultIMEIViewController
 
