@@ -25,6 +25,7 @@
     _statusCode = [dictionary valueForKey:@"statusCode"];
     _traStatus = [dictionary valueForKey:@"traStatus"];
     _serviceStage = [dictionary valueForKey:@"serviceStage"];
+    _transationDescription = [dictionary valueForKey:@"description"];
     
     return self;
 }

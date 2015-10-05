@@ -8,14 +8,15 @@
 
 @interface TransactionModel : NSObject
 
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *type;
-@property (strong, nonatomic) NSString *traSubmitDatetime;
-@property (strong, nonatomic) NSString *modifiedDatetime;
-@property (strong, nonatomic) NSString *stateCode;
-@property (strong, nonatomic) NSString *statusCode;
-@property (strong, nonatomic) NSString *traStatus;
-@property (strong, nonatomic) NSString *serviceStage;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *traSubmitDatetime;
+@property (copy, nonatomic) NSString *modifiedDatetime;
+@property (copy, nonatomic) NSString *stateCode;
+@property (copy, nonatomic) NSString *statusCode;
+@property (copy, nonatomic) NSString *traStatus;
+@property (copy, nonatomic) NSString *serviceStage;
+@property (copy, nonatomic) NSString *transationDescription;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

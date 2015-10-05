@@ -46,6 +46,7 @@ static LanguageType startingLanguageType;
     [super viewDidLoad];
     
     [self registerNibs];
+    self.page = 1;
     [self addObjectsToDataSourceIfPossible];
 }
 
@@ -279,12 +280,13 @@ static LanguageType startingLanguageType;
     void (^PrepareDataSource)(NSArray *) = ^(NSArray *inputArray) {
         if (weakSelf.tableViewDataSource) {
             NSMutableArray *indexPathToAdd = [[NSMutableArray alloc] init];
-            for (int i = weakSelf.tableViewDataSource.count - 1; i < weakSelf.tableViewDataSource.count - 1 + inputArray.count; i++) {
+            for (int i = (int)weakSelf.tableViewDataSource.count - 1; i < (int)weakSelf.tableViewDataSource.count - 1 + inputArray.count; i++) {
                 NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
                 [indexPathToAdd addObject:newIndexPath];
             }
             [weakSelf.tableView beginUpdates];            
             [weakSelf.tableViewDataSource addObjectsFromArray:inputArray];
+            weakSelf.filteredDataSource = weakSelf.tableViewDataSource;
             [weakSelf.tableView insertRowsAtIndexPaths:indexPathToAdd withRowAnimation:UITableViewRowAnimationAutomatic];
             [weakSelf.tableView endUpdates];
         } else {
@@ -311,7 +313,7 @@ static LanguageType startingLanguageType;
 - (NSDate *)dateFromString:(NSString *)inputString
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/mm/yyy HH:mm:ss aa"];
+    [formatter setDateFormat:@"mm/dd/yyyy HH:mm:ss a"];
     NSDate *date = [formatter dateFromString:inputString];
     return date;
 }
