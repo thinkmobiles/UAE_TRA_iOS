@@ -28,6 +28,9 @@ static NSString *const traSSNOCRMServiceGETFavoritesServices = @"/user/favorites
 static NSString *const traSSNOCRMServicePOSTAddServicesToFavorites = @"/user/favorites";
 static NSString *const traSSNOCRMServiceDELETEServicesFromFavorites = @"/user/favorites";
 static NSString *const traSSNOCRMServiceGETAllServicesNames = @"/service/serviceNames";
+static NSString *const traSSNOCRMServiceGETAboutServiceInfo = @"/service/about?name=";
+static NSString *const traSSNOCRMServiceGetTransactions = @"/crm/transactions";
+
 static NSString *const traSSRegister = @"/crm/register";
 static NSString *const traSSLogin = @"/crm/signIn";
 static NSString *const traSSLogOut = @"/crm/signOut";

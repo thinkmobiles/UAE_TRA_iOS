@@ -126,10 +126,9 @@
         if (error) {
             [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
         } else {
-            //FIXME - Parse
-//            UserModel *user = [UserModel new];
-//            [[KeychainStorage new] saveCustomObject:user key:userModelKey];
-//            [weakSelf fillUserProfile];
+            UserModel *user = [[UserModel alloc] initWithDictionary:response];;
+            [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+            [weakSelf fillUserProfile];
         }
         [AppHelper hideLoader];
     }];

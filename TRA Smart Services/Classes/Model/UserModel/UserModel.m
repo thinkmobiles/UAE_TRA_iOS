@@ -9,6 +9,8 @@
 
 @implementation UserModel
 
+#pragma mark - LifeCycle
+
 - (instancetype)init
 {
     return [self initWithFirstName:@"" lastName:@"" streetName:@"" contactNumber:@""];
@@ -30,17 +32,26 @@
 {
     self = [self init];
     
+    _firstName = [dictionary valueForKey:@"first"];
+    _lastName = [dictionary valueForKey:@"last"];
+    _email = [dictionary valueForKey:@"email"];
+    _contactNumber = [dictionary valueForKey:@"mobile"];
+    
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
+#pragma mark - Coder
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
     [encoder encodeObject:_firstName forKey:@"firstName"];
     [encoder encodeObject:_lastName forKey:@"lastName"];
     [encoder encodeObject:_streetName forKey:@"streetName"];
     [encoder encodeObject:_contactNumber forKey:@"contactNumber"];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)decoder {
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
     self = [super init];
     if (self) {
         _firstName = [decoder decodeObjectForKey:@"firstName"];

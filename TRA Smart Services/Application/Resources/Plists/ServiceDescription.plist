@@ -3,8 +3,6 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>language</key>
-		<string>en</string>
 		<key></key>
 		<dict>
 			<key>expectedTime</key>
@@ -30,6 +28,8 @@
 			<string>This service involves settling disputes of telecom consumers with their service providers. </string>
 			<key>name</key>
 			<string>Addressing Consumer disputes request with licensees on telecommunications services</string>
+			<key>requestServiceName</key>
+			<string></string>
 		</dict>
 		<key>New item - 3</key>
 		<dict>
@@ -145,6 +145,8 @@ It also performs a Ping test to measure the time it takes to get a response from
 			<key>name</key>
 			<string>Broadband speed test</string>
 		</dict>
+		<key>language</key>
+		<string>en</string>
 		<key>New item - 6</key>
 		<dict>
 			<key>expectedTime</key>
@@ -204,53 +206,6 @@ It also performs a Ping test to measure the time it takes to get a response from
 		</dict>
 	</dict>
 	<dict>
-		<key>language</key>
-		<string>ar</string>
-		<key>no index</key>
-		<dict>
-			<key>expectedTime</key>
-			<string>تهدف هيئة تنظيم الاتصالات إلى تسوية نزاعات المستهلكين بشكل كامل في غضون 21 يوم عمل. قد تستغرق بعض الحالات وقتاً أطول وذلك حسب موضوع وطبيعة النزاع. </string>
-			<key>termsAndCondition</key>
-			<string>ينبغي على المستهلكين:
-• أولاً تقديم الشكوى لدى مزود الخدمة الخاص بك
-• الحصول على رقم مرجعي للشكوى قبل تقديم النزاع إلى الهيئة وذلك ليتم معالجتها وفقاً لإجراءات التعامل مع الشكاوى المنفذة لديه
-• في حالة عدم رضا أو عدم حصول المستهلك على نتيجة معالجة الشكوى يمكنه رفعها للهيئة.
-• إرفاق الوثائق المطلوبة أعلاه إلى الهيئة عن طريق الموقع الإلكتروني: www.tra.gov.ae </string>
-			<key>officer</key>
-			<string>مدير شؤون المستهلكين</string>
-			<key>requiredDocuments</key>
-			<string>1.بطاقة الهوية 
-2.تفويض خطي أو توكيل رسمي (لعملاء الشركات فقط) 
-3.الرقم المرجعي للشكوى من مزود الخدمة 
-4.أي وثيقة أخرى لدعم الشكوى (مثل فاتورة الهاتف، تفاصيل الحساب، ونسخاً من جميع المراسلات الخطية من مزود الخدمة الخاص بك، وغيرها</string>
-			<key>package</key>
-			<string></string>
-			<key>fee</key>
-			<string>لايوجد </string>
-			<key>about</key>
-			<string>هي خدمة متوفرة لمستهلكي خدمات الاتصالات في دولة الإمارات العربية المتحدة بهدف مساعدتهم في تسوية أي نزاع قد يكون لديهم مع أي من مزودي خدمات الاتصالات بشأن خدمات الاتصالات المقدمة لهم. </string>
-			<key>name</key>
-			<string>طلب معالجة نزاعات المستهلكين مع المرخص لهم حول خدمات الإتصالات</string>
-		</dict>
-		<key>no index - 1</key>
-		<dict>
-			<key>expectedTime</key>
-			<string>خلال 3 أيام عمل و قد يستغرق الأمر أكثر من ذلك بناء على ماهية الشكوى</string>
-			<key>termsAndCondition</key>
-			<string>معلومات عن مقدم الطلب </string>
-			<key>officer</key>
-			<string>مسؤل مركز الاتصال</string>
-			<key>requiredDocuments</key>
-			<string>لايوجد </string>
-			<key>package</key>
-			<string></string>
-			<key>fee</key>
-			<string>لايوجد </string>
-			<key>about</key>
-			<string>بإمكانك تقديم شكوى أو ملاحظة على مزود الخدمة الخاص بك</string>
-			<key>name</key>
-			<string>تقديم شكوى على مزود الخدمة</string>
-		</dict>
 		<key>New item - 4</key>
 		<dict>
 			<key>expectedTime</key>
@@ -285,6 +240,25 @@ It also performs a Ping test to measure the time it takes to get a response from
 			<key>name</key>
 			<string>إصدار تصاريح التخليص الجمركي لأجهزة الاتصالات</string>
 		</dict>
+		<key>no index - 1</key>
+		<dict>
+			<key>expectedTime</key>
+			<string>خلال 3 أيام عمل و قد يستغرق الأمر أكثر من ذلك بناء على ماهية الشكوى</string>
+			<key>termsAndCondition</key>
+			<string>معلومات عن مقدم الطلب </string>
+			<key>officer</key>
+			<string>مسؤل مركز الاتصال</string>
+			<key>requiredDocuments</key>
+			<string>لايوجد </string>
+			<key>package</key>
+			<string></string>
+			<key>fee</key>
+			<string>لايوجد </string>
+			<key>about</key>
+			<string>بإمكانك تقديم شكوى أو ملاحظة على مزود الخدمة الخاص بك</string>
+			<key>name</key>
+			<string>تقديم شكوى على مزود الخدمة</string>
+		</dict>
 		<key>11</key>
 		<dict>
 			<key>expectedTime</key>
@@ -303,6 +277,32 @@ It also performs a Ping test to measure the time it takes to get a response from
 			<string>تقديم اقتراح للهيئة </string>
 			<key>name</key>
 			<string>تقديم مقترح</string>
+		</dict>
+		<key>no index</key>
+		<dict>
+			<key>expectedTime</key>
+			<string>تهدف هيئة تنظيم الاتصالات إلى تسوية نزاعات المستهلكين بشكل كامل في غضون 21 يوم عمل. قد تستغرق بعض الحالات وقتاً أطول وذلك حسب موضوع وطبيعة النزاع. </string>
+			<key>termsAndCondition</key>
+			<string>ينبغي على المستهلكين:
+• أولاً تقديم الشكوى لدى مزود الخدمة الخاص بك
+• الحصول على رقم مرجعي للشكوى قبل تقديم النزاع إلى الهيئة وذلك ليتم معالجتها وفقاً لإجراءات التعامل مع الشكاوى المنفذة لديه
+• في حالة عدم رضا أو عدم حصول المستهلك على نتيجة معالجة الشكوى يمكنه رفعها للهيئة.
+• إرفاق الوثائق المطلوبة أعلاه إلى الهيئة عن طريق الموقع الإلكتروني: www.tra.gov.ae </string>
+			<key>officer</key>
+			<string>مدير شؤون المستهلكين</string>
+			<key>requiredDocuments</key>
+			<string>1.بطاقة الهوية 
+2.تفويض خطي أو توكيل رسمي (لعملاء الشركات فقط) 
+3.الرقم المرجعي للشكوى من مزود الخدمة 
+4.أي وثيقة أخرى لدعم الشكوى (مثل فاتورة الهاتف، تفاصيل الحساب، ونسخاً من جميع المراسلات الخطية من مزود الخدمة الخاص بك، وغيرها</string>
+			<key>package</key>
+			<string></string>
+			<key>fee</key>
+			<string>لايوجد </string>
+			<key>about</key>
+			<string>هي خدمة متوفرة لمستهلكي خدمات الاتصالات في دولة الإمارات العربية المتحدة بهدف مساعدتهم في تسوية أي نزاع قد يكون لديهم مع أي من مزودي خدمات الاتصالات بشأن خدمات الاتصالات المقدمة لهم. </string>
+			<key>name</key>
+			<string>طلب معالجة نزاعات المستهلكين مع المرخص لهم حول خدمات الإتصالات</string>
 		</dict>
 		<key>New item - 5</key>
 		<dict>
@@ -323,6 +323,8 @@ It also performs a Ping test to measure the time it takes to get a response from
 			<key>name</key>
 			<string>إصدار تصاريح الطيف الترددي للخدمات الراديوية البحرية والجوية</string>
 		</dict>
+		<key>language</key>
+		<string>ar</string>
 		<key>9</key>
 		<dict>
 			<key>expectedTime</key>

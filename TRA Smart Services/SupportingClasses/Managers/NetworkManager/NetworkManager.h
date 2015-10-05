@@ -9,6 +9,21 @@
 #import "TRALoaderViewController.h"
 #import "UserModel.h"
 
+static NSString *const ServiceTypeGetDomainDataStringName = @"Get Domain Data";
+static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"Check Domain Availability";
+static NSString *const ServiceTypeSearchMobileIMEIStringName = @"Search Device By Imei";
+static NSString *const ServiceTypeSearchMobileBrandStringName = @"Search Device By BrandName";
+static NSString *const ServiceTypeFeedbackStringName = @"Rating service";
+static NSString *const ServiceTypeSMSSpamReportStringName = @"SMS Spam Block";
+static NSString *const ServiceTypeHelpSalimStringName = @"Help Salim";
+static NSString *const ServiceTypeVerificationStringName = @"Search Device By Imei";
+static NSString *const ServiceTypeCoverageStringName = @"complain Poor Coverage";
+static NSString *const ServiceTypeInternetSpeedTestStringName = @"";
+static NSString *const ServiceTypeCompliantAboutServiceProviderStringName = @"complain about Service Provider";
+static NSString *const ServiceTypeSuggestionStringName = @"complain Suggestion";
+static NSString *const ServiceTypeCompliantAboutServiceProviderEnquiresStringName = @"complain Enquiries";
+static NSString *const ServiceTypeCompliantAboutServiceProviderTRAStringName = @"complain about TRA Service";
+
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
 
 typedef NS_ENUM(NSUInteger, ServiceType) {
@@ -67,6 +82,10 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePostAddServicesToFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result;
 - (void)traSSNoCRMServiceDeleteServicesFromFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result;
 - (void)traSSNoCRMServiceGetAllServicesNames:(ResponseBlock)result;
+- (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse;
+
+#pragma mark - User
+
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse;
 - (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
 - (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse;
