@@ -84,16 +84,14 @@
             return;
         }
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
             if (error) {
-                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
-                //FIXME: Parse object
-//                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
-            [AppHelper hideLoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];

@@ -179,6 +179,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 - (void)ratingChanged:(NSInteger)rating
 {
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:@"Rating" forSerivce:self.presenter.title withRating:rating requestResult:^(id response, NSError *error) {}];
+    [self dismissTRALoader];
 }
 
 #pragma mark - Animations

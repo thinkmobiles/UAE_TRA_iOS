@@ -6,8 +6,11 @@
 //
 
 #import "ChangePasswordViewController.h"
+
 #import "UserProfileActionView.h"
+
 #import "UIImage+DrawText.h"
+#import "KeychainStorage.h"
 
 @interface ChangePasswordViewController () <UserProfileActionViewDelegate>
 
@@ -153,21 +156,23 @@
 
 - (void)buttonSaveDidTapped
 {
+    if (!self.passwordTextField.text.length || !self.retypePasswordTextField.text.length) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        return;
+    }
     if (![self.passwordTextField.text isEqualToString:self.retypePasswordTextField.text]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
     
-    [AppHelper showLoader];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [[NetworkManager sharedManager] traSSChangePassword:self.oldPasswordTextField.text newPassword:self.passwordTextField.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
-            //FIXME - Parse
-            //
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+            [[KeychainStorage new] storePassword:self.passwordTextField.text forUser:[KeychainStorage userName]];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }
-        [AppHelper hideLoader];
     }];
 }
 

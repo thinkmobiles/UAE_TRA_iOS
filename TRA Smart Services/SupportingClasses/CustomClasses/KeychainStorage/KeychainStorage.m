@@ -68,7 +68,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     return name;
 }
 
-- (void)saveCustomObject:(UserModel *)object key:(NSString *)key {
+- (void)saveCustomObject:(id)object key:(NSString *)key {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:encodedObject forKey:key];

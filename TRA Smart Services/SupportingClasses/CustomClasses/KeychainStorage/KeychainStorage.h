@@ -20,8 +20,8 @@ static NSString *const KeychainStorageKeyPassword = @"KeychainStorageKeyPassword
 - (void)removeStoredCredentials;
 - (NSDictionary *)credentialsForLoginedUser;
 
-- (void)saveCustomObject:(UserModel *)object key:(NSString *)key;
-- (UserModel *)loadCustomObjectWithKey:(NSString *)key;
+- (void)saveCustomObject:(id)object key:(NSString *)key;
+- (id)loadCustomObjectWithKey:(NSString *)key;
 
 + (NSString *)userName;
 
