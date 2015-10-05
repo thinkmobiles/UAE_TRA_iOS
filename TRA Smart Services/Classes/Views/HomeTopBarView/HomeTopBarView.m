@@ -30,7 +30,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
 @property (assign, nonatomic) BOOL isFakeButtonsOnTop;
-@property (assign, nonatomic) __block BOOL isAppearenceAnimationCompleted;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
@@ -121,12 +120,10 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel
 {
-    if (self.isAppearenceAnimationCompleted) {
-        CGFloat opacity = (1 - opacityLevel);
-        self.bottomLeftHexagonLayer.opacity = opacity;
-        self.bottomMidHexagonLayer.opacity = opacity;
-        self.bottomRightHexagonLayer.opacity = opacity;
-    }
+    CGFloat opacity = (1 - opacityLevel);
+    self.bottomLeftHexagonLayer.opacity = opacity;
+    self.bottomMidHexagonLayer.opacity = opacity;
+    self.bottomRightHexagonLayer.opacity = opacity;
 }
 
 - (void)scaleLogo:(BOOL)scale
@@ -203,11 +200,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     self.informationLayer.position = informationMovePoint;
 }
 
-- (void)stopAllOperations
-{
-    self.isAppearenceAnimationCompleted = YES;
-}
-
 - (void)animateTopViewApearence
 {
     CGFloat AnimationTimeForLine = 0.15f;
@@ -279,8 +271,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.hexagonicalTopLayer.opacity = 0.0f;
     self.avatarImageLayer.opacity = 0.f;
-
-    self.isAppearenceAnimationCompleted = NO;
 }
 
 - (void)updateUIColor;
@@ -305,7 +295,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     if (anim == [self.bottomLeftHexagonLayer animationForKey:@"lastTopAppearenceAnimation"]) {
         [self.bottomLeftHexagonLayer removeAllAnimations];
-        self.isAppearenceAnimationCompleted = YES;
     }
 }
 
