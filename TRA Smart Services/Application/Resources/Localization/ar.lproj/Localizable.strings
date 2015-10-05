@@ -21,9 +21,9 @@
 "message.success" = "تم بنجاح";
 "message.EmptyInputParameters" = "يرجى ملئ الحقل";
 "message.IncorrectRatings" = "خطأ في الصيغة";
-"message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
-"message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
-"message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
+"message.NoCameraPermissionsGranted" = "هذا التطبيق يتطلب الوصول إلى الكاميرا.\nيرجى تفعيل الوصول للكميرا من الإعدادات / الخصوصية / الكاميرا";
+"message.NoLocationPermissionGranted" = "هذا التطبيق يتطلب الوصول إلى موقع الجهاز.\nيرجى تفعيل خدمات الموقع من الإعدادات / الخصوصية / خدمات الموقع";
+"message.NoLocationEnabledOnDevice" = "خدمات الموقع غير مفعلة على هذا الجهاز.\nيرجى تفعيل خدمات الموقع من الإعدادات / الخصوصية / خدمات الموقع.";
 "message.NoInternetConnection" = "لا يوجد اتصال بالانترنت. يرجى التحقق من الشبكة والمحاولة من جديد.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
 "message.PasswordsNotEqual" = "يجب أن تتطابق كلمة المرور مع تأكيدها. يرجى المحاولة من جديد.";
@@ -52,7 +52,7 @@
 
 //ProviderType
 
-"providerType.selectProvider.text" = "اختر الإمارة";
+"providerType.selectProvider.text" = "اختر مزود الخدمة";
 "providerType.Du" = "دو";
 "providerType.Etisalat" = "إتصالات";
 "providerType.Yahsat" = "ياسات";
@@ -108,7 +108,7 @@
 "restorePassword.title" = "استعادة كلمة المرور";
 "restorePassword.PlaceholderText.email" = "البريد الالكتروني";
 "restorePassword.button.restore" = "استعادة كلمة المرور";
-"restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
+"restorePassword.information.label.text" = "إذا كنت قد نسيت كلمة المرور، يرجى إدخال عنوان بريدك الإلكتروني وسوف نرسل لك رسالة بكلمة مرور جديدة.";
 
 //SettingsViewController
 
@@ -207,7 +207,7 @@
 
 //InfoHubViewController
 
-"infoHubViewController.textLabel" = "There are no pending transactions";
+"infoHubViewController.textLAbel" = "لا توجد معاملات في الانتظار";
 
 "infoHub.title" = "معلومات";
 "announcements.label.text" = "اعلانات";
@@ -238,13 +238,13 @@
 
 //CompliantViewController
 
-"compliantViewController.title.comtlaintTRA" = "شكوى";
-"compliantViewController.title.enquires" = "Enquires";
-"compliantViewController.title.compliantAboutServiceProvider" = "Compliant about service provider";
-"compliantViewController.compliantTitleTextField.placeholder" = "عنوان الشكوى";
+"compliantViewController.title.comtlaintTRA" = "شكوى على الهيئة";
+"compliantViewController.title.enquires" = "استفسارات";
+"compliantViewController.title.compliantAboutServiceProvider" = "شكوى على مزود خدمة";
+"compliantViewController.compliantTitleTextField.placeholder" = "عنوان";
 "compliantViewController.referenceNumberTextField.placeholder" = "الرقم المرجعي";
 "compliantViewController.description.placeholder" = "شرح";
-"compliantViewController.compliantSendBarButtonItem.title" = "شكوى";
+"compliantViewController.compliantSendBarButtonItem.title" = "ارسل";
 
 //SpamReportViewControler
 
@@ -281,7 +281,7 @@
 
 //CheckIMEIViewController
 
-"checkIMEIViewController.title" = "تحقق من رقم IMEI";
+"checkIMEIViewController.title" = "تحقق من جهاز";
 "checkIMEIViewController.checkIMEIButton.title" = "تحقق من رقم IMEI";
 
 //UserProfileViewController
@@ -295,7 +295,7 @@
 
 //ResetPasswordViewController
 
-"resetPassword.info" = "To reset your password, please type your email in the field below and a temporary password will by send to you.";
+"resetPassword.info" = "لتغيير كلمة المرور، يرجى إدخال عنوان بريدك الإلكتروني و سوف نرسل لك رسالة.";
 "resetPassword.email" = "البريد الإلكتروني";
 "resetPassword.placeHolder.email" = "";
 "resetPassword.retypeEmail" = "إعادة البريد الإلكتروني";
@@ -339,7 +339,6 @@
 
 "verificationIMEIViewController.title" = "تحقق من رقم IMEI";
 "verificationIMEIViewController.serviceHeaderLabel" = "ادخل رقم IMEI للجهاز المراد التحقق منه.";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "";
 "verificationIMEIViewController.sendIMEICodeLabel" = "ارسل";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "اكتب هنا";
 
@@ -347,7 +346,7 @@
 
 "TRALoader.backButton.title" = "عودة إلى الرئيسية";
 "TRALoader.backButton.cancel" = "الغاء";
-"TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
+"TRALoader.information.begin" = "لحظات من فضلك...";
 "TRALoader.information.finish" = "تم ارسال طلبك بنجاح";
 
 //AutoLoginService
@@ -359,10 +358,10 @@
 "fingerPrintService.passwordRequest.message" = "امسح بصمتك للوصول للخدمات";
 "fingerPrintService.CancelAuth.title" = "إلغاء الدخول";
 "fingerPrintService.ConfirmPassword.title" = "ادخل كلمة المرور";
-"fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
-"fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
-"fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
-"fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
+"fingerPrintService.TouchIDNotEnrolled" = "الدخول بالبصمة غير مفعل";
+"fingerPrintService.PasscodeHasNotBeenSet" = "لم يتم تعيين كلمة المرور";
+"fingerPrintService.TouchIdNotAvaliable" = "الدخول بالبصمة غير متوفر";
+"fingerPrintService.LoginCanceledBySystem" = "تم إلغاء العملية";
 "fingerPrintService.LoginCanceledByUser" = "تم الإلغاء من قبل المستخدم";
 "fingerPrintService.InvalidFingerPrint" = "بصمة غير صحيحة";
 
@@ -389,7 +388,7 @@
 
 //ListOfMobileBrandViewController
 
-"listOfMobileBrandViewController.title" = "List of Mobile Brand";
+"listOfMobileBrandViewController.title" = "الأجهزة المعتمدة";
 
 //ListOfDevicesViewController
 
@@ -401,11 +400,19 @@
 "innovationsViewController.submitButton" = "أرسل";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
 "innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";
+"innovationsViewController.selectInnovativeIdeasFor0" = "أفكار ابتكارية تساهم بـ";
+"innovationsViewController.selectInnovativeIdeasFor1" = "اسعاد المتعاملين";
+"innovationsViewController.selectInnovativeIdeasFor2" = "رضا الموظفين";
+"innovationsViewController.selectInnovativeIdeasFor3" = "تطوير خدمات الهيئة";
+"innovationsViewController.selectInnovativeIdeasFor4" = "زيادة الإيرادات وترشيد النفقات";
+"innovationsViewController.selectInnovativeIdeasFor5" = "رفع صورة الهيئة وسمعتها المؤسسية";
+"innovationsViewController.selectInnovativeIdeasFor6" = "استشراف المستقبل";
 
 //ResultIMEIViewController
 
 "resultIMEIViewController.title" = "نتيجة البحث";
 "resultIMEIViewController.noDeviceDatabase" = "لا تجد نتائج";
+
 //SelectImageActionSheet
 
 "selectImageActionSheet.cancel" = "الغاء";

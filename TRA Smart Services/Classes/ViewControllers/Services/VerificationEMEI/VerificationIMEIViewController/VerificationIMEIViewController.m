@@ -17,7 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet ServiceHeaderView *conteinerServiseHeaderView;
 @property (weak, nonatomic) IBOutlet BottomBorderTextField *verificationIMEITextField;
-@property (weak, nonatomic) IBOutlet UILabel *verificationIMEIInfoEnterLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendIMEICodeButton;
 @property (weak, nonatomic) IBOutlet UILabel *sendIMEICodeLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -102,8 +101,7 @@
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"verificationIMEIViewController.title");
-    self.verificationIMEITextField.placeholder = dynamicLocalizedString(@"verificationIMEIViewController.verificationIMEITextField.placeholder");;
-    self.verificationIMEIInfoEnterLabel.text = dynamicLocalizedString(@"verificationIMEIViewController.verificationIMEIInfoEnterLabel");;
+    self.verificationIMEITextField.placeholder = dynamicLocalizedString(@"verificationIMEIViewController.verificationIMEITextField.placeholder");
     self.sendIMEICodeLabel.text = dynamicLocalizedString(@"verificationIMEIViewController.sendIMEICodeLabel");
 }
 
