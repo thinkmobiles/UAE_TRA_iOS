@@ -10,5 +10,6 @@
 @property (strong, nonatomic) UILabel *searchanbeleViewControllerTitle;
 
 - (void)localizeUI;
+- (BOOL)isSearchBarActive;
 
 @end

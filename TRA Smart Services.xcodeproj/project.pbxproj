@@ -83,6 +83,8 @@
 		E07889761BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889741BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E07889801BBAB9F600F019EB /* MobileBrandList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E078897F1BBAB9F600F019EB /* MobileBrandList.plist */; settings = {ASSET_TAGS = (); }; };
 		E07889851BBAE14200F019EB /* InnovationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07889841BBAE14200F019EB /* InnovationsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E07B481C1BC2C28B00061CB3 /* TransactionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E07B481B1BC2C28B00061CB3 /* TransactionModel.m */; settings = {ASSET_TAGS = (); }; };
+		E07B48241BC2C60C00061CB3 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = E07B48231BC2C60C00061CB3 /* NSDictionary+Safe.m */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8151BAFDCAA00D40579 /* InnovationsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D5E80D1BAFDCAA00D40579 /* InnovationsCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8161BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E80E1BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib */; settings = {ASSET_TAGS = (); }; };
 		E0D5E8171BAFDCAA00D40579 /* InnovationsCollectionViewCellEuropeUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D5E80F1BAFDCAA00D40579 /* InnovationsCollectionViewCellEuropeUI.xib */; settings = {ASSET_TAGS = (); }; };
@@ -322,6 +324,10 @@
 		E078897F1BBAB9F600F019EB /* MobileBrandList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MobileBrandList.plist; sourceTree = "<group>"; };
 		E07889831BBAE14200F019EB /* InnovationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovationsViewController.h; sourceTree = "<group>"; };
 		E07889841BBAE14200F019EB /* InnovationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovationsViewController.m; sourceTree = "<group>"; };
+		E07B481A1BC2C28B00061CB3 /* TransactionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionModel.h; sourceTree = "<group>"; };
+		E07B481B1BC2C28B00061CB3 /* TransactionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionModel.m; sourceTree = "<group>"; };
+		E07B48221BC2C60C00061CB3 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		E07B48231BC2C60C00061CB3 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		E0D5E80C1BAFDCAA00D40579 /* InnovationsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovationsCollectionViewCell.h; sourceTree = "<group>"; };
 		E0D5E80D1BAFDCAA00D40579 /* InnovationsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovationsCollectionViewCell.m; sourceTree = "<group>"; };
 		E0D5E80E1BAFDCAA00D40579 /* InnovationsCollectionViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InnovationsCollectionViewCellArabicUI.xib; sourceTree = "<group>"; };
@@ -683,6 +689,7 @@
 		9336472F1BB29EA2004EC552 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E07B48191BC2C26E00061CB3 /* TransactionModel */,
 				F1B5B7E51BBC2638004B1F75 /* UserModel */,
 				F1EE541C1BB94FB6005D7B77 /* CheckIMEIModel */,
 				933647301BB29EBB004EC552 /* WhoIsModel */,
@@ -1004,6 +1011,24 @@
 			);
 			name = InnovationsViewController;
 			path = ../InnovationsViewController;
+			sourceTree = "<group>";
+		};
+		E07B48191BC2C26E00061CB3 /* TransactionModel */ = {
+			isa = PBXGroup;
+			children = (
+				E07B481A1BC2C28B00061CB3 /* TransactionModel.h */,
+				E07B481B1BC2C28B00061CB3 /* TransactionModel.m */,
+			);
+			path = TransactionModel;
+			sourceTree = "<group>";
+		};
+		E07B48211BC2C5F200061CB3 /* NSDictionary+Safe */ = {
+			isa = PBXGroup;
+			children = (
+				E07B48221BC2C60C00061CB3 /* NSDictionary+Safe.h */,
+				E07B48231BC2C60C00061CB3 /* NSDictionary+Safe.m */,
+			);
+			path = "NSDictionary+Safe";
 			sourceTree = "<group>";
 		};
 		E0D5E80B1BAFDCAA00D40579 /* InnovationsCollectionViewCell */ = {
@@ -1419,6 +1444,7 @@
 		ED982F371B5D24F300B6B644 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E07B48211BC2C5F200061CB3 /* NSDictionary+Safe */,
 				9346293D1B902EAF0017E4CD /* NSString+Validation */,
 				934628F61B8D873C0017E4CD /* MBProgressHUD+CancelButton */,
 				93A436EF1B85F763009299C5 /* UIFont+AppFonts */,
@@ -2140,6 +2166,7 @@
 				E07889761BBA9EFD00F019EB /* ListOfMobileBrandTableViewCell.m in Sources */,
 				934629401B902EC00017E4CD /* NSString+Validation.m in Sources */,
 				F177854F1B8DE23800D96B1E /* AddToFavouriteViewController.m in Sources */,
+				E07B48241BC2C60C00061CB3 /* NSDictionary+Safe.m in Sources */,
 				ED2084F41B5E738600779CBD /* UIProgressView+AFNetworking.m in Sources */,
 				ED5A343C1B6EACAC0082AF5B /* OpacityCollectionViewFlowLayout.m in Sources */,
 				933647331BB29EC9004EC552 /* WhoIsModel.m in Sources */,
@@ -2265,6 +2292,7 @@
 				ED2084D81B5E734000779CBD /* AFSecurityPolicy.m in Sources */,
 				ED0CBC241B6FFDED002E6AB3 /* SegmentView.m in Sources */,
 				ED982F3C1B5D25A900B6B644 /* MBProgressHUD.m in Sources */,
+				E07B481C1BC2C28B00061CB3 /* TransactionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

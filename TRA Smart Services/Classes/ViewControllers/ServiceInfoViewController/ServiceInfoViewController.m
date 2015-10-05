@@ -179,8 +179,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
             weakSelf.currentServiceLocalizedDataSource = response;
         }
         [AppHelper hideLoader];
-    }];
-    
+    }];    
 }
 
 - (NSString *)serviceNameForCurrentService

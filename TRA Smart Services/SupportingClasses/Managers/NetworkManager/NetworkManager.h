@@ -9,20 +9,20 @@
 #import "TRALoaderViewController.h"
 #import "UserModel.h"
 
-static NSString *const ServiceTypeGetDomainDataStringName = @"Get Domain Data";
-static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"Check Domain Availability";
-static NSString *const ServiceTypeSearchMobileIMEIStringName = @"Search Device By Imei";
-static NSString *const ServiceTypeSearchMobileBrandStringName = @"Search Device By BrandName";
+static NSString *const ServiceTypeGetDomainDataStringName = @"whois";
+static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"availability";
+static NSString *const ServiceTypeSearchMobileIMEIStringName = @"verification";
+static NSString *const ServiceTypeSearchMobileBrandStringName = @"mobile brand";
 static NSString *const ServiceTypeFeedbackStringName = @"Rating service";
-static NSString *const ServiceTypeSMSSpamReportStringName = @"SMS Spam Block";
-static NSString *const ServiceTypeHelpSalimStringName = @"Help Salim";
-static NSString *const ServiceTypeVerificationStringName = @"Search Device By Imei";
-static NSString *const ServiceTypeCoverageStringName = @"complain Poor Coverage";
+static NSString *const ServiceTypeSMSSpamReportStringName = @"report sms";
+static NSString *const ServiceTypeHelpSalimStringName = @"help salim";
+static NSString *const ServiceTypeVerificationStringName = @"verification";
+static NSString *const ServiceTypeCoverageStringName = @"coverage";
 static NSString *const ServiceTypeInternetSpeedTestStringName = @"";
-static NSString *const ServiceTypeCompliantAboutServiceProviderStringName = @"complain about Service Provider";
-static NSString *const ServiceTypeSuggestionStringName = @"complain Suggestion";
-static NSString *const ServiceTypeCompliantAboutServiceProviderEnquiresStringName = @"complain Enquiries";
-static NSString *const ServiceTypeCompliantAboutServiceProviderTRAStringName = @"complain about TRA Service";
+static NSString *const ServiceTypeCompliantAboutServiceProviderStringName = @"complain about service provider";
+static NSString *const ServiceTypeSuggestionStringName = @"suggestion";
+static NSString *const ServiceTypeCompliantAboutServiceProviderEnquiresStringName = @"enquiries";
+static NSString *const ServiceTypeCompliantAboutServiceProviderTRAStringName = @"complain about tra";
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
 
@@ -83,6 +83,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServiceDeleteServicesFromFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result;
 - (void)traSSNoCRMServiceGetAllServicesNames:(ResponseBlock)result;
 - (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse;
+- (void)traSSNoCRMServiceGetGetTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc responseBlock:(ResponseBlock)getTransactionResponse;
 
 #pragma mark - User
 
