@@ -338,7 +338,6 @@
 
 "verificationIMEIViewController.title" = "verificationIMEIViewController.title";
 "verificationIMEIViewController.serviceHeaderLabel" = "verificationIMEIViewController.serviceHeaderLabel";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "verificationIMEIViewController.verificationIMEIInfoEnterLabel";
 "verificationIMEIViewController.sendIMEICodeLabel" = "verificationIMEIViewController.sendIMEICodeLabel";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "verificationIMEIViewController.verificationIMEITextField.placeholder";
 
@@ -369,7 +368,7 @@
 
 //SpamListViewController
 
-"spamListViewController.title" = "";
+"spamListViewController.title" = "spamListViewController.title";
 
 //InnovationsCollectionViewCell
 
@@ -402,6 +401,13 @@
 "innovationsViewController.submitButton" = "innovationsViewController.submitButton";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "innovationsViewController.innovationsTitleTextField.placeholder";
 "innovationsViewController.descriptionTextView.placeholder" = "innovationsViewController.descriptionTextView.placeholder";
+"innovationsViewController.selectInnovativeIdeasFor0" = "innovationsViewController.selectInnovativeIdeasFor0";
+"innovationsViewController.selectInnovativeIdeasFor1" = "innovationsViewController.selectInnovativeIdeasFor1";
+"innovationsViewController.selectInnovativeIdeasFor2" = "innovationsViewController.selectInnovativeIdeasFor2";
+"innovationsViewController.selectInnovativeIdeasFor3" = "innovationsViewController.selectInnovativeIdeasFor3";
+"innovationsViewController.selectInnovativeIdeasFor4" = "innovationsViewController.selectInnovativeIdeasFor4";
+"innovationsViewController.selectInnovativeIdeasFor5" = "innovationsViewController.selectInnovativeIdeasFor5";
+"innovationsViewController.selectInnovativeIdeasFor6" = "innovationsViewController.selectInnovativeIdeasFor6";
 
 //ResultIMEIViewController
 

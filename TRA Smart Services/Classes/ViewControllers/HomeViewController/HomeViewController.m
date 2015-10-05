@@ -520,8 +520,11 @@ static LanguageType startLanguage;
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
-        cell.itemLogoImageView.image = serviceLogo;
+        NSString *logoName = [selectedServiceDetails valueForKey:@"serviceLogo"];
+        if (logoName.length) {
+            UIImage *serviceLogo = [UIImage imageNamed:logoName];
+            cell.itemLogoImageView.image = serviceLogo;
+        }
     }
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
     cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);
