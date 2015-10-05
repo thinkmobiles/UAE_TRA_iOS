@@ -312,6 +312,7 @@ static LanguageType startingLanguageType;
 
 - (NSDate *)dateFromString:(NSString *)inputString
 {
+#warning Incorrect formatter
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm/dd/yyyy HH:mm:ss a"];
     NSDate *date = [formatter dateFromString:inputString];
