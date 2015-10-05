@@ -13,6 +13,8 @@
 		<string>serviceInfoItmeDetailedDescription.0</string>
 		<key>serviceKeyName</key>
 		<string>about</string>
+		<key>serviceResponseKey</key>
+		<string>About the service</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -25,6 +27,8 @@
 		<string>serviceInfoItmeDetailedDescription.1</string>
 		<key>serviceKeyName</key>
 		<string>requiredDocuments</string>
+		<key>serviceResponseKey</key>
+		<string>Required documents</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -37,6 +41,8 @@
 		<string>serviceInfoItmeDetailedDescription.2</string>
 		<key>serviceKeyName</key>
 		<string>termsAndCondition</string>
+		<key>serviceResponseKey</key>
+		<string>Terms and conditions</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -49,6 +55,8 @@
 		<string>serviceInfoItmeDetailedDescription.3</string>
 		<key>serviceKeyName</key>
 		<string>package</string>
+		<key>serviceResponseKey</key>
+		<string>Service Package</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -61,6 +69,8 @@
 		<string>serviceInfoItmeDetailedDescription.4</string>
 		<key>serviceKeyName</key>
 		<string>expectedTime</string>
+		<key>serviceResponseKey</key>
+		<string>Expected time</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -73,6 +83,8 @@
 		<string>serviceInfoItmeDetailedDescription.5</string>
 		<key>serviceKeyName</key>
 		<string>fee</string>
+		<key>serviceResponseKey</key>
+		<string>Service fee</string>
 	</dict>
 	<dict>
 		<key>serviceInfoItemName</key>
@@ -85,6 +97,8 @@
 		<string>serviceInfoItmeDetailedDescription.6</string>
 		<key>serviceKeyName</key>
 		<string>officer</string>
+		<key>serviceResponseKey</key>
+		<string>Officer in charge of this service</string>
 	</dict>
 </array>
 </plist>

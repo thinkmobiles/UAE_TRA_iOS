@@ -217,6 +217,12 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     [self performGET:traSSNOCRMServiceGETAllServicesNames withParameters:nil response:result];
 }
 
+- (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse
+{
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@&lang=%@", traSSNOCRMServiceGETAboutServiceInfo, serviceName, languageCode];
+    [self performGET:requestURL withParameters:nil response:aboutServiceInfoResponse];
+}
+
 #pragma mark - UserInteraction
 
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse
@@ -339,6 +345,9 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
                 info = [responseDictionary valueForKey:@"availableStatus"];
             } else if ([responseDictionary valueForKey:@"urlData"]) {
                 info = [responseDictionary valueForKey:@"urlData"];
+            } else {
+                handler(responseDictionary, nil);
+                return;
             }
             handler(info, nil);
         } else if ([value isKindOfClass:[NSArray class]]) {
