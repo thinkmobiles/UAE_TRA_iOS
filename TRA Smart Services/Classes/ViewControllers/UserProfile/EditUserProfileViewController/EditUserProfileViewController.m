@@ -89,7 +89,8 @@
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                //FIXME: Parse object
+//                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
             [AppHelper hideLoader];

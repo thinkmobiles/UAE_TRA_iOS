@@ -157,7 +157,18 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
         return;
     }
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+    
+    [AppHelper showLoader];
+    [[NetworkManager sharedManager] traSSChangePassword:self.oldPasswordTextField.text newPassword:self.passwordTextField.text requestResult:^(id response, NSError *error) {
+        if (error) {
+            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            //FIXME - Parse
+            //
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+        }
+        [AppHelper hideLoader];
+    }];
 }
 
 @end

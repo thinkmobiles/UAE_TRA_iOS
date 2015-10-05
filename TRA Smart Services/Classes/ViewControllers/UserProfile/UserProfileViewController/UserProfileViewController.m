@@ -31,6 +31,7 @@
     
     [self prepareDataSource];
     [self prepareUserView];
+    [self getProfileFromServer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,12 +40,7 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     
-    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
-    if (!user) {
-        user = [UserModel new];
-    }
-    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
-    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+    [self fillUserProfile];
 }
 
 #pragma mark - UITableViewDataSource
@@ -121,6 +117,33 @@
 }
 
 #pragma mark - Private
+
+- (void)getProfileFromServer
+{
+    [AppHelper showLoader];
+    __weak typeof(self) weakSelf = self;
+    [[NetworkManager sharedManager] traSSGetUserProfileResult:^(id response, NSError *error) {
+        if (error) {
+            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            //FIXME - Parse
+//            UserModel *user = [UserModel new];
+//            [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+//            [weakSelf fillUserProfile];
+        }
+        [AppHelper hideLoader];
+    }];
+}
+
+- (void)fillUserProfile
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (!user) {
+        user = [UserModel new];
+    }
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+}
 
 - (void)prepareDataSource
 {

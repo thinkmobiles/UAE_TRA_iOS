@@ -69,8 +69,10 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServiceGetAllServicesNames:(ResponseBlock)result;
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse;
 - (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
+- (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse;
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse;
+- (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse;
 - (void)traSSLogout:(ResponseBlock)logoutResponse;
-- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)registerResponse;
 
 #pragma mark - Temp
 

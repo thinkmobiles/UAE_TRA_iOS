@@ -249,6 +249,30 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     }];
 }
 
+- (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse
+{
+    [self performGET:traSSProfile withParameters:nil response:profileResponse];
+}
+
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse
+{
+    NSDictionary *parameters = @{
+                                 @"first" : userProfile.firstName,
+                                 @"last" : userProfile.lastName
+                                 };
+    
+    [self performPUT:traSSProfile withParameters:parameters response:updateProfileResponse];
+}
+
+- (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse
+{
+    NSDictionary *parameters = @{
+                                 @"oldPass" : oldPassword,
+                                 @"newPass" : newPassword
+                                 };
+    [self performPUT:traSSChangePassword withParameters:parameters response:changePasswordResponse];
+}
+
 - (void)traSSLogout:(ResponseBlock)logoutResponse
 {
     __weak typeof(self) weakSelf = self;
@@ -258,16 +282,6 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, logoutResponse);
     }];
-}
-
-- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse
-{
-    NSDictionary *parameters = @{
-                                 @"first" : userProfile.firstName,
-                                 @"last" : userProfile.lastName
-                                };
-    
-    [self performPUT:traSSUpdateProfile withParameters:parameters response:updateProfileResponse];
 }
 
 #pragma mark - LifeCycle
