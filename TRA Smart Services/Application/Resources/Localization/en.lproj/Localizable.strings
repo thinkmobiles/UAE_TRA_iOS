@@ -383,7 +383,7 @@
 "spamSelectionViewController.title" = "Spam";
 "spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites\nas Spam to TRA";
 "spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "Report\nSMS";
-"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "Report\nWebsite";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "Help\nSalim";
 "spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "View\nMy List";
 
 //ListOfMobileBrandViewController

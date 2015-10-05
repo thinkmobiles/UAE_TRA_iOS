@@ -22,6 +22,8 @@
     [super prepareForReuse];
     
     [self updateViewMode:self.cellPresentationMode];
+    self.itemLogoImageView.image = nil;
+    self.menuTitleLabel.text = @"";
 }
 
 #pragma mark - Custom Accessors

@@ -3795,7 +3795,7 @@ a new password will be sent.</string>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRH-zT-RmH" userLabel="Polygon - UIView" customClass="HexagonView">
                                                                     <rect key="frame" x="10" y="0.0" width="70" height="82"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chat" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-7M-nqD" userLabel="ItemLogo - UiIMageView">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-7M-nqD" userLabel="ItemLogo - UiIMageView">
                                                                             <rect key="frame" x="8" y="21" width="54" height="41"/>
                                                                             <animations/>
                                                                         </imageView>
@@ -7037,7 +7037,6 @@ a new password will be sent.</string>
         <image name="close" width="64" height="64"/>
         <image name="close5" width="16" height="16"/>
         <image name="fav_back_orange" width="640" height="960"/>
-        <image name="ic_chat" width="30" height="24"/>
         <image name="ic_del" width="16" height="16"/>
         <image name="ic_downld_logo" width="52" height="44"/>
         <image name="ic_favorites" width="21" height="19"/>
