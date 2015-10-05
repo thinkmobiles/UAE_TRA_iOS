@@ -30,6 +30,13 @@
     [self prepareTitleLabel];
 }
 
+#pragma mark - Public
+
+- (BOOL)isSearchBarActive
+{
+    return [self.searchBar isFirstResponder];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)searchBarButtonTapped:(id)sender
