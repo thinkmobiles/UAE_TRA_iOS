@@ -42,13 +42,20 @@ static CGFloat const heightSelectTableViewCell = 40.f;
 
 - (IBAction)sendInfo:(id)sender
 {
-    if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length) {
+    if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length || !self.selectedInnovate) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-        });
+        [[NetworkManager sharedManager] traSSNoCRMServicePostInnovationTitle:self.innovationsTitleTextField.text message:self.descriptionTextView.text type:@(self.selectedInnovate) responseBlock:^(id response, NSError *error) {
+            if (error) {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+            } else {
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                loader.ratingView.hidden = NO;
+            });
+        }];
     }
 }
 

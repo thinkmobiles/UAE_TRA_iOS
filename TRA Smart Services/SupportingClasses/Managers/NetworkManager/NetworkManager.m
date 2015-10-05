@@ -183,6 +183,15 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     [self performPOST:traSSNOCRMServicePOSTPoorCoverage withParameters:parameters response:poorCoverageResponse];
 }
 
+- (void)traSSNoCRMServicePostInnovationTitle:(NSString *)title message:(NSString *)message type:(NSNumber *)type responseBlock:(ResponseBlock)innovationResponse{
+    NSDictionary *parameters = @{
+                                 @"title" : title,
+                                 @"message" : message,
+                                 @"type" : type
+                                 };
+    [self performPOST:traSSNOCRMServicePostInnovation withParameters:parameters response:innovationResponse];
+}
+
 #pragma mark - Favourite
 
 - (void)traSSNoCRMSErviceGetFavoritesServices:(ResponseBlock)favoriteServices

@@ -145,10 +145,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -940,60 +936,6 @@
                                                             <constraint firstAttribute="height" constant="1" id="eEq-nL-Itt"/>
                                                         </constraints>
                                                     </view>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREET ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="HJx-Mu-hRB" userLabel="StreetAddress - UILabel">
-                                                        <rect key="frame" x="30" y="113" width="540" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="Dbv-s8-3A1"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
-                                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1iS-g8-2oM" userLabel="StreetAddress - UITextField">
-                                                        <rect key="frame" x="30" y="129" width="540" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="PmY-m6-Z4G"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="iCT-2a-cfz" id="5gi-Cv-x6I"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-ky-Fi5" userLabel="StreetAddress Separator - UIView">
-                                                        <rect key="frame" x="30" y="155" width="540" height="1"/>
-                                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="fmg-zu-utr"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT NUMBER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="542" translatesAutoresizingMaskIntoConstraints="NO" id="DYo-x1-Fm5" userLabel="ContactNumber  - UILabel">
-                                                        <rect key="frame" x="30" y="171" width="540" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="Rkc-2H-X0a"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="7"/>
-                                                        <color key="textColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-x9-Ujr" userLabel="ContactNumber - UITextField">
-                                                        <rect key="frame" x="30" y="187" width="540" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="rot-JV-689"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="iCT-2a-cfz" id="0m0-Aq-wXB"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-ti-F6f" userLabel="Emirate Separator - UIView">
-                                                        <rect key="frame" x="30" y="213" width="540" height="1"/>
-                                                        <color key="backgroundColor" red="0.81176470590000005" green="0.81568627449999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="hQq-Xp-dEr"/>
-                                                        </constraints>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8b-N6-K0h" customClass="UserProfileActionView">
                                                         <rect key="frame" x="185" y="213" width="230" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1005,44 +947,26 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="DYo-x1-Fm5" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="0K8-EW-14b"/>
-                                                    <constraint firstItem="1iS-g8-2oM" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="0KZ-Vq-ntY"/>
                                                     <constraint firstAttribute="right" secondItem="Eqv-Px-3ke" secondAttribute="right" constant="30" id="20Y-F9-ddD"/>
                                                     <constraint firstItem="PeD-Od-con" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="2Xf-PQ-1X4"/>
                                                     <constraint firstItem="vMG-Zb-moy" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="47a-k4-6b2"/>
-                                                    <constraint firstItem="0nS-x9-Ujr" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="5hC-ED-NXb"/>
                                                     <constraint firstItem="bgC-4J-fPp" firstAttribute="top" secondItem="Y6h-a2-WUQ" secondAttribute="top" id="6kg-6j-Uot"/>
                                                     <constraint firstAttribute="right" secondItem="aHV-CC-DZx" secondAttribute="right" constant="30" id="6s9-8g-POo"/>
-                                                    <constraint firstAttribute="right" secondItem="DYo-x1-Fm5" secondAttribute="right" constant="30" id="7My-RK-Wm7"/>
                                                     <constraint firstItem="aHV-CC-DZx" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="83k-E6-N7R"/>
-                                                    <constraint firstItem="1iS-g8-2oM" firstAttribute="top" secondItem="HJx-Mu-hRB" secondAttribute="bottom" constant="4" id="84h-s0-iQx"/>
                                                     <constraint firstItem="PeD-Od-con" firstAttribute="top" secondItem="lGo-be-ChU" secondAttribute="bottom" id="92q-LG-5uf"/>
+                                                    <constraint firstItem="N8b-N6-K0h" firstAttribute="top" secondItem="PeD-Od-con" secondAttribute="bottom" constant="115" id="BiY-MX-PoT"/>
                                                     <constraint firstAttribute="right" secondItem="vMG-Zb-moy" secondAttribute="right" constant="30" id="CIY-kl-3Ss"/>
                                                     <constraint firstItem="N8b-N6-K0h" firstAttribute="centerX" secondItem="Y6h-a2-WUQ" secondAttribute="centerX" id="FZU-qg-HZf"/>
-                                                    <constraint firstItem="Ttg-ky-Fi5" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="GAg-zy-Hek"/>
                                                     <constraint firstAttribute="right" secondItem="PeD-Od-con" secondAttribute="right" constant="30" id="IgX-jh-sId"/>
                                                     <constraint firstItem="bgC-4J-fPp" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="Ipr-CX-Cma"/>
-                                                    <constraint firstAttribute="right" secondItem="Ttg-ky-Fi5" secondAttribute="right" constant="30" id="MfV-Cm-Swb"/>
-                                                    <constraint firstItem="Ttg-ky-Fi5" firstAttribute="top" secondItem="1iS-g8-2oM" secondAttribute="bottom" id="NaH-eY-KVU"/>
                                                     <constraint firstAttribute="right" secondItem="bgC-4J-fPp" secondAttribute="right" constant="30" id="NjC-DY-t5o"/>
                                                     <constraint firstItem="aHV-CC-DZx" firstAttribute="top" secondItem="Eqv-Px-3ke" secondAttribute="bottom" id="R05-IU-yeA"/>
-                                                    <constraint firstAttribute="right" secondItem="HJx-Mu-hRB" secondAttribute="right" constant="30" id="Rzm-hJ-qIq"/>
                                                     <constraint firstItem="Eqv-Px-3ke" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="SF3-NN-lQE"/>
                                                     <constraint firstItem="Eqv-Px-3ke" firstAttribute="top" secondItem="bgC-4J-fPp" secondAttribute="bottom" constant="4" id="UvR-vp-F9q"/>
-                                                    <constraint firstItem="W4h-ti-F6f" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="Wke-Ba-Epq"/>
                                                     <constraint firstAttribute="right" secondItem="lGo-be-ChU" secondAttribute="right" constant="30" id="Wo7-xe-Xu3"/>
-                                                    <constraint firstAttribute="right" secondItem="W4h-ti-F6f" secondAttribute="right" constant="30" id="YXS-3G-ccx"/>
                                                     <constraint firstAttribute="height" constant="275" id="a6c-cj-kYR"/>
-                                                    <constraint firstItem="0nS-x9-Ujr" firstAttribute="top" secondItem="DYo-x1-Fm5" secondAttribute="bottom" constant="4" id="c3F-RM-khz"/>
-                                                    <constraint firstItem="HJx-Mu-hRB" firstAttribute="top" secondItem="PeD-Od-con" secondAttribute="bottom" constant="15" id="fQK-yY-PXO"/>
-                                                    <constraint firstAttribute="right" secondItem="1iS-g8-2oM" secondAttribute="right" constant="30" id="hVI-Dq-9so"/>
                                                     <constraint firstItem="vMG-Zb-moy" firstAttribute="top" secondItem="aHV-CC-DZx" secondAttribute="bottom" constant="15" id="nNI-U4-SPY"/>
-                                                    <constraint firstItem="N8b-N6-K0h" firstAttribute="top" secondItem="DYo-x1-Fm5" secondAttribute="bottom" constant="30" id="ppH-WP-rcO"/>
                                                     <constraint firstItem="lGo-be-ChU" firstAttribute="top" secondItem="vMG-Zb-moy" secondAttribute="bottom" constant="4" id="tik-j7-JDt"/>
-                                                    <constraint firstItem="W4h-ti-F6f" firstAttribute="top" secondItem="0nS-x9-Ujr" secondAttribute="bottom" id="ubB-OE-qBz"/>
-                                                    <constraint firstAttribute="right" secondItem="0nS-x9-Ujr" secondAttribute="right" constant="30" id="vQW-mS-RDb"/>
-                                                    <constraint firstItem="DYo-x1-Fm5" firstAttribute="top" secondItem="Ttg-ky-Fi5" secondAttribute="bottom" constant="15" id="wvD-TE-8IP"/>
-                                                    <constraint firstItem="HJx-Mu-hRB" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="y69-jK-kRZ"/>
                                                     <constraint firstItem="lGo-be-ChU" firstAttribute="left" secondItem="Y6h-a2-WUQ" secondAttribute="left" constant="30" id="z1q-E8-PTT"/>
                                                 </constraints>
                                             </view>
@@ -1085,16 +1009,12 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="iqu-A0-CDX" id="cPl-Cy-3WQ"/>
                         <outlet property="changePhotoButton" destination="gUH-0x-p1m" id="0we-6c-YMR"/>
-                        <outlet property="contactNumberLabel" destination="DYo-x1-Fm5" id="YSC-AP-Zsj"/>
-                        <outlet property="contactNumberTextfield" destination="0nS-x9-Ujr" id="IUu-PA-kxD"/>
                         <outlet property="firstNameLabel" destination="bgC-4J-fPp" id="X6f-xR-BpD"/>
                         <outlet property="firstNmaeTextfield" destination="Eqv-Px-3ke" id="Nh4-Eo-XBg"/>
                         <outlet property="lastNameLabel" destination="vMG-Zb-moy" id="lfG-Xe-T6W"/>
                         <outlet property="lastNameTextField" destination="lGo-be-ChU" id="gE6-Go-zkv"/>
                         <outlet property="logoImageView" destination="2Fp-qp-u8R" id="cGR-ax-GN2"/>
                         <outlet property="scrollView" destination="H3q-Zy-3nN" id="vu2-VF-mH0"/>
-                        <outlet property="streetAddressLabel" destination="HJx-Mu-hRB" id="yk8-Kz-vPF"/>
-                        <outlet property="streetAddressTextfield" destination="1iS-g8-2oM" id="NcR-cS-TJB"/>
                         <outlet property="userActionView" destination="N8b-N6-K0h" id="TLZ-BP-DxE"/>
                     </connections>
                 </viewController>
