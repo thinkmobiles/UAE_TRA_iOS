@@ -288,6 +288,11 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     [self performPUT:traSSChangePassword withParameters:parameters response:changePasswordResponse];
 }
 
+- (void)traSSForgotPasswordForEmail:(NSString *)email requestResult:(ResponseBlock)forgotPasswordResponse
+{
+    [self performPOST:traSSForgotPassword withParameters:@{@"email" : email} response:forgotPasswordResponse];
+}
+
 - (void)traSSLogout:(ResponseBlock)logoutResponse
 {
     __weak typeof(self) weakSelf = self;

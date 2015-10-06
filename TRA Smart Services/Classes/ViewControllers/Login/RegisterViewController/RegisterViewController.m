@@ -120,12 +120,13 @@ static NSString *const DividerForID = @"-";
         if ([self isInputParametersInvalid]){
             return;
         }
+        [self.view endEditing:YES];
         [AppHelper showLoader];
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text
                                                      password:self.passwordTextField.text
                                                     firstName:self.firstNameTextField.text
                                                      lastName:self.lastNameTextField.text
-                                                   emiratesID:self.emiratesIDTextField.text
+                                                   emiratesID:[self.emiratesIDTextField.text stringByReplacingOccurrencesOfString:DividerForID withString:@""]
                                                         state:[NSString stringWithFormat:@"%i", 1]
                                                   mobilePhone:self.mobileTextField.text
                                                         email:self.emailTextField.text requestResult:^(id response, NSError *error) {
@@ -234,7 +235,7 @@ static NSString *const DividerForID = @"-";
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
         return YES;
     }
-    if (![[self.emiratesIDTextField.text stringByReplacingOccurrencesOfString:DividerForID withString:@""] isValidIDEmirates]) {
+    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
         return YES;
     }

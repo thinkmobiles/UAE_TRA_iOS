@@ -37,3 +37,4 @@ static NSString *const traSSLogin = @"/crm/signIn";
 static NSString *const traSSLogOut = @"/crm/signOut";
 static NSString *const traSSProfile = @"/crm/profile";
 static NSString *const traSSChangePassword = @"/crm/changePass";
+static NSString *const traSSForgotPassword = @"/crm/forgotPass";

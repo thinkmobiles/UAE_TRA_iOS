@@ -37,7 +37,20 @@
 
 - (IBAction)restorePasswordPressed:(id)sender
 {
-    //wait for API
+    if (!self.userEmailTextField.text.length) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (![self.userEmailTextField.text isValidEmailUseHardFilter:NO]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
+    } else {
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        [[NetworkManager sharedManager] traSSForgotPasswordForEmail:self.userEmailTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:[response isKindOfClass:[NSString class]] ? response : dynamicLocalizedString(@"api.message.serverError")];
+            } else {
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            }
+        }];
+    }
 }
 
 - (void)closeButtonPressed

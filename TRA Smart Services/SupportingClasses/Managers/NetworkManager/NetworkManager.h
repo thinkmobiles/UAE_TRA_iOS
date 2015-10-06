@@ -92,6 +92,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse;
 - (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse;
 - (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse;
+- (void)traSSForgotPasswordForEmail:(NSString *)email requestResult:(ResponseBlock)forgotPasswordResponse;
 - (void)traSSLogout:(ResponseBlock)logoutResponse;
 
 #pragma mark - Temp
