@@ -153,10 +153,10 @@
 "speedAccess.service.name.7" = "Verification";
 "speedAccess.service.name.8" = "Coverage";
 "speedAccess.service.name.9" = "Internet";
-"speedAccess.service.name.10" = "Complian about Service Provider";
+"speedAccess.service.name.10" = "Complain about Service Provider";
 "speedAccess.service.name.11" = "Suggestion";
 "speedAccess.service.name.12" = "Enquires";
-"speedAccess.service.name.13" = "Complian about TRA";
+"speedAccess.service.name.13" = "Complain about TRA";
 
 //NotificationsViewController
 
@@ -212,6 +212,7 @@
 "announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
 "transactions.label.text" = "Transactions";
+"infoHubViewController.transactionNotDataLabel" = "You havent active trnsaction";
 
 //AnnoucementsViewController
 
@@ -239,7 +240,7 @@
 
 "compliantViewController.title.comtlaintTRA" = "Complain About TRA";
 "compliantViewController.title.enquires" = "Enquires";
-"compliantViewController.title.compliantAboutServiceProvider" = "Compliant About Service Provider";
+"compliantViewController.title.compliantAboutServiceProvider" = "Complaint About Service Provider";
 "compliantViewController.compliantTitleTextField.placeholder" = "Title";
 "compliantViewController.referenceNumberTextField.placeholder" = "Reference number";
 "compliantViewController.description.placeholder" = "Description";
@@ -392,6 +393,7 @@
 //ListOfDevicesViewController
 
 "listOfDevicesViewController.title" = "List of Devices";
+"listOfDevicesViewController.devicesNotDataLabel" = "Not Data Found";
 
 //InnovationsViewController
 
