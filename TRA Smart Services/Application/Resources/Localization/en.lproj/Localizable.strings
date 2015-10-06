@@ -212,7 +212,7 @@
 "announcements.label.text" = "Announcement";
 "seeMore.button.title" = "See more";
 "transactions.label.text" = "Transactions";
-"infoHubViewController.transactionNotDataLabel" = "You havent active trnsaction";
+"infoHubViewController.transactionNotDataLabel" = "You do not have any active transactions.";
 
 //AnnoucementsViewController
 

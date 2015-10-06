@@ -39,11 +39,13 @@
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTSendSuggestion:self.suggestionTitle.text description:self.suggectionDescription.text attachment:self.selectImage requestResult:^(id response, NSError *error) {
             if (error) {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                [weakSelf clearUI];
             }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 loader.ratingView.hidden = NO;
@@ -88,6 +90,13 @@
 }
 
 #pragma mark - Private
+
+- (void)clearUI
+{
+    self.suggectionDescription.text = @"";
+    self.suggestionTitle.text = @"";
+    self.selectImage = nil;
+}
 
 - (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
 {
