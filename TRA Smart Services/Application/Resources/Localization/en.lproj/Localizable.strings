@@ -343,7 +343,7 @@
 
 //TRALoaderViewController
 
-"TRALoader.backButton.title" = "Back to Dashboard";
+"TRALoader.backButton.title" = "Сlose";
 "TRALoader.backButton.cancel" = "Cancel";
 "TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
 "TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";

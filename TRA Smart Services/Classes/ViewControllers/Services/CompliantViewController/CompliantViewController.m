@@ -38,6 +38,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
 @property (assign, nonatomic) NSInteger selectedProvider;
+@property (strong, nonatomic) NSArray *keyForServerProvider;
 
 @end
 
@@ -57,6 +58,8 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.keyForServerProvider = @[@"du", @"Etisalat", @"Yahsat"];
     
     [self updateUIForCompliantType:self.type];
     [self prepareSelectProviderDataSource];
@@ -96,7 +99,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        NSString *provider = [[[self.selectProviderDataSource[self.selectedProvider] componentsSeparatedByString:@" "] firstObject] lowercaseString];
+        NSString *provider = self.keyForServerProvider[self.selectedProvider - 1];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
