@@ -8,6 +8,8 @@
 #import "InfoHubViewController.h"
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
+#import "TransactionModel.h"
+#import "LoginViewController.h"
 
 static CGFloat const SectionHeaderHeight = 40.0f;
 static CGFloat const AdditionalCellOffset = 20.0f;
@@ -17,8 +19,6 @@ static NSUInteger const VisibleAnnouncementPreviewElementsCount = 3;
 static LanguageType startingLanguageType;
 
 @interface InfoHubViewController ()
-
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -32,8 +32,9 @@ static LanguageType startingLanguageType;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
 
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
-@property (strong, nonatomic) NSArray *tableViewDataSource;
+@property (strong, nonatomic) NSMutableArray *tableViewDataSource;
 @property (strong, nonatomic) NSMutableArray *filteredDataSource;
+@property (assign, nonatomic) __block NSInteger page;
 
 @end
 
@@ -52,28 +53,39 @@ static LanguageType startingLanguageType;
 {
     [super viewWillAppear:animated];
     
-    [self prepareDemoDataSource];
+    self.page = 1;
+    [self presentLoginIfNeeded];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.tableViewDataSource = nil;
+    self.filteredDataSource = nil;
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.45 animations:^{
-        CGFloat currentOffsetForContentView = weakSelf.tableViewContentHolderView.frame.origin.y;
-        CGFloat distanceToMoveView = currentOffsetForContentView - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-        weakSelf.topSpaceVerticalConstraint.constant = - distanceToMoveView;
-        [weakSelf.view layoutIfNeeded];
-    }];
+#warning commented out animations while not active announcements
+
+//    [self.view layoutIfNeeded];
+//    __weak typeof(self) weakSelf = self;
+//    [UIView animateWithDuration:0.45 animations:^{
+//        CGFloat currentOffsetForContentView = weakSelf.tableViewContentHolderView.frame.origin.y;
+//        CGFloat distanceToMoveView = currentOffsetForContentView - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+//        weakSelf.topSpaceVerticalConstraint.constant = - distanceToMoveView;
+//        [weakSelf.view layoutIfNeeded];
+//    }];
     return YES;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if(searchText.length) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains [c] %@", searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains [c] %@", searchText];
         NSArray *arraySort = [self.tableViewDataSource filteredArrayUsingPredicate:predicate];
         self.filteredDataSource = [[NSMutableArray alloc] initWithArray:arraySort];
     } else {
@@ -87,15 +99,16 @@ static LanguageType startingLanguageType;
     [super searchBarCancelButtonClicked:searchBar];
     
     searchBar.text = @"";
-    [self prepareDemoDataSource];
+    self.filteredDataSource = self.tableViewDataSource;
     [self.tableView reloadData];
     
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.topSpaceVerticalConstraint.constant = 0;
-        [weakSelf.view layoutIfNeeded];
-    }];
+#warning commented out animations while not active announcements
+//    [self.view layoutIfNeeded];
+//    __weak typeof(self) weakSelf = self;
+//    [UIView animateWithDuration:0.25 animations:^{
+//        weakSelf.topSpaceVerticalConstraint.constant = 0;
+//        [weakSelf.view layoutIfNeeded];
+//    }];
 }
 
 #pragma mark - CollectionViewDataSource
@@ -163,16 +176,24 @@ static LanguageType startingLanguageType;
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
-    cell.infoHubTransactionDescriptionLabel.text = @"Your application for type Approval has been reviewd by TRA personel";
-    cell.infoHubTransactionTitleLabel.text = self.filteredDataSource[indexPath.row];
+    TransactionModel *selectedTransactions = self.filteredDataSource[indexPath.row];
+    
+    cell.infoHubTransactionDescriptionLabel.text = selectedTransactions.transationDescription;
+    cell.infoHubTransactionTitleLabel.text = selectedTransactions.title;
     cell.infoHubTransactionTitleLabel.textColor = [self.dynamicService currentApplicationColor];
-    cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:[NSDate date]];
-    UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
+    
+    cell.infoHubTransactionDateLabel.text = [[selectedTransactions.traSubmitDatetime componentsSeparatedByString:@" "] firstObject];
+    
+    UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
     if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
     cell.infoHubTransactionImageView.image = logo;
     cell.infoHubTransactionDescriptionLabel.tag = DeclineTagForFontUpdate;
+    
+    if (indexPath.row == self.filteredDataSource.count - 1 && ![self isSearchBarActive]) {
+        [self addObjectsToDataSourceIfPossible];
+    }
     
     return cell;
 }
@@ -206,8 +227,6 @@ static LanguageType startingLanguageType;
 - (void)localizeUI
 {
     [super localizeUI];
-    
-    self.textLabel.text = dynamicLocalizedString(@"infoHubViewController.textLabel");
     
     self.searchanbeleViewControllerTitle.text = dynamicLocalizedString(@"infoHub.title");
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
@@ -243,12 +262,6 @@ static LanguageType startingLanguageType;
     [self.tableView registerNib:[UINib nibWithNibName:@"InfoHubTableViewCellArabicUI" bundle:nil] forCellReuseIdentifier:InfoHubTableViewCellArabicIdentifier];
 }
 
-- (void)prepareDemoDataSource
-{
-    self.tableViewDataSource = @[@"Type Approval", @"Frequesncy Spectrum Authorizaions", @".ea Domain news"];
-    self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
-}
-
 - (void)updateUIForLeftBasedInterface:(BOOL)leftBased
 {
     if ([AppHelper isiOS9_0OrHigher]) {
@@ -273,6 +286,64 @@ static LanguageType startingLanguageType;
 - (void)reverseDataSource
 {
     self.collectionViewDataSource = [self.collectionViewDataSource reversedArray];
+}
+
+- (void)addObjectsToDataSourceIfPossible
+{
+    __weak typeof(self) weakSelf = self;
+    void (^PrepareDataSource)(NSArray *) = ^(NSArray *inputArray) {
+        if (weakSelf.tableViewDataSource) {
+            NSMutableArray *indexPathToAdd = [[NSMutableArray alloc] init];
+            for (int i = (int)weakSelf.tableViewDataSource.count - 1; i < (int)weakSelf.tableViewDataSource.count - 1 + inputArray.count; i++) {
+                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [indexPathToAdd addObject:newIndexPath];
+            }
+            [weakSelf.tableView beginUpdates];            
+            [weakSelf.tableViewDataSource addObjectsFromArray:inputArray];
+            weakSelf.filteredDataSource = weakSelf.tableViewDataSource;
+            [weakSelf.tableView insertRowsAtIndexPaths:indexPathToAdd withRowAnimation:UITableViewRowAnimationAutomatic];
+            [weakSelf.tableView endUpdates];
+        } else {
+            weakSelf.tableViewDataSource = [inputArray mutableCopy];
+            weakSelf.filteredDataSource = [inputArray mutableCopy];
+            [weakSelf.tableView reloadData];
+        }
+    };
+    
+    [AppHelper showLoader];
+    [[NetworkManager sharedManager] traSSNoCRMServiceGetGetTransactions:self.page count:10 orderAsc:1 responseBlock: ^(id response, NSError *error) {
+        if (error) {
+            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            if (((NSArray *)response).count) {
+            weakSelf.page++;
+            PrepareDataSource(response);
+            }
+        }
+        [AppHelper hideLoader];
+    }];
+}
+
+- (void)presentLoginIfNeeded
+{
+    if ([NetworkManager sharedManager].isUserLoggined) {
+        [self addObjectsToDataSourceIfPossible];
+    } else {
+        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        __weak typeof(self) weakSelf = self;
+        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
+            if (![NetworkManager sharedManager].isUserLoggined) {
+                weakSelf.tabBarController.selectedIndex = 0;
+            }
+        };
+        ((LoginViewController *)viewController.topViewController).didDismissed = ^() {
+            if ([NetworkManager sharedManager].isUserLoggined) {
+                [weakSelf addObjectsToDataSourceIfPossible];
+            }
+        };
+        ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;
+        [AppHelper presentViewController:viewController onController:self.navigationController];
+    }
 }
 
 @end

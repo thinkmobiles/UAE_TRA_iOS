@@ -81,4 +81,11 @@
     }
 }
 
+- (BOOL)isValidIMEI
+{
+    NSString *allowedSymbols = @"[0-9]{15}";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:self];
+}
+
 @end

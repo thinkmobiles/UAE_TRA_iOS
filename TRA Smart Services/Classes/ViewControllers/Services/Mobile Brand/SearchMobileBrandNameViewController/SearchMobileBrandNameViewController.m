@@ -69,6 +69,8 @@ static NSString *const ListDeviceSegue = @"listOfDevicesSegue";
 - (void)updateColors
 {
     [super updateColors];
+    
+    [super updateBackgroundImageNamed:@"img_bg_service"];
 }
 
 - (void)setRTLArabicUI

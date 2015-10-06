@@ -92,6 +92,8 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
         !self.compliantTitleTextField.text.length ||
         (self.type == ComplianTypeCustomProvider && (!self.selectedProvider || !self.referenceNumberTextField.text.length))){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (self.type == ComplianTypeCustomProvider && ![self.referenceNumberTextField.text isValidPhoneNumber]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         NSString *provider = [[[self.selectProviderDataSource[self.selectedProvider] componentsSeparatedByString:@" "] firstObject] lowercaseString];

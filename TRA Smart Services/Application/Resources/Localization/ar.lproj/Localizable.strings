@@ -207,8 +207,6 @@
 
 //InfoHubViewController
 
-"infoHubViewController.textLAbel" = "لا توجد معاملات في الانتظار";
-
 "infoHub.title" = "معلومات";
 "announcements.label.text" = "اعلانات";
 "seeMore.button.title" = "شاهد المزيد";
@@ -226,7 +224,7 @@
 
 "searchMobileBrandNameViewController.title" = "الأجهزة المعتمدة";
 "searchMobileBrandNameViewController.searchButton" = "بحث";
-"searchMobileBrandNameViewController.searchTextField.placeholder" = "Enter Brand Name";
+"searchMobileBrandNameViewController.searchTextField.placeholder" = "ادخل اسم المصنع";
 
 //SuggestionViewController
 
@@ -304,11 +302,11 @@
 //ChangePasswordViewController
 
 "changePassword.oldPassword" = "كلمة المرور القديمة";
-"changePassword.placeHolder.oldPassword" = "";
+"changePassword.placeHolder.oldPassword" = "كلمة المرور القديمة";
 "changePassword.password" = "كلمة المرور الجديدة";
-"changePassword.placeHolder.password" = "";
+"changePassword.placeHolder.password" = "كلمة المرور الجديدة";
 "changePassword.retypePassword" = "إعادة كملة المرور";
-"changePassword.placeHolder.retypePassword" = "";
+"changePassword.placeHolder.retypePassword" = "تأكيد كلمة المرور الجديدة";
 
 //UserProfileActionView
 
@@ -416,5 +414,5 @@
 //SelectImageActionSheet
 
 "selectImageActionSheet.cancel" = "الغاء";
-"selectImageActionSheet.removeFile" = "Remove attached file";
-"selectImageActionSheet.selectImage" = "Choose image from gallery";
+"selectImageActionSheet.removeFile" = "حذف الملف المرفق";
+"selectImageActionSheet.selectImage" = "اختر من معرض الصور";

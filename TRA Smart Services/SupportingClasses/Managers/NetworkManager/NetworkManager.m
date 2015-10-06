@@ -9,6 +9,7 @@
 #import "AFNetworking.h"
 #import "NetworkEndPoints.h"
 #import <CoreTelephony/CoreTelephonyDefines.h>
+#import "TransactionModel.h"
 
 static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 static NSString *const ResponseDictionaryErrorKey = @"error";
@@ -114,7 +115,11 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
                                           } mutableCopy];
     
     if (type == ComplianTypeCustomProvider) {
-        [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        if ([serviceProvider isEqualToString:@"du"]) {
+            [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        } else {
+            [parameters setValue:[serviceProvider capitalizedString] forKey:@"serviceProvider"];
+        }
         [parameters setValue:@(number) forKey:@"referenceNumber"];
     }
     
@@ -230,6 +235,35 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@&lang=%@", traSSNOCRMServiceGETAboutServiceInfo, serviceName, languageCode];
     [self performGET:requestURL withParameters:nil response:aboutServiceInfoResponse];
+}
+
+- (void)traSSNoCRMServiceGetGetTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc responseBlock:(ResponseBlock)getTransactionResponse
+{
+    NSString *requestURL = [NSString stringWithFormat:@"%@", traSSNOCRMServiceGetTransactions];
+    
+    if (page && count) {
+        NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
+        NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
+//        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@&orderAsc=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0"];
+        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements]; //temp asc not work
+
+    }
+    
+    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *responseTransactions = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *transActionDict in value) {
+                TransactionModel *transactionModel = [[TransactionModel alloc] initWithDictionary:transActionDict];
+                [responseTransactions addObject:transactionModel];
+            }
+            
+            getTransactionResponse(responseTransactions, nil);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        PerformFailureRecognition(operation, error, getTransactionResponse);
+    }];
 }
 
 #pragma mark - UserInteraction
