@@ -211,7 +211,7 @@
 "announcements.label.text" = "اعلانات";
 "seeMore.button.title" = "شاهد المزيد";
 "transactions.label.text" = "معاملات";
-"infoHubViewController.transactionNotDataLabel" = "You havent active trnsaction";
+"infoHubViewController.transactionNotDataLabel" = "ليس لديك أية معاملات قيد التنفيذ";
 
 //AnnoucementsViewController
 
@@ -392,7 +392,7 @@
 //ListOfDevicesViewController
 
 "listOfDevicesViewController.title" = "قائمة الإجهزة";
-"listOfDevicesViewController.devicesNotDataLabel" = "Not Data Found";
+"listOfDevicesViewController.devicesNotDataLabel" = "لا توجد بيانات";
 
 //InnovationsViewController
 

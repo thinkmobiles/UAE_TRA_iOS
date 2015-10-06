@@ -20,6 +20,13 @@ static NSString *const ListDeviceSegue = @"listOfDevicesSegue";
 
 @implementation SearchMobileBrandNameViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.brandNameTextField.text = @"";
+}
+
 #pragma mark - IBActions
 
 - (IBAction)searchButtonTapped:(id)sender

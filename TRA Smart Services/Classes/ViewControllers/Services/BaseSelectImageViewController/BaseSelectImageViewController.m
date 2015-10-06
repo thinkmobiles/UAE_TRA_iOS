@@ -57,6 +57,12 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
     [self.attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
 }
 
+- (void)setSelectImage:(UIImage *)selectImage
+{
+    _selectImage = selectImage;
+    self.buttonAttachImage = selectImage ? [UIImage imageNamed:ImageNameButtonAttachData] : [UIImage imageNamed:ImageNameButtonAttachClear];
+}
+
 - (void)configureActionSheet
 {
     UIAlertController *selectImageController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];

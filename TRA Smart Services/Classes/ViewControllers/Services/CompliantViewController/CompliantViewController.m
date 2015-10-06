@@ -102,12 +102,14 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
         if (self.selectedProvider < 1) {
             self.selectedProvider = 1;
         }
+        __weak typeof (self) weakSelf = self;
         NSString *provider = self.keyForServerProvider[self.selectedProvider - 1];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                [weakSelf clearUI];
             }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 loader.ratingView.hidden = NO;
@@ -272,6 +274,16 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 }
 
 #pragma mark - Private
+
+- (void)clearUI
+{
+    self.compliantTitleTextField.text = @"";
+    self.referenceNumberTextField.text = @"";
+    self.compliantDescriptionTextView.text = @"";
+    self.selectImage = nil;    
+    self.selectedProvider = 0;
+    [self.selectTableView reloadData];
+}
 
 - (void)updateUIForCompliantType:(ComplianType)type
 {
