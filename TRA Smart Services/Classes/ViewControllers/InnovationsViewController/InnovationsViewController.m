@@ -9,7 +9,7 @@
 #import "PlaceholderTextView.h"
 #import "ServicesSelectTableViewCell.h"
 
-static CGFloat const heightSelectTableViewCell = 40.f;
+static CGFloat const heightSelectTableViewCell = 35.f;
 
 @interface InnovationsViewController ()
 
