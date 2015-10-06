@@ -46,8 +46,21 @@ static LanguageType startingLanguageType;
     [super viewDidLoad];
     
     [self registerNibs];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     self.page = 1;
     [self addObjectsToDataSourceIfPossible];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tableViewDataSource = nil;
+    self.filteredDataSource = nil;
 }
 
 #pragma mark - UISearchBarDelegate

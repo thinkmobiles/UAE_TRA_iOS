@@ -39,6 +39,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     if (self.fakeBackground) {
         self.fakeBackgroundImageView.image = self.fakeBackground;
     }
+    [self prepareDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,7 +47,6 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     [super viewWillAppear:animated];
     
     [self reverseDataSourceIfNeeded];
-    [self prepareDataSource];
     [self animateAppearence];
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -227,7 +227,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
             break;
         }
         case ServiceTypeCompliantAboutServiceProvider: {
-            serviceNameForRequest = ServiceTypeGetDomainDataStringName;
+            serviceNameForRequest = ServiceTypeCompliantAboutServiceProviderTRAStringName;
             break;
         }
         case ServiceTypeSuggestion: {
