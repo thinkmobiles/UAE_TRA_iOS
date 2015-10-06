@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "iphone",
-      "filename" : "res_img_tut_bg_green_5.png",
+      "filename" : "img_green_bg_ar5.png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "res_img_tut_bg_green_6+.png",
+      "filename" : "img_green_bg_ar6+.png",
       "scale" : "3x"
     }
   ],
