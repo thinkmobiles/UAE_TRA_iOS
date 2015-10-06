@@ -9,6 +9,7 @@
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
 #import "TransactionModel.h"
+#import "LoginViewController.h"
 
 static CGFloat const SectionHeaderHeight = 40.0f;
 static CGFloat const AdditionalCellOffset = 20.0f;
@@ -53,12 +54,14 @@ static LanguageType startingLanguageType;
     [super viewWillAppear:animated];
     
     self.page = 1;
-    [self addObjectsToDataSourceIfPossible];
+    
+    [self presentLoginIfNeeded];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     self.tableViewDataSource = nil;
     self.filteredDataSource = nil;
 }
@@ -320,6 +323,28 @@ static LanguageType startingLanguageType;
         }
         [AppHelper hideLoader];
     }];
+}
+
+- (void)presentLoginIfNeeded
+{
+    if ([NetworkManager sharedManager].isUserLoggined) {
+        [self addObjectsToDataSourceIfPossible];
+    } else {
+        UINavigationController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        __weak typeof(self) weakSelf = self;
+        ((LoginViewController *)viewController.topViewController).didCloseViewController = ^() {
+            if (![NetworkManager sharedManager].isUserLoggined) {
+                weakSelf.tabBarController.selectedIndex = 0;
+            }
+        };
+        ((LoginViewController *)viewController.topViewController).didDismissed = ^() {
+            if ([NetworkManager sharedManager].isUserLoggined) {
+                [weakSelf addObjectsToDataSourceIfPossible];
+            }
+        };
+        ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;
+        [AppHelper presentViewController:viewController onController:self.navigationController];
+    }
 }
 
 @end
