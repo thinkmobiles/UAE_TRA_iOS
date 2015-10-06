@@ -99,6 +99,9 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        if (self.selectedProvider < 1) {
+            self.selectedProvider = 1;
+        }
         NSString *provider = self.keyForServerProvider[self.selectedProvider - 1];
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
             if (error) {
