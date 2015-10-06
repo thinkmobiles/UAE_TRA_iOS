@@ -15,5 +15,6 @@
 - (BOOL)isValidPhoneNumber;
 - (BOOL)isValidRating;
 - (BOOL)isValidEmailUseHardFilter:(BOOL)filter;
+- (BOOL)isValidIMEI;
 
 @end

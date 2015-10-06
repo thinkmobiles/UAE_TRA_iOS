@@ -104,6 +104,8 @@ static NSString *const keyOrder = @"order";
     
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (![self.domainNameTextField.text isValidURL]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatURL")];
     } else {
         [self.domainNameTextField resignFirstResponder];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];

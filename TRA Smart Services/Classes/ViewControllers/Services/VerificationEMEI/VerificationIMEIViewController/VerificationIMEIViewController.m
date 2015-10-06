@@ -48,7 +48,7 @@
 
 - (IBAction)checkButtonTapped:(id)sender
 {
-    if (self.verificationIMEITextField.text.length) {
+    if ([self.verificationIMEITextField.text isValidIMEI]) {
         [self.view endEditing:YES];
         __weak typeof(self) weakSelf = self;
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];

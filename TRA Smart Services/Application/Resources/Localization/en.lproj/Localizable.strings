@@ -60,7 +60,7 @@
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "Home";
-"tabBarMenu_item_2" = "Favourite";
+"tabBarMenu_item_2" = "Favorite";
 "tabBarMenu_item_3" = "Info Hub";
 "tabBarMenu_item_4" = "Enquires";
 "tabBarMenu_item_5" = "Settings";
@@ -99,7 +99,8 @@
 "register.placeHolderText.state" = "State";
 
 //SelectRegisterViewController
-"register.label.registerInfo" = "Select a registeration method";
+
+"register.label.registerInfo" = "Select a registration method";
 "register.label.emiratesID" = "Emirates ID\nVerification";
 "register.label.fillForm" = "Fill-up Form\n(Manual)";
 
@@ -166,9 +167,9 @@
 
 //FavouriteViewController
 
-"favourite.title" = "Favourites";
+"favourite.title" = "Favorites";
 "favourite.button.addFav.title" = "Add a Service";
-"favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favourites list yet";
+"favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favorites list yet";
 
 //FavouriteCell
 
@@ -228,7 +229,7 @@
 
 //SuggestionViewController
 
-"suggestionViewController.title" = "Send suggestion";
+"suggestionViewController.title" = "Send Suggestion";
 "suggestionViewController.textField.suggestionTitle" = "Title";
 "suggestionViewController.textField.suggestionDescription" = "Description";
 "suggestionViewController.selectImageButton.title" = "Image";
