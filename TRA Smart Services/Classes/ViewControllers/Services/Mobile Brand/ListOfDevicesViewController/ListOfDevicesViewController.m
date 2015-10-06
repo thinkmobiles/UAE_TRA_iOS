@@ -10,15 +10,6 @@
 
 @implementation ListOfDevicesViewController
 
-#pragma mark - LifeCycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -44,7 +35,7 @@
 - (void)configureCell:(ListOfDevicesTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *element = self.dataSource[indexPath.row];
-    UIImage *logo = [UIImage imageNamed:@"ic_htc_salsa"];
+    UIImage *logo = [UIImage imageNamed:@"ic_list_dev"];
     if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -701,11 +701,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -7246,14 +7246,6 @@ a new password will be sent.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-s3-Xw2" userLabel="ContainerCell - UIView">
                                                     <rect key="frame" x="20" y="0.0" width="580" height="114"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2LD-P1-rUd" userLabel="deviceHexagon - UIImageView">
-                                                            <rect key="frame" x="0.0" y="17" width="70" height="80"/>
-                                                            <animations/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="80" id="0mN-Ww-jHz"/>
-                                                                <constraint firstAttribute="width" constant="70" id="NoU-QC-gHa"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXz-7o-whT" userLabel="Separator - UIView">
                                                             <rect key="frame" x="90" y="113" width="490" height="1"/>
                                                             <animations/>
@@ -7296,18 +7288,38 @@ a new password will be sent.</string>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="ynr-Jx-4Oc"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYq-iV-2nN" userLabel="Hexagon Background - View">
+                                                            <rect key="frame" x="0.0" y="17" width="70" height="80"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nXO-Xo-aiY" userLabel="Logo - UiIMageView">
+                                                                    <rect key="frame" x="12" y="17" width="46" height="46"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="nXO-Xo-aiY" secondAttribute="height" id="Rlf-gy-V5H"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="centerY" secondItem="nXO-Xo-aiY" secondAttribute="centerY" id="0z0-UH-OO9"/>
+                                                                <constraint firstAttribute="centerX" secondItem="nXO-Xo-aiY" secondAttribute="centerX" id="JUo-MC-knS"/>
+                                                                <constraint firstItem="nXO-Xo-aiY" firstAttribute="width" secondItem="zYq-iV-2nN" secondAttribute="width" multiplier="0.65" id="KXI-Wc-Jho"/>
+                                                                <constraint firstAttribute="height" constant="80" id="RCA-cZ-j7C"/>
+                                                                <constraint firstAttribute="width" constant="70" id="VDo-aX-9VF"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="zYq-iV-2nN" firstAttribute="left" secondItem="bkW-s3-Xw2" secondAttribute="left" id="Hcj-bV-TzF"/>
+                                                        <constraint firstItem="zYq-iV-2nN" firstAttribute="centerY" secondItem="bkW-s3-Xw2" secondAttribute="centerY" id="OUR-F2-z1p"/>
                                                         <constraint firstAttribute="bottom" secondItem="gXz-7o-whT" secondAttribute="bottom" id="QzY-vI-bNI"/>
-                                                        <constraint firstItem="2LD-P1-rUd" firstAttribute="leading" secondItem="bkW-s3-Xw2" secondAttribute="leading" id="a5x-w9-mRZ"/>
-                                                        <constraint firstItem="2LD-P1-rUd" firstAttribute="centerY" secondItem="bkW-s3-Xw2" secondAttribute="centerY" id="ciY-So-DT1"/>
-                                                        <constraint firstItem="HmC-zm-sBc" firstAttribute="leading" secondItem="2LD-P1-rUd" secondAttribute="trailing" constant="20" id="jYb-C2-svv"/>
-                                                        <constraint firstItem="gXz-7o-whT" firstAttribute="leading" secondItem="2LD-P1-rUd" secondAttribute="trailing" constant="20" id="k6W-Jj-8vK"/>
                                                         <constraint firstItem="HmC-zm-sBc" firstAttribute="centerY" secondItem="bkW-s3-Xw2" secondAttribute="centerY" id="lED-Jr-JuL"/>
                                                         <constraint firstAttribute="trailing" secondItem="HmC-zm-sBc" secondAttribute="trailing" constant="20" id="lKM-z9-Y6e"/>
                                                         <constraint firstAttribute="trailing" secondItem="gXz-7o-whT" secondAttribute="trailing" id="mbe-io-lXu"/>
+                                                        <constraint firstItem="HmC-zm-sBc" firstAttribute="left" secondItem="zYq-iV-2nN" secondAttribute="right" constant="20" id="rws-l2-3Gx"/>
+                                                        <constraint firstItem="gXz-7o-whT" firstAttribute="left" secondItem="NUP-og-MML" secondAttribute="left" id="v9S-pU-hit"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -7324,7 +7336,8 @@ a new password will be sent.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="descriptionModelDevaceLabel" destination="Iwk-l1-Eks" id="zcq-uP-jVa"/>
-                                            <outlet property="deviceHexagonImageView" destination="2LD-P1-rUd" id="vcP-n1-2KW"/>
+                                            <outlet property="deviceHexagonImageView" destination="nXO-Xo-aiY" id="ZW8-Kh-pLC"/>
+                                            <outlet property="hexagonView" destination="zYq-iV-2nN" id="B9Y-RT-ZBo"/>
                                             <outlet property="marginContainerCellConstraint" destination="WMA-XQ-6PC" id="CnY-fS-6gv"/>
                                             <outlet property="titleModelDevaceLabel" destination="NUP-og-MML" id="YRP-i0-Qtd"/>
                                         </connections>

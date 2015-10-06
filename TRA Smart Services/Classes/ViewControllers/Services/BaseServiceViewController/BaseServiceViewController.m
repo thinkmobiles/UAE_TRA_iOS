@@ -29,6 +29,7 @@ static CGFloat const HeightForToolbars = 44.f;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
     self.navigationController.navigationBar.translucent = YES;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
     
     [self prepareNotification];
     if (self.serviceID > 0) {

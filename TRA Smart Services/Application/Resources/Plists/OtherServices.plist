@@ -56,11 +56,11 @@
 		<key>serviceName</key>
 		<string>speedAccess.service.name.13</string>
 		<key>serviceLogo</key>
-		<string>ic_lock</string>
+		<string>ic_chat</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_lock</string>
+		<string>ic_chat</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
