@@ -463,7 +463,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 
 - (void)prepareTitle
 {
-    self.title = dynamicLocalizedString(@"tabBarMenu_item_5");//self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
+    self.title = dynamicLocalizedString(@"tabBarMenu_item_5");
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
@@ -495,7 +495,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     //v 1.0 build <version number>.<number of week>.<weakBuild>
     NSCalendar *calender = [NSCalendar currentCalendar];
     NSDateComponents *dateComponent = [calender components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:[NSDate date]];
-    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 1];
+    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 2];
 }
 
 - (void)updateColors
