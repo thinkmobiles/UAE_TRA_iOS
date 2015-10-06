@@ -115,7 +115,11 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
                                           } mutableCopy];
     
     if (type == ComplianTypeCustomProvider) {
-        [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        if ([serviceProvider isEqualToString:@"du"]) {
+            [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        } else {
+            [parameters setValue:[serviceProvider capitalizedString] forKey:@"serviceProvider"];
+        }
         [parameters setValue:@(number) forKey:@"referenceNumber"];
     }
     
@@ -240,7 +244,9 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     if (page && count) {
         NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
         NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
-        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@&orderAsc=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0"];
+//        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@&orderAsc=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0"];
+        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements]; //temp asc not work
+
     }
     
     [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

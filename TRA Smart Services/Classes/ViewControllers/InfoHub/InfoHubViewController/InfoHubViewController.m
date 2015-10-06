@@ -176,14 +176,13 @@ static LanguageType startingLanguageType;
    
     TransactionModel *selectedTransactions = self.filteredDataSource[indexPath.row];
     
-    cell.infoHubTransactionDescriptionLabel.text = selectedTransactions.traStatus;
+    cell.infoHubTransactionDescriptionLabel.text = selectedTransactions.transationDescription;
     cell.infoHubTransactionTitleLabel.text = selectedTransactions.title;
     cell.infoHubTransactionTitleLabel.textColor = [self.dynamicService currentApplicationColor];
     
-    NSDate *date = [self dateFromString:selectedTransactions.traSubmitDatetime];
-    cell.infoHubTransactionDateLabel.text = [AppHelper compactDateStringFrom:date];
+    cell.infoHubTransactionDateLabel.text = [[selectedTransactions.traSubmitDatetime componentsSeparatedByString:@" "] firstObject];
     
-    UIImage *logo = [UIImage imageNamed:@"ic_warn_red"];
+    UIImage *logo = [UIImage imageNamed:@"ic_type_apr"];
     if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {
         logo = [[BlackWhiteConverter sharedManager] convertedBlackAndWhiteImage:logo];
     }
@@ -321,15 +320,6 @@ static LanguageType startingLanguageType;
         }
         [AppHelper hideLoader];
     }];
-}
-
-- (NSDate *)dateFromString:(NSString *)inputString
-{
-#warning Incorrect formatter
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"mm/dd/yyyy HH:mm:ss a"];
-    NSDate *date = [formatter dateFromString:inputString];
-    return date;
 }
 
 @end
