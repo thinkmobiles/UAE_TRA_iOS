@@ -145,6 +145,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -556,12 +558,20 @@
                                             <outlet property="delegate" destination="TQi-Yr-SCA" id="Hmd-bv-D7E"/>
                                         </connections>
                                     </tableView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-gB-7tc" userLabel="Tarasaction not data - UILabel">
+                                        <rect key="frame" x="300" y="244" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="right" secondItem="0RF-Wa-xRD" secondAttribute="right" id="LK4-3L-nuM"/>
                                     <constraint firstAttribute="bottom" secondItem="0RF-Wa-xRD" secondAttribute="bottom" id="Ozp-T2-6qD"/>
+                                    <constraint firstItem="Ddz-gB-7tc" firstAttribute="centerX" secondItem="Nwp-Kv-QjK" secondAttribute="centerX" id="Vx3-Q2-gl7"/>
+                                    <constraint firstItem="Ddz-gB-7tc" firstAttribute="centerY" secondItem="Nwp-Kv-QjK" secondAttribute="centerY" id="lHa-k2-B92"/>
                                     <constraint firstItem="0RF-Wa-xRD" firstAttribute="top" secondItem="Nwp-Kv-QjK" secondAttribute="top" id="qIm-Oz-e2y"/>
                                     <constraint firstItem="0RF-Wa-xRD" firstAttribute="left" secondItem="Nwp-Kv-QjK" secondAttribute="left" id="qyL-FQ-8lY"/>
                                 </constraints>
@@ -604,6 +614,7 @@
                         <outlet property="tableViewContentHolderView" destination="Nwp-Kv-QjK" id="cNk-Xa-ab6"/>
                         <outlet property="topContentView" destination="HzQ-y5-eJ7" id="85c-1b-2GP"/>
                         <outlet property="topSpaceVerticalConstraint" destination="DQV-ga-3c7" id="r8n-og-Xif"/>
+                        <outlet property="transactionNotDataLabel" destination="Ddz-gB-7tc" id="yc4-A8-nxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLe-IC-Zw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4814,7 +4825,7 @@ a new password will be sent.</string>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-hB-8Nr" userLabel="Description - Placeholder Text View" customClass="PlaceholderTextView">
                                                 <rect key="frame" x="16" y="220" width="568" height="125"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.34000000000000002" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="125" id="v2q-bB-hum"/>
                                                 </constraints>
@@ -7348,22 +7359,31 @@ a new password will be sent.</string>
                                     <outlet property="delegate" destination="xif-wa-CyY" id="mAQ-H9-bMj"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-2V-Wcs" userLabel="NotDataDevices - UILabel">
+                                <rect key="frame" x="300" y="300" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jMy-2j-6ea" secondAttribute="trailing" id="7Ht-Sj-eWQ"/>
                             <constraint firstAttribute="bottom" secondItem="jMy-2j-6ea" secondAttribute="bottom" id="8sk-MI-abR"/>
+                            <constraint firstItem="Z0v-2V-Wcs" firstAttribute="centerY" secondItem="Np5-pH-Nny" secondAttribute="centerY" id="9is-ch-nEm"/>
                             <constraint firstItem="jMy-2j-6ea" firstAttribute="leading" secondItem="Np5-pH-Nny" secondAttribute="leading" id="EYR-XD-rEo"/>
                             <constraint firstItem="VQj-l0-K3M" firstAttribute="top" secondItem="MEL-Y4-Czr" secondAttribute="bottom" id="QDV-Az-HyO"/>
                             <constraint firstItem="jMy-2j-6ea" firstAttribute="top" secondItem="Np5-pH-Nny" secondAttribute="top" id="RQT-dt-xAJ"/>
                             <constraint firstItem="VQj-l0-K3M" firstAttribute="leading" secondItem="Np5-pH-Nny" secondAttribute="leading" id="fqX-p8-0XV"/>
+                            <constraint firstItem="Z0v-2V-Wcs" firstAttribute="centerX" secondItem="Np5-pH-Nny" secondAttribute="centerX" id="hgJ-EC-gNU"/>
                             <constraint firstAttribute="trailing" secondItem="VQj-l0-K3M" secondAttribute="trailing" id="jC0-CX-3Vm"/>
                             <constraint firstItem="Qxm-nE-JO7" firstAttribute="top" secondItem="VQj-l0-K3M" secondAttribute="bottom" id="pC0-oO-Yxj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="jMy-2j-6ea" id="XnV-DJ-7CP"/>
+                        <outlet property="devicesNotDataLabel" destination="Z0v-2V-Wcs" id="fuW-wh-dNj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gr4-24-dxN" userLabel="First Responder" sceneMemberID="firstResponder"/>

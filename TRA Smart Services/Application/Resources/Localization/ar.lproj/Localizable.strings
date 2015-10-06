@@ -211,6 +211,7 @@
 "announcements.label.text" = "اعلانات";
 "seeMore.button.title" = "شاهد المزيد";
 "transactions.label.text" = "معاملات";
+"infoHubViewController.transactionNotDataLabel" = "You havent active trnsaction";
 
 //AnnoucementsViewController
 
@@ -391,6 +392,7 @@
 //ListOfDevicesViewController
 
 "listOfDevicesViewController.title" = "قائمة الإجهزة";
+"listOfDevicesViewController.devicesNotDataLabel" = "Not Data Found";
 
 //InnovationsViewController
 
@@ -409,7 +411,7 @@
 //ResultIMEIViewController
 
 "resultIMEIViewController.title" = "نتيجة البحث";
-"resultIMEIViewController.noDeviceDatabase" = "لا تجد نتائج";
+"resultIMEIViewController.noDeviceDatabase" = "لا توجد نتائج";
 
 //SelectImageActionSheet
 

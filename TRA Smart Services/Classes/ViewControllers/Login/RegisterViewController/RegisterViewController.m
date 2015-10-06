@@ -121,7 +121,7 @@ static NSString *const DividerForID = @"-";
             return;
         }
         [self.view endEditing:YES];
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text
                                                      password:self.passwordTextField.text
                                                     firstName:self.firstNameTextField.text
@@ -135,7 +135,7 @@ static NSString *const DividerForID = @"-";
             } else {
                 [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
             }
-            [AppHelper hideLoader];
+            [loader dismissTRALoader];
         }];
 
     } else {

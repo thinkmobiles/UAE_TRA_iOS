@@ -27,6 +27,7 @@ static LanguageType startingLanguageType;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceVerticalConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *transactionNotDataLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightSeparatorSpaceConstraint;
@@ -232,6 +233,7 @@ static LanguageType startingLanguageType;
     self.announcementsLabel.text = dynamicLocalizedString(@"announcements.label.text");
     self.announcementsLabel.font = self.dynamicService.language == LanguageTypeArabic ? [UIFont droidKufiBoldFontForSize:11.f] : [UIFont latoBoldWithSize:11.f];
     [self.seeMoreButton setTitle:dynamicLocalizedString(@"seeMore.button.title") forState:UIControlStateNormal];
+    self.transactionNotDataLabel.text = dynamicLocalizedString(@"infoHubViewController.transactionNotDataLabel");
 }
 
 - (void)updateColors
@@ -322,6 +324,13 @@ static LanguageType startingLanguageType;
         }
         [AppHelper hideLoader];
     }];
+}
+
+- (void)setFilteredDataSource:(NSMutableArray *)filteredDataSource
+{
+    _filteredDataSource = filteredDataSource;
+
+    self.transactionNotDataLabel.hidden = _filteredDataSource.count;
 }
 
 - (void)presentLoginIfNeeded

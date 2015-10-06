@@ -8,7 +8,22 @@
 #import "ListOfDevicesViewController.h"
 #import "ListOfDevicesTableViewCell.h"
 
+@interface ListOfDevicesViewController()
+
+@property (weak, nonatomic) IBOutlet UILabel *devicesNotDataLabel;
+
+@end
+
 @implementation ListOfDevicesViewController
+
+#pragma mark - LifeCycle
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.devicesNotDataLabel.hidden = self.dataSource.count;
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -55,6 +70,7 @@
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"listOfDevicesViewController.title");
+    self.devicesNotDataLabel.text = dynamicLocalizedString(@"listOfDevicesViewController.devicesNotDataLabel");
 }
 
 - (void)updateColors

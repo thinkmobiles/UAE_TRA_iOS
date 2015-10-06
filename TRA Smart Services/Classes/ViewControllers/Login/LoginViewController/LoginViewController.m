@@ -79,7 +79,7 @@
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
             return;
         }
-        [AppHelper showLoader];
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         __weak typeof(self) weakSelf = self;
         [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
@@ -92,7 +92,7 @@
                     [weakSelf closeButtonPressed];
                 }
             }
-            [AppHelper hideLoader];
+            [loader dismissTRALoader];
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
