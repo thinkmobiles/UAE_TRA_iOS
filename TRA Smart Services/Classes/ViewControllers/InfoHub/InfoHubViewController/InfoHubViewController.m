@@ -54,7 +54,6 @@ static LanguageType startingLanguageType;
     [super viewWillAppear:animated];
     
     self.page = 1;
-    
     [self presentLoginIfNeeded];
 }
 
