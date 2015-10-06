@@ -9,14 +9,14 @@
 #import "TRALoaderViewController.h"
 #import "UserModel.h"
 
-static NSString *const ServiceTypeGetDomainDataStringName = @"whois";
-static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"availability";
+static NSString *const ServiceTypeGetDomainDataStringName = @"domain check";
+static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"domain check";
 static NSString *const ServiceTypeSearchMobileIMEIStringName = @"verification";
 static NSString *const ServiceTypeSearchMobileBrandStringName = @"mobile brand";
 static NSString *const ServiceTypeFeedbackStringName = @"Rating service";
-static NSString *const ServiceTypeSMSSpamReportStringName = @"report sms";
+static NSString *const ServiceTypeSMSSpamReportStringName = @"spam report";
 static NSString *const ServiceTypeHelpSalimStringName = @"help salim";
-static NSString *const ServiceTypeVerificationStringName = @"verification";
+static NSString *const ServiceTypeVerificationStringName = @"domain check";
 static NSString *const ServiceTypeCoverageStringName = @"coverage";
 static NSString *const ServiceTypeInternetSpeedTestStringName = @"";
 static NSString *const ServiceTypeCompliantAboutServiceProviderStringName = @"complain about service provider";
