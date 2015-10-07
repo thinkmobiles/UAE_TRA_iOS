@@ -50,6 +50,7 @@ typedef NS_ENUM(NSUInteger, ComplianType) {
 };
 
 typedef void(^ResponseBlock)(id response, NSError *error);
+typedef void(^SearchResponseBlock)(id response, NSError *error, NSString *requestURI);
 
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
@@ -85,6 +86,7 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse;
 - (void)traSSNoCRMServicePostInnovationTitle:(NSString *)title message:(NSString *)message type:(NSNumber *)type responseBlock:(ResponseBlock)innovationResponse;
 - (void)traSSNoCRMServiceGetGetTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc responseBlock:(ResponseBlock)getTransactionResponse;
+- (void)traSSNoCRMServiceSearchTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc searchText:(NSString *)searchText responseBlock:(SearchResponseBlock)getTransactionResponse;
 
 #pragma mark - User
 

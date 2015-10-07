@@ -26,10 +26,8 @@ static CGFloat const MaxScaleFactorForSpeedAccessCell = 0.9f;
 
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
-static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue";
 static NSString *const HomeToHelpSalimSequeIdentifier = @"HomeToHelpSalimSeque";
 static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
-static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
@@ -71,7 +69,7 @@ static LanguageType startLanguage;
     
     startLanguage = self.dynamicService.language;
     
-    self.selectedServiceIDHomeSearchViewController = - 1;
+    self.selectedServiceIDHomeSearchViewController = -1;
     self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
     
     [self prepareTopBar];
@@ -376,11 +374,6 @@ static LanguageType startLanguage;
             [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:@(serviceID)];
             break;
         }
-            //dont use
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:@(serviceID)];
-            break;
-        }
         case 5: {
             [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:@(serviceID)];
             break;
@@ -391,11 +384,6 @@ static LanguageType startLanguage;
         }
         case 8: {
             [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:@(serviceID)];
-            break;
-        }
-            //dont use
-        case 9: {
-            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 12:

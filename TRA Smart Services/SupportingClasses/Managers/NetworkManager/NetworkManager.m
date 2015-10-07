@@ -244,9 +244,7 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     if (page && count) {
         NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
         NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
-//        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@&orderAsc=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0"];
         requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements]; //temp asc not work
-
     }
     
     [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
@@ -263,6 +261,40 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
         }
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         PerformFailureRecognition(operation, error, getTransactionResponse);
+    }];
+}
+
+- (void)traSSNoCRMServiceSearchTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc searchText:(NSString *)searchText responseBlock:(SearchResponseBlock)getTransactionResponse
+{
+    NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
+    NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@&cout=%@&orderAsc=%@&search=%@", traSSNOCRMServiceSearchTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0", searchText];
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSString *request = [operation.request.URL absoluteString];
+        
+        id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *responseTransactions = [[NSMutableArray alloc] init];
+            for (NSDictionary *transActionDict in value) {
+                TransactionModel *transactionModel = [[TransactionModel alloc] initWithDictionary:transActionDict];
+                [responseTransactions addObject:transactionModel];
+            }
+            getTransactionResponse(responseTransactions, nil, [[request componentsSeparatedByString:@"="] lastObject]);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+            NSString *responseString = dynamicLocalizedString(@"api.message.serverError");
+            if (operation.responseObject) {
+                NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
+                id responsedObject = [response valueForKey:ResponseDictionaryErrorKey];
+                if ([responsedObject isKindOfClass:[NSArray class]]){
+                    responseString = [(NSArray *)responsedObject firstObject];
+                } else if ([responsedObject isKindOfClass:[NSString class]]){
+                    responseString = responsedObject;
+                }
+            }
+        getTransactionResponse(responseString, error, nil);
     }];
 }
 

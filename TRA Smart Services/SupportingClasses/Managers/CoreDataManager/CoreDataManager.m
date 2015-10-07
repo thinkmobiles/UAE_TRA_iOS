@@ -41,7 +41,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     NSArray *result = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
 #if DEBUG
     if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+        DLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
     }
 #endif
     return result;
@@ -54,7 +54,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 #if DEBUG
     if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+        DLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
     }
 #endif
     return result;
@@ -66,7 +66,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
     }
 }

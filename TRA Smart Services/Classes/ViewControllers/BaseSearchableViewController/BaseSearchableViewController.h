@@ -12,4 +12,6 @@
 - (void)localizeUI;
 - (BOOL)isSearchBarActive;
 
+@property (strong, nonatomic) UISearchBar *searchBar;
+
 @end

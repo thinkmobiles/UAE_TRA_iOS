@@ -9,6 +9,7 @@
 #import "InfoHubCollectionViewCell.h"
 #import "InfoHubTableViewCell.h"
 #import "TransactionModel.h"
+#import "MBProgressHUD.h"
 #import "LoginViewController.h"
 
 static CGFloat const SectionHeaderHeight = 40.0f;
@@ -27,6 +28,7 @@ static LanguageType startingLanguageType;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContentHolderView;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceVerticalConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomTableViewConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *transactionNotDataLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSeparatorSpaceConstraint;
@@ -56,6 +58,8 @@ static LanguageType startingLanguageType;
     
     self.page = 1;
     [self presentLoginIfNeeded];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -66,11 +70,16 @@ static LanguageType startingLanguageType;
     self.filteredDataSource = nil;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-#warning CUSTOM - commented out animations while not active announcements
+//#warning CUSTOM - commented out animations while not active announcements
 
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
@@ -80,19 +89,16 @@ static LanguageType startingLanguageType;
 //        weakSelf.topSpaceVerticalConstraint.constant = - distanceToMoveView;
 //        [weakSelf.view layoutIfNeeded];
 //    }];
+    
     return YES;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(searchText.length) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains [c] %@", searchText];
-        NSArray *arraySort = [self.tableViewDataSource filteredArrayUsingPredicate:predicate];
-        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:arraySort];
-    } else {
+    if(!searchText.length) {
         self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -103,13 +109,43 @@ static LanguageType startingLanguageType;
     self.filteredDataSource = self.tableViewDataSource;
     [self.tableView reloadData];
     
-#warning CUSTOM - commented out animations while not active announcements
+//#warning CUSTOM - commented out animations while not active announcements
+    
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
 //    [UIView animateWithDuration:0.25 animations:^{
 //        weakSelf.topSpaceVerticalConstraint.constant = 0;
 //        [weakSelf.view layoutIfNeeded];
 //    }];
+    __weak typeof(self) weakSelf = self;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.bottomTableViewConstraint.constant = 0;
+        [weakSelf.view layoutIfNeeded];
+    }];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if ([MBProgressHUD HUDForView:[AppHelper topView]]) {
+        return;
+    }
+    
+    if(searchBar.text.length) {
+        [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
+        [[NetworkManager sharedManager] traSSNoCRMServiceSearchTransactions:1 count:1000 orderAsc:0 searchText:searchBar.text responseBlock:^(id response, NSError *error, NSString *requestString) {
+            if ([requestString isEqualToString:self.searchBar.text]) {
+                weakSelf.filteredDataSource = [[NSMutableArray alloc] initWithArray:response];
+                [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+
+            }
+            [AppHelper hideLoader];
+        }];
+    } else {
+        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark - CollectionViewDataSource
@@ -353,6 +389,23 @@ static LanguageType startingLanguageType;
         ((LoginViewController *)viewController.topViewController).shouldAutoCloseAfterLogin = YES;
         [AppHelper presentViewController:viewController onController:self.navigationController];
     }
+}
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillAppear:(NSNotification *)notification
+{
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = keyboardRect.size.height;
+    CGFloat heightOfTabBar = self.tabBarController.tabBar.frame.size.height;
+    CGFloat offset = keyboardHeight - heightOfTabBar;
+    
+    [self.view layoutIfNeeded];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.bottomTableViewConstraint.constant = offset;
+        [weakSelf.view layoutIfNeeded];
+    }];
 }
 
 @end
