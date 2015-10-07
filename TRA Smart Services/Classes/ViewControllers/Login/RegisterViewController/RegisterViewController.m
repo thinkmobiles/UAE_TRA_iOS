@@ -293,7 +293,7 @@ static NSString *const DividerForID = @"-";
         NSString *firstPart = [textField.text substringToIndex:8];
         firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:8]];
         textField.text = firstPart;
-    } else if ((textField.text.length == 17 && [[textField.text substringFromIndex:4] rangeOfString:DividerForID].location == NSNotFound)) {
+    } else if ((textField.text.length == 17 && [[textField.text substringFromIndex:9] rangeOfString:DividerForID].location == NSNotFound)) {
         NSString *firstPart = [textField.text substringToIndex:16];
         firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:16]];
         textField.text = firstPart;
