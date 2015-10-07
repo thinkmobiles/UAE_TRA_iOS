@@ -30,8 +30,8 @@
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
 "message.InvalidFormatIDEmirates" = "Invalid Invalid Emirates ID";
-"message.InvalidFormatFirstName" = "Invalid First Name";
-"message.InvalidFormatLastName" = "Invalid Last Name";
+"message.InvalidFormatFirstName" = "First name cannot contain digits";
+"message.InvalidFormatLastName" = "Last name cannot contain digits";
 "message.InvalidFormatMobile" = "Invalid mobilePhone";
 "message.InvalidFormatEmail" = "Invalid Email";
 "message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
@@ -45,6 +45,7 @@
 "message.UserNameIsTooShort3" = "Username is too short. It must be at least three characters";
 "message.UserNameIsTooLong32" = "Username is too long. It must be less than thirty-two characters";
 "message.UserName1charValidation" = "Username must start with a letter";
+"message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
 
 //StatesNames
 

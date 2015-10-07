@@ -82,6 +82,12 @@
         if (self.contactNumberTextfield.text.length && ![self.contactNumberTextfield.text isValidPhoneNumber]) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
             return;
+        } else if (![self.firstNmaeTextfield.text isValidName] && !(self.firstNmaeTextfield.text.length > 30)){
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
+            return;
+        } else if (![self.lastNameTextField.text isValidName] && !(self.firstNmaeTextfield.text.length > 30)) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
+            return;
         }
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];

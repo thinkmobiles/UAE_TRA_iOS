@@ -66,7 +66,7 @@
             }
         }];
     } else {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidIMEI")];
     }
 }
 

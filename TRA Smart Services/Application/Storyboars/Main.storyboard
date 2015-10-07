@@ -2496,7 +2496,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="oOv-GM-CrL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch"/>
                                 <connections>
                                     <outlet property="delegate" destination="dey-3G-9KT" id="9Dd-BD-P4e"/>
                                 </connections>

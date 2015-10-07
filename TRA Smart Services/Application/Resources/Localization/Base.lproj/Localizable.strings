@@ -45,6 +45,7 @@
 "message.UserNameIsTooShort3" = "message.UserNameIsTooShort3";
 "message.UserNameIsTooLong32" = "message.UserNameIsTooLong32";
 "message.UserName1charValidation" = "message.UserName1charValidation";
+"message.InvalidIMEI" = "message.InvalidIMEI";
 
 //StatesNames
 

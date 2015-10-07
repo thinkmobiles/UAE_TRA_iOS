@@ -45,6 +45,7 @@
 "message.UserNameIsTooShort3" = "اسم المستخدم يجب أن يتكون من ثلاثة محارف على الأقل";
 "message.UserNameIsTooLong32" = "اسم المستخدم يجب أن لا تتكون من أكثر من أثنين و ثلاثين محرفاً";
 "message.UserName1charValidation" = "اسم المستخدم يجب أن يبدأ بحرف";
+"message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
 
 //StatesNames
 
@@ -403,7 +404,7 @@
 
 //InnovationsViewController
 
-"innovationsViewController.title" = "أفكار إبداعية";
+"innovationsViewController.title" = "مركز الإبداع و الابتكار";;
 "innovationsViewController.submitButton" = "أرسل";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
 "innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";

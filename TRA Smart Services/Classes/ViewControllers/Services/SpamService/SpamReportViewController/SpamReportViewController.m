@@ -202,6 +202,9 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             [self clearUp];
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            loader.ratingView.hidden = NO;
+        });
     }];
 }
 

@@ -68,6 +68,7 @@
 		93D10AA11BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D10AA01BADB0BB00CCEB22 /* FavouriteViewController+DeleteAction.m */; };
 		E00A038C1B9EEFD700A4CFA1 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */; };
 		E00A812E1BA0577A00502423 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A812D1BA0577A00502423 /* HomeSearchViewController.m */; };
+		E04F16501BC5500C00EFF0A3 /* ReverseSecure.m in Sources */ = {isa = PBXBuildFile; fileRef = E04F164F1BC5500C00EFF0A3 /* ReverseSecure.m */; settings = {ASSET_TAGS = (); }; };
 		E059DD181BB2F3D700C34EF0 /* SpamSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E065D0641BB13DCB00427AD2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065D0631BB13DCB00427AD2 /* MessageUI.framework */; };
 		E06B05261BABEC6E00365A3A /* ServiceDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B05251BABEC6E00365A3A /* ServiceDescription.plist */; };
@@ -286,6 +287,8 @@
 		E00A038B1B9EEFD700A4CFA1 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		E00A812C1BA0577A00502423 /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
 		E00A812D1BA0577A00502423 /* HomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
+		E04F164E1BC5500C00EFF0A3 /* ReverseSecure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReverseSecure.h; sourceTree = "<group>"; };
+		E04F164F1BC5500C00EFF0A3 /* ReverseSecure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReverseSecure.m; sourceTree = "<group>"; };
 		E059DD161BB2F3D700C34EF0 /* SpamSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamSelectionViewController.h; sourceTree = "<group>"; };
 		E059DD171BB2F3D700C34EF0 /* SpamSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpamSelectionViewController.m; sourceTree = "<group>"; };
 		E065D0631BB13DCB00427AD2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -910,6 +913,15 @@
 			path = HomeSearchViewController;
 			sourceTree = "<group>";
 		};
+		E04F164D1BC54FCD00EFF0A3 /* ReverseSecure */ = {
+			isa = PBXGroup;
+			children = (
+				E04F164E1BC5500C00EFF0A3 /* ReverseSecure.h */,
+				E04F164F1BC5500C00EFF0A3 /* ReverseSecure.m */,
+			);
+			path = ReverseSecure;
+			sourceTree = "<group>";
+		};
 		E059DD151BB2F3B500C34EF0 /* SpamSelectionViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1421,6 +1433,7 @@
 		ED982F381B5D256500B6B644 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				E04F164D1BC54FCD00EFF0A3 /* ReverseSecure */,
 				F17320351BB51D080008F745 /* BottomBorderTextView */,
 				F16DA2BE1BB43DC70002AC44 /* BottomBorderTextField */,
 				939444A11BB04FCC00EDCF06 /* FingerPrintAuth */,
@@ -2157,6 +2170,7 @@
 				EDC04F9A1B70E35B0071BADA /* LoginViewController.m in Sources */,
 				ED7D9F1E1B6B9EC400C20402 /* HomeTopBarView.m in Sources */,
 				847D03EB1B83407400B0768C /* AnnoucementsTableViewCell.m in Sources */,
+				E04F16501BC5500C00EFF0A3 /* ReverseSecure.m in Sources */,
 				E073CC6D1B9E049400E216C1 /* ServicesSelectTableViewCell.m in Sources */,
 				9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */,
 				ED2084BF1B5E6B0400779CBD /* LocationManager.m in Sources */,
