@@ -70,7 +70,7 @@ static LanguageType startingLanguageType;
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-#warning commented out animations while not active announcements
+#warning CUSTOM - commented out animations while not active announcements
 
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
@@ -103,7 +103,7 @@ static LanguageType startingLanguageType;
     self.filteredDataSource = self.tableViewDataSource;
     [self.tableView reloadData];
     
-#warning commented out animations while not active announcements
+#warning CUSTOM - commented out animations while not active announcements
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
 //    [UIView animateWithDuration:0.25 animations:^{
