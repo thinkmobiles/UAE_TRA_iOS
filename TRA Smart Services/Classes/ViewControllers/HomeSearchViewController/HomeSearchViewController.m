@@ -9,7 +9,6 @@
 #import "Animation.h"
 #import "TRAService.h"
 #import "AppDelegate.h"
-#import "HomeSearchResultViewController.h"
 
 static NSString *const HomeSearchCellIdentifier = @"homeSearchCell";
 static CGFloat const HeightTableViewCell = 35.f;

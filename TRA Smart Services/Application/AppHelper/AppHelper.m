@@ -97,6 +97,11 @@ static LanguageType startLanguage;
     });
 }
 
++ (void)showLoaderOnView:(UIView *)view
+{
+    [MBProgressHUD showHUDAddedTo:view animated:YES].color = [[DynamicUIService service].currentApplicationColor colorWithAlphaComponent:0.3f];
+}
+
 + (void)hideLoader
 {
     dispatch_async(dispatch_get_main_queue(), ^{

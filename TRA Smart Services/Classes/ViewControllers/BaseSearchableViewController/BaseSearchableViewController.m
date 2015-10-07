@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItem;
 
-@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UIView *titleView;
 
 @end
