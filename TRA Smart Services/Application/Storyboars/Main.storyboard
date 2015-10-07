@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -175,7 +175,7 @@
                                             <constraint firstAttribute="height" constant="40" id="U3r-7G-hAC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
                                         <connections>
                                             <outlet property="delegate" destination="Veq-pR-Xch" id="wj0-e6-8Q3"/>
                                         </connections>
@@ -712,11 +712,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -928,7 +928,7 @@
                                                             <constraint firstAttribute="height" constant="26" id="A7n-dq-QvL"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="Hzw-nb-24h"/>
                                                         </connections>
@@ -958,7 +958,7 @@
                                                             <constraint firstAttribute="height" constant="26" id="aS3-ss-Wi8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="iCT-2a-cfz" id="eiV-BY-a3V"/>
                                                         </connections>
@@ -4324,7 +4324,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="gOT-ED-Bnz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="9dF-S3-6Fb" id="tSa-w0-6zU"/>
                                 </connections>
@@ -4336,7 +4336,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="2jC-Xc-Zyz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="9dF-S3-6Fb" id="bME-6s-uOG"/>
                                 </connections>
@@ -4446,7 +4446,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="Yjt-fm-Yaa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="Vhn-R2-wMo" id="OQM-xd-ArR"/>
                                 </connections>
@@ -4685,7 +4685,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="height" constant="40" id="qVz-di-Rlp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="9jW-oN-JHA" id="kpc-YD-2Eq"/>
                                                 </connections>
@@ -4833,7 +4833,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="height" constant="40" id="Zob-wc-OQd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="9jW-oN-JHA" id="tWc-Bd-kyR"/>
                                                 </connections>
@@ -4932,7 +4932,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="XP3-Kh-r5b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="EUe-xY-9fo" id="axZ-t8-Aoj"/>
                                 </connections>
@@ -5823,7 +5823,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="SLf-F9-WDE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="5ZJ-47-k8q"/>
                                 </connections>
@@ -6275,7 +6275,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="26" id="EAz-QN-d9E"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="7zn-Uu-fxd" id="wwr-2D-eHo"/>
                                                         </connections>
@@ -6305,7 +6305,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="26" id="zvv-IK-jOX"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="7zn-Uu-fxd" id="hG5-7B-VQV"/>
                                                         </connections>
@@ -6335,7 +6335,7 @@ a new password will be sent.</string>
                                                             <constraint firstAttribute="height" constant="26" id="4lr-Zf-UQn"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="7zn-Uu-fxd" id="I1R-gt-9et"/>
                                                         </connections>
@@ -6523,7 +6523,7 @@ a new password will be sent.</string>
                                             <constraint firstAttribute="height" constant="26" id="NiF-Re-e67"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="anJ-hX-kHd" id="nKM-D7-CDN"/>
                                         </connections>
@@ -6553,7 +6553,7 @@ a new password will be sent.</string>
                                             <constraint firstAttribute="height" constant="26" id="gdL-mI-JQY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="anJ-hX-kHd" id="o7d-z3-UFL"/>
                                         </connections>
@@ -6661,7 +6661,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="Q8I-qj-aJj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="5at-6E-Y4n" id="kxZ-sS-cD7"/>
                                 </connections>
