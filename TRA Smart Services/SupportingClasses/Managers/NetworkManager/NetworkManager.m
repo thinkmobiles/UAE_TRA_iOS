@@ -244,9 +244,7 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     if (page && count) {
         NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
         NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
-//        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@&orderAsc=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0"];
         requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements]; //temp asc not work
-
     }
     
     [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
@@ -271,8 +269,9 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
     NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@&cout=%@&orderAsc=%@&search=%@", traSSNOCRMServiceSearchTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0", searchText];
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *request = [operation.request.URL absoluteString];
         
         id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];

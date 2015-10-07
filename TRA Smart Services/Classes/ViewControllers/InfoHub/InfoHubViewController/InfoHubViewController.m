@@ -79,7 +79,7 @@ static LanguageType startingLanguageType;
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-#warning CUSTOM - commented out animations while not active announcements
+//#warning CUSTOM - commented out animations while not active announcements
 
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
@@ -95,19 +95,7 @@ static LanguageType startingLanguageType;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(searchText.length > 2) {
-        if (![MBProgressHUD HUDForView:self.tableView]) {
-            [AppHelper showLoaderOnView:self.tableView];
-        }
-        __weak typeof(self) weakSelf = self;
-        [[NetworkManager sharedManager] traSSNoCRMServiceSearchTransactions:1 count:1000 orderAsc:1 searchText:searchText responseBlock:^(id response, NSError *error, NSString *requestString) {
-            if ([requestString isEqualToString:self.searchBar.text]) {
-                weakSelf.filteredDataSource = [[NSMutableArray alloc] initWithArray:response];
-                [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-                [MBProgressHUD hideAllHUDsForView:weakSelf.tableView animated:YES];
-            }
-        }];
-    } else {
+    if(!searchText.length) {
         self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -121,19 +109,43 @@ static LanguageType startingLanguageType;
     self.filteredDataSource = self.tableViewDataSource;
     [self.tableView reloadData];
     
-#warning CUSTOM - commented out animations while not active announcements
+//#warning CUSTOM - commented out animations while not active announcements
+    
 //    [self.view layoutIfNeeded];
 //    __weak typeof(self) weakSelf = self;
 //    [UIView animateWithDuration:0.25 animations:^{
 //        weakSelf.topSpaceVerticalConstraint.constant = 0;
 //        [weakSelf.view layoutIfNeeded];
 //    }];
+    __weak typeof(self) weakSelf = self;
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.25 animations:^{
-        self.bottomTableViewConstraint.constant = 0;
-        [self.view layoutIfNeeded];
+        weakSelf.bottomTableViewConstraint.constant = 0;
+        [weakSelf.view layoutIfNeeded];
     }];
+}
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if ([MBProgressHUD HUDForView:[AppHelper topView]]) {
+        return;
+    }
+    
+    if(searchBar.text.length) {
+        [AppHelper showLoader];
+        __weak typeof(self) weakSelf = self;
+        [[NetworkManager sharedManager] traSSNoCRMServiceSearchTransactions:1 count:1000 orderAsc:0 searchText:searchBar.text responseBlock:^(id response, NSError *error, NSString *requestString) {
+            if ([requestString isEqualToString:self.searchBar.text]) {
+                weakSelf.filteredDataSource = [[NSMutableArray alloc] initWithArray:response];
+                [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+
+            }
+            [AppHelper hideLoader];
+        }];
+    } else {
+        self.filteredDataSource = [[NSMutableArray alloc] initWithArray:self.tableViewDataSource];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark - CollectionViewDataSource
@@ -394,7 +406,6 @@ static LanguageType startingLanguageType;
         weakSelf.bottomTableViewConstraint.constant = offset;
         [weakSelf.view layoutIfNeeded];
     }];
-    
 }
 
 @end
