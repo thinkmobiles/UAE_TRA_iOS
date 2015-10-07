@@ -40,12 +40,10 @@
 "message.FailedToInitializeMFController" = "لايمكن ارسال رسائل قصيرة من هذا الجهاز";
 "message.PleaseChooseServiceProvider" = "Please choose service provider";
 "message.PleaseSelectPrescriptionOfIdea" = "Please select prescription of idea";
-
-"message.PasswordIsTooShort8" = "Password is too short. It must contain 8 characters at least";
-"message.PasswordIsTooLong32" = "Password is too long. It should constrain less than 32 characters at least";
-
-"message.UserNameIsTooShort3" = "User Name is too short. It must contain 3 characters at least";
-"message.UserNameIsTooLong32" = "User Name is too long. It should constrain less than 32 characters at least";
+"message.PasswordIsTooShort8" = "Password is too short. It should contain 8 characters at least";
+"message.PasswordIsTooLong32" = "Password is too long. It should contain less than 32 characters";
+"message.UserNameIsTooShort3" = "User Name is too short. It should contain 3 characters at least";
+"message.UserNameIsTooLong32" = "User Name is too long. It should contain less than 32 characters";
 "message.UserName1charValidation" = "Username should not start with digit";
 
 //StatesNames

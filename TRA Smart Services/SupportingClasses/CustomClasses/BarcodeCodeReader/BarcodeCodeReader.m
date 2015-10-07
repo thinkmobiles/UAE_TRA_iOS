@@ -145,7 +145,7 @@
             [self.delegate readerDidChangeStatusTo:@"Ready to start scanning"];
         }
     } else {
-        NSLog(@"%@", [error localizedDescription]);
+        DLog(@"%@", [error localizedDescription]);
     }
 }
 

@@ -6,7 +6,7 @@
 //
 
 #define mustOverride() @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"%s must be overridden in a subclass/category", __PRETTY_FUNCTION__] userInfo:nil]
-#define setMustOverride() NSLog(@"%@ - method not implemented", NSStringFromClass([self class])); mustOverride()
+#define setMustOverride() DLog(@"%@ - method not implemented", NSStringFromClass([self class])); mustOverride()
 
 #import "BaseDynamicUIViewController.h"
 
