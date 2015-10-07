@@ -38,6 +38,8 @@
 "message.InvalidStateCode" = "message.InvalidStateCode";
 "message.FailedToSendSMS" = "message.FailedToSendSMS";
 "message.FailedToInitializeMFController" = "message.FailedToInitializeMFController";
+"message.PleaseChooseServiceProvider" = "message.PleaseChooseServiceProvider";
+"message.PleaseІelectPrescriptionOfIdea" = "message.PleaseІelectPrescriptionOfIdea";
 
 //StatesNames
 

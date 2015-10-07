@@ -42,8 +42,10 @@ static CGFloat const heightSelectTableViewCell = 35.f;
 
 - (IBAction)sendInfo:(id)sender
 {
-    if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length || !self.selectedInnovate) {
+    if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (!self.selectedInnovate) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseІelectPrescriptionOfIdea")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSNoCRMServicePostInnovationTitle:self.innovationsTitleTextField.text message:self.descriptionTextView.text type:@(self.selectedInnovate) responseBlock:^(id response, NSError *error) {
@@ -51,6 +53,7 @@ static CGFloat const heightSelectTableViewCell = 35.f;
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+                [self clearUI];
             }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 loader.ratingView.hidden = NO;
@@ -164,6 +167,14 @@ static CGFloat const heightSelectTableViewCell = 35.f;
 }
 
 #pragma mark - Private
+
+- (void)clearUI
+{
+    self.innovationsTitleTextField.text = @"";
+    self.descriptionTextView.text = @"";
+    self.selectedInnovate = 0;
+    [self.selectTableView reloadData];
+}
 
 - (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
 {

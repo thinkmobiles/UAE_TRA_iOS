@@ -93,10 +93,12 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     [self.view endEditing:YES];
     if (!self.compliantDescriptionTextView.text.length ||
         !self.compliantTitleTextField.text.length ||
-        (self.type == ComplianTypeCustomProvider && (!self.selectedProvider || !self.referenceNumberTextField.text.length))){
+        (self.type == ComplianTypeCustomProvider && !self.referenceNumberTextField.text.length)){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else if (self.type == ComplianTypeCustomProvider && ![self.referenceNumberTextField.text isValidPhoneNumber]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+    } else if (self.type == ComplianTypeCustomProvider && !self.selectedProvider) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         if (self.selectedProvider < 1) {

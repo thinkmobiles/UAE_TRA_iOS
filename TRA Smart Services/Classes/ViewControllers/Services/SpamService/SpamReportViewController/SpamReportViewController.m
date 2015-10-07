@@ -65,8 +65,10 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [self helpSalimReport];
         }
     } else if (self.selectSpamReport == SpamReportTypeSMS) {
-        if (!self.reportTextField.text.length || !self.selectedProvider || !self.descriptionTextView.text.length) {
+        if (!self.reportTextField.text.length || !self.descriptionTextView.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        } else if (!self.selectedProvider) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
         } else if (![self.reportTextField.text isValidPhoneNumber]) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         } else {
@@ -74,7 +76,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [self sendSMSMessage];
         }
     }
-    [self clearUp];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -199,6 +200,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
             [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            [self clearUp];
         }
     }];
 }
@@ -252,6 +254,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         default:
             break;
     }
+    [self clearUp];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -38,6 +38,8 @@
 "message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة':\n5,'الشارقة': 6,\n'أم القيوين': 7";
 "message.FailedToSendSMS" = "لايمكن ارسال الرسالة القصيرة";
 "message.FailedToInitializeMFController" = "لايمكن ارسال رسائل قصيرة من هذا الجهاز";
+"message.PleaseChooseServiceProvider" = "Please choose service provider";
+"message.PleaseІelectPrescriptionOfIdea" = "Please select prescription of idea";
 
 //StatesNames
 

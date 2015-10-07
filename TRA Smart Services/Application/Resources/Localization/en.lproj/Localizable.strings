@@ -38,6 +38,8 @@
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
 "message.FailedToSendSMS" = "Cant sent SMS";
 "message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
+"message.PleaseChooseServiceProvider" = "Please choose service provider";
+"message.PleaseІelectPrescriptionOfIdea" = "Please select prescription of idea";
 
 //StatesNames
 
