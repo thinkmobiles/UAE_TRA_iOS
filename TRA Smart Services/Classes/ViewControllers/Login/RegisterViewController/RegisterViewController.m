@@ -117,7 +117,9 @@ static NSString *const DividerForID = @"-";
             return;
         }
         [self.view endEditing:YES];
+        __weak typeof(self) weakSelf = self;
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        
         [[NetworkManager sharedManager] traSSRegisterUsername:self.userNameTextField.text
                                                      password:self.passwordTextField.text
                                                     firstName:self.firstNameTextField.text
@@ -127,11 +129,13 @@ static NSString *const DividerForID = @"-";
                                                   mobilePhone:self.mobileTextField.text
                                                         email:self.emailTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
+                [loader dismissTRALoader];
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [self.navigationController popViewControllerAnimated:YES];
+                [weakSelf dismissViewControllerAnimated:loader completion:^{
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }];
             }
-            [loader dismissTRALoader];
         }];
 
     } else {

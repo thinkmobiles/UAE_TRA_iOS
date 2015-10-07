@@ -46,10 +46,6 @@
 		9394449E1BAFD08400EDCF06 /* TRALoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9394449D1BAFD08400EDCF06 /* TRALoaderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		939444A01BB0487D00EDCF06 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */; };
 		939444A41BB04FE300EDCF06 /* FingerPrintAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */; settings = {ASSET_TAGS = (); }; };
-		939444B71BB079C600EDCF06 /* BarcodeReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B31BB079C600EDCF06 /* BarcodeReaderTest.m */; settings = {ASSET_TAGS = (); }; };
-		939444B81BB079C600EDCF06 /* FavouriteViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
-		939444B91BB079C600EDCF06 /* KeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B51BB079C600EDCF06 /* KeychainTest.m */; settings = {ASSET_TAGS = (); }; };
-		939444BA1BB079C600EDCF06 /* VerificationWithRegularTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 939444B61BB079C600EDCF06 /* VerificationWithRegularTest.m */; settings = {ASSET_TAGS = (); }; };
 		93A436E41B85AC32009299C5 /* ServiceInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */; };
 		93A436E61B85BC08009299C5 /* ServiceInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A436E51B85BC08009299C5 /* ServiceInfoList.plist */; };
 		93A436EA1B85CD9C009299C5 /* ServiceDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A436E91B85CD9C009299C5 /* ServiceDetailedInfoViewController.m */; };
@@ -189,16 +185,6 @@
 		F1F15CD41B971D6300891246 /* ServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F15CD31B971D6300891246 /* ServiceView.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		939444AE1BB079A500EDCF06 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED7192741B5450D60086C6EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED71927B1B5450D60086C6EE;
-			remoteInfo = "TRA Smart Services";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8467EF271B8625AD006C2DDA /* AnnoucementsTableViewCellEuropeUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellEuropeUI.xib; sourceTree = "<group>"; };
 		8467EF291B8625C4006C2DDA /* AnnoucementsTableViewCellArabicUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnoucementsTableViewCellArabicUI.xib; sourceTree = "<group>"; };
@@ -268,12 +254,6 @@
 		9394449F1BB0487D00EDCF06 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		939444A21BB04FE300EDCF06 /* FingerPrintAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerPrintAuth.h; sourceTree = "<group>"; };
 		939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerPrintAuth.m; sourceTree = "<group>"; };
-		939444A91BB079A400EDCF06 /* TRA Smart ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TRA Smart ServicesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		939444AD1BB079A500EDCF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		939444B31BB079C600EDCF06 /* BarcodeReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReaderTest.m; sourceTree = "<group>"; };
-		939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewControllerTests.m; sourceTree = "<group>"; };
-		939444B51BB079C600EDCF06 /* KeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTest.m; sourceTree = "<group>"; };
-		939444B61BB079C600EDCF06 /* VerificationWithRegularTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationWithRegularTest.m; sourceTree = "<group>"; };
 		93A436E21B85AC32009299C5 /* ServiceInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInfoCollectionViewCell.h; sourceTree = "<group>"; };
 		93A436E31B85AC32009299C5 /* ServiceInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		93A436E51B85BC08009299C5 /* ServiceInfoList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceInfoList.plist; sourceTree = "<group>"; };
@@ -522,13 +502,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		939444A61BB079A400EDCF06 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ED7192791B5450D60086C6EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -832,18 +805,6 @@
 				939444A31BB04FE300EDCF06 /* FingerPrintAuth.m */,
 			);
 			path = FingerPrintAuth;
-			sourceTree = "<group>";
-		};
-		939444AA1BB079A500EDCF06 /* TRA Smart ServicesTests */ = {
-			isa = PBXGroup;
-			children = (
-				939444B31BB079C600EDCF06 /* BarcodeReaderTest.m */,
-				939444B41BB079C600EDCF06 /* FavouriteViewControllerTests.m */,
-				939444B51BB079C600EDCF06 /* KeychainTest.m */,
-				939444B61BB079C600EDCF06 /* VerificationWithRegularTest.m */,
-				939444AD1BB079A500EDCF06 /* Info.plist */,
-			);
-			path = "TRA Smart ServicesTests";
 			sourceTree = "<group>";
 		};
 		93A436E11B85AC21009299C5 /* ServiceInfoCollectionViewCell */ = {
@@ -1246,7 +1207,6 @@
 			isa = PBXGroup;
 			children = (
 				ED71927E1B5450D60086C6EE /* TRA Smart Services */,
-				939444AA1BB079A500EDCF06 /* TRA Smart ServicesTests */,
 				ED71927D1B5450D60086C6EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1255,7 +1215,6 @@
 			isa = PBXGroup;
 			children = (
 				ED71927C1B5450D60086C6EE /* TRA Smart Services.app */,
-				939444A91BB079A400EDCF06 /* TRA Smart ServicesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2014,24 +1973,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		939444A81BB079A400EDCF06 /* TRA Smart ServicesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 939444B01BB079A500EDCF06 /* Build configuration list for PBXNativeTarget "TRA Smart ServicesTests" */;
-			buildPhases = (
-				939444A51BB079A400EDCF06 /* Sources */,
-				939444A61BB079A400EDCF06 /* Frameworks */,
-				939444A71BB079A400EDCF06 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				939444AF1BB079A500EDCF06 /* PBXTargetDependency */,
-			);
-			name = "TRA Smart ServicesTests";
-			productName = "TRA Smart ServicesTests";
-			productReference = 939444A91BB079A400EDCF06 /* TRA Smart ServicesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		ED71927B1B5450D60086C6EE /* TRA Smart Services */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED7192931B5450D60086C6EE /* Build configuration list for PBXNativeTarget "TRA Smart Services" */;
@@ -2058,10 +1999,6 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Thinkmobiles;
 				TargetAttributes = {
-					939444A81BB079A400EDCF06 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = ED71927B1B5450D60086C6EE;
-					};
 					ED71927B1B5450D60086C6EE = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 3C9NG3BP4F;
@@ -2083,19 +2020,11 @@
 			projectRoot = "";
 			targets = (
 				ED71927B1B5450D60086C6EE /* TRA Smart Services */,
-				939444A81BB079A400EDCF06 /* TRA Smart ServicesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		939444A71BB079A400EDCF06 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ED71927A1B5450D60086C6EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2148,17 +2077,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		939444A51BB079A400EDCF06 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				939444BA1BB079C600EDCF06 /* VerificationWithRegularTest.m in Sources */,
-				939444B81BB079C600EDCF06 /* FavouriteViewControllerTests.m in Sources */,
-				939444B91BB079C600EDCF06 /* KeychainTest.m in Sources */,
-				939444B71BB079C600EDCF06 /* BarcodeReaderTest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ED7192781B5450D60086C6EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2298,14 +2216,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		939444AF1BB079A500EDCF06 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED71927B1B5450D60086C6EE /* TRA Smart Services */;
-			targetProxy = 939444AE1BB079A500EDCF06 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		ED982F2C1B5D24DA00B6B644 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -2320,32 +2230,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		939444B11BB079A500EDCF06 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "TRA Smart ServicesTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.freeLine.TRA-Smart-ServicesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
-			};
-			name = Debug;
-		};
-		939444B21BB079A500EDCF06 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "TRA Smart ServicesTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.freeLine.TRA-Smart-ServicesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TRA Smart Services.app/TRA Smart Services";
-			};
-			name = Release;
-		};
 		ED7192911B5450D60086C6EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2468,15 +2352,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		939444B01BB079A500EDCF06 /* Build configuration list for PBXNativeTarget "TRA Smart ServicesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				939444B11BB079A500EDCF06 /* Debug */,
-				939444B21BB079A500EDCF06 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		ED7192771B5450D60086C6EE /* Build configuration list for PBXProject "TRA Smart Services" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

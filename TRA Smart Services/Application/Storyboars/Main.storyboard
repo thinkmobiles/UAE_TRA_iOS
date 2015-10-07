@@ -146,7 +146,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1508,7 +1507,7 @@ a new password will be sent.</string>
                                 <rect key="frame" x="0.0" y="20" width="600" height="930"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXG-29-8qD" userLabel="Content - UiView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="920"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-Zb-oQC" userLabel="RegisterContainer - UIView">
                                                 <rect key="frame" x="0.0" y="188" width="600" height="700"/>
@@ -1720,20 +1719,6 @@ a new password will be sent.</string>
                                                             <action selector="registerButtonPress:" destination="DFS-gr-7R1" eventType="touchUpInside" id="TUc-qR-QlF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1k-Vi-1fU" userLabel="Login now - UIButton">
-                                                        <rect key="frame" x="16" y="659" width="568" height="30"/>
-                                                        <animations/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="xqC-D3-u4Q"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                        <state key="normal" title="Login">
-                                                            <color key="titleColor" red="0.92941176469999998" green="0.41568627450000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loginButtonPress:" destination="DFS-gr-7R1" eventType="touchUpInside" id="qbE-qH-rkj"/>
-                                                        </connections>
-                                                    </button>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3PV-7E-X3w" userLabel="User Name - Text Field" customClass="LeftInsetTextField">
                                                         <rect key="frame" x="15" y="20" width="570" height="50"/>
                                                         <animations/>
@@ -1764,7 +1749,6 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="19c-we-xy9" secondAttribute="trailing" constant="15" id="4Gn-PA-zwI"/>
                                                     <constraint firstItem="WAd-Tu-LyJ" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="5AR-Ln-2vG"/>
                                                     <constraint firstAttribute="trailing" secondItem="3PV-7E-X3w" secondAttribute="trailing" constant="15" id="5ce-83-ogp"/>
-                                                    <constraint firstItem="d1k-Vi-1fU" firstAttribute="width" secondItem="dnH-BM-6gu" secondAttribute="width" id="6CC-LZ-ThL"/>
                                                     <constraint firstItem="dnH-BM-6gu" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="16" id="728-66-eut"/>
                                                     <constraint firstAttribute="trailing" secondItem="e6b-sW-ObO" secondAttribute="trailing" constant="15" id="91Z-aF-6ry"/>
                                                     <constraint firstItem="e6b-sW-ObO" firstAttribute="top" secondItem="3PV-7E-X3w" secondAttribute="bottom" id="9gr-cb-bWK"/>
@@ -1792,9 +1776,7 @@ a new password will be sent.</string>
                                                     <constraint firstAttribute="trailing" secondItem="JkS-R3-AU1" secondAttribute="trailing" constant="15" id="Z5l-v7-cVz"/>
                                                     <constraint firstItem="Wfb-NY-gcP" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="bPH-fp-BTI"/>
                                                     <constraint firstItem="dQS-AY-eSB" firstAttribute="top" secondItem="tuB-qO-0P0" secondAttribute="bottom" constant="20" id="cKk-yj-coi"/>
-                                                    <constraint firstItem="d1k-Vi-1fU" firstAttribute="top" secondItem="dnH-BM-6gu" secondAttribute="bottom" constant="24" id="dA0-Jj-qJZ"/>
                                                     <constraint firstItem="M1l-aZ-03r" firstAttribute="leading" secondItem="X5C-Zb-oQC" secondAttribute="leading" constant="15" id="dfa-bt-QSE"/>
-                                                    <constraint firstItem="d1k-Vi-1fU" firstAttribute="leading" secondItem="dnH-BM-6gu" secondAttribute="leading" id="fSs-0q-WQq"/>
                                                     <constraint firstItem="tuB-qO-0P0" firstAttribute="top" secondItem="WAd-Tu-LyJ" secondAttribute="bottom" id="g39-A6-fwV"/>
                                                     <constraint firstItem="nNk-fF-jDr" firstAttribute="top" secondItem="3Yz-Ib-41V" secondAttribute="bottom" id="gVo-cg-iMT"/>
                                                     <constraint firstAttribute="trailing" secondItem="dnH-BM-6gu" secondAttribute="trailing" constant="16" id="h30-6V-AG7"/>
@@ -1821,7 +1803,7 @@ a new password will be sent.</string>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="7c1-tW-sCx"/>
                                             <constraint firstAttribute="trailing" secondItem="X5C-Zb-oQC" secondAttribute="trailing" id="Eyw-uF-ala"/>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="leading" secondItem="oXG-29-8qD" secondAttribute="leading" id="HVH-yM-rwj"/>
-                                            <constraint firstAttribute="height" constant="920" id="QE5-yX-5zV"/>
+                                            <constraint firstAttribute="height" constant="900" id="QE5-yX-5zV"/>
                                             <constraint firstItem="X5C-Zb-oQC" firstAttribute="top" secondItem="oXG-29-8qD" secondAttribute="top" constant="188" id="tLc-4M-ZXp"/>
                                             <constraint firstAttribute="centerX" secondItem="X5C-Zb-oQC" secondAttribute="centerX" id="zDc-70-zeI"/>
                                         </constraints>
@@ -1869,7 +1851,6 @@ a new password will be sent.</string>
                         <outlet property="emiratesIDTextField" destination="h0U-Un-NrF" id="K2c-KY-c9H"/>
                         <outlet property="firstNameTextField" destination="GmP-Ga-qJi" id="gG8-Yb-PaC"/>
                         <outlet property="lastNameTextField" destination="3Yz-Ib-41V" id="0NE-cH-FOC"/>
-                        <outlet property="loginButton" destination="d1k-Vi-1fU" id="YSm-ox-KXD"/>
                         <outlet property="logoImageView" destination="hEO-tK-nKf" id="Ogx-dK-shZ"/>
                         <outlet property="mainButton" destination="dnH-BM-6gu" id="JU6-Xz-71k"/>
                         <outlet property="mainContainerView" destination="xgR-5H-iYw" id="IaL-Gh-RA1"/>
