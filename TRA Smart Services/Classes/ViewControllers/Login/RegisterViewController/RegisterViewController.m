@@ -111,10 +111,6 @@ static NSString *const DividerForID = @"-";
 
 - (IBAction)registerButtonPress:(id)sender
 {
-    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
-        return;
-    }
     if (self.userNameTextField.text.length && self.mobileTextField.text.length && self.passwordTextField.text.length && self.confirmPasswordTextField.text.length && self.firstNameTextField.text.length && self.emiratesIDTextField.text.length && self.lastNameTextField.text.length && self.emailTextField.text.length) {
         
         if ([self isInputParametersInvalid]){
@@ -133,7 +129,7 @@ static NSString *const DividerForID = @"-";
             if (error) {
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
+                [self.navigationController popViewControllerAnimated:YES];
             }
             [loader dismissTRALoader];
         }];
@@ -221,36 +217,6 @@ static NSString *const DividerForID = @"-";
     }
 }
 
-- (BOOL)isInputParametersInvalid
-{
-    if (![self.userNameTextField.text isValidUserName]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
-        return YES;
-    }
-    if (![self.firstNameTextField.text isValidName]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
-        return YES;
-    }
-    if (![self.lastNameTextField.text isValidName]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
-        return YES;
-    }
-    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
-        return YES;
-    }
-    if (![self.mobileTextField.text isValidPhoneNumber]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
-        return YES;
-    }
-    if (![self.emailTextField.text isValidEmailUseHardFilter:NO]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
-        return YES;
-    }
-    
-    return NO;
-}
-
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"register.title");
@@ -328,6 +294,80 @@ static NSString *const DividerForID = @"-";
         firstPart = [[firstPart stringByAppendingString:DividerForID] stringByAppendingString:[textField.text substringFromIndex:16]];
         textField.text = firstPart;
     }
+}
+
+#pragma mark - ValidationMethods
+
+- (BOOL)passwordValidation
+{
+    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
+        return YES;
+    } else if (self.passwordTextField.text.length < 8) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooShort8")];
+        return YES;
+    } else if (self.passwordTextField.text.length >= 32) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooLong32")];
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)userName1charValidation
+{
+    NSString *allowedSymbols = @"[A-Za-z]";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:[self.userNameTextField.text substringToIndex:1]];
+}
+
+- (BOOL)userNameValidation
+{
+    if (self.userNameTextField.text.length < 3) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.UserNameIsTooShort3")];
+        return YES;
+    } else if (self.userNameTextField.text.length >= 32) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.UserNameIsTooLong32")];
+        return YES;
+    } else if (![self userName1charValidation]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.UserName1charValidation")];
+        return YES;
+    } else if (![self.userNameTextField.text isValidUserName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isInputParametersInvalid
+{
+    if ([self userNameValidation]) {
+        return YES;
+    }
+    if ([self passwordValidation]) {
+        return YES;
+    }
+    if (![self.firstNameTextField.text isValidName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
+        return YES;
+    }
+    if (![self.lastNameTextField.text isValidName]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
+        return YES;
+    }
+    if (![self.emiratesIDTextField.text isValidIDEmirates]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatIDEmirates")];
+        return YES;
+    }
+    if (![self.mobileTextField.text isValidPhoneNumber]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+        return YES;
+    }
+    if (![self.emailTextField.text isValidEmailUseHardFilter:NO]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatEmail")];
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

@@ -45,7 +45,7 @@ static CGFloat const heightSelectTableViewCell = 35.f;
     if (!self.innovationsTitleTextField.text.length || !self.descriptionTextView.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     } else if (!self.selectedInnovate) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseІelectPrescriptionOfIdea")];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseSelectPrescriptionOfIdea")];
     } else {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSNoCRMServicePostInnovationTitle:self.innovationsTitleTextField.text message:self.descriptionTextView.text type:@(self.selectedInnovate) responseBlock:^(id response, NSError *error) {

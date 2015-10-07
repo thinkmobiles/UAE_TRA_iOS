@@ -9,7 +9,7 @@
 
 static NSString *const traSSNoCRMServiceBaseURL =
 @"http://mobws.tra.gov.ae";
-//@"http://134.249.164.53:7791";
+//https://mobsrv.tra.gov.ae/
 
 static NSString *const traSSNOCRMServiceGETDomainData = @"/checkWhois?checkUrl=";
 static NSString *const traSSNOCRMServiceGETDomainAvaliability = @"/checkWhoisAvailable?checkUrl=";
