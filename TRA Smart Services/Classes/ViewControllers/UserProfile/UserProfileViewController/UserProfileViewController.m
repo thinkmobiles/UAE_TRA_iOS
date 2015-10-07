@@ -187,7 +187,6 @@
             [storage removeStoredCredentials];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:KeyUseTouchIDIdentification];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         [AppHelper hideLoader];

@@ -11,6 +11,7 @@
 #import "UIImage+DrawText.h"
 #import "LeftInsetTextField.h"
 #import "DomainInfoTableViewCell.h"
+#import "WhoIsModel.h"
 
 static NSString *const Keykey = @"key";
 static NSString *const keyValue = @"value";
@@ -52,7 +53,7 @@ static NSString *const keyOrder = @"order";
         self.domainAvaliabilityLabel.hidden = YES;
         self.domainNameTextField.text = @"";
     }
-    if (!self.result) {
+    if (!self.whoIS.response) {
         self.tableView.hidden = YES;
     }
 
@@ -95,9 +96,9 @@ static NSString *const keyOrder = @"order";
 {
     __weak typeof(self) weakSelf = self;
     void (^PresentResult)(NSString *response) = ^(NSString *response) {
-        NSArray *parsedData = [weakSelf parseData:response];
+        WhoIsModel *model = [WhoIsModel whoIsWithString:response];
         CheckDomainViewController *checkDomainViewController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
-        checkDomainViewController.result = parsedData;
+        checkDomainViewController.whoIS = model;
         checkDomainViewController.domainName = weakSelf.domainNameTextField.text;
         [weakSelf.navigationController pushViewController:checkDomainViewController animated:YES];
     };
@@ -126,7 +127,7 @@ static NSString *const keyOrder = @"order";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.result.count;
+    return self.whoIS.response.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,7 +159,7 @@ static NSString *const keyOrder = @"order";
 
 - (void)configureCell:(DomainInfoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *selectedItem = self.result[indexPath.row];
+    NSDictionary *selectedItem = self.whoIS.response[indexPath.row];
     cell.typeLabel.text = [selectedItem valueForKey:Keykey];
     if ([[selectedItem valueForKey:keyValue] isKindOfClass:[NSArray class]]) {
         NSString *list = @"";
@@ -235,63 +236,12 @@ static NSString *const keyOrder = @"order";
         }
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
-    } else if (self.result) {
+    } else if (self.whoIS.response) {
         self.tableView.hidden = NO;
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
     }
-}
-
-- (NSArray *)parseData:(NSString *)inputData
-{
-    NSArray *values = [inputData componentsSeparatedByString:@"\r\n"];
-    NSMutableDictionary *dataDictionary = [[NSMutableDictionary alloc] init];
-    
-    NSString *key;
-    NSInteger i = 0;
-    for (NSString *string in values) {
- 
-        if (string.length) {
-            
-            NSArray *keyValueData = [string componentsSeparatedByString:@":"];
-            NSString *value = [(NSString *)[keyValueData lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            key = [(NSString *)[keyValueData firstObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            if ([key isEqualToString:@"No Data Found"]) {
-                key = @"Result";
-            }
-            NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
-            [innerDictionary setValue:@(i) forKey:keyOrder];
-            [innerDictionary setValue:key forKey:Keykey];
-            i++;
-
-            if ([dataDictionary valueForKey:key]) {
-                NSMutableArray *array = [[NSMutableArray alloc] init];
-                id innerObj = [[dataDictionary valueForKey:key] valueForKey:keyValue];
-                if ([innerObj isKindOfClass:[NSArray class]]) {
-                    for (id obj in (NSArray *)innerObj) {
-                        [array addObject:obj];
-                    }
-                } else {
-                    [array addObject:innerObj];
-                }
-                [array addObject:value];
-                [innerDictionary setObject:array forKey:keyValue];
-                [dataDictionary setObject:innerDictionary forKey:key];
-                continue;
-            }
-            
-            [innerDictionary setObject:value forKey:keyValue];
-            [dataDictionary setObject:innerDictionary forKey:key];
-        }
-    }
-    
-    NSArray *data = [dataDictionary allValues];
-    data = [data sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-        return [[obj1 valueForKey:keyOrder] integerValue] > [[obj2 valueForKey:keyOrder] integerValue];
-    }];
-    
-    return data;
 }
 
 - (void)prepareButtonTitle

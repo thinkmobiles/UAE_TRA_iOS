@@ -13,16 +13,19 @@ static NSString *const keyOrder = @"order";
 
 @implementation WhoIsModel
 
+#pragma mark - Public
+
 + (WhoIsModel *)whoIsWithString:(NSString *)inputString
 {
     WhoIsModel *model = [[WhoIsModel alloc] init];
+    model.response = [WhoIsModel parseData:inputString];
     
     return model;
 }
 
 #pragma mark - Private
 
-- (NSArray *)parseData:(NSString *)inputData
++ (NSArray *)parseData:(NSString *)inputData
 {
     NSArray *values = [inputData componentsSeparatedByString:@"\r\n"];
     NSMutableDictionary *dataDictionary = [[NSMutableDictionary alloc] init];

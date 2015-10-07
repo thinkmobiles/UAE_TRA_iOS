@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94k-ip-LBm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -560,6 +560,7 @@
                                     </tableView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-gB-7tc" userLabel="Tarasaction not data - UILabel">
                                         <rect key="frame" x="300" y="244" width="0.0" height="0.0"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -712,11 +713,11 @@
                                                 <rect key="frame" x="0.0" y="22" width="600" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oci-QO-asg" id="Nes-Yd-ga7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" tag="2000" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0F-g9-flV">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="34"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="34.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -853,7 +854,7 @@
         <!--Edit User Profile View Controller-->
         <scene sceneID="Pyt-zW-V83">
             <objects>
-                <viewController id="iCT-2a-cfz" customClass="EditUserProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditUserProfileViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iCT-2a-cfz" customClass="EditUserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fJT-3g-iAd"/>
                         <viewControllerLayoutGuide type="bottom" id="PnK-LY-21l"/>
@@ -3568,7 +3569,7 @@ a new password will be sent.</string>
         <!--User Profile View Controller-->
         <scene sceneID="DfG-5Z-QY5">
             <objects>
-                <viewController id="9qw-gE-WN4" customClass="UserProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9qw-gE-WN4" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hWv-Vk-k7n"/>
                         <viewControllerLayoutGuide type="bottom" id="R3h-bG-dBA"/>
@@ -4671,15 +4672,15 @@ a new password will be sent.</string>
                         <viewControllerLayoutGuide type="bottom" id="74n-dy-0xV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X0O-F8-uuJ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="836"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trimmedBackground" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-e1-pHs" userLabel="Background - ImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="787"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="851"/>
                                 <animations/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="JVZ-iu-ZkM">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="787"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="787"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZY-DR-nVL">
                                         <rect key="frame" x="150" y="395" width="300" height="40"/>
@@ -6223,7 +6224,7 @@ a new password will be sent.</string>
         <!--Change Password View Controller-->
         <scene sceneID="BpD-w5-vhn">
             <objects>
-                <viewController id="7zn-Uu-fxd" customClass="ChangePasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7zn-Uu-fxd" customClass="ChangePasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1AR-1C-G3N"/>
                         <viewControllerLayoutGuide type="bottom" id="95B-9u-Wt4"/>
@@ -6470,7 +6471,7 @@ a new password will be sent.</string>
         <!--Reset Password View Controller-->
         <scene sceneID="wTY-8W-8Ig">
             <objects>
-                <viewController id="anJ-hX-kHd" customClass="ResetPasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="anJ-hX-kHd" customClass="ResetPasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z4D-oh-jD4"/>
                         <viewControllerLayoutGuide type="bottom" id="eOR-uz-uDM"/>
@@ -7083,7 +7084,7 @@ a new password will be sent.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdn-p6-MmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="2427"/>
+            <point key="canvasLocation" x="79" y="2415"/>
         </scene>
         <!--Inquiries-->
         <scene sceneID="dzg-E8-71U">
@@ -7114,7 +7115,7 @@ a new password will be sent.</string>
         <!--List Of Mobile Brand View Controller-->
         <scene sceneID="pxu-Ji-b6n">
             <objects>
-                <viewController id="vqo-MK-H8J" customClass="ListOfMobileBrandViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListOfMobileBrandViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vqo-MK-H8J" customClass="ListOfMobileBrandViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RZZ-2C-GPd"/>
                         <viewControllerLayoutGuide type="bottom" id="RSp-Bo-TYK"/>
@@ -7228,7 +7229,7 @@ a new password will be sent.</string>
         <!--List Of Devices View Controller-->
         <scene sceneID="Jca-Fl-eM6">
             <objects>
-                <viewController id="xif-wa-CyY" customClass="ListOfDevicesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListOfDevicesViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xif-wa-CyY" customClass="ListOfDevicesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MEL-Y4-Czr"/>
                         <viewControllerLayoutGuide type="bottom" id="Qxm-nE-JO7"/>
@@ -7304,12 +7305,14 @@ a new password will be sent.</string>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nXO-Xo-aiY" userLabel="Logo - UiIMageView">
                                                                     <rect key="frame" x="12" y="17" width="46" height="46"/>
+                                                                    <animations/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="nXO-Xo-aiY" secondAttribute="height" id="Rlf-gy-V5H"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
+                                                            <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="centerY" secondItem="nXO-Xo-aiY" secondAttribute="centerY" id="0z0-UH-OO9"/>
@@ -7361,6 +7364,7 @@ a new password will be sent.</string>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-2V-Wcs" userLabel="NotDataDevices - UILabel">
                                 <rect key="frame" x="300" y="300" width="0.0" height="0.0"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -7426,7 +7430,7 @@ a new password will be sent.</string>
         <image name="trimmedBackground" width="320" height="335"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AP5-vn-iSI"/>
+        <segue reference="xJv-y2-lEy"/>
         <segue reference="Ok6-Nn-WS0"/>
         <segue reference="9kT-uX-T2U"/>
         <segue reference="Aj3-Xv-Jiw"/>
