@@ -40,10 +40,8 @@
 "message.FailedToInitializeMFController" = "message.FailedToInitializeMFController";
 "message.PleaseChooseServiceProvider" = "message.PleaseChooseServiceProvider";
 "message.PleaseSelectPrescriptionOfIdea" = "message.PleaseSelectPrescriptionOfIdea";
-
 "message.PasswordIsTooShort8" = "message.PasswordIsTooShort8";
 "message.PasswordIsTooLong32" = "message.PasswordIsTooLong32";
-
 "message.UserNameIsTooShort3" = "message.UserNameIsTooShort3";
 "message.UserNameIsTooLong32" = "message.UserNameIsTooLong32";
 "message.UserName1charValidation" = "message.UserName1charValidation";
