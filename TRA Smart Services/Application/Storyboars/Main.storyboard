@@ -5543,7 +5543,7 @@ a new password will be sent.</string>
                                     <constraint firstAttribute="height" constant="40" id="SLf-F9-WDE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="OLV-R2-oyn" id="5ZJ-47-k8q"/>
                                 </connections>
