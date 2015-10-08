@@ -14,21 +14,12 @@
 @interface EditUserProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
-@property (weak, nonatomic) IBOutlet UILabel *contactNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *streetAddressLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *changePhotoButton;
-
-@property (weak, nonatomic) IBOutlet UITextField *firstNmaeTextfield;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *streetAddressTextfield;
-@property (weak, nonatomic) IBOutlet UITextField *contactNumberTextfield;
-
 @property (weak, nonatomic) IBOutlet UserProfileActionView *userActionView;
 
 @property (strong, nonatomic) NSArray *dataSource;
@@ -78,18 +69,26 @@
 
 - (void)buttonSaveDidTapped
 {
-    if (self.firstNmaeTextfield.text.length && self.lastNameTextField.text.length) {
-        if (self.contactNumberTextfield.text.length && ![self.contactNumberTextfield.text isValidPhoneNumber]) {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+    if (self.firstNameTextfield.text.length && self.lastNameTextField.text.length) {
+       
+        if ((self.firstNameTextfield.text.length > 32) || (self.lastNameTextField.text.length > 32)) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooLong")];
             return;
-        } else if (![self.firstNmaeTextfield.text isValidName] && !(self.firstNmaeTextfield.text.length > 30)){
+        } else if ((self.firstNameTextfield.text.length < 3) || (self.lastNameTextField.text.length < 3)) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooShort")];
+            return;
+        }
+        
+        if (![self.firstNameTextfield.text isValidName]){
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
             return;
-        } else if (![self.lastNameTextField.text isValidName] && !(self.firstNmaeTextfield.text.length > 30)) {
+        } else if (![self.lastNameTextField.text isValidName]) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
             return;
         }
-        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNmaeTextfield.text lastName:self.lastNameTextField.text streetName:self.streetAddressTextfield.text contactNumber:self.contactNumberTextfield.text];
+        
+        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@""];
+        
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
             if (error || ![response isKindOfClass:[NSDictionary class]]) {
@@ -171,10 +170,8 @@
     self.title = dynamicLocalizedString(@"userProfile.title");
     [self.userActionView localizeUI];
     
-    self.contactNumberLabel.text = dynamicLocalizedString(@"editUserProfileViewController.contactnumberLabel");
     self.firstNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.firstNameLabel");
     self.lastNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.lastNameLabel");
-    self.streetAddressLabel.text = dynamicLocalizedString(@"editUserProfileViewController.streetAddressLabel");
     [self.changePhotoButton setTitle:dynamicLocalizedString(@"editUserProfileViewController.changePhotoButtonTitle") forState:UIControlStateNormal];
 }
 
@@ -201,14 +198,10 @@
 
 - (void)updateUIaligment:(NSTextAlignment)aligment
 {
-    self.contactNumberLabel.textAlignment = aligment;
     self.firstNameLabel.textAlignment = aligment;
     self.lastNameLabel.textAlignment = aligment;
-    self.streetAddressLabel.textAlignment = aligment;
-    self.firstNmaeTextfield.textAlignment = aligment;
+    self.firstNameTextfield.textAlignment = aligment;
     self.lastNameTextField.textAlignment = aligment;
-    self.streetAddressTextfield.textAlignment = aligment;
-    self.contactNumberTextfield.textAlignment = aligment;
 }
 
 - (void)prepareUI
@@ -223,10 +216,8 @@
 - (void)fillData
 {
     UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
-    self.firstNmaeTextfield.text = user.firstName;
+    self.firstNameTextfield.text = user.firstName;
     self.lastNameTextField.text = user.lastName;
-    self.streetAddressTextfield.text = user.streetName;
-    self.contactNumberTextfield.text = user.contactNumber;
 }
 
 - (BOOL)isValidPhoneNumber

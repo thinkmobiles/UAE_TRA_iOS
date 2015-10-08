@@ -27,12 +27,16 @@
 "message.NoInternetConnection" = "message.NoInternetConnection";
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
 "message.PasswordsNotEqual" = "message.PasswordsNotEqual";
+"message.NewPasswordsNotEqual" = "message.NewPasswordsNotEqual";
 "message.OperationCanceledByUser" = "message.OperationCanceledByUser";
 "message.InvalidFormatUserName" = "message.InvalidFormatUserName";
 "message.InvalidFormatIDEmirates" = "message.InvalidFormatIDEmirates";
 "message.InvalidFormatFirstName" = "message.InvalidFormatFirstName";
 "message.InvalidFormatLastName" = "message.InvalidFormatLastName";
 "message.InvalidFormatMobile" = "message.InvalidFormatMobile";
+"message.InvalidFormatMobileTooShort" = "message.InvalidFormatMobileTooShort";
+"message.InvalidFormatTooLong" = "message.InvalidFormatMobileTooLong";
+"message.InvalidFormatTooShort" = "message.InvalidFormatTooShort";
 "message.InvalidFormatEmail" = "message.InvalidFormatEmail";
 "message.InvalidFormatURL" = "message.InvalidFormatURL";
 "message.InvalidStateCode" = "message.InvalidStateCode";

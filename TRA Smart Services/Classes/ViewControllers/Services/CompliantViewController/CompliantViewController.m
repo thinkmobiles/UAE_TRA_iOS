@@ -91,33 +91,39 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
 - (IBAction)compliantSend:(id)sender
 {
     [self.view endEditing:YES];
-    if (!self.compliantDescriptionTextView.text.length ||
-        !self.compliantTitleTextField.text.length ||
-        (self.type == ComplianTypeCustomProvider && !self.referenceNumberTextField.text.length)){
+    
+    if (!self.compliantDescriptionTextView.text.length || !self.compliantTitleTextField.text.length || (self.type == ComplianTypeCustomProvider && !self.referenceNumberTextField.text.length)){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (self.referenceNumberTextField.text.length < 4) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobileTooShort")];
     } else if (self.type == ComplianTypeCustomProvider && ![self.referenceNumberTextField.text isValidPhoneNumber]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
     } else if (self.type == ComplianTypeCustomProvider && !self.selectedProvider) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
     } else {
-        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        if (self.selectedProvider < 1) {
-            self.selectedProvider = 1;
-        }
-        __weak typeof (self) weakSelf = self;
-        NSString *provider = self.keyForServerProvider[self.selectedProvider - 1];
-        [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
-            if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
-            } else {
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                [weakSelf clearUI];
-            }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                loader.ratingView.hidden = NO;
-            });
-        }];
+        [self sentCompliant];
     }
+}
+
+- (void)sentCompliant
+{
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+    if (self.selectedProvider < 1) {
+        self.selectedProvider = 1;
+    }
+    __weak typeof (self) weakSelf = self;
+    NSString *provider = self.keyForServerProvider[self.selectedProvider - 1];
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTComplianAboutServiceProvider:provider title:self.compliantTitleTextField.text description:self.compliantDescriptionTextView.text refNumber:[self.referenceNumberTextField.text integerValue] attachment:self.selectImage complienType:self.type requestResult:^(id response, NSError *error) {
+        if (error) {
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+        } else {
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            [weakSelf clearUI];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            loader.ratingView.hidden = NO;
+        });
+    }];
 }
 
 #pragma mark - UITableViewDataSource

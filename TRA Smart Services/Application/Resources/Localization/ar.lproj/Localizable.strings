@@ -27,12 +27,16 @@
 "message.NoInternetConnection" = "لا يوجد اتصال بالانترنت. يرجى التحقق من الشبكة والمحاولة من جديد.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
 "message.PasswordsNotEqual" = "يجب أن تتطابق كلمة المرور مع تأكيدها. يرجى المحاولة من جديد.";
+"message.NewPasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "تم إلغاء العملية من قبل المستخدم";
 "message.InvalidFormatUserName" = "معلومات الدخول غير صحيحة";
 "message.InvalidFormatIDEmirates" = "هوية إمارات غير صالحة";
 "message.InvalidFormatFirstName" = "يرجى ادخال الاسم";
 "message.InvalidFormatLastName" = "يرجى ادخال اللقب";
 "message.InvalidFormatMobile" = "رقم جوال خاطئ";
+"message.InvalidFormatMobileTooShort" = "Invalid Mobile number. Phone number is too short";
+"message.InvalidFormatTooLong" = "Both fields can be up to 32 characters long(max)";
+"message.InvalidFormatTooShort" = "Both fields can be at minimum 3 characters long";
 "message.InvalidFormatEmail" = "يرجى ادخال عنوان بريد إلكتروني صحيح";
 "message.InvalidFormatURL" = "الرابط غير صحيح";
 "message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة':\n5,'الشارقة': 6,\n'أم القيوين': 7";

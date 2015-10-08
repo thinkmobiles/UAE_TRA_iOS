@@ -156,24 +156,38 @@
 
 - (void)buttonSaveDidTapped
 {
-    if (!self.passwordTextField.text.length || !self.retypePasswordTextField.text.length) {
+    if ([self isInputParametersValid]) {
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        [[NetworkManager sharedManager] traSSChangePassword:self.oldPasswordTextField.text newPassword:self.passwordTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+            } else {
+                [[KeychainStorage new] storePassword:self.passwordTextField.text forUser:[KeychainStorage userName]];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            }
+        }];
+    }
+}
+
+- (BOOL)isInputParametersValid
+{
+    if (!self.passwordTextField.text.length || !self.retypePasswordTextField.text.length || !self.oldPasswordTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
-        return;
+        return NO;
     }
     if (![self.passwordTextField.text isEqualToString:self.retypePasswordTextField.text]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordsNotEqual")];
-        return;
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NewPasswordsNotEqual")];
+        return NO;
     }
     
-    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-    [[NetworkManager sharedManager] traSSChangePassword:self.oldPasswordTextField.text newPassword:self.passwordTextField.text requestResult:^(id response, NSError *error) {
-        if (error) {
-            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
-        } else {
-            [[KeychainStorage new] storePassword:self.passwordTextField.text forUser:[KeychainStorage userName]];
-            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-        }
-    }];
+    if (self.passwordTextField.text.length < 8) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooShort8")];
+        return NO;
+    } else if (self.passwordTextField.text.length >= 32) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooLong32")];
+        return NO;
+    }
+    return YES;
 }
 
 @end
