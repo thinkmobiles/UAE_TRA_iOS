@@ -68,10 +68,7 @@ static LanguageType startingLanguageType;
     
     self.tableViewDataSource = nil;
     self.filteredDataSource = nil;
-}
-
-- (void)dealloc
-{
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
