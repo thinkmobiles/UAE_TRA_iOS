@@ -51,6 +51,7 @@ typedef NS_ENUM(NSUInteger, ComplianType) {
 
 typedef void(^ResponseBlock)(id response, NSError *error);
 typedef void(^SearchResponseBlock)(id response, NSError *error, NSString *requestURI);
+typedef void(^DownloadingComplete)(BOOL success, UIImage *response);
 
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
@@ -97,6 +98,10 @@ typedef void(^SearchResponseBlock)(id response, NSError *error, NSString *reques
 - (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse;
 - (void)traSSForgotPasswordForEmail:(NSString *)email requestResult:(ResponseBlock)forgotPasswordResponse;
 - (void)traSSLogout:(ResponseBlock)logoutResponse;
+
+#pragma mark - Image
+
+- (void)traSSGetImageWithPath:(NSString *)imagePath withCompletition:(DownloadingComplete)completitionHandler;
 
 #pragma mark - Temp
 

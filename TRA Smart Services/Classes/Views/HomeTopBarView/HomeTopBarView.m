@@ -370,7 +370,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self prepareLogImageWithInitials];
     [self.avatarImageLayer removeFromSuperlayer];
     
-    self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
+    self.avatarImageLayer = [self layerWithLogoImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
         self.avatarImageLayer.backgroundColor = [UIColor blackColor].CGColor;
     } else {
@@ -550,6 +550,24 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
     CALayer *imageLayer = [CALayer layer];
     imageLayer.frame = centerRect;
+    imageLayer.backgroundColor = [UIColor clearColor].CGColor;
+    imageLayer.contents =(__bridge id __nullable)(image).CGImage;
+    imageLayer.contentsGravity = kCAGravityResizeAspect;
+    
+    [layer addSublayer:imageLayer];
+    layer.contentsGravity = kCAGravityResizeAspect;
+    
+    return layer;
+}
+
+- (CALayer *)layerWithLogoImage:(UIImage *)image inRect:(CGRect)rect forMainLogo:(BOOL)mainLogo
+{
+    CALayer *layer= [CALayer layer];
+    layer.frame = rect;
+    layer.backgroundColor = [DynamicUIService service].currentApplicationColor.CGColor;
+    
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.frame = rect;
     imageLayer.backgroundColor = [UIColor clearColor].CGColor;
     imageLayer.contents =(__bridge id __nullable)(image).CGImage;
     imageLayer.contentsGravity = kCAGravityResizeAspect;

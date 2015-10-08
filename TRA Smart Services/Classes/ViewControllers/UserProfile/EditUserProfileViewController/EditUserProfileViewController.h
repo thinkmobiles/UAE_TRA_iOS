@@ -7,6 +7,6 @@
 
 #import "UserProfileActionView.h"
 
-@interface EditUserProfileViewController : BaseDynamicUIViewController <UITextFieldDelegate, UserProfileActionViewDelegate>
+@interface EditUserProfileViewController : BaseDynamicUIViewController <UITextFieldDelegate, UserProfileActionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

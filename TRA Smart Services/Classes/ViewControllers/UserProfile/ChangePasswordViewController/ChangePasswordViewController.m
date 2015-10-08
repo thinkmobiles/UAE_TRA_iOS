@@ -44,7 +44,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
+    [self fillData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
@@ -90,10 +91,21 @@
 
 #pragma mark - Private Metods
 
+- (void)fillData
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.userLogoImageView.image = image;
+    } else {
+        self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+    }
+}
+
 - (void)prepareUserView
 {
     self.title = dynamicLocalizedString(@"userProfile.title");
-    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
     [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
     self.userLogoImageView.tintColor = [UIColor whiteColor];

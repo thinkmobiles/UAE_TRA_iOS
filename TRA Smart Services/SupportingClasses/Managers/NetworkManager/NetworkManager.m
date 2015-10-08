@@ -339,7 +339,8 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 {
     NSDictionary *parameters = @{
                                  @"first" : userProfile.firstName,
-                                 @"last" : userProfile.lastName
+                                 @"last" : userProfile.lastName,
+                                 @"image" : userProfile.avatarImageBase64.length ? userProfile.avatarImageBase64 : @""
                                  };
     
     [self performPUT:traSSProfile withParameters:parameters response:updateProfileResponse];
@@ -367,6 +368,22 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
         weakSelf.isUserLoggined = NO;
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, logoutResponse);
+    }];
+}
+
+#pragma mark - Image
+
+- (void)traSSGetImageWithPath:(NSString *)imagePath withCompletition:(DownloadingComplete)completitionHandler
+{
+    [self.manager GET:imagePath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        UIImage *image = [UIImage imageWithData:responseObject];
+        if (image) {
+            completitionHandler(YES, image);
+        } else {
+            completitionHandler(NO, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completitionHandler(NO, nil);
     }];
 }
 

@@ -90,6 +90,7 @@ static LanguageType startLanguage;
 {
     [super viewWillAppear:animated];
     
+    [self updateUserProfileImage];
     self.navigationController.navigationBar.hidden = YES;
     [self prepareDataSource];
     
@@ -456,10 +457,21 @@ static LanguageType startLanguage;
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
+}
+
+- (void)updateUserProfileImage
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.topView.logoImage = image;
+    } else {
+        self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
+    }
 }
 
 #pragma mark - SuperclassMethods

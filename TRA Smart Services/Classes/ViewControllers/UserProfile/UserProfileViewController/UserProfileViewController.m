@@ -32,6 +32,7 @@
     self.title = dynamicLocalizedString(@"userProfile.title");
     [self prepareDataSource];
     [self prepareUserView];
+    [self fillUserProfile];
     [self getProfileFromServer];
 }
 
@@ -121,15 +122,32 @@
 
 - (void)getProfileFromServer
 {
-    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     __weak typeof(self) weakSelf = self;
+    void(^UpdateAvatar)(UserModel *user) = ^(UserModel *user) {
+        [[NetworkManager sharedManager] traSSGetImageWithPath:user.uriForImage withCompletition:^(BOOL success, UIImage *response) {
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weakSelf.userLogoImageView.image = response;
+                });
+                NSData *imageData = UIImageJPEGRepresentation(response, 1.0);
+                NSString *encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+
+                UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+                user.avatarImageBase64 = encodedString;
+                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+            }
+        }];
+    };
+    
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [[NetworkManager sharedManager] traSSGetUserProfileResult:^(id response, NSError *error) {
         if (error) {
             [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
-            UserModel *user = [[UserModel alloc] initWithDictionary:response];;
+            UserModel *user = [[UserModel alloc] initWithDictionary:response];
             [[KeychainStorage new] saveCustomObject:user key:userModelKey];
             [weakSelf fillUserProfile];
+            UpdateAvatar(user);
             [loader dismissTRALoader];
         }
     }];
@@ -142,7 +160,13 @@
         user = [UserModel new];
     }
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
-    self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.userLogoImageView.image = image;
+    } else {
+        self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+    }
 }
 
 - (void)prepareDataSource
@@ -185,6 +209,8 @@
         } else {
             KeychainStorage *storage = [[KeychainStorage alloc] init];
             [storage removeStoredCredentials];
+            [storage saveCustomObject:[UserModel new] key:userModelKey];
+
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:KeyUseTouchIDIdentification];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [weakSelf.navigationController popViewControllerAnimated:YES];

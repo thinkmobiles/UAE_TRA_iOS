@@ -52,7 +52,20 @@
 
 - (IBAction)changePhotoButtonTapped:(id)sender
 {
-    //waint design
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - ImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.logoImageView.image = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - UserProfileActionViewDelegate
@@ -87,7 +100,13 @@
             return;
         }
         
-        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@""];
+        NSString *encodedString = @"";
+        if (self.logoImageView.image) {
+            NSData *imageData = UIImageJPEGRepresentation(self.logoImageView.image, 1.0);
+            encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+        }
+
+        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@"" imageUri:@"" imageBase64Data:encodedString];
         
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
         [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
@@ -95,10 +114,12 @@
                 [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
             } else {
                 UserModel *updateUser = [[UserModel alloc] initWithDictionary:response];
+                updateUser.avatarImageBase64 = user.avatarImageBase64;
                 [[KeychainStorage new] saveCustomObject:updateUser key:userModelKey];
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
         }];
+        
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
@@ -207,7 +228,6 @@
 - (void)prepareUI
 {
     self.userActionView.delegate = self;
-    self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
     [AppHelper addHexagoneOnView:self.logoImageView];
     [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.0];
     self.logoImageView.tintColor = [UIColor whiteColor];
@@ -218,6 +238,14 @@
     UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
     self.firstNameTextfield.text = user.firstName;
     self.lastNameTextField.text = user.lastName;
+    
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.logoImageView.image = image;
+    } else {
+        self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+    }
 }
 
 - (BOOL)isValidPhoneNumber

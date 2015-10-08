@@ -13,10 +13,10 @@
 
 - (instancetype)init
 {
-    return [self initWithFirstName:@"" lastName:@"" streetName:@"" contactNumber:@""];
+    return [self initWithFirstName:@"" lastName:@"" streetName:@"" contactNumber:@"" imageUri:@"" imageBase64Data:@""];
 }
 
-- (instancetype)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName streetName:(NSString *)streetName contactNumber:(NSString *)contactNumber
+- (instancetype)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName streetName:(NSString *)streetName contactNumber:(NSString *)contactNumber imageUri:(NSString *)uri imageBase64Data:(NSString *)imageBase64Data
 {
     self = [super init];
     if (self) {
@@ -24,6 +24,8 @@
         _lastName = lastName;
         _streetName = streetName;
         _contactNumber = contactNumber;
+        _uriForImage = uri;
+        _avatarImageBase64 = imageBase64Data;
     }
     return self;
 }
@@ -36,6 +38,7 @@
     _lastName = [dictionary valueForKey:@"last"];
     _email = [dictionary valueForKey:@"email"];
     _contactNumber = [dictionary valueForKey:@"mobile"];
+    _uriForImage = [dictionary valueForKey:@"image"];
     
     return self;
 }
@@ -48,6 +51,8 @@
     [encoder encodeObject:_lastName forKey:@"lastName"];
     [encoder encodeObject:_streetName forKey:@"streetName"];
     [encoder encodeObject:_contactNumber forKey:@"contactNumber"];
+    [encoder encodeObject:_uriForImage forKey:@"uriForImage"];
+    [encoder encodeObject:_avatarImageBase64 forKey:@"base64StringData"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -58,6 +63,8 @@
         _lastName = [decoder decodeObjectForKey:@"lastName"];
         _streetName = [decoder decodeObjectForKey:@"streetName"];
         _contactNumber = [decoder decodeObjectForKey:@"contactNumber"];
+        _uriForImage =[decoder decodeObjectForKey:@"uriForImage"];
+        _avatarImageBase64 =[decoder decodeObjectForKey:@"base64StringData"];
     }
     return self;
 }

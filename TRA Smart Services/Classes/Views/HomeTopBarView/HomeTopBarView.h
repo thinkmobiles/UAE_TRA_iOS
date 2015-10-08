@@ -26,6 +26,7 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property (strong, nonatomic) UIImage *logoImage;
+@property (strong, nonatomic) UIImage *avatarImage;
 @property (strong, nonatomic) UIImage *informationButtonImage;
 @property (strong, nonatomic) UIImage *searchButtonImage;
 @property (strong, nonatomic) UIImage *notificationButtonImage;
