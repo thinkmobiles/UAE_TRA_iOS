@@ -30,7 +30,7 @@
 "message.NewPasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
-"message.InvalidFormatIDEmirates" = "Invalid Invalid Emirates ID";
+"message.InvalidFormatIDEmirates" = "Invalid Emirates ID";
 "message.InvalidFormatFirstName" = "First name cannot contain digits";
 "message.InvalidFormatLastName" = "Last name cannot contain digits";
 "message.InvalidFormatMobile" = "Invalid Mobile number. Phone number must not contain letters";
