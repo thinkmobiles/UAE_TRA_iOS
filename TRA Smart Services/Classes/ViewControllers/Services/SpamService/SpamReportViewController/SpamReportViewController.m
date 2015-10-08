@@ -69,8 +69,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else if (!self.selectedProvider) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
-        } else if (![self.reportTextField.text isValidPhoneNumber]) {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
@@ -292,6 +290,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         self.selectTableView.hidden = YES;
         self.separatorSelectedProvider.hidden = YES;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
+        self.reportTextField.keyboardType = UIKeyboardTypeURL;
     } else {
         [self presentLoginIfNeededAndPopToRootController:[self.navigationController viewControllers][self.navigationController.viewControllers.count - 2]];
         self.selectTableView.hidden = NO;
