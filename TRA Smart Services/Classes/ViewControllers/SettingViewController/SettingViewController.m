@@ -495,7 +495,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     //v 1.0 build <version number>.<number of week>.<weakBuild>
     NSCalendar *calender = [NSCalendar currentCalendar];
     NSDateComponents *dateComponent = [calender components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:[NSDate date]];
-    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 2];
+    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 3];
 }
 
 - (void)updateColors
