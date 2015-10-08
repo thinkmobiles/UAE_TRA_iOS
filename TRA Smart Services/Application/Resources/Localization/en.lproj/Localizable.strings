@@ -46,10 +46,10 @@
 "message.PleaseSelectPrescriptionOfIdea" = "Please choose the Innovative idea";
 "message.PasswordIsTooShort8" = "Password is too short. It must contain at least eight characters";
 "message.PasswordIsTooLong32" = "Password is too long. It must contain less than thirty-two characters";
-"message.UserNameIsTooShort3" = "Username is too short. It must be at least three characters";
-"message.UserNameIsTooLong32" = "Username is too long. It must be less than thirty-two characters";
-"message.UserName1charValidation" = "Username must start with a letter";
-"message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
+"message.UserNameIsTooShort3" = "Username must consist of at least 3 characters";
+"message.UserNameIsTooLong32" = "Username must consist of less than 32 characters";
+"message.UserName1charValidation" = "Username must start from a letter";
+"message.InvalidIMEI" = "IMEI must contain 15 digits";
 
 //StatesNames
 
