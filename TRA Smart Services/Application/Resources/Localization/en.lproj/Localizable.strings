@@ -51,6 +51,8 @@
 "message.UserNameIsTooLong32" = "Username must consist of less than 32 characters";
 "message.UserName1charValidation" = "Username must start from a letter";
 "message.InvalidIMEI" = "IMEI must contain 15 digits";
+"message.ReferenceNumberIsTooShort" = "Spammer number/alias must consist of at least 4 characters";
+"message.ReferenceNumberIsTooLong" = "Spammer number/alias must consist of less than 12 characters";
 
 //StatesNames
 

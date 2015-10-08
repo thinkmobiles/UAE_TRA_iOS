@@ -51,6 +51,8 @@
 "message.UserNameIsTooLong32" = "اسم المستخدم يجب أن لا تتكون من أكثر من أثنين و ثلاثين محرفاً";
 "message.UserName1charValidation" = "اسم المستخدم يجب أن يبدأ بحرف";
 "message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
+"message.ReferenceNumberIsTooShort" = "Spammer number/alias must consist of at least 4 characters";
+"message.ReferenceNumberIsTooLong" = "Spammer number/alias must consist of less than 12 characters";
 
 //StatesNames
 
