@@ -292,6 +292,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         self.selectTableView.hidden = YES;
         self.separatorSelectedProvider.hidden = YES;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
+        self.reportTextField.keyboardType = UIKeyboardTypeURL;
     } else {
         [self presentLoginIfNeededAndPopToRootController:[self.navigationController viewControllers][self.navigationController.viewControllers.count - 2]];
         self.selectTableView.hidden = NO;

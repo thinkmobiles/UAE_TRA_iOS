@@ -54,11 +54,4 @@
     return NO;
 }
 
-+ (BOOL)doShell {
-    if (system(0)) {
-        return YES;
-    }
-    return NO;
-}
-
 @end
