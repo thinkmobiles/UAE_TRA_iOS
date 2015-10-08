@@ -6,7 +6,8 @@
 //
 
 #import "UserProfileActionView.h"
+#import "BaseSelectImageViewController.h"
 
-@interface EditUserProfileViewController : BaseDynamicUIViewController <UITextFieldDelegate, UserProfileActionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EditUserProfileViewController : BaseSelectImageViewController <UITextFieldDelegate, UserProfileActionViewDelegate>
 
 @end

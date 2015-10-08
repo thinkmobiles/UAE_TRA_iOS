@@ -49,20 +49,6 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
     }
 }
 
-#pragma mark - Private
-
-- (void)setButtonAttachImage:(UIImage *)buttonAttachImage
-{
-    _buttonAttachImage = buttonAttachImage;
-    [self.attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
-}
-
-- (void)setSelectImage:(UIImage *)selectImage
-{
-    _selectImage = selectImage;
-    self.buttonAttachImage = selectImage ? [UIImage imageNamed:ImageNameButtonAttachData] : [UIImage imageNamed:ImageNameButtonAttachClear];
-}
-
 - (void)configureActionSheet
 {
     UIAlertController *selectImageController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -83,6 +69,20 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
     [selectImageController addAction:removeAttachAction];
     
     [self presentViewController:selectImageController animated:YES completion:nil];
+}
+
+#pragma mark - Private
+
+- (void)setButtonAttachImage:(UIImage *)buttonAttachImage
+{
+    _buttonAttachImage = buttonAttachImage;
+    [self.attachButton setImage:self.buttonAttachImage forState:UIControlStateNormal];
+}
+
+- (void)setSelectImage:(UIImage *)selectImage
+{
+    _selectImage = selectImage;
+    self.buttonAttachImage = selectImage ? [UIImage imageNamed:ImageNameButtonAttachData] : [UIImage imageNamed:ImageNameButtonAttachClear];
 }
 
 - (void)selectImagePickerController

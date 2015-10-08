@@ -10,6 +10,7 @@
 @property (strong, nonatomic) UIImage *selectImage;
 
 - (void)selectImagePickerController;
+- (void)configureActionSheet;
 - (void)addAttachButtonTextField:(UITextField *)textField;
 
 @end

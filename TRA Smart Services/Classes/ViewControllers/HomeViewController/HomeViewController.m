@@ -470,7 +470,7 @@ static LanguageType startLanguage;
         UIImage *image = [UIImage imageWithData:data];
         self.topView.logoImage = image;
     } else {
-        self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
+        self.topView.logoImage = [UIImage imageNamed:DefaultLogoImageName];
     }
 }
 

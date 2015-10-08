@@ -9,6 +9,8 @@ static CGFloat const DeclineTagForFontUpdate = 2000;
 
 static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";
 
+static NSString *const DefaultLogoImageName = @"ic_logo_us";
+
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;

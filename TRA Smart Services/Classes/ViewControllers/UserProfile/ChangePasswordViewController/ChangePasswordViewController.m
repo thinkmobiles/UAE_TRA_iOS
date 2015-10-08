@@ -99,7 +99,7 @@
         UIImage *image = [UIImage imageWithData:data];
         self.userLogoImageView.image = image;
     } else {
-        self.userLogoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+        self.userLogoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
     }
 }
 

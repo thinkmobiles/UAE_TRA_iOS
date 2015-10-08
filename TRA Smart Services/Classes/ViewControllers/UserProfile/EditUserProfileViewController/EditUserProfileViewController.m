@@ -52,20 +52,26 @@
 
 - (IBAction)changePhotoButtonTapped:(id)sender
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [super configureActionSheet];
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setSelectImage:(UIImage *)selectImage
+{
+    [super setSelectImage:selectImage];
     
-    [self presentViewController:picker animated:YES completion:nil];
+    if (!selectImage) {
+        self.logoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
+    }
 }
 
 #pragma mark - ImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.logoImageView.image = info[UIImagePickerControllerEditedImage];
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
+    self.logoImageView.image = self.selectImage;
 }
 
 #pragma mark - UserProfileActionViewDelegate
@@ -83,7 +89,6 @@
 - (void)buttonSaveDidTapped
 {
     if (self.firstNameTextfield.text.length && self.lastNameTextField.text.length) {
-       
         if ((self.firstNameTextfield.text.length > 32) || (self.lastNameTextField.text.length > 32)) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooLong")];
             return;
@@ -91,7 +96,6 @@
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooShort")];
             return;
         }
-        
         if (![self.firstNameTextfield.text isValidName]){
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
             return;
@@ -99,12 +103,9 @@
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
             return;
         }
-        
-        NSString *encodedString = @"";
-        if (self.logoImageView.image) {
-            NSData *imageData = UIImageJPEGRepresentation(self.logoImageView.image, 1.0);
-            encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
-        }
+
+        NSData *imageData = UIImagePNGRepresentation(self.selectImage ? self.selectImage : [UIImage imageNamed:DefaultLogoImageName]);
+        NSString *encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
 
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@"" imageUri:@"" imageBase64Data:encodedString];
         
@@ -243,16 +244,10 @@
         NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
         UIImage *image = [UIImage imageWithData:data];
         self.logoImageView.image = image;
+        self.selectImage = image;
     } else {
-        self.logoImageView.image = [UIImage imageNamed:@"ic_user_login"];
+        self.logoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
     }
-}
-
-- (BOOL)isValidPhoneNumber
-{
-    NSString *allowedSymbols = @"[0-9]{4,}";
-    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
-    return [test evaluateWithObject:self];
 }
 
 @end
