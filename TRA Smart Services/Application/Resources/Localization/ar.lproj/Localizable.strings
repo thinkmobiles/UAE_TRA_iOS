@@ -411,7 +411,7 @@
 
 //InnovationsViewController
 
-"innovationsViewController.title" = "مركز الإبداع و الابتكار";;
+"innovationsViewController.title" = "مركز الإبداع و الابتكار";
 "innovationsViewController.submitButton" = "أرسل";
 "innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
 "innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";

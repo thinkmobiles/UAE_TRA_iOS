@@ -52,18 +52,19 @@ static NSString *const ImageNameButtonAttachData = @"btn_attach_file";
 - (void)configureActionSheet
 {
     UIAlertController *selectImageController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.cancel") style:UIAlertActionStyleCancel handler:nil];
     [selectImageController addAction:cancelAction];
     
+    __weak typeof(self) weakSelf = self;
     UIAlertAction *selectImageAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.selectImage") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self selectImagePickerController];
+        [weakSelf selectImagePickerController];
     }];
     [selectImageController addAction:selectImageAction];
     
     UIAlertAction *removeAttachAction = [UIAlertAction actionWithTitle:dynamicLocalizedString(@"selectImageActionSheet.removeFile") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        if (self.selectImage) {
-            self.selectImage = nil;
-            self.buttonAttachImage = [UIImage imageNamed:ImageNameButtonAttachClear];
+        if (weakSelf.selectImage) {
+            weakSelf.selectImage = nil;
+            weakSelf.buttonAttachImage = [UIImage imageNamed:ImageNameButtonAttachClear];
         }
     }];
     [selectImageController addAction:removeAttachAction];
