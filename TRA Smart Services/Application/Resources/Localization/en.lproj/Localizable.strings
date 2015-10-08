@@ -29,11 +29,11 @@
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
-"message.InvalidFormatIDEmirates" = "Invalid Invalid Emirates ID";
-"message.InvalidFormatFirstName" = "First name cannot contain digits";
-"message.InvalidFormatLastName" = "Last name cannot contain digits";
-"message.InvalidFormatMobile" = "Invalid mobilePhone";
-"message.InvalidFormatEmail" = "Invalid Email";
+"message.InvalidFormatIDEmirates" = "Invalid Emirates ID";
+"message.InvalidFormatFirstName" = "Invalid First Name. First name cannot contain digits";
+"message.InvalidFormatLastName" = "Invalid Last Name. Last name cannot contain digits";
+"message.InvalidFormatMobile" = "Invalid Phone Number";
+"message.InvalidFormatEmail" = "Incorrect Email Format";
 "message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
 "message.FailedToSendSMS" = "Cant sent SMS";
@@ -42,10 +42,10 @@
 "message.PleaseSelectPrescriptionOfIdea" = "Please select prescription of idea";
 "message.PasswordIsTooShort8" = "Password is too short. It must contain at least eight characters";
 "message.PasswordIsTooLong32" = "Password is too long. It must contain less than thirty-two characters";
-"message.UserNameIsTooShort3" = "Username is too short. It must be at least three characters";
-"message.UserNameIsTooLong32" = "Username is too long. It must be less than thirty-two characters";
-"message.UserName1charValidation" = "Username must start with a letter";
-"message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
+"message.UserNameIsTooShort3" = "Username must consist of at least 3 characters";
+"message.UserNameIsTooLong32" = "Username must consist of less than 32 characters";
+"message.UserName1charValidation" = "Username must start from a letter";
+"message.InvalidIMEI" = "IMEI must contain 15 digits";
 
 //StatesNames
 
