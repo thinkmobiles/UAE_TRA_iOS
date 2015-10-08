@@ -52,7 +52,7 @@
 
 - (IBAction)changePhotoButtonTapped:(id)sender
 {
-    [super configureActionSheet];
+    [super selectImagePickerController];
 }
 
 #pragma mark - Custom Accessors
@@ -103,10 +103,12 @@
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
             return;
         }
-
-        NSData *imageData = UIImagePNGRepresentation(self.selectImage ? self.selectImage : [UIImage imageNamed:DefaultLogoImageName]);
-        NSString *encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
-
+        
+        NSString *encodedString = @"";
+        if (self.selectImage) {
+            NSData *imageData = UIImageJPEGRepresentation(self.logoImageView.image, 1.0);
+            encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+        }
         UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@"" imageUri:@"" imageBase64Data:encodedString];
         
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
