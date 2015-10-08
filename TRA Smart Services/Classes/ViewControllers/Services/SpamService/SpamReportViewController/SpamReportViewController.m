@@ -69,6 +69,10 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
         } else if (!self.selectedProvider) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
+        } else if (self.reportTextField.text.length < 4) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.ReferenceNumberIsTooShort")];
+        } else if (self.reportTextField.text.length > 12) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.ReferenceNumberIsTooLong")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
