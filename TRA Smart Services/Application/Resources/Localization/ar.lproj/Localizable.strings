@@ -34,6 +34,7 @@
 "message.InvalidFormatFirstName" = "يرجى ادخال الاسم";
 "message.InvalidFormatLastName" = "يرجى ادخال اللقب";
 "message.InvalidFormatMobile" = "رقم جوال خاطئ";
+"message.InvalidPhoneNumberFormat" = "Invalid Phone Number";
 "message.InvalidFormatMobileTooShort" = "Invalid Mobile number. Phone number is too short";
 "message.InvalidFormatTooLong" = "Both fields can be up to 32 characters long(max)";
 "message.InvalidFormatTooShort" = "Both fields can be at minimum 3 characters long";

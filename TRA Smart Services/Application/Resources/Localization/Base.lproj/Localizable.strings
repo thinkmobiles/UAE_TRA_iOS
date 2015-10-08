@@ -34,6 +34,7 @@
 "message.InvalidFormatFirstName" = "message.InvalidFormatFirstName";
 "message.InvalidFormatLastName" = "message.InvalidFormatLastName";
 "message.InvalidFormatMobile" = "message.InvalidFormatMobile";
+"message.InvalidPhoneNumberFormat" = "message.InvalidPhoneNumberFormat";
 "message.InvalidFormatMobileTooShort" = "message.InvalidFormatMobileTooShort";
 "message.InvalidFormatTooLong" = "message.InvalidFormatMobileTooLong";
 "message.InvalidFormatTooShort" = "message.InvalidFormatTooShort";

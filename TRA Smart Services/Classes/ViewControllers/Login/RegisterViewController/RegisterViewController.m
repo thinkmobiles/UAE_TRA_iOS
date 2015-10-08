@@ -363,7 +363,7 @@ static NSString *const DividerForID = @"-";
         return YES;
     }
     if (![self.mobileTextField.text isValidPhoneNumber]) {
-        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidPhoneNumberFormat")];
         return YES;
     }
     if (![self.emailTextField.text isValidEmailUseHardFilter:NO]) {

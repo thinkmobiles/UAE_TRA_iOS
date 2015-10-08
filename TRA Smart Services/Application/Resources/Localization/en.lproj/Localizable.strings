@@ -27,17 +27,18 @@
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "Incorrect DomainName";
 "message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
-"message.NewPasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
+"message.NewPasswordsNotEqual" = "New Password and Confirm password do not match. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
 "message.InvalidFormatIDEmirates" = "Invalid Emirates ID";
 "message.InvalidFormatFirstName" = "First name cannot contain digits";
 "message.InvalidFormatLastName" = "Last name cannot contain digits";
-"message.InvalidFormatMobile" = "Invalid Mobile number. Phone number must not contain letters";
+"message.InvalidFormatMobile" = "Invalid Mobile number. Phone number must not contain numbers";
+"message.InvalidPhoneNumberFormat" = "Invalid Phone Number";
 "message.InvalidFormatMobileTooShort" = "Invalid Mobile number. Phone number is too short";
 "message.InvalidFormatTooLong" = "Both fields can be up to 32 characters long(max)";
 "message.InvalidFormatTooShort" = "Both fields can be at minimum 3 characters long";
-"message.InvalidFormatEmail" = "Invalid Email";
+"message.InvalidFormatEmail" = "Incorrect email format";
 "message.InvalidFormatURL" = "Invalid URL format.\nExample: http(s):\/\/name.domain";
 "message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'Abu Dhabi': 1,\n'Ajman': 2,\n'Dubai': 3,\n'Fujairah': 4,\n'Ras al-Khaiman': \n5,'Sharjah': 6,\n'Umm al-Quwain': 7";
 "message.FailedToSendSMS" = "Cant sent SMS";
@@ -72,7 +73,7 @@
 //TabBarMenuItems
 
 "tabBarMenu_item_1" = "Home";
-"tabBarMenu_item_2" = "Favorite";
+"tabBarMenu_item_2" = "Favorites";
 "tabBarMenu_item_3" = "Info Hub";
 "tabBarMenu_item_4" = "Enquires";
 "tabBarMenu_item_5" = "Settings";
@@ -179,7 +180,7 @@
 
 //FavouriteViewController
 
-"favourite.title" = "Favorite";
+"favourite.title" = "Favorites";
 "favourite.button.addFav.title" = "Add a Service";
 "favourite.notification" = "You have not selected a TRA\nservice as part of your\n Favorites list yet";
 
