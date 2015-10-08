@@ -94,7 +94,7 @@ static CGFloat const VerticalSpaceDescriptionConstraintCompliantServise = 25.f;
     
     if (!self.compliantDescriptionTextView.text.length || !self.compliantTitleTextField.text.length || (self.type == ComplianTypeCustomProvider && !self.referenceNumberTextField.text.length)){
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
-    } else if (self.referenceNumberTextField.text.length < 4) {
+    } else if (self.type == ComplianTypeCustomProvider && self.referenceNumberTextField.text.length < 4) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobileTooShort")];
     } else if (self.type == ComplianTypeCustomProvider && ![self.referenceNumberTextField.text isValidPhoneNumber]) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatMobile")];
