@@ -132,7 +132,7 @@ static NSString *const DividerForID = @"-";
                 [loader dismissTRALoader];
                 [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
             } else {
-                [weakSelf dismissViewControllerAnimated:loader completion:^{
+                [loader dismissViewControllerAnimated:NO completion:^{
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }];
             }

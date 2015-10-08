@@ -79,21 +79,45 @@
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatUserName")];
             return;
         }
+        
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        
         __weak typeof(self) weakSelf = self;
-        [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
-            if (error) {
-                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
-            } else {
-                [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
-                
+        void(^UpdateAvatar)(UserModel *user) = ^(UserModel *user) {
+            [[NetworkManager sharedManager] traSSGetImageWithPath:user.uriForImage withCompletition:^(BOOL success, UIImage *response) {
+                if (success) {
+                    NSData *imageData = UIImageJPEGRepresentation(response, 1.0);
+                    NSString *encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+                    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+                    user.avatarImageBase64 = encodedString;
+                    [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                }
                 if (weakSelf.shouldAutoCloseAfterLogin) {
                     weakSelf.didCloseViewController = nil;
                     [weakSelf closeButtonPressed];
                 }
+                [loader dismissTRALoader];
+            }];
+        };
+        
+        void(^GetUserProfile)() = ^() {
+            [[NetworkManager sharedManager] traSSGetUserProfileResult:^(id response, NSError *error) {
+                UserModel *user = [[UserModel alloc] initWithDictionary:response];
+                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+                UpdateAvatar(user);
+            }];
+        };
+        
+        [[NetworkManager sharedManager] traSSLoginUsername:self.userNameTextField.text password:self.passwordTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+                [loader dismissTRALoader];
+            } else {
+                [weakSelf.storage storePassword:weakSelf.passwordTextField.text forUser:weakSelf.userNameTextField.text];
+                GetUserProfile();
             }
-            [loader dismissTRALoader];
         }];
+        
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }

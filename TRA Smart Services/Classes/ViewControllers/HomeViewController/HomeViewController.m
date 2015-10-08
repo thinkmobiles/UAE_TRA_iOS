@@ -295,6 +295,7 @@ static LanguageType startLanguage;
         loginViewController.shouldAutoCloseAfterLogin = YES;
         loginViewController.didDismissed = ^() {
             [weakSelf.topView animateTopViewApearence];
+            [weakSelf updateUserProfileImage];
         };
         [AppHelper presentViewController:navController onController:self.navigationController];
     }
