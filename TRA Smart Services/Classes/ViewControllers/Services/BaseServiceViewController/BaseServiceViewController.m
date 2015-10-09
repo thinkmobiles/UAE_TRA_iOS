@@ -78,13 +78,12 @@ static CGFloat const HeightForToolbars = 44.f;
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.start];
-    CGRect frame = textView.frame;
-    CGFloat curcorPointY = frame.origin.y + caretRect.origin.y - textView.contentOffset.y - HeightForToolbars;
-    CGFloat keyPositionY = self.view.frame.size.height - self.keyboardHeight;
-    if (curcorPointY > keyPositionY) {
-        CGFloat lineKetboard = self.keyboardHeight - self.view.bounds.size.height + frame.origin.y + frame.size.height - HeightForToolbars;
-        CGPoint bottomOffset = CGPointMake(0, textView.contentSize.height - frame.size.height + lineKetboard);
-        [textView setContentOffset: bottomOffset];
+    CGRect frame = [self.view convertRect:textView.bounds fromView:textView];
+    
+    CGFloat curcorPointY = frame.origin.y + caretRect.origin.y + caretRect.size.height - textView.contentOffset.y;
+    CGFloat const keyPositionY = [UIScreen mainScreen].bounds.size.height - self.keyboardHeight;
+    if (curcorPointY >= keyPositionY) {
+        [textView setContentOffset: CGPointMake(0, frame.origin.y + caretRect.origin.y + caretRect.size.height - keyPositionY + 3.0f)];
     }
 }
 

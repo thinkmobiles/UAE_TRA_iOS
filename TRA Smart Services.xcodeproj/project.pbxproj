@@ -1943,7 +1943,6 @@
 				TargetAttributes = {
 					ED71927B1B5450D60086C6EE = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3C9NG3BP4F;
 					};
 				};
 			};
@@ -2264,7 +2263,7 @@
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tra.traSmartService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2283,7 +2282,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tra.traSmartService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7b4c17d-5292-4259-b94e-1b8219f766ef";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
