@@ -10,6 +10,7 @@
 #import "FingerPrintAuth.h"
 #import "KeychainStorage.h"
 #import "SettingViewController.h"
+#import "ReverseSecure.h"
 
 @interface AppDelegate ()
 
@@ -24,17 +25,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [CoreDataManager sharedManager];
-    [DynamicUIService service];
-    [BlackWhiteConverter sharedManager];
-    [[NetworkManager sharedManager] startMonitoringNetwork];
-    
-    [AppHelper prepareTabBarItems];
-    [AppHelper prepareTabBarGradient];
-    
-    [self performAutoLogin];
-    self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
-
+    if ([ReverseSecure isJailBroken]) {
+        [[[UIAlertView alloc] initWithTitle:@"JailbrakeDevice" message:@"Cant run onJailbrakeDevice" delegate:nil cancelButtonTitle:nil otherButtonTitles: nil] show];
+    } else {
+        [CoreDataManager sharedManager];
+        [DynamicUIService service];
+        [BlackWhiteConverter sharedManager];
+        [[NetworkManager sharedManager] startMonitoringNetwork];
+        
+        [AppHelper prepareTabBarItems];
+        [AppHelper prepareTabBarGradient];
+        
+        [self performAutoLogin];
+        self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
+    }
     return YES;
 }
 

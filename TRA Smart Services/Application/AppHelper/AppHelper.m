@@ -47,8 +47,10 @@ static LanguageType startLanguage;
 {
     BOOL isiOS9ORHigher = NO;
     NSOperatingSystemVersion ios9_0_0 = (NSOperatingSystemVersion){9, 0, 0};
-    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
-        isiOS9ORHigher = YES;
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)]) {
+        if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
+            isiOS9ORHigher = YES;
+        }
     }
     return isiOS9ORHigher;
 }
