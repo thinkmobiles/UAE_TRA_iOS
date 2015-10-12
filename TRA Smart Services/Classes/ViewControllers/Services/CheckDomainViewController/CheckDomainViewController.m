@@ -23,6 +23,7 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet UIButton *avaliabilityButton;
 @property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 @property (weak, nonatomic) IBOutlet UILabel *domainAvaliabilityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *domainInoLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -189,6 +190,7 @@ static NSString *const keyOrder = @"order";
 {
     self.title = dynamicLocalizedString(@"checkDomainViewController.title");
     self.domainNameTextField.placeholder = dynamicLocalizedString(@"checkDomainViewController.domainNameTextField");
+    self.domainInoLabel.text = dynamicLocalizedString(@"checkDomainViewController.domainInfo.label");
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
 }
@@ -221,6 +223,7 @@ static NSString *const keyOrder = @"order";
 {
     self.domainNameTextField.textAlignment = alignment;
     self.domainAvaliabilityLabel.textAlignment = alignment;
+    self.domainInoLabel.textAlignment = alignment;
 }
 
 - (void)displayDataIfNeeded
@@ -236,11 +239,13 @@ static NSString *const keyOrder = @"order";
         }
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
+        self.domainInoLabel.hidden = YES;
     } else if (self.whoIS.response) {
         self.tableView.hidden = NO;
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
+        self.domainInoLabel.hidden = YES;
     }
 }
 

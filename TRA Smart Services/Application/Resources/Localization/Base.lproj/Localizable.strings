@@ -291,6 +291,7 @@
 "checkDomainViewController.avaliabilityButton.title" = "checkDomainViewController.avaliabilityButton.title";
 "checkDomainViewController.whoISButton.title" = "checkDomainViewController.whoISButton.title";
 "checkDomainViewController.domainTitleForView" = "checkDomainViewController.domainTitleForView";
+"checkDomainViewController.domainInfo.label" = "checkDomainViewController.domainInfo.label";
 
 //CheckIMEIViewController
 

@@ -293,6 +293,7 @@
 "checkDomainViewController.whoISButton.title" = "WHOIS";
 "checkDomainViewController.domainTitleForView" = "Domain Check Service";
 "checkDomainViewController.chooseRating" = "Choose Rating";
+"checkDomainViewController.domainInfo.label" = "Only for .ae domains";
 
 //CheckIMEIViewController
 

@@ -28,6 +28,7 @@
         </mutableArray>
         <mutableArray key="Lato-Light.ttf">
             <string>Lato-Light</string>
+            <string>Lato-Light</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -2392,7 +2393,7 @@ a new password will be sent.</string>
                                 <animations/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain name(i.e. tra.gov.ae)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ku-jV-87Q" userLabel="Domain - UitextField" customClass="BottomBorderTextField">
-                                <rect key="frame" x="16" y="25" width="568" height="40"/>
+                                <rect key="frame" x="16" y="4" width="568" height="40"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oOv-GM-CrL"/>
@@ -2404,7 +2405,7 @@ a new password will be sent.</string>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdg-PU-pvo" userLabel="Avaliability - Button">
-                                <rect key="frame" x="16" y="81" width="277" height="40"/>
+                                <rect key="frame" x="16" y="79" width="277" height="40"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TVd-3X-R4U"/>
@@ -2418,7 +2419,7 @@ a new password will be sent.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-mA-hdv" userLabel="WhoIS - Button">
-                                <rect key="frame" x="308" y="81" width="276" height="40"/>
+                                <rect key="frame" x="308" y="79" width="276" height="40"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <state key="normal" title="Who is?">
@@ -2428,10 +2429,20 @@ a new password will be sent.</string>
                                     <action selector="whoIsButtonTapped:" destination="dey-3G-9KT" eventType="touchUpInside" id="Jgt-M3-tVY"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-ye-h72" userLabel="DomainAvaliability - UILabel">
-                                <rect key="frame" x="16" y="81" width="568" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-Tc-SIQ" userLabel="Domain Info - UILabel">
+                                <rect key="frame" x="16" y="48" width="568" height="21"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VGa-CO-eBn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-ye-h72" userLabel="DomainAvaliability - UILabel">
+                                <rect key="frame" x="16" y="60" width="568" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pVL-IL-TbU"/>
                                 </constraints>
@@ -2555,8 +2566,11 @@ a new password will be sent.</string>
                             <constraint firstAttribute="trailing" secondItem="5Tn-dv-Oy0" secondAttribute="trailing" id="Oeh-B9-qDi"/>
                             <constraint firstItem="Ltd-9H-2wx" firstAttribute="top" secondItem="8Xy-6i-Ze5" secondAttribute="bottom" id="P7M-q1-vcV"/>
                             <constraint firstAttribute="right" secondItem="rwy-ye-h72" secondAttribute="right" constant="16" id="PRA-Pa-BW9"/>
-                            <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="fGv-Ef-FpK" secondAttribute="bottom" constant="25" id="Y8n-GH-MU6"/>
-                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="16" id="YFY-Bg-kM4"/>
+                            <constraint firstAttribute="trailing" secondItem="h6B-Tc-SIQ" secondAttribute="trailing" constant="16" id="Vjf-w1-IVU"/>
+                            <constraint firstItem="4ku-jV-87Q" firstAttribute="top" secondItem="fGv-Ef-FpK" secondAttribute="bottom" constant="4" id="Y8n-GH-MU6"/>
+                            <constraint firstItem="Qdg-PU-pvo" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="35" id="YFY-Bg-kM4"/>
+                            <constraint firstItem="h6B-Tc-SIQ" firstAttribute="top" secondItem="4ku-jV-87Q" secondAttribute="bottom" constant="4" id="bvV-hH-p4g"/>
+                            <constraint firstItem="h6B-Tc-SIQ" firstAttribute="leading" secondItem="IiL-L5-7N3" secondAttribute="leading" constant="16" id="cmk-e0-dw4"/>
                             <constraint firstAttribute="trailing" secondItem="7NQ-mA-hdv" secondAttribute="trailing" constant="16" id="eZI-k3-PeA"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="height" secondItem="7NQ-mA-hdv" secondAttribute="height" id="kNY-vo-Ca2"/>
                             <constraint firstItem="Qdg-PU-pvo" firstAttribute="centerY" secondItem="7NQ-mA-hdv" secondAttribute="centerY" id="oip-6Q-OlT"/>
@@ -2571,6 +2585,7 @@ a new password will be sent.</string>
                         <outlet property="avaliabilityButton" destination="Qdg-PU-pvo" id="uLC-Zn-1Uq"/>
                         <outlet property="backgroundImageView" destination="5Tn-dv-Oy0" id="eMX-Ju-f2O"/>
                         <outlet property="domainAvaliabilityLabel" destination="rwy-ye-h72" id="LgD-IX-xtr"/>
+                        <outlet property="domainInoLabel" destination="h6B-Tc-SIQ" id="Mui-Dg-des"/>
                         <outlet property="domainNameTextField" destination="4ku-jV-87Q" id="rfk-84-lEH"/>
                         <outlet property="tableView" destination="8Xy-6i-Ze5" id="z9Z-uZ-Ez3"/>
                         <outlet property="whoISButton" destination="7NQ-mA-hdv" id="nkf-US-jIz"/>
