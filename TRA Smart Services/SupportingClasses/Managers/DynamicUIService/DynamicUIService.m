@@ -44,6 +44,9 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 + (instancetype)service
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static DynamicUIService *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

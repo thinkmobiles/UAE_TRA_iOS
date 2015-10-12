@@ -23,6 +23,9 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static CoreDataManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

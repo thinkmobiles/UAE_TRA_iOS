@@ -27,6 +27,9 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static NetworkManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

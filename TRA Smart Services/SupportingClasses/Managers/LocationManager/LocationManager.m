@@ -20,6 +20,9 @@
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static LocationManager *sharedmanager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
