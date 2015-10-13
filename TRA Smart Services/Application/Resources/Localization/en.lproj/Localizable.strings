@@ -53,6 +53,7 @@
 "message.InvalidIMEI" = "IMEI must contain 15 digits";
 "message.ReferenceNumberIsTooShort" = "Spammer number/alias must consist of at least 4 characters";
 "message.ReferenceNumberIsTooLong" = "Spammer number/alias must consist of less than 12 characters";
+"message.JailbrakeDevice" = "This app cannot run on a jailbroken device";
 
 //StatesNames
 
@@ -293,7 +294,7 @@
 "checkDomainViewController.whoISButton.title" = "WHOIS";
 "checkDomainViewController.domainTitleForView" = "Domain Check Service";
 "checkDomainViewController.chooseRating" = "Choose Rating";
-"checkDomainViewController.domainInfo.label" = "Only for .ae domains";
+"checkDomainViewController.domainInfo.label" = "Only for .ae domain names";
 
 //CheckIMEIViewController
 
@@ -424,7 +425,6 @@
 "innovationsViewController.selectInnovativeIdeasFor4" = "Reducing cost & increasing Revenue";
 "innovationsViewController.selectInnovativeIdeasFor5" = "Raising TRA Institutional Reputation";
 "innovationsViewController.selectInnovativeIdeasFor6" = "Futurology Studies";
-
 
 //ResultIMEIViewController
 

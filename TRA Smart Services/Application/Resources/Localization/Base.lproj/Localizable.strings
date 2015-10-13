@@ -53,6 +53,7 @@
 "message.InvalidIMEI" = "message.InvalidIMEI";
 "message.ReferenceNumberIsTooShort" = "message.ReferenceNumberIsTooShort";
 "message.ReferenceNumberIsTooLong" = "message.ReferenceNumberIsTooLong";
+"message.JailbrakeDevice" = "message.JailbrakeDevice";
 
 //StatesNames
 

@@ -53,6 +53,7 @@
 "message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
 "message.ReferenceNumberIsTooShort" = "Spammer number/alias must consist of at least 4 characters";
 "message.ReferenceNumberIsTooLong" = "Spammer number/alias must consist of less than 12 characters";
+"message.JailbrakeDevice" = "لا يمكن للتطبيق العمل على جهاز معدل النظام";
 
 //StatesNames
 
@@ -292,7 +293,7 @@
 "checkDomainViewController.whoISButton.title" = "تفاصيل النطاق";
 "checkDomainViewController.domainTitleForView" = "خدمة التحقق من نطاق";
 "checkDomainViewController.chooseRating" = "اختر تقييماً";
-"checkDomainViewController.domainInfo.label" = "Only for .ae domains";
+"checkDomainViewController.domainInfo.label" = "تغطي الخدمة اسماء النطاقات .ae حصراً";
 
 //CheckIMEIViewController
 

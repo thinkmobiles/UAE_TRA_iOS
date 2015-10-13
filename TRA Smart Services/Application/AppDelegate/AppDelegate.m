@@ -26,7 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     if ([ReverseSecure isJailBroken]) {
-        [[[UIAlertView alloc] initWithTitle:@"JailbrakeDevice" message:@"Cant run onJailbrakeDevice" delegate:nil cancelButtonTitle:nil otherButtonTitles: nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"JailbrakeDevice" message:dynamicLocalizedString(@"message.JailbrakeDevice") delegate:nil cancelButtonTitle:nil otherButtonTitles: nil] show];
     } else {
         [CoreDataManager sharedManager];
         [DynamicUIService service];
