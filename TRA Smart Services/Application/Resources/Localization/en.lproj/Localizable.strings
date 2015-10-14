@@ -26,8 +26,8 @@
 "message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "Incorrect DomainName";
-"message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
-"message.NewPasswordsNotEqual" = "New Password and Confirm password do not match. Please correct and try again.";
+"message.PasswordsNotEqual" = "Entered Password and Confirm Password are not equal. Please correct and try again.";
+"message.NewPasswordsNotEqual" = "New Password and Confirm Password do not match. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
 "message.InvalidFormatIDEmirates" = "Invalid Emirates ID";
@@ -104,7 +104,7 @@
 "register.placeHolderText.password" ="Password";
 "register.button.register" = "Register";
 "register.button.login" = "Login";
-"register.placeHolderText.confirmPassword" = "Confirm password";
+"register.placeHolderText.confirmPassword" = "Confirm Password";
 "register.placeHolderText.firstName" = "First Name";
 "register.placeHolderText.emirateID" = "e.g: 784-YYYY-NNNNNNN-C";
 "register.placeHolderText.lastName" = "Last Name";
