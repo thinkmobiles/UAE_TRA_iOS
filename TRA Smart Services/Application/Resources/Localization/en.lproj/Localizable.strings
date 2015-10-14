@@ -19,7 +19,7 @@
 //Messages for Alerts
 
 "message.success" = "Success";
-"message.EmptyInputParameters" = "Please enter text in the text field.\nAll fields should be filled with required data.";
+"message.EmptyInputParameters" = "Please fill the fields with necessary information. All the fields should be filled with required data";
 "message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
 "message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
 "message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
