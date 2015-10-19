@@ -19,15 +19,15 @@
 //Messages for Alerts
 
 "message.success" = "Success";
-"message.EmptyInputParameters" = "Please enter text in the text field.\nAll fields should be filled with required data.";
+"message.EmptyInputParameters" = "Please fill the fields with necessary information. All the fields should be filled with required data";
 "message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
 "message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
 "message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
 "message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
 "message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
 "message.IncorrectDomainName" = "Incorrect DomainName";
-"message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
-"message.NewPasswordsNotEqual" = "New Password and Confirm password do not match. Please correct and try again.";
+"message.PasswordsNotEqual" = "Entered Password and Confirm Password are not equal. Please correct and try again.";
+"message.NewPasswordsNotEqual" = "New Password and Confirm Password do not match. Please correct and try again.";
 "message.OperationCanceledByUser" = "Operation canceled by user";
 "message.InvalidFormatUserName" = "User credentials Invalid";
 "message.InvalidFormatIDEmirates" = "Invalid Emirates ID";
@@ -104,7 +104,7 @@
 "register.placeHolderText.password" ="Password";
 "register.button.register" = "Register";
 "register.button.login" = "Login";
-"register.placeHolderText.confirmPassword" = "Confirm password";
+"register.placeHolderText.confirmPassword" = "Confirm Password";
 "register.placeHolderText.firstName" = "First Name";
 "register.placeHolderText.emirateID" = "e.g: 784-YYYY-NNNNNNN-C";
 "register.placeHolderText.lastName" = "Last Name";
