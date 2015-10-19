@@ -2,15 +2,14 @@
 //  BaseDynamicUIViewController.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 01.08.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 01.08.15.
 //
-
-#import "DynamicUIService.h"
 
 static CGFloat const DeclineTagForFontUpdate = 2000;
 
 static NSString *const PreviousFontSizeKey = @"PreviousFontSizeKey";
+
+static NSString *const DefaultLogoImageName = @"ic_logo_us";
 
 @interface BaseDynamicUIViewController : UIViewController <UITextFieldDelegate>
 

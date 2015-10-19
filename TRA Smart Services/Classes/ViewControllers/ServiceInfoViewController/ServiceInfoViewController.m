@@ -2,8 +2,7 @@
 //  ServiceInfoViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 18.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 18.08.15.
 //
 
 #import "ServiceInfoViewController.h"
@@ -40,6 +39,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     if (self.fakeBackground) {
         self.fakeBackgroundImageView.image = self.fakeBackground;
     }
+    [self prepareDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -47,7 +47,6 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
     [super viewWillAppear:animated];
     
     [self reverseDataSourceIfNeeded];
-    [self prepareDataSource];
     [self animateAppearence];
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -118,7 +117,7 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 {
     if ([segue.identifier isEqualToString:ServiceDetailsSegueIdentifier]) {
         NSDictionary *dataSource = self.dataSource[((NSIndexPath *)[[self.collectionView indexPathsForSelectedItems] firstObject]).row];
-        NSString *detailsText = [self.currentServiceLocalizedDataSource valueForKey:[dataSource valueForKey:@"serviceKeyName"]];
+        NSString *detailsText = [self.currentServiceLocalizedDataSource valueForKey:[dataSource valueForKey:@"serviceResponseKey"]];
         
         ServiceDetailedInfoViewController *serviceInfoController = segue.destinationViewController;
         serviceInfoController.fakeBackground = [AppHelper snapshotForView:self.navigationController.view];
@@ -169,9 +168,82 @@ static NSString *const ServiceDetailsSegueIdentifier = @"serviceDetailsSegue";
 
 - (void)prepareDataSource
 {
-    NSArray *serviceDescription = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceDescription" ofType:@"plist"]];
-    NSDictionary *currentLanguagePlistServices = self.dynamicService.language == LanguageTypeArabic ? serviceDescription[1] : serviceDescription[0];
-    self.currentServiceLocalizedDataSource = [currentLanguagePlistServices valueForKey:[NSString stringWithFormat:@"%li", (long)self.selectedServiceID]];
+    [AppHelper showLoader];
+    NSString *languageCode = self.dynamicService.language == LanguageTypeArabic ? @"AR" : @"EN";
+    NSString *serviceRequestName = [self serviceNameForCurrentService];
+    __weak typeof(self) weakSelf = self;
+    [[NetworkManager sharedManager] traSSNoCRMServiceGetServiceAboutInfo:serviceRequestName languageCode:languageCode responseBlock:^(id response, NSError *error) {
+        if (error) {
+            [response isKindOfClass:[NSString class]] ? [AppHelper alertViewWithMessage:response] : [AppHelper alertViewWithMessage:error.localizedDescription];
+        } else {
+            weakSelf.currentServiceLocalizedDataSource = response;
+        }
+        [AppHelper hideLoader];
+    }];    
+}
+
+- (NSString *)serviceNameForCurrentService
+{
+    NSString *serviceNameForRequest;
+    switch (self.selectedServiceID) {
+        case ServiceTypeGetDomainData: {
+            serviceNameForRequest = ServiceTypeGetDomainDataStringName;
+            break;
+        }
+        case ServiceTypeGetDomainAvaliability: {
+            serviceNameForRequest = ServiceTypeGetDomainAvaliabilityStringName;
+            break;
+        }
+        case ServiceTypeSearchMobileIMEI: {
+            serviceNameForRequest = ServiceTypeSearchMobileIMEIStringName;
+            break;
+        }
+        case ServiceTypeSearchMobileBrand: {
+            serviceNameForRequest = ServiceTypeSearchMobileBrandStringName;
+            break;
+        }
+        case ServiceTypeFeedback: {
+            serviceNameForRequest = ServiceTypeFeedbackStringName;
+            break;
+        }
+        case ServiceTypeSMSSpamReport: {
+            serviceNameForRequest = ServiceTypeSMSSpamReportStringName;
+            break;
+        }
+        case ServiceTypeHelpSalim: {
+            serviceNameForRequest = ServiceTypeHelpSalimStringName;
+            break;
+        }
+        case ServiceTypeVerification: {
+            serviceNameForRequest = ServiceTypeVerificationStringName;
+            break;
+        }
+        case ServiceTypeCoverage: {
+            serviceNameForRequest = ServiceTypeCoverageStringName;
+            break;
+        }
+        case ServiceTypeInternetSpeedTest: {
+            serviceNameForRequest = ServiceTypeInternetSpeedTestStringName;
+            break;
+        }
+        case ServiceTypeCompliantAboutServiceProvider: {
+            serviceNameForRequest = ServiceTypeCompliantAboutServiceProviderTRAStringName;
+            break;
+        }
+        case ServiceTypeSuggestion: {
+            serviceNameForRequest = ServiceTypeSuggestionStringName;
+            break;
+        }
+        case ServiceTypeCompliantAboutServiceProviderEnquires: {
+            serviceNameForRequest = ServiceTypeCompliantAboutServiceProviderEnquiresStringName;
+            break;
+        }
+        case ServiceTypeCompliantAboutServiceProviderTRA: {
+            serviceNameForRequest = ServiceTypeCompliantAboutServiceProviderTRAStringName;
+            break;
+        }
+    }
+    return serviceNameForRequest;
 }
 
 @end

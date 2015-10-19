@@ -2,15 +2,12 @@
 //  AppHelper.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 13.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.07.15.
 //
 
 #import "AppHelper.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-#import "DynamicUIService.h"
-#import "UIColor+AppColor.h"
 #import "UIImage+DrawText.h"
 
 static CGFloat const MaximumTabBarFontSize = 15.f;
@@ -50,8 +47,10 @@ static LanguageType startLanguage;
 {
     BOOL isiOS9ORHigher = NO;
     NSOperatingSystemVersion ios9_0_0 = (NSOperatingSystemVersion){9, 0, 0};
-    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
-        isiOS9ORHigher = YES;
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)]) {
+        if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
+            isiOS9ORHigher = YES;
+        }
     }
     return isiOS9ORHigher;
 }
@@ -98,6 +97,11 @@ static LanguageType startLanguage;
         [[AppHelper topView] addSubview:hud];
         [hud show:YES];
     });
+}
+
++ (void)showLoaderOnView:(UIView *)view
+{
+    [MBProgressHUD showHUDAddedTo:view animated:YES].color = [[DynamicUIService service].currentApplicationColor colorWithAlphaComponent:0.3f];
 }
 
 + (void)hideLoader

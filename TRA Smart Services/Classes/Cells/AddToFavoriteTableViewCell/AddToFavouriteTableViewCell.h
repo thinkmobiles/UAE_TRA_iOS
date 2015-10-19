@@ -2,8 +2,7 @@
 //  FavouriteTableViewCell.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 17.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 17.08.15.
 //
 
 @class AddToFavouriteTableViewCell;
@@ -22,7 +21,7 @@ static NSString *const AddToFavouriteArabicCellIdentifier = @"arabicAddToFavCell
 
 @property (strong, nonatomic) UIImage *logoImage;
 @property (copy, nonatomic) NSString *descriptionText;
-@property (weak, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 
 @property (weak, nonatomic) id <AddToFavouriteTableViewCellDelegate> delegate;
 

@@ -2,8 +2,7 @@
 //  HomeDecorationView.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 31.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 31.07.15.
 //
 
 #import "BaseXibView.h"
@@ -27,16 +26,17 @@ static CGFloat const LogoScaleMinValue = 0.85f;
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property (strong, nonatomic) UIImage *logoImage;
+@property (strong, nonatomic) UIImage *avatarImage;
 @property (strong, nonatomic) UIImage *informationButtonImage;
 @property (strong, nonatomic) UIImage *searchButtonImage;
 @property (strong, nonatomic) UIImage *notificationButtonImage;
 @property (assign, nonatomic) NSUInteger notificationsCount;
 @property (copy, nonatomic) NSString *userInitials;
 
+@property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
 @property (assign, nonatomic) BOOL isBottomHexagonWireOnTop;
 
 @property (weak, nonatomic) id <HomeTopBarViewDelegate> delegate;
-@property (assign, nonatomic) BOOL enableFakeBarAnimations;
 
 - (void)reverseLayers;
 - (void)setStartApearenceAnimationParameters;

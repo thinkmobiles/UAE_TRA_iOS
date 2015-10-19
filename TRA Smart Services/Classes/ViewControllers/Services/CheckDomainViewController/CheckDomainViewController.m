@@ -2,8 +2,7 @@
 //  CheckDomainViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 13.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.08.15.
 //
 
 #import "CheckDomainViewController.h"
@@ -12,6 +11,7 @@
 #import "UIImage+DrawText.h"
 #import "LeftInsetTextField.h"
 #import "DomainInfoTableViewCell.h"
+#import "WhoIsModel.h"
 
 static NSString *const Keykey = @"key";
 static NSString *const keyValue = @"value";
@@ -23,9 +23,7 @@ static NSString *const keyOrder = @"order";
 @property (weak, nonatomic) IBOutlet UIButton *avaliabilityButton;
 @property (weak, nonatomic) IBOutlet UIButton *whoISButton;
 @property (weak, nonatomic) IBOutlet UILabel *domainAvaliabilityLabel;
-
-@property (weak, nonatomic) IBOutlet ServiceView *serviceView;
-@property (weak, nonatomic) IBOutlet UIView *topHolderView;
+@property (weak, nonatomic) IBOutlet UILabel *domainInoLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -39,9 +37,13 @@ static NSString *const keyOrder = @"order";
 {
     [super viewWillAppear:animated];
     
-    [self prepareTopView];
+    if (!self.domainName) {
+        self.domainNameTextField.userInteractionEnabled = YES;
+    }
+    
     [self updateNavigationControllerBar];
     [self displayDataIfNeeded];
+    [self prepareButtonTitle];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -52,7 +54,7 @@ static NSString *const keyOrder = @"order";
         self.domainAvaliabilityLabel.hidden = YES;
         self.domainNameTextField.text = @"";
     }
-    if (!self.result) {
+    if (!self.whoIS.response) {
         self.tableView.hidden = YES;
     }
 
@@ -67,26 +69,25 @@ static NSString *const keyOrder = @"order";
     void (^PresentResult)(NSString *response) = ^(NSString *response) {
         CheckDomainViewController *checkDomainViewController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
         checkDomainViewController.response = response;
-        checkDomainViewController.domainName = weakSelf.domainNameTextField.text;
+        checkDomainViewController.domainName = weakSelf.domainNameTextField.text;        
         [weakSelf.navigationController pushViewController:checkDomainViewController animated:YES];
     };
     
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (![self.domainNameTextField.text isValidURL]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatURL")];
     } else {
+        [self.domainNameTextField resignFirstResponder];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainAvaliability:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 [weakSelf displayDataIfNeeded];
             } else {
                 weakSelf.domainAvaliabilityLabel.hidden = NO;
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    [loader dismissTRALoader];
-                    PresentResult(response);
-                });
+                [loader dismissTRALoader];
+                PresentResult(response);
             }
         }];
     }
@@ -96,29 +97,28 @@ static NSString *const keyOrder = @"order";
 {
     __weak typeof(self) weakSelf = self;
     void (^PresentResult)(NSString *response) = ^(NSString *response) {
-        NSArray *parsedData = [weakSelf parseData:response];
+        WhoIsModel *model = [WhoIsModel whoIsWithString:response];
         CheckDomainViewController *checkDomainViewController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"verificationID"];
-        checkDomainViewController.result = parsedData;
+        checkDomainViewController.whoIS = model;
         checkDomainViewController.domainName = weakSelf.domainNameTextField.text;
         [weakSelf.navigationController pushViewController:checkDomainViewController animated:YES];
     };
     
     if (!self.domainNameTextField.text.length) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+    } else if (![self.domainNameTextField.text isValidURL]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatURL")];
     } else {
+        [self.domainNameTextField resignFirstResponder];
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-        [self.view endEditing:YES];
         [[NetworkManager sharedManager] traSSNoCRMServiceGetDomainData:self.domainNameTextField.text requestResult:^(id response, NSError *error) {
             if (error) {
-                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 [weakSelf displayDataIfNeeded];
             } else {
                 weakSelf.domainAvaliabilityLabel.hidden = NO;
-                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    [loader dismissTRALoader];
-                    PresentResult(response);
-                });
+                [loader dismissTRALoader];
+                PresentResult(response);
             }
         }];
     }
@@ -128,7 +128,7 @@ static NSString *const keyOrder = @"order";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.result.count;
+    return self.whoIS.response.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,7 +160,7 @@ static NSString *const keyOrder = @"order";
 
 - (void)configureCell:(DomainInfoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *selectedItem = self.result[indexPath.row];
+    NSDictionary *selectedItem = self.whoIS.response[indexPath.row];
     cell.typeLabel.text = [selectedItem valueForKey:Keykey];
     if ([[selectedItem valueForKey:keyValue] isKindOfClass:[NSArray class]]) {
         NSString *list = @"";
@@ -171,14 +171,6 @@ static NSString *const keyOrder = @"order";
     } else {
         cell.valueLabel.text = [selectedItem valueForKey:keyValue];
     }
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.view endEditing:YES];
-    return YES;
 }
 
 #pragma mark - UITextViewDelegate
@@ -192,53 +184,46 @@ static NSString *const keyOrder = @"order";
     return YES;
 }
 
-#pragma mark - RatingViewDelegate
-
-- (void)ratingChanged:(NSInteger)rating
-{
-    [AppHelper showLoader];
-
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:@"Rating" forSerivce:ServiceNameDomainCheck withRating:rating requestResult:^(id response, NSError *error) {
-        if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
-        } else {
-            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.success")];
-        }
-        [AppHelper hideLoader];
-    }];
-}
-
 #pragma mark - SuperclassMethods
 
 - (void)localizeUI
 {
     self.title = dynamicLocalizedString(@"checkDomainViewController.title");
     self.domainNameTextField.placeholder = dynamicLocalizedString(@"checkDomainViewController.domainNameTextField");
+    self.domainInoLabel.text = dynamicLocalizedString(@"checkDomainViewController.domainInfo.label");
     [self.avaliabilityButton setTitle:dynamicLocalizedString(@"checkDomainViewController.avaliabilityButton.title") forState:UIControlStateNormal];
     [self.whoISButton setTitle:dynamicLocalizedString(@"checkDomainViewController.whoISButton.title") forState:UIControlStateNormal];
-    self.serviceView.serviceName.text = dynamicLocalizedString(@"checkDomainViewController.domainTitleForView");
 }
 
 - (void)updateColors
 {
     [super updateColors];
     
-    [super updateBackgroundImageNamed:@"serviceBackground"];
+    [super updateBackgroundImageNamed:@"img_bg_service"];
+}
+
+- (void)setRTLArabicUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentRight];
+}
+
+- (void)setLTREuropeUI
+{
+    [self updateUIElementsWithTextAlignment:NSTextAlignmentLeft];
 }
 
 #pragma mark - Private
 
-- (void)prepareTopView
-{
-    UIImage *logo = [UIImage imageNamed:@"ic_edit_hex"];
-    self.serviceView.serviceImage.image = [logo imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.topHolderView.backgroundColor = [self.dynamicService currentApplicationColor];
-}
-
 - (void)updateNavigationControllerBar
 {
-    [self.navigationController presentTransparentNavigationBarAnimated:NO];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style: UIBarButtonItemStylePlain target:nil action:nil];
+}
+
+- (void)updateUIElementsWithTextAlignment:(NSTextAlignment)alignment
+{
+    self.domainNameTextField.textAlignment = alignment;
+    self.domainAvaliabilityLabel.textAlignment = alignment;
+    self.domainInoLabel.textAlignment = alignment;
 }
 
 - (void)displayDataIfNeeded
@@ -254,63 +239,26 @@ static NSString *const keyOrder = @"order";
         }
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
-    } else if (self.result) {
+        self.domainInoLabel.hidden = YES;
+    } else if (self.whoIS.response) {
         self.tableView.hidden = NO;
         self.avaliabilityButton.hidden = YES;
         self.whoISButton.hidden = YES;
         self.domainNameTextField.hidden = YES;
+        self.domainInoLabel.hidden = YES;
     }
 }
 
-- (NSArray *)parseData:(NSString *)inputData
+- (void)prepareButtonTitle
 {
-    NSArray *values = [inputData componentsSeparatedByString:@"\r\n"];
-    NSMutableDictionary *dataDictionary = [[NSMutableDictionary alloc] init];
-    
-    NSString *key;
-    NSInteger i = 0;
-    for (NSString *string in values) {
- 
-        if (string.length) {
-            
-            NSArray *keyValueData = [string componentsSeparatedByString:@":"];
-            NSString *value = [(NSString *)[keyValueData lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            key = [(NSString *)[keyValueData firstObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            if ([key isEqualToString:@"No Data Found"]) {
-                key = @"Result";
-            }
-            NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
-            [innerDictionary setValue:@(i) forKey:keyOrder];
-            [innerDictionary setValue:key forKey:Keykey];
-            i++;
+    [self minimumScaleFactorTitleButton:self.whoISButton];
+    [self minimumScaleFactorTitleButton:self.avaliabilityButton];
+}
 
-            if ([dataDictionary valueForKey:key]) {
-                NSMutableArray *array = [[NSMutableArray alloc] init];
-                id innerObj = [[dataDictionary valueForKey:key] valueForKey:keyValue];
-                if ([innerObj isKindOfClass:[NSArray class]]) {
-                    for (id obj in (NSArray *)innerObj) {
-                        [array addObject:obj];
-                    }
-                } else {
-                    [array addObject:innerObj];
-                }
-                [array addObject:value];
-                [innerDictionary setObject:array forKey:keyValue];
-                [dataDictionary setObject:innerDictionary forKey:key];
-                continue;
-            }
-            
-            [innerDictionary setObject:value forKey:keyValue];
-            [dataDictionary setObject:innerDictionary forKey:key];
-        }
-    }
-    
-    NSArray *data = [dataDictionary allValues];
-    data = [data sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-        return [[obj1 valueForKey:keyOrder] integerValue] > [[obj2 valueForKey:keyOrder] integerValue];
-    }];
-    
-    return data;
+- (void)minimumScaleFactorTitleButton:(UIButton *)button
+{
+    button.titleLabel.adjustsFontSizeToFitWidth = YES;
+    button.titleLabel.minimumScaleFactor = 0.7f;
 }
 
 @end

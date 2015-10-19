@@ -2,9 +2,10 @@
 //  FavouriteViewController+DeleteAction.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 19.09.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 19.09.15.
 //
+
+#define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 
 #import "FavouriteViewController+DeleteAction.h"
 
@@ -21,11 +22,13 @@
     CGFloat startY = heightOfScreen - heightOfBottomDeletePart - ((UITabBarController *)[AppHelper rootViewController]).tabBar.frame.size.height - [self headerHeight];
     CGFloat arcHeight = 35.f;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat arcRadius = arcHeight / 2 + (width * width)/ (8 * arcHeight);
     
     UIBezierPath *arcBezierPath = [UIBezierPath bezierPath];
-    [arcBezierPath moveToPoint:CGPointMake(0, startY)];
-    [arcBezierPath addArcWithCenter:CGPointMake(width / 2, startY + arcRadius - heightOfBottomDeletePart) radius:arcRadius startAngle:0 endAngle:180 clockwise:YES];
+    [arcBezierPath moveToPoint:CGPointMake(0, startY - arcHeight * 2)];
+    [arcBezierPath addQuadCurveToPoint:CGPointMake(width, startY - arcHeight * 2) controlPoint:CGPointMake(width / 2, startY - arcHeight * 3)];
+    [arcBezierPath addLineToPoint:CGPointMake(width, tableView.frame.size.height)];
+    [arcBezierPath addLineToPoint:CGPointMake(0, tableView.frame.size.height)];
+    [arcBezierPath addLineToPoint:CGPointMake(0, startY - arcHeight * 2)];
     
     [self applyMaskToArcLayerWithPath:arcBezierPath];
     
@@ -57,6 +60,8 @@
     [tableView.layer addSublayer:self.arcDeleteZoneLayer];
     
     [self animateDeleteZoneAppearence];
+    
+    self.contentFakeIconLayer.zPosition = 0;
 }
 
 - (void)animateDeleteZoneAppearence
@@ -124,6 +129,8 @@
 - (void)removeDeleteZone
 {
     [self.arcDeleteZoneLayer removeFromSuperlayer];
+    [self.contentFakeIconLayer removeFromSuperlayer];
+    [self.arcDeleteZoneLayer removeFromSuperlayer];
 }
 
 #pragma mark - Drawings
@@ -149,6 +156,11 @@
 {
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.frame = self.arcDeleteZoneLayer.bounds;
+    
+//    UIBezierPath *path = [UIBezierPath bezierPath];
+//    path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 400, 320, 300)];
+//    maskLayer.path = path.CGPath;
+    
     maskLayer.path = arcBezierPath.CGPath;
     maskLayer.shouldRasterize = YES;
     maskLayer.rasterizationScale = [UIScreen mainScreen].scale * 2.;

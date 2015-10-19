@@ -3,7 +3,6 @@
 //  PlaceholderTextView
 //
 //  Created by Roma on 07.09.15.
-//  Copyright (c) 2015 Roma. All rights reserved.
 //
 
 #import "PlaceholderTextView.h"
@@ -49,14 +48,10 @@
 
 - (void)textChanged:(NSNotification *)notification
 {
-    if(!self.placeholder.length) {
-        return;
+    if(self.placeholder.length) {
+        [self updatePlaceHolderLabelHidden];
     }
-    if(!self.text.length) {
-        [self.placeHolderLabel setHidden:NO];
-    } else {
-        [self.placeHolderLabel setHidden:YES];
-    }
+    
 }
 
 #pragma mark - Overwriten
@@ -68,11 +63,21 @@
         self.placeHolderLabel = nil;
         
         [self setupPlaceHolderLabel];
-        if (!self.text.length) {
-            [self.placeHolderLabel setHidden:NO];
-        }
+        [self updatePlaceHolderLabelHidden];
     }
     [super drawRect:rect];
+}
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment
+{
+    [super setTextAlignment:textAlignment];
+    self.placeHolderLabel.textAlignment = textAlignment;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    _placeholder = placeholder;
+    self.placeHolderLabel.text = placeholder;
 }
 
 #pragma mark - Private
@@ -97,6 +102,11 @@
     [self addSubview:self.placeHolderLabel];
     self.placeHolderLabel.text = self.placeholder;
     [self sendSubviewToBack:self.placeHolderLabel];
+}
+
+- (void)updatePlaceHolderLabelHidden
+{
+    [self.placeHolderLabel setHidden:self.text.length ? YES : NO];
 }
 
 @end

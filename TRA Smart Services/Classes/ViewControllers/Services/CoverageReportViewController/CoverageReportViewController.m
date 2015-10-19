@@ -2,8 +2,7 @@
 //  CoverageReportViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 13.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.08.15.
 //
 
 #import "CoverageReportViewController.h"
@@ -32,6 +31,7 @@
     [super viewDidLoad];
     
     [self prepareHUD];
+    [self prepareButtonTitle];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,7 +80,6 @@
     if (!buttonIndex) {
         NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         [[UIApplication sharedApplication] openURL:settingsURL];
-        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -90,17 +89,19 @@
 {
     if ([LocationManager sharedManager].currentLattitude || self.addressTextField.text.length) {
         TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
-
         [[NetworkManager sharedManager] traSSNoCRMServicePOSTPoorCoverageAtLatitude:[LocationManager sharedManager].currentLattitude longtitude:[LocationManager sharedManager].currentLongtitude address:self.addressTextField.text signalPower:self.signalLevelSlider.value  requestResult:^(id response, NSError *error) {
             if (error) {
                 if (error.code == -999) {
                     [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"message.OperationCanceledByUser")];
                 } else {
-                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+                    [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
                 }
             } else {
                 [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
             }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                loader.ratingView.hidden = NO;
+            });
         }];
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
@@ -218,6 +219,18 @@
     } else {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoLocationEnabledOnDevice") delegate:self otherButtonTitles:dynamicLocalizedString(@"coverageReport.alertButton2.title")];
     }
+}
+
+- (void)prepareButtonTitle
+{
+    [self minimumScaleFactorTitleButton:self.reportSignalButton];
+    [self minimumScaleFactorTitleButton:self.detectLocationButton];
+}
+
+- (void)minimumScaleFactorTitleButton:(UIButton *)button
+{
+    button.titleLabel.adjustsFontSizeToFitWidth = YES;
+    button.titleLabel.minimumScaleFactor = 0.7f;
 }
 
 @end

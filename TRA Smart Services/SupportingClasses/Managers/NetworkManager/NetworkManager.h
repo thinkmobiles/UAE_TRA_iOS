@@ -2,15 +2,29 @@
 //  BaseNetworkManager.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.07.15.
 //
 
 #import "AFNetworkReachabilityManager.h"
+#import "TRALoaderViewController.h"
+#import "UserModel.h"
+
+static NSString *const ServiceTypeGetDomainDataStringName = @"domain check";
+static NSString *const ServiceTypeGetDomainAvaliabilityStringName = @"domain check";
+static NSString *const ServiceTypeSearchMobileIMEIStringName = @"verification";
+static NSString *const ServiceTypeSearchMobileBrandStringName = @"mobile brand";
+static NSString *const ServiceTypeFeedbackStringName = @"Rating service";
+static NSString *const ServiceTypeSMSSpamReportStringName = @"spam report";
+static NSString *const ServiceTypeHelpSalimStringName = @"help salim";
+static NSString *const ServiceTypeVerificationStringName = @"domain check";
+static NSString *const ServiceTypeCoverageStringName = @"coverage";
+static NSString *const ServiceTypeInternetSpeedTestStringName = @"";
+static NSString *const ServiceTypeCompliantAboutServiceProviderStringName = @"complain about service provider";
+static NSString *const ServiceTypeSuggestionStringName = @"suggestion";
+static NSString *const ServiceTypeCompliantAboutServiceProviderEnquiresStringName = @"enquiries";
+static NSString *const ServiceTypeCompliantAboutServiceProviderTRAStringName = @"complain about tra";
 
 static NSString *const TESTBaseURLPathKey = @"TESTBaseURLPathKey";
-
-static NSString *const ServiceNameDomainCheck = @"Check Domain Service";
 
 typedef NS_ENUM(NSUInteger, ServiceType) {
     ServiceTypeGetDomainData = 0,
@@ -36,6 +50,8 @@ typedef NS_ENUM(NSUInteger, ComplianType) {
 };
 
 typedef void(^ResponseBlock)(id response, NSError *error);
+typedef void(^SearchResponseBlock)(id response, NSError *error, NSString *requestURI);
+typedef void(^DownloadingComplete)(BOOL success, UIImage *response);
 
 @interface NetworkManager : NSObject <NSStreamDelegate>
 
@@ -68,9 +84,24 @@ typedef void(^ResponseBlock)(id response, NSError *error);
 - (void)traSSNoCRMServicePostAddServicesToFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result;
 - (void)traSSNoCRMServiceDeleteServicesFromFavorites:(NSArray *)serviceNames responce:(ResponseBlock)result;
 - (void)traSSNoCRMServiceGetAllServicesNames:(ResponseBlock)result;
+- (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse;
+- (void)traSSNoCRMServicePostInnovationTitle:(NSString *)title message:(NSString *)message type:(NSNumber *)type responseBlock:(ResponseBlock)innovationResponse;
+- (void)traSSNoCRMServiceGetGetTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc responseBlock:(ResponseBlock)getTransactionResponse;
+- (void)traSSNoCRMServiceSearchTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc searchText:(NSString *)searchText responseBlock:(SearchResponseBlock)getTransactionResponse;
+
+#pragma mark - User
+
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse;
 - (void)traSSLoginUsername:(NSString *)username password:(NSString *)password requestResult:(ResponseBlock)loginResponse;
+- (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse;
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse;
+- (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse;
+- (void)traSSForgotPasswordForEmail:(NSString *)email requestResult:(ResponseBlock)forgotPasswordResponse;
 - (void)traSSLogout:(ResponseBlock)logoutResponse;
+
+#pragma mark - Image
+
+- (void)traSSGetImageWithPath:(NSString *)imagePath withCompletition:(DownloadingComplete)completitionHandler;
 
 #pragma mark - Temp
 

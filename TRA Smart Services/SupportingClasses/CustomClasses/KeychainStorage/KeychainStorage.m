@@ -2,8 +2,7 @@
 //  KeychainStorage.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.07.15.
 //
 
 #import "KeychainStorage.h"
@@ -69,6 +68,22 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     return name;
 }
 
+- (void)saveCustomObject:(id)object key:(NSString *)key
+{
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key];
+    [defaults synchronize];
+}
+
+- (UserModel *)loadCustomObjectWithKey:(NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:key];
+    UserModel *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    return object;
+}
+
 #pragma mark - Keychain
 
 - (void)saveUserLogin:(NSString *)login andPassword:(NSString *)password
@@ -83,15 +98,11 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
         NSMutableDictionary *attributesToUpdate = [NSMutableDictionary dictionary];
         attributesToUpdate[(__bridge id)kSecValueData] = [password dataUsingEncoding:NSUTF8StringEncoding];
         OSStatus sts = SecItemUpdate((__bridge CFDictionaryRef)keychainItem, (__bridge CFDictionaryRef)attributesToUpdate);
-#if DEBUG
-        NSLog(@"Password Updated - Error Code: %d", (int)sts);
-#endif
+        DLog(@"Password Updated - Error Code: %d", (int)sts);
     } else {
         keychainItem[(__bridge id)kSecValueData] = [password dataUsingEncoding:NSUTF8StringEncoding];
         OSStatus sts = SecItemAdd((__bridge CFDictionaryRef)keychainItem, NULL);
-#if DEBUG
-        NSLog(@"Password saved - Error Code: %d", (int)sts);
-#endif
+        DLog(@"Password saved - Error Code: %d", (int)sts);
     }
 }
 
@@ -108,9 +119,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     
     CFDictionaryRef result = nil;
     OSStatus sts = SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, (CFTypeRef *)&result);
-#if DEBUG
-    NSLog(@"Password Get - Error Code: %d", (int)sts);
-#endif
+    DLog(@"Password Get - Error Code: %d", (int)sts);
     NSString *password;
     if(sts == noErr) {
         NSDictionary *resultDict = (__bridge_transfer NSDictionary *)result;
@@ -136,9 +145,7 @@ static NSString *const UserWebSiteKey = @"com.traSmartService";
     
     if(SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, NULL) == noErr) {
         OSStatus sts = SecItemDelete((__bridge CFDictionaryRef)keychainItem);
-#if DEBUG
-        NSLog(@"Password delete - Error Code: %d", (int)sts);
-#endif
+        DLog(@"Password delete - Error Code: %d", (int)sts);
     }
 }
 

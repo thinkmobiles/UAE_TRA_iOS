@@ -35,12 +35,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-mX-0Po" userLabel="Report SMS Conteiner - UIView">
                             <rect key="frame" x="15" y="0.0" width="120" height="146"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7a-Ms-hLg" userLabel="Report SMS - UILabel">
-                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                    <color key="textColor" red="0.94901960780000005" green="0.49019607840000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rA-VM-X3e" userLabel="Report SMS - UIButton">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <constraints>
@@ -54,6 +48,12 @@
                                         <action selector="reportSMSTapped:" destination="-1" eventType="touchUpInside" id="55X-Km-I5C"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N7a-Ms-hLg" userLabel="Report SMS - UILabel">
+                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.94901960780000005" green="0.49019607840000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -71,6 +71,7 @@
                     <constraints>
                         <constraint firstItem="JDh-mX-0Po" firstAttribute="top" secondItem="nL0-dB-tyP" secondAttribute="top" id="48K-g7-qKi"/>
                         <constraint firstAttribute="centerX" secondItem="JDh-mX-0Po" secondAttribute="centerX" id="Tlz-iH-dHU"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JDh-mX-0Po" secondAttribute="bottom" constant="40" id="i4e-FL-P1R"/>
                         <constraint firstItem="JDh-mX-0Po" firstAttribute="width" secondItem="nL0-dB-tyP" secondAttribute="width" multiplier="0.8" id="jVT-cE-LDN"/>
                     </constraints>
                 </view>
@@ -80,12 +81,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0z-mG-7WV" userLabel="Report WEB Conteiner - UIView">
                             <rect key="frame" x="15" y="0.0" width="120" height="146"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-vR-bhz" userLabel="Report WEB - UILabel">
-                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                    <color key="textColor" red="0.30196078430000001" green="0.6705882353" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTP-eN-8VB" userLabel="Report WEB - UIButton">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <constraints>
@@ -100,6 +95,12 @@
                                         <action selector="reportWEBTapped:" destination="-1" eventType="touchUpInside" id="tgF-q7-MWv"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T00-vR-bhz" userLabel="Report WEB - UILabel">
+                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.30196078430000001" green="0.6705882353" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -115,6 +116,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L0z-mG-7WV" secondAttribute="bottom" constant="40" id="FVX-yv-3rG"/>
                         <constraint firstAttribute="centerX" secondItem="L0z-mG-7WV" secondAttribute="centerX" id="Z6Z-Dp-TMZ"/>
                         <constraint firstItem="L0z-mG-7WV" firstAttribute="top" secondItem="KPq-TK-7GE" secondAttribute="top" id="ebq-Sm-dbr"/>
                         <constraint firstItem="L0z-mG-7WV" firstAttribute="width" secondItem="KPq-TK-7GE" secondAttribute="width" multiplier="0.8" id="zhq-jq-7NO"/>
@@ -123,15 +125,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGk-Hb-Jhm" userLabel="View My List - UIView">
                     <rect key="frame" x="150" y="0.0" width="150" height="400"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n38-Vx-B2z" userLabel="View My List Conteiner - UIView">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n38-Vx-B2z" userLabel="View My List Conteiner - UIView">
                             <rect key="frame" x="15" y="254" width="120" height="146"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyZ-I5-O3w" userLabel="View My List - UILabel">
-                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                    <color key="textColor" red="0.20784313730000001" green="0.26274509800000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpB-kZ-CTC" userLabel="View My List - UIButton">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <constraints>
@@ -146,6 +142,12 @@
                                         <action selector="viewMyListTapped:" destination="-1" eventType="touchUpInside" id="d4T-Vf-ej3"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZyZ-I5-O3w" userLabel="View My List - UILabel">
+                                    <rect key="frame" x="0.0" y="146" width="120" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.20784313730000001" green="0.26274509800000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -161,8 +163,9 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="n38-Vx-B2z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TGk-Hb-Jhm" secondAttribute="top" constant="40" id="PcI-bx-qaI"/>
                         <constraint firstItem="n38-Vx-B2z" firstAttribute="width" secondItem="TGk-Hb-Jhm" secondAttribute="width" multiplier="0.8" id="cQP-HW-JfF"/>
-                        <constraint firstAttribute="bottom" secondItem="n38-Vx-B2z" secondAttribute="bottom" id="rge-cn-6Qu"/>
+                        <constraint firstAttribute="bottom" secondItem="n38-Vx-B2z" secondAttribute="bottom" id="m42-93-HP7"/>
                         <constraint firstAttribute="centerX" secondItem="n38-Vx-B2z" secondAttribute="centerX" id="w5I-Xc-uDW"/>
                     </constraints>
                 </view>

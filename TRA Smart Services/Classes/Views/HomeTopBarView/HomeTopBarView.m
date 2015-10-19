@@ -2,8 +2,7 @@
 //  HomeDecorationView.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 31.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 31.07.15.
 //
 
 #import "HomeTopBarView.h"
@@ -30,9 +29,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 @property (strong, nonatomic) CALayer *searchLayer;
 @property (strong, nonatomic) CALayer *notificationLayer;
 
-@property (assign, nonatomic) BOOL disableFakeButtonLayersDrawing;
 @property (assign, nonatomic) BOOL isFakeButtonsOnTop;
-@property (assign, nonatomic) __block BOOL isAppearenceAnimationCompleted;
 
 @property (assign, nonatomic) CGPoint bottomLayerDefaultPosition;
 
@@ -50,20 +47,19 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
-    
-    [self updateAvatarPosition];
-    [self prepareLogoImage];
+    [super layoutSubviews];    
     
     if (!self.disableFakeButtonLayersDrawing) {
+        [self updateAvatarPosition];
+        [self prepareLogoImage];
+        
         [self drawHexagonicalWireTop];
         [self prepareInformationButtonLayer];
         [self prepareSearchButtonLayer];
         [self prepareNotificationButtonLayer];
         [self drawHexagonicalWireBotton];
-        
+        [self setStartApearenceAnimationParameters];
     }
-    [self setStartApearenceAnimationParameters];
 }
 
 #pragma mark - Override
@@ -124,12 +120,10 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 
 - (void)animateOpacityChangesForBottomLayers:(CGFloat)opacityLevel
 {
-    if (self.isAppearenceAnimationCompleted) {
-        CGFloat opacity = (1 - opacityLevel);
-        self.bottomLeftHexagonLayer.opacity = opacity;
-        self.bottomMidHexagonLayer.opacity = opacity;
-        self.bottomRightHexagonLayer.opacity = opacity;
-    }
+    CGFloat opacity = (1 - opacityLevel);
+    self.bottomLeftHexagonLayer.opacity = opacity;
+    self.bottomMidHexagonLayer.opacity = opacity;
+    self.bottomRightHexagonLayer.opacity = opacity;
 }
 
 - (void)scaleLogo:(BOOL)scale
@@ -165,8 +159,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self moveNotificationLayerToTop:toTop];
     [self moveInformationLayerToStartPosition:toTop];
     self.isFakeButtonsOnTop = toTop;
-    self.enableFakeBarAnimations = NO;
-    self.disableFakeButtonLayersDrawing = YES;
 }
 
 - (void)animateBottomWireMovingWithProgress:(CGFloat)progress
@@ -206,11 +198,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGPoint startInformationLayerPosition = CGPointMake(CGRectGetMidX(informationLayerRect) , CGRectGetMidY(informationLayerRect));
     CGPoint informationMovePoint = CGPointMake(startInformationLayerPosition.x - currentXOffset * 2, startInformationLayerPosition.y);
     self.informationLayer.position = informationMovePoint;
-}
-
-- (void)stopAllOperations
-{
-    self.isAppearenceAnimationCompleted = YES;
 }
 
 - (void)animateTopViewApearence
@@ -284,8 +271,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     self.hexagonicalTopLayer.opacity = 0.0f;
     self.avatarImageLayer.opacity = 0.f;
-
-    self.isAppearenceAnimationCompleted = NO;
 }
 
 - (void)updateUIColor;
@@ -303,7 +288,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
 {
     if (anim == [self.notificationLayer animationForKey:@"animationNotificationLayer"]) {
         [self.notificationLayer removeAllAnimations];
-        self.enableFakeBarAnimations = YES;
     }
     if (anim == [self.informationLayer animationForKey:@"animationInformationLayer"]) {
         [self.informationLayer removeAllAnimations];
@@ -311,7 +295,6 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     
     if (anim == [self.bottomLeftHexagonLayer animationForKey:@"lastTopAppearenceAnimation"]) {
         [self.bottomLeftHexagonLayer removeAllAnimations];
-        self.isAppearenceAnimationCompleted = YES;
     }
 }
 
@@ -387,7 +370,7 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     [self prepareLogImageWithInitials];
     [self.avatarImageLayer removeFromSuperlayer];
     
-    self.avatarImageLayer = [self layerWithImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
+    self.avatarImageLayer = [self layerWithLogoImage:self.logoImage inRect:self.avatarView.bounds forMainLogo:YES];
     if ([DynamicUIService service].colorScheme == ApplicationColorBlackAndWhite) {
         self.avatarImageLayer.backgroundColor = [UIColor blackColor].CGColor;
     } else {
@@ -567,6 +550,24 @@ static CGFloat const CornerWidthForAvatar = 3.f;
     CGRect centerRect = CGRectMake(rect.size.width * 0.25, rect.size.height * 0.25, rect.size.width * 0.5, rect.size.height * 0.5);
     CALayer *imageLayer = [CALayer layer];
     imageLayer.frame = centerRect;
+    imageLayer.backgroundColor = [UIColor clearColor].CGColor;
+    imageLayer.contents =(__bridge id __nullable)(image).CGImage;
+    imageLayer.contentsGravity = kCAGravityResizeAspect;
+    
+    [layer addSublayer:imageLayer];
+    layer.contentsGravity = kCAGravityResizeAspect;
+    
+    return layer;
+}
+
+- (CALayer *)layerWithLogoImage:(UIImage *)image inRect:(CGRect)rect forMainLogo:(BOOL)mainLogo
+{
+    CALayer *layer= [CALayer layer];
+    layer.frame = rect;
+    layer.backgroundColor = [DynamicUIService service].currentApplicationColor.CGColor;
+    
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.frame = rect;
     imageLayer.backgroundColor = [UIColor clearColor].CGColor;
     imageLayer.contents =(__bridge id __nullable)(image).CGImage;
     imageLayer.contentsGravity = kCAGravityResizeAspect;

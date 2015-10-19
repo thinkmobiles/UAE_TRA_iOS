@@ -2,8 +2,7 @@
 //
 //  Consent
 //
-//  Created by Kirill Gorbushko on 26.01.15.
-//  Copyright (c) 2015 ThinkMobiles. All rights reserved.
+//  Created by Admin on 26.01.15.
 //
 
 #import <UIKit/UIKit.h>

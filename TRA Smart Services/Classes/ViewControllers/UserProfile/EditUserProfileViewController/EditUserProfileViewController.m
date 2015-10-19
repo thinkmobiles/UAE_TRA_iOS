@@ -2,40 +2,25 @@
 //  EditUserProfileViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 10.09.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 10.09.15.
 //
 
 #import "EditUserProfileViewController.h"
+
 #import "ServicesSelectTableViewCell.h"
 #import "KeychainStorage.h"
 #import "TextFieldNavigator.h"
 
-static CGFloat const DefaultHeightForTableView = 26.f;
-
 @interface EditUserProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (weak, nonatomic) IBOutlet UILabel *emiratesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contactNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *streetAddressLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *changePhotoButton;
-
-@property (weak, nonatomic) IBOutlet UITextField *firstNmaeTextfield;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *streetAddressTextfield;
-@property (weak, nonatomic) IBOutlet UITextField *contactNumberTextfield;
-
 @property (weak, nonatomic) IBOutlet UserProfileActionView *userActionView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 
 @property (strong, nonatomic) NSArray *dataSource;
 @property (assign, nonatomic) CGPoint textFieldTouchPoint;
@@ -67,126 +52,80 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (IBAction)changePhotoButtonTapped:(id)sender
 {
-    //waint design
+    [super selectImagePickerController];
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setSelectImage:(UIImage *)selectImage
+{
+    [super setSelectImage:selectImage];
+    
+    if (!selectImage) {
+        self.logoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
+    }
+}
+
+#pragma mark - ImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
+    self.logoImageView.image = self.selectImage;
 }
 
 #pragma mark - UserProfileActionViewDelegate
 
 - (void)buttonCancelDidTapped
 {
-    [self fillData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonResetDidTapped
 {
-    self.firstNmaeTextfield.text = @"";
-    self.lastNameTextField.text = @"";
-    self.streetAddressTextfield.text = @"";
-    self.selectedEmirate = @"";
-    self.contactNumberTextfield.text = @"";
-    
-    [self.tableView reloadData];
+    [self fillData];
 }
 
 - (void)buttonSaveDidTapped
 {
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataSource.count - 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
-    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    [self configureCell:selectionCell atIndexPath:indexPath];
-    return selectionCell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return DefaultHeightForTableView * 1.5;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return DefaultHeightForTableView;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self.view endEditing:YES];
-    
-    self.selectedEmirate = self.dataSource[indexPath.row + 1];
-    [self.tableView reloadData];
-    
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableViewHeightConstraint.constant = DefaultHeightForTableView;
-        [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [weakSelf.tableView reloadData];
-    }];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *identifier = self.dynamicService.language == LanguageTypeArabic ? selectProviderCellArabicUIIdentifier : selectProviderCellEuropeUIIdentifier;
-    ServicesSelectTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    selectionCell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
-    selectionCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
-    
-    if (self.selectedEmirate.length) {
-        selectionCell.selectProviderLabel.text = self.selectedEmirate;
-        selectionCell.selectProviderLabel.textColor = [UIColor blackColor];
+    if (self.firstNameTextfield.text.length && self.lastNameTextField.text.length) {
+        if ((self.firstNameTextfield.text.length > 32) || (self.lastNameTextField.text.length > 32)) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooLong")];
+            return;
+        } else if ((self.firstNameTextfield.text.length < 3) || (self.lastNameTextField.text.length < 3)) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatTooShort")];
+            return;
+        }
+        if (![self.firstNameTextfield.text isValidName]){
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatFirstName")];
+            return;
+        } else if (![self.lastNameTextField.text isValidName]) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.InvalidFormatLastName")];
+            return;
+        }
+        
+        NSString *encodedString = @"";
+        if (self.selectImage) {
+            NSData *imageData = UIImageJPEGRepresentation(self.logoImageView.image, 1.0);
+            encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+        }
+        UserModel *user = [[UserModel alloc] initWithFirstName:self.firstNameTextfield.text lastName:self.lastNameTextField.text streetName:@"" contactNumber:@"" imageUri:@"" imageBase64Data:encodedString];
+        
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        [[NetworkManager sharedManager] traSSUpdateUserProfile:user requestResult:^(id response, NSError *error) {
+            if (error || ![response isKindOfClass:[NSDictionary class]]) {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+            } else {
+                UserModel *updateUser = [[UserModel alloc] initWithDictionary:response];
+                updateUser.avatarImageBase64 = user.avatarImageBase64;
+                [[KeychainStorage new] saveCustomObject:updateUser key:userModelKey];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            }
+        }];
+        
     } else {
-        selectionCell.selectProviderLabel.text = [self.dataSource firstObject];
-        selectionCell.selectProviderLabel.textColor = [UIColor grayBorderTextFieldTextColor];
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
     }
-    selectionCell.contentView.backgroundColor = [UIColor clearColor];
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hederClicked)];
-    tapGesture.cancelsTouchesInView = NO;
-    [selectionCell.contentView addGestureRecognizer:tapGesture];
-    
-    self.headerCell = selectionCell;
-    
-    return selectionCell;
-}
-
-- (void)hederClicked
-{
-    [self.view endEditing:YES];
-    
-    NSInteger value = DefaultHeightForTableView;
-    if (self.tableViewHeightConstraint.constant == DefaultHeightForTableView) {
-        value *= 4;
-        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableUp"];
-    } else {
-        self.headerCell.selectProviderImage.image = [UIImage imageNamed:@"selectTableDn"];
-    }
-    
-    [self.view layoutIfNeeded];
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableViewHeightConstraint.constant = value;
-        [weakSelf.view layoutIfNeeded];
-    }];
-}
-
-- (void)configureCell:(ServicesSelectTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    cell.selectProviderLabel.text = self.dataSource[indexPath.row + 1];
-    cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -255,21 +194,14 @@ static CGFloat const DefaultHeightForTableView = 26.f;
     self.title = dynamicLocalizedString(@"userProfile.title");
     [self.userActionView localizeUI];
     
-    self.emiratesLabel.text = dynamicLocalizedString(@"editUserProfileViewController.emiratesLabel");
-    self.contactNumberLabel.text = dynamicLocalizedString(@"editUserProfileViewController.contactnumberLabel");
     self.firstNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.firstNameLabel");
     self.lastNameLabel.text = dynamicLocalizedString(@"editUserProfileViewController.lastNameLabel");
-    self.streetAddressLabel.text = dynamicLocalizedString(@"editUserProfileViewController.streetAddressLabel");
     [self.changePhotoButton setTitle:dynamicLocalizedString(@"editUserProfileViewController.changePhotoButtonTitle") forState:UIControlStateNormal];
-    
-    [self prepareDataSource];
-    [self.tableView reloadData];
 }
 
 - (void)updateColors
 {
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 - (void)setRTLArabicUI
@@ -290,42 +222,34 @@ static CGFloat const DefaultHeightForTableView = 26.f;
 
 - (void)updateUIaligment:(NSTextAlignment)aligment
 {
-    self.emiratesLabel.textAlignment = aligment;
-    self.contactNumberLabel.textAlignment = aligment;
     self.firstNameLabel.textAlignment = aligment;
     self.lastNameLabel.textAlignment = aligment;
-    self.streetAddressLabel.textAlignment = aligment;
-    self.firstNmaeTextfield.textAlignment = aligment;
+    self.firstNameTextfield.textAlignment = aligment;
     self.lastNameTextField.textAlignment = aligment;
-    self.streetAddressTextfield.textAlignment = aligment;
-    self.contactNumberTextfield.textAlignment = aligment;
-}
-
-- (void)prepareDataSource
-{
-    self.dataSource = @[
-                        dynamicLocalizedString(@"editUserProfileViewController.dataSource.0element"),
-                        dynamicLocalizedString(@"state.Abu.Dhabi"),
-                        dynamicLocalizedString(@"state.Ajman"),
-                        dynamicLocalizedString(@"state.Dubai"),
-                        dynamicLocalizedString(@"state.Fujairah"),
-                        dynamicLocalizedString(@"state.Ras"),
-                        dynamicLocalizedString(@"state.Sharjan"),
-                        dynamicLocalizedString(@"state.Quwain")
-                        ];
 }
 
 - (void)prepareUI
 {
     self.userActionView.delegate = self;
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.logoImageView.image = [UIImage imageNamed:@"test"];
     [AppHelper addHexagoneOnView:self.logoImageView];
+    [AppHelper addHexagonBorderForLayer:self.logoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.logoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)fillData
 {
-    self.firstNmaeTextfield.text = [KeychainStorage userName];
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    self.firstNameTextfield.text = user.firstName;
+    self.lastNameTextField.text = user.lastName;
+    
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.logoImageView.image = image;
+        self.selectImage = image;
+    } else {
+        self.logoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
+    }
 }
 
 @end

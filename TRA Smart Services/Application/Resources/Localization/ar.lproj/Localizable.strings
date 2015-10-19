@@ -2,43 +2,58 @@
  Localizable.strings
  TRA Smart Services
  
- Created by Kirill Gorbushko on 13.07.15.
- Copyright © 2015 Thinkmobiles. All rights reserved.
+ Created by Admin on 13.07.15.
+ 
  */
 
 //API descriptors
 
-"api.message.serverError" = "Internal Server Error occured. Please try again later.";
-"api.message.noDataFound" = "Request to server completed successfully but no data found.";
+"api.message.serverError" = "لا يمكن إتمام طلبكم. يرجى المحاولة لاحقاً";
+"api.message.noDataFound" = "تم الطلب بنجاح. لا توجد بيانات.";
 
 //UIElements Title
 
-"uiElement.cancelButton.title" = "Cancel";
-"uiElement.OKButton.title" = "OK";
+"uiElement.cancelButton.title" = "إلغاء";
+"uiElement.OKButton.title" = "موافق";
 
 //Messages for Alerts
 
-"message.notImplemented" = "Not implemented";
-"message.success" = "Success";
-"message.EmptyInputParameters" = "Please enter text in the text field";
-"message.IncorrectRatings" = "Incorrect rating format - shoul use only numbers";
-"message.NoCameraPermissionsGranted" = "This app requires access to your device's Camera's.\n\nPlease enable Camera access for this app in Settings / Privacy / Camera";
-"message.NoLocationPermissionGranted" = "This app requires access to your device's Location's.\n\nPlease enable Location access for this app in Settings / Privacy / Location";
-"message.NoLocationEnabledOnDevice" = "Location service disabled on your device. Please enable Location service and try again.";
-"message.NoInternetConnection" = "No internetConnection Avaliable. Please check your network and try again.";
+"message.success" = "تم بنجاح";
+"message.EmptyInputParameters" = "يرجى ملئ الحقل";
+"message.IncorrectRatings" = "خطأ في الصيغة";
+"message.NoCameraPermissionsGranted" = "هذا التطبيق يتطلب الوصول إلى الكاميرا.\nيرجى تفعيل الوصول للكميرا من الإعدادات / الخصوصية / الكاميرا";
+"message.NoLocationPermissionGranted" = "هذا التطبيق يتطلب الوصول إلى موقع الجهاز.\nيرجى تفعيل خدمات الموقع من الإعدادات / الخصوصية / خدمات الموقع";
+"message.NoLocationEnabledOnDevice" = "خدمات الموقع غير مفعلة على هذا الجهاز.\nيرجى تفعيل خدمات الموقع من الإعدادات / الخصوصية / خدمات الموقع.";
+"message.NoInternetConnection" = "لا يوجد اتصال بالانترنت. يرجى التحقق من الشبكة والمحاولة من جديد.";
 "message.IncorrectDomainName" = "يرجى ادخال اسم نطاق صالح";
-"message.PasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
-"message.OperationCanceledByUser" = "Operation canceled by user";
-"message.InvalidFormatUserName" = "User credentials Invalid";
-"message.InvalidFormatIDEmirates" = "Invalid Invalid Emirates ID";
-"message.InvalidFormatFirstName" = "Invalid First Name";
-"message.InvalidFormatLastName" = "Invalid Last Name";
-"message.InvalidFormatMobile" = "Invalid mobilePhone";
-"message.InvalidFormatEmail" = "Invalid Email";
+"message.PasswordsNotEqual" = "يجب أن تتطابق كلمة المرور مع تأكيدها. يرجى المحاولة من جديد.";
+"message.NewPasswordsNotEqual" = "Entered Password and Confirm password are not equal. Please correct and try again.";
+"message.OperationCanceledByUser" = "تم إلغاء العملية من قبل المستخدم";
+"message.InvalidFormatUserName" = "معلومات الدخول غير صحيحة";
+"message.InvalidFormatIDEmirates" = "هوية إمارات غير صالحة";
+"message.InvalidFormatFirstName" = "يرجى ادخال الاسم";
+"message.InvalidFormatLastName" = "يرجى ادخال اللقب";
+"message.InvalidFormatMobile" = "رقم جوال خاطئ";
+"message.InvalidPhoneNumberFormat" = "Invalid Phone Number";
+"message.InvalidFormatMobileTooShort" = "Invalid Mobile number. Phone number is too short";
+"message.InvalidFormatTooLong" = "Both fields can be up to 32 characters long(max)";
+"message.InvalidFormatTooShort" = "Both fields can be at minimum 3 characters long";
+"message.InvalidFormatEmail" = "يرجى ادخال عنوان بريد إلكتروني صحيح";
 "message.InvalidFormatURL" = "الرابط غير صحيح";
-"message.InvalidStateCode" = "Invalid State Code. Please use numbers as follow: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة': \n5,'الشارقة': 6,\n'أم القيوين': 7";
-"message.FailedToSendSMS" = "Cant sent SMS";
-"message.FailedToInitializeMFController" = "You cant sent SMS from this Device";
+"message.InvalidStateCode" = "رمز الإمارة غير صحيح. يرجى التقيد بالرموز التالية: 'أبوظبي': 1,\n'عجمان': 2,\n'دبي': 3,\n'الفجيرة': 4,\n'رأس الخيمة':\n5,'الشارقة': 6,\n'أم القيوين': 7";
+"message.FailedToSendSMS" = "لايمكن ارسال الرسالة القصيرة";
+"message.FailedToInitializeMFController" = "لايمكن ارسال رسائل قصيرة من هذا الجهاز";
+"message.PleaseChooseServiceProvider" = "Please choose service provider";
+"message.PleaseSelectPrescriptionOfIdea" = "Please select prescription of idea";
+"message.PasswordIsTooShort8" = "كلمة المرور قصيرة. يجب أن تحتوي على ثمانية محرف على الأقل";
+"message.PasswordIsTooLong32" = "كلمة المرور يجب أن لا تتجاوز أثنين و ثلاثين محرفاً";
+"message.UserNameIsTooShort3" = "اسم المستخدم يجب أن يتكون من ثلاثة محارف على الأقل";
+"message.UserNameIsTooLong32" = "اسم المستخدم يجب أن لا تتكون من أكثر من أثنين و ثلاثين محرفاً";
+"message.UserName1charValidation" = "اسم المستخدم يجب أن يبدأ بحرف";
+"message.InvalidIMEI" = "IMEI should contain only numbers, length of IMEI shoul be 15 numbers";
+"message.ReferenceNumberIsTooShort" = "Spammer number/alias must consist of at least 4 characters";
+"message.ReferenceNumberIsTooLong" = "Spammer number/alias must consist of less than 12 characters";
+"message.JailbrakeDevice" = "لا يمكن للتطبيق العمل على جهاز معدل النظام";
 
 //StatesNames
 
@@ -53,10 +68,10 @@
 
 //ProviderType
 
-"providerType.selectProvider.text" = "Tap to select";
-"providerType.Du" = "Du Service Provider";
-"providerType.Etisalat" = "Etisalat Service Provider";
-"providerType.Yahsat" = "Yahsat Service Provider";
+"providerType.selectProvider.text" = "اختر مزود الخدمة";
+"providerType.Du" = "دو";
+"providerType.Etisalat" = "إتصالات";
+"providerType.Yahsat" = "ياسات";
 
 //TabBarMenuItems
 
@@ -75,17 +90,17 @@
 "login.button.forgotPassword" = "نسيت كلمة المرور";
 "login.button.registerButton" = "تسجيل";
 
-"login.restore_password.message" = "To restore password please enter your email that was used during registration";
+"login.restore_password.message" = "لاستعادة كلمة المرور، يرجى ادخال البريد الإلكتروني المستخدم عند التسجيل.";
 "login.picker.genre.male" = "ذكر";
 "login.picker.genre.female" = "انثى";
-"login.picker.genre.undefined" = "Not specified";
+"login.picker.genre.undefined" = "";
 
 //RegisterViewController
 
 "register.title" = "تسجيل";
 "register.placeholderText.username" = "اسم المستخدم";
 "register.placeHolderText.gender" = "النوع";
-"register.placeHolderText.phone" = "الهاتف";
+"register.placeHolderText.phone" = "الجوال";
 "register.placeHolderText.password" ="كلمة المرور";
 "register.button.register" = "تسجيل";
 "register.button.login" = "تسجيل الدخول";
@@ -100,16 +115,16 @@
 "register.placeHolderText.state" = "الامارة";
 
 //SelectRegisterViewController
-"register.label.registerInfo" = "SELECT A WAY TO REGISTER";
-"register.label.emiratesID" = "Emirates ID\nVerification";
-"register.label.fillForm" = "Fill-up Form\n(Manual)";
+"register.label.registerInfo" = "اختر طريقة التسجيل";
+"register.label.emiratesID" = "التحقق من هوية الإمارات";
+"register.label.fillForm" = "ملئ الاستمارة";
 
 //RestorePasswordViewController
 
 "restorePassword.title" = "استعادة كلمة المرور";
 "restorePassword.PlaceholderText.email" = "البريد الالكتروني";
-"restorePassword.button.restore" = "Restore Password";
-"restorePassword.information.label.text" = "If you have forgotten your password\nplease enter your email below and\na new password will be sent.";
+"restorePassword.button.restore" = "استعادة كلمة المرور";
+"restorePassword.information.label.text" = "إذا كنت قد نسيت كلمة المرور، يرجى إدخال عنوان بريدك الإلكتروني وسوف نرسل لك رسالة بكلمة مرور جديدة.";
 
 //SettingsViewController
 
@@ -117,35 +132,35 @@
 "settings.title.aboutTra" = "عن الهيئة";
 "settings.label.language" = "اللغة";
 "settings.label.fontsize" = "حجم الخط";
-"settings.label.colorImpaired" = "Color Impaired";
-"settings.label.screenLockNotificationTitle" = "Screen Lock Notification";
-"settings.label.screenLockNotificationDetauils" = "Show notification while mobile is locked";
-"settings.label.appTutorialScreensTitle" = "App Tutorial Screens";
-"settings.label.appTutorialScreensDetails" = "Activates the tutorials screens";
+"settings.label.colorImpaired" = "بدون ألوان";
+"settings.label.screenLockNotificationTitle" = "عرض الإخطارات عند قفل الجهاز";
+"settings.label.screenLockNotificationDetauils" = "عرض الإخطارات عندما يكون الجهاز مقفلاً";
+"settings.label.appTutorialScreensTitle" = "شاشات المساعدة";
+"settings.label.appTutorialScreensDetails" = "تفعيل شاشات المساعدة للبرنامج";
 "settings.label.colorThemeTitle" = "تغيير اللون";
-"settings.label.colorThemeDetails" = "Change color theme for app";
+"settings.label.colorThemeDetails" = "تغيير نمط اللون";
 "settings.label.aboutTRATitle" = "عن الهيئة";
-"settings.label.aboutTRADetails" = "Read mare about TRA";
+"settings.label.aboutTRADetails" = "اقرأ المزيد عن الهيئة";
 "settings.switchControl.language.arabic" = "العربية";
 "setting.switchControl.language.english" = "English";
 "setting.switchControl.textSize.big" = "A+";
 "setting.switchControl.textSize.small" = "A-";
-"settings.label.fontsize.description.small" = "Small";
-"settings.label.fontsize.description.normal" = "Normal";
-"settings.label.fontsize.description.large" = "Large";
-"setting.label.release" = "Release version";
+"settings.label.fontsize.description.small" = "صغير";
+"settings.label.fontsize.description.normal" = "عادي";
+"settings.label.fontsize.description.large" = "كبير";
+"setting.label.release" = "الإصدار";
 "setting.label.releaseVersion" = "v %@, build %i.%i.%i";
-"setting.label.touchID" = "Use Touch ID";
-"setting.label.touchIDDEscription" = "Use your finger print for authentification process";
-"setting.loginRequired.message" = "Please login to enable this option";
-"fingerPrintService.DescriptionReason" = "Scan you finger to get access to all services";
+"setting.label.touchID" = "استخدام البصمة";
+"setting.label.touchIDDEscription" = "استخدم بصمتك لإتمام لتسجيل الدخول";
+"setting.loginRequired.message" = "يرجى تسجيل الدخول للوصل لهذه الخدمة";
+"fingerPrintService.DescriptionReason" = "يرجى مسح البصمة للوصول للخدمات";
 
 //HomeViewController
 
-"speedAccess.service.name.-1" = "Demo";
+"speedAccess.service.name.-1" = "";
 "speedAccess.service.name.0" = "تفاصيل النطاق";
 "speedAccess.service.name.1" = "تحقق من توفر النطاق";
-"speedAccess.service.name.2" = "هوية الجهاز";
+"speedAccess.service.name.2" = "تحقق من نطاق";
 "speedAccess.service.name.3" = "الأجهزة المعتمدة";
 "speedAccess.service.name.4" = "تعليقاتكم";
 "speedAccess.service.name.5" = "رسائل غير مرغوبة";
@@ -155,15 +170,15 @@
 "speedAccess.service.name.9" = "انترنت";
 "speedAccess.service.name.10" = "شكوى على مزود خدمة";
 "speedAccess.service.name.11" = "اقتراح";
-"speedAccess.service.name.12" = "المتوافقة";
+"speedAccess.service.name.12" = "استفسارات";
 "speedAccess.service.name.13" = "شكوى على الهيئة";
 
 //NotificationsViewController
 
-"notificationsViewController.NotificationPlaceHolderlabel" = "There are no notifications\nfor you at the moment";
-"notificationsViewController.noNotificationsMessage" = "You have no Notifications";
-"notificationsViewController.NotificationsMessage" = "You have (%i) Notifications";
-"notificationsViewController.clearAllButton.title" = "Clear All";
+"notificationsViewController.NotificationPlaceHolderlabel" = "ليس لديك أية إخطارات حالياً";
+"notificationsViewController.noNotificationsMessage" = "لا توجد إخطارات";
+"notificationsViewController.NotificationsMessage" = "لديك (%i) إخطارات";
+"notificationsViewController.clearAllButton.title" = "مسح الكل";
 
 //FavouriteViewController
 
@@ -185,13 +200,13 @@
 "serviceInfoItemName.4" = "زمن تقديم الخدمة";
 "serviceInfoItemName.5" = "رسوم الخدمة";
 "serviceInfoItemName.6" = "المسؤول المباشر عن الخدمة";
-"serviceInfoItmeDetailedDescription.0" = "No description";
-"serviceInfoItmeDetailedDescription.1" = "No description";
-"serviceInfoItmeDetailedDescription.2" = "No description";
-"serviceInfoItmeDetailedDescription.3" = "No description";
-"serviceInfoItmeDetailedDescription.4" = "No description";
-"serviceInfoItmeDetailedDescription.5" = "No description";
-"serviceInfoItmeDetailedDescription.6" = "No description";
+"serviceInfoItmeDetailedDescription.0" = "";
+"serviceInfoItmeDetailedDescription.1" = "";
+"serviceInfoItmeDetailedDescription.2" = "";
+"serviceInfoItmeDetailedDescription.3" = "";
+"serviceInfoItmeDetailedDescription.4" = "";
+"serviceInfoItmeDetailedDescription.5" = "";
+"serviceInfoItmeDetailedDescription.6" = "";
 
 //CoverageReport
 
@@ -201,10 +216,10 @@
 "coverageReport.strong" = "قوية";
 "coverageReport.veryStrong" = "قوية جداً";
 "coverageLevel.title" = "قوة التغطية";
-"coverageReport.reportSignalButton.title" = "Report signal";
-"coverageReport.detectLocationButton.title" = "Detect location";
+"coverageReport.reportSignalButton.title" = "تقرير عن قوة الإشارة";
+"coverageReport.detectLocationButton.title" = "تحديد الموقع";
 "coverageReport.addressTextField" = "العنوان";
-"coverageReport.alertButton2.title" = "Enter address manually";
+"coverageReport.alertButton2.title" = "ادخل العنوان";
 
 //InfoHubViewController
 
@@ -212,6 +227,7 @@
 "announcements.label.text" = "اعلانات";
 "seeMore.button.title" = "شاهد المزيد";
 "transactions.label.text" = "معاملات";
+"infoHubViewController.transactionNotDataLabel" = "ليس لديك أية معاملات قيد التنفيذ";
 
 //AnnoucementsViewController
 
@@ -223,58 +239,51 @@
 
 //SearchMobileBrandNameViewController
 
-"searchMobileBrandNameViewController.title" = "Search Mobile Brand";
-"searchMobileBrandNameViewController.searchButton" = "Search brand name";
+"searchMobileBrandNameViewController.title" = "الأجهزة المعتمدة";
+"searchMobileBrandNameViewController.searchButton" = "بحث";
+"searchMobileBrandNameViewController.searchTextField.placeholder" = "ادخل اسم المصنع";
 
 //SuggestionViewController
 
-"suggestionViewController.title" = "Send suggestion";
-"suggestionViewController.textField.suggestionTitle" = "Title";
+"suggestionViewController.title" = "اسرل اقتراحاً";
+"suggestionViewController.textField.suggestionTitle" = "عنوان";
 "suggestionViewController.textField.suggestionDescription" = "شرح";
-"suggestionViewController.selectImageButton.title" = "Image";
-"suggestionViewController.sendSuggestionButton.title" = "Send suggestion";
+"suggestionViewController.selectImageButton.title" = "صورة";
+"suggestionViewController.sendSuggestionButton.title" = "أرسل";
 
 //CompliantViewController
 
-"compliantViewController.title" = "شكوى";
-"compliantViewController.textField.placeholder" = "Enter here";
+"compliantViewController.title.comtlaintTRA" = "شكوى على الهيئة";
+"compliantViewController.title.enquires" = "استفسارات";
+"compliantViewController.title.compliantAboutServiceProvider" = "شكوى على مزود خدمة";
+"compliantViewController.compliantTitleTextField.placeholder" = "عنوان";
+"compliantViewController.referenceNumberTextField.placeholder" = "الرقم المرجعي";
 "compliantViewController.description.placeholder" = "شرح";
-"compliantViewController.selectProvider.text" = "Tap to select";
-"compliantViewController.compliantTitleLabel" = "عنوان الشكوى";
-"compliantViewController.compliantReterenceNumberLabel" = "REFERENCE NUMBER";
-"compliantViewController.compliantServiceProviderLabel" = "SERVICE PROVIDER";
-"compliantViewController.compliantSendBarButtonItem.title" = "شكوى";
+"compliantViewController.compliantSendBarButtonItem.title" = "ارسل";
 
 //SpamReportViewControler
 
-"spamReportViewControler.title.spamSMS" = "Spam - SMS";
-"spamReportViewControler.title.spamWEB" = "Spam - Website";
-"spamReportViewControler.reportTextField.reportSMS" = "Number";
-"spamReportViewControler.reportTextField.reportWeb" = "Link";
-"spamReportViewControler.reportButton.title" = "SUBMIT";
-"spamReportViewControler.descriptionTextView.placeholder" = "Copy and Paste the SMS here...";
+"spamReportViewControler.title.spamSMS" = "رسائل غير مرغوبة";
+"spamReportViewControler.title.spamWEB" = "ساعد سالم";
+"spamReportViewControler.reportTextField.reportSMS" = "الرقم";
+"spamReportViewControler.reportTextField.reportWeb" = "الرابط";
+"spamReportViewControler.reportButton.title" = "ارسل";
+"spamReportViewControler.descriptionTextView.placeholder" = "انسخ والصق الرسالة الغير مرغوبة هنا";
 
 //"InternetSpeedTestViewController
 
-"internetSpeedTestViewController.title" = "Speed Test Demo";
-"internetSpeedTestViewController.checkButton.title" = "Check Speed";
+"internetSpeedTestViewController.title" = "اختبار السرعة";
+"internetSpeedTestViewController.checkButton.title" = "فحص السرعة";
 "InternetSpeedTestViewController.speedTestResult.text" = "Your speed - %.6f Mb/sec";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "Your speed - %.6f Mb/sec (accurate)";
 
-//HelpSalimViewController
-
-"helpSalimViewController.title" = "خدمة ساعد سالم";
-"helpSalimViewController.urlToReportTextField" = "URL to report";
-"helpSalimViewController.commentLabel.text" = "Comment";
-"helpSalimViewController.reportURLButton.title" = "Report URL";
-
 //PostFeedbackViewController
 
-"postFeedbackViewController.title" = "Post Feedback";
-"postFeedbackViewController.serviceNameTextField" = "Servise";
-"postFeedbackViewController.ratingTextField" = "Rating";
-"postFeedbackViewController.feedbackLabel.text" = "Feedback";
-"postFeedbackViewController.sendButton.title" = "Send";
+"postFeedbackViewController.title" = "ارسل تعليقاً";
+"postFeedbackViewController.serviceNameTextField" = "خدمة";
+"postFeedbackViewController.ratingTextField" = "تقييم";
+"postFeedbackViewController.feedbackLabel.text" = "تعليقاتكم";
+"postFeedbackViewController.sendButton.title" = "ارسل";
 
 //CheckDomainViewController
 
@@ -282,119 +291,147 @@
 "checkDomainViewController.domainNameTextField" = "اسم النطاق";
 "checkDomainViewController.avaliabilityButton.title" = "تحقق من توفر النطاق";
 "checkDomainViewController.whoISButton.title" = "تفاصيل النطاق";
-"checkDomainViewController.domainTitleForView" = "Domain Check Service";
-"checkDomainViewController.chooseRating" = "Choose Rating";
+"checkDomainViewController.domainTitleForView" = "خدمة التحقق من نطاق";
+"checkDomainViewController.chooseRating" = "اختر تقييماً";
+"checkDomainViewController.domainInfo.label" = "تغطي الخدمة اسماء النطاقات .ae حصراً";
 
 //CheckIMEIViewController
 
-"checkIMEIViewController.title" = "Check IMEI";
-"checkIMEIViewController.checkIMEIButton.title" = "Check IMEI";
+"checkIMEIViewController.title" = "تحقق من جهاز";
+"checkIMEIViewController.checkIMEIButton.title" = "تحقق من رقم IMEI";
 
 //UserProfileViewController
 
-"userProfile.title" = "User Profile";
-"userProfile.EditProfile" = "Edit Profile";
-"userProfile.changePassword" = "Change Password";
-"userProfile.resetPassword" = "Reset Password";
+"userProfile.title" = "الملف الشخصي";
+"userProfile.EditProfile" = "تعديل الملف الشخصي";
+"userProfile.changePassword" = "تغيير كلمة المرور";
+"userProfile.resetPassword" = "تغيير كلمة المرور";
 "userProfile.logoutFromAccount" = "تسجيل الخروج";
-"userProfile.notificationMesasge" = "Are you sure that u want to logout?";
+"userProfile.notificationMesasge" = "هل أنت متأكد من أنك تريد تسجيل الخروج؟";
 
 //ResetPasswordViewController
 
-"resetPassword.info" = "To reset your password, please type your email in the field below and a temporary password will by send to you.";
-"resetPassword.email" = "EMAIL";
-"resetPassword.placeHolder.email" = "Email";
-"resetPassword.retypeEmail" = "RETYPE YOUR EMAIL";
-"resetPassword.placeHolder.retypeEmail" = "Retype your email";
+"resetPassword.info" = "لتغيير كلمة المرور، يرجى إدخال عنوان بريدك الإلكتروني و سوف نرسل لك رسالة.";
+"resetPassword.email" = "البريد الإلكتروني";
+"resetPassword.placeHolder.email" = "";
+"resetPassword.retypeEmail" = "إعادة البريد الإلكتروني";
+"resetPassword.placeHolder.retypeEmail" = "";
 
 //ChangePasswordViewController
 
-"changePassword.oldPassword" = "OLD PASSWORD";
-"changePassword.placeHolder.oldPassword" = "Old Password";
-"changePassword.password" = "NEW PASSWORD";
-"changePassword.placeHolder.password" = "New Password";
-"changePassword.retypePassword" = "RETYPE NEW PASSWORD";
-"changePassword.placeHolder.retypePassword" = "Retype New PAssword";
+"changePassword.oldPassword" = "كلمة المرور القديمة";
+"changePassword.placeHolder.oldPassword" = "كلمة المرور القديمة";
+"changePassword.password" = "كلمة المرور الجديدة";
+"changePassword.placeHolder.password" = "كلمة المرور الجديدة";
+"changePassword.retypePassword" = "إعادة كملة المرور";
+"changePassword.placeHolder.retypePassword" = "تأكيد كلمة المرور الجديدة";
 
 //UserProfileActionView
 
-"userProfileActionView.cancel" = "Cancel";
-"userProfileActionView.reset" = "Reset";
-"userProfileActionView.save" = "Save";
+"userProfileActionView.cancel" = "إلغاء";
+"userProfileActionView.reset" = "استعادة";
+"userProfileActionView.save" = "حفظ";
 
 //HomeSearchViewController
 
-"homeSearchViewController.homeSearchLabel.text" = "ARE YOU LOOKING FOR:";
-"homeSearchViewController.homeSearchTextField.placeholder" = "Search";
+"homeSearchViewController.homeSearchLabel.text" = "هل تبحث عن:";
+"homeSearchViewController.homeSearchTextField.placeholder" = "بحث";
 
 //EditUserProfileViewController
 
-"editUserProfileViewController.emiratesLabel" = "EMIRATE";
-"editUserProfileViewController.contactnumberLabel" = "CONTACT NUMBER";
-"editUserProfileViewController.firstNameLabel" = "FIRST NAME";
-"editUserProfileViewController.lastNameLabel" = "LAST NAME";
-"editUserProfileViewController.streetAddressLabel" = "STREET ADDRESS";
-"editUserProfileViewController.changePhotoButtonTitle" = "CHANGE PHOTO";
-"editUserProfileViewController.dataSource.0element" = "Tap to select";
+"editUserProfileViewController.emiratesLabel" = "الإمارة";
+"editUserProfileViewController.contactnumberLabel" = "رقم الاتصال";
+"editUserProfileViewController.firstNameLabel" = "الاسم";
+"editUserProfileViewController.lastNameLabel" = "اللقب";
+"editUserProfileViewController.streetAddressLabel" = "العنوان";
+"editUserProfileViewController.changePhotoButtonTitle" = "";
+"editUserProfileViewController.dataSource.0element" = "اختيار";
 
 //HomeSearchResultViewController
 
-"homeSearchResultViewController.title" = "Search Result";
+"homeSearchResultViewController.title" = "نتائج البحث";
 
 //VerificationIMEIViewController
 
-"verificationIMEIViewController.title" = "Verification IMEI Code";
-"verificationIMEIViewController.serviceHeaderLabel" = "Enter the IMEI code of the mobile phone to be verified";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "Where to find the IMEI code on your phone?";
-"verificationIMEIViewController.sendIMEICodeLabel" = "SEND IMEI CODE";
-"verificationIMEIViewController.verificationIMEITextField.placeholder" = "Enter here";
-
-//TutorialViewController
-
-"tutorialViewController.skipButton.title" = "SKIP";
-"tutorialViewController.nextButton.title" = "NEXT";
+"verificationIMEIViewController.title" = "تحقق من رقم IMEI";
+"verificationIMEIViewController.serviceHeaderLabel" = "ادخل رقم IMEI للجهاز المراد التحقق منه.";
+"verificationIMEIViewController.sendIMEICodeLabel" = "ارسل";
+"verificationIMEIViewController.verificationIMEITextField.placeholder" = "اكتب هنا";
 
 //TRALoaderViewController
 
-"TRALoader.backButton.title" = "BACK TO DASHBOARD";
-"TRALoader.backButton.cancel" = "CANCEL";
-"TRALoader.information.begin" = "Give us a moment\nwhile processing\n%@ request";
-"TRALoader.information.finish" = "Your Request has been\nsuccessfully sent";
+"TRALoader.backButton.title" = "عودة إلى الرئيسية";
+"TRALoader.backButton.cancel" = "الغاء";
+"TRALoader.information.begin" = "لحظات من فضلك...";
+"TRALoader.information.finish" = "تم ارسال طلبك بنجاح";
 
 //AutoLoginService
 
-"autoLogin.message" = "Logging in...";
+"autoLogin.message" = "جاري تسجيل الدخول";
 
 //FingerPrintService
 
-"fingerPrintService.passwordRequest.message" = "Scan your finger to get access to services";
-"fingerPrintService.CancelAuth.title" = "Cancel auth";
-"fingerPrintService.ConfirmPassword.title" = "Enter password";
-"fingerPrintService.TouchIDNotEnrolled" = "Touch ID Do not Entolled";
-"fingerPrintService.PasscodeHasNotBeenSet" = "Password Has been not Set";
-"fingerPrintService.TouchIdNotAvaliable" = "Touch ID not avliable";
-"fingerPrintService.LoginCanceledBySystem" = "Process canceled by System";
-"fingerPrintService.LoginCanceledByUser" = "Process canceled by User";
-"fingerPrintService.InvalidFingerPrint" = "Invalid Finger Print";
+"fingerPrintService.passwordRequest.message" = "امسح بصمتك للوصول للخدمات";
+"fingerPrintService.CancelAuth.title" = "إلغاء الدخول";
+"fingerPrintService.ConfirmPassword.title" = "ادخل كلمة المرور";
+"fingerPrintService.TouchIDNotEnrolled" = "الدخول بالبصمة غير مفعل";
+"fingerPrintService.PasscodeHasNotBeenSet" = "لم يتم تعيين كلمة المرور";
+"fingerPrintService.TouchIdNotAvaliable" = "الدخول بالبصمة غير متوفر";
+"fingerPrintService.LoginCanceledBySystem" = "تم إلغاء العملية";
+"fingerPrintService.LoginCanceledByUser" = "تم الإلغاء من قبل المستخدم";
+"fingerPrintService.InvalidFingerPrint" = "بصمة غير صحيحة";
 
 //SpamListViewController
 
-"spamListViewController.title" = "My List";
-
+"spamListViewController.title" = "قائمتي";
 
 //InnovationsCollectionViewCell
 
-"innovationsCollectionViewCell.string.reviewed" = "Reviewed";
+"innovationsCollectionViewCell.string.reviewed" = "تمت المراجعة";
 
 //InnovationsChatTableViewCell
 
-"innovationsChatTableViewCell.replyButton.title" = "Reply";
-"innovationsChatTableViewCell.reportAbuseButton.title" = "Report Abuse";
+"innovationsChatTableViewCell.replyButton.title" = "إرسال رد";
+"innovationsChatTableViewCell.reportAbuseButton.title" = "شكوى";
 
 //SpamSelectionViewController
 
-"spamSelectionViewController.title" = "Spam";
-"spamSelectionViewController.serviceHeaderLabel" = "Report SMS or Websites as Spam to TRA";
-"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "REPORT\nSMS";
-"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "REPORT\nWEB";
-"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "VIEW\nMY LIST";
+"spamSelectionViewController.title" = "رسائل غير مرغوبة";
+"spamSelectionViewController.serviceHeaderLabel" = "شكاوي الرسائل الغير مرغوبة و مواقع الإنترنت";
+"spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "شكوى على\nرسالة غير مرغوبة";
+"spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "شكوى على\nموقع إنترنت";
+"spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "عرض\nالقائمة الخاصة";
+
+//ListOfMobileBrandViewController
+
+"listOfMobileBrandViewController.title" = "الأجهزة المعتمدة";
+
+//ListOfDevicesViewController
+
+"listOfDevicesViewController.title" = "قائمة الإجهزة";
+"listOfDevicesViewController.devicesNotDataLabel" = "لا توجد بيانات";
+
+//InnovationsViewController
+
+"innovationsViewController.title" = "مركز الإبداع و الابتكار";
+"innovationsViewController.submitButton" = "أرسل";
+"innovationsViewController.innovationsTitleTextField.placeholder" = "العنوان";
+"innovationsViewController.descriptionTextView.placeholder" = "أكتب الرسالة هنا...";
+"innovationsViewController.selectInnovativeIdeasFor0" = "أفكار ابتكارية تساهم بـ";
+"innovationsViewController.selectInnovativeIdeasFor1" = "اسعاد المتعاملين";
+"innovationsViewController.selectInnovativeIdeasFor2" = "رضا الموظفين";
+"innovationsViewController.selectInnovativeIdeasFor3" = "تطوير خدمات الهيئة";
+"innovationsViewController.selectInnovativeIdeasFor4" = "زيادة الإيرادات وترشيد النفقات";
+"innovationsViewController.selectInnovativeIdeasFor5" = "رفع صورة الهيئة وسمعتها المؤسسية";
+"innovationsViewController.selectInnovativeIdeasFor6" = "استشراف المستقبل";
+
+//ResultIMEIViewController
+
+"resultIMEIViewController.title" = "نتيجة البحث";
+"resultIMEIViewController.noDeviceDatabase" = "لا توجد نتائج";
+
+//SelectImageActionSheet
+
+"selectImageActionSheet.cancel" = "الغاء";
+"selectImageActionSheet.removeFile" = "حذف الملف المرفق";
+"selectImageActionSheet.selectImage" = "اختر من معرض الصور";

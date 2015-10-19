@@ -2,8 +2,7 @@
 //  FingerPrintAuth.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.09.15.
 //
 
 #import "FingerPrintAuth.h"
@@ -38,16 +37,17 @@
     
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+        __weak typeof(self) weakSelf = self;
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:dynamicLocalizedString(@"fingerPrintService.DescriptionReason") reply:^(BOOL success, NSError * _Nullable error) {
             if (error) {
 #if DEBUG
-                [self handleEvaluatePolicyError:error];
+                [weakSelf handleEvaluatePolicyError:error];
 #endif
-                [self showAlertWithPasswordField];
+                [weakSelf showAlertWithPasswordField];
             } else if (success) {
-                [self.service performAutoLoginIfPossible];
+                [weakSelf.service performAutoLoginIfPossible];
             } else {
-                [self showAlertWithPasswordField];
+                [weakSelf showAlertWithPasswordField];
             }
         }];
     } else {

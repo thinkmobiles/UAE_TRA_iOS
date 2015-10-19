@@ -2,8 +2,7 @@
 //  AppHelper.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 13.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.07.15.
 //
 
 #define TRANFORM_3D_SCALE CATransform3DMakeScale(-1, 1, 1)
@@ -26,6 +25,7 @@
 
 + (void)showLoader;
 + (void)showLoaderWithText:(NSString *)text;
++ (void)showLoaderOnView:(UIView *)view;
 + (void)hideLoader;
 
 + (void)prepareTabBarItems;

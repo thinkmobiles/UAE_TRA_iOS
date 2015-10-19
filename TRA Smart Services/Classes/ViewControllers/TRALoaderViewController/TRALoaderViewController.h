@@ -2,9 +2,12 @@
 //  TRALoaderViewController.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.09.15.
 //
+
+#import "BaseDynamicUIViewController.h"
+
+#import "RatingView.h"
 
 static CGFloat const TRAAnimationDuration = 2;
 
@@ -13,9 +16,10 @@ typedef NS_ENUM(NSInteger, TRACompleteStatus) {
     TRACompleteStatusSuccess = 1,
 };
 
-@interface TRALoaderViewController : BaseDynamicUIViewController
+@interface TRALoaderViewController : BaseDynamicUIViewController <RatingViewDelegate>
 
 @property (strong, nonatomic) void (^TRALoaderWillClose)();
+@property (weak, nonatomic) IBOutlet RatingView *ratingView;
 
 + (TRALoaderViewController *)presentLoaderOnViewController:(UIViewController *)presenter requestName:(NSString *)requestName closeButton:(BOOL)button;
 

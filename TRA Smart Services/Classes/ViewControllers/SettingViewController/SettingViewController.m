@@ -3,7 +3,6 @@
 //  TRA Smart Services
 //
 //  Created by Admin on 22.07.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
 //
 
 #import "SettingViewController.h"
@@ -13,7 +12,6 @@
 #import "KeychainStorage.h"
 
 #import "TutorialViewController.h"
-#import "TRALoaderViewController.h"
 
 static NSInteger const ThemeColorBlackAndWhite = 3;
 static CGFloat const OptionScaleSwitch = 0.55;
@@ -89,13 +87,6 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     [self updateFontSizeControl];
     [self makeActiveColorTheme:self.dynamicService.colorScheme];
     self.touchIDSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:KeyUseTouchIDIdentification];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    [TRALoaderViewController presentLoaderOnViewController:self.navigationController requestName:@""];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -238,7 +229,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
         [weakSelf.dynamicService setLanguage:languageType];
         [weakSelf updateLanguageSegmentControlPosition];
         [weakSelf localizeUI];
-        [weakSelf updateSubviewForParentViewIfPossible:self.view fontSizeInclude:YES];
+        [weakSelf updateSubviewForParentViewIfPossible:self.view fontSizeInclude:NO];
     });
 }
 
@@ -472,7 +463,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
 
 - (void)prepareTitle
 {
-    self.title = dynamicLocalizedString(@"tabBarMenu_item_5");//self.tabBarController.tabBar.items[self.tabBarController.selectedIndex].title;
+    self.title = dynamicLocalizedString(@"tabBarMenu_item_5");
     [AppHelper titleFontForNavigationBar:self.navigationController.navigationBar];
 }
 
@@ -504,7 +495,7 @@ static NSString *const KeyForOptionColor = @"currentNumberColorTheme";
     //v 1.0 build <version number>.<number of week>.<weakBuild>
     NSCalendar *calender = [NSCalendar currentCalendar];
     NSDateComponents *dateComponent = [calender components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:[NSDate date]];
-    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 0];
+    self.versionBuildLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"setting.label.releaseVersion"), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], 1, [dateComponent weekOfYear], 4];
 }
 
 - (void)updateColors

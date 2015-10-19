@@ -2,13 +2,15 @@
 //  ChangePasswordViewController.m
 //  TRA Smart Services
 //
-//  Created by Anatoliy Dalekorey on 9/11/15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 9/11/15.
 //
 
 #import "ChangePasswordViewController.h"
+
 #import "UserProfileActionView.h"
+
 #import "UIImage+DrawText.h"
+#import "KeychainStorage.h"
 
 @interface ChangePasswordViewController () <UserProfileActionViewDelegate>
 
@@ -42,7 +44,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
+    [self fillData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
@@ -63,7 +66,6 @@
 - (void)updateColors
 {
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
 }
 
 - (void)prepareNavigationBar
@@ -89,17 +91,24 @@
 
 #pragma mark - Private Metods
 
+- (void)fillData
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.userLogoImageView.image = image;
+    } else {
+        self.userLogoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
+    }
+}
+
 - (void)prepareUserView
 {
     self.title = dynamicLocalizedString(@"userProfile.title");
-    self.userLogoImageView.image = [UIImage imageNamed:@"test"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
-}
-
-- (void)clearPassword
-{
-    self.passwordTextField.text = @"";
-    self.retypePasswordTextField.text = @"";
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.userLogoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)updateUI:(NSTextAlignment)textAlignment
@@ -147,18 +156,50 @@
 
 - (void)buttonCancelDidTapped
 {
-    self.oldPasswordTextField.text = @"";
-    [self clearPassword];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonResetDidTapped
 {
-    [self clearPassword];
+    self.oldPasswordTextField.text = @"";
+    self.passwordTextField.text = @"";
+    self.retypePasswordTextField.text = @"";
 }
 
 - (void)buttonSaveDidTapped
 {
-    [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.notImplemented")];
+    if ([self isInputParametersValid]) {
+        TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+        [[NetworkManager sharedManager] traSSChangePassword:self.oldPasswordTextField.text newPassword:self.passwordTextField.text requestResult:^(id response, NSError *error) {
+            if (error) {
+                [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+            } else {
+                [[KeychainStorage new] storePassword:self.passwordTextField.text forUser:[KeychainStorage userName]];
+                [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            }
+        }];
+    }
+}
+
+- (BOOL)isInputParametersValid
+{
+    if (!self.passwordTextField.text.length || !self.retypePasswordTextField.text.length || !self.oldPasswordTextField.text.length) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        return NO;
+    }
+    if (![self.passwordTextField.text isEqualToString:self.retypePasswordTextField.text]) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NewPasswordsNotEqual")];
+        return NO;
+    }
+    
+    if (self.passwordTextField.text.length < 8) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooShort8")];
+        return NO;
+    } else if (self.passwordTextField.text.length >= 32) {
+        [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PasswordIsTooLong32")];
+        return NO;
+    }
+    return YES;
 }
 
 @end

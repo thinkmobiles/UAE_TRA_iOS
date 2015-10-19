@@ -2,8 +2,7 @@
 //  NSString+Validation.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 28.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 28.08.15.
 //
 
 #import "NSString+Validation.h"
@@ -80,6 +79,13 @@
     else {
         return [passwordTest evaluateWithObject:self];
     }
+}
+
+- (BOOL)isValidIMEI
+{
+    NSString *allowedSymbols = @"[0-9]{15}";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", allowedSymbols];
+    return [test evaluateWithObject:self];
 }
 
 @end

@@ -2,15 +2,14 @@
 //  NetworkEndPoints.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.07.15.
 //
 
 #pragma mark - NoCRMServices
 
 static NSString *const traSSNoCRMServiceBaseURL =
 @"http://mobws.tra.gov.ae";
-//@"http://134.249.164.53:7791";
+//https://mobsrv.tra.gov.ae/
 
 static NSString *const traSSNOCRMServiceGETDomainData = @"/checkWhois?checkUrl=";
 static NSString *const traSSNOCRMServiceGETDomainAvaliability = @"/checkWhoisAvailable?checkUrl=";
@@ -29,6 +28,14 @@ static NSString *const traSSNOCRMServiceGETFavoritesServices = @"/user/favorites
 static NSString *const traSSNOCRMServicePOSTAddServicesToFavorites = @"/user/favorites";
 static NSString *const traSSNOCRMServiceDELETEServicesFromFavorites = @"/user/favorites";
 static NSString *const traSSNOCRMServiceGETAllServicesNames = @"/service/serviceNames";
+static NSString *const traSSNOCRMServiceGETAboutServiceInfo = @"/service/about?name=";
+static NSString *const traSSNOCRMServiceGetTransactions = @"/crm/transactions";
+static NSString *const traSSNOCRMServiceSearchTransactions = @"/crm/transactions?page=";
+static NSString *const traSSNOCRMServicePostInnovation = @"/innovation";
+
 static NSString *const traSSRegister = @"/crm/register";
 static NSString *const traSSLogin = @"/crm/signIn";
 static NSString *const traSSLogOut = @"/crm/signOut";
+static NSString *const traSSProfile = @"/crm/profile";
+static NSString *const traSSChangePassword = @"/crm/changePass";
+static NSString *const traSSForgotPassword = @"/crm/forgotPass";

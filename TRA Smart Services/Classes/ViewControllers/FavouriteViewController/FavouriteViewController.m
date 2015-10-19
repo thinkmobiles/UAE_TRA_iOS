@@ -2,8 +2,7 @@
 //  FavouriteViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 14.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 14.08.15.
 //
 
 #import "FavouriteViewController.h"
@@ -200,6 +199,9 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
     }
 
     if (selectedService) {
+        if ([selectedService isKindOfClass:[BaseServiceViewController class]]) {
+            [(BaseServiceViewController *)selectedService setServiceID:navigationIndex];
+        }
         [self.navigationController pushViewController:selectedService animated:YES];
     }
 }
@@ -286,13 +288,12 @@ static NSString *const AddToFavoriteSegueIdentifier = @"addToFavoriteSegue";
                 snapshotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
                 snapshotView.alpha = 0.98f;
                 selectedCell.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                selectedCell.hidden = YES;
             }];
             break;
         }
         case UIGestureRecognizerStateChanged: {
             if (self.removeProcessIsActive) {
+                selectedCell.hidden = YES;
                 CGPoint center = snapshotView.center;
                 center.y = location.y;
                 snapshotView.center = center;

@@ -2,8 +2,7 @@
 //  SpamListViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 23.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 23.09.15.
 //
 
 static NSInteger const UnblockServiceNumber = 7726;
@@ -12,8 +11,10 @@ static NSString *const LeftSegmentImageEurope = @"res_segm_sms_europe";
 static NSString *const RightSegmentImageEurope = @"res_segm_web_europe";
 static NSString *const LeftSegmentImageArabic = @"res_segm_web_arabic";
 static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
+static NSString *const SpamWebSegueIdentifier = @"spamWebSegueIdentifier";
 
 #import "SpamListViewController.h"
+#import "SpamReportViewController.h"
 
 @interface SpamListViewController ()
 
@@ -56,14 +57,19 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
     }
 }
 
-- (IBAction)selectModeSwitchTapped:(id)sender
+- (IBAction)selectModeSwitchTapped:(UISegmentedControl *)sender
 {
-    BOOL isArabicUI = self.dynamicService.language == LanguageTypeArabic;
-    if (isArabicUI) {
-        
-    } else {
-        
-    }
+    sender.selectedSegmentIndex = sender.selectedSegmentIndex ? 0 : 1;
+    [self performSegueWithIdentifier:SpamWebSegueIdentifier sender:self];
+    
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SpamReportViewController *spamReportViewController = segue.destinationViewController;
+    spamReportViewController.selectSpamReport = SpamReportTypeWeb;
 }
 
 #pragma mark - UISearchBarDelegate
@@ -93,7 +99,7 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;//self.activeDataSource.count;
+    return self.activeDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -185,14 +191,17 @@ static NSString *const RightSegmentImageArabic = @"res_segm_sms_arabic";
 
 - (void)prepareDataSource
 {
-    //todo
+    //temp solution
+    self.dataSource = @[@"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title", @"Test title"];
+    self.activeDataSource = [[NSMutableArray alloc] initWithArray:self.dataSource];
 }
 
 - (void)updateUIElementsTransform:(CATransform3D)transform
 {
     self.addToSpamButton.layer.transform = transform;
     self.topButtonContainer.layer.transform = transform;
-    self.selectModeSwitch.selectedSegmentIndex = self.selectModeSwitch.selectedSegmentIndex ? 0 : 1;
+    //temp while block websites
+    self.selectModeSwitch.selectedSegmentIndex = self.dynamicService.language == LanguageTypeArabic ? 1 : 0;
     [self.tableView reloadData];
 }
 

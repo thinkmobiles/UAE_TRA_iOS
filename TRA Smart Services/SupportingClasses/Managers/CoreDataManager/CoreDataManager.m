@@ -2,8 +2,7 @@
 //  CoreDataManager.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 19.09.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 19.09.15.
 //
 
 #import "CoreDataManager.h"
@@ -24,6 +23,9 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static CoreDataManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -42,7 +44,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     NSArray *result = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
 #if DEBUG
     if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+        DLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
     }
 #endif
     return result;
@@ -55,7 +57,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 #if DEBUG
     if (error) {
-        NSLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
+        DLog(@"Cant fetch data from DB: %@\n%@",error.localizedDescription, error.userInfo);
     }
 #endif
     return result;
@@ -67,7 +69,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
     }
 }
@@ -127,21 +129,7 @@ static NSString *const CoreDataEntityNameTRAService = @"TRAService";
     }
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"TRAService.sqlite"];
-    NSError *error = nil;
-    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    NSDictionary *options = @{
-                              NSMigratePersistentStoresAutomaticallyOption : @(YES),
-                              NSInferMappingModelAutomaticallyOption : @(YES)
-                              };
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-        dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-        dict[NSUnderlyingErrorKey] = error;
-        error = [NSError errorWithDomain:@"TRAService" code:9999 userInfo:dict];
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    
+    [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
     return _persistentStoreCoordinator;
 }
 

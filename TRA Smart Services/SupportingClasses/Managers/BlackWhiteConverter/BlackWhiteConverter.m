@@ -2,8 +2,7 @@
 //  BlackWhiteConverter.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 26.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 26.08.15.
 //
 
 #import "BlackWhiteConverter.h"
@@ -20,6 +19,9 @@
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static BlackWhiteConverter *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

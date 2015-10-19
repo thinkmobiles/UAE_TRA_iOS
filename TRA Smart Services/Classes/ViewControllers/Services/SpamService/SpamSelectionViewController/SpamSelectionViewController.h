@@ -2,12 +2,11 @@
 //  SpamSelectionViewController.h
 //  TRA Smart Services
 //
-//  Created by RomaVizenko on 23.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 23.09.15.
 //
 
 #import "ServiceSelectionView.h"
 
-@interface SpamSelectionViewController : BaseDynamicUIViewController <ServiceSelectionViewDelegate>
+@interface SpamSelectionViewController : BaseServiceViewController <ServiceSelectionViewDelegate>
 
 @end

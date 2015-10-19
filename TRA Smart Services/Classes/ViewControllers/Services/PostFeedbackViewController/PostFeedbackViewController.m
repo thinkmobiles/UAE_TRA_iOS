@@ -2,8 +2,7 @@
 //  PostFeedbackViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 13.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.08.15.
 //
 
 #import "PostFeedbackViewController.h"
@@ -36,7 +35,7 @@
     [self.view endEditing:YES];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:self.feedbackTextView.text forSerivce:self.serviceNameTextField.text withRating:[self.ratingTextField.text integerValue] requestResult:^(id response, NSError *error) {
         if (error) {
-            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
             [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
         }

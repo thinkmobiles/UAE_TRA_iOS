@@ -2,15 +2,13 @@
 //  HomeSearchViewController.m
 //  TRA Smart Services
 //
-//  Created by RomaVizenko on 09.09.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 09.09.15.
 //
 
 #import "HomeSearchViewController.h"
 #import "Animation.h"
 #import "TRAService.h"
 #import "AppDelegate.h"
-#import "HomeSearchResultViewController.h"
 
 static NSString *const HomeSearchCellIdentifier = @"homeSearchCell";
 static CGFloat const HeightTableViewCell = 35.f;

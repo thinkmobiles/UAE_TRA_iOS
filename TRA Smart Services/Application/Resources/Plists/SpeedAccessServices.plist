@@ -28,7 +28,7 @@
 		<key>serviceNeedGradient</key>
 		<false/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_spam_logo</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -42,21 +42,21 @@
 		<key>serviceNeedGradient</key>
 		<true/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_coverage_logo</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>9</string>
+		<string>7</string>
 		<key>serviceName</key>
-		<string>speedAccess.service.name.9</string>
+		<string>speedAccess.service.name.2</string>
 		<key>serviceLogo</key>
-		<string>ic_internet</string>
+		<string>ic_domain</string>
 		<key>serviceOrder</key>
 		<string>3</string>
 		<key>serviceNeedGradient</key>
 		<true/>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_domain_logo</string>
 	</dict>
 </array>
 </plist>

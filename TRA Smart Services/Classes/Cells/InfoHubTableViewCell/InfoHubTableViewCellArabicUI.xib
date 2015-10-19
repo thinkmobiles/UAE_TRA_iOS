@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rb-hT-n3A" id="CDA-Hw-Vtf">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LiF-DP-Ju7" userLabel="ConteinerArabicUI - View">
@@ -29,6 +29,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GR7-Ag-5Mw" userLabel="image">
                                 <rect key="frame" x="218" y="9" width="70" height="80"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="LfA-Zo-Vg0"/>
                                     <constraint firstAttribute="height" constant="80" id="pRJ-Ja-uJx"/>
@@ -39,26 +40,30 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="uM2-lP-0RB" userLabel="Title - Label">
                                         <rect key="frame" x="45" y="8" width="137" height="31"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="XR9-8p-ftM" userLabel="TextInfo - Label">
                                         <rect key="frame" x="0.0" y="47" width="182" height="30"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-Ts-hDB" userLabel="Date - Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" preferredMaxLayoutWidth="47" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-Ts-hDB" userLabel="Date - Label">
                                         <rect key="frame" x="0.0" y="16" width="46" height="21"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="zBp-zX-Egu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                                         <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="uM2-lP-0RB" firstAttribute="width" secondItem="N8u-fa-W76" secondAttribute="width" multiplier="0.75" id="5MM-wN-dOz"/>
@@ -76,12 +81,14 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fon-iI-xbb" userLabel="Separator - View">
                                 <rect key="frame" x="0.0" y="88" width="198" height="1"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.76078431372549016" green="0.75686274509803919" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="3sX-f8-dpP"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="N8u-fa-W76" firstAttribute="left" secondItem="LiF-DP-Ju7" secondAttribute="left" constant="16" id="1an-gh-wPO"/>
@@ -96,6 +103,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <animations/>
                 <constraints>
                     <constraint firstAttribute="right" secondItem="LiF-DP-Ju7" secondAttribute="right" constant="24" id="OX6-KA-mBe"/>
                     <constraint firstAttribute="bottom" secondItem="LiF-DP-Ju7" secondAttribute="bottom" id="Ofd-it-Ewm"/>
@@ -103,6 +111,7 @@
                     <constraint firstItem="LiF-DP-Ju7" firstAttribute="top" secondItem="CDA-Hw-Vtf" secondAttribute="top" id="b94-Wr-7zf"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <connections>
                 <outlet property="infoHubTransactionDateLabel" destination="TSh-Ts-hDB" id="K11-sE-qTP"/>
                 <outlet property="infoHubTransactionDescriptionLabel" destination="XR9-8p-ftM" id="Fsb-xZ-Aw1"/>

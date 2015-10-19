@@ -4,27 +4,15 @@
 <array>
 	<dict>
 		<key>serviceID</key>
-		<string>7</string>
-		<key>serviceName</key>
-		<string>speedAccess.service.name.2</string>
-		<key>serviceLogo</key>
-		<string>ic_cloud</string>
-		<key>serviceOrder</key>
-		<string>0</string>
-		<key>serviceDisplayLogo</key>
-		<string>ic_cloud</string>
-	</dict>
-	<dict>
-		<key>serviceID</key>
 		<string>10</string>
 		<key>serviceName</key>
 		<string>speedAccess.service.name.10</string>
 		<key>serviceLogo</key>
-		<string>ic_edit</string>
+		<string>ic_cover_sp</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_share</string>
+		<string>ic_cover_sp</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -60,7 +48,7 @@
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_global</string>
+		<string>ic_play</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
@@ -68,31 +56,19 @@
 		<key>serviceName</key>
 		<string>speedAccess.service.name.13</string>
 		<key>serviceLogo</key>
-		<string>ic_lock</string>
+		<string>ic_chat</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
-		<string>ic_lock</string>
+		<string>ic_chat</string>
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
-		<key>serviceOrder</key>
-		<string>0</string>
-		<key>serviceDisplayLogo</key>
 		<string></string>
-	</dict>
-	<dict>
-		<key>serviceID</key>
-		<string>0</string>
-		<key>serviceName</key>
-		<string></string>
-		<key>serviceLogo</key>
-		<string>ic_global</string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
@@ -100,11 +76,11 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string></string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
@@ -112,11 +88,11 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string></string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
@@ -124,11 +100,11 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string></string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>
@@ -136,11 +112,83 @@
 	</dict>
 	<dict>
 		<key>serviceID</key>
-		<string>0</string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceName</key>
-		<string></string>
+		<string>speedAccess.service.name.-1</string>
 		<key>serviceLogo</key>
-		<string>ic_global</string>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
+		<key>serviceOrder</key>
+		<string>0</string>
+		<key>serviceDisplayLogo</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>serviceID</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceName</key>
+		<string>speedAccess.service.name.-1</string>
+		<key>serviceLogo</key>
+		<string></string>
 		<key>serviceOrder</key>
 		<string>0</string>
 		<key>serviceDisplayLogo</key>

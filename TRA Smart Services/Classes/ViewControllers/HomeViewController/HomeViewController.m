@@ -2,8 +2,7 @@
 //  ViewController.m
 //  testPentagonCells
 //
-//  Created by Kirill Gorbushko on 30.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 30.07.15.
 //
 
 #import "HomeViewController.h"
@@ -27,10 +26,8 @@ static CGFloat const MaxScaleFactorForSpeedAccessCell = 0.9f;
 
 static NSString *const HomeBarcodeReaderSegueIdentifier = @"HomeBarcodeReaderSegue";
 static NSString *const HomeCheckDomainSegueIdentifier = @"HomeCheckDomainSegue";
-static NSString *const HomePostFeedbackSegueIdentifier = @"HomePostFeedbackSegue";
 static NSString *const HomeToHelpSalimSequeIdentifier = @"HomeToHelpSalimSeque";
 static NSString *const HomeToCoverageSwgueIdentifier = @"HomeToCoverageSegue";
-static NSString *const HomeSpeedTestSegueIdentifier = @"HomeSpeedTestSegue";
 static NSString *const HomeToSpamReportSegueidentifier = @"HomeToSpamReportSegue";
 static NSString *const HomeToCompliantSequeIdentifier = @"HomeToCompliantSeque";
 static NSString *const HomeToSuggestionSequeIdentifier = @"HomeToSuggestionSeque";
@@ -72,11 +69,10 @@ static LanguageType startLanguage;
     
     startLanguage = self.dynamicService.language;
     
-    self.selectedServiceIDHomeSearchViewController = - 1;
+    self.selectedServiceIDHomeSearchViewController = -1;
     self.menuCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
     
     [self prepareTopBar];
-    self.topView.enableFakeBarAnimations = YES;
     
     [AppHelper updateNavigationBarColor];
     [self disableInteractiveGesture];
@@ -94,6 +90,7 @@ static LanguageType startLanguage;
 {
     [super viewWillAppear:animated];
     
+    [self updateUserProfileImage];
     self.navigationController.navigationBar.hidden = YES;
     [self prepareDataSource];
     
@@ -118,6 +115,7 @@ static LanguageType startLanguage;
         };
         [AppHelper presentViewController:tutorialViewController onController:self.navigationController];
     }
+    self.topView.disableFakeButtonLayersDrawing = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -271,7 +269,7 @@ static LanguageType startLanguage;
 
 - (void)topBarInformationButtonDidPressedInView:(HomeTopBarView *)parentView
 {
-    NSLog(@"1");
+    [self performSegueWithIdentifier:@"InnovationsSegue" sender:self];
 }
 
 - (void)topBarNotificationButtonDidPressedInView:(HomeTopBarView *)parentView
@@ -297,6 +295,7 @@ static LanguageType startLanguage;
         loginViewController.shouldAutoCloseAfterLogin = YES;
         loginViewController.didDismissed = ^() {
             [weakSelf.topView animateTopViewApearence];
+            [weakSelf updateUserProfileImage];
         };
         [AppHelper presentViewController:navController onController:self.navigationController];
     }
@@ -362,7 +361,7 @@ static LanguageType startLanguage;
     [self sevriceSwitchPerformSegue:[[selectedServiceDetails valueForKey:@"serviceID"] integerValue]];
 }
 
-- (void)sevriceSwitchPerformSegue:(NSInteger) serviceID
+- (void)sevriceSwitchPerformSegue:(NSInteger)serviceID
 {
     if (![NetworkManager sharedManager].networkStatus) {
         [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.NoInternetConnection")];
@@ -370,45 +369,33 @@ static LanguageType startLanguage;
     }
     switch (serviceID) {
         case 2: {
-            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeBarcodeReaderSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 3: {
-            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:self];
-            break;
-        }
-        case 4: {
-            [self performSegueWithIdentifier:HomePostFeedbackSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSearchBrandNameSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 5: {
-            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:self];
-            break;
-        }
-        case 6: {
-            [self performSegueWithIdentifier:HomeToHelpSalimSequeIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSpamReportSegueidentifier sender:@(serviceID)];
             break;
         }
         case 7: {
-            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeCheckDomainSegueIdentifier sender:@(serviceID)];
             break;
         }
         case 8: {
-            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:self];
-            break;
-        }
-        case 9: {
-            [self performSegueWithIdentifier:HomeSpeedTestSegueIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToCoverageSwgueIdentifier sender:@(serviceID)];
             break;
         }
         case 12:
         case 13:
         case 10: {
-            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToCompliantSequeIdentifier sender:@(serviceID)];
             break;
         }
         case 11: {
-            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:self];
+            [self performSegueWithIdentifier:HomeToSuggestionSequeIdentifier sender:@(serviceID)];
             break;
         }
     }
@@ -416,6 +403,9 @@ static LanguageType startLanguage;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.destinationViewController isKindOfClass:[BaseServiceViewController class]]&& [sender isKindOfClass:[NSNumber class]]) {
+        [(BaseServiceViewController *)segue.destinationViewController setServiceID:[sender integerValue]];
+    }
     if ([segue.identifier isEqualToString:HomeToCompliantSequeIdentifier]) {
         [self prepareCompliantViewControllerWithSegue:segue];
     } else if ([segue.identifier isEqualToString:HomeToNotificationSegueIdentifier]) {
@@ -468,10 +458,21 @@ static LanguageType startLanguage;
 - (void)prepareTopBar
 {
     self.topView.delegate = self;
-    self.topView.logoImage = [UIImage imageNamed:@"ic_user"];
     self.topView.informationButtonImage = [UIImage imageNamed:@"ic_lamp"];
     self.topView.searchButtonImage = [UIImage imageNamed:@"ic_search"];
     self.topView.notificationButtonImage = [UIImage imageNamed:@"ic_not"];
+}
+
+- (void)updateUserProfileImage
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.topView.logoImage = image;
+    } else {
+        self.topView.logoImage = [UIImage imageNamed:DefaultLogoImageName];
+    }
 }
 
 #pragma mark - SuperclassMethods
@@ -520,8 +521,11 @@ static LanguageType startLanguage;
     cell.polygonView.viewStrokeColor = [UIColor menuItemGrayColor];
     NSDictionary *selectedServiceDetails = self.otherServiceDataSource[indexPath.row];
     if ([selectedServiceDetails valueForKey:@"serviceLogo"]) {
-        UIImage *serviceLogo = [UIImage imageNamed:[selectedServiceDetails valueForKey:@"serviceLogo"]];
-        cell.itemLogoImageView.image = serviceLogo;
+        NSString *logoName = [selectedServiceDetails valueForKey:@"serviceLogo"];
+        if (logoName.length) {
+            UIImage *serviceLogo = [UIImage imageNamed:logoName];
+            cell.itemLogoImageView.image = serviceLogo;
+        }
     }
     cell.categoryID = [[selectedServiceDetails valueForKey:@"serviceID"] integerValue];
     cell.menuTitleLabel.text = dynamicLocalizedString([selectedServiceDetails valueForKey:@"serviceName"]);

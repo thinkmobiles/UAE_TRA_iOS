@@ -1,7 +1,6 @@
 //
 //
-//  Created by Stas Volskyi on 10.11.14.
-//  Copyright (c) 2014 Thinkmobiles. All rights reserved.
+//  Created by Admin on 10.11.14.
 //
 
 #import "TutorialViewController.h"
@@ -130,10 +129,10 @@ static LanguageType startLanguage;
 
 - (void)updateColors
 {
-    [super updateBackgroundImageNamed:@"res_img_tut_fakeHome_1"];
+    [super updateBackgroundImageNamed:[NSString stringWithFormat:@"res_img_tut_fakeHome_%@_%i", self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en", (int)self.dynamicService.colorScheme]];
     
     if (self.dynamicService.colorScheme != ApplicationColorBlackAndWhite) {
-        NSString *backgrounfImageName = [NSString stringWithFormat:@"res_img_tut_fakeHome_en_%i",/* self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en", */(int)self.dynamicService.colorScheme];
+        NSString *backgrounfImageName = [NSString stringWithFormat:@"res_img_tut_fakeHome_%@_%i", self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en", (int)self.dynamicService.colorScheme];
         self.backgroundImageView.image = [UIImage imageNamed:backgrounfImageName];
     }
     
@@ -165,7 +164,7 @@ static LanguageType startLanguage;
     self.tutorialImages = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < TutorialPageCount; i++) {
-        NSString *fileName = [NSString stringWithFormat:@"TutorialScreen%i_en", (int)(i + 1)/*, self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en"*/];
+        NSString *fileName = [NSString stringWithFormat:@"TutorialScreen%i_%@", (int)(i + 1), self.dynamicService.language == LanguageTypeArabic ? @"ar" : @"en"];
         
         UIImage *tutorialScreen = [UIImage imageNamed:fileName];
         if (self.dynamicService.colorScheme == ApplicationColorBlackAndWhite) {

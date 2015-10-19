@@ -2,12 +2,10 @@
 //  SpamRaportViewController.m
 //  TRA Smart Services
 //
-//  Created by RomanVizenko on 13.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 13.08.15.
 //
 
 #import "SpamReportViewController.h"
-#import "NetworkManager.h"
 #import "LoginViewController.h"
 #import "ServicesSelectTableViewCell.h"
 #import "PlaceholderTextView.h"
@@ -25,11 +23,10 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableViewConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalTopReportTextFieldConstreint;
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
-@property (weak, nonatomic) IBOutlet UIView *separatorDescription;
 @property (weak, nonatomic) IBOutlet UIView *separatorSelectedProvider;
 
 @property (strong, nonatomic) NSArray *selectProviderDataSource;
-@property (strong, nonatomic) NSString *selectedProvider;
+@property (assign, nonatomic) NSInteger selectedProvider;
 
 @end
 
@@ -41,9 +38,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 {
     [super viewDidLoad];
 
-    self.selectedProvider = @"";
-    self.reportButton.layer.cornerRadius = 5.f;
-
+    self.selectedProvider = 0;
     [self prepareDataSource];
 }
 
@@ -53,6 +48,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
     [self didChangeReportType:self.selectSpamReport];
     [self configureTextField];
+    [self configureKeyboardButtonDone:self.descriptionTextView];
 }
 
 #pragma mark - IBAction
@@ -69,8 +65,14 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
             [self helpSalimReport];
         }
     } else if (self.selectSpamReport == SpamReportTypeSMS) {
-        if (!self.reportTextField.text.length || !self.selectedProvider.length || !self.descriptionTextView.text.length) {
+        if (!self.reportTextField.text.length || !self.descriptionTextView.text.length) {
             [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.EmptyInputParameters")];
+        } else if (!self.selectedProvider) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.PleaseChooseServiceProvider")];
+        } else if (self.reportTextField.text.length < 4) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.ReferenceNumberIsTooShort")];
+        } else if (self.reportTextField.text.length > 12) {
+            [AppHelper alertViewWithMessage:dynamicLocalizedString(@"message.ReferenceNumberIsTooLong")];
         } else {
             [self POSTSpamReport];
             [self sendSMSMessage];
@@ -86,17 +88,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     return YES;
 }
 
-#pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,8 +100,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     } else {
         cell.selectProviderImage.tintColor = [self.dynamicService currentApplicationColor];
         cell.selectProviderImage.image = self.heightTableViewConstraint.constant == heightSelectTableViewCell ?  [UIImage imageNamed:@"selectTableDn"] :  [UIImage imageNamed:@"selectTableUp"];
-        if (self.selectedProvider.length) {
-            cell.selectProviderLabel.text = self.selectedProvider;
+        if (self.selectedProvider) {
+            cell.selectProviderLabel.text = self.selectProviderDataSource[self.selectedProvider];
             cell.selectProviderLabel.textColor = [self.dynamicService currentApplicationColor];
         } else {
             cell.selectProviderLabel.text = self.selectProviderDataSource[indexPath.row];
@@ -146,10 +137,11 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     
     if (self.heightTableViewConstraint.constant == heightSelectTableViewCell) {
         [self animationSelectTableView:YES];
+        self.selectedProvider = 0;
     } else {
         [self animationSelectTableView:NO];
         if (indexPath.row) {
-            self.selectedProvider = self.selectProviderDataSource[indexPath.row];
+            self.selectedProvider = indexPath.row;
             [self.selectTableView reloadData];
         }
     }
@@ -170,6 +162,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     self.reportTextField.placeholder = dynamicLocalizedString(self.selectSpamReport == SpamReportTypeSMS ?@"spamReportViewControler.reportTextField.reportSMS" : @"spamReportViewControler.reportTextField.reportWeb");
     [self.reportButton setTitle:dynamicLocalizedString(@"spamReportViewControler.reportButton.title") forState:UIControlStateNormal];
     self.descriptionTextView.placeholder = dynamicLocalizedString(@"spamReportViewControler.descriptionTextView.placeholder");
+    [self prepareDataSource];
+    [self.selectTableView reloadData];
 }
 
 - (void)updateColors
@@ -181,10 +175,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
     self.reportButton.backgroundColor = color;
     self.descriptionTextView.textColor = color;
     self.reportTextField.textColor = color;
-    self.separatorDescription.backgroundColor = color;
     self.separatorSelectedProvider.backgroundColor = color;
     [super updateBackgroundImageNamed:@"img_bg_service"];
-    [self.selectTableView reloadData];
     [self.reportButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [AppHelper setStyleForTextView:self.descriptionTextView];
 }
@@ -203,15 +195,18 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 - (void)helpSalimReport
 {
-    [AppHelper showLoader];
     [self.view endEditing:YES];
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
     [[NetworkManager sharedManager] traSSNoCRMServicePOSTHelpSalim:self.reportTextField.text notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
         if (error) {
-            [AppHelper alertViewWithMessage:((NSString *)response).length ? response : error.localizedDescription];
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
         } else {
-            [AppHelper alertViewWithMessage:response];
+            [loader setCompletedStatus:TRACompleteStatusSuccess withDescription:nil];
+            [self clearUp];
         }
-        [AppHelper hideLoader];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TRAAnimationDuration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            loader.ratingView.hidden = NO;
+        });
     }];
 }
 
@@ -223,7 +218,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 
 - (void)POSTSMSBlock
 {
-    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.reportTextField.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.selectedProvider notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTSMSBlock:self.reportTextField.text phoneProvider:[NSString stringWithFormat:@"%i", (int)BlockServiceNumber] providerType:self.selectProviderDataSource[self.selectedProvider] notes:self.descriptionTextView.text requestResult:^(id response, NSError *error) {
     }];
 }
 
@@ -264,6 +259,7 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         default:
             break;
     }
+    [self clearUp];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -290,7 +286,6 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 {
     self.descriptionTextView.textAlignment = alignment;
     self.reportTextField.textAlignment = alignment;
-    [self.descriptionTextView setNeedsDisplay];
 }
 
 - (void)didChangeReportType:(SpamReportType)select
@@ -299,13 +294,13 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
         self.selectTableView.hidden = YES;
         self.separatorSelectedProvider.hidden = YES;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamWeb;
+        self.reportTextField.keyboardType = UIKeyboardTypeURL;
     } else {
-        [self presentLoginIfNeeded];
+        [self presentLoginIfNeededAndPopToRootController:[self.navigationController viewControllers][self.navigationController.viewControllers.count - 2]];
         self.selectTableView.hidden = NO;
         self.separatorSelectedProvider.hidden = NO;
         self.verticalTopReportTextFieldConstreint.constant = verticalTopReportTextFieldConstreintSpamSMS;
     }
-    [self clearUp];
 }
 
 - (void)animationSelectTableView:(BOOL)selected
@@ -328,7 +323,8 @@ static CGFloat const verticalTopReportTextFieldConstreintSpamWeb = 20.f;
 {
     self.reportTextField.text = @"";
     self.descriptionTextView.text = @"";
-    self.selectedProvider= @"";
+    self.selectedProvider= 0;
+    [self.selectTableView reloadData];
 }
 
 - (void)prepareDataSource

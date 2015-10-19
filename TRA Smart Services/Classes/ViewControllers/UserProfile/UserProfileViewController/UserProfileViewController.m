@@ -2,8 +2,7 @@
 //  UserProfileViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 07.09.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 07.09.15.
 //
 
 #import "UserProfileViewController.h"
@@ -30,8 +29,11 @@
 {
     [super viewDidLoad];
     
+    self.title = dynamicLocalizedString(@"userProfile.title");
     [self prepareDataSource];
     [self prepareUserView];
+    [self fillUserProfile];
+    [self getProfileFromServer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,6 +41,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[self.dynamicService currentApplicationColor] inRect:CGRectMake(0, 0, 1, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    [self fillUserProfile];
 }
 
 #pragma mark - UITableViewDataSource
@@ -112,10 +116,58 @@
 - (void)updateColors
 {
     [super updateBackgroundImageNamed:@"fav_back_orange"];
-    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.];
 }
 
 #pragma mark - Private
+
+- (void)getProfileFromServer
+{
+    __weak typeof(self) weakSelf = self;
+    void(^UpdateAvatar)(UserModel *user) = ^(UserModel *user) {
+        [[NetworkManager sharedManager] traSSGetImageWithPath:user.uriForImage withCompletition:^(BOOL success, UIImage *response) {
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weakSelf.userLogoImageView.image = response;
+                });
+                NSData *imageData = UIImageJPEGRepresentation(response, 1.0);
+                NSString *encodedString = [imageData base64EncodedStringWithOptions:kNilOptions];
+
+                UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+                user.avatarImageBase64 = encodedString;
+                [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+            }
+        }];
+    };
+    
+    TRALoaderViewController *loader = [TRALoaderViewController presentLoaderOnViewController:self requestName:self.title closeButton:NO];
+    [[NetworkManager sharedManager] traSSGetUserProfileResult:^(id response, NSError *error) {
+        if (error) {
+            [loader setCompletedStatus:TRACompleteStatusFailure withDescription:dynamicLocalizedString(@"api.message.serverError")];
+        } else {
+            UserModel *user = [[UserModel alloc] initWithDictionary:response];
+            [[KeychainStorage new] saveCustomObject:user key:userModelKey];
+            [weakSelf fillUserProfile];
+            UpdateAvatar(user);
+            [loader dismissTRALoader];
+        }
+    }];
+}
+
+- (void)fillUserProfile
+{
+    UserModel *user = [[KeychainStorage new] loadCustomObjectWithKey:userModelKey];
+    if (!user) {
+        user = [UserModel new];
+    }
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    if (user.avatarImageBase64.length) {
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:user.avatarImageBase64 options:kNilOptions];
+        UIImage *image = [UIImage imageWithData:data];
+        self.userLogoImageView.image = image;
+    } else {
+        self.userLogoImageView.image = [UIImage imageNamed:DefaultLogoImageName];
+    }
+}
 
 - (void)prepareDataSource
 {
@@ -124,9 +176,9 @@
 
 - (void)prepareUserView
 {
-    self.userNameLabel.text = [[KeychainStorage userName] capitalizedString];
-    self.userLogoImageView.image = [UIImage imageNamed:@"test"];
     [AppHelper addHexagoneOnView:self.userLogoImageView];
+    [AppHelper addHexagonBorderForLayer:self.userLogoImageView.layer color:[UIColor whiteColor] width:3.0];
+    self.userLogoImageView.tintColor = [UIColor whiteColor];
 }
 
 - (void)prepareNavigationBar
@@ -157,9 +209,10 @@
         } else {
             KeychainStorage *storage = [[KeychainStorage alloc] init];
             [storage removeStoredCredentials];
+            [storage saveCustomObject:[UserModel new] key:userModelKey];
+
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:KeyUseTouchIDIdentification];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         [AppHelper hideLoader];

@@ -2,8 +2,7 @@
 //  TRALoaderViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.09.15.
 //
 
 #import "TRALoaderViewController.h"
@@ -59,6 +58,8 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
     }];
     
     loader.closeButton.hidden = !show;
+    loader.ratingView.delegate = loader;
+    loader.ratingView.hidden = YES;
     [loader.closeButton setTitle:dynamicLocalizedString(@"TRALoader.backButton.cancel") forState:UIControlStateNormal];
     
     return loader;
@@ -130,6 +131,7 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
 - (void)localizeUI
 {
     self.informationLabel.text = [NSString stringWithFormat:dynamicLocalizedString(@"TRALoader.information.begin"), self.requestName];
+    self.ratingView.chooseRating.text = dynamicLocalizedString(@"checkDomainViewController.chooseRating");
 }
 
 #pragma mark - Private
@@ -170,6 +172,14 @@ static NSString *const LoaderBackgroundOrange = @"img_bg_1";
         [self.logoImageView.layer removeAllAnimations];
         self.logoImageView.hidden = YES;
     }
+}
+
+#pragma mark - RatingViewDelegate
+
+- (void)ratingChanged:(NSInteger)rating
+{
+    [[NetworkManager sharedManager] traSSNoCRMServicePOSTFeedback:@"Rating" forSerivce:self.presenter.title withRating:rating requestResult:^(id response, NSError *error) {}];
+    [self dismissTRALoader];
 }
 
 #pragma mark - Animations

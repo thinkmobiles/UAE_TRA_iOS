@@ -2,8 +2,7 @@
 //  BaseSearchableViewController.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 17.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 17.08.15.
 //
 
 #import "BaseSearchableViewController.h"
@@ -13,7 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *searchBarButtonItem;
 
-@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UIView *titleView;
 
 @end
@@ -31,6 +29,13 @@
     [self prepareTitleLabel];
 }
 
+#pragma mark - Public
+
+- (BOOL)isSearchBarActive
+{
+    return [self.searchBar isFirstResponder];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)searchBarButtonTapped:(id)sender
@@ -41,7 +46,7 @@
     CGFloat offset = 20.f;
     self.searchBar.frame = CGRectMake(0, 0, navBarRect.size.width - offset * 3, navBarRect.size.height);
     self.searchBar.barTintColor = [UIColor whiteColor];
-    self.searchBar.tintColor = self.dynamicService.currentApplicationColor;
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
     
     self.searchBar.layer.opacity = 1.f;
     CGRect titleRect = CGRectMake(0, 0, self.searchBar.bounds.size.width, self.titleView.bounds.size.height);

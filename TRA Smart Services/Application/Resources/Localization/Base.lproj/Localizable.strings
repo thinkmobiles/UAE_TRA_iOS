@@ -2,8 +2,8 @@
   Localizable.strings
   TRA Smart Services
 
-  Created by Kirill Gorbushko on 13.07.15.
-  Copyright © 2015 Thinkmobiles. All rights reserved.
+  Created by Admin on 13.07.15.
+  
 */
 
 //API descriptors
@@ -18,7 +18,6 @@
 
 //Messages for Alerts
 
-"message.notImplemented" = "message.notImplemented";
 "message.success" = "message.success";
 "message.EmptyInputParameters" = "message.EmptyInputParameters";
 "message.IncorrectRatings" = "message.IncorrectRatings";
@@ -28,17 +27,33 @@
 "message.NoInternetConnection" = "message.NoInternetConnection";
 "message.IncorrectDomainName" = "message.IncorrectDomainName";
 "message.PasswordsNotEqual" = "message.PasswordsNotEqual";
+"message.NewPasswordsNotEqual" = "message.NewPasswordsNotEqual";
 "message.OperationCanceledByUser" = "message.OperationCanceledByUser";
 "message.InvalidFormatUserName" = "message.InvalidFormatUserName";
 "message.InvalidFormatIDEmirates" = "message.InvalidFormatIDEmirates";
 "message.InvalidFormatFirstName" = "message.InvalidFormatFirstName";
 "message.InvalidFormatLastName" = "message.InvalidFormatLastName";
 "message.InvalidFormatMobile" = "message.InvalidFormatMobile";
+"message.InvalidPhoneNumberFormat" = "message.InvalidPhoneNumberFormat";
+"message.InvalidFormatMobileTooShort" = "message.InvalidFormatMobileTooShort";
+"message.InvalidFormatTooLong" = "message.InvalidFormatMobileTooLong";
+"message.InvalidFormatTooShort" = "message.InvalidFormatTooShort";
 "message.InvalidFormatEmail" = "message.InvalidFormatEmail";
 "message.InvalidFormatURL" = "message.InvalidFormatURL";
 "message.InvalidStateCode" = "message.InvalidStateCode";
 "message.FailedToSendSMS" = "message.FailedToSendSMS";
 "message.FailedToInitializeMFController" = "message.FailedToInitializeMFController";
+"message.PleaseChooseServiceProvider" = "message.PleaseChooseServiceProvider";
+"message.PleaseSelectPrescriptionOfIdea" = "message.PleaseSelectPrescriptionOfIdea";
+"message.PasswordIsTooShort8" = "message.PasswordIsTooShort8";
+"message.PasswordIsTooLong32" = "message.PasswordIsTooLong32";
+"message.UserNameIsTooShort3" = "message.UserNameIsTooShort3";
+"message.UserNameIsTooLong32" = "message.UserNameIsTooLong32";
+"message.UserName1charValidation" = "message.UserName1charValidation";
+"message.InvalidIMEI" = "message.InvalidIMEI";
+"message.ReferenceNumberIsTooShort" = "message.ReferenceNumberIsTooShort";
+"message.ReferenceNumberIsTooLong" = "message.ReferenceNumberIsTooLong";
+"message.JailbrakeDevice" = "message.JailbrakeDevice";
 
 //StatesNames
 
@@ -212,6 +227,7 @@
 "announcements.label.text" = "announcements.label.text";
 "seeMore.button.title" = "seeMore.button.title";
 "transactions.label.text" = "transactions.label.text";
+"infoHubViewController.transactionNotDataLabel" = "infoHubViewController.transactionNotDataLabel";
 
 //AnnoucementsViewController
 
@@ -225,6 +241,7 @@
 
 "searchMobileBrandNameViewController.title" = "searchMobileBrandNameViewController.title";
 "searchMobileBrandNameViewController.searchButton" = "searchMobileBrandNameViewController.searchButton";
+"searchMobileBrandNameViewController.searchTextField.placeholder" = "searchMobileBrandNameViewController.searchTextField.placeholder";
 
 //SuggestionViewController
 
@@ -236,12 +253,12 @@
 
 //CompliantViewController
 
-"compliantViewController.title" = "compliantViewController.title";
-"compliantViewController.textField.placeholder" = "compliantViewController.textField.placeholder";
+"compliantViewController.title.comtlaintTRA" = "compliantViewController.title.comtlaintTRA";
+"compliantViewController.title.enquires" = "compliantViewController.title.enquires";
+"compliantViewController.title.compliantAboutServiceProvider" = "compliantViewController.title.compliantAboutServiceProvider";
+"compliantViewController.compliantTitleTextField.placeholder" = "compliantViewController.compliantTitleTextField.placeholder";
+"compliantViewController.referenceNumberTextField.placeholder" = "compliantViewController.referenceNumberTextField.placeholder";
 "compliantViewController.description.placeholder" = "compliantViewController.description.placeholder";
-"compliantViewController.compliantServiceProviderLabel" = "compliantViewController.compliantServiceProviderLabel";
-"compliantViewController.compliantTitleLabel" = "compliantViewController.compliantTitleLabel";
-"compliantViewController.compliantReterenceNumberLabel" = "compliantViewController.compliantReterenceNumberLabel";
 "compliantViewController.compliantSendBarButtonItem.title" = "compliantViewController.compliantSendBarButtonItem.title";
 
 //SpamReportViewControler
@@ -260,13 +277,6 @@
 "InternetSpeedTestViewController.speedTestResult.text" = "InternetSpeedTestViewController.speedTestResult.text";
 "InternetSpeedTestViewController.speedTestResult.text.accurate" = "InternetSpeedTestViewController.speedTestResult.text.accurate";
 
-//HelpSalimViewController
-
-"helpSalimViewController.title" = "helpSalimViewController.title";
-"helpSalimViewController.urlToReportTextField" = "helpSalimViewController.urlToReportTextField";
-"helpSalimViewController.commentLabel.text" = "helpSalimViewController.commentLabel.text";
-"helpSalimViewController.reportURLButton.title" = "helpSalimViewController.reportURLButton.title";
-
 //PostFeedbackViewController
 
 "postFeedbackViewController.title" = "postFeedbackViewController.title";
@@ -282,7 +292,7 @@
 "checkDomainViewController.avaliabilityButton.title" = "checkDomainViewController.avaliabilityButton.title";
 "checkDomainViewController.whoISButton.title" = "checkDomainViewController.whoISButton.title";
 "checkDomainViewController.domainTitleForView" = "checkDomainViewController.domainTitleForView";
-"checkDomainViewController.chooseRating" = "checkDomainViewController.chooseRating";
+"checkDomainViewController.domainInfo.label" = "checkDomainViewController.domainInfo.label";
 
 //CheckIMEIViewController
 
@@ -344,14 +354,8 @@
 
 "verificationIMEIViewController.title" = "verificationIMEIViewController.title";
 "verificationIMEIViewController.serviceHeaderLabel" = "verificationIMEIViewController.serviceHeaderLabel";
-"verificationIMEIViewController.verificationIMEIInfoEnterLabel" = "verificationIMEIViewController.verificationIMEIInfoEnterLabel";
 "verificationIMEIViewController.sendIMEICodeLabel" = "verificationIMEIViewController.sendIMEICodeLabel";
 "verificationIMEIViewController.verificationIMEITextField.placeholder" = "verificationIMEIViewController.verificationIMEITextField.placeholder";
-
-//TutorialViewController
-
-"tutorialViewController.skipButton.title" = "tutorialViewController.skipButton.title";
-"tutorialViewController.nextButton.title" = "tutorialViewController.nextButton.title";
 
 //TRALoaderViewController
 
@@ -359,6 +363,7 @@
 "TRALoader.backButton.cancel" = "TRALoader.backButton.cancel";
 "TRALoader.information.begin" = "TRALoader.information.begin";
 "TRALoader.information.finish" = "TRALoader.information.finish";
+"checkDomainViewController.chooseRating" = "checkDomainViewController.chooseRating";
 
 //AutoLoginService
 
@@ -379,8 +384,7 @@
 
 //SpamListViewController
 
-"spamListViewController.title" = "";
-
+"spamListViewController.title" = "spamListViewController.title";
 
 //InnovationsCollectionViewCell
 
@@ -398,3 +402,37 @@
 "spamSelectionViewController.serviceSelectionView.reportSMSLabel" = "spamSelectionViewController.serviceSelectionView.reportSMSLabel";
 "spamSelectionViewController.serviceSelectionView.reportWEBLabel" = "spamSelectionViewController.serviceSelectionView.reportWEBLabel";
 "spamSelectionViewController.serviceSelectionView.viewMyListLabel" = "spamSelectionViewController.serviceSelectionView.viewMyListLabel";
+
+//ListOfMobileBrandViewController
+
+"listOfMobileBrandViewController.title" = "listOfMobileBrandViewController.title";
+
+//ListOfDevicesViewController
+
+"listOfDevicesViewController.title" = "listOfDevicesViewController.title";
+"listOfDevicesViewController.devicesNotDataLabel" = "listOfDevicesViewController.devicesNotDataLabel";
+
+//InnovationsViewController
+
+"innovationsViewController.title" = "innovationsViewController.title";
+"innovationsViewController.submitButton" = "innovationsViewController.submitButton";
+"innovationsViewController.innovationsTitleTextField.placeholder" = "innovationsViewController.innovationsTitleTextField.placeholder";
+"innovationsViewController.descriptionTextView.placeholder" = "innovationsViewController.descriptionTextView.placeholder";
+"innovationsViewController.selectInnovativeIdeasFor0" = "innovationsViewController.selectInnovativeIdeasFor0";
+"innovationsViewController.selectInnovativeIdeasFor1" = "innovationsViewController.selectInnovativeIdeasFor1";
+"innovationsViewController.selectInnovativeIdeasFor2" = "innovationsViewController.selectInnovativeIdeasFor2";
+"innovationsViewController.selectInnovativeIdeasFor3" = "innovationsViewController.selectInnovativeIdeasFor3";
+"innovationsViewController.selectInnovativeIdeasFor4" = "innovationsViewController.selectInnovativeIdeasFor4";
+"innovationsViewController.selectInnovativeIdeasFor5" = "innovationsViewController.selectInnovativeIdeasFor5";
+"innovationsViewController.selectInnovativeIdeasFor6" = "innovationsViewController.selectInnovativeIdeasFor6";
+
+//ResultIMEIViewController
+
+"resultIMEIViewController.title" = "resultIMEIViewController.title";
+"resultIMEIViewController.noDeviceDatabase" = "resultIMEIViewController.noDeviceDatabase";
+
+//SelectImageActionSheet
+
+"selectImageActionSheet.cancel" = "selectImageActionSheet.cancel";
+"selectImageActionSheet.removeFile" = "selectImageActionSheet.removeFile";
+"selectImageActionSheet.selectImage" = "selectImageActionSheet.selectImage";

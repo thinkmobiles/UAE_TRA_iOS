@@ -2,8 +2,7 @@
 //  MenuCollectionViewCell.m
 //  testPentagonCells
 //
-//  Created by Kirill Gorbushko on 30.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 30.07.15.
 //
 
 #import "MenuCollectionViewCell.h"
@@ -23,6 +22,8 @@
     [super prepareForReuse];
     
     [self updateViewMode:self.cellPresentationMode];
+    self.itemLogoImageView.image = nil;
+    self.menuTitleLabel.text = @"";
 }
 
 #pragma mark - Custom Accessors

@@ -2,8 +2,7 @@
 //  SpamListTableViewCell.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 23.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 23.09.15.
 //
 
 #import "SpamListTableViewCell.h"

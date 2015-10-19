@@ -2,8 +2,7 @@
 //  WhoIsModel.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 23.09.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 23.09.15.
 //
 
 static NSString *const Keykey = @"key";
@@ -14,16 +13,19 @@ static NSString *const keyOrder = @"order";
 
 @implementation WhoIsModel
 
+#pragma mark - Public
+
 + (WhoIsModel *)whoIsWithString:(NSString *)inputString
 {
     WhoIsModel *model = [[WhoIsModel alloc] init];
+    model.response = [WhoIsModel parseData:inputString];
     
     return model;
 }
 
 #pragma mark - Private
 
-- (NSArray *)parseData:(NSString *)inputData
++ (NSArray *)parseData:(NSString *)inputData
 {
     NSArray *values = [inputData componentsSeparatedByString:@"\r\n"];
     NSMutableDictionary *dataDictionary = [[NSMutableDictionary alloc] init];

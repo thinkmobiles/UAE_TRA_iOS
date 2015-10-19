@@ -2,14 +2,14 @@
 //  BaseNetworkManager.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 21.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 21.07.15.
 //
 
 #import "NetworkManager.h"
 #import "AFNetworking.h"
 #import "NetworkEndPoints.h"
 #import <CoreTelephony/CoreTelephonyDefines.h>
+#import "TransactionModel.h"
 
 static NSString *const ImagePrefixBase64String = @"data:image/png;base64,";
 static NSString *const ResponseDictionaryErrorKey = @"error";
@@ -27,6 +27,9 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
 
 + (instancetype)sharedManager
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static NetworkManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -115,7 +118,11 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
                                           } mutableCopy];
     
     if (type == ComplianTypeCustomProvider) {
-        [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        if ([serviceProvider isEqualToString:@"du"]) {
+            [parameters setValue:serviceProvider forKey:@"serviceProvider"];
+        } else {
+            [parameters setValue:[serviceProvider capitalizedString] forKey:@"serviceProvider"];
+        }
         [parameters setValue:@(number) forKey:@"referenceNumber"];
     }
     
@@ -184,6 +191,15 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     [self performPOST:traSSNOCRMServicePOSTPoorCoverage withParameters:parameters response:poorCoverageResponse];
 }
 
+- (void)traSSNoCRMServicePostInnovationTitle:(NSString *)title message:(NSString *)message type:(NSNumber *)type responseBlock:(ResponseBlock)innovationResponse{
+    NSDictionary *parameters = @{
+                                 @"title" : title,
+                                 @"message" : message,
+                                 @"type" : type
+                                 };
+    [self performPOST:traSSNOCRMServicePostInnovation withParameters:parameters response:innovationResponse];
+}
+
 #pragma mark - Favourite
 
 - (void)traSSNoCRMSErviceGetFavoritesServices:(ResponseBlock)favoriteServices
@@ -218,6 +234,73 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     [self performGET:traSSNOCRMServiceGETAllServicesNames withParameters:nil response:result];
 }
 
+- (void)traSSNoCRMServiceGetServiceAboutInfo:(NSString *)serviceName languageCode:(NSString *)languageCode responseBlock:(ResponseBlock)aboutServiceInfoResponse
+{
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@&lang=%@", traSSNOCRMServiceGETAboutServiceInfo, serviceName, languageCode];
+    [self performGET:requestURL withParameters:nil response:aboutServiceInfoResponse];
+}
+
+- (void)traSSNoCRMServiceGetGetTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc responseBlock:(ResponseBlock)getTransactionResponse
+{
+    NSString *requestURL = [NSString stringWithFormat:@"%@", traSSNOCRMServiceGetTransactions];
+    
+    if (page && count) {
+        NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
+        NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
+        requestURL = [NSString stringWithFormat:@"%@?page=%@&cout=%@", traSSNOCRMServiceGetTransactions, pagesNumber, countElements]; //temp asc not work
+    }
+    
+    [self.manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *responseTransactions = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *transActionDict in value) {
+                TransactionModel *transactionModel = [[TransactionModel alloc] initWithDictionary:transActionDict];
+                [responseTransactions addObject:transactionModel];
+            }
+            
+            getTransactionResponse(responseTransactions, nil);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        PerformFailureRecognition(operation, error, getTransactionResponse);
+    }];
+}
+
+- (void)traSSNoCRMServiceSearchTransactions:(NSInteger)page count:(NSInteger)count orderAsc:(BOOL)orderArc searchText:(NSString *)searchText responseBlock:(SearchResponseBlock)getTransactionResponse
+{
+    NSString *pagesNumber = [NSString stringWithFormat:@"%i", (int)page];
+    NSString *countElements = [NSString stringWithFormat:@"%i", (int)count];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@&cout=%@&orderAsc=%@&search=%@", traSSNOCRMServiceSearchTransactions, pagesNumber, countElements, orderArc ? @"1" : @"0", searchText];
+    NSString *stringCleanPath = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [self.manager GET:stringCleanPath parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSString *request = [operation.request.URL absoluteString];
+        
+        id value = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *responseTransactions = [[NSMutableArray alloc] init];
+            for (NSDictionary *transActionDict in value) {
+                TransactionModel *transactionModel = [[TransactionModel alloc] initWithDictionary:transActionDict];
+                [responseTransactions addObject:transactionModel];
+            }
+            getTransactionResponse(responseTransactions, nil, [[request componentsSeparatedByString:@"="] lastObject]);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+            NSString *responseString = dynamicLocalizedString(@"api.message.serverError");
+            if (operation.responseObject) {
+                NSDictionary *response = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:kNilOptions error:&error];
+                id responsedObject = [response valueForKey:ResponseDictionaryErrorKey];
+                if ([responsedObject isKindOfClass:[NSArray class]]){
+                    responseString = [(NSArray *)responsedObject firstObject];
+                } else if ([responsedObject isKindOfClass:[NSString class]]){
+                    responseString = responsedObject;
+                }
+            }
+        getTransactionResponse(responseString, error, nil);
+    }];
+}
+
 #pragma mark - UserInteraction
 
 - (void)traSSRegisterUsername:(NSString *)username password:(NSString *)password firstName:(NSString *)firstName lastName:(NSString *)lastName emiratesID:(NSString *)countryID state:(NSString *)state mobilePhone:(NSString *)mobile email:(NSString *)emailAddress requestResult:(ResponseBlock)registerResponse
@@ -250,6 +333,36 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
     }];
 }
 
+- (void)traSSGetUserProfileResult:(ResponseBlock)profileResponse
+{
+    [self performGET:traSSProfile withParameters:nil response:profileResponse];
+}
+
+- (void)traSSUpdateUserProfile:(UserModel *)userProfile requestResult:(ResponseBlock)updateProfileResponse
+{
+    NSDictionary *parameters = @{
+                                 @"first" : userProfile.firstName,
+                                 @"last" : userProfile.lastName,
+                                 @"image" : userProfile.avatarImageBase64.length ? userProfile.avatarImageBase64 : @""
+                                 };
+    
+    [self performPUT:traSSProfile withParameters:parameters response:updateProfileResponse];
+}
+
+- (void)traSSChangePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword requestResult:(ResponseBlock)changePasswordResponse
+{
+    NSDictionary *parameters = @{
+                                 @"oldPass" : oldPassword,
+                                 @"newPass" : newPassword
+                                 };
+    [self performPUT:traSSChangePassword withParameters:parameters response:changePasswordResponse];
+}
+
+- (void)traSSForgotPasswordForEmail:(NSString *)email requestResult:(ResponseBlock)forgotPasswordResponse
+{
+    [self performPOST:traSSForgotPassword withParameters:@{@"email" : email} response:forgotPasswordResponse];
+}
+
 - (void)traSSLogout:(ResponseBlock)logoutResponse
 {
     __weak typeof(self) weakSelf = self;
@@ -258,6 +371,22 @@ static NSString *const ResponseDictionarySuccessKey = @"success";
         weakSelf.isUserLoggined = NO;
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, logoutResponse);
+    }];
+}
+
+#pragma mark - Image
+
+- (void)traSSGetImageWithPath:(NSString *)imagePath withCompletition:(DownloadingComplete)completitionHandler
+{
+    [self.manager GET:imagePath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        UIImage *image = [UIImage imageWithData:responseObject];
+        if (image) {
+            completitionHandler(YES, image);
+        } else {
+            completitionHandler(NO, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completitionHandler(NO, nil);
     }];
 }
 
@@ -316,6 +445,9 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
                 info = [responseDictionary valueForKey:@"availableStatus"];
             } else if ([responseDictionary valueForKey:@"urlData"]) {
                 info = [responseDictionary valueForKey:@"urlData"];
+            } else {
+                handler(responseDictionary, nil);
+                return;
             }
             handler(info, nil);
         } else if ([value isKindOfClass:[NSArray class]]) {
@@ -329,6 +461,15 @@ void(^PerformSuccessRecognition)(AFHTTPRequestOperation * __nonnull operation, i
 - (void)performPOST:(NSString *)path withParameters:(NSDictionary *)parameters response:(ResponseBlock)completionHandler
 {
     [self.manager POST:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
+        PerformSuccessRecognition(operation, responseObject, completionHandler);
+    } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
+        PerformFailureRecognition(operation, error, completionHandler);
+    }];
+}
+
+- (void)performPUT:(NSString *)path withParameters:(NSDictionary *)parameters response:(ResponseBlock)completionHandler
+{
+    [self.manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation * __nonnull operation, id  __nonnull responseObject) {
         PerformSuccessRecognition(operation, responseObject, completionHandler);
     } failure:^(AFHTTPRequestOperation * __nonnull operation, NSError * __nonnull error) {
         PerformFailureRecognition(operation, error, completionHandler);

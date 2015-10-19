@@ -20,14 +20,6 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>userProfile.resetPassword</string>
-		<key>imageName</key>
-		<string>ic_lock_profile</string>
-		<key>seque</key>
-		<string>ResetPasswordSegue</string>
-	</dict>
-	<dict>
-		<key>name</key>
 		<string>userProfile.logoutFromAccount</string>
 		<key>imageName</key>
 		<string>ic_logout</string>

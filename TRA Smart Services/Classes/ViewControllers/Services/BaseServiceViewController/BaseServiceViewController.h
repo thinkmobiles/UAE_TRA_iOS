@@ -2,17 +2,18 @@
 //  BaseServiceViewController.h
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 31.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 31.08.15.
 //
 
-#import "TRALoaderViewController.h"
 #import "BottomBorderTextField.h"
 #import "BottomBorderTextView.h"
 
 @interface BaseServiceViewController : BaseDynamicUIViewController
 
-- (void)presentLoginIfNeeded;
+@property (assign, nonatomic) NSInteger serviceID;
+
+- (void)presentLoginIfNeededAndPopToRootController:(UIViewController *)controller;
 - (void)updateColors;
+- (void)configureKeyboardButtonDone:(UITextView *)textView;
 
 @end

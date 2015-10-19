@@ -2,8 +2,7 @@
 //  FavouriteTableViewCell.m
 //  TRA Smart Services
 //
-//  Created by Kirill Gorbushko on 17.08.15.
-//  Copyright (c) 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 17.08.15.
 //
 
 #import "FavouriteTableViewCell.h"
@@ -75,8 +74,7 @@
     _favouriteServiceLogoImageView.image = logoImage;
     
     [AppHelper addHexagoneOnView:self.hexagonBackgroundView];
-    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor ] width:3.0f];
-    
+    [AppHelper addHexagonBorderForLayer:self.hexagonBackgroundView.layer color:[UIColor grayBorderTextFieldTextColor] width:3.0f];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText
@@ -99,6 +97,7 @@
 - (void)addGestureRecognizer
 {
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapGesture:)];
+    longPressGesture.minimumPressDuration = 0.15;
     [self.removeButton addGestureRecognizer:longPressGesture];
 }
 

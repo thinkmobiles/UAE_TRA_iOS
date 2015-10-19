@@ -2,8 +2,7 @@
 //  DynamicLanguageService.m
 //  testOnFlyLocalizationStrings
 //
-//  Created by Kirill Gorbushko on 16.07.15.
-//  Copyright © 2015 Thinkmobiles. All rights reserved.
+//  Created by Admin on 16.07.15.
 //
 
 #import "DynamicUIService.h"
@@ -45,6 +44,9 @@ static NSString *const KeyLanguageArabic = @"ar";
 
 + (instancetype)service
 {
+#ifndef DEBUG
+    SEC_IS_BEING_DEBUGGED_RETURN_NIL();
+#endif
     static DynamicUIService *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
